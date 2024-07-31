@@ -7,13 +7,15 @@ import { LoginComponent } from './modules/core/login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RecoveryPasswordComponent } from './modules/core/recovery-password/recovery-password.component';
 import { ResetPasswordComponent } from './modules/core/reset-password/reset-password.component';
+import { RegisterComponent } from './modules/core/register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
     RecoveryPasswordComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
