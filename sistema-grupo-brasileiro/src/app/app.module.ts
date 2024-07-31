@@ -6,12 +6,14 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './modules/core/login/login.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RecoveryPasswordComponent } from './modules/core/recovery-password/recovery-password.component';
+import { ResetPasswordComponent } from './modules/core/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RecoveryPasswordComponent
+    RecoveryPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
