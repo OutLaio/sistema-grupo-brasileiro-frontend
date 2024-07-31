@@ -3,14 +3,22 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoginComponent } from './modules/core/login/login.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RecoveryPasswordComponent } from './modules/core/recovery-password/recovery-password.component';
+import { ResetPasswordComponent } from './modules/core/reset-password/reset-password.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    LoginComponent,
+    RecoveryPasswordComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    NgbModule
   ],
   providers: [],
   bootstrap: [AppComponent]
