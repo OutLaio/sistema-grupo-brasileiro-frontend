@@ -1,3 +1,11 @@
 * {
     font-family: Inter, sans-serif;
 }
+
+.validation-warning p {
+  padding: 0;
+  margin: 0;
+  color: red;
+  font-size: 11px;
+  font-family: 'Inter';
+}

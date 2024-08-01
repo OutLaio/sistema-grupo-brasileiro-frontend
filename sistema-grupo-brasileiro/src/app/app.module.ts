@@ -8,6 +8,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RecoveryPasswordComponent } from './modules/core/recovery-password/recovery-password.component';
 import { ResetPasswordComponent } from './modules/core/reset-password/reset-password.component';
 import { RegisterComponent } from './modules/core/register/register.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,9 @@ import { RegisterComponent } from './modules/core/register/register.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
