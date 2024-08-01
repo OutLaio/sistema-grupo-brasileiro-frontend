@@ -9,6 +9,9 @@ import { RecoveryPasswordComponent } from './modules/core/recovery-password/reco
 import { ResetPasswordComponent } from './modules/core/reset-password/reset-password.component';
 import { RegisterComponent } from './modules/core/register/register.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { provideHttpClient, withFetch } from '@angular/common/http';
+import { provideToastr } from 'ngx-toastr';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 @NgModule({
   declarations: [
@@ -25,7 +28,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule,
   ],
-  providers: [],
+  providers: [
+    provideHttpClient(withFetch()),
+    provideToastr(),
+    provideAnimations()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
