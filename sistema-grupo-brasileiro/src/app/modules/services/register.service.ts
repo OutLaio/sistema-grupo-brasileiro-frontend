@@ -11,21 +11,21 @@ export class RegisterService {
 
   registerUser(
     name: string,
-    lastName: string,
+    lastname: string,
     email: string,
     password: string,
-    phone: string,
+    phonenumber: string,
     department: string,
     occupation: string,
     nop: string
   ) {
     return this.httpClient
-      .post<RegisterResponse>('/register', {
+      .post<RegisterResponse>('http://localhost:8080/auth/register', {
         name,
-        lastName,
+        lastname,
         email,
         password,
-        phone,
+        phonenumber,
         department,
         occupation,
         nop,
