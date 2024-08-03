@@ -21,7 +21,7 @@ export class LoginRegisterService {
     nop: string
   ) {
     return this.httpClient
-      .post<RegisterResponse>('http://localhost:8080/auth/register', {
+      .post('http://localhost:8080/auth/register', {
         name,
         lastname,
         email,
@@ -30,12 +30,7 @@ export class LoginRegisterService {
         sector,
         occupation,
         nop,
-      })
-      .pipe(
-        tap((value) => {
-          sessionStorage.setItem('auth-message', value.message);
-        })
-      );
+      });
   }
 
   loginUser(email: string, password: string) {

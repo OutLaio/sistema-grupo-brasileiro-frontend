@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginRegisterService } from '../../services/login-register.service';
 import { ToastrService } from 'ngx-toastr';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-register',
@@ -61,7 +62,9 @@ export class RegisterComponent implements OnInit {
       this.nop.value
     ).subscribe({
       next: () => this.toastrService.success("Cadastro realizado com sucesso!"),
-      error: () => this.toastrService.error("Erro inesperado! Tente novamente mais tarde!")
+      error: (value: HttpErrorResponse) => {
+        this.toastrService.error(value.error);
+      }
     })
   }
 }

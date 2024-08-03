@@ -2,6 +2,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginRegisterService } from '../../services/login-register.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login',
@@ -31,7 +32,7 @@ export class LoginComponent implements OnInit {
     if(this.loginForm.invalid){return}
     this.loginService.loginUser(this.email.value, this.password.value).subscribe({
       next: () => this.toastrService.success("Login realizado com sucesso!"),
-      error: (value) => this.toastrService.error("Erro:" + value)
+      error: (value: HttpErrorResponse) => this.toastrService.error(value.error)
     })
   }
 }
