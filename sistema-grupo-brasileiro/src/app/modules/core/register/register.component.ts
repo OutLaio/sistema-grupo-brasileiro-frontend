@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { RegisterService } from '../../services/register.service';
+import { LoginRegisterService } from '../../services/login-register.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
@@ -13,7 +13,7 @@ export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
 
   constructor(
-    private registerService: RegisterService,
+    private registerService: LoginRegisterService,
     private toastrService: ToastrService
   ){}
 
@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
         Validators.required,
         Validators.pattern(/^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$/),
       ]),
-      department: new FormControl('', [Validators.required]),
+      sector: new FormControl('', [Validators.required]),
       occupation: new FormControl('', [Validators.required]),
       nop: new FormControl('', [Validators.required]),
     });
@@ -43,7 +43,7 @@ export class RegisterComponent implements OnInit {
   get email() {return this.registerForm.get('email')!;}
   get password() {return this.registerForm.get('password')!;}
   get phone() {return this.registerForm.get('phone')!;}
-  get department() {return this.registerForm.get('department')!;}
+  get sector() {return this.registerForm.get('sector')!;}
   get occupation() {return this.registerForm.get('occupation')!;}
   get nop() {return this.registerForm.get('nop')!;}
 
@@ -56,7 +56,7 @@ export class RegisterComponent implements OnInit {
       this.email.value,
       this.password.value,
       this.phone.value,
-      this.department.value,
+      this.sector.value,
       this.occupation.value,
       this.nop.value
     ).subscribe({

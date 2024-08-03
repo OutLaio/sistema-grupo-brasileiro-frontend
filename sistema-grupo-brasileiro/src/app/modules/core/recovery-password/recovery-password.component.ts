@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { LoginRegisterService } from '../../services/login-register.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-recovery-password',
@@ -9,6 +11,11 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class RecoveryPasswordComponent implements OnInit {
 
   recoveryForm!: FormGroup;
+
+  constructor(
+    private recoveryService: LoginRegisterService,
+    private toastrService: ToastrService
+  ) { }
 
   ngOnInit(): void {
     this.recoveryForm = new FormGroup({
@@ -20,5 +27,15 @@ export class RecoveryPasswordComponent implements OnInit {
 
   submit(): void {
     if (this.recoveryForm.invalid){return}
+
+    this.recoveryService.recoveryPassword(this.email.value).subscribe({
+      next: () => {
+        this.toastrService.success('Sua solicitação de recuperação de senha foi enviada com sucesso! Verifique seu e-mail.');
+        this.recoveryForm.reset();
+      },
+      error: (error) => {
+        this.toastrService.error('Houve um erro ao tentar recuperar a senha. Tente novamente.');
+      }
+    })
   }
 }

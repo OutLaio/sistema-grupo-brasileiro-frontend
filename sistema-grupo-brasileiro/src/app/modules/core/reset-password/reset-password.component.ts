@@ -8,6 +8,9 @@ import {
   Validators,
 } from '@angular/forms';
 import { confirmPasswordValidator } from './password-validator';
+import { ActivatedRoute } from '@angular/router';
+import { LoginRegisterService } from '../../services/login-register.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-reset-password',
@@ -16,8 +19,18 @@ import { confirmPasswordValidator } from './password-validator';
 })
 export class ResetPasswordComponent implements OnInit {
   resetForm!: FormGroup;
+  token!: string;
+
+  constructor(
+  private route: ActivatedRoute,
+  private loginRegisterService: LoginRegisterService,
+  private toastrService: ToastrService
+  ) {}
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      this.token = params['token'];
+    });
     this.resetForm = new FormGroup(
       {
         password: new FormControl('', [
@@ -43,5 +56,11 @@ export class ResetPasswordComponent implements OnInit {
     if (this.resetForm.invalid) {
       return;
     }
+
+    this.loginRegisterService
+     .resetPassword(this.password.value, this.token).subscribe({
+      next: () => this.toastrService.success("Senha alterada com sucesso!"),
+      error: (error) => this.toastrService.error(error.error.message)
+     });
   }
 }
