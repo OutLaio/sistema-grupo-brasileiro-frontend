@@ -12,7 +12,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideToastr } from 'ngx-toastr';
 import { provideAnimations } from '@angular/platform-browser/animations';
-import { SidebarComponent } from './modules/core/sidebar/sidebar.component';
+import { HeaderComponent } from './modules/layout/header/header.component';
+import { SidenavComponent } from './modules/layout/sidenav/sidenav.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { SidebarComponent } from './modules/core/sidebar/sidebar.component';
     RecoveryPasswordComponent,
     ResetPasswordComponent,
     RegisterComponent,
-    SidebarComponent
+    HeaderComponent,
+    SidenavComponent
   ],
   imports: [
     BrowserModule,

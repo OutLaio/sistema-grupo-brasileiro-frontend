@@ -1,0 +1,27 @@
+.container {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+.content {
+  position: fixed;
+  top: 9vh;
+  right: 0;
+  bottom: 0;
+
+  overflow-y: auto;
+  z-index: 999;
+}
+
+.with-sidebar {
+  left: 250px;
+  padding: 3px;
+  transition: left 0.3s ease, padding-left 0.3s ease;
+}
+
+.without-sidebar {
+  left: 25px;
+  padding: 3px;
+  transition: left 0.3s ease, padding-left 0.3s ease;
+}

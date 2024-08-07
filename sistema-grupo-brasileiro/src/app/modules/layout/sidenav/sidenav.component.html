@@ -1,11 +1,11 @@
-<div id="bdSidebar" class="d-flex flex-column 
-            flex-shrink-0 
+<div id="bdSidebar" class="d-flex flex-column
+            flex-shrink-0
             py-3 bg-sidebar
-            text-white offcanvas-md offcanvas-start" [ngClass]="{'collapsed': isCollapsed}">
+            text-white offcanvas-md offcanvas-start" [ngClass]="{ 'showSidebar': isSidebarVisible, 'hideSidebar': !isSidebarVisible }">
   <div class="d-flex justify-content-center align-items-center bg-color-system">
     <div class="text-white">
       <div class="justify-content-center align-items-center d-flex">
-        <img src="/assets/images/logo-grupobrasileiro.png" height="130" width="130" alt="logo grupo brasileiro">
+        <img src="/assets/images/grupo-brasileiro-logo.png" height="130" width="130" alt="logo grupo brasileiro">
       </div>
     </div>
   </div>
@@ -64,18 +64,5 @@
         </a>
       </li>
     </ul>
-  </div>
-</div>
-
-<div class="header " [ngClass]="{'collapsed': isCollapsed}">
-  <button class="btn-custom" (click)="toggleSidebar()">
-    <img class="w-50 h-50" src="/assets/icons/menu-icon.svg" alt="menu icon">
-  </button>
-  <div class="profile-info mx-5">
-    <button class="btn-custom m-5">
-      <img class="w-75 h-75" src="/assets/icons/notifications.svg" alt="menu icon">
-    </button>
-    <img class="profile-info-img" src="/assets/images/profile.png" alt="Profile Picture">
-    <span>Mikaelle Rubia</span>
   </div>
 </div>
