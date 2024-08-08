@@ -33,6 +33,31 @@ export class LoginRegisterService {
       });
   }
 
+  registerCollaborator(
+    name: string,
+    lastname: string,
+    email: string,
+    password: string,
+    phonenumber: string,
+    sector: string,
+    occupation: string,
+    nop: string,
+    role: string,
+  ) {
+    return this.httpClient
+      .post('http://localhost:8080/auth/register', {
+        name,
+        lastname,
+        email,
+        password,
+        phonenumber,
+        sector,
+        occupation,
+        nop,
+        role,
+      });
+  }
+
   loginUser(email: string, password: string) {
     return this.httpClient
       .post<LoginResponse>('http://localhost:8080/auth/login', {

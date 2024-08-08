@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
+import { NgxPaginationModule } from 'ngx-pagination';
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './modules/core/login/login.component';
@@ -14,6 +16,9 @@ import { provideToastr } from 'ngx-toastr';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './modules/layout/header/header.component';
 import { SidenavComponent } from './modules/layout/sidenav/sidenav.component';
+import { CollaboratorSystemComponent } from './modules/feature/collaborator-system/collaborator-system.component';
+import { ListCollaboratorsComponent } from './modules/feature/list-collaborators/list-collaborators.component';
+import { CreateCollaboratorComponent } from './modules/feature/create-collaborator/create-collaborator.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +28,10 @@ import { SidenavComponent } from './modules/layout/sidenav/sidenav.component';
     ResetPasswordComponent,
     RegisterComponent,
     HeaderComponent,
-    SidenavComponent
+    SidenavComponent,
+    CollaboratorSystemComponent,
+    ListCollaboratorsComponent,
+    CreateCollaboratorComponent
   ],
   imports: [
     BrowserModule,
@@ -31,6 +39,7 @@ import { SidenavComponent } from './modules/layout/sidenav/sidenav.component';
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
+    NgxPaginationModule,
   ],
   providers: [
     provideHttpClient(withFetch()),

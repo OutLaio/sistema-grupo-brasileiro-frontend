@@ -1,0 +1,100 @@
+<form (ngSubmit)="submit()" [formGroup]="registerForm" #formDir="ngForm">
+    <div class="row pt-2">
+        <div class="col-md-6 mb-4">
+            <div class="form-outline">
+                <input type="text" class="form-focus border-0 border-bottom border-2 w-100"
+                    placeholder="Nome" formControlName="name" required />
+                <div *ngIf="name.invalid && formDir.submitted" class="validation-warning">
+                    <p>O nome é obrigatório!</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="form-outline">
+                <input type="text" class="form-focus border-0 border-bottom border-2 w-100"
+                    placeholder="Sobrenome" formControlName="lastname" required />
+                <div *ngIf="lastname.invalid && formDir.submitted" class="validation-warning">
+                    <p>O sobrenome é obrigatório!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-outline mb-4">
+        <input type="email" class="form-focus border-0 border-bottom border-2 w-100"
+            placeholder="E-mail" formControlName="email" required />
+        <div *ngIf="email.invalid && formDir.submitted" class="validation-warning">
+            <p *ngIf="email.errors?.['required']">O email é obrigatório!</p>
+            <p *ngIf="email.errors?.['email']">Digite um e-mail válido!</p>
+        </div>
+    </div>
+
+    <div class="form-outline mb-4">
+        <input type="password" class="form-focus border-0 border-bottom border-2 w-100"
+            placeholder="Senha" formControlName="password" />
+        <div *ngIf="password.invalid && formDir.submitted" class="validation-warning">
+            <p *ngIf="password.errors?.['required']">A senha é obrigatória!</p>
+            <p *ngIf="password.errors?.['pattern']">Sua senha deve ter pelo menos 8 caracteres,
+                incluindo uma
+                letra maiúscula, uma letra minúscula, um número e um caractere
+                especial.</p>
+        </div>
+    </div>
+
+    <div class="form-outline mb-4">
+        <input type="text" class="form-focus border-0 border-bottom border-2 w-100"
+            placeholder="Telefone" formControlName="phone" required />
+        <div *ngIf="phone.invalid && formDir.submitted" class="validation-warning">
+            <p *ngIf="phone.errors?.['required']">O telefone é obrigatório!</p>
+            <p *ngIf="phone.errors?.['pattern']">Por favor, insira um número de telefone válido
+                no formato (XX)
+                XXXXX-XXXX ou (XX) XXXX-XXXX.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6 mb-4">
+            <div class="form-outline">
+                <input type="text" class="form-focus border-0 border-bottom border-2 w-100"
+                    placeholder="Setor/Departamento" formControlName="sector" required />
+                <div *ngIf="sector.invalid && formDir.submitted" class="validation-warning">
+                    <p>O setor é obrigatório!</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6 mb-4">
+            <div class="form-outline">
+                <input type="text" class="form-focus border-0 border-bottom border-2 w-100"
+                    placeholder="Função" formControlName="occupation" required />
+                <div *ngIf="occupation.invalid && formDir.submitted" class="validation-warning">
+                    <p>A função é obrigatória!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="form-outline mb-4">
+        <input type="text" class="form-focus border-0 border-bottom border-2 w-100"
+            placeholder="Núcleo Operacional de Origem/Agência" formControlName="nop"
+            required="" />
+        <div *ngIf="nop.invalid && formDir.submitted" class="validation-warning">
+            <p>O NOP/Agência é obrigatório!</p>
+        </div>
+    </div>
+
+    <div class="form-outline mb-4">
+        <input type="text" class="form-focus border-0 border-bottom border-2 w-100"
+            placeholder="Nível do Colaborador" formControlName="role" required="" />
+        <div *ngIf="role.invalid && formDir.submitted" class="validation-warning">
+            <p>O nível do colaborador é obrigatório!</p>
+        </div>
+    </div>
+
+    <div class="text-center pt-1 mb-5 pb-1">
+        <div>
+            <button
+                class="btn btn-block fa-lg bg-color-system bg-hover text-white shadow rounded-4 py-2 w-25"
+                type="submit">Cadastrar</button>
+        </div>
+    </div>
+</form>

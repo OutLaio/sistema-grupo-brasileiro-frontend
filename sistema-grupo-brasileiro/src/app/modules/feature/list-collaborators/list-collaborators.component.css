@@ -1,0 +1,38 @@
+.card {
+  cursor: pointer;
+  overflow: hidden;
+  font-size: .9rem;
+}
+
+.card .card-body {
+  transition: max-height 1s ease;
+  max-height: 70px;
+}
+
+.card:hover .card-body {
+  background-color: #f0f0f0;
+}
+
+.card-selected .card-body {
+  max-height: 300px;
+}
+
+.card-custom {
+  background-color: #EEEEEE;
+  border: none;
+  box-shadow: 2px 2px 5px rgba(0,0,0, 0.3);
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  min-height: 75vh;
+}
+
+.row:last-child {
+  margin-top: auto;
+}
+
+.pagination ::ng-deep .ngx-pagination .current {
+  background: red;
+}
