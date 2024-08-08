@@ -1,0 +1,121 @@
+.container{
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+}
+
+.profile-data{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.btn-edit{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-edit:hover{
+  cursor: pointer;
+}
+
+.btn-edit span{
+  font-size: 11px;
+  color: #505050;
+  margin-right: 5px;
+}
+
+.btn-edit .img{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  height: 20px;
+  width: 20px;
+  background-color: #027373;
+}
+
+.btn-edit img{
+  margin: 0;
+  padding: 0;
+  height: 12px;
+  width: auto;
+}
+
+.card-profile{
+  display: flex;
+  padding: 5px 0;
+}
+
+.card-profile img{
+  height: 70px;
+  width: auto;
+}
+
+.info-card{
+  display: flex;
+  flex-direction: column;
+  margin-left: 10px;
+  justify-content: center;
+}
+
+h4, p, span{
+  margin: 0;
+}
+
+p{
+  color: #909090;
+}
+
+span{
+  color: #202020;
+  letter-spacing: 0.5px;
+}
+
+.info-card h4{
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.info-card p,
+.info-card span{
+  font-size: 11px;
+}
+
+.user-data{
+  display: flex;
+  flex-direction: column;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.user-data-content,
+.professional-data-content{
+  display: flex;
+  width: 600px;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.info-data{
+  display: flex;
+  flex-direction: column;
+  margin: 5px 10px;
+  width: 250px;
+}
+
+.info-data p,
+.info-data span{
+  font-size: 14px;
+}
+
+.professional-data {
+  display: flex;
+  flex-direction: column;
+}
+

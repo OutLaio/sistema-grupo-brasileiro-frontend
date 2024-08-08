@@ -1,8 +1,7 @@
-@import 'ngx-toastr/toastr';
+@import "ngx-toastr/toastr";
 
 * {
-    font-family: Inter, sans-serif;
-
+  font-family: Inter, sans-serif;
 }
 
 .validation-warning p {
@@ -10,5 +9,5 @@
   margin: 0;
   color: red;
   font-size: 11px;
-  font-family: 'Inter';
+  font-family: "Inter";
 }

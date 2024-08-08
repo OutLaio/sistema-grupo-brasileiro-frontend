@@ -9,9 +9,12 @@
   top: 9vh;
   right: 0;
   bottom: 0;
-
   overflow-y: auto;
   z-index: 999;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .with-sidebar {

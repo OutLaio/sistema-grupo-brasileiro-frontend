@@ -14,6 +14,8 @@ import { provideToastr } from 'ngx-toastr';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './modules/layout/header/header.component';
 import { SidenavComponent } from './modules/layout/sidenav/sidenav.component';
+import { MainComponent } from './modules/core/profile/main/main.component';
+import { UserDataComponent } from './modules/core/profile/user-data/user-data.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { SidenavComponent } from './modules/layout/sidenav/sidenav.component';
     ResetPasswordComponent,
     RegisterComponent,
     HeaderComponent,
-    SidenavComponent
+    SidenavComponent,
+    MainComponent,
+    UserDataComponent
   ],
   imports: [
     BrowserModule,
