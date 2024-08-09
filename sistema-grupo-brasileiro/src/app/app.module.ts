@@ -21,6 +21,7 @@ import { ListCollaboratorsComponent } from './modules/feature/list-collaborators
 import { CreateCollaboratorComponent } from './modules/feature/create-collaborator/create-collaborator.component';
 import { MainComponent } from './modules/core/profile/main/main.component';
 import { UserDataComponent } from './modules/core/profile/user-data/user-data.component';
+import { EditUserDataComponent } from './modules/core/profile/edit-user-data/edit-user-data.component';
 
 @NgModule({
   declarations: [
@@ -32,9 +33,11 @@ import { UserDataComponent } from './modules/core/profile/user-data/user-data.co
     HeaderComponent,
     SidenavComponent,
     CollaboratorSystemComponent,
+    CreateCollaboratorComponent,
     ListCollaboratorsComponent,
     MainComponent,
-    UserDataComponent
+    UserDataComponent,
+    EditUserDataComponent
   ],
   imports: [
     BrowserModule,

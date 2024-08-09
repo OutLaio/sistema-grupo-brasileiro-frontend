@@ -1,0 +1,88 @@
+<section class="">
+
+  <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="row g-0 swap-columns">
+
+      <div class="card-body p-md-3 mx-md-4">
+        <div class="img-profile text-center">
+          <img src="/assets/images/profile.png" width="70px" alt="Profile Image">
+        </div>
+        <form (ngSubmit)="submit()" [formGroup]="editForm" #formDir="ngForm">
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <div class="form-outline">
+                <input type="text" class="form-focus border-0 border-bottom border-2 w-100" placeholder="Nome"
+                  formControlName="name" [value]="profileUser.name" required />
+                <div *ngIf="name.invalid && formDir.submitted" class="validation-warning">
+                  <p>O nome é obrigatório!</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="form-outline">
+                <input type="text" class="form-focus border-0 border-bottom border-2 w-100" placeholder="Sobrenome"
+                  formControlName="lastname" [value]="profileUser.lastname" required />
+                <div *ngIf="lastname.invalid && formDir.submitted" class="validation-warning">
+                  <p>O sobrenome é obrigatório!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-outline mb-4">
+            <input type="email" class="form-focus border-0 border-bottom border-2 w-100" placeholder="E-mail"
+              formControlName="email" [value]="profileUser.email" required readonly />
+          </div>
+
+          <div class="form-outline mb-4">
+            <input type="text" class="form-focus border-0 border-bottom border-2 w-100" placeholder="Telefone"
+              formControlName="phone" [value]="profileUser.phone" required />
+            <div *ngIf="phone.invalid && formDir.submitted" class="validation-warning">
+              <p *ngIf="phone.errors?.['required']">O telefone é obrigatório!</p>
+              <p *ngIf="phone.errors?.['pattern']">Por favor, insira um número de telefone válido no formato
+                (XX)
+                XXXXX-XXXX ou (XX) XXXX-XXXX.</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-6 mb-4">
+              <div class="form-outline">
+                <input type="text" class="form-focus border-0 border-bottom border-2 w-100"
+                  placeholder="Setor/Departamento" formControlName="sector" [value]="profileUser.sector" required />
+                <div *ngIf="sector.invalid && formDir.submitted" class="validation-warning">
+                  <p>O setor é obrigatório!</p>
+                </div>
+              </div>
+
+            </div>
+            <div class="col-md-6 mb-4">
+              <div class="form-outline">
+                <input type="text" class="form-focus border-0 border-bottom border-2 w-100" placeholder="Função"
+                  formControlName="occupation" [value]="profileUser.occupation" required />
+                <div *ngIf="occupation.invalid && formDir.submitted" class="validation-warning">
+                  <p>A função é obrigatória!</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-outline mb-4">
+            <input type="text" class="form-focus border-0 border-bottom border-2 w-100"
+              placeholder="Núcleo Operacional de Origem/Agência" formControlName="nop" [value]="profileUser.nop"
+              required />
+            <div *ngIf="nop.invalid && formDir.submitted" class="validation-warning">
+              <p>O NOP/Agência é obrigatório!</p>
+            </div>
+          </div>
+
+          <div class="text-end">
+            <button class="btn me-md-2 btn-outline-danger" type="button" (click)="cancel()">Cancelar</button>
+            <button class="btn btn-success" type="submit">Salvar</button>
+          </div>
+
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

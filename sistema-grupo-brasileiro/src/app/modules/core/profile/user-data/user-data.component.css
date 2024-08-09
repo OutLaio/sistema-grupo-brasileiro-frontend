@@ -84,7 +84,8 @@ span{
   font-size: 11px;
 }
 
-.user-data{
+.user-data,
+.professional-data{
   display: flex;
   flex-direction: column;
 }
@@ -114,8 +115,4 @@ h3 {
   font-size: 14px;
 }
 
-.professional-data {
-  display: flex;
-  flex-direction: column;
-}
 
