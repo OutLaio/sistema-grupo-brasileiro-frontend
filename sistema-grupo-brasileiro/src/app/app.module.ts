@@ -19,6 +19,9 @@ import { SidenavComponent } from './modules/layout/sidenav/sidenav.component';
 import { CollaboratorSystemComponent } from './modules/feature/collaborator-system/collaborator-system.component';
 import { ListCollaboratorsComponent } from './modules/feature/list-collaborators/list-collaborators.component';
 import { CreateCollaboratorComponent } from './modules/feature/create-collaborator/create-collaborator.component';
+import { MainComponent } from './modules/core/profile/main/main.component';
+import { UserDataComponent } from './modules/core/profile/user-data/user-data.component';
+import { EditUserDataComponent } from './modules/core/profile/edit-user-data/edit-user-data.component';
 
 @NgModule({
   declarations: [
@@ -30,8 +33,11 @@ import { CreateCollaboratorComponent } from './modules/feature/create-collaborat
     HeaderComponent,
     SidenavComponent,
     CollaboratorSystemComponent,
+    CreateCollaboratorComponent,
     ListCollaboratorsComponent,
-    CreateCollaboratorComponent
+    MainComponent,
+    UserDataComponent,
+    EditUserDataComponent
   ],
   imports: [
     BrowserModule,
