@@ -1,32 +1,28 @@
-import { Component } from '@angular/core';
-import { faker } from '@faker-js/faker';
-
+import { Component, OnInit } from '@angular/core';
+import { CollaboratorService } from '../../services/collaborator.service'; 
 @Component({
   selector: 'app-list-collaborators',
   templateUrl: './list-collaborators.component.html',
-  styleUrl: './list-collaborators.component.css'
+  styleUrls: ['./list-collaborators.component.css']
 })
-export class ListCollaboratorsComponent {
-  colaboradores: { nome: string; numero: string; email: string; funcao: string; setor: string; agencia: string; }[] = [];
+export class ListCollaboratorsComponent implements OnInit {
+  colaboradores: any[] = [];
   p: number = 1;
   itemsPerPage: number = 5;
- 
-  constructor() {
-    this.generateCollaborators();
-  }
-  
-  generateCollaborators() {
-    this.colaboradores = Array.from({ length: 100 }).map(() => ({
-      nome: faker.name.fullName(),
-      numero: faker.phone.number(),
-      email: faker.internet.email(),
-      funcao: faker.name.jobTitle(),
-      setor: faker.helpers.arrayElement(['TI', 'Financeiro', 'Marketing', 'Criação', 'Logística', 'Recursos Humanos', 'Administração']),
-      agencia: faker.address.city()
-    }));
+  selectedColaborador: any = null;
+
+  constructor(private collaboratorService: CollaboratorService) {}
+
+  ngOnInit() {
+    this.loadCollaborators();
   }
 
-  selectedColaborador: any = null;
+  loadCollaborators() {
+    this.collaboratorService.getCollaborators(this.p - 1, this.itemsPerPage)
+      .subscribe(data => {
+        this.colaboradores = data;
+      });
+  }
 
   selectColaborador(colaborador: any) {
     this.selectedColaborador = this.selectedColaborador === colaborador ? null : colaborador;
@@ -34,5 +30,10 @@ export class ListCollaboratorsComponent {
 
   isSelected(colaborador: any): boolean {
     return this.selectedColaborador === colaborador;
+  }
+
+  onPageChange(page: number) {
+    this.p = page;
+    this.loadCollaborators();
   }
 }

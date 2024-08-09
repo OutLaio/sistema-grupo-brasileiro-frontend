@@ -17,7 +17,6 @@
     overflow-x: hidden;
 }
 
-
 .bg-hover:hover {
     background-color: #03A696;
 }
@@ -38,5 +37,42 @@
 @media (min-width: 768px) {
     .system-form {
         height: 100vh !important;
+    }
+}
+
+
+.w-75::-webkit-scrollbar {
+    width: 12px;
+}
+
+.w-75::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 10px;
+}
+
+.w-75::-webkit-scrollbar-thumb {
+    background-color: #03A696;
+    border-radius: 10px;
+}
+
+.w-75::-webkit-scrollbar-thumb:active {
+    background-color: #026d56;
+}
+
+.w-75::-webkit-scrollbar-thumb:hover {
+    background-color: #029982;
+}
+
+/* Firefox */
+.w-75 {
+    scrollbar-width: thin;
+    scrollbar-color: #03A696 #f1f1f1;
+}
+@media (min-width: 992px) {
+    .menu-lateral {
+        width: 35% !important;
+    }
+    .conteudo-dinamico {
+        width: 65% !important;
     }
 }
