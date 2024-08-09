@@ -17,6 +17,15 @@
   max-height: 300px;
 }
 
+.card-scale {
+  transform: scale(1); /* Ajuste a escala conforme necessário */
+  transform-origin: center;
+}
+
+.font-size{
+  font-size: small;
+}
+
 .card-custom {
   background-color: #EEEEEE;
   border: none;

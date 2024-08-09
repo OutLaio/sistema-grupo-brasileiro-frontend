@@ -1,6 +1,6 @@
-<form (ngSubmit)="submit()" [formGroup]="registerForm" #formDir="ngForm">
+<form class="px-2 justify-content-center align-items-center " (ngSubmit)="submit()" [formGroup]="registerForm" #formDir="ngForm">
     <div class="row pt-2">
-        <div class="col-md-6 mb-4">
+        <div class="col-12 col-md-6 mb-4">
             <div class="form-outline">
                 <input type="text" class="form-focus border-0 border-bottom border-2 w-100"
                     placeholder="Nome" formControlName="name" required />
@@ -9,7 +9,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 mb-4">
+        <div class="col-12 col-md-6 mb-4">
             <div class="form-outline">
                 <input type="text" class="form-focus border-0 border-bottom border-2 w-100"
                     placeholder="Sobrenome" formControlName="lastname" required />
@@ -53,7 +53,7 @@
     </div>
 
     <div class="row">
-        <div class="col-md-6 mb-4">
+        <div class="col-12 col-md-6 mb-4">
             <div class="form-outline">
                 <input type="text" class="form-focus border-0 border-bottom border-2 w-100"
                     placeholder="Setor/Departamento" formControlName="sector" required />
@@ -62,7 +62,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-md-6 mb-4">
+        <div class="col-12 col-md-6 mb-4">
             <div class="form-outline">
                 <input type="text" class="form-focus border-0 border-bottom border-2 w-100"
                     placeholder="Função" formControlName="occupation" required />
@@ -93,7 +93,7 @@
     <div class="text-center pt-1 mb-5 pb-1">
         <div>
             <button
-                class="btn btn-block fa-lg bg-color-system bg-hover text-white shadow rounded-4 py-2 w-25"
+                class="btn btn-block fa-lg bg-color-system bg-hover text-white shadow rounded-4 py-2 w-100 w-md-25"
                 type="submit">Cadastrar</button>
         </div>
     </div>
