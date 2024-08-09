@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CollaboratorService } from '../../services/collaborator.service'; 
+import { CollaboratorSystemService } from '../../services/collaborator-system.service'; 
 @Component({
   selector: 'app-list-collaborators',
   templateUrl: './list-collaborators.component.html',
@@ -11,7 +11,7 @@ export class ListCollaboratorsComponent implements OnInit {
   itemsPerPage: number = 5;
   selectedColaborador: any = null;
 
-  constructor(private collaboratorService: CollaboratorService) {}
+  constructor(private collaboratorService: CollaboratorSystemService) {}
 
   ngOnInit() {
     this.loadCollaborators();

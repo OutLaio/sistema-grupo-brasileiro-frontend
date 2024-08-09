@@ -14,7 +14,7 @@ interface Collaborator {
 @Injectable({
   providedIn: 'root'
 })
-export class CollaboratorService {
+export class CollaboratorSystemService {
   private apiUrl = 'http://localhost:8080/collaborators';
 
   constructor(private http: HttpClient) {}
