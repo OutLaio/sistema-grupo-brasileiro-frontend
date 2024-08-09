@@ -37,6 +37,7 @@ import { UserDataComponent } from './modules/core/profile/user-data/user-data.co
     UserDataComponent
   ],
   imports: [
+    BrowserModule,
     AppRoutingModule,
     NgbModule,
     FormsModule,
