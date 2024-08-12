@@ -19,21 +19,22 @@ export class EditUserDataComponent {
   ) {}
 
   ngOnInit(): void {
+    this.editProfileService.getProfileUser().subscribe((value) => {
+      this.profileUser = value;
+    });
+
     this.editForm = new FormGroup({
-      name: new FormControl('', [Validators.required]),
-      lastname: new FormControl('', [Validators.required]),
-      phone: new FormControl('', [
+      name: new FormControl(this.profileUser.name, [Validators.required]),
+      lastname: new FormControl(this.profileUser.lastname, [Validators.required]),
+      phone: new FormControl(this.profileUser.phone, [
         Validators.required,
         Validators.pattern(/^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$/),
       ]),
-      sector: new FormControl('', [Validators.required]),
-      occupation: new FormControl('', [Validators.required]),
-      nop: new FormControl('', [Validators.required]),
+      email: new FormControl(this.profileUser.email, [Validators.required]),
+      sector: new FormControl(this.profileUser.sector, [Validators.required]),
+      occupation: new FormControl(this.profileUser.occupation, [Validators.required]),
+      nop: new FormControl(this.profileUser.nop, [Validators.required]),
     });
-
-    this.editProfileService.getProfileUser().subscribe((value)=>{
-      this.profileUser = value;
-    })
   }
 
   get name() {
@@ -56,11 +57,13 @@ export class EditUserDataComponent {
   }
 
   submit(){
-    if(this.editForm.invalid) return;
+    if(this.editForm.invalid){
+      this.toastrService.error("Preencha todos os campos!")
+      return;
+    }
   }
 
   cancel(){
-    this.toastrService.success('Retornando...');
-    this.editForm.reset();
+    this.toastrService.warning('Retornando...');
   }
 }
