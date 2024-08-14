@@ -2,8 +2,9 @@
     box-shadow: 3px 4.5px 4px rgba(0, 0, 0, 0.3);
 }
 
-.card{
-    width: 1200px;
+.card {
+    width: 70em;
+    max-width: 100%;
 }
 
 .card-scroll {
@@ -37,46 +38,4 @@
 .scroll-bar {
     scrollbar-width: thin;
     scrollbar-color: #03A696 #f1f1f1;
-}
-
-.progress-circle {
-    width: 12em;
-    height: 12em;
-    position: relative;
-}
-
-.circular-chart {
-    width: 100%;
-    height: 100%;
-}
-
-.circle-bg {
-    fill: none;
-    stroke: #03a69629;
-    stroke-width: 3.4;
-}
-
-.circle {
-    fill: none;
-    stroke-width: 2.8;
-    stroke: #03A696;
-    stroke-linecap: round;
-    transition: stroke-dasharray 0.3s ease;
-}
-
-.percentage {
-    color: black;
-    fill: #000;
-    font-family: Arial, sans-serif;
-    font-size: 0.5em;
-    text-anchor: middle;
-}
-
-.text-percentage {
-    color: black;
-    fill: #000;
-    font-family: Arial, sans-serif;
-    font-weight: bolder;
-    font-size: 0.2em;
-    text-anchor: middle;
 }

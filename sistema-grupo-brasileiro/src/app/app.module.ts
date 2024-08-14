@@ -25,6 +25,9 @@ import { UserDataComponent } from './modules/core/profile/user-data/user-data.co
 import { EditUserDataComponent } from './modules/core/profile/edit-user-data/edit-user-data.component';
 import { RequestDetailsComponent } from './modules/feature/request-details/request-details.component';
 
+
+import { NgCircleProgressModule } from 'ng-circle-progress';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -49,7 +52,9 @@ import { RequestDetailsComponent } from './modules/feature/request-details/reque
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxPaginationModule,
+    NgxPaginationModule,    
+    NgCircleProgressModule.forRoot({
+    })
   ],
   providers: [
     provideHttpClient(withFetch()),
