@@ -23,6 +23,7 @@ import { CheckRequestsComponent } from './modules/feature/check-requests/check-r
 import { MainComponent } from './modules/core/profile/main/main.component';
 import { UserDataComponent } from './modules/core/profile/user-data/user-data.component';
 import { EditUserDataComponent } from './modules/core/profile/edit-user-data/edit-user-data.component';
+import { RequestDetailsComponent } from './modules/feature/request-details/request-details.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +40,8 @@ import { EditUserDataComponent } from './modules/core/profile/edit-user-data/edi
     CheckRequestsComponent,
     MainComponent,
     UserDataComponent,
-    EditUserDataComponent
+    EditUserDataComponent,
+    RequestDetailsComponent
   ],
   imports: [
     BrowserModule,

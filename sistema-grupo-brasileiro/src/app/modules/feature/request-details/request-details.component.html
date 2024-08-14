@@ -1,0 +1,74 @@
+<div class="container p-5 pt-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card text-black shadow-custom card-scroll scroll-bar">
+                <div class="card-body p-4">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h4>PLACAS DE AGÊNCIA E ENCOMENDAS</h4>
+                            <div>
+                                <div class="pt-2">
+                                    <h6>Local da Placa</h6>
+                                    <p>Petrolina Areia Branca - Agência 01</p>
+                                </div>
+                                <div class="pt-2">
+                                    <h6>Medidas</h6>
+                                    <p>0,90 Alt. x 3,24 cumprimento</p>
+                                    <p>1,00 Alt. x 0,34 cumprimento</p>
+                                </div>
+                                <div class="pt-2">
+                                    <h6>Tipo de Placa</h6>
+                                    <p>Nenhum marcado</p>
+                                </div>
+                                <div class="pt-2">
+                                    <h6>Material</h6>
+                                    <p>Letreiro (lona adesivada)</p>
+                                    <p>Impressão Digital (Lona Totalmente impressa)</p>
+                                </div>
+                            </div>
+                            <div>
+                                <h4>Empresas e Itinerários</h4>
+                                <div class="professional-data-content">
+                                    <div class="info-data">
+                                        <p>Função</p>
+                                        <span>Colaborador</span>
+                                    </div>
+                                    <div class="info-data">
+                                        <p>Setor/Departamento</p>
+                                        <span>Marketing</span>
+                                    </div>
+                                    <div class="info-data">
+                                        <p>Núcleo Operacional de Origem/Agência</p>
+                                        <span>Rota Transportes</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="border border-dark-subtle shadow rounded-4 w-100 h-75 d-flex flex-column justify-content-center align-items-center">
+                                <div class="border border-secondary-subtle shadow rounded-4 p-4 text-center">
+                                    <h5>Desenvolvedor</h5>
+                                    <span>Name</span>
+                                </div>
+                                <div class="text-center mt-4">
+                                    <div class="progress-circle" [attr.data-progress]="percentage">
+                                        <svg viewBox="0 0 36 36" class="circular-chart">
+                                            <path class="circle-bg" d="M18 2.0845
+                                            a 15.9155 15.9155 0 0 1 0 31.831
+                                            a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                            <path class="circle" [attr.stroke-dasharray]="percentage + ', 100'" d="M18 2.0845
+                                            a 15.9155 15.9155 0 0 1 0 31.831
+                                            a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                            <text x="18" y="18.35" class="percentage">{{ percentage }}%</text>
+                                            <text x="18" y="24.35" class="text-percentage">Em Análise...</text>
+                                        </svg>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
