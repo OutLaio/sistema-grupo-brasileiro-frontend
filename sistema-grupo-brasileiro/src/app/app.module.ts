@@ -23,6 +23,7 @@ import { CheckRequestsComponent } from './modules/feature/check-requests/check-r
 import { MainProfileComponent } from './modules/core/profile/main-profile/main-profile.component';
 import { UserDataComponent } from './modules/core/profile/user-data/user-data.component';
 import { EditUserDataComponent } from './modules/core/profile/edit-user-data/edit-user-data.component';
+import { ProfileRoutingModule } from './modules/core/profile/main-profile/profile-routing.module';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { EditUserDataComponent } from './modules/core/profile/edit-user-data/edi
     FormsModule,
     ReactiveFormsModule,
     NgxPaginationModule,
+    ProfileRoutingModule
   ],
   providers: [
     provideHttpClient(withFetch()),

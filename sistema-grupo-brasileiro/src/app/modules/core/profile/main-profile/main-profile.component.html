@@ -1,13 +1,13 @@
 <div class="main-container">
   <div class="profile-menu">
-      <a href="#">Meus Dados</a>
-      <a href="#">Segurança</a>
-      <a href="#">Notificações</a>
-      <a href="#">Histórico</a>
-      <a class="disable-option" href="#">Desativar Minha Conta</a>
+      <a routerLink="meus-dados" routerLinkActive="active">Meus Dados</a>
+      <a routerLink="" routerLinkActive="active">Segurança</a>
+      <a routerLink="">Notificações</a>
+      <a routerLink="">Histórico</a>
+      <a class="disable-option" routerLink="">Desativar Minha Conta</a>
   </div>
   <div class="vertical-line"></div>
   <div>
-    <app-user-data></app-user-data>
+    <router-outlet></router-outlet>
   </div>
 </div>

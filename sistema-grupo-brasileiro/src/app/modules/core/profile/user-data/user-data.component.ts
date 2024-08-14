@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-user-data',
@@ -6,7 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './user-data.component.css',
 })
 export class UserDataComponent {
-  editProfile(){
 
+  constructor(private router: Router) { }
+  editProfile(){
+    this.router.navigate(['/perfil/editar'])
   }
 }
