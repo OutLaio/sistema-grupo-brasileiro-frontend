@@ -22,6 +22,7 @@
     "@popperjs/core": "^2.11.8",
     "bootstrap": "^5.3.3",
     "faker-br": "^0.4.1",
+    "ng-circle-progress": "^1.7.1",
     "ngx-pagination": "^6.0.3",
     "ngx-perfect-scrollbar": "^10.1.1",
     "ngx-toastr": "^19.0.0",
