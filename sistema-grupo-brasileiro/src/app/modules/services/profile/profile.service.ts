@@ -6,7 +6,7 @@ import { of } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class EditProfileService {
+export class ProfileService {
   constructor(private httpClient: HttpClient) {}
 
   getProfileUser() {

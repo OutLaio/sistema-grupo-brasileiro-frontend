@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { ProfileResponse } from '../../../types/profile-response.type';
-import { EditProfileService } from '../../../services/profile/edit-profile.service';
+import { ProfileService } from '../../../services/profile/profile.service';
 
 @Component({
   selector: 'app-edit-user-data',
@@ -14,7 +14,7 @@ export class EditUserDataComponent {
   profileUser!: ProfileResponse;
 
   constructor(
-    private editProfileService: EditProfileService,
+    private editProfileService: ProfileService,
     private toastrService: ToastrService
   ) {}
 
