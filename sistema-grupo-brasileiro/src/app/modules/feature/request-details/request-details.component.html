@@ -1,15 +1,16 @@
-<div class="container p-5 pt-4">
+<div class="container-fluid">
     <div class="row">
         <div class="col-12">
             <div class="card text-black shadow-custom card-scroll scroll-bar">
                 <div class="card-body p-4">
                     <div class="row">
-                        <div class="d-flex flex-column align-items-center justify-content-center pt-1 pb-4">
+                        <div
+                            class="d-flex flex-column align-items-center justify-content-center pt-1 mb-4 border-bottom">
                             <h3>Placa de Agências e Encomendas</h3>
                             <h4>(Título da Solicitação)</h4>
                             <p>Descrição da Solicitação</p>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-12 border-end">
+                        <div class="col-lg-4 col-md-4 col-12 order-2 order-md-1 border-end border-bottom p-3">
                             <h4>Informações da Placa</h4>
                             <div>
                                 <div class="py-2">
@@ -40,7 +41,7 @@
                             </div>
                         </div>
 
-                        <div class="col-lg-4 col-md-4 col-12 border-end">
+                        <div class="col-lg-4 col-md-4 col-12 order-3 order-md-2 border-end border-bottom p-3">
                             <h4>Empresas e Itinerários</h4>
                             <div>
                                 <div class="py-2">
@@ -75,7 +76,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-lg-4 col-md-4 col-12">
+                        <div class="col-lg-4 col-md-4 col-12 order-1 order-md-3 border-bottom p-3">
                             <div
                                 class="border border-dark-subtle shadow rounded-4 w-100 p-4 d-flex flex-column justify-content-center align-items-center">
                                 <div class="border border-secondary-subtle shadow rounded-4 p-4 text-center">
@@ -83,7 +84,8 @@
                                     <div>
                                         <p>{{ collaboratorName ? collaboratorName : 'Não atribuído' }}</p>
                                     </div>
-                                    <button class="btn btn-success mt-3" (click)="selectCollaborator()">
+                                    <button *ngIf="userRole == 0" class="btn btn-success mt-3"
+                                        (click)="selectCollaborator()">
                                         {{ collaboratorName ? 'Alterar Colaborador' : 'Selecionar Colaborador' }}
                                     </button>
                                 </div>
@@ -91,7 +93,8 @@
                                     <circle-progress [percent]="percentage" [radius]="100" [outerStrokeWidth]="10"
                                         [innerStrokeWidth]="8" [outerStrokeColor]="'#03A696'"
                                         [innerStrokeColor]="'#03a69629'" [animation]="true" [animationDuration]="600"
-                                        [responsive]="true" [titleFontSize]="'30'"></circle-progress>
+                                        [responsive]="true" [subtitle]="subtitle"
+                                        [titleFontSize]="'30'"></circle-progress>
                                 </div>
                             </div>
                         </div>
