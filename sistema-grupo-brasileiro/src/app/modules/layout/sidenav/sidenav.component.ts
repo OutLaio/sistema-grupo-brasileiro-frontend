@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { SidebarService } from '../../services/sidebar/sidebar.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-sidenav',
@@ -9,11 +10,10 @@ import { SidebarService } from '../../services/sidebar/sidebar.service';
 export class SidenavComponent implements OnInit {
   isSidebarVisible = false;
 
-  constructor(private sidebarService: SidebarService) {}
+  constructor(private sidebarService: SidebarService, private router: Router) {}
 
   ngOnInit() {
     this.sidebarService.sidebarVisibility$.subscribe((isVisible) => {
-      console.log(isVisible);
       this.isSidebarVisible = isVisible;
     });
   }
@@ -21,5 +21,9 @@ export class SidenavComponent implements OnInit {
   toggleSidebar() {
     this.isSidebarVisible = !this.isSidebarVisible;
     this.sidebarService.toggleSidebar(); // Toggle sidebar state
+  }
+
+  isActiveLink(route: string): boolean {
+    return this.router.url.includes(route);
   }
 }

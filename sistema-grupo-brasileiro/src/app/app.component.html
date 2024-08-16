@@ -5,5 +5,5 @@
   <app-sidenav></app-sidenav>
 </div>
 <div class="content" [ngClass]="isSidebarVisible ? 'with-sidebar' : 'without-sidebar'">
-  <app-request-details></app-request-details>
+  <router-outlet></router-outlet>
 </div>

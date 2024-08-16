@@ -6,9 +6,18 @@
     background-color: #03A696;
 }
 
+.text-muted {
+    color: #808080 !important;
+    text-decoration: none !important;
+}
+
 .form-focus:focus {
     border: none;
     outline: none;
+}
+
+.card{
+    height: 33em;
 }
 
 .overflow-custom{
@@ -41,30 +50,30 @@
 }
 
 
-.w-75::-webkit-scrollbar {
+.scroll-bar::-webkit-scrollbar {
     width: 12px;
 }
 
-.w-75::-webkit-scrollbar-track {
+.scroll-bar::-webkit-scrollbar-track {
     background-color: #f1f1f1;
     border-radius: 10px;
 }
 
-.w-75::-webkit-scrollbar-thumb {
+.scroll-bar::-webkit-scrollbar-thumb {
     background-color: #03A696;
     border-radius: 10px;
 }
 
-.w-75::-webkit-scrollbar-thumb:active {
+.scroll-bar::-webkit-scrollbar-thumb:active {
     background-color: #026d56;
 }
 
-.w-75::-webkit-scrollbar-thumb:hover {
+.scroll-bar::-webkit-scrollbar-thumb:hover {
     background-color: #029982;
 }
 
 /* Firefox */
-.w-75 {
+.scroll-bar {
     scrollbar-width: thin;
     scrollbar-color: #03A696 #f1f1f1;
 }
@@ -74,5 +83,12 @@
     }
     .conteudo-dinamico {
         width: 65% !important;
+    }
+    
+}
+
+@media (max-width: 991px) {
+    .card{
+        height: 50em;
     }
 }
