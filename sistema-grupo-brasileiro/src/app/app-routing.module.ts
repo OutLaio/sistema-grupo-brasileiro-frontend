@@ -25,6 +25,7 @@ const routes: Routes = [
   },
   { path: 'meus-dados', redirectTo: 'perfil/meus-dados', pathMatch: 'full' },
   { path: 'editar', redirectTo: 'perfil/editar', pathMatch: 'full' },
+  { path: '', redirectTo: 'acompanhamento', pathMatch: 'full' },
 ];
 
 @NgModule({

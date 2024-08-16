@@ -6,16 +6,30 @@ import { NgModule } from "@angular/core";
 
 const routes: Routes = [
   {
-    path: "meus-dados",
-    component: UserDataComponent
-  },{
-    path: "editar",
-    component: EditUserDataComponent
-  },{
-    path: "",
-    redirectTo: "meus-dados",
-    pathMatch: "full"
-  }
+    path: 'meus-dados',
+    component: UserDataComponent,
+  },
+  {
+    path: 'editar',
+    component: EditUserDataComponent,
+  },
+  {
+    path: 'segurança',
+    component: UserDataComponent,
+  },
+  {
+    path: 'notificacoes',
+    component: UserDataComponent,
+  },
+  {
+    path: 'historico',
+    component: UserDataComponent,
+  },
+  {
+    path: '',
+    redirectTo: 'meus-dados',
+    pathMatch: 'full',
+  },
 ];
 
 @NgModule({

@@ -36,6 +36,7 @@
 .profile-menu a:hover{
   background-color: #027373;
   color: #f1f1f1;
+  cursor: pointer;
 }
 
 .profile-menu a:last-child{
