@@ -1,4 +1,4 @@
-export type ProfileResponse = {
+export type TProfile = {
   userId: string;
   name: string;
   lastname: string;

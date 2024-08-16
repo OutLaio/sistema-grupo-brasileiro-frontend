@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { ProfileResponse } from '../../../types/profile-response.type';
+import { TProfile } from '../../../types/profile-response.type';
 import { ProfileService } from '../../../services/profile/profile.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-user-data',
@@ -11,11 +12,12 @@ import { ProfileService } from '../../../services/profile/profile.service';
 })
 export class EditUserDataComponent {
   editForm!: FormGroup;
-  profileUser!: ProfileResponse;
+  profileUser!: TProfile;
 
   constructor(
     private editProfileService: ProfileService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -61,9 +63,21 @@ export class EditUserDataComponent {
       this.toastrService.error("Preencha todos os campos!")
       return;
     }
+    this.profileUser.name = this.name.value;
+    this.profileUser.lastname = this.lastname.value;
+    this.profileUser.phone = this.phone.value;
+    this.profileUser.sector = this.sector.value;
+    this.profileUser.occupation = this.occupation.value;
+    this.profileUser.nop = this.nop.value;
+    this.editProfileService.updateProfileUser(this.profileUser).subscribe((response) => {
+      console.log(response);
+      this.toastrService.success("Dados atualizados com sucesso!");
+      this.router.navigate(['/perfil']);
+    });
   }
 
   cancel(){
     this.toastrService.warning('Retornando...');
+    this.router.navigate(['/perfil']);
   }
 }

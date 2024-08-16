@@ -41,6 +41,13 @@
 
 .profile-menu a:last-child{
   color: #FF7B7B;
+  width: 200px;
+}
+
+.profile-menu a:last-child:hover{
+  background-color: #ffffff;
+  border: 1px solid;
+  box-shadow: 0px 0px 3px #00000090;
 }
 
 .vertical-line{
