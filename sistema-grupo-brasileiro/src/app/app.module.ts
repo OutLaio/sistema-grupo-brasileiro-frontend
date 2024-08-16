@@ -20,13 +20,12 @@ import { CollaboratorSystemComponent } from './modules/feature/collaborator-syst
 import { ListCollaboratorsComponent } from './modules/feature/list-collaborators/list-collaborators.component';
 import { CreateCollaboratorComponent } from './modules/feature/create-collaborator/create-collaborator.component';
 import { CheckRequestsComponent } from './modules/feature/check-requests/check-requests.component';
-import { MainComponent } from './modules/core/profile/main/main.component';
+import { MainProfileComponent } from './modules/core/profile/main-profile/main-profile.component';
 import { UserDataComponent } from './modules/core/profile/user-data/user-data.component';
 import { EditUserDataComponent } from './modules/core/profile/edit-user-data/edit-user-data.component';
 import { RequestDetailsComponent } from './modules/feature/request-details/request-details.component';
-
-
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { ProfileRoutingModule } from './modules/core/profile/main-profile/profile-routing.module';
 
 @NgModule({
   declarations: [
@@ -41,7 +40,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     CreateCollaboratorComponent,
     ListCollaboratorsComponent,
     CheckRequestsComponent,
-    MainComponent,
+    MainProfileComponent,
     UserDataComponent,
     EditUserDataComponent,
     RequestDetailsComponent
@@ -52,9 +51,10 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxPaginationModule,    
+    NgxPaginationModule,
     NgCircleProgressModule.forRoot({
-    })
+    }),
+    ProfileRoutingModule
   ],
   providers: [
     provideHttpClient(withFetch()),

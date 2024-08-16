@@ -12,7 +12,7 @@
             <div class="col-md-6 mb-4">
               <div class="form-outline">
                 <input type="text" class="form-focus border-0 border-bottom border-2 w-100" placeholder="Nome"
-                  formControlName="name" [value]="profileUser.name" required />
+                  formControlName="name" required />
                 <div *ngIf="name.invalid && formDir.submitted" class="validation-warning">
                   <p>O nome é obrigatório!</p>
                 </div>
@@ -21,7 +21,7 @@
             <div class="col-md-6 mb-4">
               <div class="form-outline">
                 <input type="text" class="form-focus border-0 border-bottom border-2 w-100" placeholder="Sobrenome"
-                  formControlName="lastname" [value]="profileUser.lastname" required />
+                  formControlName="lastname" required />
                 <div *ngIf="lastname.invalid && formDir.submitted" class="validation-warning">
                   <p>O sobrenome é obrigatório!</p>
                 </div>
@@ -31,12 +31,12 @@
 
           <div class="form-outline mb-4">
             <input type="email" class="form-focus border-0 border-bottom border-2 w-100" placeholder="E-mail"
-              formControlName="email" [value]="profileUser.email" required readonly />
+              formControlName="email" required readonly />
           </div>
 
           <div class="form-outline mb-4">
             <input type="text" class="form-focus border-0 border-bottom border-2 w-100" placeholder="Telefone"
-              formControlName="phone" [value]="profileUser.phone" required />
+              formControlName="phone" required />
             <div *ngIf="phone.invalid && formDir.submitted" class="validation-warning">
               <p *ngIf="phone.errors?.['required']">O telefone é obrigatório!</p>
               <p *ngIf="phone.errors?.['pattern']">Por favor, insira um número de telefone válido no formato
@@ -49,7 +49,7 @@
             <div class="col-md-6 mb-4">
               <div class="form-outline">
                 <input type="text" class="form-focus border-0 border-bottom border-2 w-100"
-                  placeholder="Setor/Departamento" formControlName="sector" [value]="profileUser.sector" required />
+                  placeholder="Setor/Departamento" formControlName="sector" required />
                 <div *ngIf="sector.invalid && formDir.submitted" class="validation-warning">
                   <p>O setor é obrigatório!</p>
                 </div>
@@ -59,7 +59,7 @@
             <div class="col-md-6 mb-4">
               <div class="form-outline">
                 <input type="text" class="form-focus border-0 border-bottom border-2 w-100" placeholder="Função"
-                  formControlName="occupation" [value]="profileUser.occupation" required />
+                  formControlName="occupation" required />
                 <div *ngIf="occupation.invalid && formDir.submitted" class="validation-warning">
                   <p>A função é obrigatória!</p>
                 </div>
@@ -69,7 +69,7 @@
 
           <div class="form-outline mb-4">
             <input type="text" class="form-focus border-0 border-bottom border-2 w-100"
-              placeholder="Núcleo Operacional de Origem/Agência" formControlName="nop" [value]="profileUser.nop"
+              placeholder="Núcleo Operacional de Origem/Agência" formControlName="nop"
               required />
             <div *ngIf="nop.invalid && formDir.submitted" class="validation-warning">
               <p>O NOP/Agência é obrigatório!</p>

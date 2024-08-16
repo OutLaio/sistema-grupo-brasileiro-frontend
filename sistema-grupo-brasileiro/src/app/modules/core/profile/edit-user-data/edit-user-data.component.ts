@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { ProfileResponse } from '../../../types/profile-response.type';
-import { EditProfileService } from '../../../services/profile/edit-profile.service';
+import { TProfile } from '../../../types/profile-response.type';
+import { ProfileService } from '../../../services/profile/profile.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-edit-user-data',
@@ -11,29 +12,31 @@ import { EditProfileService } from '../../../services/profile/edit-profile.servi
 })
 export class EditUserDataComponent {
   editForm!: FormGroup;
-  profileUser!: ProfileResponse;
+  profileUser!: TProfile;
 
   constructor(
-    private editProfileService: EditProfileService,
-    private toastrService: ToastrService
+    private editProfileService: ProfileService,
+    private toastrService: ToastrService,
+    private router: Router
   ) {}
 
   ngOnInit(): void {
+    this.editProfileService.getProfileUser().subscribe((value) => {
+      this.profileUser = value;
+    });
+
     this.editForm = new FormGroup({
-      name: new FormControl('', [Validators.required]),
-      lastname: new FormControl('', [Validators.required]),
-      phone: new FormControl('', [
+      name: new FormControl(this.profileUser.name, [Validators.required]),
+      lastname: new FormControl(this.profileUser.lastname, [Validators.required]),
+      phone: new FormControl(this.profileUser.phone, [
         Validators.required,
         Validators.pattern(/^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$/),
       ]),
-      sector: new FormControl('', [Validators.required]),
-      occupation: new FormControl('', [Validators.required]),
-      nop: new FormControl('', [Validators.required]),
+      email: new FormControl(this.profileUser.email, [Validators.required]),
+      sector: new FormControl(this.profileUser.sector, [Validators.required]),
+      occupation: new FormControl(this.profileUser.occupation, [Validators.required]),
+      nop: new FormControl(this.profileUser.nop, [Validators.required]),
     });
-
-    this.editProfileService.getProfileUser().subscribe((value)=>{
-      this.profileUser = value;
-    })
   }
 
   get name() {
@@ -56,11 +59,25 @@ export class EditUserDataComponent {
   }
 
   submit(){
-    if(this.editForm.invalid) return;
+    if(this.editForm.invalid){
+      this.toastrService.error("Preencha todos os campos!")
+      return;
+    }
+    this.profileUser.name = this.name.value;
+    this.profileUser.lastname = this.lastname.value;
+    this.profileUser.phone = this.phone.value;
+    this.profileUser.sector = this.sector.value;
+    this.profileUser.occupation = this.occupation.value;
+    this.profileUser.nop = this.nop.value;
+    this.editProfileService.updateProfileUser(this.profileUser).subscribe((response) => {
+      console.log(response);
+      this.toastrService.success("Dados atualizados com sucesso!");
+      this.router.navigate(['/perfil']);
+    });
   }
 
   cancel(){
-    this.toastrService.success('Retornando...');
-    this.editForm.reset();
+    this.toastrService.warning('Retornando...');
+    this.router.navigate(['/perfil']);
   }
 }
