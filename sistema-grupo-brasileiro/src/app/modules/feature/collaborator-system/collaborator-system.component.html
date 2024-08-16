@@ -3,18 +3,22 @@
         <div class="col-12 col-md-12 col-lg-12">
             <div class="card text-black shadow-custom">
                 <div class="card-body d-flex flex-column flex-lg-row p-md-4">
-                    <div class="w-25 mx-auto mb-3 mb-lg-0">
+                    <div class="d-flex flex-column align-items-center mb-3 mb-lg-0">
                         <ul class="nav flex-column gap-3">
-                            <li class="nav-item bg-color-menu rounded-5">
-                                <a class="nav-link active text-white text-center" href="#" (click)="showForm()">Cadastrar Colaborador</a>
+                            <li class="nav-item rounded-5" [ngClass]="{'bg-color-menu': isFormVisible}">
+                                <button class="nav-link text-white text-center"
+                                    [ngClass]="{'active': isFormVisible, 'text-muted': !isFormVisible}"
+                                    (click)="showForm()">Cadastrar Colaborador</button>
                             </li>
-                            <li class="nav-item bg-color-menu rounded-5">
-                                <a class="nav-link text-white text-center" href="#" (click)="showList()">Verificar Colaboradores</a>
+                            <li class="nav-item rounded-5" [ngClass]="{'bg-color-menu': !isFormVisible}">
+                                <button class="nav-link text-white text-center"
+                                    [ngClass]="{'active': !isFormVisible, 'text-muted': isFormVisible}"
+                                    (click)="showList()">Verificar Colaboradores</button>
                             </li>
                         </ul>
                     </div>
                     <div class="mx-3 mb-5 border-bottom border-end"></div>
-                    <div class="w-75 overflow-custom">
+                    <div class="overflow-custom scroll-bar">
                         <ng-container *ngIf="isFormVisible">
                             <app-create-collaborator></app-create-collaborator>
                         </ng-container>

@@ -49,3 +49,18 @@
   width: 25px;
   text-align: center;
 }
+
+@media (max-width: 992px) {
+  #bdSidebar {
+    width: 100%;
+    opacity: 1;
+    transition: transform 0.3s, opacity 0.3s;
+    position: absolute;
+    z-index: 9999; /* Adiciona z-index para garantir que a sidebar fique por cima */
+  }
+
+  .showSidebar {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
