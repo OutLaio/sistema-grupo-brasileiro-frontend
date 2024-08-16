@@ -26,6 +26,7 @@ import { EditUserDataComponent } from './modules/core/profile/edit-user-data/edi
 import { RequestDetailsComponent } from './modules/feature/request-details/request-details.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { ProfileRoutingModule } from './modules/core/profile/main-profile/profile-routing.module';
+import { CreateRequestComponent } from './modules/feature/create-request/create-request.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { ProfileRoutingModule } from './modules/core/profile/main-profile/profil
     MainProfileComponent,
     UserDataComponent,
     EditUserDataComponent,
-    RequestDetailsComponent
+    RequestDetailsComponent,
+    CreateRequestComponent
   ],
   imports: [
     BrowserModule,
