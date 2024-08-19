@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
     styleUrl: './request-details.component.css'
 })
 export class RequestDetailsComponent {
-    userRole: number = 1;
+    userRole: number = 2;
     subtitle: string = 'Em Andamento';
     percentage: number = 75;
     signLocation = 'Petrolina Areia Branca - Agência 01';
@@ -15,11 +15,8 @@ export class RequestDetailsComponent {
         '1,00 Alt. x 0,34 cumprimento'
     ];
 
-    signType = [];
-    materials = [
-        'Letreiro (lona adesivada)',
-        'Impressão Digital (Lona Totalmente impressa)'
-    ];
+    signType: string = '';
+    material: string = 'Letreiro (lona adesivada)';
 
     sharedWithCompany = true;
     sharedCompanies = 'Rota Transportes, Cidade Sol';

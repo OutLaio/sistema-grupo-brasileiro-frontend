@@ -31,7 +31,7 @@
         </div>
     </div>
 
-    <div class="scroll-container-categories p-1">
+    <div class="scrollbar-ff p-1">
         <div class="card-wrapper gap-2">
             <div class="card card-custom rounded-0">
                 <div class="bg-1 height-div"></div>
@@ -39,7 +39,7 @@
                     <h5 class="card-title">Em Análise</h5>
                     <hr>
                 </div>
-                <div class="card-body overflow-auto scroll-container-requests">
+                <div class="card-body overflow-auto scrollbar-ff">
                     <div *ngFor="let item of emAnaliseCards"
                         class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
                         <p class="fw-bold text-truncate">{{ item.title }}</p>
@@ -61,7 +61,7 @@
                     <h5 class="card-title">Em Aberto</h5>
                     <hr>
                 </div>
-                <div class="card-body overflow-auto scroll-container-requests">
+                <div class="card-body overflow-auto scrollbar-ff">
                     <div *ngFor="let item of emAbertoCards"
                         class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
                         <p class="fw-bold text-truncate">{{ item.title }}</p>
@@ -83,7 +83,7 @@
                     <h5 class="card-title">Aprovado</h5>
                     <hr>
                 </div>
-                <div class="card-body overflow-auto scroll-container-requests">
+                <div class="card-body overflow-auto scrollbar-ff">
                     <div *ngFor="let item of aprovadoCards"
                         class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
                         <p class="fw-bold text-truncate">{{ item.title }}</p>
@@ -105,7 +105,7 @@
                     <h5 class="card-title">Concluído</h5>
                     <hr>
                 </div>
-                <div class="card-body overflow-auto scroll-container-requests">
+                <div class="card-body overflow-auto scrollbar-ff">
                     <div *ngFor="let item of concluidoCards"
                         class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
                         <p class="fw-bold text-truncate">{{ item.title }}</p>
