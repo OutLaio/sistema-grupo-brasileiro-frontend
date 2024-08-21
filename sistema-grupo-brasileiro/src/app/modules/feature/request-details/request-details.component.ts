@@ -6,9 +6,9 @@ import { Component } from '@angular/core';
     styleUrl: './request-details.component.css'
 })
 export class RequestDetailsComponent {
-    userRole: number = 2;
+    userRole: number = 0;
     subtitle: string = 'Em Andamento';
-    percentage: number = 75;
+    percentage: number = 100;
     signLocation = 'Petrolina Areia Branca - Agência 01';
     dimensions = [
         '0,90 Alt. x 3,24 cumprimento',
