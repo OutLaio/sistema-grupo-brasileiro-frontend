@@ -1,47 +1,54 @@
-.height-div{
+.height-div {
     height: 5px;
 }
 
 .bg-1 {
-    background-color: #03A696;
+    background-color: #D9534F;
+}
+
+.bg-2{
+    background-color: #A267D0;
+}
+
+.bg-3 {
+    background-color: #305BF2;
+}
+
+.bg-4{
+    background-color: #FAFE3A;
+}
+
+.bg-5{
+    background-color: #FF822E;
+}
+
+.bg-6{
+    background-color: #70D067;
 }
 
 .card-custom {
-    min-height: 33.5em;
-    max-width: 16.5em;
-    min-width: 16.5em;
+    max-width: 17em;
+    min-width: 17em;
     background-color: #F3F3F3;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
-.card-body{
-    max-height: 28em;
+.card-body {
+    max-height: 23em;
 }
 
 .overflow-custom {
     overflow-x: auto;
 }
 
-.scroll-container {
-    overflow-x: auto;
-    -webkit-overflow-scrolling: touch;
-    padding: 0 15px;
-    white-space: nowrap;
-}
-
 .card-wrapper {
     display: flex;
     flex-wrap: nowrap;
+    overflow-x: auto;
 }
 
-.card {
-    flex: 0 0 auto;
-    width: 300px;
-    box-sizing: border-box;
-}
-
-.progress{
-    height:2em;
+.progress {
+    height: 2em;
 }
 
 .progress-bar {
@@ -57,21 +64,21 @@
     font-weight: bold;
 }
 
-.requests-custom{
+.requests-custom {
     box-shadow: 2px 2px 3px rgba(0, 0, 0, 0.3);
     background-color: white;
 }
 
-.requests-custom:hover{
+.requests-custom:hover {
     background-color: rgb(239, 239, 239);
 }
 
-
 ::-webkit-scrollbar {
+    height: 6px; 
     width: 6px;
 }
 
-::-webkit-scrollbar-thumb, .scroll-container-requests::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
     background: #027373;
     border-radius: 4px;
 }
@@ -80,3 +87,8 @@
     background: #03A696;
 }
 
+@media (max-width: 768px) {
+    .filter-custom {    
+        flex-direction: column;
+    }
+}

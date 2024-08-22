@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="d-flex mx-auto row mb-3 filter-custom">
+    <div class="container row pb-1 filter-custom ">
         <div class="col-md-4 mb-2 mb-md-0">
             <div class="d-flex align-items-center">
                 <label for="statusFilter" class="form-label me-2">Status</label>
@@ -54,9 +54,9 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="card card-custom rounded-0">
-                <div class="bg-1 height-div"></div>
+                <div class="bg-2 height-div"></div>
                 <div class="container text-center py-3">
                     <h5 class="card-title">Em Andamento</h5>
                     <hr>
@@ -67,7 +67,7 @@
                         <p class="fw-bold text-truncate">{{ item.title }}</p>
                         <p class="text-truncate">{{ item.description }}</p>
                         <div class="progress">
-                            <div class="progress-bar position-relative bg-1" role="progressbar"
+                            <div class="progress-bar position-relative bg-2" role="progressbar"
                                 [style.width.%]="item.progress" [attr.aria-valuenow]="item.progress" aria-valuemin="0"
                                 aria-valuemax="100">
                                 <span class="position-absolute w-100 text-center text-white">{{ item.progress }}%</span>
@@ -78,7 +78,7 @@
             </div>
 
             <div class="card card-custom rounded-0">
-                <div class="bg-1 height-div"></div>
+                <div class="bg-3 height-div"></div>
                 <div class="container text-center py-3">
                     <h5 class="card-title">Aguardando Aprovação</h5>
                     <hr>
@@ -89,7 +89,7 @@
                         <p class="fw-bold text-truncate">{{ item.title }}</p>
                         <p class="text-truncate">{{ item.description }}</p>
                         <div class="progress">
-                            <div class="progress-bar position-relative bg-1" role="progressbar"
+                            <div class="progress-bar position-relative bg-3" role="progressbar"
                                 [style.width.%]="item.progress" [attr.aria-valuenow]="item.progress" aria-valuemin="0"
                                 aria-valuemax="100">
                                 <span class="position-absolute w-100 text-center text-white">{{ item.progress }}%</span>
@@ -100,7 +100,7 @@
             </div>
 
             <div class="card card-custom rounded-0">
-                <div class="bg-1 height-div"></div>
+                <div class="bg-4 height-div"></div>
                 <div class="container text-center py-3">
                     <h5 class="card-title">Aprovado</h5>
                     <hr>
@@ -111,7 +111,7 @@
                         <p class="fw-bold text-truncate">{{ item.title }}</p>
                         <p class="text-truncate">{{ item.description }}</p>
                         <div class="progress">
-                            <div class="progress-bar position-relative bg-1" role="progressbar"
+                            <div class="progress-bar position-relative bg-4" role="progressbar"
                                 [style.width.%]="item.progress" [attr.aria-valuenow]="item.progress" aria-valuemin="0"
                                 aria-valuemax="100">
                                 <span class="position-absolute w-100 text-center">{{ item.progress }}%</span>
@@ -122,7 +122,7 @@
             </div>
 
             <div class="card card-custom rounded-0">
-                <div class="bg-1 height-div"></div>
+                <div class="bg-5 height-div"></div>
                 <div class="container text-center py-3">
                     <h5 class="card-title">Em Confecção</h5>
                     <hr>
@@ -133,7 +133,7 @@
                         <p class="fw-bold text-truncate">{{ item.title }}</p>
                         <p class="text-truncate">{{ item.description }}</p>
                         <div class="progress">
-                            <div class="progress-bar position-relative bg-1" role="progressbar"
+                            <div class="progress-bar position-relative bg-5" role="progressbar"
                                 [style.width.%]="item.progress" [attr.aria-valuenow]="item.progress" aria-valuemin="0"
                                 aria-valuemax="100">
                                 <span class="position-absolute w-100 text-center text-white">{{ item.progress }}%</span>
@@ -144,7 +144,7 @@
             </div>
 
             <div class="card card-custom rounded-0">
-                <div class="bg-1 height-div"></div>
+                <div class="bg-6 height-div"></div>
                 <div class="container text-center py-3">
                     <h5 class="card-title">Concluído</h5>
                     <hr>
@@ -155,7 +155,7 @@
                         <p class="fw-bold text-truncate">{{ item.title }}</p>
                         <p class="text-truncate">{{ item.description }}</p>
                         <div class="progress">
-                            <div class="progress-bar position-relative bg-1" role="progressbar"
+                            <div class="progress-bar position-relative bg-6" role="progressbar"
                                 [style.width.%]="item.progress" [attr.aria-valuenow]="item.progress" aria-valuemin="0"
                                 aria-valuemax="100">
                                 <span class="position-absolute w-100 text-center">{{ item.progress }}%</span>
