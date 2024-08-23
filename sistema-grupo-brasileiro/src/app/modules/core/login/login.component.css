@@ -2,6 +2,21 @@
     background: #027373;
 }
 
+.system-form {
+    background: linear-gradient(180deg, #01403A, #03A696, #01403A);
+}
+
+.container-fluid img {
+    width: 100%;
+    height: auto;
+}
+
+.card {
+    height: 60vh;
+    width: 100%;
+    max-width: 50vh;
+}
+
 .form-focus:focus {
     border: none;
     outline: none;
@@ -28,8 +43,25 @@
     text-decoration: underline !important;
 }
 
-@media (min-width: 768px) {
-    .system-form {
-        height: 100vh !important;
+@media (max-width: 768px) {
+    .card {
+        height: auto;
+        width: 90%;
+        max-width: none;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
+
+@media (max-width: 576px) {
+    .card {
+        height: auto;
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
     }
 }
