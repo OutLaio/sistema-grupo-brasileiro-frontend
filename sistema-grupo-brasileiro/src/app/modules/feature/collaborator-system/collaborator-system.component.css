@@ -17,7 +17,8 @@
 }
 
 .card{
-    height: 33em;
+    height: 80vh;
+    width: 75vw;
 }
 
 .overflow-custom{
@@ -50,41 +51,18 @@
 }
 
 
-.scroll-bar::-webkit-scrollbar {
-    width: 12px;
+::-webkit-scrollbar {
+    height: 6px; 
+    width: 6px;
 }
 
-.scroll-bar::-webkit-scrollbar-track {
-    background-color: #f1f1f1;
-    border-radius: 10px;
+::-webkit-scrollbar-thumb {
+    background: #027373;
+    border-radius: 4px;
 }
 
-.scroll-bar::-webkit-scrollbar-thumb {
-    background-color: #03A696;
-    border-radius: 10px;
-}
-
-.scroll-bar::-webkit-scrollbar-thumb:active {
-    background-color: #026d56;
-}
-
-.scroll-bar::-webkit-scrollbar-thumb:hover {
-    background-color: #029982;
-}
-
-/* Firefox */
-.scroll-bar {
-    scrollbar-width: thin;
-    scrollbar-color: #03A696 #f1f1f1;
-}
-@media (min-width: 992px) {
-    .menu-lateral {
-        width: 35% !important;
-    }
-    .conteudo-dinamico {
-        width: 65% !important;
-    }
-    
+::-webkit-scrollbar-thumb:hover {
+    background: #03A696;
 }
 
 @media (max-width: 991px) {

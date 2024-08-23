@@ -29,12 +29,16 @@
 .card-custom {
     max-width: 17em;
     min-width: 17em;
+    height: 72vh;
     background-color: #F3F3F3;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
 
-.card-body {
-    max-height: 23em;
+.cards-div {
+    height: 85vh; 
+    overflow-y: auto; 
+    overflow-x: hidden; 
+    width: 78vw; 
 }
 
 .overflow-custom {
@@ -91,4 +95,10 @@
     .filter-custom {    
         flex-direction: column;
     }
+
+    .card-custom {
+        max-width: 20em;
+        min-width: 20em;
+    }
+    
 }
