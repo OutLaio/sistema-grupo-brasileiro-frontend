@@ -6,7 +6,7 @@
     background-color: #D9534F;
 }
 
-.bg-2{
+.bg-2 {
     background-color: #A267D0;
 }
 
@@ -14,15 +14,15 @@
     background-color: #305BF2;
 }
 
-.bg-4{
+.bg-4 {
     background-color: #FAFE3A;
 }
 
-.bg-5{
+.bg-5 {
     background-color: #FF822E;
 }
 
-.bg-6{
+.bg-6 {
     background-color: #70D067;
 }
 
@@ -35,10 +35,10 @@
 }
 
 .cards-div {
-    height: 85vh; 
-    overflow-y: auto; 
-    overflow-x: hidden; 
-    width: 78vw; 
+    height: 85vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    width: 78vw;
 }
 
 .overflow-custom {
@@ -78,7 +78,7 @@
 }
 
 ::-webkit-scrollbar {
-    height: 6px; 
+    height: 6px;
     width: 6px;
 }
 
@@ -92,13 +92,18 @@
 }
 
 @media (max-width: 768px) {
-    .filter-custom {    
+    .filter-custom {
         flex-direction: column;
+    }
+
+    .cards-div {
+        height: 88vh;
+        width: 85vw;
     }
 
     .card-custom {
         max-width: 20em;
         min-width: 20em;
     }
-    
+
 }

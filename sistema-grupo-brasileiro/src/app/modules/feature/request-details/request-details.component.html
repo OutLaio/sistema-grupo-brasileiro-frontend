@@ -17,10 +17,12 @@
                                     <p class="text-body-tertiary mb-0">Local da Placa</p>
                                     <p class="text-body">{{ signLocation }}</p>
                                 </div>
-                                <div class="py-2">
-                                    <p class="text-body-tertiary mb-0">Medidas</p>
-                                    <p *ngFor="let dimension of dimensions" class="text-body  mb-0">{{ dimension }}</p>
+                                <div class="d-flex gap-2" *ngFor="let dimension of dimensions">
+                                    <p>Altura: {{ dimension.height }}m</p>
+                                    <p>x</p>
+                                    <p>Comprimento: {{ dimension.length }}m</p>
                                 </div>
+
                                 <div class="py-2" *ngIf="signType.length > 0">
                                     <p class="text-body-tertiary  mb-0">Tipo de Placa</p>
                                     <p class="text-body  mb-0">{{ signType }}</p>
@@ -33,7 +35,7 @@
                                     <p class="text-body-tertiary  mb-0">Imagens da Placa</p>
                                     <div class="mb-2" *ngFor="let image of signImages; let i = index">
                                         <p class="text-body mb-0">{{ image.description }}</p>
-                                        <a [href]="image.path" [download]="image.name + '.jpg'" class="my-1">
+                                        <a [href]="image.path" target="_blank" class="my-1">
                                             {{ image.name }}
                                         </a>
                                     </div>
@@ -82,7 +84,8 @@
                                 <div class=" w-100 border border-secondary-subtle shadow rounded-4 p-4 text-center">
                                     <h5>Colaborador</h5>
                                     <div>
-                                        <p class="text-body-tertiary">{{ collaboratorName ? collaboratorName : 'Não atribuído' }}</p>
+                                        <p class="text-body-tertiary">{{ collaboratorName ? collaboratorName : 'Não
+                                            atribuído' }}</p>
                                     </div>
                                     <button *ngIf="userRole == 0" class="btn btn-success mt-3"
                                         (click)="selectCollaborator()">

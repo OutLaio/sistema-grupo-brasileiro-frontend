@@ -1,36 +1,36 @@
 <div class="container-fluid">
-    <div class="row py-3">
-        <div class="col-md-4 mb-2 mb-md-0">
-            <div class="d-flex align-items-center">
-                <label for="statusFilter" class="form-label me-2">Status</label>
-                <select id="statusFilter" class="form-select">
-                    <option value="">Todos</option>
-                    <option value="analise">Em Análise</option>
-                    <option value="aberto">Em Aberto</option>
-                    <option value="aprovado">Aprovado</option>
-                    <option value="concluido">Concluído</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-md-4 mb-2 mb-md-0">
-            <div class="d-flex align-items-center">
-                <label for="responsavelFilter" class="form-label me-2">Responsável</label>
-                <select id="responsavelFilter" class="form-select">
-                    <option value="">Todos</option>
-                    <option value="responsavel1">Responsável 1</option>
-                    <option value="responsavel2">Responsável 2</option>
-                    <option value="responsavel3">Responsável 3</option>
-                </select>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="d-flex align-items-center">
-                <label for="dataFilter" class="form-label me-2">Data</label>
-                <input type="date" id="dataFilter" class="form-control">
-            </div>
-        </div>
-    </div>
     <div class="cards-div">
+        <div class="row py-2">
+            <div class="col-md-4 mb-md-0">
+                <div class="d-flex align-items-center">
+                    <label for="statusFilter" class="form-label me-2">Status</label>
+                    <select id="statusFilter" class="form-select">
+                        <option value="">Todos</option>
+                        <option value="analise">Em Análise</option>
+                        <option value="aberto">Em Aberto</option>
+                        <option value="aprovado">Aprovado</option>
+                        <option value="concluido">Concluído</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4 mb-md-0">
+                <div class="d-flex align-items-center">
+                    <label for="responsavelFilter" class="form-label me-2">Responsável</label>
+                    <select id="responsavelFilter" class="form-select">
+                        <option value="">Todos</option>
+                        <option value="responsavel1">Responsável 1</option>
+                        <option value="responsavel2">Responsável 2</option>
+                        <option value="responsavel3">Responsável 3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="d-flex align-items-center">
+                    <label for="dataFilter" class="form-label me-2">Data</label>
+                    <input type="date" id="dataFilter" class="form-control">
+                </div>
+            </div>
+        </div>
         <div class="p-1 mx-auto">
             <div class="card-wrapper gap-2">
                 <div *ngIf="userRole != 1" class="card card-custom rounded-0">

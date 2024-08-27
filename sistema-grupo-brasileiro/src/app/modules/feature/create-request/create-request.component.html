@@ -8,18 +8,18 @@
                         <form [formGroup]="registerForm" (ngSubmit)="submit()">
                             <div class="row">
                                 <div class="pt-3">
-                                    <label for="signLocation">Local da Placa</label>
                                     <input id="signLocation" formControlName="signLocation" type="text"
-                                        class="form-control border-0 border-bottom border-dark-subtle" placeholder="Local da Placa" required />
+                                        class="form-focus border-0 border-bottom border-dark-subtle"
+                                        placeholder="Local da Placa" required />
                                 </div>
 
                                 <div class="pt-3" formArrayName="dimensions">
-                                    <label>Medidas</label>
                                     <div *ngFor="let dimension of dimensions.controls; let i=index"
                                         class="input-group mb-2">
-                                        <input [formControlName]="i" type="text" class="form-control border-0 border-bottom border-dark-subtle"
+                                        <input [formControlName]="i" type="text"
+                                            class="form-focus border-0 border-bottom border-dark-subtle"
                                             placeholder="Medida" />
-                                        <button type="button" class="btn btn-warning"
+                                        <button type="button" class="btn btn-danger"
                                             (click)="removeDimension(i)">-</button>
                                     </div>
                                     <button type="button" class="btn bg-color-system bg-hover text-white"
@@ -69,19 +69,14 @@
                                         <label for="sharedNo" class="form-check-label">Não</label>
                                     </div>
 
-
                                     <div *ngIf="registerForm.get('sharedWithCompany')?.value === 'yes'">
-                                        <label>Empresas Compartilhadas</label>
-                                        <div class="custom-checkbox" *ngFor="let company of availableCompanies">
-                                            <input type="checkbox" [id]="company" [formControlName]="company" />
-                                            <label [for]="company">{{ company }}</label>
-                                        </div>
-
-                                        <div *ngIf="registerForm.get('outros')?.value">
+                                        <div class="pt-3">
+                                            <label>Empresas Compartilhadas</label>
                                             <div formArrayName="sharedCompanies">
                                                 <div *ngFor="let company of sharedCompanies.controls; let i=index"
                                                     class="input-group mb-2">
-                                                    <input [formControlName]="i" type="text" class="form-control border-0 border-bottom border-dark-subtle"
+                                                    <input [formControlName]="i" type="text"
+                                                        class="form-control border-0 border-bottom border-dark-subtle"
                                                         placeholder="Nome da Empresa" />
                                                     <button type="button" class="btn btn-danger"
                                                         (click)="removeCompany(i)">-</button>
@@ -99,13 +94,13 @@
                                                 [value]="company" />
                                             <label [for]="company">{{ company }}</label>
                                         </div>
-                                        
+
                                         <div *ngIf="registerForm.get('nonSharedCompany')?.value === 'Outra'">
-                                            <input formControlName="otherCompany" type="text" class="form-control border-0 border-bottom border-dark-subtle"
+                                            <input formControlName="otherCompany" type="text"
+                                                class="form-control border-0 border-bottom border-dark-subtle"
                                                 placeholder="Nome da Empresa" />
                                         </div>
                                     </div>
-
                                 </div>
 
                             </div>
