@@ -28,6 +28,8 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
 import { ProfileRoutingModule } from './modules/core/profile/main-profile/profile-routing.module';
 import { CreateRequestComponent } from './modules/feature/create-request/create-request.component';
 
+import { NgScrollbarModule } from 'ngx-scrollbar';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -56,7 +58,9 @@ import { CreateRequestComponent } from './modules/feature/create-request/create-
     NgxPaginationModule,
     NgCircleProgressModule.forRoot({
     }),
-    ProfileRoutingModule
+    ProfileRoutingModule,
+    NgScrollbarModule,
+    
   ],
   providers: [
     provideHttpClient(withFetch()),

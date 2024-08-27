@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
     selector: 'app-request-details',
@@ -6,20 +7,18 @@ import { Component } from '@angular/core';
     styleUrl: './request-details.component.css'
 })
 export class RequestDetailsComponent {
-    userRole: number = 1;
+    userRole: number = 0;
     subtitle: string = 'Em Andamento';
-    percentage: number = 75;
+    percentage: number = 100;
     signLocation = 'Petrolina Areia Branca - Agência 01';
+
     dimensions = [
-        '0,90 Alt. x 3,24 cumprimento',
-        '1,00 Alt. x 0,34 cumprimento'
+        { height: '0,90', length: '3,24' },
+        { height: '1,00', length: '0,34' }
     ];
 
-    signType = [];
-    materials = [
-        'Letreiro (lona adesivada)',
-        'Impressão Digital (Lona Totalmente impressa)'
-    ];
+    signType: string = '';
+    material: string = 'Letreiro (lona adesivada)';
 
     sharedWithCompany = true;
     sharedCompanies = 'Rota Transportes, Cidade Sol';
@@ -31,18 +30,17 @@ export class RequestDetailsComponent {
     collaboratorName = '';
 
     signImages: { name: string, path: string, description: string }[] = [
-        { name: 'Imagem 1', path: 'caminho/para/a/imagem1.jpg', description: 'Descrição da Imagem 1' },
-        { name: 'Imagem 2', path: 'caminho/para/a/imagem2.jpg', description: 'Descrição da Imagem 2' },
-        { name: 'Imagem 3', path: 'caminho/para/a/imagem3.jpg', description: 'Descrição da Imagem 3' },
-        { name: 'Imagem 4', path: 'caminho/para/a/imagem4.jpg', description: 'Descrição da Imagem 4' },
-        { name: 'Imagem 5', path: 'caminho/para/a/imagem5.jpg', description: 'Descrição da Imagem 5' }
+        { name: 'Imagem 1', path: '/assets/images/grupo-brasileiro-logo.png', description: 'Descrição da Imagem 1' },
+        { name: 'Imagem 2', path: '/assets/images/rota-logo.png', description: 'Descrição da Imagem 2' },
+        { name: 'Imagem 3', path: '/assets/images/grupo-brasileiro-logo.png', description: 'Descrição da Imagem 3' },
     ];
+
+    constructor() { }
 
     selectCollaborator() {
         this.collaboratorName = 'Nome do Colaborador Selecionado';
     }
 
-    constructor() { }
 
 }
 
@@ -57,13 +55,13 @@ export class RequestDetailsComponent {
 //   styleUrls: ['./request-details.component.css']
 // })
 // export class RequestDetailsComponent implements OnInit {
-//   userRole: number = 0; 
-//   percentage: number = 0; 
-//   signLocation: string = ''; 
-//   dimensions: string[] = []; 
-//   signType: string[] = []; 
-//   materials: string[] = []; 
-//   sharedWithCompany: boolean = false; 
+//   userRole: number = 0;
+//   percentage: number = 0;
+//   signLocation: string = '';
+//   dimensions: string[] = [];
+//   signType: string[] = [];
+//   materials: string[] = [];
+//   sharedWithCompany: boolean = false;
 //   sharedCompanies: string = '';
 //   rotaTransportesMainRoutes: string = '';
 //   rotaTransportesConnections: string = '';
@@ -75,7 +73,7 @@ export class RequestDetailsComponent {
 //   constructor(private requestDetailsService: RequestDetailsService) { }
 
 //   ngOnInit(): void {
-//     this.getRequestDetails('1'); 
+//     this.getRequestDetails('1');
 //   }
 
 //   getRequestDetails(id: string): void {

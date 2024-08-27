@@ -1,9 +1,9 @@
-<div class="container p-5 pt-4">
+<div class="container-fluid">
     <div class="row d-flex h-100">
-        <div class="col-12 col-md-12 col-lg-12">
-            <div class="card text-black shadow-custom">
+        <div class="col-12">
+            <div class="card text-black shadow-custom ">
                 <div class="card-body d-flex flex-column flex-lg-row p-md-4">
-                    <div class="d-flex flex-column align-items-center mb-3 mb-lg-0">
+                    <div class="col-12 col-md-4 col-lg-3 d-flex justify-content-center">
                         <ul class="nav flex-column gap-3">
                             <li class="nav-item rounded-5" [ngClass]="{'bg-color-menu': isFormVisible}">
                                 <button class="nav-link text-white text-center"
@@ -17,8 +17,8 @@
                             </li>
                         </ul>
                     </div>
-                    <div class="mx-3 mb-5 border-bottom border-end"></div>
-                    <div class="overflow-custom scroll-bar">
+                    <div class="border-bottom border-start"></div>
+                    <div class="col-12 col-md-8 col-lg-9 px-3 overflow-custom scroll-bar">
                         <ng-container *ngIf="isFormVisible">
                             <app-create-collaborator></app-create-collaborator>
                         </ng-container>

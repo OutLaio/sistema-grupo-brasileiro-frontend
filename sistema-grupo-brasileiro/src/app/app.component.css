@@ -1,4 +1,4 @@
-.container {
+.container-fluid {
   margin: 0;
   padding: 0;
   display: flex;
@@ -10,15 +10,12 @@
   right: 0;
   bottom: 0;
   overflow-y: auto;
-  z-index: 999;
-
   display: flex;
   align-items: center;
-  justify-content: center;
 }
 
 .with-sidebar {
-  left: 250px;
+  left: 230px;
   padding: 3px;
   transition: left 0.3s ease, padding-left 0.3s ease;
 }
@@ -27,4 +24,10 @@
   left: 25px;
   padding: 3px;
   transition: left 0.3s ease, padding-left 0.3s ease;
+}
+
+@media (min-width: 768px) {
+  .content {
+    justify-content: center;
+  }
 }

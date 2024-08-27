@@ -7,6 +7,8 @@ import { Component } from '@angular/core';
 })
 export class CheckRequestsComponent {
 
+  userRole: number = 2;
+
   emAnaliseCards = [
     {
       title: 'Análise de Requisitos',

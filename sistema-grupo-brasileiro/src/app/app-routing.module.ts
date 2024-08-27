@@ -21,7 +21,7 @@ const routes: Routes = [
     path: 'nova-solicitacao',
     component: CreateRequestComponent,
   },  {
-    path: 'request-details',
+    path: 'detalhes-solicitacao',
     component: RequestDetailsComponent,
   },
   {

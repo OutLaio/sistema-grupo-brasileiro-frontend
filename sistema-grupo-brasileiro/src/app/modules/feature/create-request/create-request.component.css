@@ -29,16 +29,10 @@
 }
 
 .card {
-    max-height: 75vh; 
+    height: 85vh; 
     overflow-y: auto; 
     overflow-x: hidden; 
     width: 78vw; 
-}
-
-@media (max-width: 768px) {
-    .card {
-        max-height: 50vh;
-    }
 }
 
 .scroll-bar::-webkit-scrollbar {
