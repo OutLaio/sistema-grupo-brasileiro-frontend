@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CheckRequestsComponent } from './modules/feature/check-requests/check-requests.component';
+import { CheckRequestsComponent } from './modules/feature/check-requests/components/check-requests.component';
 import { CollaboratorSystemComponent } from './modules/feature/collaborator-system/collaborator-system.component';
 import { MainProfileComponent } from './modules/core/profile/main-profile/main-profile.component';
 import { CreateRequestComponent } from './modules/feature/create-request/create-request.component';

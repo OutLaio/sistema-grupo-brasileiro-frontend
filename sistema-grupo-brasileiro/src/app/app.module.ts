@@ -19,7 +19,7 @@ import { SidenavComponent } from './modules/layout/sidenav/sidenav.component';
 import { CollaboratorSystemComponent } from './modules/feature/collaborator-system/collaborator-system.component';
 import { ListCollaboratorsComponent } from './modules/feature/list-collaborators/list-collaborators.component';
 import { CreateCollaboratorComponent } from './modules/feature/create-collaborator/create-collaborator.component';
-import { CheckRequestsComponent } from './modules/feature/check-requests/check-requests.component';
+import { CheckRequestsComponent } from './modules/feature/check-requests/components/check-requests.component';
 import { MainProfileComponent } from './modules/core/profile/main-profile/main-profile.component';
 import { UserDataComponent } from './modules/core/profile/user-data/user-data.component';
 import { EditUserDataComponent } from './modules/core/profile/edit-user-data/edit-user-data.component';
@@ -29,6 +29,7 @@ import { ProfileRoutingModule } from './modules/core/profile/main-profile/profil
 import { CreateRequestComponent } from './modules/feature/create-request/create-request.component';
 
 import { NgScrollbarModule } from 'ngx-scrollbar';
+import { ColorClassDirective } from './modules/directives/colorClass/color-class.directive';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,8 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
     UserDataComponent,
     EditUserDataComponent,
     RequestDetailsComponent,
-    CreateRequestComponent
+    CreateRequestComponent,
+    ColorClassDirective
   ],
   imports: [
     BrowserModule,

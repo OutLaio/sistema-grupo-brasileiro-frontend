@@ -2,30 +2,6 @@
     height: 5px;
 }
 
-.bg-1 {
-    background-color: #D9534F;
-}
-
-.bg-2 {
-    background-color: #A267D0;
-}
-
-.bg-3 {
-    background-color: #305BF2;
-}
-
-.bg-4 {
-    background-color: #FAFE3A;
-}
-
-.bg-5 {
-    background-color: #FF822E;
-}
-
-.bg-6 {
-    background-color: #70D067;
-}
-
 .card-custom {
     max-width: 17em;
     min-width: 17em;
