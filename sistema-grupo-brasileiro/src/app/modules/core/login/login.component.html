@@ -5,7 +5,8 @@
                 <div class="card d-flex justify-content-center align-items-center rounded-4">
                     <div class="card-body d-flex flex-column justify-content-center">
                         <div class="py-5">
-                            <img class="img-fluid" src="/assets/images/logo-grupobrasileiro.png" alt="logo grupo brasileiro">
+                            <img class="img-fluid" src="/assets/images/logo-grupobrasileiro.png"
+                                alt="logo grupo brasileiro">
                         </div>
                         <div class="px-3">
                             <form (ngSubmit)="submit()" [formGroup]="loginForm" #formDir="ngForm">
@@ -27,12 +28,16 @@
                                 <div class="text-center pt-1 mb-5 pb-1">
                                     <div>
                                         <button
-                                            class="btn btn-block bg-color-system bg-hover text-white shadow rounded-5 mb-3 py-3 w-50"
+                                            class="btn btn-block bg-color-system bg-hover text-white shadow rounded-3 mb-3 py-1 w-100"
                                             type="submit">Entrar</button>
                                     </div>
-                                    <div>
-                                        <a class="text-muted text-decoration-none text-custom" href="#!">Esqueci minha
-                                            senha</a>
+                                    <div class="container d-inline-flex justify-content-center gap-5">
+                                        <div>
+                                            <a class="text-muted text-decoration-none text-custom" href="#!">Esqueci minha senha</a>
+                                        </div>
+                                        <div>
+                                            <a class="text-muted text-decoration-none text-custom" href="#!">Cadastre-se</a>
+                                        </div>
                                     </div>
                                 </div>
                             </form>

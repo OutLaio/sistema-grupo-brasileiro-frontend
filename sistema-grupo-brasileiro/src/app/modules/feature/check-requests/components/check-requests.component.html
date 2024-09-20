@@ -3,18 +3,6 @@
         <div class="row py-2">
             <div class="col-md-4 mb-md-0">
                 <div class="d-flex align-items-center">
-                    <label for="statusFilter" class="form-label me-2">Status</label>
-                    <select id="statusFilter" class="form-select">
-                        <option value="">Todos</option>
-                        <option value="analise">Em Análise</option>
-                        <option value="aberto">Em Aberto</option>
-                        <option value="aprovado">Aprovado</option>
-                        <option value="concluido">Concluído</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-4 mb-md-0">
-                <div class="d-flex align-items-center">
                     <label for="responsavelFilter" class="form-label me-2">Responsável</label>
                     <select id="responsavelFilter" class="form-select">
                         <option value="">Todos</option>
@@ -40,7 +28,7 @@
                         <hr>
                     </div>
                     <div class="card-body overflow-auto scrollbar-ff">
-                        <div *ngFor="let item of emAnaliseCards"
+                        <div *ngFor="let item of toDoCards"
                             class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
                             <p class="fw-bold text-truncate">{{ item.title }}</p>
                             <p class="text-truncate">{{ item.description }}</p>
@@ -63,7 +51,7 @@
                         <hr>
                     </div>
                     <div class="card-body overflow-auto scrollbar-ff">
-                        <div *ngFor="let item of emAbertoCards"
+                        <div *ngFor="let item of inProgressCards "
                             class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
                             <p class="fw-bold text-truncate">{{ item.title }}</p>
                             <p class="text-truncate">{{ item.description }}</p>
@@ -86,7 +74,7 @@
                         <hr>
                     </div>
                     <div class="card-body overflow-auto scrollbar-ff">
-                        <div *ngFor="let item of emAbertoCards"
+                        <div *ngFor="let item of awaitingApprovalCards "
                             class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
                             <p class="fw-bold text-truncate">{{ item.title }}</p>
                             <p class="text-truncate">{{ item.description }}</p>
@@ -109,7 +97,7 @@
                         <hr>
                     </div>
                     <div class="card-body overflow-auto scrollbar-ff">
-                        <div *ngFor="let item of aprovadoCards"
+                        <div *ngFor="let item of approvedCards "
                             class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
                             <p class="fw-bold text-truncate">{{ item.title }}</p>
                             <p class="text-truncate">{{ item.description }}</p>
@@ -132,7 +120,7 @@
                         <hr>
                     </div>
                     <div class="card-body overflow-auto scrollbar-ff">
-                        <div *ngFor="let item of emAbertoCards"
+                        <div *ngFor="let item of inProductionCards "
                             class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
                             <p class="fw-bold text-truncate">{{ item.title }}</p>
                             <p class="text-truncate">{{ item.description }}</p>
@@ -155,7 +143,7 @@
                         <hr>
                     </div>
                     <div class="card-body overflow-auto scrollbar-ff">
-                        <div *ngFor="let item of concluidoCards"
+                        <div *ngFor="let item of completedCards "
                             class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
                             <p class="fw-bold text-truncate">{{ item.title }}</p>
                             <p class="text-truncate">{{ item.description }}</p>
@@ -177,7 +165,7 @@
                         <hr>
                     </div>
                     <div class="card-body overflow-auto scrollbar-ff">
-                        <div *ngFor="let item of concluidoCards"
+                        <div *ngFor="let item of standByCards "
                             class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
                             <p class="fw-bold text-truncate">{{ item.title }}</p>
                             <p class="text-truncate">{{ item.description }}</p>
