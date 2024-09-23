@@ -1,0 +1,186 @@
+<div class="container-fluid">
+    <div class="cards-div">
+        <div class="row py-2">
+            <div class="col-md-4 mb-md-0">
+                <div class="d-flex align-items-center">
+                    <label for="responsavelFilter" class="form-label me-2">Responsável</label>
+                    <select id="responsavelFilter" class="form-select">
+                        <option value="">Todos</option>
+                        <option value="responsavel1">Responsável 1</option>
+                        <option value="responsavel2">Responsável 2</option>
+                        <option value="responsavel3">Responsável 3</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="d-flex align-items-center">
+                    <label for="dataFilter" class="form-label me-2">Data</label>
+                    <input type="date" id="dataFilter" class="form-control">
+                </div>
+            </div>
+        </div>
+        <div class="p-1 mx-auto">
+            <div class="card-wrapper gap-2">
+                <div *ngIf="userRole != 1" class="card card-custom rounded-0">
+                    <div [backgroundColorClass]="'#D9534F'" class="height-div"></div>
+                    <div class="container text-center py-3">
+                        <h5 class="card-title">A Fazer</h5>
+                        <hr>
+                    </div>
+                    <div class="card-body overflow-auto scrollbar-ff">
+                        <div *ngFor="let item of toDoCards"
+                            class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
+                            <p class="fw-bold text-truncate">{{ item.title }}</p>
+                            <p class="text-truncate">{{ item.description }}</p>
+                            <div class="progress">
+                                <div class="progress-bar position-relative bg-1" role="progressbar"
+                                    [style.width.%]="item.progress" [attr.aria-valuenow]="item.progress"
+                                    aria-valuemin="0" aria-valuemax="100">
+                                    <span class="position-absolute w-100 text-center text-white">{{
+                                        item.progress }}%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-custom rounded-0">
+                    <div [backgroundColorClass]="'#A267D0'"  class="height-div"></div>
+                    <div class="container text-center py-3">
+                        <h5 class="card-title">Em Andamento</h5>
+                        <hr>
+                    </div>
+                    <div class="card-body overflow-auto scrollbar-ff">
+                        <div *ngFor="let item of inProgressCards "
+                            class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
+                            <p class="fw-bold text-truncate">{{ item.title }}</p>
+                            <p class="text-truncate">{{ item.description }}</p>
+                            <div class="progress">
+                                <div class="progress-bar position-relative bg-2" role="progressbar"
+                                    [style.width.%]="item.progress" [attr.aria-valuenow]="item.progress"
+                                    aria-valuemin="0" aria-valuemax="100">
+                                    <span class="position-absolute w-100 text-center text-white">{{
+                                        item.progress }}%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-custom rounded-0">
+                    <div [backgroundColorClass]="'#305BF2'"  class="height-div"></div>
+                    <div class="container text-center py-3">
+                        <h5 class="card-title">Aguardando Aprovação</h5>
+                        <hr>
+                    </div>
+                    <div class="card-body overflow-auto scrollbar-ff">
+                        <div *ngFor="let item of awaitingApprovalCards "
+                            class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
+                            <p class="fw-bold text-truncate">{{ item.title }}</p>
+                            <p class="text-truncate">{{ item.description }}</p>
+                            <div class="progress">
+                                <div class="progress-bar position-relative bg-3" role="progressbar"
+                                    [style.width.%]="item.progress" [attr.aria-valuenow]="item.progress"
+                                    aria-valuemin="0" aria-valuemax="100">
+                                    <span class="position-absolute w-100 text-center text-white">{{
+                                        item.progress }}%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-custom rounded-0">
+                    <div [backgroundColorClass]="'#FAFE3A'"  class="height-div"></div>
+                    <div class="container text-center py-3">
+                        <h5 class="card-title">Aprovado</h5>
+                        <hr>
+                    </div>
+                    <div class="card-body overflow-auto scrollbar-ff">
+                        <div *ngFor="let item of approvedCards "
+                            class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
+                            <p class="fw-bold text-truncate">{{ item.title }}</p>
+                            <p class="text-truncate">{{ item.description }}</p>
+                            <div class="progress">
+                                <div class="progress-bar position-relative bg-4" role="progressbar"
+                                    [style.width.%]="item.progress" [attr.aria-valuenow]="item.progress"
+                                    aria-valuemin="0" aria-valuemax="100">
+                                    <span class="position-absolute w-100 text-center">{{ item.progress
+                                        }}%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-custom rounded-0">
+                    <div [backgroundColorClass]="'#FF822E'"  class="height-div"></div>
+                    <div class="container text-center py-3">
+                        <h5 class="card-title">Em Confecção</h5>
+                        <hr>
+                    </div>
+                    <div class="card-body overflow-auto scrollbar-ff">
+                        <div *ngFor="let item of inProductionCards "
+                            class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
+                            <p class="fw-bold text-truncate">{{ item.title }}</p>
+                            <p class="text-truncate">{{ item.description }}</p>
+                            <div class="progress">
+                                <div class="progress-bar position-relative bg-5" role="progressbar"
+                                    [style.width.%]="item.progress" [attr.aria-valuenow]="item.progress"
+                                    aria-valuemin="0" aria-valuemax="100">
+                                    <span class="position-absolute w-100 text-center text-white">{{
+                                        item.progress }}%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-custom rounded-0">
+                    <div [backgroundColorClass]="'#70D067'"  class="height-div"></div>
+                    <div class="container text-center py-3">
+                        <h5 class="card-title">Concluído</h5>
+                        <hr>
+                    </div>
+                    <div class="card-body overflow-auto scrollbar-ff">
+                        <div *ngFor="let item of completedCards "
+                            class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
+                            <p class="fw-bold text-truncate">{{ item.title }}</p>
+                            <p class="text-truncate">{{ item.description }}</p>
+                            <div class="progress">
+                                <div class="progress-bar position-relative bg-6" role="progressbar"
+                                    [style.width.%]="item.progress" [attr.aria-valuenow]="item.progress"
+                                    aria-valuemin="0" aria-valuemax="100">
+                                    <span class="position-absolute w-100 text-center">{{ item.progress
+                                        }}%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-custom rounded-0">
+                    <div [backgroundColorClass]="'#999999'"  class="height-div"></div>
+                    <div class="container text-center py-3">
+                        <h5 class="card-title"> StandBy </h5>
+                        <hr>
+                    </div>
+                    <div class="card-body overflow-auto scrollbar-ff">
+                        <div *ngFor="let item of standByCards "
+                            class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
+                            <p class="fw-bold text-truncate">{{ item.title }}</p>
+                            <p class="text-truncate">{{ item.description }}</p>
+                            <div class="progress">
+                                <div class="progress-bar position-relative bg-6" role="progressbar"
+                                    [style.width.%]="item.progress" [attr.aria-valuenow]="item.progress"
+                                    aria-valuemin="0" aria-valuemax="100">
+                                    <span class="position-absolute w-100 text-center">{{ item.progress
+                                        }}%</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
