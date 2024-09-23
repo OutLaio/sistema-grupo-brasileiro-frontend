@@ -1,6 +1,6 @@
 import { HttpClient, HttpStatusCode } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { TProfile } from '../../types/profile-response.type';
+import { TProfile } from '../../../../types/profile-response.type';
 import { of } from 'rxjs';
 
 @Injectable({

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SidebarService } from '../../services/sidebar/sidebar.service';
+import { SidebarService } from '../../../services/sidebar/sidebar.service';
 import { Router } from '@angular/router';
 
 @Component({

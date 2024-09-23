@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
-import { TProfile } from '../../../types/profile-response.type';
-import { ProfileService } from '../../../services/profile/profile.service';
+import { TProfile } from '../../../../types/profile-response.type';
+import { ProfileService } from '../../services/profile/profile.service';
 import { Router } from '@angular/router';
 
 @Component({

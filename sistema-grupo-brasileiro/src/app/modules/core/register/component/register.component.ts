@@ -1,22 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { LoginRegisterService } from '../../services/login-register.service';
+import { LoginRegisterService } from '../../../services/login-register/login-register.service';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-create-collaborator',
-  templateUrl: './create-collaborator.component.html',
-  styleUrl: './create-collaborator.component.css'
+  selector: 'app-register',
+  templateUrl: './register.component.html',
+  styleUrl: './register.component.css',
 })
-export class CreateCollaboratorComponent {
+export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
 
   constructor(
     private registerService: LoginRegisterService,
     private toastrService: ToastrService
-  ) { }
+  ){}
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
@@ -36,24 +36,22 @@ export class CreateCollaboratorComponent {
       sector: new FormControl('', [Validators.required]),
       occupation: new FormControl('', [Validators.required]),
       nop: new FormControl('', [Validators.required]),
-      role: new FormControl('', [Validators.required]),
     });
   }
 
-  get name() { return this.registerForm.get('name')!; }
-  get lastname() { return this.registerForm.get('lastname')!; }
-  get email() { return this.registerForm.get('email')!; }
-  get password() { return this.registerForm.get('password')!; }
-  get phone() { return this.registerForm.get('phone')!; }
-  get sector() { return this.registerForm.get('sector')!; }
-  get occupation() { return this.registerForm.get('occupation')!; }
-  get nop() { return this.registerForm.get('nop')!; }
-  get role() { return this.registerForm.get('role')!; }
+  get name() {return this.registerForm.get('name')!;}
+  get lastname() {return this.registerForm.get('lastname')!;}
+  get email() {return this.registerForm.get('email')!;}
+  get password() {return this.registerForm.get('password')!;}
+  get phone() {return this.registerForm.get('phone')!;}
+  get sector() {return this.registerForm.get('sector')!;}
+  get occupation() {return this.registerForm.get('occupation')!;}
+  get nop() {return this.registerForm.get('nop')!;}
 
   submit() {
-    if (this.registerForm.invalid) return;
+    if(this.registerForm.invalid) return;
 
-    this.registerService.registerCollaborator(
+    this.registerService.registerUser(
       this.name.value,
       this.lastname.value,
       this.email.value,
@@ -61,23 +59,12 @@ export class CreateCollaboratorComponent {
       this.phone.value,
       this.sector.value,
       this.occupation.value,
-      this.nop.value,
-      this.role.value
+      this.nop.value
     ).subscribe({
       next: () => this.toastrService.success("Cadastro realizado com sucesso!"),
       error: (value: HttpErrorResponse) => {
         this.toastrService.error(value.error);
       }
     })
-  }
-  
-  isFormVisible = true; // Mostrar formulário por padrão
-
-  showForm() {
-    this.isFormVisible = true;
-  }
-
-  showHistory() {
-    this.isFormVisible = false;
   }
 }

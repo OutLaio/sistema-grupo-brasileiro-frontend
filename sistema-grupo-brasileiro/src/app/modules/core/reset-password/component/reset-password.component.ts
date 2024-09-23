@@ -7,9 +7,9 @@ import {
   ValidatorFn,
   Validators,
 } from '@angular/forms';
-import { confirmPasswordValidator } from './password-validator';
+import { confirmPasswordValidator } from '../validators/password-validator';
 import { ActivatedRoute } from '@angular/router';
-import { LoginRegisterService } from '../../services/login-register.service';
+import { LoginRegisterService } from '../../../services/login-register/login-register.service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { ProfileService } from '../../../services/profile/profile.service';
-import { TProfile } from '../../../types/profile-response.type';
+import { ProfileService } from '../../services/profile/profile.service';
+import { TProfile } from '../../../../types/profile-response.type';
 
 @Component({
   selector: 'app-user-data',
