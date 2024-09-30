@@ -1,67 +1,67 @@
 .bg-color-system {
-    background: #027373;
-}
-
-.system-form {
+    background-color: #027373;
+  }
+  
+  .system-form {
     background: linear-gradient(180deg, #01403A, #03A696, #01403A);
-}
-
-.container-fluid img {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .card {
+    padding: 2rem;
+    max-width: 100%;
     width: 100%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+  
+  img {
+    max-width: 70%;
     height: auto;
-}
-
-.card {
-    height: 70vh;
-    width: 100%;
-    max-width: 50vh;
-    padding: 1.3em;
-}
-
-.form-focus:focus {
-    border: none;
+  }
+  
+  .form-focus:focus {
     outline: none;
-}
-
-.bg-hover:hover {
+    box-shadow: none;
+  }
+  
+  .shadow-custom {
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+  }
+  
+  .bg-hover:hover {
     background-color: #03A696;
-}
-
-.remove-border-radius {
-    border-radius: 0px;
-}
-
-.shadow-custom {
-    box-shadow: 3px 4.5px 4px rgba(0, 0, 0, 0.3);
-}
-
-.text-custom {
+  }
+  
+  .text-custom {
     color: #027373 !important;
-    font-weight: 600;
-}
-
-.text-custom:hover {
-    text-decoration: underline !important;
-}
-
-@media (max-width: 768px) {
+  }
+  
+  .text-custom:hover {
+    text-decoration: underline;
+  }
+  
+  .validation-warning p {
+    color: red;
+    font-size: 0.875rem;
+  }
+  
+  @media (max-width: 768px) {
     .card {
-        padding: 0 !important;
+      padding: 1.5rem;
     }
-
-    .btn {
-        width: 100%;
-    }
-
-}
-
-@media (max-width: 576px) {
+  }
+  
+  @media (max-width: 576px) {
     .card {
-        height: auto;
-        width: 100%;
+      padding: 1rem;
+      height: auto;
     }
-
-    .btn {
-        width: 100%;
+  
+    img {
+      max-width: 50%;
     }
-}
+  }
+  
