@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginRegisterService } from '../../../services/login-register/login-register.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -15,7 +16,8 @@ export class LoginComponent implements OnInit {
 
   constructor(
     private loginService: LoginRegisterService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private router: Router 
   ) {}
 
   ngOnInit(): void {
@@ -31,7 +33,10 @@ export class LoginComponent implements OnInit {
   submit(){
     if(this.loginForm.invalid){return}
     this.loginService.loginUser(this.email.value, this.password.value).subscribe({
-      next: () => this.toastrService.success("Login realizado com sucesso!"),
+      next: () =>{
+        this.toastrService.success("Login realizado com sucesso!"),
+        this.router.navigate(['/acompanhamento']);
+      },
       error: (value: HttpErrorResponse) => this.toastrService.error(value.error)
     })
   }

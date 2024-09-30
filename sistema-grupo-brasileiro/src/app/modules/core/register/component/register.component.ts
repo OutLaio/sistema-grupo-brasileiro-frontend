@@ -60,8 +60,6 @@ export class RegisterComponent implements OnInit {
       this.sector.value,
       this.occupation.value,
       this.nop.value,
-      1,
-      1
     ).subscribe({
       next: () => this.toastrService.success("Cadastro realizado com sucesso!"),
       error: (value: HttpErrorResponse) => {

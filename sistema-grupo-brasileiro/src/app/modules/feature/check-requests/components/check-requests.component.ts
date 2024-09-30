@@ -6,15 +6,18 @@ import { Component } from '@angular/core';
   templateUrl: './check-requests.component.html',
   styleUrl: './check-requests.component.css'
 })
+
 export class CheckRequestsComponent {
+
 
   userRole: number = 2;
 
+
   toDoCards = [
     {
-      title: 'Análise de Requisitos',
-      description: 'Realizando a análise detalhada dos requisitos do projeto, incluindo funcionalidades, restrições e expectativas das partes interessadas. Esta fase é crucial para garantir que todas as necessidades sejam compreendidas e documentadas.',
-      progress: 40
+      title: 'Revisão de Documentos',
+      description: 'Os documentos relacionados ao projeto estão aguardando uma revisão minuciosa para garantir que todas as informações estejam corretas e completas antes de prosseguir.',
+      progress: 20
     }
   ];
 

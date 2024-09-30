@@ -26,6 +26,10 @@
   color: #fff;
 }
 
+.pointer{
+  cursor: pointer;
+}
+
 .mynav li a {
   color: #fff;
   text-decoration: none;

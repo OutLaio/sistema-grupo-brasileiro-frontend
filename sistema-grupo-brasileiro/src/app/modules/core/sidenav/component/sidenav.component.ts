@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SidebarService } from '../../../services/sidebar/sidebar.service';
 import { Router } from '@angular/router';
+import { LoginRegisterService } from '../../../services/login-register/login-register.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -10,7 +11,11 @@ import { Router } from '@angular/router';
 export class SidenavComponent implements OnInit {
   isSidebarVisible = false;
 
-  constructor(private sidebarService: SidebarService, private router: Router) {}
+  constructor(
+    private sidebarService: SidebarService,
+    private router: Router,
+    private loginRegisterService: LoginRegisterService, 
+  ) { }
 
   ngOnInit() {
     this.sidebarService.sidebarVisibility$.subscribe((isVisible) => {
@@ -25,5 +30,10 @@ export class SidenavComponent implements OnInit {
 
   isActiveLink(route: string): boolean {
     return this.router.url.includes(route);
+  }
+
+  logoutUser(){
+    this.loginRegisterService.logout();
+    location.reload();
   }
 }

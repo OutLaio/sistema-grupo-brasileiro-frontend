@@ -1,8 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs';
-import { RegisterResponse } from '../../types/register-response.type';
-import { LoginResponse } from '../../types/login-response.type';
+import { LoginResponse } from '../../core/login/interface/login-response';
 
 @Injectable({
   providedIn: 'root',
@@ -21,8 +20,7 @@ export class LoginRegisterService {
     sector: string,
     occupation: string,
     agency: string,
-    avatar: number = 0,
-    profile: number = 0
+    avatar: number = 1,
   ) {
     const payload = {
       employeeForm: {
@@ -37,39 +35,42 @@ export class LoginRegisterService {
       userForm: {
         email,
         password,
-        profile,
       }
     };
 
     return this.httpClient.post(`${this.prefix}/register`, payload);
   }
 
-
   registerCollaborator(
     name: string,
     lastname: string,
     email: string,
     password: string,
-    phonenumber: string,
+    phoneNumber: string,
     sector: string,
     occupation: string,
-    nop: string,
-    role: string,
-    avatar: number = 1
+    agency: string,
+    profile: number = 2,
+    avatar: number = 1,
   ) {
-    return this.httpClient
-      .post(`${this.prefix}/register`, {
+    const payload = {
+      employeeForm: {
         name,
         lastname,
-        email,
-        password,
-        phonenumber,
+        phoneNumber,
         sector,
         occupation,
-        nop,
-        role,
-        avatar
-      });
+        agency,
+        profile,
+        avatar,
+      },
+      userForm: {
+        email,
+        password,
+      }
+    };
+
+    return this.httpClient.post(`${this.prefix}/register`, payload);
   }
 
   loginUser(email: string, password: string) {
@@ -81,18 +82,29 @@ export class LoginRegisterService {
       .pipe(
         tap((value) => {
           sessionStorage.setItem('auth-token', value.token);
-          sessionStorage.setItem('userId', value.userId);
+          sessionStorage.setItem('idUser', value.employee.id.toString());
         })
       );
   }
 
   recoveryPassword(email: string) {
     return this.httpClient
-      .post(`${this.prefix}/requestReset`, { email });
+      .post(`${this.prefix}/requestReset`, { email }, { responseType: 'text' });
   }
 
-  resetPassword(newPassword: string, token: string) {
+
+  resetPassword(password: string, token: string) {
     return this.httpClient
-      .post(`${this.prefix}/resetPassword`, { newPassword, token });
+      .post(`${this.prefix}/resetPassword`, { password, token }, { responseType: 'text' });
+  }
+
+  isAuthenticated() {
+    return!!sessionStorage.getItem('auth-token');
+  }
+
+  logout() {
+    sessionStorage.removeItem('auth-token');
+    sessionStorage.removeItem('idUser');
+    sessionStorage.clear();
   }
 }
