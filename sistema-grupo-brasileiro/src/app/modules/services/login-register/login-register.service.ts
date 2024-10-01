@@ -21,6 +21,7 @@ export class LoginRegisterService {
     occupation: string,
     agency: string,
     avatar: number = 1,
+    profile: number = 3
   ) {
     const payload = {
       employeeForm: {
@@ -31,6 +32,7 @@ export class LoginRegisterService {
         occupation,
         agency,
         avatar,
+        profile
       },
       userForm: {
         email,

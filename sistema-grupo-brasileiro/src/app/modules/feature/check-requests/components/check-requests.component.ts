@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-
+import { CardsAttributes } from '../interfaces/cards-attributes';
+import { ProjectStatus } from '../enums/project-status';
 
 @Component({
   selector: 'app-check-requests',
@@ -9,16 +10,14 @@ import { Component } from '@angular/core';
 
 export class CheckRequestsComponent {
 
-
   userRole: number = 2;
 
 
-  toDoCards = [
-    {
-      title: 'Revisão de Documentos',
-      description: 'Os documentos relacionados ao projeto estão aguardando uma revisão minuciosa para garantir que todas as informações estejam corretas e completas antes de prosseguir.',
-      progress: 20
-    }
+  toDoCards = [{
+    title: 'Revisão de Documentos',
+    description: 'Os documentos relacionados ao projeto estão aguardando uma revisão minuciosa para garantir que todas as informações estejam corretas e completas antes de prosseguir.',
+    progress: 20
+  }
   ];
 
   inProgressCards = [
