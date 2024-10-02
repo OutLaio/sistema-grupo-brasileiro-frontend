@@ -2,18 +2,19 @@
     <div class="row">
         <div class="col-12">
             <div *ngFor="let colaborador of colaboradores | paginate: { itemsPerPage: itemsPerPage, currentPage: p }"
-                class="card mb-3 card-custom rounded-4 py-2" [ngClass]="{'card-selected': isSelected(colaborador)}"
+                class="card mb-3 card-custom rounded-4 py-2"
+                [ngClass]="{'card-selected': isSelected(colaborador)}"
                 (click)="selectColaborador(colaborador)">
-                <div class="card-body rounded-5 font-size">
+                <div class="card-body">
                     <div class="row">
-                        <div class="col-12 col-md-4">
-                            <p class="card-text fw-semibold text-center text-md-start">{{ colaborador.nome }}</p>
+                        <div class="col-12 col-md-4 text-center text-md-start">
+                            <p class="card-text fw-semibold">{{ colaborador.nome }}</p>
                         </div>
-                        <div class="col-12 col-md-5">
-                            <p class="card-text fw-semibold text-center text-md-start">{{ colaborador.email }}</p>
+                        <div class="col-12 col-md-5 text-center text-md-start">
+                            <p class="card-text fw-semibold">{{ colaborador.email }}</p>
                         </div>
-                        <div class="col-12 col-md-3">
-                            <p class="card-text fw-semibold text-center text-md-start">{{ colaborador.numero }}</p>
+                        <div class="col-12 col-md-3 text-center text-md-start">
+                            <p class="card-text fw-semibold">{{ colaborador.numero }}</p>
                         </div>
                     </div>
                     <div *ngIf="colaborador === selectedColaborador" class="row pt-3 border-top mt-2">

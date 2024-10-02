@@ -1,30 +1,29 @@
 <div class="container-fluid">
-    <div class="row d-flex h-100">
+    <div class="row d-flex justify-content-center h-100">
         <div class="col-12">
-            <div class="card text-black shadow-custom ">
-                <div class="card-body d-flex flex-column flex-lg-row p-md-4">
-                    <div class="col-12 col-md-4 col-lg-3 d-flex justify-content-center">
-                        <ul class="nav flex-column gap-3">
-                            <li class="nav-item rounded-5" [ngClass]="{'bg-color-menu': isFormVisible}">
-                                <button class="nav-link text-white text-center"
-                                    [ngClass]="{'active': isFormVisible, 'text-muted': !isFormVisible}"
-                                    (click)="showForm()">Cadastrar Colaborador</button>
-                            </li>
-                            <li class="nav-item rounded-5" [ngClass]="{'bg-color-menu': !isFormVisible}">
-                                <button class="nav-link text-white text-center"
-                                    [ngClass]="{'active': !isFormVisible, 'text-muted': isFormVisible}"
-                                    (click)="showList()">Verificar Colaboradores</button>
-                            </li>
-                        </ul>
+            <div class="card text-black shadow-custom">
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-6 text-center">
+                            <button class="btn w-100 text-white"
+                                [ngClass]="{'active bg-color-menu': isFormVisible, 'text-muted': !isFormVisible}"
+                                (click)="showForm()">Cadastrar Colaborador</button>
+                        </div>
+                        <div class="col-6 text-center">
+                            <button class="btn w-100 text-white"
+                                [ngClass]="{'active bg-color-menu': !isFormVisible, 'text-muted': isFormVisible}"
+                                (click)="showList()">Verificar Colaboradores</button>
+                        </div>
                     </div>
-                    <div class="border-bottom border-start"></div>
-                    <div class="col-12 col-md-8 col-lg-9 px-3 overflow-custom scroll-bar">
-                        <ng-container *ngIf="isFormVisible">
-                            <app-register-collaborator></app-register-collaborator>
-                        </ng-container>
-                        <ng-container *ngIf="!isFormVisible">
-                            <app-list-collaborators></app-list-collaborators>
-                        </ng-container>
+                    <div class="row">
+                        <div class="col-12 overflow-custom scroll-bar">
+                            <ng-container *ngIf="isFormVisible">
+                                <app-register-collaborator></app-register-collaborator>
+                            </ng-container>
+                            <ng-container *ngIf="!isFormVisible">
+                                <app-list-collaborators></app-list-collaborators>
+                            </ng-container>
+                        </div>
                     </div>
                 </div>
             </div>
