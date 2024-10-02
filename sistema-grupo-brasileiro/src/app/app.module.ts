@@ -16,9 +16,9 @@ import { provideToastr } from 'ngx-toastr';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './modules/core/header/component/header.component';
 import { SidenavComponent } from './modules/core/sidenav/component/sidenav.component';
-import { CollaboratorSystemComponent } from './modules/feature/collaborator-system/component/collaborator-system.component';
+import { CollaboratorSystemComponent } from './modules/feature/collaborator/collaborator-system/component/collaborator-system.component';
 import { ListCollaboratorsComponent } from './modules/feature/list-collaborators/component/list-collaborators.component';
-import { CreateCollaboratorComponent } from './modules/feature/create-collaborator/component/create-collaborator.component';
+import { CreateCollaboratorComponent } from './modules/feature/collaborator/create-collaborator/component/create-collaborator.component';
 import { CheckRequestsComponent } from './modules/feature/check-requests/components/check-requests.component';
 import { MainProfileComponent } from './modules/core/profile/components/main-profile/main-profile.component';
 import { UserDataComponent } from './modules/core/profile/components/user-data/user-data.component';
@@ -26,7 +26,7 @@ import { EditUserDataComponent } from './modules/core/profile/components/edit-us
 import { RequestDetailsComponent } from './modules/feature/request-details/component/request-details.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { ProfileRoutingModule } from './modules/core/profile/components/main-profile/profile-routing.module';
-import { CreateRequestComponent } from './modules/feature/create-request/component/create-request.component';
+import { CreateRequestComponent } from './modules/feature/collaborator/create-request/component/create-request.component';
 
 import { NgScrollbarModule } from 'ngx-scrollbar';
 import { ColorClassDirective } from './modules/directives/colorClass/color-class.directive';

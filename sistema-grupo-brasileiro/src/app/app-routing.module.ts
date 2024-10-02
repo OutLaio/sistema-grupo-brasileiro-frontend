@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CheckRequestsComponent } from './modules/feature/check-requests/components/check-requests.component';
-import { CollaboratorSystemComponent } from './modules/feature/collaborator-system/component/collaborator-system.component';
+import { CollaboratorSystemComponent } from './modules/feature/collaborator/collaborator-system/component/collaborator-system.component';
 import { MainProfileComponent } from './modules/core/profile/components/main-profile/main-profile.component';
-import { CreateRequestComponent } from './modules/feature/create-request/component/create-request.component';
+import { CreateRequestComponent } from './modules/feature/collaborator/create-request/component/create-request.component';
 import { RequestDetailsComponent } from './modules/feature/request-details/component/request-details.component';
 import { ResetPasswordComponent } from './modules/core/reset-password/component/reset-password.component';
 import { LoginComponent } from './modules/core/login/component/login.component';

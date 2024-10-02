@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { LoginRegisterService } from '../../../services/login-register/login-register.service';
+import { LoginRegisterService } from '../../../../services/login-register/login-register.service';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
 
