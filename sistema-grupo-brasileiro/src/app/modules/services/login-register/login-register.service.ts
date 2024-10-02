@@ -21,7 +21,7 @@ export class LoginRegisterService {
     occupation: string,
     agency: string,
     avatar: number = 1,
-    profile: number = 3
+    profile: number = 1
   ) {
     const payload = {
       employeeForm: {
@@ -31,12 +31,12 @@ export class LoginRegisterService {
         sector,
         occupation,
         agency,
-        avatar,
-        profile
+        avatar
       },
       userForm: {
         email,
         password,
+        profile
       }
     };
 
@@ -63,12 +63,12 @@ export class LoginRegisterService {
         sector,
         occupation,
         agency,
-        profile,
-        avatar,
+        avatar
       },
       userForm: {
         email,
         password,
+        profile
       }
     };
 

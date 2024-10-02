@@ -6,11 +6,11 @@ import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-create-collaborator',
-  templateUrl: './create-collaborator.component.html',
-  styleUrl: './create-collaborator.component.css'
+  selector: 'app-register-collaborator',
+  templateUrl: './register-collaborator.component.html',
+  styleUrl: './register-collaborator.component.css'
 })
-export class CreateCollaboratorComponent {
+export class RegisterCollaboratorComponent {
   registerForm!: FormGroup;
 
   constructor(
