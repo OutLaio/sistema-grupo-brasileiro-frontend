@@ -36,7 +36,6 @@ export class RegisterCollaboratorComponent {
       sector: new FormControl('', [Validators.required]),
       occupation: new FormControl('', [Validators.required]),
       nop: new FormControl('', [Validators.required]),
-      role: new FormControl('', [Validators.required]),
     });
   }
 
@@ -48,7 +47,6 @@ export class RegisterCollaboratorComponent {
   get sector() { return this.registerForm.get('sector')!; }
   get occupation() { return this.registerForm.get('occupation')!; }
   get nop() { return this.registerForm.get('nop')!; }
-  get role() { return this.registerForm.get('role')!; }
 
   submit() {
     if (this.registerForm.invalid) return;
@@ -61,8 +59,7 @@ export class RegisterCollaboratorComponent {
       this.phone.value,
       this.sector.value,
       this.occupation.value,
-      this.nop.value,
-      this.role.value
+      this.nop.value
     ).subscribe({
       next: () => this.toastrService.success("Cadastro realizado com sucesso!"),
       error: (value: HttpErrorResponse) => {
