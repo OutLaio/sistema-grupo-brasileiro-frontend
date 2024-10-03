@@ -21,7 +21,7 @@ export class LoginRegisterService {
     occupation: string,
     agency: string,
     avatar: number = 1,
-    profile: number = 1
+    profile: number = 3
   ) {
     const payload = {
       employeeForm: {
@@ -52,8 +52,8 @@ export class LoginRegisterService {
     sector: string,
     occupation: string,
     agency: string,
-    profile: number = 2,
     avatar: number = 1,
+    profile: number = 2,
   ) {
     const payload = {
       employeeForm: {
@@ -85,6 +85,7 @@ export class LoginRegisterService {
         tap((value) => {
           sessionStorage.setItem('auth-token', value.token);
           sessionStorage.setItem('idUser', value.employee.id.toString());
+          sessionStorage.setItem('userRole', value.employee.userView.profileView.description);
         })
       );
   }
@@ -98,6 +99,10 @@ export class LoginRegisterService {
   resetPassword(password: string, token: string) {
     return this.httpClient
       .post(`${this.prefix}/resetPassword`, { password, token }, { responseType: 'text' });
+  }
+
+  getUserRole(){
+    return sessionStorage.getItem('userRole');
   }
 
   isAuthenticated() {

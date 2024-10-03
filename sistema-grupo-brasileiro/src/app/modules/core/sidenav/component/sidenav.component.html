@@ -38,7 +38,7 @@
                     Acompanhamento
                 </a>
             </li>
-            <li class="nav-item mb-1">
+            <li *ngIf="userRole == 'ROLE_SUPERVISOR'" class="nav-item mb-1">
                 <a routerLink="/colaboradores" routerLinkActive="active">
                     <img class="mx-2" src="/assets/icons/collaborator-icon.svg" alt="colaborador icone">
                     <i class="fa-solid fa-graduation-cap"></i>

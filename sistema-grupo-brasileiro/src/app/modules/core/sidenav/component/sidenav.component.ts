@@ -10,6 +10,7 @@ import { LoginRegisterService } from '../../../services/login-register/login-reg
 })
 export class SidenavComponent implements OnInit {
   isSidebarVisible = false;
+  userRole: string = '';
 
   constructor(
     private sidebarService: SidebarService,
@@ -20,12 +21,13 @@ export class SidenavComponent implements OnInit {
   ngOnInit() {
     this.sidebarService.sidebarVisibility$.subscribe((isVisible) => {
       this.isSidebarVisible = isVisible;
+      this.userRole = this.loginRegisterService.getUserRole() ?? '';
     });
   }
 
   toggleSidebar() {
     this.isSidebarVisible = !this.isSidebarVisible;
-    this.sidebarService.toggleSidebar(); // Toggle sidebar state
+    this.sidebarService.toggleSidebar();
   }
 
   isActiveLink(route: string): boolean {
@@ -34,6 +36,7 @@ export class SidenavComponent implements OnInit {
 
   logoutUser(){
     this.loginRegisterService.logout();
+    this.router.navigate(['/login']);
     location.reload();
   }
 }
