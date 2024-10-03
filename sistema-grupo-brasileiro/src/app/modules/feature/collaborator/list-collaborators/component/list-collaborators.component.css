@@ -27,6 +27,16 @@
   box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 }
 
+.btn-system{
+  background-color: #027373;
+  color: white;
+}
+
+.btn-outline-system{
+  border-color: #027373;
+  color: #027373;
+}
+
 @media (max-width: 768px) {
   .card-body {
       font-size: 0.8rem;
