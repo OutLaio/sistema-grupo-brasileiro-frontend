@@ -1,0 +1,55 @@
+<div class="container-fluid custom-container">
+  <div class="row">
+      <div class="col-12">
+          <div *ngFor="let colaborador of collaborators"
+              class="card mb-3 card-custom rounded-4 py-2"
+              [ngClass]="{'card-selected': isSelected(colaborador)}"
+              (click)="selectColaborador(colaborador)">
+              <div class="card-body">
+                  <div class="row">
+                      <div class="col-12 col-md-4 text-center text-md-start">
+                          <p class="card-text fw-semibold">{{ colaborador.nome }}</p>
+                      </div>
+                      <div class="col-12 col-md-5 text-center text-md-start">
+                          <p class="card-text fw-semibold">{{ colaborador.email }}</p>
+                      </div>
+                      <div class="col-12 col-md-3 text-center text-md-start">
+                          <p class="card-text fw-semibold">{{ colaborador.numero }}</p>
+                      </div>
+                  </div>
+                  <div *ngIf="colaborador === selectedColaborador" class="row pt-3 border-top mt-2">
+                      <div class="col-12 col-md-4">
+                          <p>Função: {{ colaborador.funcao }}</p>
+                      </div>
+                      <div class="col-12 col-md-4">
+                          <p>Setor: {{ colaborador.setor }}</p>
+                      </div>
+                      <div class="col-12 col-md-4">
+                          <p>Agência: {{ colaborador.agencia }}</p>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+  <div class="row mt-auto py-4">
+      <div class="col-12 d-flex justify-content-center flex-wrap">
+          <button [borderColorClass]="'#027373'" [colorClass]="'#027373'" class="btn btn-outline-primary mx-1 mb-2" (click)="goToFirst()" [disabled]="p === 1">
+              &laquo; Primeira
+          </button>
+
+          <ng-container *ngFor="let page of pages">
+            <button class="btn mx-1 mb-2" 
+                    [ngClass]="{'btn-system': p === page, 'btn-outline-system': p !== page}" 
+                    (click)="onPageChange(page)" >
+              {{ page }}
+            </button>
+          </ng-container>
+
+          <button [borderColorClass]="'#027373'" [colorClass]="'#027373'" class="btn btn-outline-primary mx-1 mb-2" (click)="goToLast()" [disabled]="p === totalPages">
+              Última &raquo;
+          </button>
+      </div>
+  </div>
+</div>

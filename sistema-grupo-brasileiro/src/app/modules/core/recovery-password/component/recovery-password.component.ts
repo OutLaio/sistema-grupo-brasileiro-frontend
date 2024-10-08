@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 export class RecoveryPasswordComponent implements OnInit {
 
   recoveryForm!: FormGroup;
+  loading: boolean = false;  // Variável de controle para o estado de carregamento
 
   constructor(
     private recoveryService: LoginRegisterService,
@@ -23,19 +24,23 @@ export class RecoveryPasswordComponent implements OnInit {
     });
   }
 
-  get email(){return this.recoveryForm.get('email')!;}
+  get email() { return this.recoveryForm.get('email')!; }
 
   submit(): void {
-    if (this.recoveryForm.invalid){return}
+    if (this.recoveryForm.invalid) { return; }
+
+    this.loading = true;  
 
     this.recoveryService.recoveryPassword(this.email.value).subscribe({
       next: () => {
         this.toastrService.success('Sua solicitação de recuperação de senha foi enviada com sucesso! Verifique seu e-mail.');
         this.recoveryForm.reset();
+        this.loading = false;  
       },
       error: (error) => {
         this.toastrService.error('Houve um erro ao tentar recuperar a senha. Tente novamente.');
+        this.loading = false;  
       }
-    })
+    });
   }
 }

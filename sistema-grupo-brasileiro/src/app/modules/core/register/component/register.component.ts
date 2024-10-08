@@ -16,7 +16,7 @@ export class RegisterComponent implements OnInit {
   constructor(
     private registerService: LoginRegisterService,
     private toastrService: ToastrService
-  ){}
+  ) { }
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
@@ -39,17 +39,17 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  get name() {return this.registerForm.get('name')!;}
-  get lastname() {return this.registerForm.get('lastname')!;}
-  get email() {return this.registerForm.get('email')!;}
-  get password() {return this.registerForm.get('password')!;}
-  get phone() {return this.registerForm.get('phone')!;}
-  get sector() {return this.registerForm.get('sector')!;}
-  get occupation() {return this.registerForm.get('occupation')!;}
-  get nop() {return this.registerForm.get('nop')!;}
+  get name() { return this.registerForm.get('name')!; }
+  get lastname() { return this.registerForm.get('lastname')!; }
+  get email() { return this.registerForm.get('email')!; }
+  get password() { return this.registerForm.get('password')!; }
+  get phone() { return this.registerForm.get('phone')!; }
+  get sector() { return this.registerForm.get('sector')!; }
+  get occupation() { return this.registerForm.get('occupation')!; }
+  get nop() { return this.registerForm.get('nop')!; }
 
   submit() {
-    if(this.registerForm.invalid) return;
+    if (this.registerForm.invalid) return;
 
     this.registerService.registerUser(
       this.name.value,
@@ -59,12 +59,12 @@ export class RegisterComponent implements OnInit {
       this.phone.value,
       this.sector.value,
       this.occupation.value,
-      this.nop.value
+      this.nop.value,
     ).subscribe({
       next: () => this.toastrService.success("Cadastro realizado com sucesso!"),
       error: (value: HttpErrorResponse) => {
         this.toastrService.error(value.error);
       }
-    })
+    });
   }
 }

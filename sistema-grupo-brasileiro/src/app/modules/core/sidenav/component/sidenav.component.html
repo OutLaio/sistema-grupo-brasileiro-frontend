@@ -1,5 +1,5 @@
 <div id="bdSidebar" class="d-flex flex-column flex-shrink-0 bg-sidebar text-white"
-     [ngClass]="{ 'showSidebar': isSidebarVisible, 'hideSidebar': !isSidebarVisible }">
+    [ngClass]="{ 'showSidebar': isSidebarVisible, 'hideSidebar': !isSidebarVisible }">
     <div class="d-flex justify-content-center align-items-center bg-color-system">
         <div class="text-white">
             <div class="justify-content-center align-items-center d-flex my-4">
@@ -12,7 +12,7 @@
         <ul class="mynav nav nav-pills d-flex flex-column mb-auto">
             <li class="nav-item mb-1">
                 <a routerLink="dashboard" routerLinkActive="active">
-                <img class="mx-2" src="/assets/icons/dashboard-icon.svg" alt="dashboard icone">
+                    <img class="mx-2" src="/assets/icons/dashboard-icon.svg" alt="dashboard icone">
                     <i class="fa-regular fa-user"></i>
                     Dashboard
                 </a>
@@ -38,7 +38,7 @@
                     Acompanhamento
                 </a>
             </li>
-            <li class="nav-item mb-1">
+            <li *ngIf="userRole == 'ROLE_SUPERVISOR'" class="nav-item mb-1">
                 <a routerLink="/colaboradores" routerLinkActive="active">
                     <img class="mx-2" src="/assets/icons/collaborator-icon.svg" alt="colaborador icone">
                     <i class="fa-solid fa-graduation-cap"></i>
@@ -66,7 +66,7 @@
                 </a>
             </li>
             <li class="nav-item mb-1">
-                <a routerLink="/logout" routerLinkActive="active">
+                <a class="pointer" (click)="logoutUser()" routerLinkActive="active">
                     <img class="mx-2" src="/assets/icons/logout-icon.svg" alt="logout icone">
                     <i class="fa-regular fa-user"></i>
                     Sair

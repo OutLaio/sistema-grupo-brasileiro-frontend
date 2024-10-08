@@ -1,0 +1,43 @@
+.bg-color-menu {
+    background-color: #03A696;
+}
+
+.text-muted {
+    color: #808080 !important;
+}
+
+.card {
+    height: 85vh;
+    width: 75vw;
+}
+
+.overflow-custom {
+    height: 75vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.shadow-custom {
+    box-shadow: 3px 4.5px 4px rgba(0, 0, 0, 0.3);
+}
+
+@media (max-width: 991px) {
+    .card {
+        height: auto;
+        width: 100%;
+    }
+}
+
+::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #027373;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #03A696;
+}

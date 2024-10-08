@@ -1,16 +1,16 @@
 import { Component, OnInit } from '@angular/core';
 
 import { FormGroup, FormControl, Validators } from '@angular/forms';
-import { LoginRegisterService } from '../../../services/login-register/login-register.service';
+import { LoginRegisterService } from '../../../../services/login-register/login-register.service';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
-  selector: 'app-create-collaborator',
-  templateUrl: './create-collaborator.component.html',
-  styleUrl: './create-collaborator.component.css'
+  selector: 'app-register-collaborator',
+  templateUrl: './register-collaborator.component.html',
+  styleUrl: './register-collaborator.component.css'
 })
-export class CreateCollaboratorComponent {
+export class RegisterCollaboratorComponent {
   registerForm!: FormGroup;
 
   constructor(
@@ -36,7 +36,6 @@ export class CreateCollaboratorComponent {
       sector: new FormControl('', [Validators.required]),
       occupation: new FormControl('', [Validators.required]),
       nop: new FormControl('', [Validators.required]),
-      role: new FormControl('', [Validators.required]),
     });
   }
 
@@ -48,7 +47,6 @@ export class CreateCollaboratorComponent {
   get sector() { return this.registerForm.get('sector')!; }
   get occupation() { return this.registerForm.get('occupation')!; }
   get nop() { return this.registerForm.get('nop')!; }
-  get role() { return this.registerForm.get('role')!; }
 
   submit() {
     if (this.registerForm.invalid) return;
@@ -61,8 +59,7 @@ export class CreateCollaboratorComponent {
       this.phone.value,
       this.sector.value,
       this.occupation.value,
-      this.nop.value,
-      this.role.value
+      this.nop.value
     ).subscribe({
       next: () => this.toastrService.success("Cadastro realizado com sucesso!"),
       error: (value: HttpErrorResponse) => {

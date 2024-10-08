@@ -1,0 +1,32 @@
+<div class="container-fluid">
+    <div class="row d-flex justify-content-center h-100">
+        <div class="col-12">
+            <div class="card text-black shadow-custom">
+                <div class="card-body">
+                    <div class="row mb-3">
+                        <div class="col-6 text-center">
+                            <button class="btn w-100 text-white"
+                                [ngClass]="{'active bg-color-menu': isFormVisible, 'text-muted': !isFormVisible}"
+                                (click)="showForm()">Cadastrar Colaborador</button>
+                        </div>
+                        <div class="col-6 text-center">
+                            <button class="btn w-100 text-white"
+                                [ngClass]="{'active bg-color-menu': !isFormVisible, 'text-muted': isFormVisible}"
+                                (click)="showList()">Verificar Colaboradores</button>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-12 overflow-custom scroll-bar">
+                            <ng-container *ngIf="isFormVisible">
+                                <app-register-collaborator></app-register-collaborator>
+                            </ng-container>
+                            <ng-container *ngIf="!isFormVisible">
+                                <app-list-collaborators></app-list-collaborators>
+                            </ng-container>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

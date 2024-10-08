@@ -1,36 +1,46 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs';
-import { RegisterResponse } from '../../types/register-response.type';
-import { LoginResponse } from '../../types/login-response.type';
+import { LoginResponse } from '../../core/login/interface/login-response';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginRegisterService {
-  constructor(private httpClient: HttpClient) {}
+  private readonly prefix = 'http://localhost:8080/api/v1/auth'; // Variável para o prefixo da porta
+
+  constructor(private httpClient: HttpClient) { }
 
   registerUser(
     name: string,
     lastname: string,
     email: string,
     password: string,
-    phonenumber: string,
+    phoneNumber: string,
     sector: string,
     occupation: string,
-    nop: string
+    agency: string,
+    avatar: number = 1,
+    profile: number = 3
   ) {
-    return this.httpClient
-      .post('http://localhost:8080/auth/register', {
+    const payload = {
+      employeeForm: {
         name,
         lastname,
-        email,
-        password,
-        phonenumber,
+        phoneNumber,
         sector,
         occupation,
-        nop,
-      });
+        agency,
+        avatar
+      },
+      userForm: {
+        email,
+        password,
+        profile
+      }
+    };
+
+    return this.httpClient.post(`${this.prefix}/register`, payload);
   }
 
   registerCollaborator(
@@ -38,47 +48,70 @@ export class LoginRegisterService {
     lastname: string,
     email: string,
     password: string,
-    phonenumber: string,
+    phoneNumber: string,
     sector: string,
     occupation: string,
-    nop: string,
-    role: string,
+    agency: string,
+    avatar: number = 1,
+    profile: number = 2,
   ) {
-    return this.httpClient
-      .post('http://localhost:8080/auth/register', {
+    const payload = {
+      employeeForm: {
         name,
         lastname,
-        email,
-        password,
-        phonenumber,
+        phoneNumber,
         sector,
         occupation,
-        nop,
-        role,
-      });
+        agency,
+        avatar
+      },
+      userForm: {
+        email,
+        password,
+        profile
+      }
+    };
+
+    return this.httpClient.post(`${this.prefix}/register`, payload);
   }
 
   loginUser(email: string, password: string) {
     return this.httpClient
-      .post<LoginResponse>('http://localhost:8080/auth/login', {
+      .post<LoginResponse>(`${this.prefix}/login`, {
         email,
         password,
       })
       .pipe(
         tap((value) => {
           sessionStorage.setItem('auth-token', value.token);
-          sessionStorage.setItem('userId', value.userId);
+          sessionStorage.setItem('idUser', value.employee.id.toString());
+          sessionStorage.setItem('userRole', value.employee.userView.profileView.description);
         })
       );
   }
 
-  recoveryPassword(email: string){
+  recoveryPassword(email: string) {
     return this.httpClient
-     .post('http://localhost:8080/recoveryPassword', { email });
+      .post(`${this.prefix}/requestReset`, { email }, { responseType: 'text' });
   }
 
-  resetPassword(newPassword:string, token:string){
+
+  resetPassword(password: string, token: string) {
     return this.httpClient
-     .post('http://localhost:8080/resetPassword', { newPassword, token });
+      .post(`${this.prefix}/resetPassword`, { password, token }, { responseType: 'text' });
+  }
+
+  getUserRole(){
+    return sessionStorage.getItem('userRole');
+  }
+
+  isAuthenticated() {
+    return!!sessionStorage.getItem('auth-token');
+  }
+
+  logout() {
+    sessionStorage.removeItem('auth-token');
+    sessionStorage.removeItem('idUser');
+    sessionStorage.clear();
   }
 }

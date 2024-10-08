@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -16,9 +16,9 @@ import { provideToastr } from 'ngx-toastr';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './modules/core/header/component/header.component';
 import { SidenavComponent } from './modules/core/sidenav/component/sidenav.component';
-import { CollaboratorSystemComponent } from './modules/feature/collaborator-system/component/collaborator-system.component';
-import { ListCollaboratorsComponent } from './modules/feature/list-collaborators/component/list-collaborators.component';
-import { CreateCollaboratorComponent } from './modules/feature/create-collaborator/component/create-collaborator.component';
+import { CollaboratorSystemComponent } from './modules/feature/collaborator/collaborator-system/component/collaborator-system.component';
+import { ListCollaboratorsComponent } from './modules/feature/collaborator/list-collaborators/component/list-collaborators.component';
+import { RegisterCollaboratorComponent } from './modules/feature/collaborator/register-collaborator/component/register-collaborator.component';
 import { CheckRequestsComponent } from './modules/feature/check-requests/components/check-requests.component';
 import { MainProfileComponent } from './modules/core/profile/components/main-profile/main-profile.component';
 import { UserDataComponent } from './modules/core/profile/components/user-data/user-data.component';
@@ -41,7 +41,7 @@ import { ColorClassDirective } from './modules/directives/colorClass/color-class
     HeaderComponent,
     SidenavComponent,
     CollaboratorSystemComponent,
-    CreateCollaboratorComponent,
+    RegisterCollaboratorComponent,
     ListCollaboratorsComponent,
     CheckRequestsComponent,
     MainProfileComponent,
@@ -69,6 +69,7 @@ import { ColorClassDirective } from './modules/directives/colorClass/color-class
     provideToastr(),
     provideAnimations()
   ],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

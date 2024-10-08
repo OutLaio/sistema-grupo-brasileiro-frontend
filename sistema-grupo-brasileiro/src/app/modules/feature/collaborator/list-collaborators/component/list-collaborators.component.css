@@ -1,0 +1,44 @@
+.card {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.card:hover {
+  background-color: #f0f0f0;
+}
+
+.card-selected {
+  background-color: #e0e0e0;
+}
+
+.card-body {
+  transition: max-height 0.5s ease;
+  max-height: 70px;
+}
+
+.card-selected .card-body {
+  max-height: 300px;
+}
+
+.card-custom {
+  background-color: #EEEEEE;
+  border: none;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.btn-system{
+  background-color: #027373;
+  color: white;
+}
+
+.btn-outline-system{
+  border-color: #027373;
+  color: #027373;
+}
+
+@media (max-width: 768px) {
+  .card-body {
+      font-size: 0.8rem;
+  }
+}
