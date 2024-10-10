@@ -4,12 +4,12 @@
       <div class="col-xl-4 col-lg-6 col-md-8 col-sm-10">
         <div class="card d-flex justify-content-center align-items-center rounded-4 shadow-custom">
           <div class="card-body d-flex flex-column justify-content-center w-100">
-            <div class="py-3 text-center">
+            <div class="text-center">
               <img class="img-fluid" src="/assets/images/logo-grupobrasileiro.png" alt="logo grupo brasileiro">
             </div>
             <form (ngSubmit)="submit()" [formGroup]="registerForm" #formDir="ngForm" class="w-100">
               <div class="row">
-                <div class="col-md-6 mb-4">
+                <div class="col-md-6 mb-2">
                   <div class="form-outline">
                     <input type="text" class="form-control form-focus border-0 border-bottom border-2 w-100" placeholder="Nome"
                       formControlName="name" required />
@@ -18,7 +18,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-6 mb-4">
+                <div class="col-md-6 mb-2">
                   <div class="form-outline">
                     <input type="text" class="form-control form-focus border-0 border-bottom border-2 w-100" placeholder="Sobrenome"
                       formControlName="lastname" required />
@@ -29,7 +29,7 @@
                 </div>
               </div>
 
-              <div class="form-outline mb-4">
+              <div class="form-outline mb-2">
                 <input type="email" class="form-control form-focus border-0 border-bottom border-2 w-100" placeholder="E-mail"
                   formControlName="email" required />
                 <div *ngIf="email.invalid && formDir.submitted" class="validation-warning">
@@ -38,7 +38,7 @@
                 </div>
               </div>
 
-              <div class="form-outline mb-4">
+              <div class="form-outline mb-2">
                 <input type="password" class="form-control form-focus border-0 border-bottom border-2 w-100" placeholder="Senha"
                   formControlName="password" />
                 <div *ngIf="password.invalid && formDir.submitted" class="validation-warning">
@@ -48,9 +48,9 @@
                 </div>
               </div>
 
-              <div class="form-outline mb-4">
+              <div class="form-outline mb-2">
                 <input type="text" class="form-control form-focus border-0 border-bottom border-2 w-100" placeholder="Telefone"
-                  formControlName="phone" required />
+                  formControlName="phone" appPhoneMask required />
                 <div *ngIf="phone.invalid && formDir.submitted" class="validation-warning">
                   <p *ngIf="phone.errors?.['required']">O telefone é obrigatório!</p>
                   <p *ngIf="phone.errors?.['pattern']">Por favor, insira um número de telefone válido no formato (XX) XXXXX-XXXX ou
@@ -59,7 +59,7 @@
               </div>
 
               <div class="row">
-                <div class="col-md-6 mb-4">
+                <div class="col-md-6 mb-2">
                   <div class="form-outline">
                     <input type="text" class="form-control form-focus border-0 border-bottom border-2 w-100" placeholder="Setor/Departamento"
                       formControlName="sector" required />
@@ -68,7 +68,7 @@
                     </div>
                   </div>
                 </div>
-                <div class="col-md-6 mb-4">
+                <div class="col-md-6 mb-2">
                   <div class="form-outline">
                     <input type="text" class="form-control form-focus border-0 border-bottom border-2 w-100" placeholder="Função"
                       formControlName="occupation" required />
@@ -79,7 +79,7 @@
                 </div>
               </div>
 
-              <div class="form-outline mb-4">
+              <div class="form-outline mb-2">
                 <input type="text" class="form-control form-focus border-0 border-bottom border-2 w-100" placeholder="Núcleo Operacional de Origem/Agência"
                   formControlName="nop" required />
                 <div *ngIf="nop.invalid && formDir.submitted" class="validation-warning">
@@ -87,9 +87,9 @@
                 </div>
               </div>
 
-              <div class="text-center pt-1 mb-5 pb-1">
-                <button class="btn btn-block bg-color-system bg-hover text-white shadow rounded-4 mb-3 py-2 w-100" type="submit">Cadastrar</button>
-                <a class="text-muted text-decoration-none text-custom" href="#!">Já estou cadastrado!</a>
+              <div class="text-center py-2">
+                <button [backgroundColorClass]="'#027373'" class="btn btn-block bg-hover text-white shadow rounded-4 mb-3 py-2 w-100" type="submit">Cadastrar</button>
+                <a class="text-muted text-decoration-none text-custom" routerLink="/login">Já estou cadastrado!</a>
               </div>
             </form>
           </div>

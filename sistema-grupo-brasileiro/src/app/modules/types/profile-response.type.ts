@@ -1,10 +1,10 @@
 export type TProfile = {
-  userId: string;
+  userId: number;
   name: string;
   lastname: string;
   email: string;
   phone: string;
   sector: string;
   occupation: string;
-  nop: string;
+  agency: string;
 };
