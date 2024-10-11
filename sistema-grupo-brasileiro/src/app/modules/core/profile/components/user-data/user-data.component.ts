@@ -10,6 +10,7 @@ import { TProfile } from '../../../../types/profile-response.type';
 })
 export class UserDataComponent implements OnInit {
   userProfile!: TProfile | null;
+  userRole: string = "";
 
   constructor(
     private loginRegisterService: LoginRegisterService,
@@ -18,6 +19,7 @@ export class UserDataComponent implements OnInit {
 
   ngOnInit(): void {
     this.userProfile = this.loginRegisterService.getUserProfile();
+    this.userRole = this.loginRegisterService.getUserRole() ?? "";
   }
 
   editProfile() {
