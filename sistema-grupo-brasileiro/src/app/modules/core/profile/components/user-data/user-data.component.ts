@@ -12,14 +12,21 @@ export class UserDataComponent implements OnInit {
   userProfile!: TProfile | null;
   userRole: string = "";
 
+  private roleMapping: { [key: string]: string } = {
+    'ROLE_CLIENT': 'Cliente',
+    'ROLE_COLLABORATOR': 'Colaborador',
+    'ROLE_SUPERVISOR': 'Supervisor',
+  };
+
   constructor(
     private loginRegisterService: LoginRegisterService,
     private router: Router
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.userProfile = this.loginRegisterService.getUserProfile();
-    this.userRole = this.loginRegisterService.getUserRole() ?? "";
+    const role = this.loginRegisterService.getUserRole() ?? "";
+    this.userRole = this.roleMapping[role] || '';
   }
 
   editProfile() {
