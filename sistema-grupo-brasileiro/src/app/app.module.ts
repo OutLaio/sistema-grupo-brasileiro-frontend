@@ -1,8 +1,7 @@
 import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
-import { NgxPaginationModule } from 'ngx-pagination';
-
+import { MatPaginatorModule } from '@angular/material/paginator';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './modules/core/login/component/login.component';
@@ -29,7 +28,10 @@ import { ProfileRoutingModule } from './modules/core/profile/components/main-pro
 import { CreateRequestComponent } from './modules/feature/create-request/component/create-request.component';
 
 import { NgScrollbarModule } from 'ngx-scrollbar';
+
 import { ColorClassDirective } from './modules/directives/colorClass/color-class.directive';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { PhoneMaskDirective } from './modules/directives/phone-mask/phone-mask.directive';
 
 @NgModule({
   declarations: [
@@ -49,15 +51,16 @@ import { ColorClassDirective } from './modules/directives/colorClass/color-class
     EditUserDataComponent,
     RequestDetailsComponent,
     CreateRequestComponent,
-    ColorClassDirective
+    ColorClassDirective,
+    PhoneMaskDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatPaginatorModule,
     NgbModule,
     FormsModule,
     ReactiveFormsModule,
-    NgxPaginationModule,
     NgCircleProgressModule.forRoot({
     }),
     ProfileRoutingModule,
@@ -67,7 +70,8 @@ import { ColorClassDirective } from './modules/directives/colorClass/color-class
   providers: [
     provideHttpClient(withFetch()),
     provideToastr(),
-    provideAnimations()
+    provideAnimations(),
+    provideAnimationsAsync()
   ],
   schemas: [CUSTOM_ELEMENTS_SCHEMA],
   bootstrap: [AppComponent]

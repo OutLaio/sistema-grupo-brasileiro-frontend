@@ -1,54 +1,68 @@
-<div class="container">
-  <div class="profile-data">
-    <div class="card-profile">
-      <img src="/assets/images/profile.png" alt="Profile Image">
-      <div class="info-card">
-        <h4> {{ profileUser.name + " " + profileUser.lastname }} </h4>
-        <span> {{ profileUser.occupation }} </span>
-        <p>{{ profileUser.sector }}</p>
-      </div>
-    </div>
-    <div class="btn-edit" (click)="editProfile()">
-      <span>Editar Perfil</span>
-      <div class="img">
-        <img src="/assets/icons/edit.png" alt="Icon Edit">
-      </div>
-    </div>
-  </div>
-  <hr>
-  <div class="user-data">
-    <h3>Informações Pessoais</h3>
-    <div class="user-data-content">
-      <div class="info-data">
-        <p>Nome Completo</p>
-        <span> {{ profileUser.name + " " + profileUser.lastname }} </span>
-      </div>
-      <div class="info-data">
-        <p>Telefone</p>
-        <span>{{ profileUser.phone }}</span>
-      </div>
-      <div class="info-data">
-        <p>E-mail</p>
-        <span>{{ profileUser.email }}</span>
-      </div>
-    </div>
-  </div>
-  <hr>
-  <div class="professional-data">
-    <h3>Informações Profissionais</h3>
-    <div class="professional-data-content">
-      <div class="info-data">
-        <p>Função</p>
-        <span>{{ profileUser.occupation }}</span>
-      </div>
-      <div class="info-data">
-        <p>Setor/Departamento</p>
-        <span>{{ profileUser.sector }}</span>
-      </div>
-      <div class="info-data">
-        <p>Núcleo Operacional de Origem/Agência</p>
-        <span>{{ profileUser.nop }}</span>
-      </div>
-    </div>
-  </div>
+<div class="container mt-4">
+	<div class="row mb-3">
+		<div class="col-md-8 d-flex align-items-center">
+			<div class="card-profile d-flex align-items-center">
+				<img src="/assets/images/profile.png" alt="Profile Image" class="img-fluid me-3" style="height: 70px;">
+				<div class="info-card">
+					<h4>{{ userProfile?.name + " " + userProfile?.lastname }}</h4>
+					<span>{{ userProfile?.occupation }}</span>
+					<p>{{ userRole }}</p>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-4 text-end">
+			<div class="d-flex btn-edit gap-2" (click)="editProfile()">
+				<span class="text-muted">Editar Perfil</span>
+				<div class="img rounded-circle bg-success d-flex align-items-center justify-content-center"
+					style="height: 20px; width: 20px;">
+					<img src="/assets/icons/edit.png" alt="Icon Edit" class="img-fluid" style="height: 12px;">
+				</div>
+			</div>
+		</div>
+	</div>
+	<hr>
+	<div class="user-data">
+		<h3>Informações Pessoais</h3>
+		<div class="user-data-content row">
+			<div class="info-data col-md-4">
+				<p>Nome Completo</p>
+				<span>{{ userProfile?.name + " " + userProfile?.lastname }}</span>
+			</div>
+			<div class="info-data col-md-4">
+				<p>Telefone</p>
+				<span>{{ userProfile?.phone }}</span>
+			</div>
+			<div class="info-data col-md-4">
+				<p>E-mail</p>
+				<span>{{ userProfile?.email }}</span>
+			</div>
+		</div>
+	</div>
+	<hr>
+	<div class="professional-data">
+		<h3>Informações Profissionais</h3>
+		<div class="professional-data-content row">
+			<div class="info-data col-md-4">
+				<p>Função</p>
+				<span>{{ userProfile?.occupation }}</span>
+			</div>
+			<div class="info-data col-md-4">
+				<p>Setor/Departamento</p>
+				<span>{{ userProfile?.sector }}</span>
+			</div>
+			<div class="info-data col-md-4">
+				<p>Núcleo Operacional de Origem/Agência</p>
+				<span>{{ userProfile?.agency }}</span>
+			</div>
+		</div>
+	</div>
+	<hr>
+	<div class="professional-data">
+		<h3>Segurança</h3>
+		<div class="professional-data-content row">
+			<div class="info-data col-md-4">
+				<a class="text-decoration-none" [colorClass]="'#027373'" href="!#">Alterar Senha</a>
+			</div>
+		</div>
+	</div>
 </div>

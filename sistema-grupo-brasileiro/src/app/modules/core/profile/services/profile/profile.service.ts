@@ -1,39 +1,22 @@
-import { HttpClient, HttpStatusCode } from '@angular/common/http';
+import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TProfile } from '../../../../types/profile-response.type';
-import { of } from 'rxjs';
+import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProfileService {
+  private readonly apiUrl = 'http://localhost:8080/api/v1/profile'; 
+
   constructor(private httpClient: HttpClient) {}
 
-  profileTest: TProfile = {
-    userId: '1',
-    name: 'Mikaelle',
-    lastname: 'Rubia',
-    email: 'mikaelle@email.com',
-    phone: '(11) 98765-4321',
-    sector: 'Backend',
-    occupation: 'Desenvolvedora',
-    nop: 'Cepedi',
-  };
-
-  getProfileUser() {
-    return of(this.profileTest);
+  getProfileUser(): Observable<TProfile> {
+    return this.httpClient.get<TProfile>(this.apiUrl);
   }
 
-  updateProfileUser(userData: TProfile) {
-
-    this.profileTest.name = userData.name;
-    this.profileTest.lastname = userData.lastname;
-    this.profileTest.email = userData.email;
-    this.profileTest.phone = userData.phone;
-    this.profileTest.sector = userData.sector;
-    this.profileTest.occupation = userData.occupation;
-    this.profileTest.nop = userData.nop;
-
-    return of(HttpStatusCode.Ok);
+  updateProfileUser(userData: TProfile): Observable<HttpResponse<any>> {
+    return this.httpClient.put<HttpResponse<any>>(`${this.apiUrl}/update`, userData);
   }
 }

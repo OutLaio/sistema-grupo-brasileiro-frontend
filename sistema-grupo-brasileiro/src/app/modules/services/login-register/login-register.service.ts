@@ -2,12 +2,13 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs';
 import { LoginResponse } from '../../core/login/interface/login-response';
+import { TProfile } from '../../types/profile-response.type';
 
 @Injectable({
   providedIn: 'root',
 })
 export class LoginRegisterService {
-  private readonly prefix = 'http://localhost:8080/api/v1/auth'; // Variável para o prefixo da porta
+  private readonly prefix = 'http://localhost:8080/api/v1/auth';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -86,6 +87,19 @@ export class LoginRegisterService {
           sessionStorage.setItem('auth-token', value.token);
           sessionStorage.setItem('idUser', value.employee.id.toString());
           sessionStorage.setItem('userRole', value.employee.userView.profileView.description);
+
+          const userProfile: TProfile = {
+            userId: value.employee.id,
+            email: value.employee.userView.email = email,
+            name: value.employee.name,
+            lastname: value.employee.lastname,
+            phone: value.employee.phonenumber,
+            sector: value.employee.sector,
+            occupation: value.employee.occupation,
+            agency: value.employee.agency,
+          };
+
+          sessionStorage.setItem('userProfile', JSON.stringify(userProfile));
         })
       );
   }
@@ -101,12 +115,27 @@ export class LoginRegisterService {
       .post(`${this.prefix}/resetPassword`, { password, token }, { responseType: 'text' });
   }
 
-  getUserRole(){
+  getUserRole() {
     return sessionStorage.getItem('userRole');
   }
 
+
+  getUserName(): string | null {
+    const profile = sessionStorage.getItem('userProfile');
+    if (profile) {
+      const userProfile: TProfile = JSON.parse(profile);
+      return userProfile.name + " " + userProfile.lastname;
+    }
+    return null;
+  }
+
+  getUserProfile(): TProfile | null {
+    const profile = sessionStorage.getItem('userProfile');
+    return profile ? JSON.parse(profile) : null;
+  }
+
   isAuthenticated() {
-    return!!sessionStorage.getItem('auth-token');
+    return !!sessionStorage.getItem('auth-token');
   }
 
   logout() {

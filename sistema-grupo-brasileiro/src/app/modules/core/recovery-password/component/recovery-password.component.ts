@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginRegisterService } from '../../../services/login-register/login-register.service';
 import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';  // Importação do Router
 
 @Component({
   selector: 'app-recovery-password',
@@ -15,7 +16,8 @@ export class RecoveryPasswordComponent implements OnInit {
 
   constructor(
     private recoveryService: LoginRegisterService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private router: Router  // Injete o Router no construtor
   ) { }
 
   ngOnInit(): void {
@@ -29,17 +31,18 @@ export class RecoveryPasswordComponent implements OnInit {
   submit(): void {
     if (this.recoveryForm.invalid) { return; }
 
-    this.loading = true;  
+    this.loading = true;
 
     this.recoveryService.recoveryPassword(this.email.value).subscribe({
       next: () => {
         this.toastrService.success('Sua solicitação de recuperação de senha foi enviada com sucesso! Verifique seu e-mail.');
         this.recoveryForm.reset();
-        this.loading = false;  
+        this.loading = false;
+        this.router.navigate(['/login']);
       },
       error: (error) => {
         this.toastrService.error('Houve um erro ao tentar recuperar a senha. Tente novamente.');
-        this.loading = false;  
+        this.loading = false;
       }
     });
   }

@@ -35,7 +35,7 @@ export class EditUserDataComponent {
       email: new FormControl(this.profileUser.email, [Validators.required]),
       sector: new FormControl(this.profileUser.sector, [Validators.required]),
       occupation: new FormControl(this.profileUser.occupation, [Validators.required]),
-      nop: new FormControl(this.profileUser.nop, [Validators.required]),
+      nop: new FormControl(this.profileUser.agency, [Validators.required]),
     });
   }
 
@@ -68,7 +68,7 @@ export class EditUserDataComponent {
     this.profileUser.phone = this.phone.value;
     this.profileUser.sector = this.sector.value;
     this.profileUser.occupation = this.occupation.value;
-    this.profileUser.nop = this.nop.value;
+    this.profileUser.agency = this.nop.value;
     this.editProfileService.updateProfileUser(this.profileUser).subscribe((response) => {
       console.log(response);
       this.toastrService.success("Dados atualizados com sucesso!");

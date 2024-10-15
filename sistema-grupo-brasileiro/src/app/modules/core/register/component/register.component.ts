@@ -31,7 +31,7 @@ export class RegisterComponent implements OnInit {
       ]),
       phone: new FormControl('', [
         Validators.required,
-        Validators.pattern(/^\(?\d{2}\)?\s?\d{4,5}-?\d{4}$/),
+        Validators.pattern(/^\(\d{2}\) \d{4,5}-\d{4}$/),
       ]),
       sector: new FormControl('', [Validators.required]),
       occupation: new FormControl('', [Validators.required]),

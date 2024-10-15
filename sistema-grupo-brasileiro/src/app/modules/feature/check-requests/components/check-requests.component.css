@@ -2,6 +2,10 @@
     height: 5px;
 }
 
+.card-title{
+    font-weight: 600;
+}
+
 .card-custom {
     max-width: 17em;
     min-width: 17em;

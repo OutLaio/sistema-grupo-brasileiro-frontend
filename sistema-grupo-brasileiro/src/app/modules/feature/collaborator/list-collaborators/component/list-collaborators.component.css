@@ -1,20 +1,22 @@
 .card {
   cursor: pointer;
-  transition: background-color 0.3s ease;
-  font-size: 0.9rem;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-size: 1rem;
 }
 
 .card:hover {
   background-color: #f0f0f0;
+  transform: scale(1.02);
 }
 
 .card-selected {
   background-color: #e0e0e0;
+  border-left: 4px solid #027373; 
 }
 
 .card-body {
-  transition: max-height 0.5s ease;
-  max-height: 70px;
+  transition: height 0.5s ease;
+  max-height: auto;
 }
 
 .card-selected .card-body {
@@ -24,21 +26,27 @@
 .card-custom {
   background-color: #EEEEEE;
   border: none;
-  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.btn-system{
+.btn-system {
   background-color: #027373;
   color: white;
+  transition: background-color 0.3s ease;
 }
 
-.btn-outline-system{
+.btn-outline-system {
   border-color: #027373;
   color: #027373;
+  transition: background-color 0.3s ease;
+}
+
+.btn-system:hover, .btn-outline-system:hover {
+  background-color: rgba(2, 115, 115, 0.1);
 }
 
 @media (max-width: 768px) {
   .card-body {
-      font-size: 0.8rem;
+    font-size: 0.9rem;
   }
 }

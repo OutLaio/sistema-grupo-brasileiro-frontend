@@ -2,6 +2,10 @@
     background-color: #027373;
 }
 
+input{
+    margin-top: .5rem;
+}
+
 .bg-color-menu{
     background-color: #03A696;
 }

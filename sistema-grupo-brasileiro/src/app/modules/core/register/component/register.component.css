@@ -1,67 +1,52 @@
-.bg-color-system {
-    background-color: #027373;
-  }
-  
-  .system-form {
-    background: linear-gradient(180deg, #01403A, #03A696, #01403A);
-    height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
+.system-form {
+  background: linear-gradient(180deg, #01403A, #03A696, #01403A);
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  height: auto;
+}
+
+.form-focus:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.shadow-custom {
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.bg-hover:hover {
+  background-color: #03A696;
+}
+
+.text-custom {
+  color: #027373 !important;
+}
+
+
+.text-custom:hover {
+  text-decoration: underline;
+}
+
+.validation-warning p {
+  color: red;
+  font-size: 0.875rem;
+}
+
+@media (max-width: 768px) {
   .card {
-    padding: 2rem;
-    max-width: 100%;
-    width: 100%;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    padding: 1.5rem;
   }
-  
-  img {
-    max-width: 70%;
+}
+
+@media (max-width: 576px) {
+  .card {
+    padding: 1rem;
     height: auto;
   }
-  
-  .form-focus:focus {
-    outline: none;
-    box-shadow: none;
-  }
-  
-  .shadow-custom {
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-  }
-  
-  .bg-hover:hover {
-    background-color: #03A696;
-  }
-  
-  .text-custom {
-    color: #027373 !important;
-  }
-  
-  .text-custom:hover {
-    text-decoration: underline;
-  }
-  
-  .validation-warning p {
-    color: red;
-    font-size: 0.875rem;
-  }
-  
-  @media (max-width: 768px) {
-    .card {
-      padding: 1.5rem;
-    }
-  }
-  
-  @media (max-width: 576px) {
-    .card {
-      padding: 1rem;
-      height: auto;
-    }
-  
-    img {
-      max-width: 50%;
-    }
-  }
-  
+}
