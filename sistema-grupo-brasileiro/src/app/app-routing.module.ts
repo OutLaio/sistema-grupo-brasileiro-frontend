@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { CheckRequestsComponent } from './modules/feature/check-requests/components/check-requests.component';
 import { CollaboratorSystemComponent } from './modules/feature/collaborator/collaborator-system/component/collaborator-system.component';
 import { MainProfileComponent } from './modules/core/profile/components/main-profile/main-profile.component';
-import { CreateRequestComponent } from './modules/feature/create-request/component/create-request.component';
+import { MainCreateRequestComponent } from './modules/feature/create-request/components/main-create-request/main-create-request.component';
 import { RequestDetailsComponent } from './modules/feature/request-details/components/request-details/request-details.component';
 import { ResetPasswordComponent } from './modules/core/reset-password/component/reset-password.component';
 import { LoginComponent } from './modules/core/login/component/login.component';
@@ -39,11 +39,6 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'nova-solicitacao',
-    component: CreateRequestComponent,
-    canActivate: [AuthGuard]
-  },
-  {
     path: 'detalhes-solicitacao',
     component: RequestDetailsComponent,
     canActivate: [AuthGuard]
@@ -71,6 +66,15 @@ const routes: Routes = [
     path: '',
     redirectTo: '/acompanhamento',
     pathMatch: 'full',
+  },
+  {
+    path: 'nova-solicitacao',
+    component: MainCreateRequestComponent,
+    canActivate: [AuthGuard],
+    loadChildren: () =>
+      import('./modules/feature/create-request/components/main-create-request/main-create-request-routing.module').then(
+        (m) => m.MainCreateRequestRoutingModule
+      ),
   },
 ];
 

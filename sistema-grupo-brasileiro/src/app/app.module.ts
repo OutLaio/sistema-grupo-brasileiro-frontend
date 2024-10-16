@@ -25,7 +25,7 @@ import { EditUserDataComponent } from './modules/core/profile/components/edit-us
 import { RequestDetailsComponent } from './modules/feature/request-details/components/request-details/request-details.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { ProfileRoutingModule } from './modules/core/profile/components/main-profile/profile-routing.module';
-import { CreateRequestComponent } from './modules/feature/create-request/component/create-request.component';
+import { MainCreateRequestComponent } from './modules/feature/create-request/components/main-create-request/main-create-request.component';
 
 import { NgScrollbarModule } from 'ngx-scrollbar';
 
@@ -36,6 +36,8 @@ import { AgencyBoardComponent } from './modules/feature/request-details/componen
 import { SignpostComponent } from './modules/feature/request-details/components/signpost/signpost.component';
 import { DialogBoxComponent } from './modules/feature/request-details/components/dialog-box/dialog-box.component';
 import { VersionComponent } from './modules/feature/request-details/components/version/version.component';
+
+import { FullLuminousRequestComponent } from './modules/feature/create-request/components/full-luminous-request/full-luminous-request.component';
 
 @NgModule({
   declarations: [
@@ -54,13 +56,14 @@ import { VersionComponent } from './modules/feature/request-details/components/v
     UserDataComponent,
     EditUserDataComponent,
     RequestDetailsComponent,
-    CreateRequestComponent,
+    MainCreateRequestComponent,
     ColorClassDirective,
     PhoneMaskDirective,
     AgencyBoardComponent,
     SignpostComponent,
     DialogBoxComponent,
     VersionComponent,
+    FullLuminousRequestComponent
   ],
   imports: [
     BrowserModule,

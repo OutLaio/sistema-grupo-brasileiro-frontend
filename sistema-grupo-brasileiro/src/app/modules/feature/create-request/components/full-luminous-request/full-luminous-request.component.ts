@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
-  selector: 'app-create-request',
-  templateUrl: './create-request.component.html',
-  styleUrls: ['./create-request.component.css']
+  selector: 'app-full-luminous-request',
+  templateUrl: './full-luminous-request.component.html',
+  styleUrl: './full-luminous-request.component.css'
 })
-export class CreateRequestComponent implements OnInit {
+export class FullLuminousRequestComponent {
   registerForm!: FormGroup;
   availableCompanies = ['Rota Transportes', 'Brasileiro', 'Cidade Sol', 'Outra'];
 
