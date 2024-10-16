@@ -25,14 +25,15 @@ import { EditUserDataComponent } from './modules/core/profile/components/edit-us
 import { RequestDetailsComponent } from './modules/feature/request-details/component/request-details.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { ProfileRoutingModule } from './modules/core/profile/components/main-profile/profile-routing.module';
-import { CreateRequestComponent } from './modules/feature/create-request/component/create-request.component';
+import { MainCreateRequestComponent } from './modules/feature/create-request/components/main-create-request/main-create-request.component';
 
 import { NgScrollbarModule } from 'ngx-scrollbar';
 
 import { ColorClassDirective } from './modules/directives/colorClass/color-class.directive';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { PhoneMaskDirective } from './modules/directives/phone-mask/phone-mask.directive';
-
+import { FullLuminousRequestComponent } from './modules/feature/create-request/components/full-luminous-request/full-luminous-request.component';
+  
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,9 +51,10 @@ import { PhoneMaskDirective } from './modules/directives/phone-mask/phone-mask.d
     UserDataComponent,
     EditUserDataComponent,
     RequestDetailsComponent,
-    CreateRequestComponent,
+    MainCreateRequestComponent,
     ColorClassDirective,
-    PhoneMaskDirective
+    PhoneMaskDirective,
+    FullLuminousRequestComponent
   ],
   imports: [
     BrowserModule,
