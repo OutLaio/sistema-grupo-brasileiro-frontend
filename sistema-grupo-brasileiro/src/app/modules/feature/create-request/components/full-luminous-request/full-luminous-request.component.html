@@ -1,107 +1,84 @@
-<div class="d-flex flex-column align-items-center justify-content-center p-3 mb-4 border-bottom">
+<div class="d-flex flex-column p-3 mb-4">
     <form [formGroup]="registerForm" (ngSubmit)="submit()">
         <div class="row">
-            <div class="pt-3">
-                <input id="signLocation" formControlName="signLocation" type="text"
-                    class="form-focus border-0 border-bottom border-dark-subtle"
-                    placeholder="Local da Placa" required />
-            </div>
-
-            <div class="pt-3" formArrayName="dimensions">
-                <div *ngFor="let dimension of dimensions.controls; let i=index"
-                    class="input-group mb-2">
-                    <input [formControlName]="i" type="text"
-                        class="form-focus border-0 border-bottom border-dark-subtle"
-                        placeholder="Medida" />
-                    <button type="button" class="btn btn-danger"
-                        (click)="removeDimension(i)">-</button>
-                </div>
-                <button type="button" class="btn bg-color-system bg-hover text-white"
-                    (click)="addDimension()">Adicionar
-                    Medida</button>
-            </div>
-
-            <div class="pt-3">
-                <label>Tipo de Placa</label>
-                <div class="form-check custom-radio py-2">
-                    <input type="radio" id="backLight" formControlName="signType" value="Back light"
-                        class="form-check-input" />
-                    <label for="backLight" class="form-check-label">Back light (com luz)</label>
-                </div>
-                <div class="form-check custom-radio py-2">
-                    <input type="radio" id="frontLight" formControlName="signType"
-                        value="Front light" class="form-check-input" />
-                    <label for="frontLight" class="form-check-label">Front light (sem luz)</label>
+            <div class="col-12 col-md-5">
+                <div class="form-group pt-3">
+                    <label class="fw-bold" for="description">Descrição</label>
+                    <textarea id="description" formControlName="description" type="text"
+                        class="form-control border-dark-subtle rounded-3 form-focus"
+                        placeholder="Escreva a descrição da solicitação" required></textarea>
                 </div>
             </div>
 
-            <div class="pt-3">
-                <label>Material</label>
-                <div class="form-check custom-radio py-2">
-                    <input type="radio" id="letreiro" formControlName="materials" value="Letreiro"
-                        class="form-check-input" />
-                    <label for="letreiro" class="form-check-label">Letreiro (lona adesivada)</label>
-                </div>
-                <div class="form-check custom-radio py-2">
-                    <input type="radio" id="impressaoDigital" formControlName="materials"
-                        value="Impressão Digital" class="form-check-input" />
-                    <label for="impressaoDigital" class="form-check-label">Impressão Digital (Lona
-                        Totalmente Impressa)</label>
+            <div class="col-12 col-md-4">
+                <div class="form-group pt-3">
+                    <label class="fw-bold" for="signLocation">Local da Placa</label>
+                    <textarea id="signLocation" formControlName="signLocation" type="text"
+                        class="form-control border-dark-subtle rounded-3 form-focus"
+                        placeholder="Escreva a localização da placa" required></textarea>
                 </div>
             </div>
 
-            <div class="pt-3">
-                <label>Compartilhado com Alguma Empresa?</label>
-                <div class="form-check custom-radio py-2">
-                    <input type="radio" id="sharedYes" formControlName="sharedWithCompany"
-                        value="yes" class="form-check-input" />
-                    <label for="sharedYes" class="form-check-label">Sim</label>
-                </div>
-                <div class="form-check custom-radio py-2">
-                    <input type="radio" id="sharedNo" formControlName="sharedWithCompany" value="no"
-                        class="form-check-input" />
-                    <label for="sharedNo" class="form-check-label">Não</label>
-                </div>
-
-                <div *ngIf="registerForm.get('sharedWithCompany')?.value === 'yes'">
-                    <div class="pt-3">
-                        <label>Empresas Compartilhadas</label>
-                        <div formArrayName="sharedCompanies">
-                            <div *ngFor="let company of sharedCompanies.controls; let i=index"
-                                class="input-group mb-2">
-                                <input [formControlName]="i" type="text"
-                                    class="form-control border-0 border-bottom border-dark-subtle"
-                                    placeholder="Nome da Empresa" />
-                                <button type="button" class="btn btn-danger"
-                                    (click)="removeCompany(i)">-</button>
-                            </div>
+            <div class="col-12 col-md-3">
+                <div class="form-group pt-3" formArrayName="dimensions">
+                    <label class="fw-bold">Dimensões</label>
+                    <div *ngFor="let dimension of dimensions.controls; let i = index"
+                        class="d-flex align-items-center mb-2">
+                        <div class="">
+                            <label>
+                                Largura
+                            </label>
+                            <input id="height-{{i}}" [formControlName]="i" type="text"
+                                class="border border-dark-subtle rounded-3 me-2 w-100" placeholder="cm" />
                         </div>
-                        <button type="button" class="btn btn-primary"
-                            (click)="addCompany()">Adicionar Empresa</button>
-                    </div>
-                </div>
-
-                <div *ngIf="registerForm.get('sharedWithCompany')?.value === 'no'">
-                    <label>Empresa Compartilhada</label>
-                    <div class="custom-radio py-2" *ngFor="let company of availableCompanies">
-                        <input type="radio" [id]="company" formControlName="nonSharedCompany"
-                            [value]="company" />
-                        <label [for]="company">{{ company }}</label>
-                    </div>
-
-                    <div *ngIf="registerForm.get('nonSharedCompany')?.value === 'Outra'">
-                        <input formControlName="otherCompany" type="text"
-                            class="form-control border-0 border-bottom border-dark-subtle"
-                            placeholder="Nome da Empresa" />
+                        <div class="pt-4">
+                            <span class="mx-3">X</span>
+                        </div>
+                        <div>
+                            <label>
+                                Altura
+                            </label>
+                            <input id="width-{{i}}" [formControlName]="i" type="text"
+                                class="border border-dark-subtle rounded-3 me-2 w-100" placeholder="cm" />
+                        </div>
                     </div>
                 </div>
             </div>
-
         </div>
-        <div class="d-flex flex-column justify-content-center align-items-center pt-5">
-            <button type="submit" class="btn bg-color-system bg-hover text-white"
-                [disabled]="registerForm.invalid">Enviar</button>
+
+        <div class="row mt-5">
+            <div class="title">
+                <p class="fw-bold">Empresas</p>
+            </div>
+            <div class="row">
+                <div class="d-flex flex-wrap">
+                    <div class="form-check me-5">
+                        <input class="form-check-input" type="checkbox" id="rota" formControlName="rota">
+                        <label class="form-check-label fw-bold" for="rota">
+                            Rota
+                        </label>
+                    </div>
+                    <div class="form-check me-5 ms-5">
+                        <input class="form-check-input" type="checkbox" id="cidadeSol" formControlName="cidadeSol">
+                        <label class="form-check-label fw-bold" for="cidadeSol">
+                            Cidade Sol
+                        </label>
+                    </div>
+                    <div class="form-check me-5 ms-5">
+                        <input class="form-check-input" type="checkbox" id="brasileiro" formControlName="brasileiro">
+                        <label class="form-check-label fw-bold" for="brasileiro">
+                            Brasileiro
+                        </label>
+                    </div>
+                    <div class="form-check me-5 ms-5 d-flex">
+                        <input class="form-check-input" type="checkbox" id="other" formControlName="other">
+                        <label class="form-check-label fw-bold ms-2" for="other">
+                            Outra(as)
+                        </label>
+                        <input type="text" class="border border-dark-subtle rounded-3 ms-2" placeholder="Especificar" formControlName="otherText">
+                    </div>
+                </div>
+            </div>
         </div>
     </form>
-
 </div>

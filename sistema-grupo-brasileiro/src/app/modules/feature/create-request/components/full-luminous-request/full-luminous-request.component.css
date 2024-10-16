@@ -1,9 +1,5 @@
-.bg-color-system {
-    background-color: #027373;
-}
-
-.bg-color-menu{
-    background-color: #03A696;
+input[type=text], textarea[type=text] {
+    background-color: rgb(0, 0, 0, 0.06);
 }
 
 .form-focus:focus {
