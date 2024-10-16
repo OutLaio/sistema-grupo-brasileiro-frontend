@@ -1,0 +1,100 @@
+<div class="container">
+  <div class="d-flex  align-items-center justify-content-between">
+    <div>
+      <p class="h3 fw-bold"> {{ data.briefingType.description }} </p>
+      <p class="h5 px-2 fw-bold"> {{ data.type.description }} </p>
+    </div>
+    <div class="d-flex me-5 flex-column align-items-center">
+      <p class="h5 fw-bold">Data Prevista de Entrega</p>
+      <span class="h4 mb-0 px-5 py-2 fst-italic bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{
+        data.expectedTime | date : 'dd/MM/yyyy'}} </span>
+    </div>
+  </div>
+  <p class="h3 fw-bold mt-5">Informações da Placa</p>
+  <div class="mt-4">
+    <p class="h5 fw-bold">Local da Placa</p>
+    <p class="h5 mb-0 px-5 py-2 fst-italic bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{ data.boardLocation
+      }} </p>
+  </div>
+  <div class="mt-4">
+    <p class="h5 fw-bold">Descrição Detalhada</p>
+    <p class="h5 mb-0 px-5 py-2 fst-italic bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{
+      data.detailedDescription }}</p>
+  </div>
+  <div class="mt-4">
+    <p class="h5 fw-bold">Medidas</p>
+    <div class="d-flex">
+      <div>
+        <p class="h5 mb-0 fst-italic">Largura</p>
+        <p class="h5 mb-0 px-5 py-3 fst-italic bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{
+          data.measurements?.length }} cm</p>
+      </div>
+      <div class="d-flex align-items-end mx-3">
+        <p class="h5 fw-bold">X</p>
+      </div>
+      <div>
+        <div>
+          <p class="h5 mb-0 fst-italic">Altura</p>
+          <p class="h5 mb-0 px-5 py-3 fst-italic bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{
+            data.measurements?.height }} cm</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="mt-4">
+    <p class="h5 fw-bold">Empresas</p>
+    <div class="d-flex gap-3" *ngIf="data.companies?.length">
+      <p class="h5 mb-0 px-4 py-2 fst-italic bg-secondary rounded-3" style="--bs-bg-opacity: .2;"
+        *ngFor="let company of data.companies"> {{ company.name }} </p>
+      <p class="h5 mb-0 px-4 py-2 fst-italic bg-secondary rounded-3" style="--bs-bg-opacity: .2;"
+        *ngFor="let otherCompany of data.otherCompany"> {{ otherCompany }} </p>
+      </div>
+    </div>
+
+  <div class="mt-4">
+    <p class="h5 fw-bold">Itinerários</p>
+    <div *ngIf="data.routes?.length">
+      <div *ngFor="let company of data.companies" class="pb-4 border-bottom">
+        <p class="h5 fw-bold mt-4"> {{ company.name }} </p>
+        <div *ngFor="let route of data.routes" class="my-1">
+          <div *ngIf="route.company.idCompany == company.idCompany && route.type == 'main'" class="d-flex gap-3">
+            <p class="h5 mb-0 fst-italic d-flex align-items-center">Principais</p>
+            <div *ngFor="let city of route.cities">
+              <p class="h5 mb-0 px-4 py-2 fst-italic bg-secondary rounded-3" style="--bs-bg-opacity: .2;">
+                {{ city.name }} </p>
+            </div>
+          </div>
+          <div *ngIf="route.company.idCompany == company.idCompany && route.type == 'connection'" class="d-flex gap-3">
+            <p class="h5 mb-0 fst-italic d-flex align-items-center">Conexões</p>
+            <div *ngFor="let city of route.cities">
+              <p class="h5 mb-0 px-4 py-2 fst-italic bg-secondary rounded-3" style="--bs-bg-opacity: .2;">
+                {{ city.name }} </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div *ngIf="data.otherRoutes?.length">
+      <div *ngFor="let company of data.otherCompany" class="pb-4 border-bottom">
+        <p class="h5 fw-bold mt-4"> {{ company }} </p>
+        <div *ngFor="let route of data.otherRoutes" class="my-1">
+          <div *ngIf="route.company == company && route.type == 'main'" class="d-flex gap-3">
+            <p class="h5 mb-0 fst-italic d-flex align-items-center">Principais</p>
+            <div *ngFor="let city of route.cities">
+              <p class="h5 mb-0 px-4 py-2 fst-italic bg-secondary rounded-3" style="--bs-bg-opacity: .2;">
+                {{ city }} </p>
+            </div>
+          </div>
+          <div *ngIf="route.company == company && route.type == 'connection'" class="d-flex gap-3">
+            <p class="h5 mb-0 fst-italic d-flex align-items-center">Conexões</p>
+            <div *ngFor="let city of route.cities">
+              <p class="h5 mb-0 px-4 py-2 fst-italic bg-secondary rounded-3" style="--bs-bg-opacity: .2;">
+                {{ city }} </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

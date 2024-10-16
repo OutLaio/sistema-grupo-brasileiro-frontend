@@ -3,12 +3,12 @@
 }
 
 .card {
-    width: 100%;
+    width: 80vw;
     height: 85vh !important;
 }
 
 .card-scroll {
-    height: 75vh;
+    height: 80vh;
     overflow-y: auto;
 }
 
