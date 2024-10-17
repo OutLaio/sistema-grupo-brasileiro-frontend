@@ -34,6 +34,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { PhoneMaskDirective } from './modules/directives/phone-mask/phone-mask.directive';
 import { AgencyBoardComponent } from './modules/feature/request-details/components/agency-board/agency-board.component';
 import { SignpostComponent } from './modules/feature/request-details/components/signpost/signpost.component';
+import { DialogBoxComponent } from './modules/feature/request-details/components/dialog-box/dialog-box.component';
 
 @NgModule({
   declarations: [
@@ -56,7 +57,8 @@ import { SignpostComponent } from './modules/feature/request-details/components/
     ColorClassDirective,
     PhoneMaskDirective,
     AgencyBoardComponent,
-    SignpostComponent
+    SignpostComponent,
+    DialogBoxComponent
   ],
   imports: [
     BrowserModule,

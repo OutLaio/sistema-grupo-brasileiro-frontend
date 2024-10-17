@@ -1,0 +1,85 @@
+.shadow-custom {
+    box-shadow: 3px 4.5px 4px rgba(0, 0, 0, 0.3);
+}
+
+.bg-system {
+  background: #029982;
+}
+
+.card {
+    width: 30vw;
+    height: 80vh !important;
+}
+
+.card-scroll {
+    height: 70vh;
+    overflow-y: auto;
+}
+
+.scroll-bar::-webkit-scrollbar {
+    width: 12px;
+}
+
+.scroll-bar::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 10px;
+}
+
+.scroll-bar::-webkit-scrollbar-thumb {
+    background-color: #03A696;
+    border-radius: 10px;
+}
+
+.scroll-bar::-webkit-scrollbar-thumb:active {
+    background-color: #026d56;
+}
+
+.scroll-bar::-webkit-scrollbar-thumb:hover {
+    background-color: #029982;
+}
+
+/* Firefox */
+.scroll-bar {
+    scrollbar-width: thin;
+    scrollbar-color: #03A696 #f1f1f1;
+}
+
+.small-text {
+  font-size: 9px;
+}
+
+.your-message {
+  justify-content: end;
+}
+
+.your-message p {
+  background: #03A696;
+  color: white;
+}
+
+.your-message img {
+  order: 1;
+}
+
+.your-message div {
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.your-message span {
+  font-size: 0.9rem;
+}
+
+.their-message {
+  justify-content: start;
+}
+
+.their-message p {
+  background: #DFDFDF;
+  color: black;
+}
+
+.their-message span {
+  font-size: 0.9rem;
+}

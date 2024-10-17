@@ -13,7 +13,6 @@ import { ICompanyBriefing } from '../../interfaces/base-briefing/company-briefin
 import { IMeasurement } from '../../interfaces/base-briefing/measurement';
 import { ICity } from '../../interfaces/agency-board/city';
 
-
 @Component({
   selector: 'app-agency-board',
   templateUrl: './agency-board.component.html',
@@ -24,32 +23,37 @@ export class AgencyBoardComponent {
 
   constructor() {
     this.data = {
-      boardLocation: 'Board Location',
+      boardLocation: 'Petrolina Areia Branca - Agência 01',
       briefingType: {
         id: '1',
         description: 'Placa de Intinerários',
       } as IBriefingType,
-      detailedDescription: 'Detail description',
-      expectedTime: '12/12/2015',
-      observation: 'Observation',
+      detailedDescription:
+        '- Enviar foto do local (agência) com visão ampla;' +
+        '\n- Enviar sinalização na imagem de onde deve ser instalada a placa;',
+      expectedTime: '10/11/2024',
+      observation:
+        '- Painel com Adesivo para TV ou quadro decorativo (enviar fotos e medidas também);\n' +
+        '- Adesivo jateado ou perfurado para Vidro ou alguma outra área (enviar fotos e medidas também);',
       project: {
         id: '1',
         collaborator: {
           id: '1',
-          name: 'Collaborator',
-          lastname: 'Collaborator',
-          email: 'email@example.com',
+          name: 'Carlos',
+          lastname: 'Dias',
+          email: 'carlos.dias@example.com',
         } as IEmployee,
         client: {
           id: '1',
-          name: 'Client',
-          lastname: 'Client',
-          email: 'client@example.com',
+          name: 'Dan',
+          lastname: 'Souza',
+          email: 'dan.souza@example.com',
         } as IEmployee,
-        title: 'Project Title',
-        status: 'Status',
+        title: 'Placa de Intinerários - Luminoso Completo\n'+
+        'Petrolina Areia Branca - Agência 01',
+        status: 'Em Desenvolvimento',
       } as IProject,
-      startTime: '11/12/2015',
+      startTime: '16/10/2024',
       type: {
         id: '1',
         description: 'Luminoso Completo',
@@ -57,32 +61,32 @@ export class AgencyBoardComponent {
       companies: [
         {
           idCompany: '1',
-          name: 'Company 1',
+          name: 'Rota',
         } as ICompanyBriefing,
         {
           idCompany: '2',
-          name: 'Company 2',
+          name: 'Cidade Sol',
         } as ICompanyBriefing,
       ],
-      otherCompany: ['Other Company 1', 'Other Company 2'],
+      otherCompany: ['Águia Branca', 'Gontijo'],
       measurements: {
-        height: 10,
-        length: 20,
+        height: 34,
+        length: 120,
       } as IMeasurement,
       routes: [
         {
           company: {
             idCompany: '1',
-            name: 'Company 1',
+            name: 'Rota',
           } as ICompanyBriefing,
           cities: [
             {
               id: '1',
-              name: 'City 1',
+              name: 'Ilhéus',
             } as ICity,
             {
               id: '2',
-              name: 'City 2',
+              name: 'Salvador',
             } as ICity,
           ],
           type: 'main',
@@ -90,16 +94,16 @@ export class AgencyBoardComponent {
         {
           company: {
             idCompany: '1',
-            name: 'Company 1',
+            name: 'Rota',
           } as ICompanyBriefing,
           cities: [
             {
               id: '3',
-              name: 'City 3',
+              name: 'Itabuna',
             } as ICity,
             {
               id: '4',
-              name: 'City 4',
+              name: 'Salobrinho',
             } as ICity,
           ],
           type: 'connection',
@@ -107,16 +111,16 @@ export class AgencyBoardComponent {
         {
           company: {
             idCompany: '2',
-            name: 'Company 2',
+            name: 'Cidade Sol',
           } as ICompanyBriefing,
           cities: [
             {
               id: '1',
-              name: 'City 1',
+              name: 'Ilhéus',
             } as ICity,
             {
-              id: '2',
-              name: 'City 2',
+              id: '5',
+              name: 'Nanuque',
             } as ICity,
           ],
           type: 'main',
@@ -124,16 +128,16 @@ export class AgencyBoardComponent {
         {
           company: {
             idCompany: '2',
-            name: 'Company 2',
+            name: 'Cidade Sol',
           } as ICompanyBriefing,
           cities: [
             {
               id: '3',
-              name: 'City 3',
+              name: 'Itabuna',
             } as ICity,
             {
-              id: '4',
-              name: 'City 4',
+              id: '6',
+              name: 'Camacan',
             } as ICity,
           ],
           type: 'connection',
@@ -141,23 +145,23 @@ export class AgencyBoardComponent {
       ],
       otherRoutes: [
         {
-          company: 'Other Company 1',
-          cities: ['Other City 1', 'Other City 2'],
+          company: 'Águia Branca',
+          cities: ['Itabuna', 'Salvador'],
           type: 'main',
         },
         {
-          company: 'Other Company 1',
-          cities: ['Other City 3', 'Other City 4'],
+          company: 'Águia Branca',
+          cities: ['Gandu', 'Cruz das Almas'],
           type: 'connection',
         },
         {
-          company: 'Other Company 2',
-          cities: ['Other City 1', 'Other City 2'],
+          company: 'Gontijo',
+          cities: ['Salvador', 'São Paulo'],
           type: 'main',
         },
         {
-          company: 'Other Company 2',
-          cities: ['Other City 3', 'Other City 4'],
+          company: 'Gontijo',
+          cities: ['Itabuna', 'Vitória'],
           type: 'connection',
         },
       ],
