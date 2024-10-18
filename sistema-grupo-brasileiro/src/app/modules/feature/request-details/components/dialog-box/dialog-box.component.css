@@ -1,9 +1,12 @@
+
+
+
 .shadow-custom {
     box-shadow: 3px 4.5px 4px rgba(0, 0, 0, 0.3);
 }
 
 .bg-system {
-  background: #029982;
+  background: var(--primary-color);
 }
 
 .card {
@@ -53,7 +56,7 @@
 }
 
 .your-message p {
-  background: #03A696;
+  background: var(--primary-color);
   color: white;
 }
 
@@ -82,4 +85,18 @@
 
 .their-message span {
   font-size: 0.9rem;
+}
+
+.btn-bd-primary {
+  --bs-btn-font-weight: 600;
+  --bs-btn-color: white;
+  --bs-btn-bg: var(--primary-color);
+  --bs-btn-border-color: var(--primary-color);
+  --bs-btn-hover-color: white;
+  --bs-btn-hover-bg: #029982;
+  --bs-btn-hover-border-color: #029982;
+  --bs-btn-focus-shadow-rgb: var(--primary-color);
+  --bs-btn-active-color: white;
+  --bs-btn-active-bg: #026d56;
+  --bs-btn-active-border-color: #026d56;
 }

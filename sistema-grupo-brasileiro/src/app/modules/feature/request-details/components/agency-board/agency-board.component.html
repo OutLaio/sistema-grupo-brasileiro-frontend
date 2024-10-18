@@ -4,11 +4,18 @@
       <p class="h3 fw-bold text-exo"> {{ data.briefingType.description }} </p>
       <p class="h5 px-2 fw-bold text-exo"> {{ data.type.description }} </p>
     </div>
-    <div class="d-flex me-5 flex-column align-items-center">
+    <div class="d-flex flex-column align-items-center">
       <p class="h5 fw-bold text-exo">Data Prevista de Entrega</p>
       <span class="h5 text-exo mb-0 px-4 py-2 fst-italic bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{
         data.expectedTime | date : 'dd/MM/yyyy'}} </span>
     </div>
+  </div>
+  <div class="mt-4 border-bottom">
+    <p class="h3 text-exo fw-bold">Versões</p>
+    <div class="d-flex gap-5">
+      <p class="h5 text-exo fw-bold">Ainda não há versões para este projeto!</p>
+    </div>
+
   </div>
   <p class="h3 text-exo fw-bold mt-3">Informações da Placa</p>
   <div class="mt-4">
