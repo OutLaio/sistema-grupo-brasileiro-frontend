@@ -1,80 +1,71 @@
 import { Component } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-full-luminous-request',
   templateUrl: './full-luminous-request.component.html',
-  styleUrl: './full-luminous-request.component.css'
+  styleUrls: ['./full-luminous-request.component.css']
 })
 export class FullLuminousRequestComponent {
-  registerForm!: FormGroup;
-  availableCompanies = ['Rota Transportes', 'Brasileiro', 'Cidade Sol', 'Outra'];
+  registerForm: FormGroup;
+  isSingleCompany: boolean = false;
+  selectedCompanyName: string | null = null;
 
-  constructor(private fb: FormBuilder) { }
-
-  ngOnInit(): void {
+  constructor(private fb: FormBuilder) {
     this.registerForm = this.fb.group({
+      description: ['', Validators.required],
       signLocation: ['', Validators.required],
-      dimensions: this.fb.array([this.fb.control('')]),
-      signType: ['', Validators.required],
-      materials: ['', Validators.required],
-      sharedWithCompany: ['', Validators.required],
-      sharedCompanies: this.fb.array([]),
-      nonSharedCompany: [''],
-      otherCompany: [''],
+      singleCompany: [null],
+      selectedCompany: [null],
+      otherText: [''],
+      mainRoute: [null],
+      connections: [null],
     });
-
-    this.onChanges();
+  }
+  onCompanyChange(type: string) {
+    this.isSingleCompany = (type === 'single');
+    this.selectedCompanyName = null;
+    if (!this.isSingleCompany) {
+      this.registerForm.patchValue({ selectedCompany: null, otherText: '' });
+    }
   }
 
-  get dimensions(): FormArray {
-    return this.registerForm.get('dimensions') as FormArray;
+  updateCompanyName(company: string) {
+    this.selectedCompanyName = company;
   }
 
-  addDimension() {
-    this.dimensions.push(this.fb.control(''));
+  onOtherCompany() {
+    this.selectedCompanyName = null;
+    this.registerForm.get('otherText')?.setValue('');
   }
 
-  removeDimension(index: number) {
-    this.dimensions.removeAt(index);
+  updateOtherCompany() {
+    const otherValue = this.registerForm.get('otherText')?.value;
+    this.selectedCompanyName = otherValue;
   }
 
-  get sharedCompanies(): FormArray {
-    return this.registerForm.get('sharedCompanies') as FormArray;
+  confirmCompany() {
+    const selectedCompany = this.registerForm.get('selectedCompany')?.value;
+
+    if (selectedCompany === 'Outro') {
+      this.selectedCompanyName = this.registerForm.get('otherText')?.value;
+    } else {
+      this.selectedCompanyName = selectedCompany;
+    }
+
   }
 
-  addCompany() {
-    this.sharedCompanies.push(this.fb.control(''));
+  addMainRoute() {
+    console.log("Adicionar nova rota principal");
   }
 
-  removeCompany(index: number) {
-    this.sharedCompanies.removeAt(index);
-  }
-
-  onChanges(): void {
-    this.registerForm.get('sharedWithCompany')?.valueChanges.subscribe(value => {
-      if (value === 'yes') {
-        this.registerForm.get('nonSharedCompany')?.clearValidators();
-        this.registerForm.get('sharedCompanies')?.setValidators(Validators.required);
-        this.registerForm.get('sharedCompanies')?.updateValueAndValidity();
-      } else if (value === 'no') {
-        this.registerForm.get('nonSharedCompany')?.setValidators(Validators.required);
-        this.registerForm.get('sharedCompanies')?.clearValidators();
-        this.registerForm.get('sharedCompanies')?.updateValueAndValidity();
-      }
-    });
-
-    this.registerForm.get('nonSharedCompany')?.valueChanges.subscribe(value => {
-      if (value === 'Outra') {
-        this.registerForm.get('otherCompany')?.setValidators(Validators.required);
-      } else {
-        this.registerForm.get('otherCompany')?.clearValidators();
-      }
-      this.registerForm.get('otherCompany')?.updateValueAndValidity();
-    });
+  addConnection() {
+    console.log("Adicionar nova conexão");
   }
 
   submit() {
-    console.log(this.registerForm.value);
+    if (this.registerForm.valid) {
+      console.log(this.registerForm.value);
+    }
   }
 }

@@ -31,6 +31,11 @@ input[type=text], textarea[type=text] {
     width: 78vw; 
 }
 
+.form-select {
+    width: 10rem;
+}
+
+
 .scroll-bar::-webkit-scrollbar {
     width: 12px;
 }
