@@ -16,6 +16,9 @@ export class FullLuminousRequestComponent {
   mainRoutes: string[] = ['Salvador', 'Feira de Santana', 'Capim Grosso', 'Juazeiro', 'Irecê', 'Xique Xique', 'Barra'];
   connections: string[] = ['Jacobina', 'Itabuna', 'Porto Seguro', 'Ilhéus', 'Eunápolis', 'Maracas', 'Jequié', 'Vt. Conquistas', 'Eunápolis'];
 
+  addedMainRoutes: string[] = [];
+  addedConnections: string[] = [];
+
   constructor(private fb: FormBuilder) {
     this.registerForm = this.fb.group({
       description: ['', Validators.required],
