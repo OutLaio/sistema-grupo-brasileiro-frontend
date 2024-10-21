@@ -4,7 +4,7 @@
             <div class="col-12 col-md-5">
                 <div class="form-group pt-3">
                     <label class="fw-bold" for="description">Descrição</label>
-                    <textarea id="description" formControlName="description" type="text"
+                    <textarea [backgroundColorClass]="'#b4b4b4'" id="description" formControlName="description" type="text"
                         class="form-control border-dark-subtle rounded-3 form-focus"
                         placeholder="Escreva a descrição da solicitação" required></textarea>
                 </div>
@@ -13,7 +13,7 @@
             <div class="col-12 col-md-4">
                 <div class="form-group pt-3">
                     <label class="fw-bold" for="signLocation">Local da Placa</label>
-                    <textarea id="signLocation" formControlName="signLocation" type="text"
+                    <textarea [backgroundColorClass]="'#b4b4b4'" id="signLocation" formControlName="signLocation" type="text"
                         class="form-control border-dark-subtle rounded-3 form-focus"
                         placeholder="Escreva a localização da placa" required></textarea>
                 </div>
@@ -22,14 +22,13 @@
             <div class="col-12 col-md-3">
                 <div class="form-group pt-3" formArrayName="dimensions">
                     <label class="fw-bold">Dimensões</label>
-                    <div *ngFor="let dimension of dimensions.controls; let i = index"
-                        class="d-flex align-items-center mb-2">
+                    <div class="d-flex align-items-center mb-2">
                         <div class="">
                             <label>
                                 Largura
                             </label>
-                            <input id="height-{{i}}" [formControlName]="i" type="text"
-                                class="border border-dark-subtle rounded-3 me-2 w-100" placeholder="cm" />
+                            <input [backgroundColorClass]="'#b4b4b4'" type="text" class="border border-dark-subtle rounded-3 me-2 w-100"
+                                placeholder="cm" />
                         </div>
                         <div class="pt-4">
                             <span class="mx-3">X</span>
@@ -38,8 +37,8 @@
                             <label>
                                 Altura
                             </label>
-                            <input id="width-{{i}}" [formControlName]="i" type="text"
-                                class="border border-dark-subtle rounded-3 me-2 w-100" placeholder="cm" />
+                            <input [backgroundColorClass]="'#b4b4b4'" type="text" class="border border-dark-subtle rounded-3 me-2 w-100"
+                                placeholder="cm" />
                         </div>
                     </div>
                 </div>
@@ -53,32 +52,99 @@
             <div class="row">
                 <div class="d-flex flex-wrap">
                     <div class="form-check me-5">
-                        <input class="form-check-input" type="checkbox" id="rota" formControlName="rota">
-                        <label class="form-check-label fw-bold" for="rota">
-                            Rota
+                        <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="singleCompany"
+                            formControlName="singleCompany" (change)="onCompanyChange('single')" value="true">
+                        <label class="form-check-label" for="singleCompany">
+                            Compartilhamento com uma empresa
                         </label>
                     </div>
                     <div class="form-check me-5 ms-5">
-                        <input class="form-check-input" type="checkbox" id="cidadeSol" formControlName="cidadeSol">
-                        <label class="form-check-label fw-bold" for="cidadeSol">
-                            Cidade Sol
+                        <input [borderColorClass]="'#027373'" class="form-check-input" type="radio"
+                            id="multipleCompanies" formControlName="singleCompany"
+                            (change)="onCompanyChange('multiple')" value="false">
+                        <label class="form-check-label" for="multipleCompanies">
+                            Compartilhamento com várias empresas
                         </label>
-                    </div>
-                    <div class="form-check me-5 ms-5">
-                        <input class="form-check-input" type="checkbox" id="brasileiro" formControlName="brasileiro">
-                        <label class="form-check-label fw-bold" for="brasileiro">
-                            Brasileiro
-                        </label>
-                    </div>
-                    <div class="form-check me-5 ms-5 d-flex">
-                        <input class="form-check-input" type="checkbox" id="other" formControlName="other">
-                        <label class="form-check-label fw-bold ms-2" for="other">
-                            Outra(as)
-                        </label>
-                        <input type="text" class="border border-dark-subtle rounded-3 ms-2" placeholder="Especificar" formControlName="otherText">
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div *ngIf="isSingleCompany" class="row mt-5">
+            <div class="title">
+                <p class="fw-bold">Selecione a Empresa</p>
+            </div>
+            <div class="d-flex flex-wrap">
+                <div class="form-check me-5">
+                    <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="rota"
+                        formControlName="selectedCompany" value="Rota" (change)="updateCompanyName('Rota Transportes')">
+                    <label class="form-check-label" for="rota">Rota Transportes</label>
+                </div>
+                <div class="form-check me-5 ms-5">
+                    <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="cidadeSol"
+                        formControlName="selectedCompany" value="Cidade Sol" (change)="updateCompanyName('Cidade Sol')">
+                    <label class="form-check-label" for="cidadeSol">Cidade Sol</label>
+                </div>
+                <div class="form-check me-5 ms-5">
+                    <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="brasileiro"
+                        formControlName="selectedCompany" value="Brasileiro" (change)="updateCompanyName('Brasileiro')">
+                    <label class="form-check-label" for="brasileiro">Brasileiro</label>
+                </div>
+                <div class="d-flex form-check me-5 ms-5 d-flex">
+                    <div>
+                        <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="other"
+                            formControlName="selectedCompany" value="Outro" (change)="onOtherCompany()">
+                        <label class="form-check-label ms-2" for="other">Outra(s)</label>
+                        <input *ngIf="registerForm.get('selectedCompany')?.value === 'Outro'" type="text"
+                            class="border border-dark-subtle rounded-3 ms-2 me-2" placeholder="Especificar empresa"
+                            formControlName="otherText" (change)="updateOtherCompany()">
+                    </div>
+                    <div>
+
+                        <button [backgroundColorClass]="'#027373'"
+                            *ngIf="registerForm.get('selectedCompany')?.value === 'Outro'" type="button"
+                            class="btn text-white" (click)="confirmCompany()">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div *ngIf="selectedCompanyName" class="row mt-5">
+            <div>
+                <p class="fw-bold">Itinerário</p>
+            </div>
+            <div>
+                <div>
+                    <p>{{ selectedCompanyName }}</p>
+                </div>
+                <div class="mb-3">
+                    <div class="d-flex align-items-center">
+                        <label class="fw-bold me-3" for="mainRoute">Principais:</label>
+                        <select [backgroundColorClass]="'#b4b4b4'" id="mainRoute" class="form-select border-dark-subtle rounded-3 form-focus me-2" formControlName="mainRoute">
+                            <option value="Principal1">Principal 1</option>
+                            <option value="Principal2">Principal 2</option>
+                            <option value="Principal3">Principal 3</option>
+                        </select>
+                        <button [backgroundColorClass]="'#027373'" type="button" class="btn text-white" (click)="addMainRoute()">+</button>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <div class="d-flex">
+                        <label class="fw-bold me-3" for="connections">Conexões:</label>
+                        <select [backgroundColorClass]="'#b4b4b4'" id="connections" class="form-select border-dark-subtle rounded-3 form-focus me-2" formControlName="connections">
+                            <option value="Conexao1">Conexão 1</option>
+                            <option value="Conexao2">Conexão 2</option>
+                            <option value="Conexao3">Conexão 3</option>
+                        </select>
+                        <button [backgroundColorClass]="'#027373'" type="button" class="btn text-white" (click)="addConnection()">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <button [backgroundColorClass]="'#027373'" type="submit" class="btn text-white">Enviar</button>
         </div>
     </form>
 </div>
