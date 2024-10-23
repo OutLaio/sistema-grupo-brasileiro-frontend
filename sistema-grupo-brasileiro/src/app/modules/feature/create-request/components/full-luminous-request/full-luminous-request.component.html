@@ -20,25 +20,23 @@
             </div>
 
             <div class="col-12 col-md-3">
-                <div class="form-group pt-3" formArrayName="dimensions">
+                <div class="form-group pt-3">
                     <label class="fw-bold">Medida</label>
                     <div class="d-flex align-items-center mb-2">
-                        <div class="">
-                            <label>
-                                Largura
-                            </label>
+                        <div>
+                            <label>Largura</label>
                             <input [backgroundColorClass]="'#e4e4e4'" type="text"
-                                class="border border-dark-subtle rounded-3 me-2 w-100" placeholder="cm" />
+                                class="border border-dark-subtle rounded-3 me-2 w-100" placeholder="cm"
+                                formControlName="width" />
                         </div>
                         <div class="pt-4">
                             <span class="mx-3">X</span>
                         </div>
                         <div>
-                            <label>
-                                Altura
-                            </label>
+                            <label>Altura</label>
                             <input [backgroundColorClass]="'#e4e4e4'" type="text"
-                                class="border border-dark-subtle rounded-3 me-2 w-100" placeholder="cm" />
+                                class="border border-dark-subtle rounded-3 me-2 w-100" placeholder="cm"
+                                formControlName="height" />
                         </div>
                     </div>
                 </div>
@@ -54,18 +52,14 @@
                     <label class="me-3">Compartilhado com outras empresas: </label>
                     <div class="form-check me-5">
                         <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="singleCompany"
-                            formControlName="singleCompany" (change)="onCompanyChange('multiple')" value="true">
-                        <label class="form-check-label" for="singleCompany">
-                            Sim
-                        </label>
+                            formControlName="sharedCompany" (change)="onCompanyChange('multiple')" value="true">
+                        <label class="form-check-label" for="singleCompany">Sim</label>
                     </div>
                     <div class="form-check">
                         <input [borderColorClass]="'#027373'" class="form-check-input" type="radio"
-                            id="multipleCompanies" formControlName="multipleCompany"
-                            (change)="onCompanyChange('single')" value="false">
-                        <label class="form-check-label" for="multipleCompanies">
-                            Não
-                        </label>
+                            id="multipleCompanies" formControlName="sharedCompany" (change)="onCompanyChange('single')"
+                            value="false">
+                        <label class="form-check-label" for="multipleCompanies">Não</label>
                     </div>
                 </div>
             </div>
@@ -112,7 +106,7 @@
 
         <div *ngIf="!isSingleCompany" class="row mt-5 border-bottom pb-4">
             <div class="title">
-                <p class="fw-bold">Selecione a Empresa</p>
+                <p class="fw-bold">Selecione as Empresas</p>
             </div>
             <div class="d-flex flex-wrap">
                 <div class="form-check me-5">
@@ -150,32 +144,34 @@
         </div>
 
 
-        <div *ngIf="isSingleCompany" class="row mt-5 border-bottom pb-4">
+        <div *ngIf="selectedCompanies" class="row mt-5 border-bottom pb-4">
             <div>
                 <p class="fw-bold">Itinerário</p>
             </div>
-            <div *ngFor="let companie of selectedCompanies">
+            <div *ngFor="let company of selectedCompanies">
                 <div>
-                    <p>{{ companie.name }}</p>
+                    <p>{{ company.name }}</p>
                 </div>
                 <div class="mb-3">
                     <div class="d-flex align-items-center">
                         <div>
-
                             <label class="fw-bold me-3" for="mainRoute">Principais:</label>
                         </div>
-                        <div *ngFor="let routeAdded of companie.mainRoutes" class="me-2">
-                            <span [backgroundColorClass]="'#e4e4e4'"
-                                class="me-2 p-2 border boder-dark-sublte rounded-3">{{ routeAdded }}</span>
+                        <div *ngFor="let routeAdded of company.mainRoutes" class="me-2">
+                            <div [backgroundColorClass]="'#e4e4e4'" class="border boder-dark-sublte rounded-3">
+                                <span class="p-3 ">{{ routeAdded }} </span>
+                                <button [backgroundColorClass]="'#ff6f6f'" class="border-0 rounded-end text-white px-2"
+                                    (click)="removeMainRoute(company.name, routeAdded)"> - </button>
+                            </div>
                         </div>
                         <div class="d-flex ms-2">
                             <select [backgroundColorClass]="'#e4e4e4'" id="mainRoute"
-                                class="form-select border-dark-subtle rounded-3 form-focus me-2"
+                                class="form-select border-dark-subtle rounded-3 form-focus me-2 w-100"
                                 formControlName="mainRoute">
                                 <option *ngFor="let route of mainRoutes" [value]="route">{{ route }}</option>
                             </select>
                             <button [backgroundColorClass]="'#027373'" type="button" class="btn text-white"
-                                (click)="addMainRoute()">+</button>
+                                (click)="addMainRoute(company.name)">+</button>
                         </div>
                     </div>
                 </div>
@@ -186,20 +182,23 @@
                         <div>
                             <label class="fw-bold me-3" for="connections">Conexões:</label>
                         </div>
-                        <div *ngFor="let connectionAdded of companie.connections" class="me-2">
-                            <span [backgroundColorClass]="'#e4e4e4'"
-                                class="me-2 p-2 border boder-dark-sublte rounded-3">{{ connectionAdded }}</span>
+                        <div *ngFor="let connectionAdded of company.connections" class="me-2">
+                            <div [backgroundColorClass]="'#e4e4e4'" class="border boder-dark-sublte rounded-3">
+                                <span class="p-3 ">{{ connectionAdded }} </span>
+                                <button [backgroundColorClass]="'#ff6f6f'" class="border-0 rounded-end text-white px-2"
+                                    (click)="removeConnection(company.name, connectionAdded)"> - </button>
+                            </div>
                         </div>
                         <div class="d-flex ms-2">
                             <select [backgroundColorClass]="'#e4e4e4'" id="connections"
-                                class="form-select border-dark-subtle rounded-3 form-focus me-2"
+                                class="form-select border-dark-subtle rounded-3 form-focus me-2 w-100"
                                 formControlName="connections">
                                 <option *ngFor="let connection of connections" [value]="connection">{{ connection }}
                                 </option>
                             </select>
                         </div>
                         <button [backgroundColorClass]="'#027373'" type="button" class="btn text-white"
-                            (click)="addConnection()">+</button>
+                            (click)="addConnection(company.name)">+</button>
                     </div>
                 </div>
             </div>
