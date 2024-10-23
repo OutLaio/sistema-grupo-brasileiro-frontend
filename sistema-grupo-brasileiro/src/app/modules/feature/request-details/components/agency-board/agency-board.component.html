@@ -1,85 +1,85 @@
-<div class="container">
+<div class="container mt-2">
   <div class="d-flex align-items-center justify-content-between pb-4 border-bottom">
     <div>
-      <p class="h3 fw-bold text-exo"> {{ data.briefingType.description }} </p>
-      <p class="h5 px-2 fw-bold text-exo"> {{ data.type.description }} </p>
+      <p class="h5 text-center mb-1 fw-bold text-exo"> {{ data.briefingType.description }} </p>
+      <p class="text-center mb-1 fw-bold text-exo"> {{ data.type.description }} </p>
     </div>
     <div class="d-flex flex-column align-items-center">
-      <p class="h5 fw-bold text-exo">Data Prevista de Entrega</p>
-      <span class="h5 text-exo mb-0 px-4 py-2 fst-italic bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{
+      <p class="fw-bold mb-1 text-exo">Data Prevista de Entrega</p>
+      <span class="text-exo mb-0 px-3 py-2 fst-italic bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{
         data.expectedTime | date : 'dd/MM/yyyy'}} </span>
     </div>
   </div>
   <div class="mt-4 border-bottom">
-    <p class="h3 text-exo fw-bold">Versões</p>
+    <p class="text-exo fw-bold">Versões</p>
     <div class="d-flex gap-5">
-      <p class="h5 text-exo fw-bold">Ainda não há versões para este projeto!</p>
+      <p class="small-text text-exo ">Ainda não há versões para este projeto!</p>
     </div>
 
   </div>
-  <p class="h3 text-exo fw-bold mt-3">Informações da Placa</p>
+  <p class="text-exo fw-bold mt-3">Informações da Placa</p>
   <div class="mt-4">
-    <p class="h5 text-exo fw-bold">Local da Placa</p>
-    <p class="h6 text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{ data.boardLocation
+    <p class="text-exo fw-bold">Local da Placa</p>
+    <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{ data.boardLocation
       }} </p>
   </div>
   <div class="mt-4">
-    <p class="h5 text-exo fw-bold">Descrição Detalhada</p>
-    <p class="h6 text-exo mb-0 px-4 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{
+    <p class="text-exo fw-bold">Descrição Detalhada</p>
+    <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{
       data.detailedDescription }}</p>
   </div>
   <div class="mt-4">
-    <p class="h5 text-exo fw-bold">Medidas</p>
+    <p class="text-exo fw-bold">Medidas</p>
     <div class="d-flex">
       <div>
-        <p class="h6 text-exo mb-0 fst-italic">Largura</p>
-        <p class="h6 text-exo mb-0 px-4 py-3 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{
+        <p class="small-text text-exo mb-0 fst-italic">Largura</p>
+        <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{
           data.measurements?.length }} cm</p>
       </div>
       <div class="d-flex align-items-end mx-3">
-        <p class="h6 text-exo fw-bold">X</p>
+        <p class="small-text text-exo fw-bold">X</p>
       </div>
       <div>
         <div>
-          <p class="h6 text-exo mb-0 fst-italic">Altura</p>
-          <p class="h6 text-exo mb-0 px-4 py-3 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{
+          <p class="small-text text-exo mb-0 fst-italic">Altura</p>
+          <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{
             data.measurements?.height }} cm</p>
         </div>
       </div>
     </div>
   </div>
   <div class="mt-4">
-    <p class="h5 text-exo fw-bold">Empresas</p>
+    <p class="text-exo fw-bold">Empresas</p>
     <div class="d-flex gap-3" *ngIf="data.companies?.length">
-      <p class="h6 text-exo mb-0 px-4 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"
+      <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"
         *ngFor="let company of data.companies"> {{ company.name }} </p>
-      <p class="h6 text-exo mb-0 px-4 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"
+      <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"
         *ngFor="let otherCompany of data.otherCompany"> {{ otherCompany }} </p>
     </div>
   </div>
 
   <div class="mt-4">
-    <p class="h5 text-exo fw-bold">Itinerários</p>
+    <p class="text-exo fw-bold">Itinerários</p>
     <div *ngIf="data.routes?.length">
       <div *ngFor="let company of data.companies" class="pb-4 border-bottom">
-        <p class="h5 mb-0 text-exo fw-bold mt-4"> {{ company.name }} </p>
+        <p class="mb-0 text-exo fw-bold mt-4"> {{ company.name }} </p>
         <div *ngFor="let route of data.routes" class="my-1">
           <div *ngIf="route.company.idCompany == company.idCompany && route.type == 'main'"
             class="d-flex flex-column gap-1">
-            <p class="h6 text-exo mt-3 mb-0 d-flex align-items-center">Principais</p>
+            <p class="text-exo mt-3 mb-0 d-flex align-items-center">Principais</p>
             <div class="d-flex gap-3">
               <div *ngFor="let city of route.cities">
-                <p class="h6 text-exo mb-0 px-4 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;">
+                <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;">
                   {{ city.name }} </p>
               </div>
             </div>
           </div>
           <div *ngIf="route.company.idCompany == company.idCompany && route.type == 'connection'"
             class="d-flex flex-column gap-1">
-            <p class="h6 text-exo mt-3 mb-0 d-flex align-items-center">Conexões</p>
+            <p class="text-exo mt-3 mb-0 d-flex align-items-center">Conexões</p>
             <div class="d-flex gap-3">
               <div *ngFor="let city of route.cities">
-                <p class="h6 text-exo mb-0 px-4 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;">
+                <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;">
                   {{ city.name }} </p>
               </div>
             </div>
@@ -90,22 +90,22 @@
 
     <div *ngIf="data.otherRoutes?.length">
       <div *ngFor="let company of data.otherCompany" class="pb-4 border-bottom">
-        <p class="h5 text-exo fw-bold mt-4"> {{ company }} </p>
+        <p class="text-exo fw-bold mt-4"> {{ company }} </p>
         <div *ngFor="let route of data.otherRoutes" class="my-1">
           <div *ngIf="route.company == company && route.type == 'main'" class="d-flex flex-column gap-1">
-            <p class="h6 text-exo mb-0 d-flex align-items-center">Principais</p>
+            <p class="text-exo mb-0 d-flex align-items-center">Principais</p>
             <div class="d-flex gap-3">
               <div *ngFor="let city of route.cities">
-                <p class="h6 text-exo mb-0 px-4 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;">
+                <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;">
                   {{ city }} </p>
               </div>
             </div>
           </div>
           <div *ngIf="route.company == company && route.type == 'connection'" class="d-flex flex-column gap-1">
-            <p class="h6 text-exo mb-0 d-flex align-items-center">Conexões</p>
+            <p class="text-exo mb-0 d-flex align-items-center">Conexões</p>
             <div class="d-flex gap-3">
               <div *ngFor="let city of route.cities">
-                <p class="h6 text-exo mb-0 px-4 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;">
+                <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;">
                   {{ city }} </p>
               </div>
             </div>
@@ -115,8 +115,8 @@
     </div>
   </div>
   <div class="mt-4">
-    <p class="h5 text-exo fw-bold">Observações</p>
-    <p class="h6 text-exo mb-0 px-4 py-3 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{
+    <p class="text-exo fw-bold">Observações</p>
+    <p class="small-text text-exo mb-0 px-4 py-3 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{
       data.observation }}</p>
   </div>
 </div>

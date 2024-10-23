@@ -100,3 +100,7 @@
   --bs-btn-active-bg: #026d56;
   --bs-btn-active-border-color: #026d56;
 }
+
+.text-conversation {
+  font-size: 13px;
+}

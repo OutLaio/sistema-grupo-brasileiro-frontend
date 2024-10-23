@@ -3,3 +3,7 @@
 .text-exo {
   font-family: "Exo" !important;
 }
+
+.small-text {
+  font-size: 12px;
+}
