@@ -44,7 +44,7 @@
                 </div>
             </div>
         </div>
-        
+
         <div class="row mt-5">
             <div class="title">
                 <p class="fw-bold">Empresas</p>
@@ -61,8 +61,8 @@
                     </div>
                     <div class="form-check">
                         <input [borderColorClass]="'#027373'" class="form-check-input" type="radio"
-                            id="multipleCompanies" formControlName="singleCompany" (change)="onCompanyChange('single')"
-                            value="false">
+                            id="multipleCompanies" formControlName="multipleCompany"
+                            (change)="onCompanyChange('single')" value="false">
                         <label class="form-check-label" for="multipleCompanies">
                             Não
                         </label>
@@ -77,25 +77,25 @@
             </div>
             <div class="d-flex flex-wrap">
                 <div class="form-check me-5">
-                    <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="rota"
-                        formControlName="selectedCompany" value="Rota" (change)="updateCompanyName('Rota Transportes')">
-                    <label class="form-check-label" for="rota">Rota Transportes</label>
+                    <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="rotaSingle"
+                        formControlName="selectedCompany" (change)="updateCompanyName(1, 'Rota Transportes')">
+                    <label class="form-check-label" for="rotaSingle">Rota Transportes</label>
                 </div>
                 <div class="form-check me-5 ms-5">
-                    <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="cidadeSol"
-                        formControlName="selectedCompany" value="Cidade Sol" (change)="updateCompanyName('Cidade Sol')">
-                    <label class="form-check-label" for="cidadeSol">Cidade Sol</label>
+                    <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="cidadeSolSingle"
+                        formControlName="selectedCompany" (change)="updateCompanyName(1, 'Cidade Sol')">
+                    <label class="form-check-label" for="cidadeSolSingle">Cidade Sol</label>
                 </div>
                 <div class="form-check me-5 ms-5">
-                    <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="brasileiro"
-                        formControlName="selectedCompany" value="Brasileiro" (change)="updateCompanyName('Brasileiro')">
-                    <label class="form-check-label" for="brasileiro">Brasileiro</label>
+                    <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="brasileiroSingle"
+                        formControlName="selectedCompany" (change)="updateCompanyName(1, 'Brasileiro')">
+                    <label class="form-check-label" for="brasileiroSingle">Brasileiro</label>
                 </div>
                 <div class="d-flex form-check me-5 ms-5 d-flex">
                     <div>
-                        <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="other"
+                        <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="otherSingle"
                             formControlName="selectedCompany" value="Outro" (change)="onOtherCompany()">
-                        <label class="form-check-label ms-2" for="other">Outra(s)</label>
+                        <label class="form-check-label ms-2" for="otherSingle">Outra(s)</label>
                         <input *ngIf="registerForm.get('selectedCompany')?.value === 'Outro'" type="text"
                             class="border border-dark-subtle rounded-3 ms-2 me-2" placeholder="Especificar empresa"
                             formControlName="otherText" (change)="updateOtherCompany()">
@@ -110,14 +110,53 @@
             </div>
         </div>
 
+        <div *ngIf="!isSingleCompany" class="row mt-5 border-bottom pb-4">
+            <div class="title">
+                <p class="fw-bold">Selecione a Empresa</p>
+            </div>
+            <div class="d-flex flex-wrap">
+                <div class="form-check me-5">
+                    <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox" id="rotaMulti"
+                        formControlName="selectedCompany" (change)="updateCompanyName(2, 'Rota Transportes')">
+                    <label class="form-check-label" for="rotaMulti">Rota Transportes</label>
+                </div>
+                <div class="form-check me-5 ms-5">
+                    <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox" id="cidadeSolMulti"
+                        formControlName="selectedCompany" (change)="updateCompanyName(2, 'Cidade Sol')">
+                    <label class="form-check-label" for="cidadeSolMulti">Cidade Sol</label>
+                </div>
+                <div class="form-check me-5 ms-5">
+                    <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox" id="brasileiroMulti"
+                        formControlName="selectedCompany" (change)="updateCompanyName(2, 'Brasileiro')">
+                    <label class="form-check-label" for="brasileiroMulti">Brasileiro</label>
+                </div>
+                <div class="d-flex form-check me-5 ms-5 d-flex">
+                    <div>
+                        <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox" id="otherMulti"
+                            formControlName="selectedCompany" (change)="onOtherCompany()">
+                        <label class="form-check-label ms-2" for="otherMulti">Outra(s)</label>
+                        <input *ngIf="registerForm.get('selectedCompany')?.value === 'Outros'" type="text"
+                            class="border border-dark-subtle rounded-3 ms-2 me-2" placeholder="Especificar empresa"
+                            formControlName="otherText" (change)="updateOtherCompany()">
+                    </div>
+                    <div>
 
-        <div *ngIf="selectedCompany" class="row mt-5 border-bottom pb-4">
+                        <button [backgroundColorClass]="'#027373'"
+                            *ngIf="registerForm.get('selectedCompany')?.value === 'Outro'" type="button"
+                            class="btn text-white" (click)="confirmCompany()">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div *ngIf="isSingleCompany" class="row mt-5 border-bottom pb-4">
             <div>
                 <p class="fw-bold">Itinerário</p>
             </div>
-            <div>
+            <div *ngFor="let companie of selectedCompanies">
                 <div>
-                    <p>{{ selectedCompany.name }}</p>
+                    <p>{{ companie.name }}</p>
                 </div>
                 <div class="mb-3">
                     <div class="d-flex align-items-center">
@@ -125,48 +164,52 @@
 
                             <label class="fw-bold me-3" for="mainRoute">Principais:</label>
                         </div>
-                        <div *ngFor="let route of addedMainRoutes" class="me-2">
-                            <span [backgroundColorClass]="'#e4e4e4'" b class="me-2 p-2 border boder-dark-sublte rounded-3">{{ route }}</span>
+                        <div *ngFor="let routeAdded of companie.mainRoutes" class="me-2">
+                            <span [backgroundColorClass]="'#e4e4e4'"
+                                class="me-2 p-2 border boder-dark-sublte rounded-3">{{ routeAdded }}</span>
                         </div>
                         <div class="d-flex ms-2">
                             <select [backgroundColorClass]="'#e4e4e4'" id="mainRoute"
-                            class="form-select border-dark-subtle rounded-3 form-focus me-2"
-                            formControlName="mainRoute">
-                            <option *ngFor="let route of mainRoutes" [value]="route">{{ route }}</option>
-                        </select>
-                        <button [backgroundColorClass]="'#027373'" type="button" class="btn text-white"
-                        (click)="addMainRoute()">+</button>
-                    </div>
+                                class="form-select border-dark-subtle rounded-3 form-focus me-2"
+                                formControlName="mainRoute">
+                                <option *ngFor="let route of mainRoutes" [value]="route">{{ route }}</option>
+                            </select>
+                            <button [backgroundColorClass]="'#027373'" type="button" class="btn text-white"
+                                (click)="addMainRoute()">+</button>
+                        </div>
                     </div>
                 </div>
+
 
                 <div class="mb-3">
                     <div class="d-flex align-items-center">
                         <div>
                             <label class="fw-bold me-3" for="connections">Conexões:</label>
                         </div>
-                        <div *ngFor="let connection of addedConnections" class="me-2">
-                            <span [backgroundColorClass]="'#e4e4e4'" class="me-2 p-2 border boder-dark-sublte rounded-3">{{ connection }}</span>
+                        <div *ngFor="let connectionAdded of companie.connections" class="me-2">
+                            <span [backgroundColorClass]="'#e4e4e4'"
+                                class="me-2 p-2 border boder-dark-sublte rounded-3">{{ connectionAdded }}</span>
                         </div>
                         <div class="d-flex ms-2">
                             <select [backgroundColorClass]="'#e4e4e4'" id="connections"
-                            class="form-select border-dark-subtle rounded-3 form-focus me-2"
-                            formControlName="connections">
-                            <option *ngFor="let connection of connections" [value]="connection">{{ connection }}
-                            </option>
-                        </select>
-                    </div>
+                                class="form-select border-dark-subtle rounded-3 form-focus me-2"
+                                formControlName="connections">
+                                <option *ngFor="let connection of connections" [value]="connection">{{ connection }}
+                                </option>
+                            </select>
+                        </div>
                         <button [backgroundColorClass]="'#027373'" type="button" class="btn text-white"
                             (click)="addConnection()">+</button>
                     </div>
                 </div>
             </div>
         </div>
-        <div *ngIf="selectedCompany" class="form-group pt-3 w-50">
+
+        <div class="form-group pt-3 w-50">
             <label class="fw-bold" for="description">Observações</label>
-            <textarea [backgroundColorClass]="'#e4e4e4'" id="description" formControlName="observation"
-                type="text" class="form-control border-dark-subtle rounded-3 form-focus"
-                placeholder="Escreva aqui" required></textarea>
+            <textarea [backgroundColorClass]="'#e4e4e4'" id="description" formControlName="observation" type="text"
+                class="form-control border-dark-subtle rounded-3 form-focus" placeholder="Escreva aqui"
+                required></textarea>
         </div>
 
 
