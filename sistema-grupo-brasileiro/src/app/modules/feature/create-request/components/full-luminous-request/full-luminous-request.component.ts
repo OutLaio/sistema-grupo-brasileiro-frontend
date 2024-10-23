@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 interface CompanyDetails {
   name: string;
@@ -18,20 +18,31 @@ export class FullLuminousRequestComponent {
   selectedCompanies: CompanyDetails[] = [];
 
   mainRoutes: string[] = ['Salvador', 'Feira de Santana', 'Capim Grosso', 'Juazeiro', 'Irecê', 'Xique Xique', 'Barra'];
-  connections: string[] = ['Jacobina', 'Itabuna', 'Porto Seguro', 'Ilhéus', 'Eunápolis', 'Maracas', 'Jequié', 'Vt. Conquistas', 'Eunápolis'];
+  connections: string[] = ['Jacobina', 'Itabuna', 'Porto Seguro', 'Ilhéus', 'Eunápolis', 'Maracas', 'Jequié', 'Vitória da Conquista', 'Eunápolis'];
 
   constructor(private fb: FormBuilder) {
     this.registerForm = this.fb.group({
       description: ['', Validators.required],
       signLocation: ['', Validators.required],
-      singleCompany: [null],
+      sharedCompany: [null],
       selectedCompany: [null],
       otherText: [''],
       mainRoute: [null],
       connections: [null],
       observation: [''],
+      width: ['', Validators.required],
+      height: ['', Validators.required]
     });
   }
+
+  get width() {
+    return this.registerForm.get('width');
+  }
+
+  get height() {
+    return this.registerForm.get('height');
+  }
+
 
   onCompanyChange(type: string) {
     this.isSingleCompany = (type === 'single');
@@ -55,10 +66,12 @@ export class FullLuminousRequestComponent {
       }
     }
   }
+
   onOtherCompany() {
     this.selectedCompanies = [];
     this.registerForm.get('otherText')?.setValue('');
   }
+
   updateOtherCompany() {
     const otherValue = this.registerForm.get('otherText')?.value;
     this.selectedCompanies.push({ name: otherValue, mainRoutes: [], connections: [] });
@@ -72,19 +85,57 @@ export class FullLuminousRequestComponent {
     }
   }
 
-  addMainRoute() {
+  addMainRoute(companyName: string) {
     const selectedMainRoute = this.registerForm.get('mainRoute')?.value;
-    if (selectedMainRoute && this.selectedCompanies.length > 0) {
-      this.selectedCompanies[0].mainRoutes.push(selectedMainRoute);
-      this.registerForm.get('mainRoute')?.reset();
+
+    if (selectedMainRoute) {
+      const company = this.selectedCompanies.find(c => c.name === companyName);
+      if (company) {
+        const routeExists = company.mainRoutes.includes(selectedMainRoute);
+        if (!routeExists) {
+          company.mainRoutes.push(selectedMainRoute);
+          this.registerForm.get('mainRoute')?.reset();
+        }
+      }
     }
   }
 
-  addConnection() {
+
+  removeMainRoute(companyName: string, routeToRemove: string) {
+    const company = this.selectedCompanies.find(c => c.name === companyName);
+    if (company) {
+      const index = company.mainRoutes.indexOf(routeToRemove);
+      if (index !== -1) {
+        company.mainRoutes.splice(index, 1);
+      }
+    }
+  }
+
+
+
+  addConnection(companyName: string) {
     const selectedConnection = this.registerForm.get('connections')?.value;
-    if (selectedConnection && this.selectedCompanies.length > 0) {
-      this.selectedCompanies[0].connections.push(selectedConnection);
-      this.registerForm.get('connections')?.reset();
+
+    if (selectedConnection) {
+      const company = this.selectedCompanies.find(c => c.name === companyName);
+      if (company) {
+        const connectionExists = company.connections.includes(selectedConnection);
+        if (!connectionExists) {
+          company.connections.push(selectedConnection);
+          this.registerForm.get('connections')?.reset();
+        }
+      }
+    }
+  }
+
+
+  removeConnection(companyName: string, connectionToRemove: string) {
+    const company = this.selectedCompanies.find(c => c.name === companyName);
+    if (company) {
+      const index = company.connections.indexOf(connectionToRemove);
+      if (index !== -1) {
+        company.connections.splice(index, 1);
+      }
     }
   }
 
