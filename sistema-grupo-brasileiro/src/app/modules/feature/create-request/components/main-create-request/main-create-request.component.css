@@ -21,8 +21,8 @@
 }
 
 .card {
-    height: 85vh;
-    overflow-y: auto;
+    height: 85vh; 
+    overflow-y: hidden; /* Para permitir rolagem vertical no card */
     overflow-x: hidden;
     width: 78vw;
     background-color: #fff;
@@ -30,12 +30,27 @@
     position: relative;
 }
 
+.menu-div {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background-color: #fff;
+    border-radius: 10px 10px 0 0;
+}
+
 .btn-group {
     position: sticky;
     top: 0;
-    z-index: 1;
-    background-color: #fff;
+    z-index: 2; 
+    background-color: #fff; 
     border-radius: 10px 10px 0 0;
+}
+
+.btn-group2 {
+    position: sticky;
+    top: 40px;
+    z-index: 1;
+    background-color: #fff; 
 }
 
 .btn-radius {
