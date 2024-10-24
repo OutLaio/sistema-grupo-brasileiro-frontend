@@ -9,12 +9,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class MainCreateRequestComponent {
 	mainOptions = [
 		{
-			name: 'Placa de Itinerários',
-			subOptions: [
-				{ name: 'Luminoso completo', route: '/luminoso-completo' },
-				{ name: 'Troca de Lona', route: '/troca-de-lona' },
-				{ name: 'Placa de Polietileno', route: '/placa-polietileno' }
-			]
+			name: 'Placa de Itinerários', route: '/luminoso-completo'
 		},
 		{
 			name: 'Adesivos',
