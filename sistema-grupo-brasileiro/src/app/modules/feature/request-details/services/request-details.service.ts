@@ -1,18 +1,23 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, tap } from 'rxjs';
+import { TBriefing } from '../interfaces/briefing.type';
+import { IAgencyBoard } from '../interfaces/agency-board/agency-board';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RequestDetailsService {
+  private baseUrl = 'http://localhost:8080/api/v1/projects';
 
-  private baseUrl = 'http://localhost:4200/rota';
+  constructor(private http: HttpClient) {}
 
-  constructor(private http: HttpClient) { }
-
-  getRequestDetailsById(id: string): Observable<any> {
+  getRequestDetailsById(id: string) {
     const url = `${this.baseUrl}/${id}`;
-    return this.http.get<any>(url);
+    return this.http.get<TBriefing>(url).pipe(
+      tap((value) => {
+        console.log(value.briefingView.briefingType)
+      })
+    );
   }
 }

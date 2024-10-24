@@ -1,7 +1,8 @@
-import { IBaseBriefing } from "../base-briefing/base-briefing";
+import { IBriefing } from "../base-briefing/briefing";
 import { IMaterial } from "./material";
 
-export interface ISignpost extends IBaseBriefing{
+export interface ISignpost {
+  briefingView: IBriefing;
   material: IMaterial;
   boardLocation: string;
   sector: string;

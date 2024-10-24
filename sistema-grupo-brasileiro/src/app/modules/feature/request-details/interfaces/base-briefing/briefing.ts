@@ -4,7 +4,7 @@ import { IMeasurement } from "./measurement";
 import { IProject } from "./project";
 import { IVersion } from "./version";
 
-export interface IBaseBriefing {
+export interface IBriefing {
   project: IProject;
   briefingType: IBriefingType;
   startTime: string;
