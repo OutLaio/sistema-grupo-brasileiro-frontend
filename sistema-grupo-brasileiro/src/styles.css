@@ -1,7 +1,12 @@
 @import "ngx-toastr/toastr";
+@import url('https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap');
 
 * {
   font-family: Inter, sans-serif !important;
+}
+
+:root{
+  --primary-color: #297373;
 }
 
 .validation-warning p {

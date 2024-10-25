@@ -22,7 +22,7 @@ import { CheckRequestsComponent } from './modules/feature/check-requests/compone
 import { MainProfileComponent } from './modules/core/profile/components/main-profile/main-profile.component';
 import { UserDataComponent } from './modules/core/profile/components/user-data/user-data.component';
 import { EditUserDataComponent } from './modules/core/profile/components/edit-user-data/edit-user-data.component';
-import { RequestDetailsComponent } from './modules/feature/request-details/component/request-details.component';
+import { RequestDetailsComponent } from './modules/feature/request-details/components/request-details/request-details.component';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { ProfileRoutingModule } from './modules/core/profile/components/main-profile/profile-routing.module';
 import { CreateRequestComponent } from './modules/feature/create-request/component/create-request.component';
@@ -32,6 +32,9 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
 import { ColorClassDirective } from './modules/directives/colorClass/color-class.directive';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { PhoneMaskDirective } from './modules/directives/phone-mask/phone-mask.directive';
+import { AgencyBoardComponent } from './modules/feature/request-details/components/agency-board/agency-board.component';
+import { SignpostComponent } from './modules/feature/request-details/components/signpost/signpost.component';
+import { DialogBoxComponent } from './modules/feature/request-details/components/dialog-box/dialog-box.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +55,10 @@ import { PhoneMaskDirective } from './modules/directives/phone-mask/phone-mask.d
     RequestDetailsComponent,
     CreateRequestComponent,
     ColorClassDirective,
-    PhoneMaskDirective
+    PhoneMaskDirective,
+    AgencyBoardComponent,
+    SignpostComponent,
+    DialogBoxComponent
   ],
   imports: [
     BrowserModule,
@@ -65,7 +71,7 @@ import { PhoneMaskDirective } from './modules/directives/phone-mask/phone-mask.d
     }),
     ProfileRoutingModule,
     NgScrollbarModule,
-    
+
   ],
   providers: [
     provideHttpClient(withFetch()),
