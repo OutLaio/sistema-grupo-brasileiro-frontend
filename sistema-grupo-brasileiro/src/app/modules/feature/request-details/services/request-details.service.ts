@@ -1,8 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, tap } from 'rxjs';
-import { TBriefing } from '../interfaces/briefing.type';
-import { IAgencyBoard } from '../interfaces/agency-board/agency-board';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +12,7 @@ export class RequestDetailsService {
 
   getRequestDetailsById(id: string) {
     const url = `${this.baseUrl}/${id}`;
-    return this.http.get<TBriefing>(url).pipe(
+    return this.http.get<any>(url).pipe(
       tap((value) => {
         console.log(value.briefingView.briefingType)
       })
