@@ -3,11 +3,11 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CompanyDetails } from '../../interface/company-details';
 
 @Component({
-  selector: 'app-full-luminous-request',
-  templateUrl: './full-luminous-request.component.html',
-  styleUrls: ['./full-luminous-request.component.css']
+  selector: 'app-agency-board-request',
+  templateUrl: './agency-board-request.component.html',
+  styleUrls: ['./agency-board-request.component.css']
 })
-export class FullLuminousRequestComponent {
+export class AgencyBoardRequestComponent {
   registerForm: FormGroup;
   isSingleCompany: boolean = true;
   selectedCompanies: CompanyDetails[] = [];
@@ -17,7 +17,6 @@ export class FullLuminousRequestComponent {
 
   mainRoutes: string[] = ['Salvador', 'Feira de Santana', 'Capim Grosso', 'Juazeiro', 'Irecê', 'Xique Xique', 'Barra'];
   connections: string[] = ['Jacobina', 'Itabuna', 'Porto Seguro', 'Ilhéus', 'Eunápolis', 'Maracas', 'Jequié', 'Vitória da Conquista', 'Eunápolis'];
-
 
   // TODO: Adicionar ID para identificação da imagem
   files: { name: string, url: string }[] = [];
@@ -35,6 +34,8 @@ export class FullLuminousRequestComponent {
       observation: ['', Validators.required],
       otherText: [''],
       othersText: [''],
+      board: ['', Validators.required],
+      boardType: ['']
     });
   }
 
@@ -45,7 +46,6 @@ export class FullLuminousRequestComponent {
   get height() {
     return this.registerForm.get('height');
   }
-
 
   clearForm() {
     this.registerForm.reset();
@@ -169,8 +169,6 @@ export class FullLuminousRequestComponent {
     }
   }
 
-
-
   addConnection(companyName: string) {
     const selectedConnection = this.registerForm.get('connections')?.value;
 
@@ -203,6 +201,6 @@ export class FullLuminousRequestComponent {
 
   submit() {
     console.log(this.registerForm.value);
-    console.log(this.files); 
+    console.log(this.files);
   }
 }

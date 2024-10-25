@@ -37,8 +37,8 @@ import { SignpostComponent } from './modules/feature/request-details/components/
 import { DialogBoxComponent } from './modules/feature/request-details/components/dialog-box/dialog-box.component';
 import { VersionComponent } from './modules/feature/request-details/components/version/version.component';
 
-import { FullLuminousRequestComponent } from './modules/feature/create-request/components/full-luminous-request/full-luminous-request.component';
-import { LoadingFileComponent } from './modules/shared/loading-file/loading-file.component';
+import { AgencyBoardRequestComponent } from './modules/feature/create-request/components/agency-board-request/agency-board-request.component';
+import { LoadingFileComponent } from './modules/feature/create-request/components/loading-file/loading-file.component';
 import { DndDirective } from './modules/directives/dnd/dnd.directive.directive';
 
 @NgModule({
@@ -65,7 +65,7 @@ import { DndDirective } from './modules/directives/dnd/dnd.directive.directive';
     SignpostComponent,
     DialogBoxComponent,
     VersionComponent,
-    FullLuminousRequestComponent,
+    AgencyBoardRequestComponent,
     LoadingFileComponent,
     DndDirective
   ],

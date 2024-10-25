@@ -1,10 +1,10 @@
 <div class="d-flex flex-column p-3 mb-4 scroll-bar overflow-custom">
     <form [formGroup]="registerForm" (ngSubmit)="submit()">
-        <div class="row border-bottom pb-4">
+        <div class="row pb-4">
             <div class="col-12 col-md-5">
                 <div class="form-group pt-3">
                     <label class="fw-bold" for="description">Descrição</label>
-                    <textarea [backgroundColorClass]="'#e4e4e4'" id="description" formControlName="description"
+                    <textarea [backgroundColorClass]="'#ebebeb'" id="description" formControlName="description"
                         type="text" class="form-control border-dark-subtle rounded-3 form-focus"
                         placeholder="Escreva a descrição da solicitação" required></textarea>
                 </div>
@@ -13,7 +13,7 @@
             <div class="col-12 col-md-4">
                 <div class="form-group pt-3">
                     <label class="fw-bold" for="signLocation">Local da Placa</label>
-                    <textarea [backgroundColorClass]="'#e4e4e4'" id="signLocation" formControlName="signLocation"
+                    <textarea [backgroundColorClass]="'#ebebeb'" id="signLocation" formControlName="signLocation"
                         type="text" class="form-control border-dark-subtle rounded-3 form-focus"
                         placeholder="Escreva a localização da placa" required></textarea>
                 </div>
@@ -25,7 +25,7 @@
                     <div class="d-flex align-items-center mb-2">
                         <div>
                             <label>Largura</label>
-                            <input [backgroundColorClass]="'#e4e4e4'" type="text"
+                            <input [backgroundColorClass]="'#ebebeb'" type="text"
                                 class="border border-dark-subtle rounded-3 me-2 w-100 form-focus" placeholder="cm"
                                 formControlName="width" />
                         </div>
@@ -34,7 +34,7 @@
                         </div>
                         <div>
                             <label>Altura</label>
-                            <input [backgroundColorClass]="'#e4e4e4'" type="text"
+                            <input [backgroundColorClass]="'#ebebeb'" type="text"
                                 class="border border-dark-subtle rounded-3 me-2 w-100 form-focus" placeholder="cm"
                                 formControlName="height" />
                         </div>
@@ -42,6 +42,51 @@
                 </div>
             </div>
         </div>
+
+        <div class="row pb-4 pt-2 border-bottom">
+            <div class="col-12 col-md-3">
+                <div class="form-group pt-3">
+                    <label class="fw-bold" for="board">Placa</label>
+                    <select [backgroundColorClass]="'#ebebeb'" id="board"
+                        class="form-select border-dark-subtle rounded-3 form-focus me-2 w-auto" formControlName="board">
+                        <option value="luminoso-completo"> Luminoso Completo</option>
+                        <option value="troca-lona"> Trona de Lona</option>
+                        <option value="placa-adesivada"> Placa adesivada em Polietileno 1mm </option>
+                    </select>
+                </div>
+            </div>
+            <div *ngIf="registerForm.get('board')?.value === 'troca-lona'" class="col-12 col-md-9">
+                <div class="form-group pt-3">
+                    <div class="title">
+                        <p class="fw-bold">Tipo</p>
+                    </div>
+                    <div class="d-flex flex-wrap">
+                        <div class="form-check me-5">
+                            <input class="form-check-input" type="radio" id="backLight" formControlName="boardType"
+                                value="bl-luminoso">
+                            <label class="form-check-label" for="backLight">BackLight (Luminoso)</label>
+                        </div>
+                        <div class="form-check me-5">
+                            <input class="form-check-input" type="radio" id="frontLightWithLight"
+                                formControlName="boardType" value="fl-com-luz">
+                            <label class="form-check-label" for="frontLightWithLight">FrontLight Com Luz</label>
+                        </div>
+                        <div class="form-check me-5">
+                            <input class="form-check-input" type="radio" id="frontLightWithoutLight"
+                                formControlName="boardType" value="fl-sem-luz">
+                            <label class="form-check-label" for="frontLightWithoutLight">FrontLight Sem Luz</label>
+                        </div>
+                        <div class="form-check me-5">
+                            <input class="form-check-input" type="radio" id="adhesiveOverCanvas"
+                                formControlName="boardType" value="adesivo-sobre-lona">
+                            <label class="form-check-label" for="adhesiveOverCanvas">Adesivo Sobre Lona</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
 
         <div class="row mt-5">
             <div class="title">
@@ -125,7 +170,7 @@
                         <div>
                             <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox"
                                 id="otherMulti" formControlName="selectedCompany" (change)="onOthersCompanies()">
-                            <label class="form-check-label ms-2" for="otherMulti">Outras</label>
+                            <label class="form-check-label" for="otherMulti">Outras</label>
 
                             <input *ngIf="isOtherCompaniesSelected" type="text"
                                 class="border border-dark-subtle rounded-3 ms-2 me-2 form-focus"
@@ -143,67 +188,71 @@
 
 
 
-        <div *ngIf="selectedCompanies" class="row mt-5 border-bottom pb-4">
+        <div *ngIf="selectedCompanies.length != 0" class="row mt-5 border-bottom pb-4">
             <div>
-                <p class="fw-bold">Itinerário</p>
+                <p class="fw-bold">Itinerários</p>
             </div>
             <div *ngFor="let company of selectedCompanies">
-                <div>
-                    <p>
-                        {{ company.name }}
-                        <button *ngIf="company.isCustom" [backgroundColorClass]="'#ff6f6f'"
-                            class="border-0 ps-2 rounded text-white" (click)="removeCompany(company.name)"> Remover
-                        </button>
-                    </p>
+                <div [backgroundColorClass]="'#ebebeb'" class="border border-dark-subtle p-3 m-2 rounded">
+                    <div>
+                        <p class="fw-bold">
+                            {{ company.name }}
+                            <button *ngIf="company.isCustom" [backgroundColorClass]="'#ff6f6f'"
+                                class="border-0 ps-2 rounded text-white" (click)="removeCompany(company.name)"> Remover
+                            </button>
+                        </p>
 
-                </div>
-                <div class="mb-3">
-                    <div class="d-flex align-items-center">
-                        <div>
-                            <label class="fw-bold me-3" for="mainRoute">Principais:</label>
-                        </div>
-                        <div *ngFor="let routeAdded of company.mainRoutes" class="me-2">
-                            <div [backgroundColorClass]="'#e4e4e4'" class="border boder-dark-sublte rounded-3">
-                                <span class="p-3 ">{{ routeAdded }} </span>
-                                <button [backgroundColorClass]="'#ff6f6f'" class="border-0 rounded-end text-white px-2"
-                                    (click)="removeMainRoute(company.name, routeAdded)"> - </button>
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <label class="me-3" for="mainRoute">Principais:</label>
                             </div>
-                        </div>
-                        <div class="d-flex ms-2">
-                            <select [backgroundColorClass]="'#e4e4e4'" id="mainRoute"
-                                class="form-select border-dark-subtle rounded-3 form-focus me-2 w-100"
-                                formControlName="mainRoute">
-                                <option *ngFor="let route of mainRoutes" [value]="route">{{ route }}</option>
-                            </select>
-                            <button [backgroundColorClass]="'#027373'" type="button" class="btn text-white"
-                                (click)="addMainRoute(company.name)">+</button>
+                            <div *ngFor="let routeAdded of company.mainRoutes" class="me-2">
+                                <div [backgroundColorClass]="'#ebebeb'" class="border boder-dark-sublte rounded-3">
+                                    <span class="p-3 ">{{ routeAdded }} </span>
+                                    <button [backgroundColorClass]="'#ff6f6f'"
+                                        class="border-0 rounded-end text-white px-2"
+                                        (click)="removeMainRoute(company.name, routeAdded)"> - </button>
+                                </div>
+                            </div>
+                            <div class="d-flex ms-2">
+                                <select [backgroundColorClass]="'#ebebeb'" id="mainRoute"
+                                    class="form-select border-dark-subtle rounded-3 form-focus me-2 w-100"
+                                    formControlName="mainRoute">
+                                    <option *ngFor="let route of mainRoutes" [value]="route">{{ route }}</option>
+                                </select>
+                                <button [backgroundColorClass]="'#027373'" type="button" class="btn text-white"
+                                    (click)="addMainRoute(company.name)">+</button>
+                            </div>
                         </div>
                     </div>
-                </div>
 
 
-                <div class="mb-3">
-                    <div class="d-flex align-items-center">
-                        <div>
-                            <label class="fw-bold me-3" for="connections">Conexões:</label>
-                        </div>
-                        <div *ngFor="let connectionAdded of company.connections" class="me-2">
-                            <div [backgroundColorClass]="'#e4e4e4'" class="border boder-dark-sublte rounded-3">
-                                <span class="p-3 ">{{ connectionAdded }} </span>
-                                <button [backgroundColorClass]="'#ff6f6f'" class="border-0 rounded-end text-white px-2"
-                                    (click)="removeConnection(company.name, connectionAdded)"> - </button>
+                    <div class="mb-3">
+                        <div class="d-flex align-items-center">
+                            <div>
+                                <label class="me-3" for="connections">Conexões:</label>
                             </div>
+                            <div *ngFor="let connectionAdded of company.connections" class="me-2">
+                                <div [backgroundColorClass]="'#ebebeb'" class="border boder-dark-sublte rounded-3">
+                                    <span class="p-3 ">{{ connectionAdded }} </span>
+                                    <button [backgroundColorClass]="'#ff6f6f'"
+                                        class="border-0 rounded-end text-white px-2"
+                                        (click)="removeConnection(company.name, connectionAdded)"> - </button>
+                                </div>
+                            </div>
+                            <div class="d-flex ms-2">
+                                <select [backgroundColorClass]="'#ebebeb'" id="connections"
+                                    class="form-select border-dark-subtle rounded-3 form-focus me-2 w-100"
+                                    formControlName="connections">
+                                    <option *ngFor="let connection of connections" [value]="connection">{{ connection }}
+                                    </option>
+                                </select>
+                            </div>
+                            <button [backgroundColorClass]="'#027373'" type="button" class="btn text-white"
+                                (click)="addConnection(company.name)">+</button>
                         </div>
-                        <div class="d-flex ms-2">
-                            <select [backgroundColorClass]="'#e4e4e4'" id="connections"
-                                class="form-select border-dark-subtle rounded-3 form-focus me-2 w-100"
-                                formControlName="connections">
-                                <option *ngFor="let connection of connections" [value]="connection">{{ connection }}
-                                </option>
-                            </select>
-                        </div>
-                        <button [backgroundColorClass]="'#027373'" type="button" class="btn text-white"
-                            (click)="addConnection(company.name)">+</button>
                     </div>
                 </div>
             </div>
@@ -215,37 +264,22 @@
                 <p class="fw-bold">Adicionar Imagens do Local</p>
             </div>
             <div class="col-12">
-                <div class="d-flex flex-column justify-content-center align-itens-center border border-dark-subtle rounded-3 p-3 ">
+                <div
+                    class="d-flex flex-column justify-content-center align-itens-center border border-dark-subtle rounded-3 p-3 ">
                     <app-loading-file (filesLoaded)="onFilesLoaded($event)"></app-loading-file>
                 </div>
             </div>
         </div>
 
-        <!-- <div class="row mt-5 border-bottom pb-4">
-            <div class="title">
-                <p class="fw-bold">Adicionar Imagens do Local</p>
-            </div>
-            <div class="col-12">
-                <div class="d-flex flex-column justify-content-center align-itens-center border border-dark-subtle rounded-3 p-3 " (dragover)="onDragOver($event)" (drop)="onDrop($event)">
-                    <input type="file" #fileInput (change)="onFileSelected($event)" multiple hidden />
-                    <button class="btn btn-danger" (click)="fileInput.click()">Selecione as Imagens</button>
-                    <p>Você pode arrastar as imagens para aqui também</p>
-                    <div class="d-flex flex-wrap justify-content-center">
-                        <img *ngFor="let file of files" [src]="file.url" class="img-thumbnail me-2" style="width: 300px; height: 300px;" />
-                    </div>
-                </div>
-            </div>
-        </div> -->
-
-        <div class="form-group pt-3 w-50">
+        <div class="form-group pt-3 w-100 py-3">
             <label class="fw-bold" for="observation">Observações</label>
-            <textarea [backgroundColorClass]="'#e4e4e4'" id="observation" formControlName="observation" type="text"
+            <textarea [backgroundColorClass]="'#ebebeb'" id="observation" formControlName="observation" type="text"
                 class="form-control border-dark-subtle rounded-3 form-focus" placeholder="Escreva aqui"
                 required></textarea>
         </div>
 
 
-        <div class="d-flex gap-3 justify-content-end">
+        <div class="d-flex gap-3 justify-content-end pt-2">
             <button type="reset" (click)="clearForm()" class="btn btn-outline-danger">Redefinir Formulário</button>
             <button [backgroundColorClass]="'#027373'" type="submit" class="btn text-white">Enviar</button>
         </div>

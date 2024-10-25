@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
 	selector: 'app-main-create-request',
@@ -9,7 +8,7 @@ import { FormArray, FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class MainCreateRequestComponent {
 	mainOptions = [
 		{
-			name: 'Placa de Itinerários', route: '/luminoso-completo'
+			name: 'Placa de Itinerários', route: '/placa-de-itinerarios'
 		},
 		{
 			name: 'Adesivos',
