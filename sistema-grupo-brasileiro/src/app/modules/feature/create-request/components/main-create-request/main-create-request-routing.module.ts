@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FullLuminousRequestComponent } from '../full-luminous-request/full-luminous-request.component';
+import { AgencyBoardRequestComponent } from '../agency-board-request/agency-board-request.component';
 
 const routes: Routes = [
   {
-    path: 'luminoso-completo',
-    component: FullLuminousRequestComponent,
+    path: 'placa-de-itinerarios',
+    component: AgencyBoardRequestComponent,
   },
   {
     path: '',
-    redirectTo: 'luminoso-completo',
+    redirectTo: 'placa-de-itinerarios',
     pathMatch: 'full',
   },
 ];

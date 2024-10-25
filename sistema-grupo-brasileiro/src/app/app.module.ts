@@ -32,8 +32,8 @@ import { NgScrollbarModule } from 'ngx-scrollbar';
 import { ColorClassDirective } from './modules/directives/colorClass/color-class.directive';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { PhoneMaskDirective } from './modules/directives/phone-mask/phone-mask.directive';
-import { FullLuminousRequestComponent } from './modules/feature/create-request/components/full-luminous-request/full-luminous-request.component';
-import { LoadingFileComponent } from './modules/shared/loading-file/loading-file.component';
+import { AgencyBoardRequestComponent } from './modules/feature/create-request/components/agency-board-request/agency-board-request.component';
+import { LoadingFileComponent } from './modules/feature/create-request/components/loading-file/loading-file.component';
 import { DndDirective } from './modules/directives/dnd/dnd.directive.directive';
   
 @NgModule({
@@ -56,7 +56,7 @@ import { DndDirective } from './modules/directives/dnd/dnd.directive.directive';
     MainCreateRequestComponent,
     ColorClassDirective,
     PhoneMaskDirective,
-    FullLuminousRequestComponent,
+    AgencyBoardRequestComponent,
     LoadingFileComponent,
     DndDirective
   ],

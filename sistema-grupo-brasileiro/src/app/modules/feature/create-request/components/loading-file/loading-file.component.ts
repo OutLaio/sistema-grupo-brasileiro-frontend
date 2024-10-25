@@ -70,14 +70,14 @@ export class LoadingFileComponent {
   prepareFilesList(files: Array<any>) {
     for (const item of files) {
         item.progress = 0;
-        item.url = this.getImageUrl(item); // Adicionando a URL ao arquivo
+        item.url = this.getImageUrl(item);
         this.files.push(item);
     }
     if (this.fileDropEl) {
         this.fileDropEl.nativeElement.value = "";
     }
     this.uploadFilesSimulator(0);
-    this.filesLoaded.emit(this.files.map(file => ({ name: file.name, url: file.url }))); // Use file.url aqui
+    this.filesLoaded.emit(this.files.map(file => ({ name: file.name, url: file.url })));
 }
 
 
