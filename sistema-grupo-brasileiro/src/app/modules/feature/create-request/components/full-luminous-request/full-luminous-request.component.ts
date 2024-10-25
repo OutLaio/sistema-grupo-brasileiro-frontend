@@ -197,29 +197,8 @@ export class FullLuminousRequestComponent {
     }
   }
 
-  onFileSelected(event: any) {
-    const files = event.target.files;
-    for (let i = 0; i < files.length; i++) {
-      const file = files[i];
-      const reader = new FileReader();
-      reader.onload = (e: any) => {
-        // TODO: this.files.push({id: service[NameService].createId(), name: file.name, url: e.target.result });
-        this.files.push({ name: file.name, url: e.target.result });
-      };
-      reader.readAsDataURL(file);
-    }
-  }
-
-  onDragOver(event: DragEvent) {
-    event.preventDefault();
-  }
-
-  onDrop(event: DragEvent) {
-    event.preventDefault();
-    const files = event.dataTransfer?.files;
-    if (files) {
-      this.onFileSelected({ target: { files } });
-    }
+  onFilesLoaded(newFiles: { name: string, url: string }[]): void {
+    this.files = newFiles;
   }
 
   submit() {

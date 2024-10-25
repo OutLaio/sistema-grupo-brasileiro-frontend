@@ -38,6 +38,8 @@ import { DialogBoxComponent } from './modules/feature/request-details/components
 import { VersionComponent } from './modules/feature/request-details/components/version/version.component';
 
 import { FullLuminousRequestComponent } from './modules/feature/create-request/components/full-luminous-request/full-luminous-request.component';
+import { LoadingFileComponent } from './modules/shared/loading-file/loading-file.component';
+import { DndDirective } from './modules/directives/dnd/dnd.directive.directive';
 
 @NgModule({
   declarations: [
@@ -63,7 +65,9 @@ import { FullLuminousRequestComponent } from './modules/feature/create-request/c
     SignpostComponent,
     DialogBoxComponent,
     VersionComponent,
-    FullLuminousRequestComponent
+    FullLuminousRequestComponent,
+    LoadingFileComponent,
+    DndDirective
   ],
   imports: [
     BrowserModule,
