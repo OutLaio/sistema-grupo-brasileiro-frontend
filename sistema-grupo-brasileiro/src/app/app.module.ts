@@ -33,6 +33,8 @@ import { ColorClassDirective } from './modules/directives/colorClass/color-class
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { PhoneMaskDirective } from './modules/directives/phone-mask/phone-mask.directive';
 import { FullLuminousRequestComponent } from './modules/feature/create-request/components/full-luminous-request/full-luminous-request.component';
+import { LoadingFileComponent } from './modules/shared/loading-file/loading-file.component';
+import { DndDirective } from './modules/directives/dnd/dnd.directive.directive';
   
 @NgModule({
   declarations: [
@@ -54,7 +56,9 @@ import { FullLuminousRequestComponent } from './modules/feature/create-request/c
     MainCreateRequestComponent,
     ColorClassDirective,
     PhoneMaskDirective,
-    FullLuminousRequestComponent
+    FullLuminousRequestComponent,
+    LoadingFileComponent,
+    DndDirective
   ],
   imports: [
     BrowserModule,

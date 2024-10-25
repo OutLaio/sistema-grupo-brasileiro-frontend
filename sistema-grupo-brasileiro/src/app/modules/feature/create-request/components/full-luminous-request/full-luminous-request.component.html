@@ -215,6 +215,17 @@
                 <p class="fw-bold">Adicionar Imagens do Local</p>
             </div>
             <div class="col-12">
+                <div class="d-flex flex-column justify-content-center align-itens-center border border-dark-subtle rounded-3 p-3 ">
+                    <app-loading-file (filesLoaded)="onFilesLoaded($event)"></app-loading-file>
+                </div>
+            </div>
+        </div>
+
+        <!-- <div class="row mt-5 border-bottom pb-4">
+            <div class="title">
+                <p class="fw-bold">Adicionar Imagens do Local</p>
+            </div>
+            <div class="col-12">
                 <div class="d-flex flex-column justify-content-center align-itens-center border border-dark-subtle rounded-3 p-3 " (dragover)="onDragOver($event)" (drop)="onDrop($event)">
                     <input type="file" #fileInput (change)="onFileSelected($event)" multiple hidden />
                     <button class="btn btn-danger" (click)="fileInput.click()">Selecione as Imagens</button>
@@ -224,8 +235,7 @@
                     </div>
                 </div>
             </div>
-        </div>
-        
+        </div> -->
 
         <div class="form-group pt-3 w-50">
             <label class="fw-bold" for="observation">Observações</label>
