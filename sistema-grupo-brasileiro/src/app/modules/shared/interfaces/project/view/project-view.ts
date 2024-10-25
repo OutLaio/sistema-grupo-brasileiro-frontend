@@ -6,5 +6,5 @@ export interface I_Project_Data {
   title: string;
   status: string;
   client: I_Employee_Simple_View_Data;
-  collaborator: I_Employee_Simple_View_Data;
+  collaborator?: I_Employee_Simple_View_Data;
 }
