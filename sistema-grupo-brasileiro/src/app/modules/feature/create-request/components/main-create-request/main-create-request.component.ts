@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-main-create-request',
@@ -7,9 +8,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MainCreateRequestComponent {
 	mainOptions = [
-		{
-			name: 'Placa de Itinerários', route: '/placa-de-itinerarios'
-		},
+		{ name: 'Placa de Itinerários', route: '/placa-de-itinerarios' },
 		{
 			name: 'Adesivos',
 			subOptions: [
@@ -40,7 +39,7 @@ export class MainCreateRequestComponent {
 		},
 		{ name: 'Campanhas Internas', route: '/campanhas-internas' },
 		{ name: 'Comunicados', route: '/comunicados' },
-		{ name: 'Placa de Sinalização', route: '/placa-sinalizacao' },
+		{ name: 'Placa de Sinalização', route: '/placa-de-sinalizacao' },
 		{
 			name: 'Layouts p/Brindes',
 			subOptions: [
@@ -64,11 +63,15 @@ export class MainCreateRequestComponent {
 
 	selectedOption: any;
 
+	constructor(private router: Router) { }
+
 	selectOption(option: any): void {
-		if (this.selectedOption === option) {
-			this.selectedOption = null;
+		if (option.subOptions && option.subOptions.length > 0) {
+			this.selectedOption = this.selectedOption === option ? null : option;
 		} else {
-			this.selectedOption = option;
+			this.router.navigate([option.route]);
 		}
 	}
+
+
 }

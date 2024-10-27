@@ -76,6 +76,21 @@ const routes: Routes = [
         (m) => m.MainCreateRequestRoutingModule
       ),
   },
+  {
+    path: 'placa-de-itinerarios',
+    redirectTo: 'nova-solicitacao/placa-de-itinerarios',
+    pathMatch: 'full'
+  },
+  {
+    path: 'placa-de-sinalizacao',
+    redirectTo: 'nova-solicitacao/placa-de-sinalizacao',
+    pathMatch: 'full'
+  },
+  {
+    path: '',
+    redirectTo: 'login',
+    pathMatch: 'full'
+  },
 ];
 
 @NgModule({

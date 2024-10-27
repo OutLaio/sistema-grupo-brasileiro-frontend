@@ -26,7 +26,7 @@ import { RequestDetailsComponent } from './modules/feature/request-details/compo
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { ProfileRoutingModule } from './modules/core/profile/components/main-profile/profile-routing.module';
 import { MainCreateRequestComponent } from './modules/feature/create-request/components/main-create-request/main-create-request.component';
-
+import { MainCreateRequestRoutingModule } from './modules/feature/create-request/components/main-create-request/main-create-request-routing.module';
 import { NgScrollbarModule } from 'ngx-scrollbar';
 
 import { ColorClassDirective } from './modules/directives/colorClass/color-class.directive';
@@ -40,6 +40,7 @@ import { VersionComponent } from './modules/feature/request-details/components/v
 import { AgencyBoardRequestComponent } from './modules/feature/create-request/components/agency-board-request/agency-board-request.component';
 import { LoadingFileComponent } from './modules/feature/create-request/components/loading-file/loading-file.component';
 import { DndDirective } from './modules/directives/dnd/dnd.directive.directive';
+import { SignpostRequestComponent } from './modules/feature/create-request/components/signpost-request/signpost-request.component';
 
 @NgModule({
   declarations: [
@@ -67,7 +68,8 @@ import { DndDirective } from './modules/directives/dnd/dnd.directive.directive';
     VersionComponent,
     AgencyBoardRequestComponent,
     LoadingFileComponent,
-    DndDirective
+    DndDirective,
+    SignpostRequestComponent
   ],
   imports: [
     BrowserModule,
@@ -80,6 +82,7 @@ import { DndDirective } from './modules/directives/dnd/dnd.directive.directive';
     }),
     ProfileRoutingModule,
     NgScrollbarModule,
+    MainCreateRequestRoutingModule
 
   ],
   providers: [
