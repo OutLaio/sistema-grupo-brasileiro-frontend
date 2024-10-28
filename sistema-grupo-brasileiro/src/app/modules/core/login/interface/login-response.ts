@@ -2,17 +2,17 @@ export interface LoginResponse {
     token: string,
     employee: {
         id: 0,
-        userView: {
+        user: {
             id: 0,
             email: string,
-            profileView: {
+            profile: {
                 id: 0,
                 description: string
             }
         },
         name: string,
         lastname: string,
-        phonenumber: string,
+        phoneNumber: string,
         sector: string,
         occupation: string,
         agency: string,

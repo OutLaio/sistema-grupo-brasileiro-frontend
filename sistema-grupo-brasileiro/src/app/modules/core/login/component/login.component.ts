@@ -37,7 +37,11 @@ export class LoginComponent implements OnInit {
         this.toastrService.success("Login realizado com sucesso!"),
         this.router.navigate(['/acompanhamento']);
       },
-      error: (value: HttpErrorResponse) => this.toastrService.error(value.error)
+      error: (value: HttpErrorResponse) =>{
+        
+        this.toastrService.error(value.error),
+        console.log(value)
+      }
     })
   }
 }

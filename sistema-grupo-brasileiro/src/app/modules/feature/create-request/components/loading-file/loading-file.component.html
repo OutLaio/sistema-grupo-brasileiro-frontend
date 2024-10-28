@@ -1,0 +1,32 @@
+<div class="container" appDnd (fileDropped)="onFileDropped($event)">
+    <input type="file" #fileDropRef id="fileDropRef" multiple class="position-absolute w-100 h-100 opacity-0"
+        (change)="fileBrowseHandler($event)" />
+    <img src="assets/icons/ic-upload-file.svg" alt="Upload Icon" class="mb-3">
+    <h5>Arraste e solte os arquivos aqui</h5>
+    <h5>ou</h5>
+    <label [backgroundColorClass]="'#027373'" for="fileDropRef" class="btn text-white">Pesquise os arquivos</label>
+</div>
+<div class="files-list">
+    <div class="single-file" *ngFor="let file of files; let i = index">
+        <ng-container *ngIf="file.type.startsWith('image/') else showIcon">
+            <img [src]="file.url" class="file-img" alt="file image">
+        </ng-container>
+        <ng-template #showIcon>
+            <img src="assets/icons/ic-file.svg" width="45px" alt="file">
+        </ng-template>
+        <div class="info">
+            <h4 class="name">
+                {{ file?.name }}
+            </h4>
+            <p class="size">
+                {{ formatBytes(file?.size) }}
+            </p>
+            <div [backgroundColorClass]="'#d0d0d0'" class="progress-cont rounded w-100 position-relative">
+                <div [backgroundColorClass]="'#027373'"  class="progress" [style.width]="file?.progress + '%'">
+                </div>
+            </div>
+        </div>
+        <img src="assets/icons/ic-delete-file.svg" class="delete" width="20px" alt="file" (click)="deleteFile(i)">
+    </div>
+</div>
+

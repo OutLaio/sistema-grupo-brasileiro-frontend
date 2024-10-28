@@ -1,0 +1,153 @@
+<div class="conatiner d-flex flex-column p-3 mb-4 scroll-bar overflow-custom">
+    <form [formGroup]="registerForm" (ngSubmit)="submit()">
+        <div class="row pb-4">
+            <div class="form-group pt-3">
+                <label class="fw-bold" for="signLocation">Local da Placa</label>
+                <textarea [backgroundColorClass]="'#ebebeb'" id="signLocation" formControlName="signLocation"
+                    type="text" class="form-control border-dark-subtle rounded-3 form-focus"
+                    placeholder="Escreva a localização da placa" required></textarea>
+            </div>
+        </div>
+
+        <div class="row pb-4">
+            <div class="form-group pt-3">
+                <label class="fw-bold" for="description">Descrição</label>
+                <textarea [backgroundColorClass]="'#ebebeb'" id="description" formControlName="description" type="text"
+                    class="form-control border-dark-subtle rounded-3 form-focus"
+                    placeholder="Escreva a descrição da solicitação" required></textarea>
+            </div>
+        </div>
+
+        <div class="row pb-4 pt-2 border-bottom">
+            <div class="col-12 col-md-3">
+                <div class="form-group pt-3">
+                    <label class="fw-bold">Medida</label>
+                    <div class="d-flex align-items-center mb-2">
+                        <div class="d-flex flex-column">
+                            <label>Largura</label>
+                            <input [backgroundColorClass]="'#ebebeb'" type="text"
+                                class="border border-dark-subtle rounded-3 me-2 w-100 form-focus" placeholder="cm"
+                                formControlName="width" />
+                        </div>
+                        <div class="pt-4">
+                            <span class="mx-3">X</span>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <label>Altura</label>
+                            <input [backgroundColorClass]="'#ebebeb'" type="text"
+                                class="border border-dark-subtle rounded-3 me-2 w-100 form-focus" placeholder="cm"
+                                formControlName="height" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-md-9">
+                <div class="form-group pt-3 ms-5">
+                    <div class="title">
+                        <p class="fw-bold">Material</p>
+                    </div>
+                    <div class="d-flex flex-column">
+                        <div class="form-check">
+                            <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="aluminio"
+                                formControlName="boardType" value="1">
+                            <label class="form-check-label" for="aluminio">Aluminio</label>
+                        </div>
+                        <div class="form-check">
+                            <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="Polietileno"
+                                formControlName="boardType" value="2">
+                            <label class="form-check-label" for="Polietileno">Polietileno</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div>
+            <div class="row mt-5 border-bottom pb-4">
+                <div class="col-12">
+                    <p class="fw-bold">Selecione as Empresas</p>
+                </div>
+                <div class="col-12 d-flex flex-wrap gap-3">
+                    <div class="form-check">
+                        <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox" id="rotaMulti"
+                            formControlName="selectedCompany" (change)="updateCompanyName(2, 'Rota Transportes')">
+                        <label class="form-check-label" for="rotaMulti">Rota Transportes</label>
+                    </div>
+                    <div class="form-check">
+                        <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox"
+                            id="cidadeSolMulti" formControlName="selectedCompany"
+                            (change)="updateCompanyName(2, 'Cidade Sol')">
+                        <label class="form-check-label" for="cidadeSolMulti">Cidade Sol</label>
+                    </div>
+                    <div class="form-check">
+                        <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox"
+                            id="brasileiroMulti" formControlName="selectedCompany"
+                            (change)="updateCompanyName(2, 'Brasileiro')">
+                        <label class="form-check-label" for="brasileiroMulti">Brasileiro</label>
+                    </div>
+                    <div class="form-check">
+                        <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox"
+                            id="viaMetroMulti" formControlName="selectedCompany"
+                            (change)="updateCompanyName(2, 'Via Metro')">
+                        <label class="form-check-label" for="viaMetroMulti">Via Metro</label>
+                    </div>
+                    <div class="form-check">
+                        <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox"
+                            id="cidadeRealMulti" formControlName="selectedCompany"
+                            (change)="updateCompanyName(2, 'Cidade Real')">
+                        <label class="form-check-label" for="cidadeRealMulti">Cidade Real</label>
+                    </div>
+                    <div class="form-check">
+                        <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox" id="paumaMulti"
+                            formControlName="selectedCompany" (change)="updateCompanyName(2, 'Pauma')">
+                        <label class="form-check-label" for="paumaMulti">Pauma</label>
+                    </div>
+                    <div class="form-check d-flex align-items-center">
+                        <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox" id="otherMulti"
+                            formControlName="selectedCompany" (change)="onOthersCompanies()">
+                        <label class="form-check-label ms-2" for="otherMulti">Outras</label>
+                        <input *ngIf="isOtherCompaniesSelected" type="text" class="form-control ms-2"
+                            placeholder="Especificar empresa" formControlName="othersText"
+                            (change)="updateOthersCompanies()">
+                        <button [backgroundColorClass]="'#027373'" *ngIf="isOtherCompaniesSelected" type="button"
+                            class="btn btn-sm text-white ms-2" (click)="confirmOtherMultiCompany()">OK</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div *ngIf="selectedCompanies.length != 0" class="row mt-5 border-bottom pb-4">
+            <div>
+                <p class="fw-bold">Empresas Selecionadas</p>
+            </div>
+            <div [backgroundColorClass]="'#ebebeb'" class="d-flex border border-dark-subtle rounded">
+                <div *ngFor="let company of selectedCompanies">
+                    <p class="fw-bold me-3 pt-2">
+                        {{ company.name }}
+                        <button *ngIf="company.isCustom" [backgroundColorClass]="'#ff6f6f'"
+                            class="border-0 ps-2 rounded text-white" (click)="removeCompany(company)"> Remover
+                        </button>
+                    </p>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="form-group pt-3 w-100 py-3">
+            <label class="fw-bold" for="sector">Setor</label>
+            <textarea [backgroundColorClass]="'#ebebeb'" id="sector" formControlName="sector" type="text"
+                class="form-control border-dark-subtle rounded-3 form-focus" placeholder="Escreva aqui"
+                required></textarea>
+        </div>
+
+
+        <div class="d-flex gap-3 justify-content-end pt-2">
+            <button type="reset" (click)="clearForm()" class="btn btn-outline-danger">Redefinir Formulário</button>
+            <button [backgroundColorClass]="'#027373'" type="submit" class="btn text-white">Enviar</button>
+        </div>
+    </form>
+</div>

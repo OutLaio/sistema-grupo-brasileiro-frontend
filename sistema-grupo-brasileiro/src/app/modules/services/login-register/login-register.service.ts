@@ -86,14 +86,14 @@ export class LoginRegisterService {
         tap((value) => {
           sessionStorage.setItem('auth-token', value.token);
           sessionStorage.setItem('idUser', value.employee.id.toString());
-          sessionStorage.setItem('userRole', value.employee.userView.profileView.description);
+          sessionStorage.setItem('userRole', value.employee.user.profile.description);
 
           const userProfile: TProfile = {
             userId: value.employee.id,
-            email: value.employee.userView.email = email,
+            email: value.employee.user.email = email,
             name: value.employee.name,
             lastname: value.employee.lastname,
-            phone: value.employee.phonenumber,
+            phone: value.employee.phoneNumber,
             sector: value.employee.sector,
             occupation: value.employee.occupation,
             agency: value.employee.agency,
