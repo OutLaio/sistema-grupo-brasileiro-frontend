@@ -1,0 +1,28 @@
+<div class="container-fluid">
+    <div class="card text-black">
+        <div class="card-body p-0">
+            <div class="menu-div">
+                <div [backgroundColorClass]="'#027373'" class="btn-group m-0 p-0 w-100 " role="group"
+                    aria-label="opções principais">
+                    <button *ngFor="let option of mainOptions" (click)="selectOption(option)"
+                        [ngClass]="{'active-option': selectedOption === option}" type="button"
+                        class="btn btn-radius btn-outline-primary text-custom border-0 py-2 bg-hover">
+                        {{ option.name }}
+                    </button>
+                </div>
+
+                <div [backgroundColorClass]="'#008787'" class="btn-group2 m-0 p-0 w-100 "
+                    *ngIf="selectedOption?.subOptions?.length > 0" role="group" aria-label="sub opções">
+                    <button *ngFor="let subOption of selectedOption.subOptions" [routerLink]="subOption.route"
+                        [ngClass]="{'active-option': selectedOption === subOption}" type="button"
+                        class="btn rounded-0 btn-outline-primary text-custom border-0 py-2 bg-hover">
+                        {{ subOption.name }}
+                    </button>
+                </div>
+            </div>
+            <div>
+                <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>
