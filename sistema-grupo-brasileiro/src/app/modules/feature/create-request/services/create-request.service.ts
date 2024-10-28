@@ -6,9 +6,9 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class CreateRequestService {
-  private readonly apiUrl = 'http://localhost:8080/api/v1/';
+  private readonly apiUrl = 'http://localhost:8080/api/v1';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   submitSignpostRequest(
     sendCompanies: number[],
@@ -18,34 +18,35 @@ export class CreateRequestService {
     sector: string,
     description: string,
     height: number,
-    width: number
+    width: number,
   ): Observable<any> {
 
     const idUser = sessionStorage.getItem('idUser');
 
     const requestBody = {
-      projectForm: {
-        idClient: Number(idUser),
-        title: 'Placa de Sinalização',
+      project: {
+        id_client: Number(idUser),
+        title: 'Placa de Sinalização'
       },
-      briefingForm: {
-        expectedDate: '2024-10-27',
-        detailedDescription: description,
-        companies: sendCompanies.map(id => ({ idCompany: id })),
+      briefing: {
+        expected_date: '2023-10-25',
+        detailed_description: description,
+        companies: sendCompanies.map(id => ({ id_company: id })),
         otherCompany: sendOthersCompanies.join(', '), 
-        idBriefingType: 2,
+        id_briefing_type: 2,
         measurement: {
           height: height,
           length: width
         }
       },
-      signpostForm: {
-        idMaterial: boardType,
-        boardLocation: boardLocation,
+      signpost: {
+        id_material: boardType,
+        board_location: boardLocation,
         sector: sector
       }
     };
 
-    return this.http.post(`${this.apiUrl}signposts`, requestBody);
+    return this.http.post(`${this.apiUrl}/signposts`, requestBody);
   }
 }
+
