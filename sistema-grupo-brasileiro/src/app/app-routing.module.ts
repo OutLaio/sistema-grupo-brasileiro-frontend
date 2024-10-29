@@ -13,38 +13,46 @@ import { AuthGuard } from './modules/core/guards/guard.guard';
 
 const routes: Routes = [
   {
-    path: 'acompanhamento',
-    component: CheckRequestsComponent,
-    canActivate: [AuthGuard]
-  },
-  {
     path: 'cadastro',
+    title: 'Cadastro',
     component: RegisterComponent,
   },
   {
     path: 'login',
+    title: 'Login',
     component: LoginComponent,
   },
   {
     path: 'resetPassword',
+    title: 'Resetar Senha',
     component: ResetPasswordComponent,
   },
   {
     path: 'recuperar-senha',
+    title: 'Recuperar Senha',
     component: RecoveryPasswordComponent,
   },
   {
+    path: 'acompanhamento',
+    title: 'Acompanhamento',
+    component: CheckRequestsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'colaboradores',
+    title: 'Colaboradores',
     component: CollaboratorSystemComponent,
     canActivate: [AuthGuard]
   },
   {
     path: 'detalhes-solicitacao',
+    title: 'Detalhes da Solicitação',
     component: RequestDetailsComponent,
     canActivate: [AuthGuard]
   },
   {
     path: 'perfil',
+    title: 'Perfil',
     component: MainProfileComponent,
     canActivate: [AuthGuard],
     loadChildren: () =>
@@ -54,21 +62,19 @@ const routes: Routes = [
   },
   {
     path: 'meus-dados',
+    title: 'Meus dados',
     redirectTo: 'perfil/meus-dados',
     pathMatch: 'full',
   },
   {
     path: 'editar',
+    title: 'Editar Dados',
     redirectTo: 'perfil/editar',
     pathMatch: 'full',
   },
   {
-    path: '',
-    redirectTo: '/acompanhamento',
-    pathMatch: 'full',
-  },
-  {
     path: 'nova-solicitacao',
+    title: 'Nova Solicitação',
     component: MainCreateRequestComponent,
     canActivate: [AuthGuard],
     loadChildren: () =>
@@ -88,8 +94,8 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'
+    redirectTo: '/acompanhamento',
+    pathMatch: 'full',
   },
 ];
 
@@ -99,4 +105,4 @@ const routes: Routes = [
   ],
   exports: [RouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

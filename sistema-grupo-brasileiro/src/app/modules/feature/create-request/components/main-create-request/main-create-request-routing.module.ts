@@ -16,7 +16,9 @@ const routes: Routes = [
     path: '',
     redirectTo: 'placa-de-itinerarios',
     pathMatch: 'full',
+    
   },
+
 ];
 
 @NgModule({
