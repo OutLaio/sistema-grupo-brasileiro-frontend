@@ -1,11 +1,14 @@
 <div class="conatiner d-flex flex-column p-3 mb-4 scroll-bar overflow-custom">
-    <form [formGroup]="registerForm" (ngSubmit)="submit()">
+    <form [formGroup]="registerForm" (ngSubmit)="submit()" #formDir="ngForm">
         <div class="row pb-4">
             <div class="form-group pt-3">
                 <label class="fw-bold" for="signLocation">Local da Placa</label>
                 <textarea [backgroundColorClass]="'#ebebeb'" id="signLocation" formControlName="signLocation"
                     type="text" class="form-control border-dark-subtle rounded-3 form-focus"
                     placeholder="Escreva a localização da placa" required></textarea>
+            </div>
+            <div *ngIf="signLocation.invalid && formDir.submitted" class="validation-warning">
+                <p>Por favor, informe o local onde a placa será instalada</p>
             </div>
         </div>
 
@@ -15,6 +18,9 @@
                 <textarea [backgroundColorClass]="'#ebebeb'" id="description" formControlName="description" type="text"
                     class="form-control border-dark-subtle rounded-3 form-focus"
                     placeholder="Escreva a descrição da solicitação" required></textarea>
+            </div>
+            <div *ngIf="description.invalid && formDir.submitted" class="validation-warning">
+                <p>A descrição da solicitação é obrigatória. Escreva uma breve descrição da placa.</p>
             </div>
         </div>
 
@@ -39,6 +45,12 @@
                                 formControlName="height" />
                         </div>
                     </div>
+                    <div *ngIf="(width.invalid || height.invalid) && formDir.submitted" class="validation-warning">
+                        <p>Informe as medidas completas da placa (largura e altura) em centímetros.</p>
+                    </div>
+                    <div *ngIf="(width.errors?.['pattern'] || height.errors?.['pattern']) && formDir.submitted" class="validation-warning">
+                        <p>As medidas devem conter apenas números.</p>
+                    </div>
                 </div>
             </div>
             <div class="col-12 col-md-9">
@@ -56,6 +68,10 @@
                             <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="Polietileno"
                                 formControlName="boardType" value="Polietileno">
                             <label class="form-check-label" for="Polietileno">Polietileno</label>
+                        </div>
+                        <div *ngIf="registerForm.get('boardType')?.invalid  && formDir.submitted"
+                            class="validation-warning">
+                            <p>Selecione o material da placa</p>
                         </div>
                     </div>
                 </div>
@@ -114,6 +130,9 @@
                             class="btn btn-sm text-white ms-2" (click)="confirmOtherMultiCompany()">OK</button>
                     </div>
                 </div>
+                <div *ngIf="selectedCompanies.length == 0  && formDir.submitted" class="validation-warning">
+                    <p>Ao menos uma empresa deve ser selecionada.</p>
+                </div>
             </div>
         </div>
 
@@ -137,11 +156,17 @@
             </div>
         </div>
 
-        <div class="form-group pt-3 w-100 py-3">
-            <label class="fw-bold" for="sector">Setor</label>
-            <textarea [backgroundColorClass]="'#ebebeb'" id="sector" formControlName="sector" type="text"
-                class="form-control border-dark-subtle rounded-3 form-focus" placeholder="Escreva aqui"
-                required></textarea>
+        <div class="row">
+            <div class="form-group pt-3 w-100 py-3">
+                <label class="fw-bold" for="sector">Setor</label>
+                <textarea [backgroundColorClass]="'#ebebeb'" id="sector" formControlName="sector" type="text"
+                    class="form-control border-dark-subtle rounded-3 form-focus" placeholder="Escreva aqui"
+                    required></textarea>
+            </div>
+            <div *ngIf="sector.invalid  && formDir.submitted"
+                class="validation-warning">
+                <p>Por favor, informe o setor.</p>
+            </div>
         </div>
 
 

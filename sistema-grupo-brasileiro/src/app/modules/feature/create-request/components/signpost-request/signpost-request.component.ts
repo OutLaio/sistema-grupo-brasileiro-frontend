@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CompanyDetails } from '../../interface/company-details';
 import { CreateRequestService } from '../../services/create-request.service';
@@ -15,10 +15,11 @@ enum Company {
 @Component({
   selector: 'app-signpost-request',
   templateUrl: './signpost-request.component.html',
-  styleUrls: ['./signpost-request.component.css'] // Corrigido de styleUrl para styleUrls
+  styleUrl: './signpost-request.component.css'
 })
-export class SignpostRequestComponent {
-  registerForm: FormGroup;
+export class SignpostRequestComponent implements OnInit {
+  registerForm!: FormGroup;
+
   isSingleCompany: boolean = true;
   selectedCompanies: Partial<CompanyDetails>[] = [];
   sendCompanies: number[] = [];
@@ -26,26 +27,31 @@ export class SignpostRequestComponent {
 
   isOtherCompaniesSelected = false;
 
+
   constructor(private fb: FormBuilder, private signpostService: CreateRequestService) {
+  }
+
+  ngOnInit(): void {
     this.registerForm = this.fb.group({
       description: ['', Validators.required],
-      signLocation: ['', Validators.required],
-      width: ['', Validators.required],
-      height: ['', Validators.required],
-      selectedCompany: [''],
+      signLocation: ['', Validators.required], 
+      width: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      height: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      selectedCompany: ['', Validators.required],
       sector: ['', Validators.required],
-      othersText: [''],
-      boardType: ['']
+      othersText: ['', Validators.required],
+      boardType: ['', Validators.required]
     });
   }
 
-  get width() {
-    return this.registerForm.get('width');
-  }
-
-  get height() {
-    return this.registerForm.get('height');
-  }
+  get width() { return this.registerForm.get('width')!; }
+  get height() { return this.registerForm.get('height')!; }
+  get description() { return this.registerForm.get('description')!; }
+  get signLocation() { return this.registerForm.get('signLocation')!; }
+  get sector() { return this.registerForm.get('sector')!; }
+  get boardType() { return this.registerForm.get('boardType')!; }
+  get othersText() { return this.registerForm.get('othersText')!; }
+  get selectedCompany() { return this.registerForm.get('selectedCompany')!; }
 
   clearForm() {
     this.registerForm.reset();
