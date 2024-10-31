@@ -17,92 +17,16 @@
         <div class="card-body p-4 card-scroll scroll-bar">
           <div class="row">
 
-
-            <div class="your-message d-flex gap-3 my-1">
-              <img src="/assets/images/profile.png" alt="Profile Avatar" height="40px">
-              <div>
-                <p class="text-conversation px-3 py-2 mb-1 rounded-4"> {{ data.dialog }} </p>
-                <span class="fst-italic" style="font-size: 12px;"> {{ data.time | date: "dd/MM/yy HH:mm" }} </span>
+            <div *ngFor="let data of response">
+              <div class="d-flex gap-3 my-1"
+              [ngClass]="{ 'your-message': data.employee.id.toString() == getSessionId(), 'their-message': data.employee.id.toString() != getSessionId() }">
+                <img src="/assets/images/profile.png" alt="Profile Avatar" height="40px">
+                <div>
+                  <p class="text-conversation px-3 py-2 mb-1 rounded-4"> {{ data.dialog }} </p>
+                  <span class="fst-italic" style="font-size: 12px;"> {{ data.time | date: "dd/MM/yy HH:mm" }} </span>
+                </div>
               </div>
             </div>
-            <div class="their-message d-flex gap-3 my-1">
-              <img src="/assets/images/profile.png" alt="Profile Avatar" height="40px">
-              <div>
-                <p class="text-conversation px-3 py-2 mb-1 rounded-4"> {{ data.dialog }} </p>
-                <span class="fst-italic" style="font-size: 12px;"> {{ data.time | date: "dd/MM/yy HH:mm" }} </span>
-              </div>
-            </div>
-            <div class="your-message d-flex gap-3 my-1">
-              <img src="/assets/images/profile.png" alt="Profile Avatar" height="40px">
-              <div>
-                <p class="text-conversation px-3 py-2 mb-1 rounded-4"> {{ data.dialog }} </p>
-                <span class="fst-italic" style="font-size: 12px;"> {{ data.time | date: "dd/MM/yy HH:mm" }} </span>
-              </div>
-            </div>
-            <div class="their-message d-flex gap-3 my-1">
-              <img src="/assets/images/profile.png" alt="Profile Avatar" height="40px">
-              <div>
-                <p class="text-conversation px-3 py-2 mb-1 rounded-4"> {{ data.dialog }} </p>
-                <span class="fst-italic" style="font-size: 12px;"> {{ data.time | date: "dd/MM/yy HH:mm" }} </span>
-              </div>
-            </div>
-            <div class="your-message d-flex gap-3 my-1">
-              <img src="/assets/images/profile.png" alt="Profile Avatar" height="40px">
-              <div>
-                <p class="text-conversation px-3 py-2 mb-1 rounded-4"> {{ data.dialog }} </p>
-                <span class="fst-italic" style="font-size: 12px;"> {{ data.time | date: "dd/MM/yy HH:mm" }} </span>
-              </div>
-            </div>
-            <div class="their-message d-flex gap-3 my-1">
-              <img src="/assets/images/profile.png" alt="Profile Avatar" height="40px">
-              <div>
-                <p class="text-conversation px-3 py-2 mb-1 rounded-4"> {{ data.dialog }} </p>
-                <span class="fst-italic" style="font-size: 12px;"> {{ data.time | date: "dd/MM/yy HH:mm" }} </span>
-              </div>
-            </div>
-            <div class="your-message d-flex gap-3 my-1">
-              <img src="/assets/images/profile.png" alt="Profile Avatar" height="40px">
-              <div>
-                <p class="text-conversation px-3 py-2 mb-1 rounded-4"> {{ data.dialog }} </p>
-                <span class="fst-italic" style="font-size: 12px;"> {{ data.time | date: "dd/MM/yy HH:mm" }} </span>
-              </div>
-            </div>
-            <div class="your-message d-flex gap-3 my-1">
-              <img src="/assets/images/profile.png" alt="Profile Avatar" height="40px">
-              <div>
-                <p class="text-conversation px-3 py-2 mb-1 rounded-4"> {{ data.dialog }} </p>
-                <span class="fst-italic" style="font-size: 12px;"> {{ data.time | date: "dd/MM/yy HH:mm" }} </span>
-              </div>
-            </div>
-            <div class="your-message d-flex gap-3 my-1">
-              <img src="/assets/images/profile.png" alt="Profile Avatar" height="40px">
-              <div>
-                <p class="text-conversation px-3 py-2 mb-1 rounded-4"> {{ data.dialog }} </p>
-                <span class="fst-italic" style="font-size: 12px;"> {{ data.time | date: "dd/MM/yy HH:mm" }} </span>
-              </div>
-            </div>
-            <div class="their-message d-flex gap-3 my-1">
-              <img src="/assets/images/profile.png" alt="Profile Avatar" height="40px">
-              <div>
-                <p class="text-conversation px-3 py-2 mb-1 rounded-4"> {{ data.dialog }} </p>
-                <span class="fst-italic" style="font-size: 12px;"> {{ data.time | date: "dd/MM/yy HH:mm" }} </span>
-              </div>
-            </div>
-            <div class="their-message d-flex gap-3 my-1">
-              <img src="/assets/images/profile.png" alt="Profile Avatar" height="40px">
-              <div>
-                <p class="text-conversation px-3 py-2 mb-1 rounded-4"> {{ data.dialog }} </p>
-                <span class="fst-italic" style="font-size: 12px;"> {{ data.time | date: "dd/MM/yy HH:mm" }} </span>
-              </div>
-            </div>
-            <div class="their-message d-flex gap-3 my-1">
-              <img src="/assets/images/profile.png" alt="Profile Avatar" height="40px">
-              <div>
-                <p class="text-conversation px-3 py-2 mb-1 rounded-4"> {{ data.dialog }} </p>
-                <span class="fst-italic" style="font-size: 12px;"> {{ data.time | date: "dd/MM/yy HH:mm" }} </span>
-              </div>
-            </div>
-
 
           </div>
         </div>
