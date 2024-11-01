@@ -2,6 +2,30 @@
   <div class="row">
     <div class="col-12">
       <div class="card shadow-custom">
+        <div class="bg-modal modal rounded" *ngIf="isModalOpen">
+          <div class="modal-dialog modal-dialog-scrollable">
+              <div class="modal-content bg-white p-3 rounded-4">
+                <div class="modal-header">
+                  <p class="modal-title mb-0">Selecione um novo colaborador</p>
+                </div>
+                <div class="modal-body d-flex flex-column gap-2">
+                  <div *ngFor="let collaborator of allCollaborators">
+                    <div>
+                      <input type="radio" class="btn-check" name="options-outlined" id="{{ collaborator.id }}" autocomplete="off" [(ngModel)]="selectedCollaborator" [value]="collaborator">
+                      <label class="btn btn-outline-success d-flex gap-2 align-items-center" for="{{ collaborator.id }}">
+                        <img src="/assets/images/profile.png" alt="profile image">
+                        <p class="mb-0">{{ collaborator.name }}</p>
+                      </label>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary btn-sm" (click)="closeModal()">Fechar</button>
+                  <button type="button" class="btn btn-bd-primary btn-sm" (click)="selectCollaborator()">Alterar</button>
+                </div>
+              </div>
+          </div>
+        </div>
         <div class="card-header text-white px-3 py-2 d-flex align-items-center justify-content-between bg-system">
           <div class="d-flex gap-3 align-items-center">
             <img src="/assets/images/profile.png" alt="Profile Picture" width="40px" height="40px">
@@ -10,11 +34,17 @@
               <p class="mb-0">Nome do Colaborador</p>
             </div>
           </div>
-          <div>
-            <img src="/assets/icons/arrow-down.png" alt="More Info" width="16px">
+          <div *ngIf="getSessionProfile() == idSupervisor">
+            <div class="dropdown">
+              <button class="btn btn-bd-primary dropdown-toggle" type="button" id="dropdownMenuButton2" data-bs-toggle="dropdown"
+                aria-expanded="false"></button>
+              <ul class="dropdown-menu dropdown-menu" aria-labelledby="dropdownMenuButton2">
+                <li><button class="dropdown-item" (click)="openModal()">Alterar Colaborador</button></li>
+              </ul>
+            </div>
           </div>
         </div>
-        <div class="card-body p-4 card-scroll scroll-bar">
+        <div class="card-body p-4 card-scroll scroll-bar" #scrollableContent>
           <div class="row">
 
             <div *ngFor="let data of response">
@@ -33,8 +63,8 @@
         <div class="card-footer p-3">
           <div class="input-group gap-2">
             <input type="text" class="form-control p-2 rounded text-conversation" placeholder="Digite sua mensagem..."
-              aria-describedby="button-addon2">
-            <button class="btn btn-bd-primary px-3 rounded" type="button" id="button-addon2">Enviar</button>
+              aria-describedby="button-addon2" [(ngModel)] = "messageText">
+            <button class="btn btn-bd-primary px-3 rounded" type="button" id="button-addon2" (click)="newMessage()">Enviar</button>
           </div>
         </div>
       </div>
