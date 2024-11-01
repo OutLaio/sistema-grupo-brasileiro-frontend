@@ -21,7 +21,7 @@ export class DialogBoxComponent implements OnInit {
   idSupervisor = '1';
   messageText = '';
   response!: I_Dialog_Box_Response[];
-  isModalOpen = true;
+  isModalOpen = false;
 
   allCollaborators!: I_Employee_View_Data[];
   selectedCollaborator!: I_Employee_View_Data | null;
@@ -32,7 +32,7 @@ export class DialogBoxComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.service.getDialoguesByRequestId('5').subscribe((res) => {
+    this.service.getDialoguesByRequestId('1').subscribe((res) => {
       this.response = res.sort((a, b) => Number(a.id) - Number(b.id));
       console.log(this.response);
       this.cdr.detectChanges();
@@ -69,7 +69,7 @@ export class DialogBoxComponent implements OnInit {
       return;
     }
     const request: I_Dialog_Box_Request = {
-      idBriefing: '5',
+      idBriefing: '1',
       idEmployee: this.getSessionId()!,
       message: this.messageText,
     };

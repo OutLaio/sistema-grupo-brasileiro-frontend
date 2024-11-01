@@ -17,7 +17,7 @@ export class RequestDetailsComponent {
   constructor(private service: RequestDetailsService) {}
 
   ngOnInit(): void {
-    this.service.getRequestDetailsById('6').subscribe((res) => {
+    this.service.getRequestDetailsById('1').subscribe((res) => {
       this.data.type = res;
       this.briefingType = this.data.type.briefing.briefingType.description;
     });
