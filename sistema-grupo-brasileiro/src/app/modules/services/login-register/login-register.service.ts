@@ -87,7 +87,11 @@ export class LoginRegisterService {
         tap((value) => {
           sessionStorage.setItem('auth-token', value.token);
           sessionStorage.setItem('idUser', value.employee.id.toString());
+<<<<<<< HEAD
           sessionStorage.setItem('userRole', value.employee.user.profile.description);
+=======
+          sessionStorage.setItem('userRole', value.employee.userView.profileView.id.toString());
+>>>>>>> ae8eb6a (Updated Request Details and Dialog Box)
 
           const userProfile: I_Employee_View_Data = {
             id: value.employee.id,
