@@ -1,5 +1,6 @@
 export interface CardsAttributes {
-    title: string,
-    description: string, 
-    collaborator: string
+    id: number;
+    title: string;
+    status: string;
+    collaborator: any;
 }

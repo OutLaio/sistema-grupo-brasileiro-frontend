@@ -31,15 +31,7 @@
                         <div *ngFor="let item of toDoCards"
                             class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
                             <p class="fw-bold text-truncate">{{ item.title }}</p>
-                            <p class="text-truncate">{{ item.description }}</p>
-                            <div class="progress">
-                                <div class="progress-bar position-relative bg-1" role="progressbar"
-                                    [style.width.%]="item.progress" [attr.aria-valuenow]="item.progress"
-                                    aria-valuemin="0" aria-valuemax="100">
-                                    <span class="position-absolute w-100 text-center text-white">{{
-                                        item.progress }}%</span>
-                                </div>
-                            </div>
+                            <p class="text-muted">Colaborador: {{ item.collaborator }}</p>
                         </div>
                     </div>
                 </div>
@@ -54,15 +46,7 @@
                         <div *ngFor="let item of inProgressCards "
                             class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
                             <p class="fw-bold text-truncate">{{ item.title }}</p>
-                            <p class="text-truncate">{{ item.description }}</p>
-                            <div class="progress">
-                                <div class="progress-bar position-relative bg-2" role="progressbar"
-                                    [style.width.%]="item.progress" [attr.aria-valuenow]="item.progress"
-                                    aria-valuemin="0" aria-valuemax="100">
-                                    <span class="position-absolute w-100 text-center text-white">{{
-                                        item.progress }}%</span>
-                                </div>
-                            </div>
+                            <p class="text-muted">Colaborador: {{ item.collaborator }}</p>
                         </div>
                     </div>
                 </div>
@@ -77,15 +61,7 @@
                         <div *ngFor="let item of awaitingApprovalCards "
                             class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
                             <p class="fw-bold text-truncate">{{ item.title }}</p>
-                            <p class="text-truncate">{{ item.description }}</p>
-                            <div class="progress">
-                                <div class="progress-bar position-relative bg-3" role="progressbar"
-                                    [style.width.%]="item.progress" [attr.aria-valuenow]="item.progress"
-                                    aria-valuemin="0" aria-valuemax="100">
-                                    <span class="position-absolute w-100 text-center text-white">{{
-                                        item.progress }}%</span>
-                                </div>
-                            </div>
+                            <p class="text-muted">Colaborador: {{ item.collaborator }}</p>
                         </div>
                     </div>
                 </div>
@@ -100,15 +76,7 @@
                         <div *ngFor="let item of approvedCards "
                             class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
                             <p class="fw-bold text-truncate">{{ item.title }}</p>
-                            <p class="text-truncate">{{ item.description }}</p>
-                            <div class="progress">
-                                <div class="progress-bar position-relative bg-4" role="progressbar"
-                                    [style.width.%]="item.progress" [attr.aria-valuenow]="item.progress"
-                                    aria-valuemin="0" aria-valuemax="100">
-                                    <span class="position-absolute w-100 text-center">{{ item.progress
-                                        }}%</span>
-                                </div>
-                            </div>
+                            <p class="text-muted">Colaborador: {{ item.collaborator }}</p>
                         </div>
                     </div>
                 </div>
@@ -123,15 +91,7 @@
                         <div *ngFor="let item of inProductionCards "
                             class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
                             <p class="fw-bold text-truncate">{{ item.title }}</p>
-                            <p class="text-truncate">{{ item.description }}</p>
-                            <div class="progress">
-                                <div class="progress-bar position-relative bg-5" role="progressbar"
-                                    [style.width.%]="item.progress" [attr.aria-valuenow]="item.progress"
-                                    aria-valuemin="0" aria-valuemax="100">
-                                    <span class="position-absolute w-100 text-center text-white">{{
-                                        item.progress }}%</span>
-                                </div>
-                            </div>
+                            <p class="text-muted">Colaborador: {{ item.collaborator }}</p>
                         </div>
                     </div>
                 </div>
@@ -146,15 +106,7 @@
                         <div *ngFor="let item of completedCards "
                             class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
                             <p class="fw-bold text-truncate">{{ item.title }}</p>
-                            <p class="text-truncate">{{ item.description }}</p>
-                            <div class="progress">
-                                <div class="progress-bar position-relative bg-6" role="progressbar"
-                                    [style.width.%]="item.progress" [attr.aria-valuenow]="item.progress"
-                                    aria-valuemin="0" aria-valuemax="100">
-                                    <span class="position-absolute w-100 text-center">{{ item.progress
-                                        }}%</span>
-                                </div>
-                            </div>
+                            <p class="text-muted">Colaborador: {{ item.collaborator }}</p>
                         </div>
                     </div>
                 </div>
@@ -168,15 +120,7 @@
                         <div *ngFor="let item of standByCards "
                             class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
                             <p class="fw-bold text-truncate">{{ item.title }}</p>
-                            <p class="text-truncate">{{ item.description }}</p>
-                            <div class="progress">
-                                <div class="progress-bar position-relative bg-6" role="progressbar"
-                                    [style.width.%]="item.progress" [attr.aria-valuenow]="item.progress"
-                                    aria-valuemin="0" aria-valuemax="100">
-                                    <span class="position-absolute w-100 text-center">{{ item.progress
-                                        }}%</span>
-                                </div>
-                            </div>
+                            <p class="text-muted">Colaborador: {{ item.collaborator }}</p>
                         </div>
                     </div>
                 </div>
