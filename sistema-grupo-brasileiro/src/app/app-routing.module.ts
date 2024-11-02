@@ -13,6 +13,11 @@ import { AuthGuard } from './modules/core/guards/guard.guard';
 
 const routes: Routes = [
   {
+    path: 'acompanhamento',
+    component: CheckRequestsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'cadastro',
     title: 'Cadastro',
     component: RegisterComponent,
@@ -33,15 +38,13 @@ const routes: Routes = [
     component: RecoveryPasswordComponent,
   },
   {
-    path: 'acompanhamento',
-    title: 'Acompanhamento',
-    component: CheckRequestsComponent,
+    path: 'colaboradores',
+    component: CollaboratorSystemComponent,
     canActivate: [AuthGuard]
   },
   {
-    path: 'colaboradores',
-    title: 'Colaboradores',
-    component: CollaboratorSystemComponent,
+    path: 'nova-solicitacao',
+    component: MainCreateRequestComponent,
     canActivate: [AuthGuard]
   },
   {

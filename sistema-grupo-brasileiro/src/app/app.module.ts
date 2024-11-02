@@ -69,7 +69,8 @@ import { SignpostRequestComponent } from './modules/feature/create-request/compo
     AgencyBoardRequestComponent,
     LoadingFileComponent,
     DndDirective,
-    SignpostRequestComponent
+    SignpostRequestComponent,
+    VersionComponent,
   ],
   imports: [
     BrowserModule,
