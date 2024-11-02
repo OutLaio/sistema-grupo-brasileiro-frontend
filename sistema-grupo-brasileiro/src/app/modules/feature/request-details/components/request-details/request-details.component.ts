@@ -21,6 +21,7 @@ export class RequestDetailsComponent {
       this.data.type = res;
       this.briefingType = this.data.type.briefing.briefingType.description;
     });
+    console.log(this.data);
   }
 
   isBriefingType(type: E_Briefing_Type): boolean {

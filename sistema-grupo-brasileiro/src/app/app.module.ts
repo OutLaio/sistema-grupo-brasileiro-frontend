@@ -35,6 +35,7 @@ import { PhoneMaskDirective } from './modules/directives/phone-mask/phone-mask.d
 import { AgencyBoardComponent } from './modules/feature/request-details/components/agency-board/agency-board.component';
 import { SignpostComponent } from './modules/feature/request-details/components/signpost/signpost.component';
 import { DialogBoxComponent } from './modules/feature/request-details/components/dialog-box/dialog-box.component';
+import { VersionComponent } from './modules/feature/request-details/components/version/version.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +59,8 @@ import { DialogBoxComponent } from './modules/feature/request-details/components
     PhoneMaskDirective,
     AgencyBoardComponent,
     SignpostComponent,
-    DialogBoxComponent
+    DialogBoxComponent,
+    VersionComponent,
   ],
   imports: [
     BrowserModule,

@@ -2,6 +2,7 @@ import {
   ChangeDetectorRef,
   Component,
   ElementRef,
+  Input,
   NgModule,
   OnInit,
   ViewChild,
@@ -10,6 +11,8 @@ import { I_Dialog_Box_Response } from '../../../../shared/interfaces/dialog-box/
 import { RequestDetailsService } from '../../services/request-details.service';
 import { I_Dialog_Box_Request } from '../../../../shared/interfaces/dialog-box/form/dialog-box-form';
 import { I_Employee_View_Data } from '../../../../shared/interfaces/user/view/employee-view';
+import { I_Employee_Simple_View_Data } from '../../../../shared/interfaces/user/view/employee-simple-view';
+import { I_Assign_Collaborator_Request } from '../../../../shared/interfaces/project/form/assign-collaborator-form';
 
 @Component({
   selector: 'app-dialog-box',
@@ -17,8 +20,10 @@ import { I_Employee_View_Data } from '../../../../shared/interfaces/user/view/em
   styleUrl: './dialog-box.component.css',
 })
 export class DialogBoxComponent implements OnInit {
+  @Input() collaborator!: I_Employee_Simple_View_Data | undefined;
+
   @ViewChild('scrollableContent') private scrollableContent!: ElementRef;
-  idSupervisor = '1';
+  idSupervisor = 'ROLE_SUPERVISOR';
   messageText = '';
   response!: I_Dialog_Box_Response[];
   isModalOpen = false;
@@ -39,11 +44,13 @@ export class DialogBoxComponent implements OnInit {
       this.scrollToBottom();
     });
 
-    this.service.getAllCollaborators().subscribe(
-      (res) => {
-        this.allCollaborators = res.content as Array<I_Employee_View_Data>;
-      }
-    )
+    if(this.getSessionProfile() === this.idSupervisor) {
+      this.service.getAllCollaborators().subscribe(
+        (res) => {
+          this.allCollaborators = res.content as Array<I_Employee_View_Data>;
+        }
+      )
+    }
   }
 
   private scrollToBottom() {
@@ -93,6 +100,18 @@ export class DialogBoxComponent implements OnInit {
     if (!this.selectedCollaborator) {
       return;
     }
-    console.log(this.selectedCollaborator.name);
+    if(confirm('Deseja atribuir ' + this.selectedCollaborator.name + ' como colaborador do projeto?')){
+      const request: I_Assign_Collaborator_Request = {
+        idCollaborator: this.selectedCollaborator.id
+      }
+      this.service.assignCollaborator('1', request).subscribe(() => {
+        this.collaborator = {
+          id: this.selectedCollaborator?.id!,
+          fullName: this.selectedCollaborator?.name! + ' ' + this.selectedCollaborator?.lastname!,
+          avatar: this.selectedCollaborator?.avatar!
+        };
+        this.closeModal();
+      })
+    }
   }
 }

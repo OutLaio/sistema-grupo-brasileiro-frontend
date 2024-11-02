@@ -78,7 +78,7 @@
   justify-content: start;
 }
 
-.their-message p {
+.their-message .bg-their {
   background: #DFDFDF;
   color: black;
 }

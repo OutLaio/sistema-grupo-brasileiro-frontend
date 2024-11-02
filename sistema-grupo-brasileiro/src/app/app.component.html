@@ -1,4 +1,4 @@
-<!-- <div *ngIf=isAuthenticated()>
+<div *ngIf=isAuthenticated()>
 	<div class="app-header">
 		<app-header></app-header>
 	</div>
@@ -12,14 +12,4 @@
 
 <div *ngIf=!isAuthenticated()>
 	<router-outlet></router-outlet>
-</div> -->
-
-<div class="app-header">
-  <app-header></app-header>
-</div>
-<div class="container-fluid">
-  <app-sidenav></app-sidenav>
-</div>
-<div class="content" [ngClass]="isSidebarVisible ? 'with-sidebar' : 'without-sidebar'">
-  <router-outlet></router-outlet>
 </div>

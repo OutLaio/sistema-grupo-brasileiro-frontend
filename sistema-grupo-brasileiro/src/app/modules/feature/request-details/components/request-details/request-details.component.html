@@ -1,4 +1,4 @@
-<div class="container-fluid">
+<div *ngIf="data.type" class="container-fluid">
   <div class="row">
     <div class="col-12">
       <div class="card text-black shadow-custom">
@@ -9,7 +9,7 @@
               <app-signpost *ngIf="isBriefingType(E_Briefing_Type.SINALIZACAO_INTERNA)" [briefing]="data"></app-signpost>
             </div>
             <div class="col-lg-5 d-flex align-items-center justify-content-center">
-              <app-dialog-box></app-dialog-box>
+              <app-dialog-box [collaborator]="data.type.project.collaborator"></app-dialog-box>
             </div>
           </div>
         </div>

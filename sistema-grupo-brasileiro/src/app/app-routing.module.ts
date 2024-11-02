@@ -15,7 +15,7 @@ const routes: Routes = [
   {
     path: 'acompanhamento',
     component: CheckRequestsComponent,
-    // canActivate: [AuthGuard] // Corrigido: fechamento do colchete
+    canActivate: [AuthGuard]
   },
   {
     path: 'cadastro',
@@ -36,22 +36,22 @@ const routes: Routes = [
   {
     path: 'colaboradores',
     component: CollaboratorSystemComponent,
-    // canActivate: [AuthGuard] // Corrigido: fechamento do colchete
+    canActivate: [AuthGuard]
   },
   {
     path: 'nova-solicitacao',
     component: CreateRequestComponent,
-    // canActivate: [AuthGuard] // Corrigido: fechamento do colchete
+    canActivate: [AuthGuard]
   },
   {
     path: 'detalhes-solicitacao',
     component: RequestDetailsComponent,
-    // canActivate: [AuthGuard] // Corrigido: fechamento do colchete
+    canActivate: [AuthGuard]
   },
   {
     path: 'perfil',
     component: MainProfileComponent,
-    // canActivate: [AuthGuard], // Corrigido: fechamento do colchete
+    canActivate: [AuthGuard],
     loadChildren: () =>
       import(
         './modules/core/profile/components/main-profile/profile-routing.module'
@@ -69,7 +69,7 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: 'detalhes-solicitacao',
+    redirectTo: '/acompanhamento',
     pathMatch: 'full',
   },
 ];
