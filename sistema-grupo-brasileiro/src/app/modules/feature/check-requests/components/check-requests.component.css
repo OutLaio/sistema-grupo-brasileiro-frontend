@@ -6,6 +6,22 @@
     font-weight: 600;
 }
 
+.request-title {
+    display: inline-block;
+    font-size: 11px;
+    background-color: #03A696;
+    color: #fff;
+    padding: 1px; 
+    border-radius: 4px; 
+    max-width: 100%;
+}
+
+.request-subtitle {
+    font-size: 15px;
+    color: #666;
+    cursor: pointer;
+}
+
 .card-custom {
     max-width: 17em;
     min-width: 17em;
@@ -33,6 +49,11 @@
 
 .progress {
     height: 2em;
+}
+
+.perfil-img:hover, .perfil-img:active{
+    transform: scale(1.1);
+    transition: transform 0.3s;
 }
 
 .progress-bar {
