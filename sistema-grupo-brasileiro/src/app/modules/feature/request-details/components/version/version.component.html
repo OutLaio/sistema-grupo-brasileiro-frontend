@@ -6,27 +6,29 @@
     <p>Baixe a arte clicando no link abaixo:</p>
     <a href="{{version?.productLink}}" target="_blank"> {{ version?.productLink }} </a>
   </div>
-  <div class="d-flex align-items-end justify-content-between">
-    <div class="d-flex flex-column gap-3 py-3">
-      <!-- Checkbox com bootstrap para o supervisor escolher se aprova ou não a arte desenvolvida -->
-      <div class="form-check">
-        <input type="radio" class="form-check-input" id="approveVersion{{version?.versionNumber}}"
-          name="approveVersion{{version?.versionNumber}}" (change)="onApprove()">
-        <label class="form-check-label" for="approveVersion{{version?.versionNumber}}">Aprovar arte</label>
+  <div *ngIf=" (isSupervisor() && ( version?.supervisorApprove === null || version?.clientApprove === false ) ||
+  ( isClient() && version?.clientApprove === null && version?.supervisorApprove))">
+    <div class="d-flex align-items-end justify-content-between">
+      <div class="d-flex flex-column gap-3 py-3">
+        <div class="form-check">
+          <input type="radio" class="form-check-input" id="approveVersion{{version?.versionNumber}}"
+            name="approveVersion{{version?.versionNumber}}" (change)="onApprove()">
+          <label class="form-check-label" for="approveVersion{{version?.versionNumber}}">Aprovar arte</label>
+        </div>
+        <div class="form-check">
+          <input type="radio" class="form-check-input" id="repproveVersion{{version?.versionNumber}}"
+            name="approveVersion{{version?.versionNumber}}" (change)="onDisapprove()">
+          <label class="form-check-label" for="repproveVersion{{version?.versionNumber}}">Não aprovar arte</label>
+        </div>
       </div>
-      <div class="form-check">
-        <input type="radio" class="form-check-input" id="repproveVersion{{version?.versionNumber}}"
-          name="approveVersion{{version?.versionNumber}}" (change)="onDisapprove()">
-        <label class="form-check-label" for="repproveVersion{{version?.versionNumber}}">Não aprovar arte</label>
+      <div>
+        <button class="btn btn-bd-primary" (click)="onSave()">Salvar</button>
       </div>
     </div>
-    <div>
-      <button class="btn btn-bd-primary">Salvar</button>
+    <div *ngIf="isDisaproved" class="form-group">
+      <label for="feedbackVersion{{version?.versionNumber}}">Feedback:</label>
+      <textarea class="form-control" placeholder="Informe o motivo para a não aprovação da arte desenvolvida..."
+        id="feedbackVersion{{version?.versionNumber}}" rows="3"></textarea>
     </div>
-  </div>
-  <!-- Input de texto para coletar o feedback em caso de não aprovação -->
-  <div *ngIf="isDisaproved" class="form-group">
-    <label for="feedbackVersion{{version?.versionNumber}}">Feedback:</label>
-    <textarea class="form-control" placeholder="Informe o motivo para a não aprovação da arte desenvolvida..." id="feedbackVersion{{version?.versionNumber}}" rows="3"></textarea>
   </div>
 </div>
