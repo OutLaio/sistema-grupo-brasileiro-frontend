@@ -64,4 +64,25 @@ export class CheckRequestsComponent implements OnInit {
     this.standByCards = allProjects.filter(project => project.status === 'STAND_BY');
   }
 
+  isTruncated: boolean = true;
+
+  toggleTruncate() {
+    this.isTruncated = !this.isTruncated;
+  }
+
+  showCollaboratorName = false;
+  showClientName = false;
+
+  toggleTooltip(type: string) {
+    if (type === 'collaborator') {
+      this.showCollaboratorName = !this.showCollaboratorName;
+      this.showClientName = false;
+    } else if (type === 'client') {
+      this.showClientName = !this.showClientName;
+      this.showCollaboratorName = false;
+    }
+  }
+
+  deadline: Date = new Date;
+
 }

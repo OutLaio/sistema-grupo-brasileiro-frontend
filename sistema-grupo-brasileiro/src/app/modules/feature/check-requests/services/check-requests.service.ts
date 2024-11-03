@@ -24,7 +24,16 @@ export class CheckRequestsService {
           id: project.id,
           title: project.title,
           status: project.status,
-          collaborator: project.collaborator ?? null
+          collaborator: project.collaborator ? {
+            id: project.collaborator.id,
+            fullName: project.collaborator.fullName,
+            avatar: project.collaborator.avatar,
+        } : null,
+          client: {
+            id: project.client.id,
+            fullName: project.client.fullName,
+            avatar: project.client.avatar,
+          }
         }));
       })
     );
