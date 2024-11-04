@@ -6,29 +6,42 @@
     <p>Baixe a arte clicando no link abaixo:</p>
     <a href="{{version?.productLink}}" target="_blank"> {{ version?.productLink }} </a>
   </div>
-  <div *ngIf=" (isSupervisor() && ( version?.supervisorApprove === null || version?.clientApprove === false ) ||
-  ( isClient() && version?.clientApprove === null && version?.supervisorApprove))">
-    <div class="d-flex align-items-end justify-content-between">
-      <div class="d-flex flex-column gap-3 py-3">
-        <div class="form-check">
-          <input type="radio" class="form-check-input" id="approveVersion{{version?.versionNumber}}"
-            name="approveVersion{{version?.versionNumber}}" (change)="onApprove()">
-          <label class="form-check-label" for="approveVersion{{version?.versionNumber}}">Aprovar arte</label>
-        </div>
-        <div class="form-check">
-          <input type="radio" class="form-check-input" id="repproveVersion{{version?.versionNumber}}"
-            name="approveVersion{{version?.versionNumber}}" (change)="onDisapprove()">
-          <label class="form-check-label" for="repproveVersion{{version?.versionNumber}}">Não aprovar arte</label>
-        </div>
+
+  <div>
+    <div *ngIf="isVersionApproved(); else approve">
+      <p class="small-text text-success">Esta arte foi aprovada!</p>
+    </div>
+
+    <ng-template #approve>
+      <div *ngIf="isVersionDisapproved()">
+        <p>A arte não foi aprovada pelo
+          <span *ngIf="isDisapprovedBySupervisor(); else client">Supervisor</span>
+          !
+        </p>
+        <p class="small-text text-exo">Feedback: {{ version?.feedback }}</p>
+      </div>
+    </ng-template>
+    <ng-template #client>Cliente</ng-template>
+
+  </div>
+
+  <div *ngIf="showApproveSelect()">
+    <div class="d-flex flex-column gap-3 align-items-end justify-content-between">
+      <div class="d-flex align-items-center justify-content-center w-100 gap-3 py-3">
+        <input type="radio" name="approveVersion" id="approve" checked="checked" (change)="onApprove()">
+        <label for="approve">Aprovar</label>
+
+        <input type="radio" name="approveVersion" id="non-approve" (change)="onDisapprove()">
+        <label for="non-approve">Não Aprovar</label>
+      </div>
+      <div *ngIf="isDisaproved" class="w-100">
+        <span>Feedback:</span>
+        <textarea class="form-control" placeholder="Informe o motivo para a não aprovação da arte desenvolvida..."
+          id="feedback" rows="5"></textarea>
       </div>
       <div>
         <button class="btn btn-bd-primary" (click)="onSave()">Salvar</button>
       </div>
-    </div>
-    <div *ngIf="isDisaproved" class="form-group">
-      <label for="feedbackVersion{{version?.versionNumber}}">Feedback:</label>
-      <textarea class="form-control" placeholder="Informe o motivo para a não aprovação da arte desenvolvida..."
-        id="feedbackVersion{{version?.versionNumber}}" rows="3"></textarea>
     </div>
   </div>
 </div>

@@ -32,7 +32,42 @@ export class VersionComponent implements AfterViewInit{
     return sessionStorage.getItem('userRole') === 'ROLE_CLIENT';
   }
 
+  isApprovedBySupervisor() {
+    return this.version?.supervisorApprove === true;
+  }
+
+  isDisapprovedBySupervisor() {
+    return this.version?.supervisorApprove === false;
+  }
+
+
+  isApprovedByClient() {
+    return this.version?.clientApprove === true;
+  }
+
+  isDisapprovedByClient() {
+    return this.version?.clientApprove === false;
+  }
+
+  isVersionApproved() {
+    return this.isApprovedBySupervisor() && this.isApprovedByClient();
+  }
+
+  isVersionDisapproved() {
+    return this.isDisapprovedBySupervisor() || this.isDisapprovedByClient();
+  }
+
+  showApproveSelect() {
+    return this.isSupervisor() &&
+      (this.version?.supervisorApprove === null ||
+        this.version?.clientApprove === false) ||
+      (this.isClient() &&
+        this.version?.clientApprove === null &&
+        this.version?.supervisorApprove);
+  }
+
   onSave(){
-    this.version!.supervisorApprove = !this.isDisaproved;
+    this.version!.clientApprove = !this.isDisaproved;
+    this.version!.supervisorApprove =!this.isDisaproved;
   }
 }
