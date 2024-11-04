@@ -42,11 +42,6 @@ import { LoadingFileComponent } from './modules/feature/create-request/component
 import { DndDirective } from './modules/directives/dnd/dnd.directive.directive';
 import { SignpostRequestComponent } from './modules/feature/create-request/components/signpost-request/signpost-request.component';
 
-import { AgencyBoardRequestComponent } from './modules/feature/create-request/components/agency-board-request/agency-board-request.component';
-import { LoadingFileComponent } from './modules/feature/create-request/components/loading-file/loading-file.component';
-import { DndDirective } from './modules/directives/dnd/dnd.directive.directive';
-import { SignpostRequestComponent } from './modules/feature/create-request/components/signpost-request/signpost-request.component';
-  
 @NgModule({
   declarations: [
     AppComponent,
