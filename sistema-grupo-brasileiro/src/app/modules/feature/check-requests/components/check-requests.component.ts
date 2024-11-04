@@ -3,6 +3,7 @@ import { LoginRegisterService } from '../../../services/login-register/login-reg
 import { CardsAttributes } from '../interfaces/cards-attributes';
 import { CheckRequestsService } from '../services/check-requests.service';
 import { ProjectStatus } from '../enums/project-status';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-check-requests',
@@ -24,7 +25,8 @@ export class CheckRequestsComponent implements OnInit {
 
   constructor(
     private loginRegisterService: LoginRegisterService,
-    private checkRequestServices: CheckRequestsService
+    private checkRequestServices: CheckRequestsService,
+    private router: Router,
   ) { }
 
   private roleMapping: { [key: string]: number } = {
@@ -85,4 +87,7 @@ export class CheckRequestsComponent implements OnInit {
 
   deadline: Date = new Date;
 
+  goToDetails(id: string) {
+    this.router.navigate(['/detalhes-solicitacao'], { state: {id: id} });
+  }
 }

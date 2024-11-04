@@ -13,6 +13,7 @@ import { I_Dialog_Box_Request } from '../../../../shared/interfaces/dialog-box/f
 import { I_Employee_View_Data } from '../../../../shared/interfaces/user/view/employee-view';
 import { I_Employee_Simple_View_Data } from '../../../../shared/interfaces/user/view/employee-simple-view';
 import { I_Assign_Collaborator_Request } from '../../../../shared/interfaces/project/form/assign-collaborator-form';
+import { I_Project_Data } from '../../../../shared/interfaces/project/view/project-view';
 
 @Component({
   selector: 'app-dialog-box',
@@ -20,7 +21,7 @@ import { I_Assign_Collaborator_Request } from '../../../../shared/interfaces/pro
   styleUrl: './dialog-box.component.css',
 })
 export class DialogBoxComponent implements OnInit {
-  @Input() collaborator!: I_Employee_Simple_View_Data | undefined;
+  @Input() project!: I_Project_Data | undefined;
 
   @ViewChild('scrollableContent') private scrollableContent!: ElementRef;
   idSupervisor = 'ROLE_SUPERVISOR';
@@ -37,9 +38,8 @@ export class DialogBoxComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.service.getDialoguesByRequestId('1').subscribe((res) => {
+    this.service.getDialoguesByRequestId(this.project!.id).subscribe((res) => {
       this.response = res.sort((a, b) => Number(a.id) - Number(b.id));
-      console.log(this.response);
       this.cdr.detectChanges();
       this.scrollToBottom();
     });
@@ -76,7 +76,7 @@ export class DialogBoxComponent implements OnInit {
       return;
     }
     const request: I_Dialog_Box_Request = {
-      idBriefing: '1',
+      idBriefing: this.project!.id,
       idEmployee: this.getSessionId()!,
       message: this.messageText,
     };
@@ -104,8 +104,8 @@ export class DialogBoxComponent implements OnInit {
       const request: I_Assign_Collaborator_Request = {
         idCollaborator: this.selectedCollaborator.id
       }
-      this.service.assignCollaborator('1', request).subscribe(() => {
-        this.collaborator = {
+      this.service.assignCollaborator(this.project!.id, request).subscribe(() => {
+        this.project!.collaborator = {
           id: this.selectedCollaborator?.id!,
           fullName: this.selectedCollaborator?.name! + ' ' + this.selectedCollaborator?.lastname!,
           avatar: this.selectedCollaborator?.avatar!

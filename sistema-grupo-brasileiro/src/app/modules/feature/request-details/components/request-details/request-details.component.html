@@ -9,7 +9,7 @@
               <app-signpost *ngIf="isBriefingType(E_Briefing_Type.SINALIZACAO_INTERNA)" [briefing]="data"></app-signpost>
             </div>
             <div class="col-lg-5 d-flex align-items-center justify-content-center">
-              <app-dialog-box [collaborator]="data.type.project.collaborator"></app-dialog-box>
+              <app-dialog-box [project]="data.type.project"></app-dialog-box>
             </div>
           </div>
         </div>

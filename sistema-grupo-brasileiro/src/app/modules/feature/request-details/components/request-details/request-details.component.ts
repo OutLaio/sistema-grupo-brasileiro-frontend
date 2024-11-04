@@ -17,11 +17,11 @@ export class RequestDetailsComponent {
   constructor(private service: RequestDetailsService) {}
 
   ngOnInit(): void {
-    this.service.getRequestDetailsById('1').subscribe((res) => {
+    const idProject = history.state.id;
+    this.service.getRequestDetailsById(idProject).subscribe((res) => {
       this.data.type = res;
       this.briefingType = this.data.type.briefing.briefingType.description;
     });
-    console.log(this.data);
   }
 
   isBriefingType(type: E_Briefing_Type): boolean {
