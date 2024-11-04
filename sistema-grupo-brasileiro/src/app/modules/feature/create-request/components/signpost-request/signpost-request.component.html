@@ -61,12 +61,12 @@
                     <div class="d-flex flex-column">
                         <div class="form-check">
                             <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="aluminio"
-                                formControlName="boardType" value="aluminio">
+                                formControlName="boardType" value="1">
                             <label class="form-check-label" for="aluminio">Aluminio</label>
                         </div>
                         <div class="form-check">
                             <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="Polietileno"
-                                formControlName="boardType" value="Polietileno">
+                                formControlName="boardType" value="2">
                             <label class="form-check-label" for="Polietileno">Polietileno</label>
                         </div>
                         <div *ngIf="registerForm.get('boardType')?.invalid  && formDir.submitted"

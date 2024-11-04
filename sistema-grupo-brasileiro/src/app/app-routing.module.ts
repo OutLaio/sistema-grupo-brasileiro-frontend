@@ -18,6 +18,7 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+
     path: 'cadastro',
     title: 'Cadastro',
     component: RegisterComponent,
@@ -45,6 +46,7 @@ const routes: Routes = [
   {
     path: 'nova-solicitacao',
     component: MainCreateRequestComponent,
+
     canActivate: [AuthGuard]
   },
   {
@@ -99,6 +101,7 @@ const routes: Routes = [
     path: '',
     redirectTo: '/acompanhamento',
     pathMatch: 'full',
+
   },
 ];
 

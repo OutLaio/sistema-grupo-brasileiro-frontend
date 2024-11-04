@@ -88,7 +88,6 @@ export class LoginRegisterService {
           sessionStorage.setItem('auth-token', value.token);
           sessionStorage.setItem('idUser', value.employee.id.toString());
           sessionStorage.setItem('userRole', value.employee.user.profile.description);
-          sessionStorage.setItem('userRole', value.employee.user.profile.description);
 
           const userProfile: I_Employee_View_Data = {
             id: value.employee.id,

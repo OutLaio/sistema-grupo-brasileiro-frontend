@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -20,9 +20,8 @@ export class CreateRequestService {
     height: number,
     width: number,
   ): Observable<any> {
-
     const idUser = sessionStorage.getItem('idUser');
-
+    const authToken = sessionStorage.getItem('auth-token');
     const requestBody = {
       project: {
         id_client: Number(idUser),
@@ -46,7 +45,12 @@ export class CreateRequestService {
       }
     };
 
-    return this.http.post(`${this.apiUrl}/signposts`, requestBody);
+    // Configurando os headers com autenticação e Content-Type
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${authToken}`
+    });
+
+    return this.http.post(`${this.apiUrl}/signposts`, requestBody, { headers, withCredentials: true });
   }
 }
-
