@@ -4,7 +4,7 @@ import { I_Agency_Board_Data } from "./agency-board-form";
 
 
 export interface I_Agency_Board_Request {
-  project: I_Project_Request;
-  briefing: I_Briefing_Request;
-  angecyBoard: I_Agency_Board_Data;
+  projectForm: I_Project_Request;
+  briefingForm: I_Briefing_Request;
+  bAgencyBoardsForm: I_Agency_Board_Data;
 }

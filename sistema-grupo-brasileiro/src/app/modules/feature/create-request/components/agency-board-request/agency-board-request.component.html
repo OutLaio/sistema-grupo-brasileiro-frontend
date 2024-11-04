@@ -27,7 +27,7 @@
                             <label>Largura</label>
                             <input [backgroundColorClass]="'#ebebeb'" type="text"
                                 class="border border-dark-subtle rounded-3 me-2 w-100 form-focus" placeholder="cm"
-                                formControlName="width" />
+                                formControlName="length" />
                         </div>
                         <div class="pt-4">
                             <span class="mx-3">X</span>
@@ -46,16 +46,16 @@
         <div class="row pb-4 pt-2 border-bottom">
             <div class="col-12 col-md-3">
                 <div class="form-group pt-3">
-                    <label class="fw-bold" for="board">Placa</label>
-                    <select [backgroundColorClass]="'#ebebeb'" id="board"
-                        class="form-select border-dark-subtle rounded-3 form-focus w-100" formControlName="board">
-                        <option value="luminoso-completo">Luminoso Completo</option>
-                        <option value="troca-lona">Troca de Lona</option>
-                        <option value="placa-adesivada">Placa adesivada em Polietileno 1mm</option>
+                    <label class="fw-bold" for="agencyBoardType">Placa</label>
+                    <select [backgroundColorClass]="'#ebebeb'" id="agencyBoardType"
+                        class="form-select border-dark-subtle rounded-3 form-focus w-100" formControlName="agencyBoardType">
+                        <option value="1">Luminoso Completo</option>
+                        <option value="2">Troca de Lona</option>
+                        <option value="3">Placa adesivada em Polietileno 1mm</option>
                     </select>
                 </div>
             </div>
-            <div *ngIf="registerForm.get('board')?.value === 'troca-lona'" class="col-12 col-md-9">
+            <div *ngIf="registerForm.get('agencyBoardType')?.value === '2'" class="col-12 col-md-9">
                 <div class="form-group pt-3">
                     <div class="title">
                         <p class="fw-bold">Tipo</p>
@@ -63,22 +63,22 @@
                     <div class="d-flex flex-wrap">
                         <div class="form-check me-3 mb-2">
                             <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="backLight"
-                                formControlName="boardType" value="bl-luminoso">
+                                formControlName="boardType" value="1">
                             <label class="form-check-label" for="backLight">BackLight (Luminoso)</label>
                         </div>
                         <div class="form-check me-3 mb-2">
                             <input [borderColorClass]="'#027373'" class="form-check-input" type="radio"
-                                id="frontLightWithLight" formControlName="boardType" value="fl-com-luz">
+                                id="frontLightWithLight" formControlName="boardType" value="2">
                             <label class="form-check-label" for="frontLightWithLight">FrontLight Com Luz</label>
                         </div>
                         <div class="form-check me-3 mb-2">
                             <input [borderColorClass]="'#027373'" class="form-check-input" type="radio"
-                                id="frontLightWithoutLight" formControlName="boardType" value="fl-sem-luz">
+                                id="frontLightWithoutLight" formControlName="boardType" value="3">
                             <label class="form-check-label" for="frontLightWithoutLight">FrontLight Sem Luz</label>
                         </div>
                         <div class="form-check me-3 mb-2">
                             <input [borderColorClass]="'#027373'" class="form-check-input" type="radio"
-                                id="adhesiveOverCanvas" formControlName="boardType" value="adesivo-sobre-lona">
+                                id="adhesiveOverCanvas" formControlName="boardType" value="4">
                             <label class="form-check-label" for="adhesiveOverCanvas">Adesivo Sobre Lona</label>
                         </div>
                     </div>

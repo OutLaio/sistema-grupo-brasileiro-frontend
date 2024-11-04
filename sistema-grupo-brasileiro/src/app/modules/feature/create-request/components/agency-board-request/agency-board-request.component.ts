@@ -20,7 +20,7 @@ enum Cities {
   'SALVADOR' = '7',
   'BRASÍLIA' = '8',
   'RECIFE' = '9',
-  'GOiÂNIA' = '10',
+  'GOIÂNIA' = '10',
 }
 
 enum Company {
@@ -65,7 +65,7 @@ export class AgencyBoardRequestComponent {
       observation: ['', Validators.required],
       otherText: [''],
       othersText: [''],
-      board: ['', Validators.required],
+      agencyBoardType: ['', Validators.required],
       boardType: ['']
     });
   }
@@ -114,7 +114,8 @@ export class AgencyBoardRequestComponent {
   }
 
   onOtherCompany() {
-    this.companies = [];
+    if (this.companies.length > 0)
+      this.companies = [];
     this.registerForm.get('otherText')?.setValue('');
   }
 
@@ -234,49 +235,41 @@ export class AgencyBoardRequestComponent {
     this.selectedCompanies = this.companies.filter(company => !company.isCustom).map(company => {
       const companyName = company.name as keyof typeof Company;
       const companyInt: I_Company_Briefing_Form_Data = {
-        idCompany: companyName,
-      }
+        idCompany: Company[companyName as keyof typeof Company], // Isso usará o valor numérico
+      };
       return companyInt;
     });
 
     this.selectedOthersCompanies = this.companies.filter(company => company.isCustom).map(company => company.name);
   }
 
-  prepareSubmit() {
+
+  prepareSubmit(): I_Agency_Board_Request {
     this.separateCompanies();
 
-    const projectRequest: I_Project_Request = {
+    const projectForm: I_Project_Request = {
       idClient: sessionStorage.getItem('idUser')!.toString(),
       title: 'Placa de Agência',
     }
 
-    const briefingRequest: I_Briefing_Request = {
-      expectedDate: new Date(),
-      detailedDescription: this.registerForm.get('detailedDescription')?.value,
+    const briefingForm: I_Briefing_Request = {
+      expectedDate: '2023-10-25',
+      detailedDescription: this.registerForm.get('description')?.value,
       companies: this.selectedCompanies,
       otherCompany: this.selectedOthersCompanies.join(', '),
-      idBriefingType: 'placa_de_agencia',
+      idBriefingType: '1',
       measurement: {
         length: this.registerForm.get('length')?.value,
         height: this.registerForm.get('height')?.value,
       },
     }
 
-    const agencyBoardData: I_Agency_Board_Data = {
-      idAgencyBoardType: this.registerForm.get('board')?.value,
-      boardLocation: this.registerForm.get('signLocation')?.value,
-      observation: this.registerForm.get('observation')?.value,
-      idBoardType?: this.registerForm.get('boardType')?.value,
-      routes?: I_Agency_Board_Routes[],
-      othersRoutes?: I_Agency_Board_Others_Routes[]String,
-    }
 
-    
     const mainRoutes: I_Agency_Board_Routes[] = this.companies.flatMap(company => {
       if (!company.isCustom) {
         return [{
-          idCompany: company.name as keyof typeof Company,
-          idCities: company.mainRoutes as keyof typeof Cities,
+          idCompany: Company[company.name as keyof typeof Company],
+          idCities: company.mainRoutes.map(route => Cities[route as keyof typeof Cities]),
           type: 'main',
         }];
       } else {
@@ -288,8 +281,8 @@ export class AgencyBoardRequestComponent {
     const connections: I_Agency_Board_Routes[] = this.companies.flatMap(company => {
       if (!company.isCustom) {
         return [{
-          idCompany: company.name as keyof typeof Company,
-          idCities: company.connections,
+          idCompany: Company[company.name as keyof typeof Company],
+          idCities: company.connections.map(connection => Cities[connection as keyof typeof Cities]),
           type: 'connection',
         }];
       } else {
@@ -298,59 +291,61 @@ export class AgencyBoardRequestComponent {
     });
 
 
-    const routes: I_Agency_Board_Routes[] = [...mainRoutes, ...connections];
+    const agencyBoardRoutes: I_Agency_Board_Routes[] = [...mainRoutes, ...connections];
 
     const mainOthersRoutes: I_Agency_Board_Others_Routes[] = this.companies.flatMap(company => {
       if (company.isCustom) {
-        return [{
+        return company.mainRoutes.map(route => ({
           company: company.name,
-          city: company.mainRoutes,
+          city: route,
           type: 'main',
-        }];
+        }));
       } else {
         return [];
       }
     });
-
 
     const othersConnections: I_Agency_Board_Others_Routes[] = this.companies.flatMap(company => {
       if (company.isCustom) {
-        return [{
-          idCompany: company.name,
-          idCities: company.connections,
+        return company.connections.map(route => ({
+          company: company.name,
+          city: route,
           type: 'connection',
-        }];
+        }));
       } else {
         return [];
       }
     });
 
-    const boardType = this.registerForm.get('boardType')?.value;
-    const boardLocation = this.registerForm.get('signLocation')?.value;
-    const sector = this.registerForm.get('sector')?.value;
-    const description = this.registerForm.get('description')?.value;
-    const height = this.registerForm.get('height')?.value;
-    const length = this.registerForm.get('length')?.value;
+    const agencyBoardOthersRoutes: I_Agency_Board_Others_Routes[] = [...mainOthersRoutes, ...othersConnections];
+
+    const bAgencyBoardsForm: I_Agency_Board_Data = {
+      idAgencyBoardType: this.registerForm.get('agencyBoardType')?.value.toString(),
+      boardLocation: this.registerForm.get('signLocation')?.value,
+      observation: this.registerForm.get('observation')?.value,
+      idBoardType: this.registerForm.get('boardType')?.value.toString(),
+      routes: agencyBoardRoutes,
+      othersRoutes: agencyBoardOthersRoutes,
+    }
+
+    return { projectForm: projectForm, briefingForm: briefingForm, bAgencyBoardsForm: bAgencyBoardsForm };
+
+
   }
 
 
   submit() {
-
-    this.submitAgencyBoardRequest.createRequestService(
-      this.selectedCompanies,
-      boardType,
-      boardLocation,
-      sector,
-      description,
-      height,
-      length
-    ).subscribe({
-      next: (response) => {
-        console.log('Requisição enviada com sucesso:', response);
-      },
-      error: (error) => {
-        console.error('Erro ao enviar a requisição:', error);
-      }
-    });
+    const requestData = this.prepareSubmit();
+    this.createRequestService.submitAgencyBoardRequest(requestData.projectForm, requestData.briefingForm, requestData.bAgencyBoardsForm)
+      .subscribe({
+        next: (response) => {
+          console.log('Requisição enviada com sucesso:', response);
+        },
+        error: (error) => {
+          console.error('Erro ao enviar a requisição:', error);
+        }
+      });
+    console.log(requestData.projectForm, requestData.briefingForm, requestData.bAgencyBoardsForm)
   }
+
 }

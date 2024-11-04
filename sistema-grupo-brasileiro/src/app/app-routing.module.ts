@@ -29,8 +29,8 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: 'resetPassword',
-    title: 'Resetar Senha',
+    path: 'redefinir-senha',
+    title: 'Redefinir Senha',
     component: ResetPasswordComponent,
   },
   {
