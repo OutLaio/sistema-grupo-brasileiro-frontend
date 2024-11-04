@@ -35,6 +35,12 @@ import { PhoneMaskDirective } from './modules/directives/phone-mask/phone-mask.d
 import { AgencyBoardComponent } from './modules/feature/request-details/components/agency-board/agency-board.component';
 import { SignpostComponent } from './modules/feature/request-details/components/signpost/signpost.component';
 import { DialogBoxComponent } from './modules/feature/request-details/components/dialog-box/dialog-box.component';
+import { VersionComponent } from './modules/feature/request-details/components/version/version.component';
+
+import { AgencyBoardRequestComponent } from './modules/feature/create-request/components/agency-board-request/agency-board-request.component';
+import { LoadingFileComponent } from './modules/feature/create-request/components/loading-file/loading-file.component';
+import { DndDirective } from './modules/directives/dnd/dnd.directive.directive';
+import { SignpostRequestComponent } from './modules/feature/create-request/components/signpost-request/signpost-request.component';
 
 import { AgencyBoardRequestComponent } from './modules/feature/create-request/components/agency-board-request/agency-board-request.component';
 import { LoadingFileComponent } from './modules/feature/create-request/components/loading-file/loading-file.component';
@@ -64,10 +70,13 @@ import { SignpostRequestComponent } from './modules/feature/create-request/compo
     AgencyBoardComponent,
     SignpostComponent,
     DialogBoxComponent,
+    VersionComponent,
     AgencyBoardRequestComponent,
     LoadingFileComponent,
     DndDirective,
-    SignpostRequestComponent
+    SignpostRequestComponent,
+    VersionComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -81,6 +90,7 @@ import { SignpostRequestComponent } from './modules/feature/create-request/compo
     ProfileRoutingModule,
     NgScrollbarModule,
     MainCreateRequestRoutingModule
+
   ],
   providers: [
     provideHttpClient(withFetch()),

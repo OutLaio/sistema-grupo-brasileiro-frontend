@@ -20,10 +20,8 @@ export class CreateRequestService {
     height: number,
     width: number,
   ): Observable<any> {
-    
     const idUser = sessionStorage.getItem('idUser');
     const authToken = sessionStorage.getItem('auth-token');
-
     const requestBody = {
       project: {
         id_client: Number(idUser),

@@ -18,12 +18,7 @@ export class AgencyBoardComponent {
   ) {
     service.getRequestDetailsById('15').subscribe(
       (res) => {
-        if(res.briefingView.briefingType.id != '1') {
-          console.log("This is not a Agency Board");
-        }else {
-          this.data = res as I_Agency_Board_Response;
-          console.log(this.data);
-        }
+
       }
     )
   }

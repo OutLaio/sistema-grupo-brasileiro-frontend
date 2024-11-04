@@ -22,6 +22,8 @@
     "@angular/router": "^18.0.0",
     "@ng-bootstrap/ng-bootstrap": "^17.0.0",
     "@popperjs/core": "^2.11.8",
+    "@sweetalert2/theme-bulma": "^5.0.18",
+    "@sweetalert2/themes": "^5.0.18",
     "bootstrap": "^5.3.3",
     "faker-br": "^0.4.1",
     "ng-circle-progress": "^1.7.1",
@@ -32,6 +34,8 @@
     "ngx-scrollbar": "^15.1.2",
     "ngx-toastr": "^19.0.0",
     "rxjs": "~7.8.0",
+    "sweetalert": "^2.1.2",
+    "sweetalert2": "^11.14.4",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
   },

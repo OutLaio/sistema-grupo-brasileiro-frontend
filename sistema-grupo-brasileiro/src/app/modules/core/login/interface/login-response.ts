@@ -1,22 +1,6 @@
+import { I_Employee_View_Data } from "../../../shared/interfaces/user/view/employee-view";
+
 export interface LoginResponse {
     token: string,
-    employee: {
-        id: 0,
-        user: {
-            id: 0,
-            email: string,
-            profile: {
-                id: 0,
-                description: string
-            }
-        },
-        name: string,
-        lastname: string,
-        phoneNumber: string,
-        sector: string,
-        occupation: string,
-        agency: string,
-        avatar: 0
-    }
+    employee: I_Employee_View_Data
 }
- 

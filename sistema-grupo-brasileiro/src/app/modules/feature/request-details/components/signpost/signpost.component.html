@@ -1,1 +1,136 @@
-<p>signpost works!</p>
+<div *ngIf="data">
+
+  <div class="bg-modal modal rounded" *ngIf="isNewVersionModalOpen">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content bg-white p-3 rounded-4">
+        <div class="modal-header">
+          <h6 class="modal-title mb-0">Inserir Nova Arte</h6>
+        </div>
+        <div class="modal-body d-flex flex-column gap-2">
+          <div class="form-group">
+            <label for="inputImage">Imagem da Arte</label>
+            <input type="file" id="inputImage" class="form-control" (change)="onFileSelected($event)">
+          </div>
+          <div class="form-group">
+            <label for="inputTitle">Título da Arte</label>
+            <input type="text" id="inputTitle" class="form-control" [(ngModel)]="artTitle" name="artTitle">
+          </div>
+          <div class="form-group">
+            <label for="inputDescription">Descrição da Arte</label>
+            <textarea id="inputDescription" class="form-control" [(ngModel)]="artDescription" name="artDescription"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" (click)="toggleNewVersionModal()">Fechar</button>
+          <button type="button" class="btn btn-outline-primary btn-sm" (click)="newVersion()" >Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-modal modal rounded" *ngIf="isVersionModalOpen">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content bg-white p-3 rounded-4">
+
+        <div class="modal-header">
+          <h6 class="modal-title mb-0">Detalhes da Arte</h6>
+          <button type="button" class="btn btn-close" aria-label="Close" (click)="toggleVersionModal()">
+          </button>
+        </div>
+        <div class="modal-body ">
+          <app-version [version]="selectedVersion"></app-version>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="container mt-2">
+    <div class="d-flex align-items-center justify-content-between pb-4 border-bottom">
+      <div>
+        <p class="h5 text-center mb-1 fw-bold text-exo"> {{ data.briefing.briefingType.description }} </p>
+      </div>
+      <div class="d-flex flex-column align-items-center">
+        <p class="fw-bold mb-1 text-exo">Data Prevista de Entrega</p>
+        <span class="text-exo mb-0 px-3 py-2 fst-italic bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{
+          data.briefing.expectedTime | date : 'dd/MM/yyyy'}} </span>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between pe-5 mt-4 border-bottom">
+      <div>
+        <p class="text-exo fw-bold">Artes Desenvolvidas</p>
+        <div class="d-flex gap-5">
+          <p *ngIf="data.briefing.versions.length == 0; else versions" class="small-text text-exo ">Ainda não há versões
+            disponibilizadas para este projeto!</p>
+          <ng-template #versions>
+            <div *ngFor="let version of data.briefing.versions" class="pb-4 border-bottom">
+              <button type="button" class="btn btn-outline-secondary btn-sm" (click)="toggleVersionModal(version)">Versão #{{ version.versionNumber }} </button>
+            </div>
+          </ng-template>
+        </div>
+      </div>
+
+      <div *ngIf="getSessionProfile() == roleCollaborator" class="d-flex mt-2">
+        <button class="btn btn-outline-primary shadow-custom btn-sm" (click)="toggleNewVersionModal()" style="height: 40px">Inserir Nova Arte</button>
+      </div>
+    </div>
+
+    <p class="text-exo fw-bold mt-3">Informações da Placa</p>
+    <div class="mt-4">
+      <p class="text-exo fw-bold">Local da Placa</p>
+      <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{
+        data.signpost.boardLocation }} </p>
+    </div>
+    <div class="mt-4">
+      <p class="text-exo fw-bold">Descrição Detalhada</p>
+      <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{
+        data.briefing.detailedDescription }}</p>
+    </div>
+    <div class="d-flex align-items-center gap-5 mt-4">
+      <div>
+        <p class="text-exo fw-bold">Medidas</p>
+        <div class="d-flex">
+          <div>
+            <p class="small-text text-exo mb-0 fst-italic">Largura</p>
+            <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{
+              data.briefing.measurements?.length }} cm</p>
+          </div>
+          <div class="d-flex align-items-end mx-3">
+            <p class="small-text text-exo fw-bold">X</p>
+          </div>
+          <div>
+            <div>
+              <p class="small-text text-exo mb-0 fst-italic">Altura</p>
+              <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{
+                data.briefing.measurements?.height }} cm</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="d-flex flex-column gap-2">
+        <p class="text-exo fw-bold">Material</p>
+        <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{
+          data.signpost.material.description }}</p>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <p class="text-exo fw-bold">Empresas</p>
+      <div class="d-flex gap-3" *ngIf="data.briefing.companies?.companies?.length">
+        <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"
+          *ngFor="let company of data.briefing.companies?.companies"> {{ company.name }} </p>
+        <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"
+          *ngFor="let otherCompany of otherCompanies"> {{ otherCompany.toUpperCase() }} </p>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <p class="text-exo fw-bold">Setor</p>
+      <p class="small-text text-exo mb-0 px-4 py-3 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{
+        data.signpost.sector }}</p>
+    </div>
+  </div>
+
+</div>

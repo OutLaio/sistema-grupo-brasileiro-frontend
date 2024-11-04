@@ -1,24 +1,117 @@
-import { Component } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  Component,
+  ElementRef,
+  Input,
+  NgModule,
+  OnInit,
+  ViewChild,
+} from '@angular/core';
 import { I_Dialog_Box_Response } from '../../../../shared/interfaces/dialog-box/view/dialog-box-view';
+import { RequestDetailsService } from '../../services/request-details.service';
+import { I_Dialog_Box_Request } from '../../../../shared/interfaces/dialog-box/form/dialog-box-form';
+import { I_Employee_View_Data } from '../../../../shared/interfaces/user/view/employee-view';
+import { I_Employee_Simple_View_Data } from '../../../../shared/interfaces/user/view/employee-simple-view';
+import { I_Assign_Collaborator_Request } from '../../../../shared/interfaces/project/form/assign-collaborator-form';
 
 @Component({
   selector: 'app-dialog-box',
   templateUrl: './dialog-box.component.html',
-  styleUrl: './dialog-box.component.css'
+  styleUrl: './dialog-box.component.css',
 })
-export class DialogBoxComponent {
-  data!: I_Dialog_Box_Response;
+export class DialogBoxComponent implements OnInit {
+  @Input() collaborator!: I_Employee_Simple_View_Data | undefined;
 
-  constructor() {
-    this.data = {
-      id: "1",
-      employee: {
-        id: "1",
-        fullName: "John Doe",
-        avatar: 2
-      },
-      time: Date.now(),
-      dialog: 'How are you feeling today?'
+  @ViewChild('scrollableContent') private scrollableContent!: ElementRef;
+  idSupervisor = 'ROLE_SUPERVISOR';
+  messageText = '';
+  response!: I_Dialog_Box_Response[];
+  isModalOpen = false;
+
+  allCollaborators!: I_Employee_View_Data[];
+  selectedCollaborator!: I_Employee_View_Data | null;
+
+  constructor(
+    private service: RequestDetailsService,
+    private cdr: ChangeDetectorRef
+  ) {}
+
+  ngOnInit(): void {
+    this.service.getDialoguesByRequestId('1').subscribe((res) => {
+      this.response = res.sort((a, b) => Number(a.id) - Number(b.id));
+      console.log(this.response);
+      this.cdr.detectChanges();
+      this.scrollToBottom();
+    });
+
+    if(this.getSessionProfile() === this.idSupervisor) {
+      this.service.getAllCollaborators().subscribe(
+        (res) => {
+          this.allCollaborators = res.content as Array<I_Employee_View_Data>;
+        }
+      )
+    }
+  }
+
+  private scrollToBottom() {
+    try {
+      this.scrollableContent.nativeElement.scrollTop =
+        this.scrollableContent.nativeElement.scrollHeight;
+    } catch (err) {
+      console.error('Erro ao rolar para o final:', err);
+    }
+  }
+
+  getSessionId() {
+    return sessionStorage.getItem('idUser');
+  }
+
+  getSessionProfile() {
+    return sessionStorage.getItem('userRole');
+  }
+
+  newMessage() {
+    if (this.messageText.trim() === '') {
+      this.messageText = '';
+      return;
+    }
+    const request: I_Dialog_Box_Request = {
+      idBriefing: '1',
+      idEmployee: this.getSessionId()!,
+      message: this.messageText,
     };
+    this.service.setNewDialogue(request).subscribe((res) => {
+      this.response.push(res);
+      this.messageText = '';
+      this.scrollToBottom();
+    });
+  }
+
+  openModal() {
+    this.isModalOpen = true;
+  }
+
+  closeModal() {
+    this.selectedCollaborator = null;
+    this.isModalOpen = false;
+  }
+
+  selectCollaborator() {
+    if (!this.selectedCollaborator) {
+      return;
+    }
+    if(confirm('Deseja atribuir ' + this.selectedCollaborator.name + ' como colaborador do projeto?')){
+      const request: I_Assign_Collaborator_Request = {
+        idCollaborator: this.selectedCollaborator.id
+      }
+      this.service.assignCollaborator('1', request).subscribe(() => {
+        this.collaborator = {
+          id: this.selectedCollaborator?.id!,
+          fullName: this.selectedCollaborator?.name! + ' ' + this.selectedCollaborator?.lastname!,
+          avatar: this.selectedCollaborator?.avatar!
+        };
+        this.closeModal();
+      })
+    }
   }
 }

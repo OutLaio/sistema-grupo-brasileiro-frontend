@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { tap } from 'rxjs';
 import { LoginResponse } from '../../core/login/interface/login-response';
 import { TProfile } from '../../types/profile-response.type';
+import { I_Employee_View_Data } from '../../shared/interfaces/user/view/employee-view';
 
 @Injectable({
   providedIn: 'root',
@@ -88,15 +89,16 @@ export class LoginRegisterService {
           sessionStorage.setItem('idUser', value.employee.id.toString());
           sessionStorage.setItem('userRole', value.employee.user.profile.description);
 
-          const userProfile: TProfile = {
-            userId: value.employee.id,
-            email: value.employee.user.email = email,
+          const userProfile: I_Employee_View_Data = {
+            id: value.employee.id,
+            user: value.employee.user,
             name: value.employee.name,
             lastname: value.employee.lastname,
-            phone: value.employee.phoneNumber,
+            phoneNumber: value.employee.phoneNumber,
             sector: value.employee.sector,
             occupation: value.employee.occupation,
             agency: value.employee.agency,
+            avatar: value.employee.avatar
           };
 
           sessionStorage.setItem('userProfile', JSON.stringify(userProfile));

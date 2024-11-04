@@ -13,6 +13,12 @@ import { AuthGuard } from './modules/core/guards/guard.guard';
 
 const routes: Routes = [
   {
+    path: 'acompanhamento',
+    component: CheckRequestsComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+
     path: 'cadastro',
     title: 'Cadastro',
     component: RegisterComponent,
@@ -33,20 +39,14 @@ const routes: Routes = [
     component: RecoveryPasswordComponent,
   },
   {
-    path: '',
-    title: 'Login',
-    redirectTo: 'login',
-    pathMatch: 'full'
-  },  {
-    path: 'acompanhamento',
-    title: 'Acompanhamento',
-    component: CheckRequestsComponent,
+    path: 'colaboradores',
+    component: CollaboratorSystemComponent,
     canActivate: [AuthGuard]
   },
   {
-    path: 'colaboradores',
-    title: 'Colaboradores',
-    component: CollaboratorSystemComponent,
+    path: 'nova-solicitacao',
+    component: MainCreateRequestComponent,
+
     canActivate: [AuthGuard]
   },
   {
@@ -97,11 +97,11 @@ const routes: Routes = [
     redirectTo: 'nova-solicitacao/placa-de-sinalizacao',
     pathMatch: 'full'
   },
-
   {
     path: '',
-    redirectTo: 'login',
-    pathMatch: 'full'
+    redirectTo: '/acompanhamento',
+    pathMatch: 'full',
+
   },
 ];
 
