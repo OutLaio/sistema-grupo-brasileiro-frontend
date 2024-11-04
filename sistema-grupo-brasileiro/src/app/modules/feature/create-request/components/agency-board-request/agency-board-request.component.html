@@ -181,11 +181,11 @@
 
 
 
-        <div *ngIf="selectedCompanies.length != 0" class="row mt-5 border-bottom pb-4">
+        <div *ngIf="companies.length != 0" class="row mt-5 border-bottom pb-4">
             <div>
                 <p class="fw-bold">Itinerários</p>
             </div>
-            <div *ngFor="let company of selectedCompanies">
+            <div *ngFor="let company of companies">
                 <div [backgroundColorClass]="'#ebebeb'" class="border border-dark-subtle p-3 m-2 rounded">
                     <div>
                         <p class="fw-bold">

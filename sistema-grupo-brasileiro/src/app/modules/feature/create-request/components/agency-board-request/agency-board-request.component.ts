@@ -1,6 +1,34 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { CompanyDetails } from '../../interface/company-details';
+import { CreateRequestService } from '../../services/create-request.service';
+import { I_Agency_Board_Request } from '../../../../shared/interfaces/briefing/agency-board/form/agency-board-register-form';
+import { I_Briefing_Request } from '../../../../shared/interfaces/project/form/briefing-form';
+import { I_Project_Request } from '../../../../shared/interfaces/project/form/project-form';
+import { I_Agency_Board_Data } from '../../../../shared/interfaces/briefing/agency-board/form/agency-board-form';
+import { I_Company_Briefing_Form_Data } from '../../../../shared/interfaces/company/form/company-briefing-form';
+import { I_Agency_Board_Routes } from '../../../../shared/interfaces/briefing/agency-board/form/agency-board-routes-form';
+import { I_Agency_Board_Others_Routes } from '../../../../shared/interfaces/briefing/agency-board/form/agency-board-others-routes-form';
+
+enum Cities {
+  'SÃO PAULO' = '1',
+  'RIO DE JANEIRO' = '2',
+  'BELO HORIZONTE' = '3',
+  'PORTO ALEGRE' = '4',
+  'CURITIBA' = '5',
+  'FORTALEZA' = '6',
+  'SALVADOR' = '7',
+  'BRASÍLIA' = '8',
+  'RECIFE' = '9',
+  'GOiÂNIA' = '10',
+}
+
+enum Company {
+  'Rota Transportes' = '1',
+  'Cidade Sol' = '2',
+  'Via Metro' = '3',
+  'Brasileiro' = '4',
+}
 
 @Component({
   selector: 'app-agency-board-request',
@@ -10,22 +38,25 @@ import { CompanyDetails } from '../../interface/company-details';
 export class AgencyBoardRequestComponent {
   registerForm: FormGroup;
   isSingleCompany: boolean = true;
-  selectedCompanies: CompanyDetails[] = [];
+  companies: CompanyDetails[] = [];
+
+  selectedCompanies: I_Company_Briefing_Form_Data[] = [];
+  selectedOthersCompanies: string[] = [];
 
   isOtherCompaniesSelected = false;
   showCompanyFields: boolean = false;
 
-  mainRoutes: string[] = ['Salvador', 'Feira de Santana', 'Capim Grosso', 'Juazeiro', 'Irecê', 'Xique Xique', 'Barra'];
-  connections: string[] = ['Jacobina', 'Itabuna', 'Porto Seguro', 'Ilhéus', 'Eunápolis', 'Maracas', 'Jequié', 'Vitória da Conquista', 'Eunápolis'];
+  mainRoutes: string[] = ['SÃO PAULO', 'RIO DE JANEIRO', 'BELO HORIZONTE', 'PORTO ALEGRE', 'CURITIBA', 'FORTALEZA', 'SALVADOR', 'BRASÍLIA', 'RECIFE', 'GOIÂNIA'];
+  connections: string[] = ['SÃO PAULO', 'RIO DE JANEIRO', 'BELO HORIZONTE', 'PORTO ALEGRE', 'CURITIBA', 'FORTALEZA', 'SALVADOR', 'BRASÍLIA', 'RECIFE', 'GOIÂNIA'];
 
   // TODO: Adicionar ID para identificação da imagem
   files: { name: string, url: string }[] = [];
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private createRequestService: CreateRequestService) {
     this.registerForm = this.fb.group({
       description: ['', Validators.required],
       signLocation: ['', Validators.required],
-      width: ['', Validators.required],
+      length: ['', Validators.required],
       height: ['', Validators.required],
       sharedCompany: [false],
       selectedCompany: [''],
@@ -39,8 +70,8 @@ export class AgencyBoardRequestComponent {
     });
   }
 
-  get width() {
-    return this.registerForm.get('width');
+  get length() {
+    return this.registerForm.get('length');
   }
 
   get height() {
@@ -49,14 +80,14 @@ export class AgencyBoardRequestComponent {
 
   clearForm() {
     this.registerForm.reset();
-    this.selectedCompanies = [];
+    this.companies = [];
     this.showCompanyFields = false;
     this.files = [];
   }
 
   onCompanyChange(type: string) {
     this.isSingleCompany = (type === 'single');
-    this.selectedCompanies = [];
+    this.companies = [];
     this.showCompanyFields = true;
 
     if (this.isSingleCompany) {
@@ -71,32 +102,32 @@ export class AgencyBoardRequestComponent {
 
   updateCompanyName(selectionType: number, company: string) {
     if (selectionType === 1) {
-      this.selectedCompanies = [{ name: company, mainRoutes: [], connections: [], isCustom: false }];
+      this.companies = [{ name: company, mainRoutes: [], connections: [], isCustom: false }];
     } else {
-      const existingCompany = this.selectedCompanies.find(c => c.name === company);
+      const existingCompany = this.companies.find(c => c.name === company);
       if (existingCompany) {
-        this.selectedCompanies = this.selectedCompanies.filter(c => c.name !== company);
+        this.companies = this.companies.filter(c => c.name !== company);
       } else {
-        this.selectedCompanies.push({ name: company, mainRoutes: [], connections: [], isCustom: false });
+        this.companies.push({ name: company, mainRoutes: [], connections: [], isCustom: false });
       }
     }
   }
 
   onOtherCompany() {
-    this.selectedCompanies = [];
+    this.companies = [];
     this.registerForm.get('otherText')?.setValue('');
   }
 
   updateOtherCompany() {
     const otherValue = this.registerForm.get('otherText')?.value;
-    this.selectedCompanies = [];
-    this.selectedCompanies.push({ name: otherValue, mainRoutes: [], connections: [], isCustom: true });
+    this.companies = [];
+    this.companies.push({ name: otherValue, mainRoutes: [], connections: [], isCustom: true });
   }
 
   confirmOtherSingleCompany() {
     const otherCompany = this.registerForm.get('otherText')?.value;
-    if (otherCompany && !this.selectedCompanies.some(c => c.name === otherCompany)) {
-      this.selectedCompanies.push({ name: otherCompany, mainRoutes: [], connections: [], isCustom: true });
+    if (otherCompany && !this.companies.some(c => c.name === otherCompany)) {
+      this.companies.push({ name: otherCompany, mainRoutes: [], connections: [], isCustom: true });
       this.registerForm.get('otherText')?.reset();
     }
   }
@@ -106,26 +137,26 @@ export class AgencyBoardRequestComponent {
     this.isOtherCompaniesSelected = !this.isOtherCompaniesSelected;
     if (!this.isOtherCompaniesSelected) {
       this.registerForm.get('othersText')?.setValue('');
-      this.selectedCompanies = this.selectedCompanies.filter(company => company.name !== 'Outras');
+      this.companies = this.companies.filter(company => company.name !== 'Outras');
     }
   }
 
   updateOthersCompanies() {
     const otherValue = this.registerForm.get('othersText')?.value;
     if (otherValue) {
-      const companyIndex = this.selectedCompanies.findIndex(company => company.name === 'Outras');
+      const companyIndex = this.companies.findIndex(company => company.name === 'Outras');
       if (companyIndex >= 0) {
-        this.selectedCompanies[companyIndex].name = otherValue;
+        this.companies[companyIndex].name = otherValue;
       } else {
-        this.selectedCompanies.push({ name: otherValue, mainRoutes: [], connections: [], isCustom: true });
+        this.companies.push({ name: otherValue, mainRoutes: [], connections: [], isCustom: true });
       }
     }
   }
 
   confirmOtherMultiCompany() {
     const otherCompany = this.registerForm.get('othersText')?.value;
-    if (otherCompany && !this.selectedCompanies.some(c => c.name === otherCompany)) {
-      this.selectedCompanies.push({
+    if (otherCompany && !this.companies.some(c => c.name === otherCompany)) {
+      this.companies.push({
         name: otherCompany,
         mainRoutes: [],
         connections: [],
@@ -137,9 +168,9 @@ export class AgencyBoardRequestComponent {
   }
 
   removeCompany(companyName: string) {
-    const companyIndex = this.selectedCompanies.findIndex(c => c.name === companyName && c.isCustom);
+    const companyIndex = this.companies.findIndex(c => c.name === companyName && c.isCustom);
     if (companyIndex >= 0) {
-      this.selectedCompanies.splice(companyIndex, 1);
+      this.companies.splice(companyIndex, 1);
     }
   }
 
@@ -147,7 +178,7 @@ export class AgencyBoardRequestComponent {
     const selectedMainRoute = this.registerForm.get('mainRoute')?.value;
 
     if (selectedMainRoute) {
-      const company = this.selectedCompanies.find(c => c.name === companyName);
+      const company = this.companies.find(c => c.name === companyName);
       if (company) {
         const routeExists = company.mainRoutes.includes(selectedMainRoute);
         if (!routeExists) {
@@ -160,7 +191,7 @@ export class AgencyBoardRequestComponent {
 
 
   removeMainRoute(companyName: string, routeToRemove: string) {
-    const company = this.selectedCompanies.find(c => c.name === companyName);
+    const company = this.companies.find(c => c.name === companyName);
     if (company) {
       const index = company.mainRoutes.indexOf(routeToRemove);
       if (index !== -1) {
@@ -173,7 +204,7 @@ export class AgencyBoardRequestComponent {
     const selectedConnection = this.registerForm.get('connections')?.value;
 
     if (selectedConnection) {
-      const company = this.selectedCompanies.find(c => c.name === companyName);
+      const company = this.companies.find(c => c.name === companyName);
       if (company) {
         const connectionExists = company.connections.includes(selectedConnection);
         if (!connectionExists) {
@@ -186,7 +217,7 @@ export class AgencyBoardRequestComponent {
 
 
   removeConnection(companyName: string, connectionToRemove: string) {
-    const company = this.selectedCompanies.find(c => c.name === companyName);
+    const company = this.companies.find(c => c.name === companyName);
     if (company) {
       const index = company.connections.indexOf(connectionToRemove);
       if (index !== -1) {
@@ -199,9 +230,127 @@ export class AgencyBoardRequestComponent {
     this.files = newFiles;
   }
 
+  separateCompanies() {
+    this.selectedCompanies = this.companies.filter(company => !company.isCustom).map(company => {
+      const companyName = company.name as keyof typeof Company;
+      const companyInt: I_Company_Briefing_Form_Data = {
+        idCompany: companyName,
+      }
+      return companyInt;
+    });
+
+    this.selectedOthersCompanies = this.companies.filter(company => company.isCustom).map(company => company.name);
+  }
+
+  prepareSubmit() {
+    this.separateCompanies();
+
+    const projectRequest: I_Project_Request = {
+      idClient: sessionStorage.getItem('idUser')!.toString(),
+      title: 'Placa de Agência',
+    }
+
+    const briefingRequest: I_Briefing_Request = {
+      expectedDate: new Date(),
+      detailedDescription: this.registerForm.get('detailedDescription')?.value,
+      companies: this.selectedCompanies,
+      otherCompany: this.selectedOthersCompanies.join(', '),
+      idBriefingType: 'placa_de_agencia',
+      measurement: {
+        length: this.registerForm.get('length')?.value,
+        height: this.registerForm.get('height')?.value,
+      },
+    }
+
+    const agencyBoardData: I_Agency_Board_Data = {
+      idAgencyBoardType: this.registerForm.get('board')?.value,
+      boardLocation: this.registerForm.get('signLocation')?.value,
+      observation: this.registerForm.get('observation')?.value,
+      idBoardType?: this.registerForm.get('boardType')?.value,
+      routes?: I_Agency_Board_Routes[],
+      othersRoutes?: I_Agency_Board_Others_Routes[]String,
+    }
+
+    
+    const mainRoutes: I_Agency_Board_Routes[] = this.companies.flatMap(company => {
+      if (!company.isCustom) {
+        return [{
+          idCompany: company.name as keyof typeof Company,
+          idCities: company.mainRoutes as keyof typeof Cities,
+          type: 'main',
+        }];
+      } else {
+        return [];
+      }
+    });
+
+
+    const connections: I_Agency_Board_Routes[] = this.companies.flatMap(company => {
+      if (!company.isCustom) {
+        return [{
+          idCompany: company.name as keyof typeof Company,
+          idCities: company.connections,
+          type: 'connection',
+        }];
+      } else {
+        return [];
+      }
+    });
+
+
+    const routes: I_Agency_Board_Routes[] = [...mainRoutes, ...connections];
+
+    const mainOthersRoutes: I_Agency_Board_Others_Routes[] = this.companies.flatMap(company => {
+      if (company.isCustom) {
+        return [{
+          company: company.name,
+          city: company.mainRoutes,
+          type: 'main',
+        }];
+      } else {
+        return [];
+      }
+    });
+
+
+    const othersConnections: I_Agency_Board_Others_Routes[] = this.companies.flatMap(company => {
+      if (company.isCustom) {
+        return [{
+          idCompany: company.name,
+          idCities: company.connections,
+          type: 'connection',
+        }];
+      } else {
+        return [];
+      }
+    });
+
+    const boardType = this.registerForm.get('boardType')?.value;
+    const boardLocation = this.registerForm.get('signLocation')?.value;
+    const sector = this.registerForm.get('sector')?.value;
+    const description = this.registerForm.get('description')?.value;
+    const height = this.registerForm.get('height')?.value;
+    const length = this.registerForm.get('length')?.value;
+  }
+
+
   submit() {
-    console.log(this.registerForm.value);
-    console.log(this.files);
+
+    this.submitAgencyBoardRequest.createRequestService(
+      this.selectedCompanies,
+      boardType,
+      boardLocation,
+      sector,
+      description,
+      height,
+      length
+    ).subscribe({
+      next: (response) => {
+        console.log('Requisição enviada com sucesso:', response);
+      },
+      error: (error) => {
+        console.error('Erro ao enviar a requisição:', error);
+      }
+    });
   }
 }
-  
