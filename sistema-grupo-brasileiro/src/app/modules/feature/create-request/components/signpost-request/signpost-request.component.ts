@@ -17,7 +17,7 @@ enum Company {
   templateUrl: './signpost-request.component.html',
   styleUrl: './signpost-request.component.css'
 })
-export class SignpostRequestComponent implements OnInit {
+export class SignpostRequestComponent {
   registerForm!: FormGroup;
 
   isSingleCompany: boolean = true;
@@ -29,12 +29,9 @@ export class SignpostRequestComponent implements OnInit {
 
 
   constructor(private fb: FormBuilder, private signpostService: CreateRequestService) {
-  }
-
-  ngOnInit(): void {
     this.registerForm = this.fb.group({
       description: ['', Validators.required],
-      signLocation: ['', Validators.required], 
+      signLocation: ['', Validators.required],
       width: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       height: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       selectedCompany: ['', Validators.required],

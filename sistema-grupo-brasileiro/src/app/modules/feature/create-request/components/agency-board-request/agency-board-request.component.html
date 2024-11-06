@@ -1,5 +1,5 @@
 <div class="conatiner d-flex flex-column p-3 mb-4 scroll-bar overflow-custom">
-    <form [formGroup]="registerForm" (ngSubmit)="submit()">
+    <form [formGroup]="registerForm" (ngSubmit)="submit()" #formDir="ngForm">
         <div class="row pb-4">
             <div class="col-12 col-md-5">
                 <div class="form-group pt-3">
@@ -7,6 +7,9 @@
                     <textarea [backgroundColorClass]="'#ebebeb'" id="description" formControlName="description"
                         type="text" class="form-control border-dark-subtle rounded-3 form-focus"
                         placeholder="Escreva a descrição da solicitação" required></textarea>
+                </div>
+                <div *ngIf="description.invalid && formDir.submitted" class="validation-warning">
+                    <p>Por favor, informe a descrição da placa.</p>
                 </div>
             </div>
 
@@ -16,6 +19,9 @@
                     <textarea [backgroundColorClass]="'#ebebeb'" id="signLocation" formControlName="signLocation"
                         type="text" class="form-control border-dark-subtle rounded-3 form-focus"
                         placeholder="Escreva a localização da placa" required></textarea>
+                </div>
+                <div *ngIf="signLocation.invalid && formDir.submitted" class="validation-warning">
+                    <p>Por favor, informe o local onde a placa será instalada</p>
                 </div>
             </div>
 
@@ -39,6 +45,13 @@
                                 formControlName="height" />
                         </div>
                     </div>
+                    <div *ngIf="(length.invalid || height.invalid) && formDir.submitted" class="validation-warning">
+                        <p>Informe as medidas completas da placa (largura e altura) em centímetros.</p>
+                    </div>
+                    <div *ngIf="(length.errors?.['pattern'] || height.errors?.['pattern']) && formDir.submitted"
+                        class="validation-warning">
+                        <p>As medidas devem conter apenas números.</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -48,14 +61,18 @@
                 <div class="form-group pt-3">
                     <label class="fw-bold" for="agencyBoardType">Placa</label>
                     <select [backgroundColorClass]="'#ebebeb'" id="agencyBoardType"
-                        class="form-select border-dark-subtle rounded-3 form-focus w-100" formControlName="agencyBoardType">
+                        class="form-select border-dark-subtle rounded-3 form-focus w-100"
+                        formControlName="agencyBoardType">
                         <option value="1">Luminoso Completo</option>
                         <option value="2">Troca de Lona</option>
                         <option value="3">Placa adesivada em Polietileno 1mm</option>
                     </select>
                 </div>
+                <div *ngIf="agencyBoardType.invalid  && formDir.submitted" class="validation-warning">
+                    <p>Selecione qual o modelo da placa</p>
+                </div>
             </div>
-            <div *ngIf="registerForm.get('agencyBoardType')?.value === '2'" class="col-12 col-md-9">
+            <div *ngIf="agencyBoardType.value === '2'" class="col-12 col-md-9">
                 <div class="form-group pt-3">
                     <div class="title">
                         <p class="fw-bold">Tipo</p>
@@ -82,6 +99,9 @@
                             <label class="form-check-label" for="adhesiveOverCanvas">Adesivo Sobre Lona</label>
                         </div>
                     </div>
+                    <div *ngIf="boardType.invalid && formDir.submitted" class="validation-warning">
+                        <p>Selecione o tipo da placa</p>
+                    </div>
                 </div>
             </div>
         </div>
@@ -104,6 +124,9 @@
                         formControlName="sharedCompany" (change)="onCompanyChange('single')" value="false">
                     <label class="form-check-label" for="multipleCompanies">Não</label>
                 </div>
+            </div>
+            <div *ngIf="sharedCompany.invalid && formDir.submitted" class="validation-warning">
+                <p>Indique o compartilhamento com a(s) empresa(s)</p>
             </div>
         </div>
 
@@ -140,6 +163,9 @@
                             (change)="updateOtherCompany()">
                     </div>
                 </div>
+                <div *ngIf="selectedCompany.invalid && formDir.submitted" class="validation-warning">
+                    <p>Selecione a empresa ou indique outra</p>
+                </div>
             </div>
 
             <div *ngIf="!isSingleCompany" class="row mt-5 border-bottom pb-4">
@@ -175,6 +201,9 @@
                             class="btn btn-sm text-white ms-2" (click)="confirmOtherMultiCompany()">OK</button>
                     </div>
                 </div>
+                <div *ngIf="(selectedCompany.invalid || companies.length < 2) && formDir.submitted" class="validation-warning">
+                    <p>Selecione duas ou mais empresas, ou indique outras. </p>
+                </div>
             </div>
         </div>
 
@@ -201,6 +230,9 @@
                             <div>
                                 <label class="me-3" for="mainRoute">Principais:</label>
                             </div>
+                            <div *ngIf="mainRoutes.length == 0 && formDir.submitted" class="validation-warning">
+                                <p>Indique ao menos uma rota principal. </p>
+                            </div>
                             <div *ngFor="let routeAdded of company.mainRoutes" class="me-2">
                                 <div [backgroundColorClass]="'#ebebeb'" class="border border-dark-subtle rounded-3">
                                     <span class="p-3 ">{{ routeAdded }} </span>
@@ -226,6 +258,9 @@
                         <div class="d-flex align-items-center">
                             <div>
                                 <label class="me-3" for="connections">Conexões:</label>
+                            </div>
+                            <div *ngIf="connections.length == 0 && formDir.submitted" class="validation-warning">
+                                <p>Indique ao menos uma conexão. </p>
                             </div>
                             <div *ngFor="let connectionAdded of company.connections" class="me-2">
                                 <div [backgroundColorClass]="'#ebebeb'" class="border border-dark-subtle rounded-3">
@@ -275,6 +310,7 @@
         <div class="d-flex gap-3 justify-content-end pt-2">
             <button type="reset" (click)="clearForm()" class="btn btn-outline-danger">Redefinir Formulário</button>
             <button [backgroundColorClass]="'#027373'" type="submit" class="btn text-white">Enviar</button>
+
         </div>
     </form>
 </div>

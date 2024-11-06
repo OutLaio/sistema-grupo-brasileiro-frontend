@@ -56,27 +56,33 @@ export class AgencyBoardRequestComponent {
     this.registerForm = this.fb.group({
       description: ['', Validators.required],
       signLocation: ['', Validators.required],
-      length: ['', Validators.required],
-      height: ['', Validators.required],
-      sharedCompany: [false],
-      selectedCompany: [''],
-      mainRoute: [''],
-      connections: [''],
-      observation: ['', Validators.required],
+      length: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      height: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      // validação para sharedCompany, true ou false
+      sharedCompany: ['', Validators.required],
+      selectedCompany: ['', Validators.required],
+      mainRoute: ['', Validators.required],
+      connections: ['', Validators.required],
+      observation: [''],
       otherText: [''],
       othersText: [''],
       agencyBoardType: ['', Validators.required],
-      boardType: ['']
+      boardType: ['', Validators.required]
     });
   }
 
-  get length() {
-    return this.registerForm.get('length');
-  }
+  get length() { return this.registerForm.get('length')!; }
+  get height() { return this.registerForm.get('height')!; }
+  get description() { return this.registerForm.get('description')!; }
+  get signLocation() { return this.registerForm.get('signLocation')!; }
+  get observation() { return this.registerForm.get('observation')!; }
+  get agencyBoardType() { return this.registerForm.get('agencyBoardType')!; }
+  get boardType() { return this.registerForm.get('boardType')!; }
+  get sharedCompany() { return this.registerForm.get('sharedCompany')!; }
+  get selectedCompany() { return this.registerForm.get('selectedCompany')!; }
+  get mainRoute() { return this.registerForm.get('mainRoute')!; }
+  get connection() { return this.registerForm.get('connections')!; }
 
-  get height() {
-    return this.registerForm.get('height');
-  }
 
   clearForm() {
     this.registerForm.reset();
@@ -235,7 +241,7 @@ export class AgencyBoardRequestComponent {
     this.selectedCompanies = this.companies.filter(company => !company.isCustom).map(company => {
       const companyName = company.name as keyof typeof Company;
       const companyInt: I_Company_Briefing_Form_Data = {
-        idCompany: Company[companyName as keyof typeof Company], // Isso usará o valor numérico
+        idCompany: Company[companyName as keyof typeof Company],
       };
       return companyInt;
     });
@@ -290,7 +296,6 @@ export class AgencyBoardRequestComponent {
       }
     });
 
-
     const agencyBoardRoutes: I_Agency_Board_Routes[] = [...mainRoutes, ...connections];
 
     const mainOthersRoutes: I_Agency_Board_Others_Routes[] = this.companies.flatMap(company => {
@@ -332,7 +337,6 @@ export class AgencyBoardRequestComponent {
 
 
   }
-
 
   submit() {
     const requestData = this.prepareSubmit();
