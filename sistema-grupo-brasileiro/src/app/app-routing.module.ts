@@ -44,12 +44,6 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'nova-solicitacao',
-    component: MainCreateRequestComponent,
-
-    canActivate: [AuthGuard]
-  },
-  {
     path: 'detalhes-solicitacao',
     title: 'Detalhes da Solicitação',
     component: RequestDetailsComponent,

@@ -1,9 +1,9 @@
 <div class="conatiner d-flex flex-column p-3 mb-4 scroll-bar overflow-custom">
-    <form [formGroup]="registerForm" (ngSubmit)="submit()" #formDir="ngForm">
+    <form [formGroup]="agencyBoardForm" (ngSubmit)="submit()" #formDir="ngForm">
         <div class="row pb-4">
             <div class="col-12 col-md-5">
                 <div class="form-group pt-3">
-                    <label class="fw-bold" for="description">Descrição</label>
+                    <label class="fw-bold" for="description">Descrição *</label>
                     <textarea [backgroundColorClass]="'#ebebeb'" id="description" formControlName="description"
                         type="text" class="form-control border-dark-subtle rounded-3 form-focus"
                         placeholder="Escreva a descrição da solicitação" required></textarea>
@@ -15,7 +15,7 @@
 
             <div class="col-12 col-md-4">
                 <div class="form-group pt-3">
-                    <label class="fw-bold" for="signLocation">Local da Placa</label>
+                    <label class="fw-bold" for="signLocation">Local da Placa *</label>
                     <textarea [backgroundColorClass]="'#ebebeb'" id="signLocation" formControlName="signLocation"
                         type="text" class="form-control border-dark-subtle rounded-3 form-focus"
                         placeholder="Escreva a localização da placa" required></textarea>
@@ -27,13 +27,13 @@
 
             <div class="col-12 col-md-3">
                 <div class="form-group pt-3">
-                    <label class="fw-bold">Medida</label>
+                    <label class="fw-bold">Medida *</label>
                     <div class="d-flex align-items-center mb-2">
                         <div>
                             <label>Largura</label>
                             <input [backgroundColorClass]="'#ebebeb'" type="text"
                                 class="border border-dark-subtle rounded-3 me-2 w-100 form-focus" placeholder="cm"
-                                formControlName="length" />
+                                formControlName="length" required/>
                         </div>
                         <div class="pt-4">
                             <span class="mx-3">X</span>
@@ -42,7 +42,7 @@
                             <label>Altura</label>
                             <input [backgroundColorClass]="'#ebebeb'" type="text"
                                 class="border border-dark-subtle rounded-3 me-2 w-100 form-focus" placeholder="cm"
-                                formControlName="height" />
+                                formControlName="height" required/>
                         </div>
                     </div>
                     <div *ngIf="(length.invalid || height.invalid) && formDir.submitted" class="validation-warning">
@@ -59,10 +59,10 @@
         <div class="row pb-4 pt-2 border-bottom">
             <div class="col-12 col-md-3">
                 <div class="form-group pt-3">
-                    <label class="fw-bold" for="agencyBoardType">Placa</label>
+                    <label class="fw-bold" for="agencyBoardType">Placa *</label>
                     <select [backgroundColorClass]="'#ebebeb'" id="agencyBoardType"
                         class="form-select border-dark-subtle rounded-3 form-focus w-100"
-                        formControlName="agencyBoardType">
+                        formControlName="agencyBoardType" required>
                         <option value="1">Luminoso Completo</option>
                         <option value="2">Troca de Lona</option>
                         <option value="3">Placa adesivada em Polietileno 1mm</option>
@@ -75,31 +75,32 @@
             <div *ngIf="agencyBoardType.value === '2'" class="col-12 col-md-9">
                 <div class="form-group pt-3">
                     <div class="title">
-                        <p class="fw-bold">Tipo</p>
+                        <p class="fw-bold">Tipo *</p>
                     </div>
                     <div class="d-flex flex-wrap">
                         <div class="form-check me-3 mb-2">
                             <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="backLight"
-                                formControlName="boardType" value="1">
+                                formControlName="boardType" value="1" required>
                             <label class="form-check-label" for="backLight">BackLight (Luminoso)</label>
                         </div>
                         <div class="form-check me-3 mb-2">
                             <input [borderColorClass]="'#027373'" class="form-check-input" type="radio"
-                                id="frontLightWithLight" formControlName="boardType" value="2">
+                                id="frontLightWithLight" formControlName="boardType" value="2" required>
                             <label class="form-check-label" for="frontLightWithLight">FrontLight Com Luz</label>
                         </div>
                         <div class="form-check me-3 mb-2">
                             <input [borderColorClass]="'#027373'" class="form-check-input" type="radio"
-                                id="frontLightWithoutLight" formControlName="boardType" value="3">
+                                id="frontLightWithoutLight" formControlName="boardType" value="3" required>
                             <label class="form-check-label" for="frontLightWithoutLight">FrontLight Sem Luz</label>
                         </div>
                         <div class="form-check me-3 mb-2">
                             <input [borderColorClass]="'#027373'" class="form-check-input" type="radio"
-                                id="adhesiveOverCanvas" formControlName="boardType" value="4">
+                                id="adhesiveOverCanvas" formControlName="boardType" value="4" required>
                             <label class="form-check-label" for="adhesiveOverCanvas">Adesivo Sobre Lona</label>
                         </div>
                     </div>
-                    <div *ngIf="boardType.invalid && formDir.submitted" class="validation-warning">
+                    <div *ngIf="agencyBoardType.value === '2' && boardType.invalid && formDir.submitted"
+                        class="validation-warning">
                         <p>Selecione o tipo da placa</p>
                     </div>
                 </div>
@@ -113,15 +114,15 @@
                 <p class="fw-bold">Empresas</p>
             </div>
             <div class="col-12 d-flex flex-wrap align-items-center">
-                <label class="me-3">Compartilhado com outras empresas:</label>
+                <label class="me-3">Compartilhado com outras empresas *:</label>
                 <div class="form-check me-5">
                     <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="singleCompany"
-                        formControlName="sharedCompany" (change)="onCompanyChange('multiple')" value="true">
+                        formControlName="sharedCompany" (change)="onCompanyChange('multiple')" value="true" required >
                     <label class="form-check-label" for="singleCompany">Sim</label>
                 </div>
                 <div class="form-check">
                     <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="multipleCompanies"
-                        formControlName="sharedCompany" (change)="onCompanyChange('single')" value="false">
+                        formControlName="sharedCompany" (change)="onCompanyChange('single')" value="false" required>
                     <label class="form-check-label" for="multipleCompanies">Não</label>
                 </div>
             </div>
@@ -133,61 +134,61 @@
         <div *ngIf="showCompanyFields">
             <div *ngIf="isSingleCompany" class="row mt-5 border-bottom pb-4">
                 <div class="col-12">
-                    <p class="fw-bold">Selecione a Empresa</p>
+                    <p class="fw-bold">Selecione a Empresa *</p>
                 </div>
                 <div class="col-12 d-flex flex-wrap gap-3">
                     <div class="form-check">
                         <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="rotaSingle"
                             formControlName="selectedCompany" value="Rota Transportes"
-                            (change)="updateCompanyName(1, 'Rota Transportes')">
+                            (change)="updateCompanyName(1, 'Rota Transportes')" required>
                         <label class="form-check-label" for="rotaSingle">Rota Transportes</label>
                     </div>
                     <div class="form-check">
                         <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="cidadeSolSingle"
                             formControlName="selectedCompany" value="Cidade Sol"
-                            (change)="updateCompanyName(1, 'Cidade Sol')">
+                            (change)="updateCompanyName(1, 'Cidade Sol')" required>
                         <label class="form-check-label" for="cidadeSolSingle">Cidade Sol</label>
                     </div>
                     <div class="form-check">
                         <input [borderColorClass]="'#027373'" class="form-check-input" type="radio"
                             id="brasileiroSingle" formControlName="selectedCompany" value="Brasileiro"
-                            (change)="updateCompanyName(1, 'Brasileiro')">
+                            (change)="updateCompanyName(1, 'Brasileiro')" required>
                         <label class="form-check-label" for="brasileiroSingle">Brasileiro</label>
                     </div>
                     <div class="form-check">
                         <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="otherSingle"
                             formControlName="selectedCompany" value="Outro" (change)="onOtherCompany()">
                         <label class="form-check-label" for="otherSingle">Outra</label>
-                        <input *ngIf="registerForm.get('selectedCompany')?.value === 'Outro'" type="text"
+                        <input *ngIf="agencyBoardForm.get('selectedCompany')?.value === 'Outro'" type="text"
                             class="form-control mt-2" formControlName="otherText" placeholder="Especificar empresa"
-                            (change)="updateOtherCompany()">
+                            (change)="updateOtherCompany()" required>
                     </div>
                 </div>
                 <div *ngIf="selectedCompany.invalid && formDir.submitted" class="validation-warning">
-                    <p>Selecione a empresa ou indique outra</p>
+                    <p>Selecione ou indique outra empresa.</p>
                 </div>
             </div>
 
             <div *ngIf="!isSingleCompany" class="row mt-5 border-bottom pb-4">
                 <div class="col-12">
-                    <p class="fw-bold">Selecione as Empresas</p>
+                    <p class="fw-bold">Selecione as Empresas *</p>
                 </div>
                 <div class="col-12 d-flex flex-wrap gap-3">
                     <div class="form-check">
                         <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox" id="rotaMulti"
-                            formControlName="selectedCompany" (change)="updateCompanyName(2, 'Rota Transportes')">
+                            formControlName="selectedCompany" (change)="updateCompanyName(2, 'Rota Transportes')" required>
                         <label class="form-check-label" for="rotaMulti">Rota Transportes</label>
                     </div>
                     <div class="form-check">
                         <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox"
                             id="cidadeSolMulti" formControlName="selectedCompany"
-                            (change)="updateCompanyName(2, 'Cidade Sol')">
+                            (change)="updateCompanyName(2, 'Cidade Sol')" required>
                         <label class="form-check-label" for="cidadeSolMulti">Cidade Sol</label>
                     </div>
                     <div class="form-check">
                         <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox"
                             id="brasileiroMulti" formControlName="selectedCompany"
-                            (change)="updateCompanyName(2, 'Brasileiro')">
+                            (change)="updateCompanyName(2, 'Brasileiro')" required>
                         <label class="form-check-label" for="brasileiroMulti">Brasileiro</label>
                     </div>
                     <div class="form-check d-flex align-items-center">
@@ -196,13 +197,14 @@
                         <label class="form-check-label ms-2" for="otherMulti">Outras</label>
                         <input *ngIf="isOtherCompaniesSelected" type="text" class="form-control ms-2"
                             placeholder="Especificar empresa" formControlName="othersText"
-                            (change)="updateOthersCompanies()">
+                            (change)="updateOthersCompanies()" required>
                         <button [backgroundColorClass]="'#027373'" *ngIf="isOtherCompaniesSelected" type="button"
                             class="btn btn-sm text-white ms-2" (click)="confirmOtherMultiCompany()">OK</button>
                     </div>
                 </div>
-                <div *ngIf="(selectedCompany.invalid || companies.length < 2) && formDir.submitted" class="validation-warning">
-                    <p>Selecione duas ou mais empresas, ou indique outras. </p>
+                <div *ngIf="(selectedCompany.invalid || companies.length < 2) && formDir.submitted"
+                    class="validation-warning">
+                    <p>Selecione ou indique duas ou mais empresas. </p>
                 </div>
             </div>
         </div>
@@ -219,7 +221,7 @@
                     <div>
                         <p class="fw-bold">
                             {{ company.name }}
-                            <button *ngIf="company.isCustom" [backgroundColorClass]="'#ff6f6f'"
+                            <button *ngIf="company.isCustom" [backgroundColorClass]="'#ff6f6f'" type="button"
                                 class="border-0 ps-2 rounded text-white" (click)="removeCompany(company.name)"> Remover
                             </button>
                         </p>
@@ -228,15 +230,12 @@
                     <div class="mb-3">
                         <div class="d-flex align-items-center">
                             <div>
-                                <label class="me-3" for="mainRoute">Principais:</label>
-                            </div>
-                            <div *ngIf="mainRoutes.length == 0 && formDir.submitted" class="validation-warning">
-                                <p>Indique ao menos uma rota principal. </p>
+                                <label class="me-3" for="mainRoute">Principais *:</label>
                             </div>
                             <div *ngFor="let routeAdded of company.mainRoutes" class="me-2">
                                 <div [backgroundColorClass]="'#ebebeb'" class="border border-dark-subtle rounded-3">
                                     <span class="p-3 ">{{ routeAdded }} </span>
-                                    <button [backgroundColorClass]="'#ff6f6f'"
+                                    <button [backgroundColorClass]="'#ff6f6f'" type="button"
                                         class="border-0 rounded-end text-white px-2"
                                         (click)="removeMainRoute(company.name, routeAdded)"> - </button>
                                 </div>
@@ -244,12 +243,15 @@
                             <div class="d-flex ms-2">
                                 <select [backgroundColorClass]="'#ebebeb'" id="mainRoute"
                                     class="form-select border-dark-subtle rounded-3 form-focus me-2 w-100"
-                                    formControlName="mainRoute">
+                                    formControlName="mainRoute" required>
                                     <option *ngFor="let route of mainRoutes" [value]="route">{{ route }}</option>
                                 </select>
                                 <button [backgroundColorClass]="'#027373'" type="button" class="btn text-white"
                                     (click)="addMainRoute(company.name)">+</button>
                             </div>
+                        </div>
+                        <div *ngIf="company.mainRoutes.length == 0 && formDir.submitted" class="validation-warning">
+                            <p>Indique ao menos uma rota principal. </p>
                         </div>
                     </div>
 
@@ -257,7 +259,7 @@
                     <div class="mb-3">
                         <div class="d-flex align-items-center">
                             <div>
-                                <label class="me-3" for="connections">Conexões:</label>
+                                <label class="me-3" for="connections">Conexões *:</label>
                             </div>
                             <div *ngIf="connections.length == 0 && formDir.submitted" class="validation-warning">
                                 <p>Indique ao menos uma conexão. </p>
@@ -265,15 +267,15 @@
                             <div *ngFor="let connectionAdded of company.connections" class="me-2">
                                 <div [backgroundColorClass]="'#ebebeb'" class="border border-dark-subtle rounded-3">
                                     <span class="p-3 ">{{ connectionAdded }} </span>
-                                    <button [backgroundColorClass]="'#ff6f6f'"
+                                    <button [backgroundColorClass]="'#ff6f6f'" type="button"
                                         class="border-0 rounded-end text-white px-2"
-                                        (click)="removeConnection(company.name, connectionAdded)"> - </button>
+                                        click="removeConnection(company.name, connectionAdded)"> - </button>
                                 </div>
                             </div>
                             <div class="d-flex ms-2">
                                 <select [backgroundColorClass]="'#ebebeb'" id="connections"
                                     class="form-select border-dark-subtle rounded-3 form-focus me-2 w-100"
-                                    formControlName="connections">
+                                    formControlName="connections" required>
                                     <option *ngFor="let connection of connections" [value]="connection">{{ connection }}
                                     </option>
                                 </select>
@@ -281,13 +283,16 @@
                             <button [backgroundColorClass]="'#027373'" type="button" class="btn text-white"
                                 (click)="addConnection(company.name)">+</button>
                         </div>
+                        <div *ngIf="company.connections.length == 0 && formDir.submitted" class="validation-warning">
+                            <p>Indique ao menos uma conexão. </p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
 
-        <div class="row mt-5 border-bottom pb-4">
+        <!-- <div class="row mt-5 border-bottom pb-4">
             <div class="title">
                 <p class="fw-bold">Adicionar Imagens do Local</p>
             </div>
@@ -297,19 +302,22 @@
                     <app-loading-file (filesLoaded)="onFilesLoaded($event)"></app-loading-file>
                 </div>
             </div>
-        </div>
+        </div> -->
 
         <div class="form-group pt-3 w-100 py-3">
             <label class="fw-bold" for="observation">Observações</label>
             <textarea [backgroundColorClass]="'#ebebeb'" id="observation" formControlName="observation" type="text"
-                class="form-control border-dark-subtle rounded-3 form-focus" placeholder="Escreva aqui"
-                required></textarea>
+                class="form-control border-dark-subtle rounded-3 form-focus" placeholder="Escreva aqui" ></textarea>
         </div>
 
 
         <div class="d-flex gap-3 justify-content-end pt-2">
-            <button type="reset" (click)="clearForm()" class="btn btn-outline-danger">Redefinir Formulário</button>
-            <button [backgroundColorClass]="'#027373'" type="submit" class="btn text-white">Enviar</button>
+            <button type="reset" (click)="clearForm()" class="btn btn-outline-danger">Redefinir
+                Formulário</button>
+            <button [backgroundColorClass]="'#027373'" type="submit" class="btn text-white" type="submit" [disabled]="agencyBoardForm.invalid">
+                Enviar
+            </button>
+
 
         </div>
     </form>

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CompanyDetails } from '../../interface/company-details';
 import { CreateRequestService } from '../../services/create-request.service';
 import { I_Agency_Board_Request } from '../../../../shared/interfaces/briefing/agency-board/form/agency-board-register-form';
@@ -35,8 +36,9 @@ enum Company {
   templateUrl: './agency-board-request.component.html',
   styleUrls: ['./agency-board-request.component.css']
 })
-export class AgencyBoardRequestComponent {
-  registerForm: FormGroup;
+export class AgencyBoardRequestComponent implements OnInit {
+  isButtonDisabled = false;
+  agencyBoardForm!: FormGroup;
   isSingleCompany: boolean = true;
   companies: CompanyDetails[] = [];
 
@@ -46,49 +48,54 @@ export class AgencyBoardRequestComponent {
   isOtherCompaniesSelected = false;
   showCompanyFields: boolean = false;
 
-  mainRoutes: string[] = ['SÃO PAULO', 'RIO DE JANEIRO', 'BELO HORIZONTE', 'PORTO ALEGRE', 'CURITIBA', 'FORTALEZA', 'SALVADOR', 'BRASÍLIA', 'RECIFE', 'GOIÂNIA'];
-  connections: string[] = ['SÃO PAULO', 'RIO DE JANEIRO', 'BELO HORIZONTE', 'PORTO ALEGRE', 'CURITIBA', 'FORTALEZA', 'SALVADOR', 'BRASÍLIA', 'RECIFE', 'GOIÂNIA'];
+  mainRoutes: string[] = Object.keys(Cities);
+  connections: string[] = Object.keys(Cities);
 
   // TODO: Adicionar ID para identificação da imagem
   files: { name: string, url: string }[] = [];
 
-  constructor(private fb: FormBuilder, private createRequestService: CreateRequestService) {
-    this.registerForm = this.fb.group({
-      description: ['', Validators.required],
-      signLocation: ['', Validators.required],
-      length: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
-      height: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
-      // validação para sharedCompany, true ou false
-      sharedCompany: ['', Validators.required],
-      selectedCompany: ['', Validators.required],
-      mainRoute: ['', Validators.required],
-      connections: ['', Validators.required],
-      observation: [''],
-      otherText: [''],
-      othersText: [''],
-      agencyBoardType: ['', Validators.required],
-      boardType: ['', Validators.required]
+  constructor(private fb: FormBuilder, private createRequestService: CreateRequestService, private toastrService: ToastrService) { }
+
+  ngOnInit(): void {
+    this.agencyBoardForm = new FormGroup({
+      description: new FormControl('', [Validators.required]),
+      signLocation: new FormControl('', [Validators.required]),
+      length: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+(\.[0-9]+)?$')]),
+      height: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+(\.[0-9]+)?$')]),
+      sharedCompany: new FormControl('', [Validators.required]),
+      selectedCompany: new FormControl('', [Validators.required]),
+      mainRoute: new FormControl('', [Validators.required]),
+      connections: new FormControl('', [Validators.required]),
+      observation: new FormControl(''),
+      otherText: new FormControl(''),
+      othersText: new FormControl(''),
+      agencyBoardType: new FormControl('', [Validators.required]),
+      boardType: new FormControl('', [Validators.required])
     });
+    
   }
 
-  get length() { return this.registerForm.get('length')!; }
-  get height() { return this.registerForm.get('height')!; }
-  get description() { return this.registerForm.get('description')!; }
-  get signLocation() { return this.registerForm.get('signLocation')!; }
-  get observation() { return this.registerForm.get('observation')!; }
-  get agencyBoardType() { return this.registerForm.get('agencyBoardType')!; }
-  get boardType() { return this.registerForm.get('boardType')!; }
-  get sharedCompany() { return this.registerForm.get('sharedCompany')!; }
-  get selectedCompany() { return this.registerForm.get('selectedCompany')!; }
-  get mainRoute() { return this.registerForm.get('mainRoute')!; }
-  get connection() { return this.registerForm.get('connections')!; }
+  get length() { return this.agencyBoardForm.get('length')!; }
+  get height() { return this.agencyBoardForm.get('height')!; }
+  get description() { return this.agencyBoardForm.get('description')!; }
+  get signLocation() { return this.agencyBoardForm.get('signLocation')!; }
+  get agencyBoardType() { return this.agencyBoardForm.get('agencyBoardType')!; }
+  get boardType() { return this.agencyBoardForm.get('boardType')!; }
+  get sharedCompany() { return this.agencyBoardForm.get('sharedCompany')!; }
+  get selectedCompany() { return this.agencyBoardForm.get('selectedCompany')!; }
+  get mainRoute() { return this.agencyBoardForm.get('mainRoute')!; }
+  get connection() { return this.agencyBoardForm.get('connection')!; }
 
 
   clearForm() {
-    this.registerForm.reset();
+    this.agencyBoardForm.reset();
     this.companies = [];
-    this.showCompanyFields = false;
     this.files = [];
+    this.showCompanyFields = false;
+    this.isSingleCompany = true;
+    this.isOtherCompaniesSelected = false;
+    this.selectedCompanies = [];
+    this.selectedOthersCompanies = [];
   }
 
   onCompanyChange(type: string) {
@@ -97,12 +104,12 @@ export class AgencyBoardRequestComponent {
     this.showCompanyFields = true;
 
     if (this.isSingleCompany) {
-      this.registerForm.patchValue({ selectedCompany: null, otherText: '' });
-      this.registerForm.patchValue({ mainRoute: null, connections: null });
+      this.agencyBoardForm.patchValue({ selectedCompany: null, otherText: '' });
+      this.agencyBoardForm.patchValue({ mainRoute: null, connections: null });
 
     } else {
-      this.registerForm.patchValue({ mainRoute: null, connections: null });
-      this.registerForm.patchValue({ selectedCompany: null, othersText: '' });
+      this.agencyBoardForm.patchValue({ mainRoute: null, connections: null });
+      this.agencyBoardForm.patchValue({ selectedCompany: null, othersText: '' });
     }
   }
 
@@ -122,20 +129,20 @@ export class AgencyBoardRequestComponent {
   onOtherCompany() {
     if (this.companies.length > 0)
       this.companies = [];
-    this.registerForm.get('otherText')?.setValue('');
+    this.agencyBoardForm.get('otherText')?.setValue('');
   }
 
   updateOtherCompany() {
-    const otherValue = this.registerForm.get('otherText')?.value;
+    const otherValue = this.agencyBoardForm.get('otherText')?.value;
     this.companies = [];
     this.companies.push({ name: otherValue, mainRoutes: [], connections: [], isCustom: true });
   }
 
   confirmOtherSingleCompany() {
-    const otherCompany = this.registerForm.get('otherText')?.value;
+    const otherCompany = this.agencyBoardForm.get('otherText')?.value;
     if (otherCompany && !this.companies.some(c => c.name === otherCompany)) {
       this.companies.push({ name: otherCompany, mainRoutes: [], connections: [], isCustom: true });
-      this.registerForm.get('otherText')?.reset();
+      this.agencyBoardForm.get('otherText')?.reset();
     }
   }
 
@@ -143,13 +150,13 @@ export class AgencyBoardRequestComponent {
   onOthersCompanies() {
     this.isOtherCompaniesSelected = !this.isOtherCompaniesSelected;
     if (!this.isOtherCompaniesSelected) {
-      this.registerForm.get('othersText')?.setValue('');
+      this.agencyBoardForm.get('othersText')?.setValue('');
       this.companies = this.companies.filter(company => company.name !== 'Outras');
     }
   }
 
   updateOthersCompanies() {
-    const otherValue = this.registerForm.get('othersText')?.value;
+    const otherValue = this.agencyBoardForm.get('othersText')?.value;
     if (otherValue) {
       const companyIndex = this.companies.findIndex(company => company.name === 'Outras');
       if (companyIndex >= 0) {
@@ -161,7 +168,7 @@ export class AgencyBoardRequestComponent {
   }
 
   confirmOtherMultiCompany() {
-    const otherCompany = this.registerForm.get('othersText')?.value;
+    const otherCompany = this.agencyBoardForm.get('othersText')?.value;
     if (otherCompany && !this.companies.some(c => c.name === otherCompany)) {
       this.companies.push({
         name: otherCompany,
@@ -169,7 +176,7 @@ export class AgencyBoardRequestComponent {
         connections: [],
         isCustom: true
       });
-      this.registerForm.get('othersText')?.reset();
+      this.agencyBoardForm.get('othersText')?.reset();
       this.isOtherCompaniesSelected = false;
     }
   }
@@ -182,7 +189,7 @@ export class AgencyBoardRequestComponent {
   }
 
   addMainRoute(companyName: string) {
-    const selectedMainRoute = this.registerForm.get('mainRoute')?.value;
+    const selectedMainRoute = this.agencyBoardForm.get('mainRoute')?.value;
 
     if (selectedMainRoute) {
       const company = this.companies.find(c => c.name === companyName);
@@ -190,7 +197,7 @@ export class AgencyBoardRequestComponent {
         const routeExists = company.mainRoutes.includes(selectedMainRoute);
         if (!routeExists) {
           company.mainRoutes.push(selectedMainRoute);
-          this.registerForm.get('mainRoute')?.reset();
+          this.agencyBoardForm.get('mainRoute')?.reset();
         }
       }
     }
@@ -208,7 +215,7 @@ export class AgencyBoardRequestComponent {
   }
 
   addConnection(companyName: string) {
-    const selectedConnection = this.registerForm.get('connections')?.value;
+    const selectedConnection = this.agencyBoardForm.get('connections')?.value;
 
     if (selectedConnection) {
       const company = this.companies.find(c => c.name === companyName);
@@ -216,7 +223,7 @@ export class AgencyBoardRequestComponent {
         const connectionExists = company.connections.includes(selectedConnection);
         if (!connectionExists) {
           company.connections.push(selectedConnection);
-          this.registerForm.get('connections')?.reset();
+          this.agencyBoardForm.get('connections')?.reset();
         }
       }
     }
@@ -260,13 +267,13 @@ export class AgencyBoardRequestComponent {
 
     const briefingForm: I_Briefing_Request = {
       expectedDate: '2023-10-25',
-      detailedDescription: this.registerForm.get('description')?.value,
+      detailedDescription: this.agencyBoardForm.get('description')?.value,
       companies: this.selectedCompanies,
       otherCompany: this.selectedOthersCompanies.join(', '),
       idBriefingType: '1',
       measurement: {
-        length: this.registerForm.get('length')?.value,
-        height: this.registerForm.get('height')?.value,
+        length: this.agencyBoardForm.get('length')?.value,
+        height: this.agencyBoardForm.get('height')?.value,
       },
     }
 
@@ -325,10 +332,10 @@ export class AgencyBoardRequestComponent {
     const agencyBoardOthersRoutes: I_Agency_Board_Others_Routes[] = [...mainOthersRoutes, ...othersConnections];
 
     const bAgencyBoardsForm: I_Agency_Board_Data = {
-      idAgencyBoardType: this.registerForm.get('agencyBoardType')?.value.toString(),
-      boardLocation: this.registerForm.get('signLocation')?.value,
-      observation: this.registerForm.get('observation')?.value,
-      idBoardType: this.registerForm.get('boardType')?.value.toString(),
+      idAgencyBoardType: this.agencyBoardForm.get('agencyBoardType')?.value.toString(),
+      boardLocation: this.agencyBoardForm.get('signLocation')?.value,
+      observation: this.agencyBoardForm.get('observation')?.value,
+      idBoardType: this.agencyBoardForm.get('boardType')?.value.toString(),
       routes: agencyBoardRoutes,
       othersRoutes: agencyBoardOthersRoutes,
     }
@@ -339,17 +346,24 @@ export class AgencyBoardRequestComponent {
   }
 
   submit() {
+    if (this.agencyBoardForm.invalid) { return }
     const requestData = this.prepareSubmit();
     this.createRequestService.submitAgencyBoardRequest(requestData.projectForm, requestData.briefingForm, requestData.bAgencyBoardsForm)
       .subscribe({
         next: (response) => {
-          console.log('Requisição enviada com sucesso:', response);
+          this.toastrService.success("Solicitação realizada com sucesso!");
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
+          this.clearForm();
         },
         error: (error) => {
-          console.error('Erro ao enviar a requisição:', error);
+          this.toastrService.error("Erro ao realizar solicitação. Verifique se os campos estão preenchidos corretamente.");
         }
       });
-    console.log(requestData.projectForm, requestData.briefingForm, requestData.bAgencyBoardsForm)
+    this.isButtonDisabled = true;
+    setTimeout(() => {
+      this.isButtonDisabled = false;
+    }, 3000);
   }
-
 }
