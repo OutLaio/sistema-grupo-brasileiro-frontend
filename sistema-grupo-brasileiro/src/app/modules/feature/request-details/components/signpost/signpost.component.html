@@ -12,23 +12,8 @@
       </div>
     </div>
 
-    <div class="d-flex justify-content-between pe-5 mt-4 border-bottom">
-      <div>
-        <p class="text-exo fw-bold">Artes Desenvolvidas</p>
-        <div class="d-flex gap-5">
-          <p *ngIf="data.briefing.versions.length == 0; else versions" class="small-text text-exo ">Ainda não há versões
-            disponibilizadas para este projeto!</p>
-          <ng-template #versions>
-            <div *ngFor="let version of data.briefing.versions" class="pb-4 border-bottom">
-              <button type="button" class="btn btn-outline-secondary btn-sm" (click)="toggleVersionModal(version)">Versão #{{ version.versionNumber }} </button>
-            </div>
-          </ng-template>
-        </div>
-      </div>
-
-      <div *ngIf="getSessionProfile() == roleCollaborator" class="d-flex mt-2">
-        <button class="btn btn-outline-primary shadow-custom btn-sm" (click)="showModal()" style="height: 40px">Inserir Nova Arte</button>
-      </div>
+    <div class="pe-5 mt-4 border-bottom">
+      <app-version [versions]="data.briefing.versions" [idBriefing]="data.briefing.id"></app-version>
     </div>
 
     <p class="text-exo fw-bold mt-3">Informações da Placa</p>
@@ -111,7 +96,7 @@
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary btn-sm" (click)="toggleNewVersionModal()">Fechar</button>
-          <button type="button" class="btn btn-outline-primary btn-sm" (click)="newVersion()">Salvar</button>
+          <button type="button" class="btn btn-outline-primary btn-sm">Salvar</button>
         </div>
       </div>
     </div>
@@ -127,7 +112,7 @@
           </button>
         </div>
         <div class="modal-body ">
-          <app-version [version]="selectedVersion"></app-version>
+          <app-version></app-version>
         </div>
 
       </div>
