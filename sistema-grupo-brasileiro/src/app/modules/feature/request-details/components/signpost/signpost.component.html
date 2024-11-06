@@ -1,50 +1,5 @@
 <div *ngIf="data">
 
-  <div class="bg-modal modal rounded" *ngIf="isNewVersionModalOpen">
-    <div class="modal-dialog modal-dialog-scrollable">
-      <div class="modal-content bg-white p-3 rounded-4">
-        <div class="modal-header">
-          <h6 class="modal-title mb-0">Inserir Nova Arte</h6>
-        </div>
-        <div class="modal-body d-flex flex-column gap-2">
-          <div class="form-group">
-            <label for="inputImage">Imagem da Arte</label>
-            <input type="file" id="inputImage" class="form-control" (change)="onFileSelected($event)">
-          </div>
-          <div class="form-group">
-            <label for="inputTitle">Título da Arte</label>
-            <input type="text" id="inputTitle" class="form-control" [(ngModel)]="artTitle" name="artTitle">
-          </div>
-          <div class="form-group">
-            <label for="inputDescription">Descrição da Arte</label>
-            <textarea id="inputDescription" class="form-control" [(ngModel)]="artDescription" name="artDescription"></textarea>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary btn-sm" (click)="toggleNewVersionModal()">Fechar</button>
-          <button type="button" class="btn btn-outline-primary btn-sm" (click)="newVersion()" >Salvar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="bg-modal modal rounded" *ngIf="isVersionModalOpen">
-    <div class="modal-dialog modal-dialog-scrollable">
-      <div class="modal-content bg-white p-3 rounded-4">
-
-        <div class="modal-header">
-          <h6 class="modal-title mb-0">Detalhes da Arte</h6>
-          <button type="button" class="btn btn-close" aria-label="Close" (click)="toggleVersionModal()">
-          </button>
-        </div>
-        <div class="modal-body ">
-          <app-version [version]="selectedVersion"></app-version>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
   <div class="container mt-2">
     <div class="d-flex align-items-center justify-content-between pb-4 border-bottom">
       <div>
@@ -72,7 +27,7 @@
       </div>
 
       <div *ngIf="getSessionProfile() == roleCollaborator" class="d-flex mt-2">
-        <button class="btn btn-outline-primary shadow-custom btn-sm" (click)="toggleNewVersionModal()" style="height: 40px">Inserir Nova Arte</button>
+        <button class="btn btn-outline-primary shadow-custom btn-sm" (click)="showModal()" style="height: 40px">Inserir Nova Arte</button>
       </div>
     </div>
 
@@ -130,6 +85,52 @@
       <p class="text-exo fw-bold">Setor</p>
       <p class="small-text text-exo mb-0 px-4 py-3 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{
         data.signpost.sector }}</p>
+    </div>
+  </div>
+
+  <div class="bg-modal modal rounded" *ngIf="isNewVersionModalOpen">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content bg-white p-3 rounded-4">
+        <div class="modal-header">
+          <h6 class="modal-title mb-0">Inserir Nova Arte</h6>
+        </div>
+        <div class="modal-body d-flex flex-column gap-2">
+          <div class="form-group">
+            <label for="inputImage">Imagem da Arte</label>
+            <input type="file" id="inputImage" class="form-control" (change)="onFileSelected($event)">
+          </div>
+          <div class="form-group">
+            <label for="inputTitle">Título da Arte</label>
+            <input type="text" id="inputTitle" class="form-control" [(ngModel)]="artTitle" name="artTitle">
+          </div>
+          <div class="form-group">
+            <label for="inputDescription">Descrição da Arte</label>
+            <textarea id="inputDescription" class="form-control" [(ngModel)]="artDescription"
+              name="artDescription"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-sm" (click)="toggleNewVersionModal()">Fechar</button>
+          <button type="button" class="btn btn-outline-primary btn-sm" (click)="newVersion()">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-modal modal rounded" *ngIf="isVersionModalOpen">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content bg-white p-3 rounded-4">
+
+        <div class="modal-header">
+          <h6 class="modal-title mb-0">Detalhes da Arte</h6>
+          <button type="button" class="btn btn-close" aria-label="Close" (click)="toggleVersionModal()">
+          </button>
+        </div>
+        <div class="modal-body ">
+          <app-version [version]="selectedVersion"></app-version>
+        </div>
+
+      </div>
     </div>
   </div>
 

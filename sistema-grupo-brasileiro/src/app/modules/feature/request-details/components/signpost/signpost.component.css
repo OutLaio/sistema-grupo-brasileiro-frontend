@@ -18,7 +18,7 @@
   position: absolute;
   top: 0;
   left: 0;
-  width: 60%;
+  width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.3);
   align-items: center;
@@ -38,4 +38,8 @@
   --bs-btn-active-color: white;
   --bs-btn-active-bg: #026d56;
   --bs-btn-active-border-color: #026d56;
+}
+
+.swal2-validation-message {
+  margin: 0 !important;
 }

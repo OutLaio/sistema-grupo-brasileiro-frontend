@@ -14,6 +14,7 @@ import { I_Employee_View_Data } from '../../../../shared/interfaces/user/view/em
 import { I_Employee_Simple_View_Data } from '../../../../shared/interfaces/user/view/employee-simple-view';
 import { I_Assign_Collaborator_Request } from '../../../../shared/interfaces/project/form/assign-collaborator-form';
 import { I_Project_Data } from '../../../../shared/interfaces/project/view/project-view';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-dialog-box',
@@ -44,12 +45,10 @@ export class DialogBoxComponent implements OnInit {
       this.scrollToBottom();
     });
 
-    if(this.getSessionProfile() === this.idSupervisor) {
-      this.service.getAllCollaborators().subscribe(
-        (res) => {
-          this.allCollaborators = res.content as Array<I_Employee_View_Data>;
-        }
-      )
+    if (this.getSessionProfile() === this.idSupervisor) {
+      this.service.getAllCollaborators().subscribe((res) => {
+        this.allCollaborators = res.content as Array<I_Employee_View_Data>;
+      });
     }
   }
 
@@ -100,18 +99,49 @@ export class DialogBoxComponent implements OnInit {
     if (!this.selectedCollaborator) {
       return;
     }
-    if(confirm('Deseja atribuir ' + this.selectedCollaborator.name + ' como colaborador do projeto?')){
-      const request: I_Assign_Collaborator_Request = {
-        idCollaborator: this.selectedCollaborator.id
-      }
-      this.service.assignCollaborator(this.project!.id, request).subscribe(() => {
-        this.project!.collaborator = {
-          id: this.selectedCollaborator?.id!,
-          fullName: this.selectedCollaborator?.name! + ' ' + this.selectedCollaborator?.lastname!,
-          avatar: this.selectedCollaborator?.avatar!
+    Swal.fire({
+      title: 'Atribuir Colaborador',
+      text:
+        'Confirma a atribuição de ' +
+        this.selectedCollaborator.name +
+        ' ao projeto?',
+      icon: 'warning',
+      showDenyButton: true,
+      confirmButtonColor: '#029982',
+      denyButtonColor: '#d33',
+      confirmButtonText: 'Sim',
+      denyButtonText: 'Não',
+      reverseButtons: true,
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const request: I_Assign_Collaborator_Request = {
+          idCollaborator: this.selectedCollaborator!.id,
         };
-        this.closeModal();
-      })
-    }
+        this.service
+          .assignCollaborator(this.project!.id, request)
+          .subscribe(() => {
+            this.project!.collaborator = {
+              id: this.selectedCollaborator?.id!,
+              fullName:
+                this.selectedCollaborator?.name! +
+                ' ' +
+                this.selectedCollaborator?.lastname!,
+              avatar: this.selectedCollaborator?.avatar!,
+            };
+            Swal.fire({
+              title: 'Sucesso!',
+              text:
+                'O(a) colaborador(a) ' +
+                this.selectedCollaborator?.name +
+                ' foi atribuído(a) ao projeto.',
+              icon: 'success',
+              iconColor: '#029982',
+              confirmButtonColor: '#029982',
+            }).then(() => {
+              this.closeModal();
+            });
+          });
+      }
+    });
   }
 }
