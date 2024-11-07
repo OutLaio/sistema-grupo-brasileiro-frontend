@@ -1,7 +1,7 @@
 export interface CompanyDetails {
   name: string;
-  mainRoutes: string[];
-  connections: string[];
+  companyMainRoutes: string[];
+  companyConnections: string[];
   isCustom: boolean;
 }
 

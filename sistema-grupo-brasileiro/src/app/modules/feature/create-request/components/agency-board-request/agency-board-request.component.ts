@@ -48,8 +48,8 @@ export class AgencyBoardRequestComponent implements OnInit {
   isOtherCompaniesSelected = false;
   showCompanyFields: boolean = false;
 
-  mainRoutes: string[] = Object.keys(Cities);
-  connections: string[] = Object.keys(Cities);
+  listMainRoutes: string[] = Object.keys(Cities);
+  listConnections: string[] = Object.keys(Cities);
 
   // TODO: Adicionar ID para identificação da imagem
   files: { name: string, url: string }[] = [];
@@ -64,15 +64,22 @@ export class AgencyBoardRequestComponent implements OnInit {
       height: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+(\.[0-9]+)?$')]),
       sharedCompany: new FormControl('', [Validators.required]),
       selectedCompany: new FormControl('', [Validators.required]),
-      mainRoute: new FormControl('', [Validators.required]),
-      connections: new FormControl('', [Validators.required]),
+      mainRoute: new FormControl(''),
+      connections: new FormControl(''),
       observation: new FormControl(''),
       otherText: new FormControl(''),
       othersText: new FormControl(''),
       agencyBoardType: new FormControl('', [Validators.required]),
-      boardType: new FormControl('', [Validators.required])
+      boardType: new FormControl('')
     });
-    
+    this.agencyBoardForm.get('agencyBoardType')?.valueChanges.subscribe(value => {
+      if (value === '2') {
+        this.agencyBoardForm.get('boardType')?.setValidators([Validators.required]);
+      } else {
+        this.agencyBoardForm.get('boardType')?.clearValidators();
+      }
+      this.agencyBoardForm.get('boardType')?.updateValueAndValidity();
+    });
   }
 
   get length() { return this.agencyBoardForm.get('length')!; }
@@ -115,13 +122,13 @@ export class AgencyBoardRequestComponent implements OnInit {
 
   updateCompanyName(selectionType: number, company: string) {
     if (selectionType === 1) {
-      this.companies = [{ name: company, mainRoutes: [], connections: [], isCustom: false }];
+      this.companies = [{ name: company, companyMainRoutes: [], companyConnections: [], isCustom: false }];
     } else {
       const existingCompany = this.companies.find(c => c.name === company);
       if (existingCompany) {
         this.companies = this.companies.filter(c => c.name !== company);
       } else {
-        this.companies.push({ name: company, mainRoutes: [], connections: [], isCustom: false });
+        this.companies.push({ name: company, companyMainRoutes: [], companyConnections: [], isCustom: false });
       }
     }
   }
@@ -135,13 +142,13 @@ export class AgencyBoardRequestComponent implements OnInit {
   updateOtherCompany() {
     const otherValue = this.agencyBoardForm.get('otherText')?.value;
     this.companies = [];
-    this.companies.push({ name: otherValue, mainRoutes: [], connections: [], isCustom: true });
+    this.companies.push({ name: otherValue, companyMainRoutes: [], companyConnections: [], isCustom: true });
   }
 
   confirmOtherSingleCompany() {
     const otherCompany = this.agencyBoardForm.get('otherText')?.value;
     if (otherCompany && !this.companies.some(c => c.name === otherCompany)) {
-      this.companies.push({ name: otherCompany, mainRoutes: [], connections: [], isCustom: true });
+      this.companies.push({ name: otherCompany, companyMainRoutes: [], companyConnections: [], isCustom: true });
       this.agencyBoardForm.get('otherText')?.reset();
     }
   }
@@ -162,7 +169,7 @@ export class AgencyBoardRequestComponent implements OnInit {
       if (companyIndex >= 0) {
         this.companies[companyIndex].name = otherValue;
       } else {
-        this.companies.push({ name: otherValue, mainRoutes: [], connections: [], isCustom: true });
+        this.companies.push({ name: otherValue, companyMainRoutes: [], companyConnections: [], isCustom: true });
       }
     }
   }
@@ -172,8 +179,8 @@ export class AgencyBoardRequestComponent implements OnInit {
     if (otherCompany && !this.companies.some(c => c.name === otherCompany)) {
       this.companies.push({
         name: otherCompany,
-        mainRoutes: [],
-        connections: [],
+        companyMainRoutes: [],
+        companyConnections: [],
         isCustom: true
       });
       this.agencyBoardForm.get('othersText')?.reset();
@@ -194,9 +201,9 @@ export class AgencyBoardRequestComponent implements OnInit {
     if (selectedMainRoute) {
       const company = this.companies.find(c => c.name === companyName);
       if (company) {
-        const routeExists = company.mainRoutes.includes(selectedMainRoute);
+        const routeExists = company.companyMainRoutes.includes(selectedMainRoute);
         if (!routeExists) {
-          company.mainRoutes.push(selectedMainRoute);
+          company.companyMainRoutes.push(selectedMainRoute);
           this.agencyBoardForm.get('mainRoute')?.reset();
         }
       }
@@ -207,9 +214,9 @@ export class AgencyBoardRequestComponent implements OnInit {
   removeMainRoute(companyName: string, routeToRemove: string) {
     const company = this.companies.find(c => c.name === companyName);
     if (company) {
-      const index = company.mainRoutes.indexOf(routeToRemove);
+      const index = company.companyMainRoutes.indexOf(routeToRemove);
       if (index !== -1) {
-        company.mainRoutes.splice(index, 1);
+        company.companyMainRoutes.splice(index, 1);
       }
     }
   }
@@ -220,9 +227,9 @@ export class AgencyBoardRequestComponent implements OnInit {
     if (selectedConnection) {
       const company = this.companies.find(c => c.name === companyName);
       if (company) {
-        const connectionExists = company.connections.includes(selectedConnection);
+        const connectionExists = company.companyConnections.includes(selectedConnection);
         if (!connectionExists) {
-          company.connections.push(selectedConnection);
+          company.companyConnections.push(selectedConnection);
           this.agencyBoardForm.get('connections')?.reset();
         }
       }
@@ -233,9 +240,9 @@ export class AgencyBoardRequestComponent implements OnInit {
   removeConnection(companyName: string, connectionToRemove: string) {
     const company = this.companies.find(c => c.name === companyName);
     if (company) {
-      const index = company.connections.indexOf(connectionToRemove);
+      const index = company.companyConnections.indexOf(connectionToRemove);
       if (index !== -1) {
-        company.connections.splice(index, 1);
+        company.companyConnections.splice(index, 1);
       }
     }
   }
@@ -278,11 +285,11 @@ export class AgencyBoardRequestComponent implements OnInit {
     }
 
 
-    const mainRoutes: I_Agency_Board_Routes[] = this.companies.flatMap(company => {
+    const companyMainRoutes: I_Agency_Board_Routes[] = this.companies.flatMap(company => {
       if (!company.isCustom) {
         return [{
           idCompany: Company[company.name as keyof typeof Company],
-          idCities: company.mainRoutes.map(route => Cities[route as keyof typeof Cities]),
+          idCities: company.companyMainRoutes.map(route => Cities[route as keyof typeof Cities]),
           type: 'main',
         }];
       } else {
@@ -295,7 +302,7 @@ export class AgencyBoardRequestComponent implements OnInit {
       if (!company.isCustom) {
         return [{
           idCompany: Company[company.name as keyof typeof Company],
-          idCities: company.connections.map(connection => Cities[connection as keyof typeof Cities]),
+          idCities: company.companyConnections.map(connection => Cities[connection as keyof typeof Cities]),
           type: 'connection',
         }];
       } else {
@@ -303,11 +310,11 @@ export class AgencyBoardRequestComponent implements OnInit {
       }
     });
 
-    const agencyBoardRoutes: I_Agency_Board_Routes[] = [...mainRoutes, ...connections];
+    const agencyBoardRoutes: I_Agency_Board_Routes[] = [...companyMainRoutes, ...connections];
 
     const mainOthersRoutes: I_Agency_Board_Others_Routes[] = this.companies.flatMap(company => {
       if (company.isCustom) {
-        return company.mainRoutes.map(route => ({
+        return company.companyMainRoutes.map(route => ({
           company: company.name,
           city: route,
           type: 'main',
@@ -319,7 +326,7 @@ export class AgencyBoardRequestComponent implements OnInit {
 
     const othersConnections: I_Agency_Board_Others_Routes[] = this.companies.flatMap(company => {
       if (company.isCustom) {
-        return company.connections.map(route => ({
+        return company.companyConnections.map(route => ({
           company: company.name,
           city: route,
           type: 'connection',
@@ -345,8 +352,22 @@ export class AgencyBoardRequestComponent implements OnInit {
 
   }
 
+  validateCompanies(): boolean {
+    return this.companies.every(company =>
+      company.name &&
+      company.companyMainRoutes.length > 0 &&
+      company.companyConnections.length > 0 &&
+      typeof company.isCustom === 'boolean'
+    );
+  }
+
+
+
   submit() {
-    if (this.agencyBoardForm.invalid) { return }
+    if (this.agencyBoardForm.invalid) {
+      this.toastrService.error("Erro ao realizar solicitação. Verifique se os campos estão preenchidos corretamente.");
+      return;
+    }
     const requestData = this.prepareSubmit();
     this.createRequestService.submitAgencyBoardRequest(requestData.projectForm, requestData.briefingForm, requestData.bAgencyBoardsForm)
       .subscribe({
@@ -355,15 +376,14 @@ export class AgencyBoardRequestComponent implements OnInit {
           setTimeout(() => {
             window.location.reload();
           }, 2000);
-          this.clearForm();
         },
         error: (error) => {
-          this.toastrService.error("Erro ao realizar solicitação. Verifique se os campos estão preenchidos corretamente.");
+          this.toastrService.error("Erro ao realizar solicitação.");
         }
       });
     this.isButtonDisabled = true;
     setTimeout(() => {
       this.isButtonDisabled = false;
-    }, 3000);
+    }, 2000);
   }
 }

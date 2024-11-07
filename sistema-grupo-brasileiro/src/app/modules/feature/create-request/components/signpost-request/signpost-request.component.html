@@ -1,11 +1,11 @@
 <div class="conatiner d-flex flex-column p-3 mb-4 scroll-bar overflow-custom">
-    <form [formGroup]="registerForm" (ngSubmit)="submit()" #formDir="ngForm">
+    <form [formGroup]="signPostForm" (ngSubmit)="submit()" #formDir="ngForm">
         <div class="row pb-4">
             <div class="form-group pt-3">
                 <label class="fw-bold" for="signLocation">Local da Placa</label>
-                <textarea [backgroundColorClass]="'#ebebeb'" id="signLocation" formControlName="signLocation"
+                <textarea [backgroundColorClass]="'#ebebeb'" id="signLocation" required formControlName="signLocation"
                     type="text" class="form-control border-dark-subtle rounded-3 form-focus"
-                    placeholder="Escreva a localização da placa" required></textarea>
+                    placeholder="Escreva a localização da placa"></textarea>
             </div>
             <div *ngIf="signLocation.invalid && formDir.submitted" class="validation-warning">
                 <p>Por favor, informe o local onde a placa será instalada</p>
@@ -15,9 +15,9 @@
         <div class="row pb-4">
             <div class="form-group pt-3">
                 <label class="fw-bold" for="description">Descrição</label>
-                <textarea [backgroundColorClass]="'#ebebeb'" id="description" formControlName="description" type="text"
+                <textarea [backgroundColorClass]="'#ebebeb'" id="description" required formControlName="description" type="text"
                     class="form-control border-dark-subtle rounded-3 form-focus"
-                    placeholder="Escreva a descrição da solicitação" required></textarea>
+                    placeholder="Escreva a descrição da solicitação"></textarea>
             </div>
             <div *ngIf="description.invalid && formDir.submitted" class="validation-warning">
                 <p>A descrição da solicitação é obrigatória. Escreva uma breve descrição da placa.</p>
@@ -33,7 +33,7 @@
                             <label>Largura</label>
                             <input [backgroundColorClass]="'#ebebeb'" type="text"
                                 class="border border-dark-subtle rounded-3 me-2 w-100 form-focus" placeholder="cm"
-                                formControlName="width" />
+                                required formControlName="width" />
                         </div>
                         <div class="pt-4">
                             <span class="mx-3">X</span>
@@ -42,7 +42,7 @@
                             <label>Altura</label>
                             <input [backgroundColorClass]="'#ebebeb'" type="text"
                                 class="border border-dark-subtle rounded-3 me-2 w-100 form-focus" placeholder="cm"
-                                formControlName="height" />
+                                required formControlName="height" />
                         </div>
                     </div>
                     <div *ngIf="(width.invalid || height.invalid) && formDir.submitted" class="validation-warning">
@@ -61,15 +61,15 @@
                     <div class="d-flex flex-column">
                         <div class="form-check">
                             <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="aluminio"
-                                formControlName="boardType" value="1">
+                                required formControlName="boardType" value="1">
                             <label class="form-check-label" for="aluminio">Aluminio</label>
                         </div>
                         <div class="form-check">
                             <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="Polietileno"
-                                formControlName="boardType" value="2">
+                                required formControlName="boardType" value="2">
                             <label class="form-check-label" for="Polietileno">Polietileno</label>
                         </div>
-                        <div *ngIf="registerForm.get('boardType')?.invalid  && formDir.submitted"
+                        <div *ngIf="signPostForm.get('boardType')?.invalid  && formDir.submitted"
                             class="validation-warning">
                             <p>Selecione o material da placa</p>
                         </div>
@@ -87,44 +87,44 @@
                 <div class="col-12 d-flex flex-wrap gap-3">
                     <div class="form-check">
                         <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox" id="rotaMulti"
-                            formControlName="selectedCompany" (change)="updateCompanyName(2, 'Rota Transportes')">
+                            required formControlName="selectedCompany" (change)="updateCompanyName(2, 'Rota Transportes')">
                         <label class="form-check-label" for="rotaMulti">Rota Transportes</label>
                     </div>
                     <div class="form-check">
                         <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox"
-                            id="cidadeSolMulti" formControlName="selectedCompany"
+                            id="cidadeSolMulti" required formControlName="selectedCompany"
                             (change)="updateCompanyName(2, 'Cidade Sol')">
                         <label class="form-check-label" for="cidadeSolMulti">Cidade Sol</label>
                     </div>
                     <div class="form-check">
                         <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox"
-                            id="brasileiroMulti" formControlName="selectedCompany"
+                            id="brasileiroMulti" required formControlName="selectedCompany"
                             (change)="updateCompanyName(2, 'Brasileiro')">
                         <label class="form-check-label" for="brasileiroMulti">Brasileiro</label>
                     </div>
                     <div class="form-check">
                         <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox"
-                            id="viaMetroMulti" formControlName="selectedCompany"
+                            id="viaMetroMulti" required formControlName="selectedCompany"
                             (change)="updateCompanyName(2, 'Via Metro')">
                         <label class="form-check-label" for="viaMetroMulti">Via Metro</label>
                     </div>
                     <div class="form-check">
                         <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox"
-                            id="cidadeRealMulti" formControlName="selectedCompany"
+                            id="cidadeRealMulti" required formControlName="selectedCompany"
                             (change)="updateCompanyName(2, 'Cidade Real')">
                         <label class="form-check-label" for="cidadeRealMulti">Cidade Real</label>
                     </div>
                     <div class="form-check">
                         <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox" id="paumaMulti"
-                            formControlName="selectedCompany" (change)="updateCompanyName(2, 'Pauma')">
+                            required formControlName="selectedCompany" (change)="updateCompanyName(2, 'Pauma')">
                         <label class="form-check-label" for="paumaMulti">Pauma</label>
                     </div>
                     <div class="form-check d-flex align-items-center">
                         <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox" id="otherMulti"
-                            formControlName="selectedCompany" (change)="onOthersCompanies()">
+                            required formControlName="selectedCompany" (change)="onOthersCompanies()">
                         <label class="form-check-label ms-2" for="otherMulti">Outras</label>
                         <input *ngIf="isOtherCompaniesSelected" type="text" class="form-control ms-2"
-                            placeholder="Especificar empresa" formControlName="othersText"
+                            placeholder="Especificar empresa" required formControlName="othersText"
                             (change)="updateOthersCompanies()">
                         <button [backgroundColorClass]="'#027373'" *ngIf="isOtherCompaniesSelected" type="button"
                             class="btn btn-sm text-white ms-2" (click)="confirmOtherMultiCompany()">OK</button>
@@ -159,9 +159,9 @@
         <div class="row">
             <div class="form-group pt-3 w-100 py-3">
                 <label class="fw-bold" for="sector">Setor</label>
-                <textarea [backgroundColorClass]="'#ebebeb'" id="sector" formControlName="sector" type="text"
+                <textarea [backgroundColorClass]="'#ebebeb'" id="sector" required formControlName="sector" type="text"
                     class="form-control border-dark-subtle rounded-3 form-focus" placeholder="Escreva aqui"
-                    required></textarea>
+                    ></textarea>
             </div>
             <div *ngIf="sector.invalid  && formDir.submitted"
                 class="validation-warning">
@@ -172,7 +172,7 @@
 
         <div class="d-flex gap-3 justify-content-end pt-2">
             <button type="reset" (click)="clearForm()" class="btn btn-outline-danger">Redefinir Formulário</button>
-            <button [backgroundColorClass]="'#027373'" type="submit" class="btn text-white">Enviar</button>
+            <button [disabled]="signPostForm.invalid" [backgroundColorClass]="'#027373'" type="submit" class="btn text-white">Enviar</button>
         </div>
     </form>
 </div>
