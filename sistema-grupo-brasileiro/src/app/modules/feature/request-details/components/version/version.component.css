@@ -12,40 +12,7 @@
   --bs-btn-active-border-color: #026d56;
 }
 
-input[type="radio"] {
-  display: none;
-}
 
-label {
-  color: #029982;
-  cursor: pointer;
-  display: inline-flex;
-  align-items: center;
-  gap: 0.8rem;
-  border: 3px solid #029982;
-  padding: 0.2em 0.7em;
-  border-radius: 0.5em;
-}
-
-label::before {
-  content: "";
-  height: 1em;
-  width: 1em;
-  border: 3px solid #029982;
-  border-radius: 50%;
-}
-
-input[type="radio"]:checked + label::before {
-  height: 1em;
-  width: 1em;
-  border: 0.3em solid #ffffff;
-  background-color: #029982;
-}
-
-input[type="radio"]:checked + label {
-  background-color: #029982;
-  color: #ffffff;
-}
 
 .btn-outline-primary {
   --bs-btn-font-weight: 600;

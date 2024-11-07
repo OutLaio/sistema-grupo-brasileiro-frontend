@@ -16,3 +16,56 @@
   font-size: 11px;
   font-family: "Inter";
 }
+
+.in-radio {
+  display: none;
+}
+
+.lb {
+  color: #029982;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  border: 3px solid #029982;
+  padding: 0.2em 0.7em;
+  border-radius: 0.5em;
+}
+
+.lb::before {
+  content: "";
+  height: 1em;
+  width: 1em;
+  border: 3px solid #029982;
+  border-radius: 50%;
+}
+
+.in-radio:checked + .lb::before {
+  height: 1em;
+  width: 1em;
+  border: 0.3em solid #ffffff;
+  background-color: #029982;
+}
+
+.in-radio:checked + .lb {
+  background-color: #029982;
+  color: #ffffff;
+}
+
+
+.lb-reject {
+  color: #db6b6b;
+  border: 3px solid #db6b6b;
+}
+
+.lb-reject::before {
+  border: 3px solid #db6b6b;
+}
+
+.in-radio-reject:checked + .lb-reject::before {
+  background-color: #db6b6b;
+}
+
+.in-radio-reject:checked + .lb-reject {
+  background-color: #db6b6b;
+}

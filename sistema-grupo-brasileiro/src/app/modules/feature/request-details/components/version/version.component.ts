@@ -1,3 +1,4 @@
+import { I_Approve_Request } from './../../../../shared/interfaces/project/form/approve-form';
 import { AfterViewInit, Component, Input } from '@angular/core';
 import { I_Version_Data } from '../../../../shared/interfaces/project/view/version-view';
 import { I_Employee_View_Data } from '../../../../shared/interfaces/user/view/employee-view';
@@ -17,13 +18,16 @@ export class VersionComponent {
   @Input() versions!: I_Version_Data[] | undefined;
   @Input() idBriefing!: string | undefined;
 
-  isDisaproved: boolean = false;
+  open = 'open';
+  reject = 'reject';
+  approve = 'approve';
 
   constructor(private requestDetailsService: RequestDetailsService) {}
 
   ngOnInit() {
     this.getActiveProfile();
     this.sortVersions();
+    console.log(this.versions);
   }
 
   private sortVersions() {
@@ -58,22 +62,7 @@ export class VersionComponent {
   showNewVersion() {
     Swal.fire({
       title: '<h5 class="text-exo fw-bold">Inserir Nova Arte</h5>',
-      html: `
-        <div class="d-flex flex-column gap-4">
-        <div class="form-group d-flex align-items-start flex-column gap-2">
-        <label for="inputTitle">Título da Arte</label>
-        <input type="text" id="inputTitle" class="form-control" [(ngModel)]="artTitle" name="artTitle">
-        </div>
-        <div class="form-group d-flex align-items-start flex-column gap-2">
-        <label for="inputDescription">Descrição da Arte</label>
-        <textarea id="inputDescription" class="form-control" [(ngModel)]="artDescription" name="artDescription"></textarea>
-        </div>
-        <div class="form-group d-flex align-items-start flex-column gap-2">
-          <label for="inputImage">Imagem da Arte</label>
-          <input type="file" id="inputImage" class="form-control"">
-        </div>
-        </div>
-      `,
+      html: this.getHtmlNewVersionModal(),
       showCloseButton: true,
       showCancelButton: true,
       confirmButtonText: 'Salvar',
@@ -117,6 +106,25 @@ export class VersionComponent {
     });
   }
 
+  getHtmlNewVersionModal() {
+    return `
+        <div class="d-flex flex-column gap-4">
+          <div class="form-group d-flex align-items-start flex-column gap-2">
+            <label for="inputTitle">Título da Arte</label>
+            <input type="text" id="inputTitle" class="form-control" [(ngModel)]="artTitle" name="artTitle">
+          </div>
+          <div class="form-group d-flex align-items-start flex-column gap-2">
+            <label for="inputDescription">Descrição da Arte</label>
+            <textarea id="inputDescription" class="form-control" [(ngModel)]="artDescription" name="artDescription"></textarea>
+          </div>
+          <div class="form-group d-flex align-items-start flex-column gap-2">
+            <label for="inputImage">Imagem da Arte</label>
+            <input type="file" id="inputImage" class="form-control"">
+            </div>
+        </div>
+      `;
+  }
+
   newVersion(
     artTitle: string,
     artDescription: string,
@@ -149,13 +157,106 @@ export class VersionComponent {
     Swal.fire({
       title: `<h5 class="text-exo fw-bold">Detalhes da Arte</h5>`,
       html: this.getHtmlVersionModal(version),
+      reverseButtons: true,
       showCloseButton: true,
       showCancelButton: true,
       confirmButtonText: 'Salvar',
       cancelButtonText: 'Fechar',
+      confirmButtonColor: '#029982',
+      focusCancel: true,
       width: '40%',
       padding: '3rem',
+      preConfirm: () => {
+        const approveInput = document.getElementById(
+          'approve'
+        ) as HTMLInputElement;
+        const disapproveInput = document.getElementById(
+          'non-approve'
+        ) as HTMLInputElement;
+        const feedbackInput = document.getElementById(
+          'feedback'
+        ) as HTMLTextAreaElement;
+
+        let status: boolean | null = null;
+        let feedback = '';
+
+        if (approveInput && approveInput.checked) {
+          status = true;
+        } else if (disapproveInput && disapproveInput.checked) {
+          status = false;
+          feedback = feedbackInput.value || '';
+        }
+
+        if (status === null) {
+          Swal.showValidationMessage(
+            'Selecione se a arte foi aprovada ou não!'
+          );
+          return false;
+        } else if (!status && !feedback) {
+          Swal.showValidationMessage(
+            'Informe o feedback para a não aprovação!'
+          );
+          return false;
+        }
+
+        return { status, feedback };
+      },
+    }).then((result) => {
+      if (result.isConfirmed) {
+        const title = result.value.status
+          ? 'Arte Aprovada com Sucesso!'
+          : 'Arte Não Aprovada!';
+        const icon = result.value.status ? 'success' : 'error';
+        let text = '';
+        let request: I_Approve_Request = {
+          idProject: this.idBriefing!,
+          idVersion: version.id,
+          approved: result.value.status,
+          feedback: result.value.feedback,
+        };
+        if (this.isSupervisor()) {
+          text = result.value.status
+            ? 'Aguardando aprovação do cliente!'
+            : 'O projeto foi retornado para desenvolvimento!';
+          this.requestDetailsService
+            .supervisorApproval(request)
+            .subscribe((res) => (version = res));
+        } else if (this.isClient()) {
+          text = result.value.status ? '' : 'Sua solicitação está em análise!';
+          this.requestDetailsService
+            .clientApproval(request)
+            .subscribe((res) => (version = res));
+        }
+        Swal.fire({
+          title: title,
+          icon: icon,
+          text: text != '' ? text : undefined,
+          confirmButtonColor: '#029982',
+        }).then(() => window.location.reload());
+      }
     });
+    setTimeout(() => {
+      console.log('timeout');
+      const disapproveInput = document.getElementById(
+        'non-approve'
+      ) as HTMLInputElement;
+      const feedbackContainer = document.getElementById('feedbackContainer');
+      console.log(feedbackContainer);
+
+      if (disapproveInput && feedbackContainer) {
+        disapproveInput.addEventListener('change', () => {
+          feedbackContainer.style.display = 'block';
+          Swal.resetValidationMessage();
+        });
+        const approveInput = document.getElementById(
+          'approve'
+        ) as HTMLInputElement;
+        approveInput.addEventListener('change', () => {
+          feedbackContainer.style.display = 'none';
+          Swal.resetValidationMessage();
+        });
+      }
+    }, 0);
   }
 
   isVersionApproved(version: I_Version_Data) {
@@ -175,7 +276,7 @@ export class VersionComponent {
     return '';
   }
 
-  isVersionOpen(version: I_Version_Data) {
+  isVersionOpenToMe(version: I_Version_Data) {
     if (this.isSupervisor()) return version.supervisorApprove === null;
     else if (this.isClient()) return version.clientApprove === null;
     else return false;
@@ -195,101 +296,51 @@ export class VersionComponent {
       version.productLink
     }</a>
         </div>
-
-        <div>
+        <div class="mt-4">
           ${
-            this.isVersionApproved(version)
-              ? `<p class="small-text text-success">Esta arte foi aprovada!</p>`
-              : this.isVersionDisapproved(version)
-              ? `<p>A arte não foi aprovada pelo ${
+            this.versionStatus(version) == this.approve
+              ? `<p class="text-exo fw-bold fst-italic text-success">Esta arte foi aprovada!</p>`
+              : this.versionStatus(version) == this.reject
+              ? `<p class="text-exo fw-bold fst-italic text-danger">A arte não foi aprovada pelo ${
                   this.isDisapprovedBy(version) === 'supervisor'
                     ? 'supervisor'
                     : 'cliente'
                 }!</p>
-              <p class="small-text text-exo">Feedback: ${
-                version.feedback || ''
-              }</p>`
-              : ''
+              <div class="d-flex flex-column align-items-start w-100 mt-4">
+                <p class="text-exo fw-bold">Feedback:</p>
+                <p class="d-flex small-text w-100 text-exo mb-0 px-4 py-3 bg-secondary rounded-3 text-align-start"
+                  style="--bs-bg-opacity: .2;"> ${version.feedback || ''}
+                </p>
+              </div>`
+              : this.isVersionOpenToMe(version)
+              ? `<div class="d-flex flex-column gap-3 align-items-end justify-content-between">
+                  <div class="d-flex align-items-center justify-content-center w-100 gap-3 py-3">
+                    <input class="in-radio" type="radio" name="approveVersion" id="approve">
+                    <label class="lb" for="approve">Aprovar</label>
+
+                    <input class="in-radio in-radio-reject" type="radio" name="approveVersion" id="non-approve">
+                    <label class="lb lb-reject" for="non-approve">Não Aprovar</label>
+                  </div>
+                  <div id="feedbackContainer" class="w-100" style="display: none;">
+                    <span>Feedback:</span>
+                    <textarea class="form-control" placeholder="Informe o motivo para a não aprovação da arte desenvolvida..."
+                      id="feedback" rows="5"></textarea>
+                  </div>
+                </div>`
+              : `<p class="text-exo fw-bold fst-italic text-warning">Aguardando aprovação ...</p>`
           }
         </div>
-
-        ${
-          this.isVersionOpen(version)
-            ? `<div class="d-flex flex-column gap-3 align-items-end justify-content-between">
-                <div class="d-flex align-items-center justify-content-center w-100 gap-3 py-3">
-                  <input type="radio" name="approveVersion" id="approve" checked="checked" (change)="${this.onApprove()}">
-                  <label for="approve">Aprovar</label>
-
-                  <input type="radio" name="approveVersion" id="non-approve" (change)="${this.onDisapprove()}">
-                  <label for="non-approve">Não Aprovar</label>
-                </div>
-                ${this.isDisaproved ? `<div class="w-100">
-                  <span>Feedback:</span>
-                  <textarea class="form-control" placeholder="Informe o motivo para a não aprovação da arte desenvolvida..."
-                    id="feedback" rows="5"></textarea>
-                </div>` : ''}
-              </div>`
-            : ''
-        }
       </div>
     `;
   }
 
-  // ngAfterViewInit() {
-  //   console.log(this.version);
-  // }
-
-  onApprove() {
-    this.isDisaproved = false;
+  versionStatus(version: I_Version_Data) {
+    if (version.supervisorApprove && version.clientApprove) return this.approve;
+    else if (
+      version.supervisorApprove === false ||
+      version.clientApprove === false
+    )
+      return this.reject;
+    else return this.open;
   }
-
-  onDisapprove() {
-    this.isDisaproved = true;
-  }
-
-  // isSupervisor() {
-  //   return sessionStorage.getItem('userRole') === 'ROLE_SUPERVISOR';
-  // }
-
-  // isClient() {
-  //   return sessionStorage.getItem('userRole') === 'ROLE_CLIENT';
-  // }
-
-  // isApprovedBySupervisor() {
-  //   return this.version?.supervisorApprove === true;
-  // }
-
-  // isDisapprovedBySupervisor() {
-  //   return this.version?.supervisorApprove === false;
-  // }
-
-  // isApprovedByClient() {
-  //   return this.version?.clientApprove === true;
-  // }
-
-  // isDisapprovedByClient() {
-  //   return this.version?.clientApprove === false;
-  // }
-
-  // isVersionApproved() {
-  //   return this.isApprovedBySupervisor() && this.isApprovedByClient();
-  // }
-
-  // isVersionDisapproved() {
-  //   return this.isDisapprovedBySupervisor() || this.isDisapprovedByClient();
-  // }
-
-  // showApproveSelect() {
-  //   return this.isSupervisor() &&
-  //     (this.version?.supervisorApprove === null ||
-  //       this.version?.clientApprove === false) ||
-  //     (this.isClient() &&
-  //       this.version?.clientApprove === null &&
-  //       this.version?.supervisorApprove);
-  // }
-
-  // onSave(){
-  //   this.version!.clientApprove = !this.isDisaproved;
-  //   this.version!.supervisorApprove =!this.isDisaproved;
-  // }
 }
