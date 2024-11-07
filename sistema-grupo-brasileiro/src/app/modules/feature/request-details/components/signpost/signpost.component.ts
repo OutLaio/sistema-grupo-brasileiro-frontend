@@ -1,12 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { I_Signpost_Response } from '../../../../shared/interfaces/briefing/signpost/view/signpost-detailed-view';
-import { ProjectStatus } from '../../../check-requests/enums/project-status';
 import { RequestDetailsService } from '../../services/request-details.service';
-import { I_Dialog_Box_Response } from '../../../../shared/interfaces/dialog-box/view/dialog-box-view';
-import { I_Dialog_Box_Request } from '../../../../shared/interfaces/dialog-box/form/dialog-box-form';
 import { I_Any_Briefing } from '../../../../shared/interfaces/briefing/any-briefing';
-import Swal from 'sweetalert2';
-import { I_New_Version_Request } from '../../../../shared/interfaces/project/form/new-version-form';
 import { I_Version_Data } from '../../../../shared/interfaces/project/view/version-view';
 
 @Component({
