@@ -1,47 +1,26 @@
-<div class="d-flex flex-column gap-2">
-  <div class="d-flex gap-5 justify-content-center">
-    <img src='/assets/images/{{version?.productLink}}' alt="Arte" class="w-75 h-auto">
-  </div>
-  <div class="d-flex flex-column align-items-center py-3 border-bottom border-top">
-    <p>Baixe a arte clicando no link abaixo:</p>
-    <a href="{{version?.productLink}}" target="_blank"> {{ version?.productLink }} </a>
-  </div>
-
+<div class="d-flex flex-column justify-content-between">
   <div>
-    <div *ngIf="isVersionApproved(); else approve">
-      <p class="small-text text-success">Esta arte foi aprovada!</p>
-    </div>
-
-    <ng-template #approve>
-      <div *ngIf="isVersionDisapproved()">
-        <p>A arte não foi aprovada pelo
-          <span *ngIf="isDisapprovedBySupervisor(); else client">Supervisor</span>
-          !
-        </p>
-        <p class="small-text text-exo">Feedback: {{ version?.feedback }}</p>
-      </div>
-    </ng-template>
-    <ng-template #client>Cliente</ng-template>
-
+    <p class="text-exo fw-bold">Artes Desenvolvidas</p>
   </div>
-
-  <div *ngIf="showApproveSelect()">
-    <div class="d-flex flex-column gap-3 align-items-end justify-content-between">
-      <div class="d-flex align-items-center justify-content-center w-100 gap-3 py-3">
-        <input type="radio" name="approveVersion" id="approve" checked="checked" (change)="onApprove()">
-        <label for="approve">Aprovar</label>
-
-        <input type="radio" name="approveVersion" id="non-approve" (change)="onDisapprove()">
-        <label for="non-approve">Não Aprovar</label>
-      </div>
-      <div *ngIf="isDisaproved" class="w-100">
-        <span>Feedback:</span>
-        <textarea class="form-control" placeholder="Informe o motivo para a não aprovação da arte desenvolvida..."
-          id="feedback" rows="5"></textarea>
-      </div>
-      <div>
-        <button class="btn btn-bd-primary" (click)="onSave()">Salvar</button>
-      </div>
+  <div class="d-flex gap-5 justify-content-between">
+    <div class="d-flex gap-5">
+      <p *ngIf="versions?.length == 0; else hasVersions" class="small-text text-exo ">Ainda não há versões
+        disponibilizadas para este projeto!</p>
+      <ng-template #hasVersions>
+        <div *ngFor="let version of versions" class="pb-4 border-bottom">
+          <button type="button" class="btn btn-sm"
+          [ngClass]="{
+            'btn-outline-secondary': versionStatus(version) == open,
+            'btn-outline-danger': versionStatus(version) == reject,
+            'btn-success': versionStatus(version) == approve,
+          }"
+          (click)="showVersion(version)">Versão #{{
+            version.versionNumber }} </button>
+        </div>
+      </ng-template>
+    </div>
+    <div *ngIf="" class="d-flex h-75">
+      <button class="btn btn-outline-primary shadow-custom btn-sm" (click)="showNewVersion()">Inserir Nova Arte</button>
     </div>
   </div>
 </div>

@@ -45,6 +45,9 @@
                                 <p class="text-muted"><img class="me-1" src="/assets/images/profile.png" alt=""> {{
                                     item.client.fullName }}</p>
                             </div>
+                            <div class="d-flex justify-content-end align-items-end">
+                              <a (click)="goToDetails(item.id.toString())" class="text-muted" style="cursor: pointer;">Ver mais...</a>
+                            </div>
                             <ng-template #noCollaborator>
                                 <p class="text-muted">Colaborador: Não alocado</p>
                             </ng-template>
@@ -89,7 +92,7 @@
                             <div class="d-flex justify-content-between">
                                 <p class="text-muted"> {{
                                     deadline | date: 'dd/MM/yyyy' }}</p>
-                                <i class="request-subtitle" [colorClass]="'#005d54'">Veja mais</i>
+                                <i class="request-subtitle" [colorClass]="'#005d54'" (click)="goToDetails(item.id.toString())">Veja mais</i>
                             </div>
                         </div>
                     </div>
@@ -118,6 +121,9 @@
                             <ng-template #noCollaborator>
                                 <p class="text-muted">Colaborador: Não alocado</p>
                             </ng-template>
+                            <div class="d-flex justify-content-end align-items-end">
+                              <a (click)="goToDetails(item.id.toString())" class="text-muted" style="cursor: pointer;">Ver mais...</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -145,6 +151,9 @@
                             <ng-template #noCollaborator>
                                 <p class="text-muted">Colaborador: Não alocado</p>
                             </ng-template>
+                            <div class="d-flex justify-content-end align-items-end">
+                              <a (click)="goToDetails(item.id.toString())" class="text-muted" style="cursor: pointer;">Ver mais...</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -172,6 +181,9 @@
                             <ng-template #noCollaborator>
                                 <p class="text-muted">Colaborador: Não alocado</p>
                             </ng-template>
+                            <div class="d-flex justify-content-end align-items-end">
+                              <a (click)="goToDetails(item.id.toString())" class="text-muted" style="cursor: pointer;">Ver mais...</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -199,6 +211,9 @@
                             <ng-template #noCollaborator>
                                 <p class="text-muted">Colaborador: Não alocado</p>
                             </ng-template>
+                            <div class="d-flex justify-content-end align-items-end">
+                              <a (click)="goToDetails(item.id.toString())" class="text-muted" style="cursor: pointer;">Ver mais...</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -225,6 +240,9 @@
                             <ng-template #noCollaborator>
                                 <p class="text-muted">Colaborador: Não alocado</p>
                             </ng-template>
+                            <div class="d-flex justify-content-end align-items-end">
+                              <a (click)="goToDetails(item.id.toString())" class="text-muted" style="cursor: pointer;">Ver mais...</a>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -1,50 +1,5 @@
 <div *ngIf="data">
 
-  <div class="bg-modal modal rounded" *ngIf="isNewVersionModalOpen">
-    <div class="modal-dialog modal-dialog-scrollable">
-      <div class="modal-content bg-white p-3 rounded-4">
-        <div class="modal-header">
-          <h6 class="modal-title mb-0">Inserir Nova Arte</h6>
-        </div>
-        <div class="modal-body d-flex flex-column gap-2">
-          <div class="form-group">
-            <label for="inputImage">Imagem da Arte</label>
-            <input type="file" id="inputImage" class="form-control" (change)="onFileSelected($event)">
-          </div>
-          <div class="form-group">
-            <label for="inputTitle">Título da Arte</label>
-            <input type="text" id="inputTitle" class="form-control" [(ngModel)]="artTitle" name="artTitle">
-          </div>
-          <div class="form-group">
-            <label for="inputDescription">Descrição da Arte</label>
-            <textarea id="inputDescription" class="form-control" [(ngModel)]="artDescription" name="artDescription"></textarea>
-          </div>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary btn-sm" (click)="toggleNewVersionModal()">Fechar</button>
-          <button type="button" class="btn btn-outline-primary btn-sm" (click)="newVersion()" >Salvar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-  <div class="bg-modal modal rounded" *ngIf="isVersionModalOpen">
-    <div class="modal-dialog modal-dialog-scrollable">
-      <div class="modal-content bg-white p-3 rounded-4">
-
-        <div class="modal-header">
-          <h6 class="modal-title mb-0">Detalhes da Arte</h6>
-          <button type="button" class="btn btn-close" aria-label="Close" (click)="toggleVersionModal()">
-          </button>
-        </div>
-        <div class="modal-body ">
-          <app-version [version]="selectedVersion"></app-version>
-        </div>
-
-      </div>
-    </div>
-  </div>
-
   <div class="container mt-2">
     <div class="d-flex align-items-center justify-content-between pb-4 border-bottom">
       <div>
@@ -57,23 +12,8 @@
       </div>
     </div>
 
-    <div class="d-flex justify-content-between pe-5 mt-4 border-bottom">
-      <div>
-        <p class="text-exo fw-bold">Artes Desenvolvidas</p>
-        <div class="d-flex gap-5">
-          <p *ngIf="data.briefing.versions.length == 0; else versions" class="small-text text-exo ">Ainda não há versões
-            disponibilizadas para este projeto!</p>
-          <ng-template #versions>
-            <div *ngFor="let version of data.briefing.versions" class="pb-4 border-bottom">
-              <button type="button" class="btn btn-outline-secondary btn-sm" (click)="toggleVersionModal(version)">Versão #{{ version.versionNumber }} </button>
-            </div>
-          </ng-template>
-        </div>
-      </div>
-
-      <div *ngIf="getSessionProfile() == roleCollaborator" class="d-flex mt-2">
-        <button class="btn btn-outline-primary shadow-custom btn-sm" (click)="toggleNewVersionModal()" style="height: 40px">Inserir Nova Arte</button>
-      </div>
+    <div class="pe-5 mt-4 border-bottom">
+      <app-version [versions]="data.briefing.versions" [idBriefing]="data.briefing.id"></app-version>
     </div>
 
     <p class="text-exo fw-bold mt-3">Informações da Placa</p>

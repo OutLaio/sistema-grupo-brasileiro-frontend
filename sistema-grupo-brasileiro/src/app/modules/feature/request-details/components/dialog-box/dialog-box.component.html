@@ -11,7 +11,7 @@
               </div>
               <div class="modal-body d-flex flex-column gap-2">
                 <div *ngFor="let c of allCollaborators">
-                  <div *ngIf="c.id != collaborator?.id">
+                  <div *ngIf="c.id != project?.collaborator?.id">
                     <input type="radio" class="btn-check" name="options-outlined" id="{{ c.id }}"
                       autocomplete="off" [(ngModel)]="selectedCollaborator" [value]="c">
                     <label class="btn btn-outline-success d-flex gap-2 align-items-center" for="{{ c.id }}">
@@ -48,13 +48,13 @@
           </div>
         </ng-template>
 
-        <div *ngIf="collaborator; else no_collaborator">
+        <div *ngIf="project?.collaborator; else no_collaborator">
           <div class="card-header text-white p-3 d-flex align-items-center justify-content-between bg-system">
             <div class="d-flex gap-3 align-items-center">
               <img src="/assets/images/profile.png" alt="Profile Picture" width="40px" height="40px">
               <div>
                 <p class="small-text mb-0">Colaborador Atual</p>
-                <p class="mb-0"> {{ collaborator.fullName }} </p>
+                <p class="mb-0"> {{ project?.collaborator?.fullName }} </p>
               </div>
             </div>
 
