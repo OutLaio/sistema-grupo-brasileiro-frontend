@@ -288,7 +288,7 @@ export class VersionComponent {
         <div class="d-flex gap-5 justify-content-center">
           <img src="/assets/images/${
             version.productLink
-          }" alt="Arte" class="w-75 h-auto">
+          }" alt="Arte" style="max-height: 200px;">
         </div>
         <div class="d-flex flex-column align-items-center py-3 border-bottom border-top">
           <p>Baixe a arte clicando no link abaixo:</p>

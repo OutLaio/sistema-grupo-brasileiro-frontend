@@ -95,6 +95,20 @@ export class DialogBoxComponent implements OnInit {
     this.isModalOpen = false;
   }
 
+  showModalAlterColaborator() {
+    Swal.fire({
+      title: 'Selecionar Colaborador',
+      html: this.getHtmlModalAlterCollaborator(),
+      confirmButtonText: this.project?.collaborator != null ? 'Alterar' : 'Salvar',
+      showCancelButton: true,
+      confirmButtonColor: '#029982',
+      cancelButtonText: 'Voltar',
+      reverseButtons: true,
+      width: '30%',
+      padding: '3rem',
+    });
+  }
+
   selectCollaborator() {
     if (!this.selectedCollaborator) {
       return;
@@ -116,7 +130,7 @@ export class DialogBoxComponent implements OnInit {
       if (result.isConfirmed) {
         const request: I_Assign_Collaborator_Request = {
           idCollaborator: this.selectedCollaborator!.id,
-        };
+        }
         this.service
           .assignCollaborator(this.project!.id, request)
           .subscribe(() => {
@@ -144,4 +158,49 @@ export class DialogBoxComponent implements OnInit {
       }
     });
   }
+
+  getHtmlModalAlterCollaborator() {
+    let divs = "";
+    this.allCollaborators.map((collaborator) => {
+      divs += `
+      ${ collaborator.id != this.project?.collaborator?.id
+        ? `<div>
+            <input type="radio" class="btn-check" name="options-outlined" id="${collaborator.id}"
+              autocomplete="off" [value]="${collaborator}">
+              <label class="btn btn-outline-success d-flex gap-2 align-items-center" for="${collaborator.id}">
+              <img src="/assets/images/profile.png" alt="profile image">
+              <p class="mb-0">${collaborator.name + ' ' + collaborator.lastname}</p>
+              </label>
+              </div>`
+              : ''
+            }
+            `;
+    })
+
+    let html = `
+    <div class="d-flex flex-column gap-2">
+      ${divs}
+    </div>
+    `;
+    return html;
+  }
 }
+
+
+// return `
+//       <div class="d-flex flex-column gap-2">
+//         ${this.allCollaborators.map((collaborator) => {
+//           collaborator.id != this.project?.collaborator?.id
+//           ? `<div>
+//               <input type="radio" class="btn-check" name="options-outlined" id="${collaborator.id}"
+//                 autocomplete="off" [value]="${collaborator}">
+//               <label class="btn btn-outline-success d-flex gap-2 align-items-center" for="${collaborator.id}">
+//                 <img src="/assets/images/profile.png" alt="profile image">
+//                 <p class="mb-0">${collaborator.name + ' ' + collaborator.lastname}</p>
+//               </label>
+//           </div>`
+//           : ''
+//           })
+//         }
+//       </div>
+//     `;

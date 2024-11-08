@@ -19,7 +19,7 @@
         </div>
       </ng-template>
     </div>
-    <div *ngIf="" class="d-flex h-75">
+    <div *ngIf="isCollaborator()" class="d-flex h-75">
       <button class="btn btn-outline-primary shadow-custom btn-sm" (click)="showNewVersion()">Inserir Nova Arte</button>
     </div>
   </div>
