@@ -5,7 +5,6 @@
         <div class="bg-modal modal rounded" *ngIf="isModalOpen">
           <div class="modal-dialog modal-dialog-scrollable">
             <div class="modal-content bg-white p-3 rounded-4">
-
               <div class="modal-header">
                 <p class="modal-title mb-0">Selecione um novo colaborador</p>
               </div>
@@ -33,7 +32,7 @@
         <ng-template #no_collaborator>
           <div
             class="card-header text-white p-3 d-flex align-items-center justify-content-between bg-system">
-            <div class="d-flex gap-3 align-items-center">
+            <div class="col-xl-8 col-lg-6 d-flex gap-3 align-items-center">
               <img src="/assets/images/do-utilizador.png" alt="Profile Picture" width="40px" height="40px">
               <div>
                 <p class="small-text mb-0">Colaborador Atual</p>
@@ -41,8 +40,8 @@
               </div>
             </div>
 
-            <div *ngIf="getSessionProfile() == idSupervisor" class="d-flex gap-3">
-              <button class="btn btn-bd-primary btn-sm border" (click)="openModal()" style="height: 40px">Atribuir
+            <div *ngIf="getSessionProfile() == idSupervisor" class="col-xl-4 col-lg-6 d-flex justify-content-between">
+              <button class="btn btn-bd-primary btn-sm border" (click)="openModal()" style="height: 40px;">Atribuir
                 Colaborador</button>
             </div>
           </div>
