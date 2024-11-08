@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CompanyDetails } from '../../interface/company-details';
 import { CreateRequestService } from '../../services/create-request.service';
+import { ToastrService } from 'ngx-toastr';
 
 enum Company {
   'Rota Transportes' = 1,
@@ -18,7 +19,8 @@ enum Company {
   styleUrl: './signpost-request.component.css'
 })
 export class SignpostRequestComponent implements OnInit {
-  registerForm!: FormGroup;
+  signPostForm!: FormGroup;
+  isButtonDisabled: boolean = false;
 
   isSingleCompany: boolean = true;
   selectedCompanies: Partial<CompanyDetails>[] = [];
@@ -28,33 +30,32 @@ export class SignpostRequestComponent implements OnInit {
   isOtherCompaniesSelected = false;
 
 
-  constructor(private fb: FormBuilder, private signpostService: CreateRequestService) {
-  }
+  constructor(private fb: FormBuilder, private signpostService: CreateRequestService, private toastrService: ToastrService) {  }
 
   ngOnInit(): void {
-    this.registerForm = this.fb.group({
-      description: ['', Validators.required],
-      signLocation: ['', Validators.required], 
-      width: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
-      height: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
-      selectedCompany: ['', Validators.required],
-      sector: ['', Validators.required],
-      othersText: ['', Validators.required],
-      boardType: ['', Validators.required]
+    this.signPostForm = new FormGroup({
+      description: new FormControl('', [Validators.required]),
+      signLocation: new FormControl('', [Validators.required]),
+      width: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
+      height: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
+      selectedCompany: new FormControl('', [Validators.required]),
+      sector: new FormControl('', [Validators.required]),
+      othersText: new FormControl(''),
+      boardType: new FormControl('', [Validators.required]),
     });
   }
 
-  get width() { return this.registerForm.get('width')!; }
-  get height() { return this.registerForm.get('height')!; }
-  get description() { return this.registerForm.get('description')!; }
-  get signLocation() { return this.registerForm.get('signLocation')!; }
-  get sector() { return this.registerForm.get('sector')!; }
-  get boardType() { return this.registerForm.get('boardType')!; }
-  get othersText() { return this.registerForm.get('othersText')!; }
-  get selectedCompany() { return this.registerForm.get('selectedCompany')!; }
+  get width() { return this.signPostForm.get('width')!; }
+  get height() { return this.signPostForm.get('height')!; }
+  get description() { return this.signPostForm.get('description')!; }
+  get signLocation() { return this.signPostForm.get('signLocation')!; }
+  get sector() { return this.signPostForm.get('sector')!; }
+  get boardType() { return this.signPostForm.get('boardType')!; }
+  get othersText() { return this.signPostForm.get('othersText')!; }
+  get selectedCompany() { return this.signPostForm.get('selectedCompany')!; }
 
   clearForm() {
-    this.registerForm.reset();
+    this.signPostForm.reset();
     this.selectedCompanies = [];
   }
 
@@ -74,13 +75,13 @@ export class SignpostRequestComponent implements OnInit {
   onOthersCompanies() {
     this.isOtherCompaniesSelected = !this.isOtherCompaniesSelected;
     if (!this.isOtherCompaniesSelected) {
-      this.registerForm.get('othersText')?.setValue('');
+      this.signPostForm.get('othersText')?.setValue('');
       this.selectedCompanies = this.selectedCompanies.filter(company => company.name !== 'Outras');
     }
   }
 
   updateOthersCompanies() {
-    const otherValue = this.registerForm.get('othersText')?.value;
+    const otherValue = this.signPostForm.get('othersText')?.value;
     if (otherValue) {
       const companyIndex = this.selectedCompanies.findIndex(company => company.name === 'Outras');
       if (companyIndex >= 0) {
@@ -92,13 +93,13 @@ export class SignpostRequestComponent implements OnInit {
   }
 
   confirmOtherMultiCompany() {
-    const otherCompany = this.registerForm.get('othersText')?.value;
+    const otherCompany = this.signPostForm.get('othersText')?.value;
     if (otherCompany && !this.selectedCompanies.some(c => c.name === otherCompany)) {
       this.selectedCompanies.push({
         name: otherCompany,
         isCustom: true
       });
-      this.registerForm.get('othersText')?.reset();
+      this.signPostForm.get('othersText')?.reset();
       this.isOtherCompaniesSelected = false;
     }
   }
@@ -129,12 +130,18 @@ export class SignpostRequestComponent implements OnInit {
 
   submit() {
     this.saveCompanies(this.selectedCompanies);
-    const boardType = this.registerForm.get('boardType')?.value;
-    const boardLocation = this.registerForm.get('signLocation')?.value;
-    const sector = this.registerForm.get('sector')?.value;
-    const description = this.registerForm.get('description')?.value;
-    const height = this.registerForm.get('height')?.value;
-    const width = this.registerForm.get('width')?.value;
+    const boardType = this.signPostForm.get('boardType')?.value;
+    const boardLocation = this.signPostForm.get('signLocation')?.value;
+    const sector = this.signPostForm.get('sector')?.value;
+    const description = this.signPostForm.get('description')?.value;
+    const height = this.signPostForm.get('height')?.value;
+    const width = this.signPostForm.get('width')?.value;
+    const observation = this.signPostForm.get('observation')?.value;
+
+    if (this.signPostForm.invalid) {
+      this.toastrService.error("Erro ao realizar solicitação. Verifique se os campos estão preenchidos corretamente.");
+      return;
+    }
 
     this.signpostService.submitSignpostRequest(
       this.sendCompanies,
@@ -144,16 +151,21 @@ export class SignpostRequestComponent implements OnInit {
       sector,
       description,
       height,
-      width
+      width,
     ).subscribe({
       next: (response) => {
-        console.log('Requisição enviada com sucesso:', response);
+        this.toastrService.success("Solicitação realizada com sucesso!");
+        setTimeout(() => {
+          window.location.reload();
+        }, 2000);
       },
       error: (error) => {
-        console.error('Erro ao enviar a requisição:', error);
+        this.toastrService.error("Erro ao realizar solicitação.");
       }
     });
+    this.isButtonDisabled = true;
+    setTimeout(() => {
+      this.isButtonDisabled = false;
+    }, 2000);
   }
-
-
 }

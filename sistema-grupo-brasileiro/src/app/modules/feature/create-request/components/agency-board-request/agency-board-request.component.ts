@@ -1,103 +1,155 @@
-import { Component } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
+import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { CompanyDetails } from '../../interface/company-details';
+import { CreateRequestService } from '../../services/create-request.service';
+import { I_Agency_Board_Request } from '../../../../shared/interfaces/briefing/agency-board/form/agency-board-register-form';
+import { I_Briefing_Request } from '../../../../shared/interfaces/project/form/briefing-form';
+import { I_Project_Request } from '../../../../shared/interfaces/project/form/project-form';
+import { I_Agency_Board_Data } from '../../../../shared/interfaces/briefing/agency-board/form/agency-board-form';
+import { I_Company_Briefing_Form_Data } from '../../../../shared/interfaces/company/form/company-briefing-form';
+import { I_Agency_Board_Routes } from '../../../../shared/interfaces/briefing/agency-board/form/agency-board-routes-form';
+import { I_Agency_Board_Others_Routes } from '../../../../shared/interfaces/briefing/agency-board/form/agency-board-others-routes-form';
+
+enum Cities {
+  'SÃO PAULO' = '1',
+  'RIO DE JANEIRO' = '2',
+  'BELO HORIZONTE' = '3',
+  'PORTO ALEGRE' = '4',
+  'CURITIBA' = '5',
+  'FORTALEZA' = '6',
+  'SALVADOR' = '7',
+  'BRASÍLIA' = '8',
+  'RECIFE' = '9',
+  'GOIÂNIA' = '10',
+}
+
+enum Company {
+  'Rota Transportes' = '1',
+  'Cidade Sol' = '2',
+  'Via Metro' = '3',
+  'Brasileiro' = '4',
+}
 
 @Component({
   selector: 'app-agency-board-request',
   templateUrl: './agency-board-request.component.html',
   styleUrls: ['./agency-board-request.component.css']
 })
-export class AgencyBoardRequestComponent {
-  registerForm: FormGroup;
+export class AgencyBoardRequestComponent implements OnInit {
+  isButtonDisabled = false;
+  agencyBoardForm!: FormGroup;
   isSingleCompany: boolean = true;
-  selectedCompanies: CompanyDetails[] = [];
+  companies: CompanyDetails[] = [];
+
+  selectedCompanies: I_Company_Briefing_Form_Data[] = [];
+  selectedOthersCompanies: string[] = [];
 
   isOtherCompaniesSelected = false;
   showCompanyFields: boolean = false;
 
-  mainRoutes: string[] = ['Salvador', 'Feira de Santana', 'Capim Grosso', 'Juazeiro', 'Irecê', 'Xique Xique', 'Barra'];
-  connections: string[] = ['Jacobina', 'Itabuna', 'Porto Seguro', 'Ilhéus', 'Eunápolis', 'Maracas', 'Jequié', 'Vitória da Conquista', 'Eunápolis'];
+  listMainRoutes: string[] = Object.keys(Cities);
+  listConnections: string[] = Object.keys(Cities);
 
   // TODO: Adicionar ID para identificação da imagem
   files: { name: string, url: string }[] = [];
 
-  constructor(private fb: FormBuilder) {
-    this.registerForm = this.fb.group({
-      description: ['', Validators.required],
-      signLocation: ['', Validators.required],
-      width: ['', Validators.required],
-      height: ['', Validators.required],
-      sharedCompany: [false],
-      selectedCompany: [''],
-      mainRoute: [''],
-      connections: [''],
-      observation: ['', Validators.required],
-      otherText: [''],
-      othersText: [''],
-      board: ['', Validators.required],
-      boardType: ['']
+  constructor(private fb: FormBuilder, private createRequestService: CreateRequestService, private toastrService: ToastrService) { }
+
+  ngOnInit(): void {
+    this.agencyBoardForm = new FormGroup({
+      description: new FormControl('', [Validators.required]),
+      signLocation: new FormControl('', [Validators.required]),
+      length: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+(\.[0-9]+)?$')]),
+      height: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+(\.[0-9]+)?$')]),
+      sharedCompany: new FormControl('', [Validators.required]),
+      selectedCompany: new FormControl('', [Validators.required]),
+      mainRoute: new FormControl(''),
+      connections: new FormControl(''),
+      observation: new FormControl(''),
+      otherText: new FormControl(''),
+      othersText: new FormControl(''),
+      agencyBoardType: new FormControl('', [Validators.required]),
+      boardType: new FormControl('')
+    });
+    this.agencyBoardForm.get('agencyBoardType')?.valueChanges.subscribe(value => {
+      if (value === '2') {
+        this.agencyBoardForm.get('boardType')?.setValidators([Validators.required]);
+      } else {
+        this.agencyBoardForm.get('boardType')?.clearValidators();
+      }
+      this.agencyBoardForm.get('boardType')?.updateValueAndValidity();
     });
   }
 
-  get width() {
-    return this.registerForm.get('width');
-  }
+  get length() { return this.agencyBoardForm.get('length')!; }
+  get height() { return this.agencyBoardForm.get('height')!; }
+  get description() { return this.agencyBoardForm.get('description')!; }
+  get signLocation() { return this.agencyBoardForm.get('signLocation')!; }
+  get agencyBoardType() { return this.agencyBoardForm.get('agencyBoardType')!; }
+  get boardType() { return this.agencyBoardForm.get('boardType')!; }
+  get sharedCompany() { return this.agencyBoardForm.get('sharedCompany')!; }
+  get selectedCompany() { return this.agencyBoardForm.get('selectedCompany')!; }
+  get mainRoute() { return this.agencyBoardForm.get('mainRoute')!; }
+  get connection() { return this.agencyBoardForm.get('connection')!; }
 
-  get height() {
-    return this.registerForm.get('height');
-  }
 
   clearForm() {
-    this.registerForm.reset();
-    this.selectedCompanies = [];
-    this.showCompanyFields = false;
+    this.agencyBoardForm.reset();
+    this.companies = [];
     this.files = [];
+    this.showCompanyFields = false;
+    this.isSingleCompany = true;
+    this.isOtherCompaniesSelected = false;
+    this.selectedCompanies = [];
+    this.selectedOthersCompanies = [];
   }
 
   onCompanyChange(type: string) {
     this.isSingleCompany = (type === 'single');
-    this.selectedCompanies = [];
+    this.companies = [];
     this.showCompanyFields = true;
 
     if (this.isSingleCompany) {
-      this.registerForm.patchValue({ selectedCompany: null, otherText: '' });
-      this.registerForm.patchValue({ mainRoute: null, connections: null });
+      this.agencyBoardForm.patchValue({ selectedCompany: null, otherText: '' });
+      this.agencyBoardForm.patchValue({ mainRoute: null, connections: null });
 
     } else {
-      this.registerForm.patchValue({ mainRoute: null, connections: null });
-      this.registerForm.patchValue({ selectedCompany: null, othersText: '' });
+      this.agencyBoardForm.patchValue({ mainRoute: null, connections: null });
+      this.agencyBoardForm.patchValue({ selectedCompany: null, othersText: '' });
     }
   }
 
   updateCompanyName(selectionType: number, company: string) {
     if (selectionType === 1) {
-      this.selectedCompanies = [{ name: company, mainRoutes: [], connections: [], isCustom: false }];
+      this.companies = [{ name: company, companyMainRoutes: [], companyConnections: [], isCustom: false }];
     } else {
-      const existingCompany = this.selectedCompanies.find(c => c.name === company);
+      const existingCompany = this.companies.find(c => c.name === company);
       if (existingCompany) {
-        this.selectedCompanies = this.selectedCompanies.filter(c => c.name !== company);
+        this.companies = this.companies.filter(c => c.name !== company);
       } else {
-        this.selectedCompanies.push({ name: company, mainRoutes: [], connections: [], isCustom: false });
+        this.companies.push({ name: company, companyMainRoutes: [], companyConnections: [], isCustom: false });
       }
     }
   }
 
   onOtherCompany() {
-    this.selectedCompanies = [];
-    this.registerForm.get('otherText')?.setValue('');
+    if (this.companies.length > 0)
+      this.companies = [];
+    this.agencyBoardForm.get('otherText')?.setValue('');
   }
 
   updateOtherCompany() {
-    const otherValue = this.registerForm.get('otherText')?.value;
-    this.selectedCompanies = [];
-    this.selectedCompanies.push({ name: otherValue, mainRoutes: [], connections: [], isCustom: true });
+    const otherValue = this.agencyBoardForm.get('otherText')?.value;
+    this.companies = [];
+    this.companies.push({ name: otherValue, companyMainRoutes: [], companyConnections: [], isCustom: true });
   }
 
   confirmOtherSingleCompany() {
-    const otherCompany = this.registerForm.get('otherText')?.value;
-    if (otherCompany && !this.selectedCompanies.some(c => c.name === otherCompany)) {
-      this.selectedCompanies.push({ name: otherCompany, mainRoutes: [], connections: [], isCustom: true });
-      this.registerForm.get('otherText')?.reset();
+    const otherCompany = this.agencyBoardForm.get('otherText')?.value;
+    if (otherCompany && !this.companies.some(c => c.name === otherCompany)) {
+      this.companies.push({ name: otherCompany, companyMainRoutes: [], companyConnections: [], isCustom: true });
+      this.agencyBoardForm.get('otherText')?.reset();
     }
   }
 
@@ -105,54 +157,54 @@ export class AgencyBoardRequestComponent {
   onOthersCompanies() {
     this.isOtherCompaniesSelected = !this.isOtherCompaniesSelected;
     if (!this.isOtherCompaniesSelected) {
-      this.registerForm.get('othersText')?.setValue('');
-      this.selectedCompanies = this.selectedCompanies.filter(company => company.name !== 'Outras');
+      this.agencyBoardForm.get('othersText')?.setValue('');
+      this.companies = this.companies.filter(company => company.name !== 'Outras');
     }
   }
 
   updateOthersCompanies() {
-    const otherValue = this.registerForm.get('othersText')?.value;
+    const otherValue = this.agencyBoardForm.get('othersText')?.value;
     if (otherValue) {
-      const companyIndex = this.selectedCompanies.findIndex(company => company.name === 'Outras');
+      const companyIndex = this.companies.findIndex(company => company.name === 'Outras');
       if (companyIndex >= 0) {
-        this.selectedCompanies[companyIndex].name = otherValue;
+        this.companies[companyIndex].name = otherValue;
       } else {
-        this.selectedCompanies.push({ name: otherValue, mainRoutes: [], connections: [], isCustom: true });
+        this.companies.push({ name: otherValue, companyMainRoutes: [], companyConnections: [], isCustom: true });
       }
     }
   }
 
   confirmOtherMultiCompany() {
-    const otherCompany = this.registerForm.get('othersText')?.value;
-    if (otherCompany && !this.selectedCompanies.some(c => c.name === otherCompany)) {
-      this.selectedCompanies.push({
+    const otherCompany = this.agencyBoardForm.get('othersText')?.value;
+    if (otherCompany && !this.companies.some(c => c.name === otherCompany)) {
+      this.companies.push({
         name: otherCompany,
-        mainRoutes: [],
-        connections: [],
+        companyMainRoutes: [],
+        companyConnections: [],
         isCustom: true
       });
-      this.registerForm.get('othersText')?.reset();
+      this.agencyBoardForm.get('othersText')?.reset();
       this.isOtherCompaniesSelected = false;
     }
   }
 
   removeCompany(companyName: string) {
-    const companyIndex = this.selectedCompanies.findIndex(c => c.name === companyName && c.isCustom);
+    const companyIndex = this.companies.findIndex(c => c.name === companyName && c.isCustom);
     if (companyIndex >= 0) {
-      this.selectedCompanies.splice(companyIndex, 1);
+      this.companies.splice(companyIndex, 1);
     }
   }
 
   addMainRoute(companyName: string) {
-    const selectedMainRoute = this.registerForm.get('mainRoute')?.value;
+    const selectedMainRoute = this.agencyBoardForm.get('mainRoute')?.value;
 
     if (selectedMainRoute) {
-      const company = this.selectedCompanies.find(c => c.name === companyName);
+      const company = this.companies.find(c => c.name === companyName);
       if (company) {
-        const routeExists = company.mainRoutes.includes(selectedMainRoute);
+        const routeExists = company.companyMainRoutes.includes(selectedMainRoute);
         if (!routeExists) {
-          company.mainRoutes.push(selectedMainRoute);
-          this.registerForm.get('mainRoute')?.reset();
+          company.companyMainRoutes.push(selectedMainRoute);
+          this.agencyBoardForm.get('mainRoute')?.reset();
         }
       }
     }
@@ -160,25 +212,25 @@ export class AgencyBoardRequestComponent {
 
 
   removeMainRoute(companyName: string, routeToRemove: string) {
-    const company = this.selectedCompanies.find(c => c.name === companyName);
+    const company = this.companies.find(c => c.name === companyName);
     if (company) {
-      const index = company.mainRoutes.indexOf(routeToRemove);
+      const index = company.companyMainRoutes.indexOf(routeToRemove);
       if (index !== -1) {
-        company.mainRoutes.splice(index, 1);
+        company.companyMainRoutes.splice(index, 1);
       }
     }
   }
 
   addConnection(companyName: string) {
-    const selectedConnection = this.registerForm.get('connections')?.value;
+    const selectedConnection = this.agencyBoardForm.get('connections')?.value;
 
     if (selectedConnection) {
-      const company = this.selectedCompanies.find(c => c.name === companyName);
+      const company = this.companies.find(c => c.name === companyName);
       if (company) {
-        const connectionExists = company.connections.includes(selectedConnection);
+        const connectionExists = company.companyConnections.includes(selectedConnection);
         if (!connectionExists) {
-          company.connections.push(selectedConnection);
-          this.registerForm.get('connections')?.reset();
+          company.companyConnections.push(selectedConnection);
+          this.agencyBoardForm.get('connections')?.reset();
         }
       }
     }
@@ -186,11 +238,11 @@ export class AgencyBoardRequestComponent {
 
 
   removeConnection(companyName: string, connectionToRemove: string) {
-    const company = this.selectedCompanies.find(c => c.name === companyName);
+    const company = this.companies.find(c => c.name === companyName);
     if (company) {
-      const index = company.connections.indexOf(connectionToRemove);
+      const index = company.companyConnections.indexOf(connectionToRemove);
       if (index !== -1) {
-        company.connections.splice(index, 1);
+        company.companyConnections.splice(index, 1);
       }
     }
   }
@@ -199,9 +251,139 @@ export class AgencyBoardRequestComponent {
     this.files = newFiles;
   }
 
+  separateCompanies() {
+    this.selectedCompanies = this.companies.filter(company => !company.isCustom).map(company => {
+      const companyName = company.name as keyof typeof Company;
+      const companyInt: I_Company_Briefing_Form_Data = {
+        idCompany: Company[companyName as keyof typeof Company],
+      };
+      return companyInt;
+    });
+
+    this.selectedOthersCompanies = this.companies.filter(company => company.isCustom).map(company => company.name);
+  }
+
+
+  prepareSubmit(): I_Agency_Board_Request {
+    this.separateCompanies();
+
+    const projectForm: I_Project_Request = {
+      idClient: sessionStorage.getItem('idUser')!.toString(),
+      title: 'Placa de Agência',
+    }
+
+    const briefingForm: I_Briefing_Request = {
+      expectedDate: '2023-10-25',
+      detailedDescription: this.agencyBoardForm.get('description')?.value,
+      companies: this.selectedCompanies,
+      otherCompany: this.selectedOthersCompanies.join(', '),
+      idBriefingType: '1',
+      measurement: {
+        length: this.agencyBoardForm.get('length')?.value,
+        height: this.agencyBoardForm.get('height')?.value,
+      },
+    }
+
+
+    const companyMainRoutes: I_Agency_Board_Routes[] = this.companies.flatMap(company => {
+      if (!company.isCustom) {
+        return [{
+          idCompany: Company[company.name as keyof typeof Company],
+          idCities: company.companyMainRoutes.map(route => Cities[route as keyof typeof Cities]),
+          type: 'main',
+        }];
+      } else {
+        return [];
+      }
+    });
+
+
+    const connections: I_Agency_Board_Routes[] = this.companies.flatMap(company => {
+      if (!company.isCustom) {
+        return [{
+          idCompany: Company[company.name as keyof typeof Company],
+          idCities: company.companyConnections.map(connection => Cities[connection as keyof typeof Cities]),
+          type: 'connection',
+        }];
+      } else {
+        return [];
+      }
+    });
+
+    const agencyBoardRoutes: I_Agency_Board_Routes[] = [...companyMainRoutes, ...connections];
+
+    const mainOthersRoutes: I_Agency_Board_Others_Routes[] = this.companies.flatMap(company => {
+      if (company.isCustom) {
+        return company.companyMainRoutes.map(route => ({
+          company: company.name,
+          city: route,
+          type: 'main',
+        }));
+      } else {
+        return [];
+      }
+    });
+
+    const othersConnections: I_Agency_Board_Others_Routes[] = this.companies.flatMap(company => {
+      if (company.isCustom) {
+        return company.companyConnections.map(route => ({
+          company: company.name,
+          city: route,
+          type: 'connection',
+        }));
+      } else {
+        return [];
+      }
+    });
+
+    const agencyBoardOthersRoutes: I_Agency_Board_Others_Routes[] = [...mainOthersRoutes, ...othersConnections];
+
+    const bAgencyBoardsForm: I_Agency_Board_Data = {
+      idAgencyBoardType: this.agencyBoardForm.get('agencyBoardType')?.value.toString(),
+      boardLocation: this.agencyBoardForm.get('signLocation')?.value,
+      observation: this.agencyBoardForm.get('observation')?.value,
+      idBoardType: this.agencyBoardForm.get('boardType')?.value.toString(),
+      routes: agencyBoardRoutes,
+      othersRoutes: agencyBoardOthersRoutes,
+    }
+
+    return { projectForm: projectForm, briefingForm: briefingForm, bAgencyBoardsForm: bAgencyBoardsForm };
+
+
+  }
+
+  validateCompanies(): boolean {
+    return this.companies.every(company =>
+      company.name &&
+      company.companyMainRoutes.length > 0 &&
+      company.companyConnections.length > 0 &&
+      typeof company.isCustom === 'boolean'
+    );
+  }
+
+
+
   submit() {
-    console.log(this.registerForm.value);
-    console.log(this.files);
+    if (this.agencyBoardForm.invalid) {
+      this.toastrService.error("Erro ao realizar solicitação. Verifique se os campos estão preenchidos corretamente.");
+      return;
+    }
+    const requestData = this.prepareSubmit();
+    this.createRequestService.submitAgencyBoardRequest(requestData.projectForm, requestData.briefingForm, requestData.bAgencyBoardsForm)
+      .subscribe({
+        next: (response) => {
+          this.toastrService.success("Solicitação realizada com sucesso!");
+          setTimeout(() => {
+            window.location.reload();
+          }, 2000);
+        },
+        error: (error) => {
+          this.toastrService.error("Erro ao realizar solicitação.");
+        }
+      });
+    this.isButtonDisabled = true;
+    setTimeout(() => {
+      this.isButtonDisabled = false;
+    }, 2000);
   }
 }
-  

@@ -29,8 +29,8 @@ const routes: Routes = [
     component: LoginComponent,
   },
   {
-    path: 'resetPassword',
-    title: 'Resetar Senha',
+    path: 'redefinir-senha',
+    title: 'Redefinir Senha',
     component: ResetPasswordComponent,
   },
   {
@@ -41,12 +41,6 @@ const routes: Routes = [
   {
     path: 'colaboradores',
     component: CollaboratorSystemComponent,
-    canActivate: [AuthGuard]
-  },
-  {
-    path: 'nova-solicitacao',
-    component: MainCreateRequestComponent,
-
     canActivate: [AuthGuard]
   },
   {
