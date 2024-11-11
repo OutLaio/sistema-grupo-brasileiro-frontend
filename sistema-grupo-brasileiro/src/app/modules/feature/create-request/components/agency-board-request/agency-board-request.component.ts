@@ -10,6 +10,7 @@ import { I_Agency_Board_Data } from '../../../../shared/interfaces/briefing/agen
 import { I_Company_Briefing_Form_Data } from '../../../../shared/interfaces/company/form/company-briefing-form';
 import { I_Agency_Board_Routes } from '../../../../shared/interfaces/briefing/agency-board/form/agency-board-routes-form';
 import { I_Agency_Board_Others_Routes } from '../../../../shared/interfaces/briefing/agency-board/form/agency-board-others-routes-form';
+import { Router } from '@angular/router';
 
 enum Cities {
   'SÃO PAULO' = '1',
@@ -54,7 +55,12 @@ export class AgencyBoardRequestComponent implements OnInit {
   // TODO: Adicionar ID para identificação da imagem
   files: { name: string, url: string }[] = [];
 
-  constructor(private fb: FormBuilder, private createRequestService: CreateRequestService, private toastrService: ToastrService) { }
+  constructor(
+    private fb: FormBuilder, 
+    private createRequestService: 
+    CreateRequestService, 
+    private toastrService: ToastrService,
+    private router: Router) { }
 
   ngOnInit(): void {
     this.agencyBoardForm = new FormGroup({
@@ -361,11 +367,13 @@ export class AgencyBoardRequestComponent implements OnInit {
     );
   }
 
-
-
   submit() {
-    if (this.agencyBoardForm.invalid) {
+    if (this.agencyBoardForm.invalid || !this.validateCompanies()) {
       this.toastrService.error("Erro ao realizar solicitação. Verifique se os campos estão preenchidos corretamente.");
+      this.isButtonDisabled = true;
+      setTimeout(() => {
+        this.isButtonDisabled = false;
+      }, 3000);
       return;
     }
     const requestData = this.prepareSubmit();
@@ -375,7 +383,7 @@ export class AgencyBoardRequestComponent implements OnInit {
           this.toastrService.success("Solicitação realizada com sucesso!");
           setTimeout(() => {
             window.location.reload();
-          }, 2000);
+          },3000);
         },
         error: (error) => {
           this.toastrService.error("Erro ao realizar solicitação.");
@@ -384,6 +392,6 @@ export class AgencyBoardRequestComponent implements OnInit {
     this.isButtonDisabled = true;
     setTimeout(() => {
       this.isButtonDisabled = false;
-    }, 2000);
+    }, 3000);
   }
 }

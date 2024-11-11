@@ -140,6 +140,10 @@ export class SignpostRequestComponent implements OnInit {
 
     if (this.signPostForm.invalid) {
       this.toastrService.error("Erro ao realizar solicitação. Verifique se os campos estão preenchidos corretamente.");
+      this.isButtonDisabled = true;
+      setTimeout(() => {
+        this.isButtonDisabled = false;
+      }, 3000);
       return;
     }
 
@@ -163,9 +167,5 @@ export class SignpostRequestComponent implements OnInit {
         this.toastrService.error("Erro ao realizar solicitação.");
       }
     });
-    this.isButtonDisabled = true;
-    setTimeout(() => {
-      this.isButtonDisabled = false;
-    }, 2000);
   }
 }
