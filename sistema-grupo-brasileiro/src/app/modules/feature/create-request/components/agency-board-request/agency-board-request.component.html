@@ -314,7 +314,7 @@
         <div class="d-flex gap-3 justify-content-end pt-2">
             <button type="reset" (click)="clearForm()" class="btn btn-outline-danger">Redefinir
                 Formulário</button>
-            <button [disabled]="(agencyBoardForm.invalid || !validateCompanies()) || isButtonDisabled" [style.backgroundColor]="'#027373'"
+            <button [disabled]="isButtonDisabled" [style.backgroundColor]="'#027373'"
                 type="submit" class="btn text-white">
                 Enviar
             </button>

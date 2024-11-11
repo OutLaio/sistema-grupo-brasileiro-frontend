@@ -24,8 +24,8 @@ export class ListCollaboratorsService {
         map((response: any) => ({
           content: response.content.map((colaborador: any) => ({
             nome: colaborador.name,
-            email: colaborador.userView.email,
-            numero: colaborador.phonenumber,
+            email: colaborador.user.email,
+            numero: colaborador.phoneNumber,
             funcao: colaborador.occupation,
             setor: colaborador.sector,
             agencia: colaborador.agency
