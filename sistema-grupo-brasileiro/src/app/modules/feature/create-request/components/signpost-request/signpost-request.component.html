@@ -2,7 +2,7 @@
     <form [formGroup]="signPostForm" (ngSubmit)="submit()" #formDir="ngForm">
         <div class="row pb-4">
             <div class="form-group pt-3">
-                <label class="fw-bold" for="signLocation">Local da Placa</label>
+                <label class="fw-bold" for="signLocation">Local da Placa *</label>
                 <textarea [backgroundColorClass]="'#ebebeb'" id="signLocation" required formControlName="signLocation"
                     type="text" class="form-control border-dark-subtle rounded-3 form-focus"
                     placeholder="Escreva a localização da placa"></textarea>
@@ -14,9 +14,9 @@
 
         <div class="row pb-4">
             <div class="form-group pt-3">
-                <label class="fw-bold" for="description">Descrição</label>
-                <textarea [backgroundColorClass]="'#ebebeb'" id="description" required formControlName="description" type="text"
-                    class="form-control border-dark-subtle rounded-3 form-focus"
+                <label class="fw-bold" for="description">Descrição *</label>
+                <textarea [backgroundColorClass]="'#ebebeb'" id="description" required formControlName="description"
+                    type="text" class="form-control border-dark-subtle rounded-3 form-focus"
                     placeholder="Escreva a descrição da solicitação"></textarea>
             </div>
             <div *ngIf="description.invalid && formDir.submitted" class="validation-warning">
@@ -27,7 +27,7 @@
         <div class="row pb-4 pt-2 border-bottom">
             <div class="col-12 col-md-3">
                 <div class="form-group pt-3">
-                    <label class="fw-bold">Medida</label>
+                    <label class="fw-bold">Medida *</label>
                     <div class="d-flex align-items-center mb-2">
                         <div class="d-flex flex-column">
                             <label>Largura</label>
@@ -48,7 +48,8 @@
                     <div *ngIf="(width.invalid || height.invalid) && formDir.submitted" class="validation-warning">
                         <p>Informe as medidas completas da placa (largura e altura) em centímetros.</p>
                     </div>
-                    <div *ngIf="(width.errors?.['pattern'] || height.errors?.['pattern']) && formDir.submitted" class="validation-warning">
+                    <div *ngIf="(width.errors?.['pattern'] || height.errors?.['pattern']) && formDir.submitted"
+                        class="validation-warning">
                         <p>As medidas devem conter apenas números.</p>
                     </div>
                 </div>
@@ -56,7 +57,7 @@
             <div class="col-12 col-md-9">
                 <div class="form-group pt-3 ms-5">
                     <div class="title">
-                        <p class="fw-bold">Material</p>
+                        <p class="fw-bold">Material *</p>
                     </div>
                     <div class="d-flex flex-column">
                         <div class="form-check">
@@ -82,12 +83,13 @@
         <div>
             <div class="row mt-5 border-bottom pb-4">
                 <div class="col-12">
-                    <p class="fw-bold">Selecione as Empresas</p>
+                    <p class="fw-bold">Selecione as Empresas *</p>
                 </div>
                 <div class="col-12 d-flex flex-wrap gap-3">
                     <div class="form-check">
                         <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox" id="rotaMulti"
-                            required formControlName="selectedCompany" (change)="updateCompanyName(2, 'Rota Transportes')">
+                            required formControlName="selectedCompany"
+                            (change)="updateCompanyName(2, 'Rota Transportes')">
                         <label class="form-check-label" for="rotaMulti">Rota Transportes</label>
                     </div>
                     <div class="form-check">
@@ -138,33 +140,32 @@
 
 
 
-
         <div *ngIf="selectedCompanies.length != 0" class="row mt-5 border-bottom pb-4">
             <div>
                 <p class="fw-bold">Empresas Selecionadas</p>
             </div>
-            <div [backgroundColorClass]="'#ebebeb'" class="d-flex border border-dark-subtle rounded">
-                <div *ngFor="let company of selectedCompanies">
-                    <p class="fw-bold me-3 pt-2">
+            <div class="d-flex flex-wrap gap-2">
+                <div *ngFor="let company of selectedCompanies" [backgroundColorClass]="'#ebebeb'"
+                    class="d-flex align-items-center border border-dark-subtle rounded px-3 py-2">
+                    <p class="fw-bold mb-0 me-3">
                         {{ company.name }}
-                        <button *ngIf="company.isCustom" [backgroundColorClass]="'#ff6f6f'"
-                            class="border-0 ps-2 rounded text-white" (click)="removeCompany(company)"> Remover
-                        </button>
                     </p>
+                    <button *ngIf="company.isCustom" [backgroundColorClass]="'#ff6f6f'"
+                        class="btn btn-sm text-white border-0" type="button" (click)="removeCompany(company)">
+                        Remover
+                    </button>
                 </div>
-
             </div>
         </div>
 
+
         <div class="row">
             <div class="form-group pt-3 w-100 py-3">
-                <label class="fw-bold" for="sector">Setor</label>
+                <label class="fw-bold" for="sector">Setor *</label>
                 <textarea [backgroundColorClass]="'#ebebeb'" id="sector" required formControlName="sector" type="text"
-                    class="form-control border-dark-subtle rounded-3 form-focus" placeholder="Escreva aqui"
-                    ></textarea>
+                    class="form-control border-dark-subtle rounded-3 form-focus" placeholder="Escreva aqui"></textarea>
             </div>
-            <div *ngIf="sector.invalid  && formDir.submitted"
-                class="validation-warning">
+            <div *ngIf="sector.invalid  && formDir.submitted" class="validation-warning">
                 <p>Por favor, informe o setor.</p>
             </div>
         </div>
@@ -172,7 +173,8 @@
 
         <div class="d-flex gap-3 justify-content-end pt-2">
             <button type="reset" (click)="clearForm()" class="btn btn-outline-danger">Redefinir Formulário</button>
-            <button [disabled]="signPostForm.invalid" [backgroundColorClass]="'#027373'" type="submit" class="btn text-white">Enviar</button>
+            <button [disabled]="signPostForm.invalid" [backgroundColorClass]="'#027373'" type="submit"
+                class="btn text-white">Enviar</button>
         </div>
     </form>
 </div>
