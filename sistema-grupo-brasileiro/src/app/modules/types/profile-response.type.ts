@@ -3,7 +3,7 @@ export type TProfile = {
   name: string;
   lastname: string;
   email: string;
-  phone: string;
+  phoneNumber: string;
   sector: string;
   occupation: string;
   agency: string;

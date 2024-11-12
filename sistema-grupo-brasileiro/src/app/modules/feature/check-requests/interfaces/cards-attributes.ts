@@ -12,4 +12,5 @@ export interface CardsAttributes {
         fullName: string,
         avatar: number
     };
+    isTruncated?: boolean;
 }

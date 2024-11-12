@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
       },
       error: (value: HttpErrorResponse) =>{
         
-        this.toastrService.error(value.error),
+        this.toastrService.error(value.error.message),
         console.log(value)
       }
     })

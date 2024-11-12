@@ -12,6 +12,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class RegisterCollaboratorComponent {
 	registerForm!: FormGroup;
+	isButtonDisabled: boolean = false;
 
 	constructor(
 		private registerService: LoginRegisterService,
@@ -20,8 +21,14 @@ export class RegisterCollaboratorComponent {
 
 	ngOnInit(): void {
 		this.registerForm = new FormGroup({
-			name: new FormControl('', [Validators.required]),
-			lastname: new FormControl('', [Validators.required]),
+			name: new FormControl('', [
+				Validators.required,
+				Validators.pattern('^[A-Za-zÀ-ÿ]{3,}( [A-Za-zÀ-ÿ]+)*$')
+			]),
+			lastname: new FormControl('', [
+				Validators.required,
+				Validators.pattern('^(?:[A-Za-zÀ-ÿ]+(?: [A-Za-zÀ-ÿ]+)*){3,}$')
+			]),
 			email: new FormControl('', [Validators.required, Validators.email]),
 			password: new FormControl('', [
 				Validators.required,
@@ -49,7 +56,14 @@ export class RegisterCollaboratorComponent {
 	get nop() { return this.registerForm.get('nop')!; }
 
 	submit() {
-		if (this.registerForm.invalid) return;
+		if (this.registerForm.invalid) {
+			this.toastrService.error("Erro ao realizar o cadastro. Verifique se os campos estão preenchidos corretamente.");
+			this.isButtonDisabled = true;
+			setTimeout(() => {
+				this.isButtonDisabled = false;
+			}, 3000);
+			return;
+		}
 
 		this.registerService.registerCollaborator(
 			this.name.value,
@@ -62,11 +76,14 @@ export class RegisterCollaboratorComponent {
 			this.nop.value
 		).subscribe({
 			next: () => {
-				this.toastrService.success("Cadastro de colaborador realizado com sucesso!");
-				this.registerForm.reset(); 
+				this.toastrService.success("Cadastro realizado com sucesso!");
+				this.isButtonDisabled = true;
+				setTimeout(() => {
+					window.location.reload();
+				}, 2000);
 			},
 			error: (value: HttpErrorResponse) => {
-				this.toastrService.error(value.error);
+				this.toastrService.error(value.error.message);
 			}
 		});
 	}

@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs';
 import { LoginResponse } from '../../core/login/interface/login-response';
-import { TProfile } from '../../types/profile-response.type';
 import { I_Employee_View_Data } from '../../shared/interfaces/user/view/employee-view';
 
 @Injectable({
@@ -125,15 +124,10 @@ export class LoginRegisterService {
   getUserName(): string | null {
     const profile = sessionStorage.getItem('userProfile');
     if (profile) {
-      const userProfile: TProfile = JSON.parse(profile);
+      const userProfile: I_Employee_View_Data = JSON.parse(profile);
       return userProfile.name + " " + userProfile.lastname;
     }
     return null;
-  }
-
-  getUserProfile(): TProfile | null {
-    const profile = sessionStorage.getItem('userProfile');
-    return profile ? JSON.parse(profile) : null;
   }
 
   isAuthenticated() {

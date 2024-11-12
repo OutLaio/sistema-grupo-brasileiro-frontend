@@ -1,13 +1,5 @@
-<div class="main-container border border-secondary-subtle rounded shadow p-3 d-flex justify-content-between bg-light">
-  <!-- <div class="profile-menu d-flex flex-column align-items-center">
-      <a routerLink="meus-dados" routerLinkActive="active" class="btn btn-light text-secondary my-2 w-100">Meus Dados</a>
-      <a routerLink="seguranca" routerLinkActive="active" class="btn btn-light text-secondary my-2 w-100">Segurança</a>
-      <a routerLink="notificacoes" class="btn btn-light text-secondary my-2 w-100">Notificações</a>
-      <a routerLink="historico" class="btn btn-light text-secondary my-2 w-100">Histórico</a>
-      <a class="btn btn-outline-danger my-2 w-100">Desativar Minha Conta</a>
-  </div>
-  <div class="border border-0 border-end border-bottom mx-4"></div> -->
+<div class="main-container border border-secondary-subtle rounded shadow d-flex justify-content-between bg-light">
   <div class="content flex-grow-1">
-    <app-user-data></app-user-data>
+    <router-outlet></router-outlet>
   </div>
 </div>
