@@ -24,3 +24,26 @@
 .text-custom:hover {
     text-decoration: underline !important;
 }
+
+.imgedit{
+    width: 15rem !important;
+    height: 5rem !important;
+}
+
+@media (max-width: 768px) {
+    .bg-color-system{
+        width: 100% !important;
+    }
+}
+
+@media (min-width: 768px) and (max-width: 1280px) {
+    .bg-color-system{
+        width: 75% !important;
+    }
+}
+
+@media (min-width: 1366px){
+    .bg-color-system{
+        width: 50% !important;
+    }
+}
