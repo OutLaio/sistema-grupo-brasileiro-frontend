@@ -106,10 +106,19 @@ export class DialogBoxComponent implements OnInit {
       reverseButtons: true,
       width: '30%',
       padding: '3rem',
+      preConfirm: () => {
+        const select = document.querySelector('input[name="options-outlined"]:checked') as HTMLInputElement;
+        this.selectedCollaborator = this.allCollaborators.find(c => c.id == select.id)!;
+      }
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.selectCollaborator();
+      }
     });
   }
 
   selectCollaborator() {
+    console.log(this.selectedCollaborator)
     if (!this.selectedCollaborator) {
       return;
     }
@@ -167,11 +176,11 @@ export class DialogBoxComponent implements OnInit {
         ? `<div>
             <input type="radio" class="btn-check" name="options-outlined" id="${collaborator.id}"
               autocomplete="off" [value]="${collaborator}">
-              <label class="btn btn-outline-success d-flex gap-2 align-items-center" for="${collaborator.id}">
+            <label class="btn btn-outline-success d-flex gap-2 align-items-center" for="${collaborator.id}">
               <img src="/assets/images/profile.png" alt="profile image">
               <p class="mb-0">${collaborator.name + ' ' + collaborator.lastname}</p>
-              </label>
-              </div>`
+            </label>
+          </div>`
               : ''
             }
             `;
@@ -185,22 +194,3 @@ export class DialogBoxComponent implements OnInit {
     return html;
   }
 }
-
-
-// return `
-//       <div class="d-flex flex-column gap-2">
-//         ${this.allCollaborators.map((collaborator) => {
-//           collaborator.id != this.project?.collaborator?.id
-//           ? `<div>
-//               <input type="radio" class="btn-check" name="options-outlined" id="${collaborator.id}"
-//                 autocomplete="off" [value]="${collaborator}">
-//               <label class="btn btn-outline-success d-flex gap-2 align-items-center" for="${collaborator.id}">
-//                 <img src="/assets/images/profile.png" alt="profile image">
-//                 <p class="mb-0">${collaborator.name + ' ' + collaborator.lastname}</p>
-//               </label>
-//           </div>`
-//           : ''
-//           })
-//         }
-//       </div>
-//     `;
