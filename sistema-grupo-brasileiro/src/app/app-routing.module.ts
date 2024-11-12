@@ -55,9 +55,9 @@ const routes: Routes = [
     component: MainProfileComponent,
     canActivate: [AuthGuard],
     loadChildren: () =>
-      import(
-        './modules/core/profile/components/main-profile/profile-routing.module'
-      ).then((m) => m.ProfileRoutingModule),
+      import('./modules/core/profile/components/main-profile/profile-routing.module').then(
+        (m) => m.ProfileRoutingModule
+      ),
   },
   {
     path: 'meus-dados',
