@@ -1,24 +1,5 @@
 <div class="container-fluid">
     <div class="cards-div">
-        <!-- <div class="row py-2">
-            <div class="col-md-4 mb-md-0">
-                <div class="d-flex align-items-center">
-                    <label for="responsavelFilter" class="form-label me-2">Responsável</label>
-                    <select id="responsavelFilter" class="form-select">
-                        <option value="">Todos</option>
-                        <option value="responsavel1">Responsável 1</option>
-                        <option value="responsavel2">Responsável 2</option>
-                        <option value="responsavel3">Responsável 3</option>
-                    </select>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="d-flex align-items-center">
-                    <label for="dataFilter" class="form-label me-2">Data</label>
-                    <input type="date" id="dataFilter" class="form-control">
-                </div>
-            </div>
-        </div> -->
         <div class="p-1 mx-auto">
             <div class="card-wrapper gap-2">
                 <div class="card card-custom rounded-0">
@@ -34,7 +15,7 @@
                                 <p class="request-title me-2">{{ item.title }}</p>
                                 <div class="d-flex justify-content-start"
                                     *ngIf="item.collaborator; else noCollaborator">
-                                    <p class="text-muted"><img class="me-1 perfil-img" src="/assets/images/profile.png"
+                                    <p class="text-muted request-subtitle"><img class="me-1 perfil-img" src="/assets/images/profile.png"
                                             [alt]="item.client.fullName" />
                                         <span>{{ item.client.fullName }}</span>
                                     </p>
@@ -44,14 +25,13 @@
                                 </ng-template>
                             </div>
                             <div class="request-subtitle">
-                                <p (click)="toggleTruncate()" class="text-muted"
-                                    [ngClass]="{'text-truncate': isTruncated}">
+                                <p (click)="toggleTruncate(item)" class="text-muted" [ngClass]="{'text-truncate': item.isTruncated}">
                                     Placa de Sinalização para indicação cidades e suas distâncias relativas.
-                                </p>
+                                  </p>
                             </div>
 
                             <div class="d-flex justify-content-between">
-                                <p class="text-muted"> {{
+                                <p class="text-muted request-subtitle"> {{
                                     deadline | date: 'dd/MM/yyyy' }}</p>
                                 <i class="request-subtitle" [colorClass]="'#005d54'"
                                     (click)="goToDetails(item.id.toString())">Veja mais</i>
@@ -75,13 +55,12 @@
                                     {{item.collaborator?.fullName}}</p>
                             </div>
                             <div class="request-subtitle">
-                                <p (click)="toggleTruncate()" class="text-muted"
-                                    [ngClass]="{'text-truncate': isTruncated}">
+                                <p (click)="toggleTruncate(item)" class="text-muted" [ngClass]="{'text-truncate': item.isTruncated}">
                                     Placa de Sinalização para indicação cidades e suas distâncias relativas.
-                                </p>
+                                  </p>
                             </div>
                             <div class="d-flex justify-content-start" *ngIf="item.collaborator; else noCollaborator">
-                                <p class="text-muted"><img class="me-1 perfil-img" src="/assets/images/profile.png"
+                                <p class="text-muted request-subtitle"><img class="me-1 perfil-img" src="/assets/images/profile.png"
                                         [alt]="item.client.fullName" />
                                     <span>{{ item.client.fullName }}</span>
                                 </p>
@@ -90,7 +69,7 @@
                                 <p class="text-muted">Colaborador: Não alocado</p>
                             </ng-template>
                             <div class="d-flex justify-content-between">
-                                <p class="text-muted"> {{
+                                <p class="text-muted request-subtitle"> {{
                                     deadline | date: 'dd/MM/yyyy' }}</p>
                                 <i class="request-subtitle" [colorClass]="'#005d54'"
                                     (click)="goToDetails(item.id.toString())">Veja mais</i>
@@ -108,23 +87,30 @@
                     <div class="card-body overflow-auto scrollbar-ff">
                         <div *ngFor="let item of awaitingApprovalCards "
                             class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
-                            <p class="fw-bold text-truncate">{{ item.title }}</p>
-                            <div *ngIf="item.collaborator && (userRole == 3 || userRole == 1); else noCollaborator">
-                                <p class="text-muted">Colaborador:</p>
-                                <p class="text-muted"><img class="me-1" src="/assets/images/profile.png" alt=""> {{
-                                    item.collaborator.fullName }}</p>
+                            <div>
+                                <p class="request-title me-2">{{ item.title }}</p>
+                                <p [backgroundColorClass]="'#ff7474'" class="request-title">
+                                    {{item.collaborator?.fullName}}</p>
                             </div>
-                            <div *ngIf="userRole == 1 || userRole == 2">
-                                <p class="text-muted">Cliente:</p>
-                                <p class="text-muted"><img class="me-1" src="/assets/images/profile.png" alt=""> {{
-                                    item.client.fullName }}</p>
+                            <div class="request-subtitle">
+                                <p (click)="toggleTruncate(item)" class="text-muted" [ngClass]="{'text-truncate': item.isTruncated}">
+                                    Placa de Sinalização para indicação cidades e suas distâncias relativas.
+                                  </p>
+                            </div>
+                            <div class="d-flex justify-content-start" *ngIf="item.collaborator; else noCollaborator">
+                                <p class="text-muted request-subtitle"><img class="me-1 perfil-img" src="/assets/images/profile.png"
+                                        [alt]="item.client.fullName" />
+                                    <span>{{ item.client.fullName }}</span>
+                                </p>
                             </div>
                             <ng-template #noCollaborator>
                                 <p class="text-muted">Colaborador: Não alocado</p>
                             </ng-template>
-                            <div class="d-flex justify-content-end align-items-end">
-                                <a (click)="goToDetails(item.id.toString())" class="text-muted"
-                                    style="cursor: pointer;">Ver mais...</a>
+                            <div class="d-flex justify-content-between">
+                                <p class="text-muted request-subtitle"> {{
+                                    deadline | date: 'dd/MM/yyyy' }}</p>
+                                <i class="request-subtitle" [colorClass]="'#005d54'"
+                                    (click)="goToDetails(item.id.toString())">Veja mais</i>
                             </div>
                         </div>
                     </div>
@@ -139,23 +125,30 @@
                     <div class="card-body overflow-auto scrollbar-ff">
                         <div *ngFor="let item of approvedCards "
                             class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
-                            <p class="fw-bold text-truncate">{{ item.title }}</p>
-                            <div *ngIf="item.collaborator && (userRole == 3 || userRole == 1); else noCollaborator">
-                                <p class="text-muted">Colaborador:</p>
-                                <p class="text-muted"><img class="me-1" src="/assets/images/profile.png" alt=""> {{
-                                    item.collaborator.fullName }}</p>
+                            <div>
+                                <p class="request-title me-2">{{ item.title }}</p>
+                                <p [backgroundColorClass]="'#ff7474'" class="request-title">
+                                    {{item.collaborator?.fullName}}</p>
                             </div>
-                            <div *ngIf="userRole == 1 || userRole == 2">
-                                <p class="text-muted">Cliente:</p>
-                                <p class="text-muted"><img class="me-1" src="/assets/images/profile.png" alt=""> {{
-                                    item.client.fullName }}</p>
+                            <div class="request-subtitle">
+                                <p (click)="toggleTruncate(item)" class="text-muted" [ngClass]="{'text-truncate': item.isTruncated}">
+                                    Placa de Sinalização para indicação cidades e suas distâncias relativas.
+                                  </p>
+                            </div>
+                            <div class="d-flex justify-content-start" *ngIf="item.collaborator; else noCollaborator">
+                                <p class="text-muted request-subtitle"><img class="me-1 perfil-img" src="/assets/images/profile.png"
+                                        [alt]="item.client.fullName" />
+                                    <span>{{ item.client.fullName }}</span>
+                                </p>
                             </div>
                             <ng-template #noCollaborator>
                                 <p class="text-muted">Colaborador: Não alocado</p>
                             </ng-template>
-                            <div class="d-flex justify-content-end align-items-end">
-                                <a (click)="goToDetails(item.id.toString())" class="text-muted"
-                                    style="cursor: pointer;">Ver mais...</a>
+                            <div class="d-flex justify-content-between">
+                                <p class="text-muted request-subtitle"> {{
+                                    deadline | date: 'dd/MM/yyyy' }}</p>
+                                <i class="request-subtitle" [colorClass]="'#005d54'"
+                                    (click)="goToDetails(item.id.toString())">Veja mais</i>
                             </div>
                         </div>
                     </div>
@@ -170,23 +163,30 @@
                     <div class="card-body overflow-auto scrollbar-ff">
                         <div *ngFor="let item of inProductionCards "
                             class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
-                            <p class="fw-bold text-truncate">{{ item.title }}</p>
-                            <div *ngIf="item.collaborator && (userRole == 3 || userRole == 1); else noCollaborator">
-                                <p class="text-muted">Colaborador:</p>
-                                <p class="text-muted"><img class="me-1" src="/assets/images/profile.png" alt=""> {{
-                                    item.collaborator.fullName }}</p>
+                            <div>
+                                <p class="request-title me-2">{{ item.title }}</p>
+                                <p [backgroundColorClass]="'#ff7474'" class="request-title">
+                                    {{item.collaborator?.fullName}}</p>
                             </div>
-                            <div *ngIf="userRole == 1 || userRole == 2">
-                                <p class="text-muted">Cliente:</p>
-                                <p class="text-muted"><img class="me-1" src="/assets/images/profile.png" alt=""> {{
-                                    item.client.fullName }}</p>
+                            <div class="request-subtitle">
+                                <p (click)="toggleTruncate(item)" class="text-muted" [ngClass]="{'text-truncate': item.isTruncated}">
+                                    Placa de Sinalização para indicação cidades e suas distâncias relativas.
+                                  </p>
+                            </div>
+                            <div class="d-flex justify-content-start" *ngIf="item.collaborator; else noCollaborator">
+                                <p class="text-muted request-subtitle"><img class="me-1 perfil-img" src="/assets/images/profile.png"
+                                        [alt]="item.client.fullName" />
+                                    <span>{{ item.client.fullName }}</span>
+                                </p>
                             </div>
                             <ng-template #noCollaborator>
                                 <p class="text-muted">Colaborador: Não alocado</p>
                             </ng-template>
-                            <div class="d-flex justify-content-end align-items-end">
-                                <a (click)="goToDetails(item.id.toString())" class="text-muted"
-                                    style="cursor: pointer;">Ver mais...</a>
+                            <div class="d-flex justify-content-between">
+                                <p class="text-muted request-subtitle"> {{
+                                    deadline | date: 'dd/MM/yyyy' }}</p>
+                                <i class="request-subtitle" [colorClass]="'#005d54'"
+                                    (click)="goToDetails(item.id.toString())">Veja mais</i>
                             </div>
                         </div>
                     </div>
@@ -201,23 +201,30 @@
                     <div class="card-body overflow-auto scrollbar-ff">
                         <div *ngFor="let item of completedCards "
                             class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
-                            <p class="fw-bold text-truncate">{{ item.title }}</p>
-                            <div *ngIf="item.collaborator && (userRole == 3 || userRole == 1); else noCollaborator">
-                                <p class="text-muted">Colaborador:</p>
-                                <p class="text-muted"><img class="me-1" src="/assets/images/profile.png" alt=""> {{
-                                    item.collaborator.fullName }}</p>
+                            <div>
+                                <p class="request-title me-2">{{ item.title }}</p>
+                                <p [backgroundColorClass]="'#ff7474'" class="request-title">
+                                    {{item.collaborator?.fullName}}</p>
                             </div>
-                            <div *ngIf="userRole == 1 || userRole == 2">
-                                <p class="text-muted">Cliente:</p>
-                                <p class="text-muted"><img class="me-1" src="/assets/images/profile.png" alt=""> {{
-                                    item.client.fullName }}</p>
+                            <div class="request-subtitle">
+                                <p (click)="toggleTruncate(item)" class="text-muted" [ngClass]="{'text-truncate': item.isTruncated}">
+                                    Placa de Sinalização para indicação cidades e suas distâncias relativas.
+                                  </p>
+                            </div>
+                            <div class="d-flex justify-content-start" *ngIf="item.collaborator; else noCollaborator">
+                                <p class="text-muted request-subtitle"><img class="me-1 perfil-img" src="/assets/images/profile.png"
+                                        [alt]="item.client.fullName" />
+                                    <span>{{ item.client.fullName }}</span>
+                                </p>
                             </div>
                             <ng-template #noCollaborator>
                                 <p class="text-muted">Colaborador: Não alocado</p>
                             </ng-template>
-                            <div class="d-flex justify-content-end align-items-end">
-                                <a (click)="goToDetails(item.id.toString())" class="text-muted"
-                                    style="cursor: pointer;">Ver mais...</a>
+                            <div class="d-flex justify-content-between">
+                                <p class="text-muted request-subtitle"> {{
+                                    deadline | date: 'dd/MM/yyyy' }}</p>
+                                <i class="request-subtitle" [colorClass]="'#005d54'"
+                                    (click)="goToDetails(item.id.toString())">Veja mais</i>
                             </div>
                         </div>
                     </div>
@@ -229,25 +236,32 @@
                         <hr>
                     </div>
                     <div class="card-body overflow-auto scrollbar-ff">
-                        <div *ngFor="let item of standByCards "
+                        <div *ngFor="let item of standByCards"
                             class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
-                            <p class="fw-bold text-truncate">{{ item.title }}</p>
-                            <div *ngIf="item.collaborator && (userRole == 3 || userRole == 1); else noCollaborator">
-                                <p class="text-muted">Colaborador:</p>
-                                <p class="text-muted"><img class="me-1" src="/assets/images/profile.png" alt=""> {{
-                                    item.collaborator.fullName }}</p>
+                            <div>
+                                <p class="request-title me-2">{{ item.title }}</p>
+                                <p [backgroundColorClass]="'#ff7474'" class="request-title">
+                                    {{item.collaborator?.fullName}}</p>
                             </div>
-                            <div *ngIf="userRole == 1 || userRole == 2">
-                                <p class="text-muted">Cliente:</p>
-                                <p class="text-muted"><img class="me-1" src="/assets/images/profile.png" alt=""> {{
-                                    item.client.fullName }}</p>
+                            <div class="request-subtitle">
+                                <p (click)="toggleTruncate(item)" class="text-muted" [ngClass]="{'text-truncate': item.isTruncated}">
+                                    Placa de Sinalização para indicação cidades e suas distâncias relativas.
+                                  </p>
+                            </div>
+                            <div class="d-flex justify-content-start" *ngIf="item.collaborator; else noCollaborator">
+                                <p class="text-muted request-subtitle"><img class="me-1 perfil-img" src="/assets/images/profile.png"
+                                        [alt]="item.client.fullName" />
+                                    <span>{{ item.client.fullName }}</span>
+                                </p>
                             </div>
                             <ng-template #noCollaborator>
                                 <p class="text-muted">Colaborador: Não alocado</p>
                             </ng-template>
-                            <div class="d-flex justify-content-end align-items-end">
-                                <a (click)="goToDetails(item.id.toString())" class="text-muted"
-                                    style="cursor: pointer;">Ver mais...</a>
+                            <div class="d-flex justify-content-between">
+                                <p class="text-muted request-subtitle"> {{
+                                    deadline | date: 'dd/MM/yyyy' }}</p>
+                                <i class="request-subtitle" [colorClass]="'#005d54'"
+                                    (click)="goToDetails(item.id.toString())">Veja mais</i>
                             </div>
                         </div>
                     </div>
