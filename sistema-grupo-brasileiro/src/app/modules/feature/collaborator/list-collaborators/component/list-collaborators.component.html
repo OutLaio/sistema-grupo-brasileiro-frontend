@@ -5,7 +5,8 @@
                 [ngClass]="{'card-selected': isSelected(colaborador)}" (click)="selectColaborador(colaborador)">
                 <div class="card-body">
                     <div class="row">
-                        <div class="col-12 col-md-4 text-center text-md-start">
+                        <div class="col-12 col-md-4 d-flex align-items-center gap-2 text-center text-md-start">
+                            <img src="/assets/images/profile.png" alt="">
                             <p class="card-text fw-semibold">{{ colaborador.nome }}</p>
                         </div>
                         <div class="col-12 col-md-4 text-center text-md-start">
