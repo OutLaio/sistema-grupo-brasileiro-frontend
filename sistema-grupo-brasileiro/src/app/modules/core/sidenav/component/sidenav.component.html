@@ -12,46 +12,46 @@
         <ul class="mynav nav nav-pills d-flex flex-column mb-auto">
             <li class="nav-item mb-1">
                 <a routerLink="dashboard" routerLinkActive="active">
-                    <img class="mx-2" src="/assets/icons/dashboard-icon.svg" alt="dashboard icone">
-                    <i class="fa-regular fa-user"></i>
+                    <img class="mx-2" src="/assets/icons/dashboard.svg" alt="dashboard icone">
+                    <i class="fa-regular"></i>
                     Dashboard
                 </a>
             </li>
             <li class="nav-item mb-1">
                 <a routerLink="demandas" routerLinkActive="active">
-                    <img class="mx-2" src="/assets/icons/request-details-icon.svg" alt="acompanhamento icone">
-                    <i class="fa-regular fa-bookmark"></i>
-                    Demandas
+                    <img class="mx-2" src="/assets/icons/book.svg" alt="acompanhamento icone">
+                    <i class="fa-regular"></i>
+                    Histórico
                 </a>
             </li>
             <li class="nav-item mb-1">
                 <a routerLink="nova-solicitacao" routerLinkActive="active">
-                    <img class="mx-2" src="/assets/icons/request-details-icon.svg" alt="nova solicitação icone">
-                    <i class="fa-regular fa-newspaper"></i>
+                    <img class="mx-2" src="/assets/icons/new-request.svg" alt="nova solicitação icone">
+                    <i class="fa-regular"></i>
                     Nova Solicitação
                 </a>
             </li>
             <li class="nav-item mb-1">
                 <a routerLink="acompanhamento" routerLinkActive="active">
-                    <img class="mx-2" src="/assets/icons/request-details-icon.svg" alt="acompanhamento icone">
-                    <i class="fa-solid fa-archway"></i>
+                    <img class="mx-2" src="/assets/icons/request-icon.svg" alt="acompanhamento icone">
+                    <i class="ps-1 fa-solid"></i>
                     Acompanhamento
                 </a>
             </li>
             <li *ngIf="userRole == 'ROLE_SUPERVISOR'" class="nav-item mb-1">
                 <a routerLink="/colaboradores" routerLinkActive="active">
                     <img class="mx-2" src="/assets/icons/collaborator-icon.svg" alt="colaborador icone">
-                    <i class="fa-solid fa-graduation-cap"></i>
+                    <i class="fa-solid"></i>
                     Colaboradores
                 </a>
             </li>
-            <li class="nav-item mb-1">
+            <!-- <li class="nav-item mb-1">
                 <a routerLink="agenda" routerLinkActive="active">
-                    <img class="mx-2" src="/assets/icons/request-details-icon.svg" alt="acompanhamento icone">
+                    <img class="mx-2" src="/assets/icons/request-icon.svg" alt="acompanhamento icone">
                     <i class="fa-solid fa-graduation-cap"></i>
                     Agenda
                 </a>
-            </li>
+            </li> -->
         </ul>
     </div>
     <hr>
@@ -61,14 +61,14 @@
             <li class="nav-item mb-1">
                 <a routerLink="/perfil" routerLinkActive="active">
                     <img class="mx-2" src="/assets/icons/profile-icon.svg" alt="perfil icone">
-                    <i class="fa-regular fa-user"></i>
+                    <i class="fa-regular"></i>
                     Perfil
                 </a>
             </li>
             <li class="nav-item mb-1">
                 <a class="pointer" (click)="logoutUser()" routerLinkActive="active">
                     <img class="mx-2" src="/assets/icons/logout-icon.svg" alt="logout icone">
-                    <i class="fa-regular fa-user"></i>
+                    <i class="fa-regular"></i>
                     Sair
                 </a>
             </li>
