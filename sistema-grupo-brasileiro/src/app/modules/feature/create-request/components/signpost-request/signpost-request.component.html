@@ -173,7 +173,7 @@
 
         <div class="d-flex gap-3 justify-content-end pt-2">
             <button type="reset" (click)="clearForm()" class="btn btn-outline-danger">Redefinir Formulário</button>
-            <button [backgroundColorClass]="'#027373'" type="submit"
+            <button [disabled]="isButtonDisabled" [backgroundColorClass]="'#027373'" type="submit"
                 class="btn text-white">Enviar</button>
         </div>
     </form>
