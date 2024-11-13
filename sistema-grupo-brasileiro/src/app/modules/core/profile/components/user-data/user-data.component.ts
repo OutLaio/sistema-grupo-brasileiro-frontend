@@ -4,6 +4,8 @@ import { LoginRegisterService } from '../../../../services/login-register/login-
 import { I_Employee_View_Data } from '../../../../shared/interfaces/user/view/employee-view';
 import Swal from 'sweetalert2';
 import { ProfileService } from '../../services/profile/profile.service';
+import { HttpErrorResponse } from '@angular/common/http';
+import { I_Change_Password_Request } from '../../../../shared/interfaces/auth/form/password-form';
 
 @Component({
   selector: 'app-user-data',
@@ -51,9 +53,10 @@ export class UserDataComponent implements OnInit {
         `<input type="password" id="newPassword" class="swal2-input" placeholder="Nova Senha">` +
         `<input type="password" id="confirmPassword" class="swal2-input" placeholder="Repetir Nova Senha">`,
       focusConfirm: false,
-      showCancelButton: true,
       confirmButtonText: 'Confirmar',
-      cancelButtonText: 'Cancelar',
+      confirmButtonColor: '#027373',
+      denyButtonText: 'Cancelar',
+      showDenyButton: true,
       didOpen: () => {
         const newPasswordInput = document.getElementById('newPassword') as HTMLInputElement;
         newPasswordInput.addEventListener('input', validatePassword);
@@ -84,10 +87,21 @@ export class UserDataComponent implements OnInit {
       }
     }).then((result) => {
       if (result.isConfirmed) {
-        this.profileService.editPassword(result.value!.currentPassword, result.value!.newPassword)
+        const userPasswordRequest: I_Change_Password_Request = { 
+          idUser: this.userProfile?.id!,
+          currentPassword: result.value!.currentPassword,
+          newPassword: result.value!.newPassword,
+        };
+
+        this.profileService.editPassword(userPasswordRequest)
           .subscribe({
-            next: () => Swal.fire('Sucesso', 'Senha alterada com sucesso!', 'success'),
-            error: (err: { message: any; }) => Swal.fire('Erro', `Erro ao alterar a senha: ${err.message}`, 'error')
+            next: (value: any) => {
+              Swal.fire('Sucesso', value, 'success')
+            },
+            error: (err: { message: HttpErrorResponse; }) => {
+              Swal.fire('Erro', `Erro ao alterar a senha: ${err.message}`, 'error');
+              console.log(err);
+            }
           });
       }
     });

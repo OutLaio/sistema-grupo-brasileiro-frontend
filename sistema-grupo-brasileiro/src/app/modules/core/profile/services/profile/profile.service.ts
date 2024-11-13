@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { I_Employee_View_Data } from '../../../../shared/interfaces/user/view/employee-view';
 import { Observable } from 'rxjs';
+import { I_Change_Password_Request } from '../../../../shared/interfaces/auth/form/password-form';
 
 @Injectable({
   providedIn: 'root',
@@ -16,18 +17,18 @@ export class ProfileService {
     return profile ? JSON.parse(profile) : null;
   }
 
-  editPassword(currentPassword: string, newPassword: string): Observable<any> {
+  editPassword(userPasswordRequest: I_Change_Password_Request): Observable<any> {
     const authToken = sessionStorage.getItem('auth-token');
-    const idUser = sessionStorage.getItem('idUser');
-    const requestBody = {
-      idUser, currentPassword, newPassword
-    };
     const headers = new HttpHeaders({
       'Content-Type': 'application/json',
       'Authorization': `Bearer ${authToken}`
     });
 
-    return this.http.post(`${this.apiUrl}/changePassword`, requestBody, { headers, withCredentials: true });
+    return this.http.post(`${this.apiUrl}/changePassword`, userPasswordRequest, { 
+      headers, 
+      withCredentials: true, 
+      responseType: 'text'
+    });
   }
 
   updateProfileUser(userData: I_Employee_View_Data): Observable<HttpResponse<any>> {

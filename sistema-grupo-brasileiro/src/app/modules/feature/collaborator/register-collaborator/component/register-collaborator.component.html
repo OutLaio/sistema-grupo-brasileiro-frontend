@@ -1,30 +1,28 @@
 <div>
     <form (ngSubmit)="submit()" [formGroup]="registerForm" #formDir="ngForm">
+        <div class="container text-center title my-2">
+            <h3>Cadastrar Colaborador</h3>
+        </div>
+        <hr>
         <div class="row">
-            <div class="col-md-6 mb-2">
-                <div class="form-outline">
-                    <input type="text" class="form-control form-focus border-0 border-bottom border-2 w-100"
-                        placeholder="Nome" formControlName="name" required />
-                    <div *ngIf="name.invalid && formDir.submitted"
-                        class="validation-warning">
-                        <p *ngIf="name.errors?.['required']">O nome é obrigatório!</p>
-                        <p *ngIf="name.errors?.['pattern']">O nome deve ter no mínimo 3 letras e
-                            não pode
-                            conter números ou caracteres especiais!</p>
-                    </div>
+            <div class="form-outline mb-4">
+                <input type="text" class="form-focus border-0 border-bottom border-2 w-100" placeholder="Nome"
+                    formControlName="name" required />
+                <div *ngIf="name.invalid && formDir.submitted" class="validation-warning">
+                    <p *ngIf="name.errors?.['required']">O nome é obrigatório!</p>
+                    <p *ngIf="name.errors?.['pattern']">O nome deve ter no mínimo 3 letras e
+                        não pode
+                        conter números ou caracteres especiais!</p>
                 </div>
             </div>
-            <div class="col-md-6 mb-2">
-                <div class="form-outline">
-                    <input type="text" class="form-control form-focus border-0 border-bottom border-2 w-100"
-                        placeholder="Sobrenome" formControlName="lastname" required />
-                    <div *ngIf="lastname.invalid && formDir.submitted"
-                        class="validation-warning">
-                        <p *ngIf="lastname.errors?.['required']">O sobrenome é obrigatório!</p>
-                        <p *ngIf="lastname.errors?.['pattern']">O sobrenome deve ter no mínimo 3
-                            letras e não
-                            pode conter números ou caracteres especiais!</p>
-                    </div>
+            <div class="form-outline mb-4">
+                <input type="text" class="form-focus border-0 border-bottom border-2 w-100" placeholder="Sobrenome"
+                    formControlName="lastname" required />
+                <div *ngIf="lastname.invalid && formDir.submitted" class="validation-warning">
+                    <p *ngIf="lastname.errors?.['required']">O sobrenome é obrigatório!</p>
+                    <p *ngIf="lastname.errors?.['pattern']">O sobrenome deve ter no mínimo 3
+                        letras e não
+                        pode conter números ou caracteres especiais!</p>
                 </div>
             </div>
         </div>
@@ -55,8 +53,7 @@
         <div class="form-outline mb-4">
             <input type="text" class="form-focus border-0 border-bottom border-2 w-100" placeholder="Telefone"
                 formControlName="phone" appPhoneMask />
-            <div *ngIf="phone.invalid && formDir.submitted"
-                class="validation-warning">
+            <div *ngIf="phone.invalid && formDir.submitted" class="validation-warning">
                 <p *ngIf="registerForm.get('phone')?.errors?.['required']">O telefone é obrigatório!</p>
                 <p *ngIf="registerForm.get('phone')?.errors?.['pattern']">
                     Por favor, insira um número de telefone válido no formato (XX) XXXXX-XXXX ou (XX) XXXX-XXXX.
@@ -65,40 +62,34 @@
         </div>
 
         <div class="row">
-            <div class="col-12 col-md-6 mb-4">
-                <div class="form-outline">
-                    <input type="text" class="form-focus border-0 border-bottom border-2 w-100"
-                        placeholder="Setor/Departamento" formControlName="sector" />
-                    <div *ngIf="sector.invalid && formDir.submitted"
-                        class="validation-warning">
-                        <p>O setor é obrigatório!</p>
-                    </div>
+            <div class="form-outline mb-4">
+                <input type="text" class="form-focus border-0 border-bottom border-2 w-100"
+                    placeholder="Setor/Departamento" formControlName="sector" />
+                <div *ngIf="sector.invalid && formDir.submitted" class="validation-warning">
+                    <p>O setor é obrigatório!</p>
                 </div>
             </div>
+        </div>
 
-            <div class="col-12 col-md-6 mb-4">
-                <div class="form-outline">
-                    <input type="text" class="form-focus border-0 border-bottom border-2 w-100" placeholder="Função"
-                        formControlName="occupation" />
-                    <div *ngIf="occupation.invalid && formDir.submitted"
-                        class="validation-warning">
-                        <p>A função é obrigatória!</p>
-                    </div>
-                </div>
+        <div class="form-outline mb-4">
+            <input type="text" class="form-focus border-0 border-bottom border-2 w-100" placeholder="Função"
+                formControlName="occupation" />
+            <div *ngIf="occupation.invalid && formDir.submitted" class="validation-warning">
+                <p>A função é obrigatória!</p>
             </div>
         </div>
 
         <div class="form-outline mb-4">
             <input type="text" class="form-focus border-0 border-bottom border-2 w-100"
                 placeholder="Núcleo Operacional de Origem/Agência" formControlName="nop" />
-            <div *ngIf="nop.invalid && formDir.submitted"
-                class="validation-warning">
+            <div *ngIf="nop.invalid && formDir.submitted" class="validation-warning">
                 <p>O NOP/Agência é obrigatório!</p>
             </div>
         </div>
 
         <div class="text-center pt-1 mb-4 pb-1">
-            <button [disabled]="isButtonDisabled" class="btn btn-block fa-lg bg-color-system bg-hover text-white shadow rounded-4 py-2 px-5 mx-auto"
+            <button [disabled]="isButtonDisabled"
+                class="btn btn-block fa-lg bg-color-system bg-hover text-white shadow rounded-4 py-2 px-5 mx-auto"
                 type="submit">
                 Cadastrar
             </button>
