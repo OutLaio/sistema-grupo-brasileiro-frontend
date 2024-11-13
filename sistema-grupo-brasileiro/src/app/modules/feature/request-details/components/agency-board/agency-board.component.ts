@@ -1,9 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { RequestDetailsService } from '../../services/request-details/request-details.service';
 import { I_Agency_Board_Response } from '../../../../shared/interfaces/briefing/agency-board/view/agency-board-detailed-view';
 import { I_Any_Briefing } from '../../../../shared/interfaces/briefing/any-briefing';
 import { I_Other_Route_Data } from '../../../../shared/interfaces/briefing/agency-board/view/other-route-view';
-import Swal from 'sweetalert2';
 import { StorageService } from '../../../../services/storage/storage.service';
 import { UtilsService } from '../../services/utils/utils.service';
 
