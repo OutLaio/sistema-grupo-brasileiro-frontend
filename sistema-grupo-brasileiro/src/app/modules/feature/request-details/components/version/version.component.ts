@@ -27,7 +27,6 @@ export class VersionComponent {
   ngOnInit() {
     this.getActiveProfile();
     this.sortVersions();
-    console.log(this.versions);
   }
 
   private sortVersions() {
