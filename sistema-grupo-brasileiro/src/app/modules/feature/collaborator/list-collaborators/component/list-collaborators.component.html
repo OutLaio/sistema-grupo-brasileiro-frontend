@@ -1,38 +1,27 @@
 <div class="container-fluid custom-container mt-3">
     <div class="row">
-        <div class="col-12">
-            <div *ngFor="let colaborador of collaborators" class="card mb-3 card-custom rounded-4 py-2"
-                [ngClass]="{'card-selected': isSelected(colaborador)}" (click)="selectColaborador(colaborador)">
-                <div class="card-body">
-                    <div class="row">
-                        <div class="col-12 col-md-4 d-flex align-items-center gap-2 text-center text-md-start">
-                            <img src="/assets/images/profile.png" alt="">
-                            <p class="card-text fw-semibold">{{ colaborador.nome }}</p>
-                        </div>
-                        <div class="col-12 col-md-4 text-center text-md-start">
-                            <p class="card-text fw-semibold">{{ colaborador.email }}</p>
-                        </div>
-                        <div class="col-12 col-md-4 text-center text-md-start">
-                            <p class="card-text fw-semibold">{{ colaborador.numero }}</p>
-                        </div>
+        <div *ngFor="let collaborator of collaborators" class="col-12 col-md-4 mb-3">
+            <div class="card card-custom rounded-4 py-2"
+                [ngClass]="{'card-selected': isSelected(collaborator)}" 
+                (click)="selectCollaborator(collaborator)">
+                <div class="card-body text-center">
+                    <div class="mb-3">
+                        <img src="/assets/images/profile.png" alt="Avatar" class="rounded-circle">
                     </div>
-                    <div *ngIf="colaborador === selectedColaborador" class="row pt-3 border-top mt-2">
-                        <div class="col-12 col-md-4">
-                            <p class="card-text"><strong>Função:</strong> {{ colaborador.funcao }}</p>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <p class="card-text"><strong>Setor:</strong> {{ colaborador.setor }}</p>
-                        </div>
-                        <div class="col-12 col-md-4">
-                            <p class="card-text"><strong>Agência:</strong> {{ colaborador.agencia }}</p>
-                        </div>
+                    <p class="card-text fw-semibold mb-1">{{ collaborator.name }}</p>
+                    <p class="card-text text-muted mb-3">{{ collaborator.user.email }}</p>
+                    
+                    <div *ngIf="collaborator === selectedCollaborator" class="pt-3 border-top mt-2">
+                        <p class="card-text mb-1"><strong>Telefone:</strong> {{ collaborator.phoneNumber }}</p>
+                        <p class="card-text mb-1"><strong>Função:</strong> {{ collaborator.occupation }}</p>
+                        <p class="card-text mb-1"><strong>Setor:</strong> {{ collaborator.sector }}</p>
+                        <p class="card-text"><strong>Agência:</strong> {{ collaborator.agency }}</p>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <!-- Paginator -->
     <div class="row mt-4">
         <div class="col-12">
             <mat-paginator [length]="totalElements"
