@@ -10,7 +10,10 @@
       <div class="d-flex flex-column align-items-center">
         <p class="fw-bold mb-1 text-exo">Data Prevista de Entrega</p>
         <span class="text-exo mb-0 px-3 py-2 fst-italic bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{
-          data.briefing.expectedTime | date : 'dd/MM/yyyy'}} </span>
+          data.briefing.expectedTime | date : 'dd/MM/yyyy'}}
+          <button *ngIf="!isClient()" type="button" class="btn btn-sm p-0 m-0" (click)="alterDate()"><img
+              src="/assets/icons/edit-icon.svg" alt="Editar Título" height="16px"></button>
+        </span>
       </div>
     </div>
     <div class="pe-5 mt-4 border-bottom">

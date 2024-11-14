@@ -3,7 +3,7 @@ import { AfterViewInit, Component, Input } from '@angular/core';
 import { I_Version_Data } from '../../../../shared/interfaces/project/view/version-view';
 import { I_Employee_View_Data } from '../../../../shared/interfaces/user/view/employee-view';
 import Swal from 'sweetalert2';
-import { RequestDetailsService } from '../../services/request-details.service';
+import { RequestDetailsService } from '../../services/request-details/request-details.service';
 import { I_New_Version_Request } from '../../../../shared/interfaces/project/form/new-version-form';
 import { I_Dialog_Box_Request } from '../../../../shared/interfaces/dialog-box/form/dialog-box-form';
 

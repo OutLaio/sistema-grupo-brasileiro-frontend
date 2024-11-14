@@ -1,11 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { RequestDetailsService } from '../../services/request-details.service';
+import { RequestDetailsService } from '../../services/request-details/request-details.service';
 import { I_Agency_Board_Response } from '../../../../shared/interfaces/briefing/agency-board/view/agency-board-detailed-view';
 import { I_Any_Briefing } from '../../../../shared/interfaces/briefing/any-briefing';
 import { I_Other_Route_Data } from '../../../../shared/interfaces/briefing/agency-board/view/other-route-view';
-import { I_Employee_Form_Data } from '../../../../shared/interfaces/user/form/employee-form';
-import { I_Employee_View_Data } from '../../../../shared/interfaces/user/view/employee-view';
 import Swal from 'sweetalert2';
+import { StorageService } from '../../../../services/storage/storage.service';
+import { UtilsService } from '../../services/utils/utils.service';
 
 @Component({
   selector: 'app-agency-board',
@@ -17,7 +17,10 @@ export class AgencyBoardComponent implements OnInit {
   data!: I_Agency_Board_Response;
   otherCompanies!: string[];
 
-  constructor(private service: RequestDetailsService) {}
+  constructor(
+    private storageService: StorageService,
+    private utilsService: UtilsService
+  ) {}
 
   ngOnInit() {
     this.data = this.briefing.type as I_Agency_Board_Response;
@@ -29,23 +32,14 @@ export class AgencyBoardComponent implements OnInit {
   }
 
   isClient() {
-    let employee: string | null | I_Employee_View_Data = sessionStorage.getItem('userProfile');
-    if (employee !== null) {
-      employee = JSON.parse(employee) as I_Employee_View_Data;
-      return employee?.user.profile.description === 'ROLE_CLIENT';
-    }
-    return false;
+    return this.storageService.isClient();
   }
 
   alterTitle() {
-    Swal.fire({
-      html: '<h3>Alterar Título do Projeto</h3>',
-      input: 'text',
-      inputPlaceholder: 'Novo Título',
-      showCancelButton: true,
-      confirmButtonText: 'Alterar',
-      confirmButtonColor: '#029982',
-    });
+    return this.utilsService.alterTitle(this.data.project.id);
   }
 
+  alterDate() {
+    return this.utilsService.alterDate(this.data.project.id);
+  }
 }

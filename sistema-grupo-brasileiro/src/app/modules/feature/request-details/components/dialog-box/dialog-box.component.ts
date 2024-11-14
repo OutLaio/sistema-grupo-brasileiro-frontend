@@ -8,7 +8,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { I_Dialog_Box_Response } from '../../../../shared/interfaces/dialog-box/view/dialog-box-view';
-import { RequestDetailsService } from '../../services/request-details.service';
+import { RequestDetailsService } from '../../services/request-details/request-details.service';
 import { I_Dialog_Box_Request } from '../../../../shared/interfaces/dialog-box/form/dialog-box-form';
 import { I_Employee_View_Data } from '../../../../shared/interfaces/user/view/employee-view';
 import { I_Employee_Simple_View_Data } from '../../../../shared/interfaces/user/view/employee-simple-view';

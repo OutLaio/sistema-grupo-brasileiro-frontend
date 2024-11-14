@@ -1,15 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, tap } from 'rxjs';
-import { I_Dialog_Box_Response } from '../../../shared/interfaces/dialog-box/view/dialog-box-view';
-import { I_Dialog_Box_Request } from '../../../shared/interfaces/dialog-box/form/dialog-box-form';
-import { I_Any_Briefing } from '../../../shared/interfaces/briefing/any-briefing';
-import { I_Employee_View_Data } from '../../../shared/interfaces/user/view/employee-view';
-import { I_Page } from '../../../shared/interfaces/pageable/pageable';
-import { I_Assign_Collaborator_Request } from '../../../shared/interfaces/project/form/assign-collaborator-form';
-import { I_New_Version_Request } from '../../../shared/interfaces/project/form/new-version-form';
-import { I_Version_Data } from '../../../shared/interfaces/project/view/version-view';
-import { I_Approve_Request } from '../../../shared/interfaces/project/form/approve-form';
+import { I_Dialog_Box_Response } from '../../../../shared/interfaces/dialog-box/view/dialog-box-view';
+import { I_Dialog_Box_Request } from '../../../../shared/interfaces/dialog-box/form/dialog-box-form';
+import { I_Page } from '../../../../shared/interfaces/pageable/pageable';
+import { I_Assign_Collaborator_Request } from '../../../../shared/interfaces/project/form/assign-collaborator-form';
+import { I_New_Version_Request } from '../../../../shared/interfaces/project/form/new-version-form';
+import { I_Version_Data } from '../../../../shared/interfaces/project/view/version-view';
+import { I_Approve_Request } from '../../../../shared/interfaces/project/form/approve-form';
+import { I_Alter_Title_Request } from '../../../../shared/interfaces/project/form/alter-title-form';
+import { I_Message_Success_Response } from '../../../../shared/interfaces/project/view/message-success-view';
+import { I_Alter_Date_Request } from '../../../../shared/interfaces/project/form/alter-date-form';
 
 @Injectable({
   providedIn: 'root',
@@ -64,5 +64,15 @@ export class RequestDetailsService {
   clientApproval(request: I_Approve_Request){
     const url = `${this.baseUrl}/projects/approve/client`;
     return this.http.put<I_Version_Data>(url, request, { headers: this.getHeaders() }).pipe();
+  }
+
+  updateTitle(id: string ,request: I_Alter_Title_Request) {
+    const url = `${this.baseUrl}/projects/${id}/alterTitle`;
+    return this.http.put<I_Message_Success_Response>(url, request, { headers: this.getHeaders() }).pipe();
+  }
+
+  updateDate(id: string ,request: I_Alter_Date_Request) {
+    const url = `${this.baseUrl}/projects/${id}/alterDate`;
+    return this.http.put<I_Message_Success_Response>(url, request, { headers: this.getHeaders() }).pipe();
   }
 }

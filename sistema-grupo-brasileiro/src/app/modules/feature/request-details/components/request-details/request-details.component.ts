@@ -1,7 +1,7 @@
 import { E_Briefing_Type } from './../../../../shared/enums/briefing-types';
 import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { RequestDetailsService } from '../../services/request-details.service';
+import { RequestDetailsService } from '../../services/request-details/request-details.service';
 import { I_Any_Briefing } from '../../../../shared/interfaces/briefing/any-briefing';
 
 @Component({
