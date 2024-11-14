@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { tap } from 'rxjs';
 import { LoginResponse } from '../../core/login/interface/login-response';
 import { I_Employee_View_Data } from '../../shared/interfaces/user/view/employee-view';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -10,7 +11,7 @@ import { I_Employee_View_Data } from '../../shared/interfaces/user/view/employee
 export class LoginRegisterService {
   private readonly prefix = 'http://localhost:8080/api/v1/auth';
 
-  constructor(private httpClient: HttpClient) { }
+  constructor(private router: Router, private httpClient: HttpClient) { }
 
   registerUser(
     name: string,
@@ -138,5 +139,6 @@ export class LoginRegisterService {
     sessionStorage.removeItem('auth-token');
     sessionStorage.removeItem('idUser');
     sessionStorage.clear();
+    this.router.navigate(['/login']);
   }
 }

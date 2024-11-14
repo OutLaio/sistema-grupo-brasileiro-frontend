@@ -48,6 +48,7 @@ export class DialogBoxComponent implements OnInit {
     if (this.getSessionProfile() === this.idSupervisor) {
       this.service.getAllCollaborators().subscribe((res) => {
         this.allCollaborators = res.content as Array<I_Employee_View_Data>;
+        console.log(this.allCollaborators);
       });
     }
   }

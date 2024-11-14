@@ -28,7 +28,7 @@ export class ListCollaboratorsComponent implements OnInit {
   }
 
   loadCollaborators(page: number, size: number): void {
-    this.listCollaboratorsService.getAllCollaborators(page - 1, size, 'name', 'ASC').subscribe({
+    this.listCollaboratorsService.getAllCollaborators(page - 1, size).subscribe({
       next: (response) => {
         this.collaborators = response.content;
         this.totalElements = response.totalElements;

@@ -13,15 +13,16 @@
 		<div class="d-flex justify-content-end align-items-center col-md-4 ">
 			<button class="d-flex btn-edit gap-2 rounded p-2" (click)="editProfile()">
 				<span class="text-muted">Editar Perfil</span>
-				<div class="img rounded-circle bg-success d-flex align-items-center justify-content-center" style="height: 20px; width: 20px;">
-				  <img src="/assets/icons/edit.png" alt="Icon Edit" class="img-fluid" style="height: 12px;">
+				<div class="img rounded-circle bg-success d-flex align-items-center justify-content-center"
+					style="height: 20px; width: 20px;">
+					<img src="/assets/icons/edit.png" alt="Icon Edit" class="img-fluid" style="height: 12px;">
 				</div>
-			  </button>
+			</button>
 		</div>
 	</div>
-	<hr>
-	<div class="user-data">
+	<div class="user-data mt-5">
 		<h3>Informações Pessoais</h3>
+		<hr>
 		<div class="user-data-content row">
 			<div class="info-data col-md-4">
 				<p>Nome Completo</p>
@@ -37,9 +38,9 @@
 			</div>
 		</div>
 	</div>
-	<hr>
-	<div class="professional-data">
+	<div class="professional-data mt-5">
 		<h3>Informações Profissionais</h3>
+		<hr>
 		<div class="professional-data-content row">
 			<div class="info-data col-md-4">
 				<p>Função</p>
@@ -55,15 +56,25 @@
 			</div>
 		</div>
 	</div>
-	<hr>
-	<div class="professional-data">
+	<div class="security mt-5">
 		<h3>Segurança</h3>
+		<hr>
 		<div class="professional-data-content row">
 			<div class="d-flex gap-2">
-				<button class="btn-edit text" [colorClass]="'#027373'" (click)="editPassword()">Alterar Senha</button>
-				<p class="text-muted">(Manter sua senha atualizada regularmente é uma prática importante para garantir a segurança de sua conta)</p>
+				<button class="btn-edit rounded p-2" [colorClass]="'#027373'" (click)="editPassword()">Alterar Senha</button>
+				<p class="text-muted">(Manter sua senha atualizada regularmente é uma prática importante para garantir a
+					segurança de sua conta)</p>
 			</div>
 		</div>
 	</div>
-	<hr>
+	<div class="delete-account mt-5">
+		<h3 [colorClass]="'red'" >Deletar Conta</h3>
+		<hr>
+		<div class="professional-data-content row">
+			<div class="d-flex align-items-center gap-2">
+				<button class="btn-edit rounded p-2" [colorClass]="'red'" (click)="deleteAccount()">Deletar Conta</button>
+				<p [colorClass]="'red'" >(Essa ação é irreversível, pense bem antes de realizá-la)</p>
+			</div>
+		</div>
+	</div>
 </div>

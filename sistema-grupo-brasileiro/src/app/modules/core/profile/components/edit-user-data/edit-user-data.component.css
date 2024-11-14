@@ -1,12 +1,11 @@
-.img-profile{
-  padding: 10px;
-  margin-bottom: 20px;
+.img-profile {
+    padding: 10px;
+    margin-bottom: 20px;
 }
 
-.img-profile img{
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
+.profile-img {
+    width: 5rem;
+    border-radius: 50%;
 }
 
 .bg-color-system {
@@ -17,8 +16,8 @@
     background: #ec4949;
 }
 
-.form-focus{
-  background-color: transparent;
+.form-focus {
+    background-color: transparent;
 }
 
 .form-focus:focus {
@@ -57,6 +56,7 @@
     .swap-columns .order-lg-1 {
         order: 2;
     }
+
     .swap-columns .order-lg-2 {
         order: 1;
     }

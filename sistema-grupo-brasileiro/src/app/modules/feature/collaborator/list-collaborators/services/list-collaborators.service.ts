@@ -19,7 +19,7 @@ export class ListCollaboratorsService {
       Authorization: `Bearer ${token}`,
     });
   }
-  getAllCollaborators(page: number, size: number, orderBy?: string, direction?: string) {
+  getAllCollaborators(page: number, size: number) {
     let url = `${this.apiUrl}?page=${page}&size=${size}`;
     return this.http.get<I_Page>(url, { headers: this.getHeaders() }).pipe();
   }
