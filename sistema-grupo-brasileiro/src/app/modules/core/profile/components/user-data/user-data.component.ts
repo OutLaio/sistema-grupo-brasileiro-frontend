@@ -38,6 +38,44 @@ export class UserDataComponent implements OnInit {
     this.router.navigate(['/perfil/editar']);
   }
 
+  deleteAccount() {
+  Swal.fire({
+    title: 'Deletar Conta',
+    text: 'Tem certeza de que deseja deletar sua conta? Essa ação não pode ser desfeita.',
+    icon: 'warning',
+    showDenyButton: true,
+    confirmButtonColor: '#029982', 
+    denyButtonColor: '#f44336',
+    confirmButtonText: 'Sim, deletar',
+    denyButtonText: 'Cancelar',
+    reverseButtons: true,
+  }).then((result) => {
+    if (result.isConfirmed) {
+      this.profileService
+        .deleteAccount(this.userProfile?.id)
+        .subscribe({
+          next: (value: any) => {
+            Swal.fire({
+              title: 'Conta Deletada',
+              text: 'Sua conta foi deletada com sucesso.',
+              icon: 'success',
+              showConfirmButton: false, 
+              timer: 3000, 
+              timerProgressBar: true, 
+            });
+            setTimeout(() => {
+              this.loginRegisterService.logout();
+            }, 3000);
+          },
+          error: (err: { message: HttpErrorResponse; }) => {
+            Swal.fire('Erro', `Houve um problema ao deletar sua conta: ${err.message}`, 'error');
+          }
+        });
+    }
+  });
+}
+
+
   editPassword(): void {
     Swal.fire({
       title: 'Alterar Senha',
@@ -87,7 +125,7 @@ export class UserDataComponent implements OnInit {
       }
     }).then((result) => {
       if (result.isConfirmed) {
-        const userPasswordRequest: I_Change_Password_Request = { 
+        const userPasswordRequest: I_Change_Password_Request = {
           idUser: this.userProfile?.id!,
           currentPassword: result.value!.currentPassword,
           newPassword: result.value!.newPassword,
@@ -100,7 +138,6 @@ export class UserDataComponent implements OnInit {
             },
             error: (err: { message: HttpErrorResponse; }) => {
               Swal.fire('Erro', `Erro ao alterar a senha: ${err.message}`, 'error');
-              console.log(err);
             }
           });
       }

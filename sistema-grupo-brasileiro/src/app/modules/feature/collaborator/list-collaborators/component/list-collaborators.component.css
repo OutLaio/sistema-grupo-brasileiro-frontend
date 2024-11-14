@@ -8,6 +8,10 @@
   background-color: #e5e5e5;
 }
 
+.profile-img{
+  width: 5rem;
+}
+
 .card-selected {
   background-color: #e0e0e0;
   border-left: 4px solid #027373; 

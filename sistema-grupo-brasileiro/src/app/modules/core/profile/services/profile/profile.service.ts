@@ -17,6 +17,22 @@ export class ProfileService {
     return profile ? JSON.parse(profile) : null;
   }
 
+  deleteAccount(userId?: string) {
+    const authToken = sessionStorage.getItem('auth-token');
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${authToken}`
+    });
+
+    return this.http.put(`${this.apiUrl}/${userId}/deactivate`, {},
+      {
+        headers,
+        withCredentials: true,
+        responseType: 'text'
+      }
+    );
+  }
+
   editPassword(userPasswordRequest: I_Change_Password_Request): Observable<any> {
     const authToken = sessionStorage.getItem('auth-token');
     const headers = new HttpHeaders({
@@ -24,9 +40,9 @@ export class ProfileService {
       'Authorization': `Bearer ${authToken}`
     });
 
-    return this.http.post(`${this.apiUrl}/changePassword`, userPasswordRequest, { 
-      headers, 
-      withCredentials: true, 
+    return this.http.post(`${this.apiUrl}/changePassword`, userPasswordRequest, {
+      headers,
+      withCredentials: true,
       responseType: 'text'
     });
   }
