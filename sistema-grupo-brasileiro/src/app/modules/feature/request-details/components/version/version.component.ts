@@ -6,6 +6,8 @@ import Swal from 'sweetalert2';
 import { RequestDetailsService } from '../../services/request-details/request-details.service';
 import { I_New_Version_Request } from '../../../../shared/interfaces/project/form/new-version-form';
 import { I_Dialog_Box_Request } from '../../../../shared/interfaces/dialog-box/form/dialog-box-form';
+import { StorageService } from '../../../../services/storage/storage.service';
+import { I_Any_Briefing } from '../../../../shared/interfaces/briefing/any-briefing';
 
 @Component({
   selector: 'app-version',
@@ -13,49 +15,39 @@ import { I_Dialog_Box_Request } from '../../../../shared/interfaces/dialog-box/f
   styleUrl: './version.component.css',
 })
 export class VersionComponent {
-  profile!: I_Employee_View_Data;
-
-  @Input() versions!: I_Version_Data[] | undefined;
-  @Input() idBriefing!: string | undefined;
+  // @Input() versions!: I_Version_Data[] | undefined;
+  // @Input() idBriefing!: string | undefined;
+  @Input() data: I_Any_Briefing | undefined;
 
   open = 'open';
   reject = 'reject';
   approve = 'approve';
 
-  constructor(private requestDetailsService: RequestDetailsService) {}
+  constructor(
+    private requestDetailsService: RequestDetailsService,
+    private storageService: StorageService
+  ) {}
 
   ngOnInit() {
-    this.getActiveProfile();
     this.sortVersions();
   }
 
   private sortVersions() {
-    this.versions?.sort((a, b) => {
+    this.data?.type.briefing.versions?.sort((a, b) => {
       return a.versionNumber - b.versionNumber;
     });
   }
 
-  private getActiveProfile() {
-    const employee = sessionStorage.getItem('userProfile');
-    if (employee !== null) {
-      this.profile = JSON.parse(employee) as I_Employee_View_Data;
-    }
-  }
-
-  getSessionProfile() {
-    return this.profile.user.profile.description;
-  }
-
   isSupervisor() {
-    return this.profile.user.profile.description === 'ROLE_SUPERVISOR';
+    return this.storageService.isSupervisor();
   }
 
   isCollaborator() {
-    return this.profile.user.profile.description === 'ROLE_COLLABORATOR';
+    return this.storageService.isCollaborator();
   }
 
   isClient() {
-    return this.profile.user.profile.description === 'ROLE_CLIENT';
+    return this.storageService.isClient();
   }
 
   showNewVersion() {
@@ -66,6 +58,8 @@ export class VersionComponent {
       showCancelButton: true,
       confirmButtonText: 'Salvar',
       cancelButtonText: 'Fechar',
+      confirmButtonColor: '#029982',
+      reverseButtons: true,
       inputAutoFocus: true,
       width: '40%',
       padding: '3rem',
@@ -130,7 +124,7 @@ export class VersionComponent {
     artImage: File | undefined
   ): void {
     this.requestDetailsService
-      .newVersion(this.idBriefing!, {
+      .newVersion(this.data?.type.project.id!, {
         productLink: artImage!.name,
       } as I_New_Version_Request)
       .subscribe((response) => {
@@ -143,12 +137,12 @@ export class VersionComponent {
         this.requestDetailsService
           .setNewDialogue({
             idEmployee: sessionStorage.getItem('idUser')!,
-            idBriefing: this.idBriefing,
+            idBriefing: this.data?.type.project.id,
             message:
               'Uma nova arte foi criada. Aguardando aprovação do supervisor.',
           } as I_Dialog_Box_Request)
           .subscribe();
-        this.versions!.push(response);
+        this.data?.type.briefing.versions!.push(response);
       });
   }
 
@@ -159,10 +153,10 @@ export class VersionComponent {
       reverseButtons: true,
       showCloseButton: true,
       showCancelButton: true,
+      showConfirmButton: this.isVersionOpenToMe(version) ? true : false,
       confirmButtonText: 'Salvar',
       cancelButtonText: 'Fechar',
       confirmButtonColor: '#029982',
-      focusCancel: true,
       width: '40%',
       padding: '3rem',
       preConfirm: () => {
@@ -176,29 +170,43 @@ export class VersionComponent {
           'feedback'
         ) as HTMLTextAreaElement;
 
+        const reviewInput = document.getElementById(
+          'review'
+        ) as HTMLInputElement;
+        const forceApproveInput = document.getElementById(
+          'force-approve'
+        ) as HTMLInputElement;
+
         let status: boolean | null = null;
-        let feedback = '';
+        let feedback: string | null = null;
+        let forceApprove: boolean | null = null;
 
         if (approveInput && approveInput.checked) {
           status = true;
         } else if (disapproveInput && disapproveInput.checked) {
           status = false;
-          feedback = feedbackInput.value || '';
+          feedback = feedbackInput.value;
+        } else if (reviewInput && reviewInput.checked) {
+          forceApprove = false;
+          status = false;
+        } else if (forceApproveInput && forceApproveInput.checked){
+          forceApprove = true;
+          status = true;
         }
 
-        if (status === null) {
+        if (status === null && forceApprove === null) {
           Swal.showValidationMessage(
             'Selecione se a arte foi aprovada ou não!'
           );
           return false;
-        } else if (!status && !feedback) {
+        } else if (!status && !feedback && forceApprove === null) {
           Swal.showValidationMessage(
             'Informe o feedback para a não aprovação!'
           );
           return false;
         }
 
-        return { status, feedback };
+        return { status, feedback, forceApprove };
       },
     }).then((result) => {
       if (result.isConfirmed) {
@@ -208,14 +216,16 @@ export class VersionComponent {
         const icon = result.value.status ? 'success' : 'error';
         let text = '';
         let request: I_Approve_Request = {
-          idProject: this.idBriefing!,
+          idProject: this.data?.type.project.id!,
           idVersion: version.id,
           approved: result.value.status,
-          feedback: result.value.feedback,
+          feedback: result.value.forceApprove === null ? result.value.feedback : version.feedback,
         };
-        if (this.isSupervisor()) {
+        if (this.isSupervisor() ) {
           text = result.value.status
-            ? 'Aguardando aprovação do cliente!'
+            ? result.value.forceApprove
+              ? ''
+              : 'Aguardando aprovação do cliente!'
             : 'O projeto foi retornado para desenvolvimento!';
           this.requestDetailsService
             .supervisorApproval(request)
@@ -259,7 +269,7 @@ export class VersionComponent {
   }
 
   isVersionApproved(version: I_Version_Data) {
-    return version.clientApprove === true;
+    return version.clientApprove === true && version.supervisorApprove === true;
   }
 
   isVersionDisapproved(version: I_Version_Data) {
@@ -277,7 +287,7 @@ export class VersionComponent {
 
   isVersionOpenToMe(version: I_Version_Data) {
     if (this.isSupervisor()) return version.supervisorApprove === null;
-    else if (this.isClient()) return version.clientApprove === null;
+    else if (this.isClient()) return version.clientApprove === null && version.supervisorApprove === true;
     else return false;
   }
 
@@ -310,7 +320,21 @@ export class VersionComponent {
                 <p class="d-flex small-text w-100 text-exo mb-0 px-4 py-3 bg-secondary rounded-3 text-align-start"
                   style="--bs-bg-opacity: .2;"> ${version.feedback || ''}
                 </p>
-              </div>`
+              </div>
+              ${
+                this.willForce(version)
+                ? `<div class="d-flex flex-column gap-3 align-items-end justify-content-between">
+                    <div class="d-flex align-items-center justify-content-center w-100 gap-3 py-3">
+                      <input class="in-radio" type="radio" name="approveVersion" id="review">
+                      <label class="lb" for="review">Aceitar Revisão</label>
+
+                      <input class="in-radio in-radio-reject" type="radio" name="approveVersion" id="force-approve">
+                      <label class="lb lb-reject" for="force-approve">Forçar Aprovação</label>
+                    </div>
+                  </div>`
+                : ``
+              }
+              `
               : this.isVersionOpenToMe(version)
               ? `<div class="d-flex flex-column gap-3 align-items-end justify-content-between">
                   <div class="d-flex align-items-center justify-content-center w-100 gap-3 py-3">
@@ -341,5 +365,22 @@ export class VersionComponent {
     )
       return this.reject;
     else return this.open;
+  }
+
+  isOpenToNewVersion() {
+    if(this.isCollaborator())
+      return (
+        this.data?.type.project.status === 'IN_PROGRESS' ||
+        this.data?.type.project.status === 'WAITING_APPROVAL'
+      );
+    return false;
+  }
+
+  willForce(version: I_Version_Data) {
+    return (
+      this.isSupervisor() &&
+      version.supervisorApprove === true &&
+      version.clientApprove === false
+    );
   }
 }

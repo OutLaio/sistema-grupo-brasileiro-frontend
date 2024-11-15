@@ -75,4 +75,14 @@ export class RequestDetailsService {
     const url = `${this.baseUrl}/projects/${id}/alterDate`;
     return this.http.put<I_Message_Success_Response>(url, request, { headers: this.getHeaders() }).pipe();
   }
+
+  hasProduction(id: string, hasConfection: boolean) {
+    const url = `${this.baseUrl}/projects/${id}/hasProduction?hasConfection=${hasConfection}`;
+    return this.http.put<I_Message_Success_Response>(url, null, { headers: this.getHeaders() }).pipe();
+  }
+
+  finishProject(id: string) {
+    const url = `${this.baseUrl}/projects/${id}/finish`;
+    return this.http.put(url, { headers: this.getHeaders() }).pipe();
+  }
 }
