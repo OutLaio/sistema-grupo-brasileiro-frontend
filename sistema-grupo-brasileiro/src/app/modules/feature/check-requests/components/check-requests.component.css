@@ -8,24 +8,24 @@
 
 .request-title {
     display: inline-block;
-    font-size: 11px;
+    font-size: 9px;
     background-color: #03A696;
     color: #fff;
-    padding: 1px; 
+    padding: 1px 4px; 
     border-radius: 4px; 
     max-width: 100%;
 }
 
 .request-subtitle {
-    font-size: 15px;
+    font-size: 12px;
     color: #666;
     cursor: pointer;
 }
 
 .card-custom {
-    max-width: 17em;
-    min-width: 17em;
-    height: 72vh;
+    max-width: 18vw;
+    min-width: 18vw;
+    height: 80vh;
     background-color: #F3F3F3;
     box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.3);
 }
@@ -49,11 +49,6 @@
 
 .progress {
     height: 2em;
-}
-
-.perfil-img:hover, .perfil-img:active{
-    transform: scale(1.1);
-    transition: transform 0.3s;
 }
 
 .progress-bar {
@@ -107,4 +102,27 @@
         min-width: 20em;
     }
 
+    .request-title {
+        font-size: 11px;
+        padding: 1px 4px; 
+    }
+    
+    .request-subtitle {
+        font-size: 15px;
+    }
+    
+    .card-custom { 
+        max-width: 82vw;
+        min-width: 82vw;
+        height: 80vh;
+    }
+
+}
+
+@media (min-width: 768px) and (max-width: 1160px) {
+    .card-custom { 
+        max-width: 32vw;
+        min-width: 32vw;
+        height: 80vh;
+    }
 }

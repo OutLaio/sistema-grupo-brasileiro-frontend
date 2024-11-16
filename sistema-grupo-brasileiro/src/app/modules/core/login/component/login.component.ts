@@ -32,6 +32,7 @@ export class LoginComponent implements OnInit {
 
   submit(){
     if(this.loginForm.invalid){return}
+    console.log(this.loginForm);
     this.loginService.loginUser(this.email.value, this.password.value).subscribe({
       next: () =>{
         this.toastrService.success("Login realizado com sucesso!"),
@@ -39,7 +40,7 @@ export class LoginComponent implements OnInit {
       },
       error: (value: HttpErrorResponse) =>{
         
-        this.toastrService.error(value.error),
+        this.toastrService.error(value.error.message),
         console.log(value)
       }
     })

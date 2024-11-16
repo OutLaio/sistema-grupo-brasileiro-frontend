@@ -3,7 +3,7 @@
         <div class="col-12">
             <div class="card text-black shadow-custom">
                 <div class="card-body">
-                    <div class="row pb-3 border-bottom mx-auto">
+                    <!-- <div class="row pb-3 border-bottom mx-auto">
                         <div class="col-6 text-center">
                             <button class="btn w-100 text-white"
                                 [ngClass]="{'active bg-color-menu': isFormVisible, 'text-muted': !isFormVisible}"
@@ -14,15 +14,15 @@
                                 [ngClass]="{'active bg-color-menu': !isFormVisible, 'text-muted': isFormVisible}"
                                 (click)="showList()">Verificar Colaboradores</button>
                         </div>
-                    </div>
-                    <div class="container">
-                        <div class="col-12 overflow-custom scroll-bar">
-                            <ng-container *ngIf="isFormVisible">
+                    </div> -->
+                    <div class="d-flex col-12 overflow-custom scroll-bar">
+                        <div class="col-md-4 border-end">
+                            <div class="me-3">
                                 <app-register-collaborator></app-register-collaborator>
-                            </ng-container>
-                            <ng-container *ngIf="!isFormVisible">
-                                <app-list-collaborators></app-list-collaborators>
-                            </ng-container>
+                            </div>
+                        </div>
+                        <div class="col-md-8">
+                            <app-list-collaborators></app-list-collaborators>
                         </div>
                     </div>
                 </div>

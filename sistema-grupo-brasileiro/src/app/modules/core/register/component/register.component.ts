@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginRegisterService } from '../../../services/login-register/login-register.service';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -12,16 +13,24 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
+  isButtonDisabled: boolean = false;
 
   constructor(
     private registerService: LoginRegisterService,
-    private toastrService: ToastrService
+    private toastrService: ToastrService,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
     this.registerForm = new FormGroup({
-      name: new FormControl('', [Validators.required]),
-      lastname: new FormControl('', [Validators.required]),
+      name: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[A-Za-zÀ-ÿ]{3,}( [A-Za-zÀ-ÿ]+)*$') 
+      ]),
+      lastname: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^(?:[A-Za-zÀ-ÿ]+(?: [A-Za-zÀ-ÿ]+)*){3,}$')
+      ]),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
         Validators.required,
@@ -49,7 +58,14 @@ export class RegisterComponent implements OnInit {
   get nop() { return this.registerForm.get('nop')!; }
 
   submit() {
-    if (this.registerForm.invalid) return;
+    if (this.registerForm.invalid) {
+      this.toastrService.error("Erro ao realizar o cadastro. Verifique se os campos estão preenchidos corretamente.");
+      this.isButtonDisabled = true;
+      setTimeout(() => {
+        this.isButtonDisabled = false;
+      }, 3000);
+      return;
+    }
 
     this.registerService.registerUser(
       this.name.value,
@@ -61,9 +77,15 @@ export class RegisterComponent implements OnInit {
       this.occupation.value,
       this.nop.value,
     ).subscribe({
-      next: () => this.toastrService.success("Cadastro realizado com sucesso!"),
+      next: () => {
+        this.toastrService.success("Cadastro realizado com sucesso!");
+				this.isButtonDisabled = true;
+				setTimeout(() => {
+          this.router.navigate(['/login']);
+				}, 2000);
+      },
       error: (value: HttpErrorResponse) => {
-        this.toastrService.error(value.error);
+        this.toastrService.error(value.error.message);
       }
     });
   }

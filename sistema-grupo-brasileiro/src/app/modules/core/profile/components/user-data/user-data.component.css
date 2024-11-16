@@ -2,6 +2,17 @@
   padding: 5px 0;
 }
 
+.btn-edit{
+  cursor: pointer;
+  background: none;
+  border: none;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.btn-edit:hover{
+  background-color: #d4d4d4;
+}
+
 h4, p, span {
   margin: 0;
 }
@@ -32,4 +43,24 @@ h3 {
 
 .info-data {
   margin: 5px 0;
+}
+
+.overflow-custom {
+  height: 75vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #027373;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #03A696;
 }
