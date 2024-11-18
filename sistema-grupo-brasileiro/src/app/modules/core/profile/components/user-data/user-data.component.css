@@ -2,18 +2,20 @@
   padding: 5px 0;
 }
 
-.btn-edit{
+.btn-edit {
   cursor: pointer;
   background: none;
   border: none;
   transition: background-color 0.3s ease-in-out;
 }
 
-.btn-edit:hover{
+.btn-edit:hover {
   background-color: #d4d4d4;
 }
 
-h4, p, span {
+h4,
+p,
+span {
   margin: 0;
 }
 

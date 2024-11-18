@@ -1,10 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { I_Employee_View_Data } from '../../../../shared/interfaces/user/view/employee-view';
 import { ProfileService } from '../../services/profile/profile.service';
 import { Router } from '@angular/router';
-import { LoginRegisterService } from '../../../../services/login-register/login-register.service';
+import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-edit-user-data',
@@ -19,8 +19,13 @@ export class EditUserDataComponent {
     private profileService: ProfileService,
     private toastrService: ToastrService,
     private router: Router,
-    private loginRegisterService: LoginRegisterService,
-  ) { }
+    public dialogRef: MatDialogRef<EditUserDataComponent>,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    if (data && data.userProfile) {
+      this.userProfile = data.userProfile;
+    }
+  }
 
   ngOnInit(): void {
     this.userProfile = this.profileService.getUserProfile();
@@ -72,11 +77,11 @@ export class EditUserDataComponent {
     this.profileService.updateProfileUser(this.userProfile!).subscribe((response) => {
       console.log(response);
       this.toastrService.success("Dados atualizados com sucesso!");
-      this.router.navigate(['/perfil']);
+      this.dialogRef.close(this.userProfile); 
     });
   }
 
   cancel() {
-    this.router.navigate(['/perfil']);
+    this.dialogRef.close(this.userProfile); 
   }
 }
