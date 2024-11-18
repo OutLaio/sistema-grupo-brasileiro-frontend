@@ -16,7 +16,7 @@ export class ListCollaboratorsComponent implements OnInit {
   loading: boolean = false;
   errorMessage: string = '';
   totalElements: number = 0;
-  itemsPerPage: number = 10;
+  itemsPerPage: number = 12;
   actualPage: number = 1;
 
   selectedCollaborator: any = null;

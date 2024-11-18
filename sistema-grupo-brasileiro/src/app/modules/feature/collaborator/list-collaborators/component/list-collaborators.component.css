@@ -48,8 +48,30 @@
   background-color: rgba(2, 115, 115, 0.1);
 }
 
+
+.overflow-custom {
+  height: 75vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
 @media (max-width: 768px) {
   .card-body {
     font-size: 0.9rem;
   }
+}
+
+
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #027373;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #03A696;
 }
