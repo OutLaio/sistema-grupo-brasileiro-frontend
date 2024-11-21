@@ -30,6 +30,7 @@
     position: relative;
 }
 
+
 .menu-div {
     position: sticky;
     top: 0;
@@ -44,13 +45,16 @@
     z-index: 2; 
     background-color: #fff; 
     border-radius: 10px 10px 0 0;
+    overflow-x: auto;
 }
 
 .btn-group2 {
+    display: flex;
     position: sticky;
     top: 40px;
     z-index: 1;
     background-color: #fff; 
+    overflow-x: auto;
 }
 
 .btn-radius {

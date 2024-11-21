@@ -46,6 +46,7 @@ export class AgencyBoardRequestComponent implements OnInit {
   selectedCompanies: I_Company_Briefing_Form_Data[] = [];
   selectedOthersCompanies: string[] = [];
 
+  isOtherCompanySelected = false;
   isOtherCompaniesSelected = false;
   showCompanyFields: boolean = false;
 
@@ -106,6 +107,7 @@ export class AgencyBoardRequestComponent implements OnInit {
     this.files = [];
     this.showCompanyFields = false;
     this.isSingleCompany = true;
+    this.isOtherCompanySelected = false;
     this.isOtherCompaniesSelected = false;
     this.selectedCompanies = [];
     this.selectedOthersCompanies = [];
@@ -127,6 +129,7 @@ export class AgencyBoardRequestComponent implements OnInit {
   }
 
   updateCompanyName(selectionType: number, company: string) {
+    this.isOtherCompanySelected = !this.isOtherCompanySelected;
     if (selectionType === 1) {
       this.companies = [{ name: company, companyMainRoutes: [], companyConnections: [], isCustom: false }];
     } else {
@@ -140,6 +143,7 @@ export class AgencyBoardRequestComponent implements OnInit {
   }
 
   onOtherCompany() {
+    this.isOtherCompanySelected = !this.isOtherCompanySelected;
     if (this.companies.length > 0)
       this.companies = [];
     this.agencyBoardForm.get('otherText')?.setValue('');
@@ -149,6 +153,7 @@ export class AgencyBoardRequestComponent implements OnInit {
     const otherValue = this.agencyBoardForm.get('otherText')?.value;
     this.companies = [];
     this.companies.push({ name: otherValue, companyMainRoutes: [], companyConnections: [], isCustom: true });
+    this.agencyBoardForm.get('otherText')?.reset();
   }
 
   confirmOtherSingleCompany() {
@@ -156,7 +161,9 @@ export class AgencyBoardRequestComponent implements OnInit {
     if (otherCompany && !this.companies.some(c => c.name === otherCompany)) {
       this.companies.push({ name: otherCompany, companyMainRoutes: [], companyConnections: [], isCustom: true });
       this.agencyBoardForm.get('otherText')?.reset();
+      this.isOtherCompanySelected = false;
     }
+    
   }
 
 
@@ -174,8 +181,10 @@ export class AgencyBoardRequestComponent implements OnInit {
       const companyIndex = this.companies.findIndex(company => company.name === 'Outras');
       if (companyIndex >= 0) {
         this.companies[companyIndex].name = otherValue;
+        this.agencyBoardForm.get('othersText')?.reset();
       } else {
         this.companies.push({ name: otherValue, companyMainRoutes: [], companyConnections: [], isCustom: true });
+        this.agencyBoardForm.get('othersText')?.reset();
       }
     }
   }
