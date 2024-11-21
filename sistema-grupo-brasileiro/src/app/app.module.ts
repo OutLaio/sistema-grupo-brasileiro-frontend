@@ -41,6 +41,7 @@ import { AgencyBoardRequestComponent } from './modules/feature/create-request/co
 import { LoadingFileComponent } from './modules/feature/create-request/components/loading-file/loading-file.component';
 import { DndDirective } from './modules/directives/dnd/dnd.directive.directive';
 import { SignpostRequestComponent } from './modules/feature/create-request/components/signpost-request/signpost-request.component';
+import { StickersRequestComponent } from './modules/feature/create-request/components/stickers-request/stickers-request.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { SignpostRequestComponent } from './modules/feature/create-request/compo
     DndDirective,
     SignpostRequestComponent,
     VersionComponent,
+    StickersRequestComponent,
 
   ],
   imports: [
