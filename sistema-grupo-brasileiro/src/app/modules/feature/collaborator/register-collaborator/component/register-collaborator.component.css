@@ -2,11 +2,11 @@
     background-color: #027373;
 }
 
-input{
+input {
     margin-top: .5rem;
 }
 
-.bg-color-menu{
+.bg-color-menu {
     background-color: #03A696;
 }
 
@@ -33,6 +33,32 @@ input{
 }
 
 .card-scale {
-    transform: scale(.9); 
-    transform-origin: center; 
+    transform: scale(.9);
+    transform-origin: center;
+}
+
+
+.overflow-custom {
+    height: 75vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.title-underline {
+    width: auto;
+    height: 3px;
+    background-color: #03A696;
+}
+
+::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #027373;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #03A696;
 }

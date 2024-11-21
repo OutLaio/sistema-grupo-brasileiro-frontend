@@ -42,10 +42,8 @@ export class CheckRequestsComponent implements OnInit {
   }
 
   getProjects(): void {
-    console.log("Chamando API para buscar projetos...");
     this.checkRequestServices.getProjects().subscribe({
       next: (response) => {
-        console.log("Resposta da API:", response);
         this.allProjects = response;
         this.projectsMapper(this.allProjects);
       },

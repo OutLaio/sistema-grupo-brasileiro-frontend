@@ -1,12 +1,15 @@
-.img-profile{
-  padding: 10px;
-  margin-bottom: 20px;
+.img-profile {
+    padding: 10px;
+    margin-bottom: 20px;
 }
 
-.img-profile img{
-  width: 70px;
-  height: 70px;
-  border-radius: 50%;
+.container-fluid {
+    padding-inline: 2.5rem;
+}
+
+.profile-img {
+    width: 5rem;
+    border-radius: 50%;
 }
 
 .bg-color-system {
@@ -17,8 +20,8 @@
     background: #ec4949;
 }
 
-.form-focus{
-  background-color: transparent;
+.form-focus {
+    background-color: transparent;
 }
 
 .form-focus:focus {
@@ -51,12 +54,16 @@
     .system-form {
         height: 100vh !important;
     }
+    .container-fluid {
+        padding-inline: 0 !important;
+    }
 }
 
 @media (max-width: 768px) {
     .swap-columns .order-lg-1 {
         order: 2;
     }
+
     .swap-columns .order-lg-2 {
         order: 1;
     }

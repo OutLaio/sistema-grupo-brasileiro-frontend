@@ -1,4 +1,4 @@
-<div class="container-fluid custom-container mt-3">
+<div class="container-fluid custom-container mt-3 overflow-custom scroll-bar">
     <div class="row">
         <div *ngFor="let collaborator of collaborators" class="col-12 col-md-4 mb-3">
             <div class="card card-custom rounded-4 py-2"
@@ -6,7 +6,7 @@
                 (click)="selectCollaborator(collaborator)">
                 <div class="card-body text-center">
                     <div class="mb-3">
-                        <img src="/assets/images/profile.png" alt="Avatar" class="rounded-circle">
+                        <img class="rounded-circle profile-img"  src="/assets/images/profile.png" alt="profile image">
                     </div>
                     <p class="card-text fw-semibold mb-1">{{ collaborator.name }}</p>
                     <p class="card-text text-muted mb-3">{{ collaborator.user.email }}</p>
@@ -26,7 +26,7 @@
         <div class="col-12">
             <mat-paginator [length]="totalElements"
                            [pageSize]="itemsPerPage"
-                           [pageSizeOptions]="[5, 10, 20]"
+                           [pageSizeOptions]="[6, 12, 24]"
                            (page)="onPageChange($event)">
             </mat-paginator>
         </div>

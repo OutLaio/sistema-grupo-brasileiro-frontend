@@ -6,6 +6,8 @@ import Swal from 'sweetalert2';
 import { ProfileService } from '../../services/profile/profile.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { I_Change_Password_Request } from '../../../../shared/interfaces/auth/form/password-form';
+import { MatDialog } from '@angular/material/dialog';
+import { EditUserDataComponent } from '../edit-user-data/edit-user-data.component';
 
 @Component({
   selector: 'app-user-data',
@@ -25,7 +27,8 @@ export class UserDataComponent implements OnInit {
   constructor(
     private profileService: ProfileService,
     private loginRegisterService: LoginRegisterService,
-    private router: Router
+    private router: Router,
+    private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
@@ -34,9 +37,59 @@ export class UserDataComponent implements OnInit {
     this.userRole = this.roleMapping[role] || '';
   }
 
-  editProfile() {
-    this.router.navigate(['/perfil/editar']);
+  editProfile(): void {
+    const dialogRef = this.dialog.open(EditUserDataComponent, {
+      width: '1200px',
+      height: '600px',
+      data: {
+        userProfile: this.userProfile
+      }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        console.log('Modal fechado com dados:', result);
+      }
+    });
   }
+
+  deleteAccount() {
+    Swal.fire({
+      title: 'Deletar Conta',
+      text: 'Tem certeza de que deseja deletar sua conta? Essa ação não pode ser desfeita.',
+      icon: 'warning',
+      showDenyButton: true,
+      denyButtonColor: '#f15649',
+      confirmButtonColor: '#029982',
+      confirmButtonText: 'Sim, deletar',
+      denyButtonText: 'Cancelar',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.profileService
+          .deleteAccount(this.userProfile?.id)
+          .subscribe({
+            next: (value: any) => {
+              Swal.fire({
+                title: 'Conta Deletada',
+                text: 'Sua conta foi deletada com sucesso.',
+                icon: 'success',
+                showConfirmButton: false,
+                timer: 3000,
+                timerProgressBar: true,
+              });
+              setTimeout(() => {
+                this.loginRegisterService.logout();
+              }, 3000);
+            },
+            error: (err: { message: HttpErrorResponse; }) => {
+              Swal.fire('Erro', `Houve um problema ao deletar sua conta: ${err.message}`, 'error');
+            }
+          });
+      }
+    });
+  }
+
+
 
   editPassword(): void {
     Swal.fire({
@@ -54,7 +107,8 @@ export class UserDataComponent implements OnInit {
         `<input type="password" id="confirmPassword" class="swal2-input" placeholder="Repetir Nova Senha">`,
       focusConfirm: false,
       confirmButtonText: 'Confirmar',
-      confirmButtonColor: '#027373',
+      confirmButtonColor: '#029982',
+      denyButtonColor: '#f15649',
       denyButtonText: 'Cancelar',
       showDenyButton: true,
       didOpen: () => {
@@ -87,7 +141,7 @@ export class UserDataComponent implements OnInit {
       }
     }).then((result) => {
       if (result.isConfirmed) {
-        const userPasswordRequest: I_Change_Password_Request = { 
+        const userPasswordRequest: I_Change_Password_Request = {
           idUser: this.userProfile?.id!,
           currentPassword: result.value!.currentPassword,
           newPassword: result.value!.newPassword,
@@ -100,7 +154,6 @@ export class UserDataComponent implements OnInit {
             },
             error: (err: { message: HttpErrorResponse; }) => {
               Swal.fire('Erro', `Erro ao alterar a senha: ${err.message}`, 'error');
-              console.log(err);
             }
           });
       }

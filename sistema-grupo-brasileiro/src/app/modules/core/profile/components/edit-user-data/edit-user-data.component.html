@@ -1,11 +1,9 @@
-<section class="">
-
+<section class="container-fluid">
   <div class="row d-flex justify-content-center align-items-center h-100">
     <div class="row g-0 swap-columns">
-
       <div class="card-body p-md-3 mx-md-4">
-        <div class="img-profile text-center">
-          <img src="/assets/images/profile.png" width="70px" alt="Profile Image">
+        <div class="text-center">
+          <img class="profile-img my-5" src="/assets/images/profile.png" alt="profile Image">
         </div>
         <form (ngSubmit)="submit()" [formGroup]="editForm" #formDir="ngForm">
           <div class="row">
@@ -36,7 +34,7 @@
 
           <div class="form-outline mb-4">
             <input type="text" class="form-focus border-0 border-bottom border-2 w-100" placeholder="Telefone"
-              formControlName="phone" required />
+              formControlName="phone" required appPhoneMask />
             <div *ngIf="phone.invalid && formDir.submitted" class="validation-warning">
               <p *ngIf="phone.errors?.['required']">O telefone é obrigatório!</p>
               <p *ngIf="phone.errors?.['pattern']">Por favor, insira um número de telefone válido no formato
@@ -69,8 +67,7 @@
 
           <div class="form-outline mb-4">
             <input type="text" class="form-focus border-0 border-bottom border-2 w-100"
-              placeholder="Núcleo Operacional de Origem/Agência" formControlName="nop"
-              required />
+              placeholder="Núcleo Operacional de Origem/Agência" formControlName="nop" required />
             <div *ngIf="nop.invalid && formDir.submitted" class="validation-warning">
               <p>O NOP/Agência é obrigatório!</p>
             </div>

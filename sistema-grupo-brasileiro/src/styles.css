@@ -52,6 +52,10 @@
   color: #ffffff;
 }
 
+.mdc-dialog--open .mat-mdc-dialog-surface,
+.mdc-dialog--closing .mat-mdc-dialog-surface {
+  overflow: hidden !important;
+}
 
 .lb-reject {
   color: #db6b6b;
@@ -70,9 +74,17 @@
   background-color: #db6b6b;
 }
 
-
-@media (min-width: 768px) and (max-width: 1366px) {
+@media (min-width: 768px) and (max-width: 1280px) {
   * {
     font-size: 13px !important;
+  }
+  
+}
+
+@media (max-width: 1280px) {
+  .mdc-dialog--open .mat-mdc-dialog-surface,
+  .mdc-dialog--closing .mat-mdc-dialog-surface {
+    width: 600px !important;
+    height: 800px !important;
   }
 }

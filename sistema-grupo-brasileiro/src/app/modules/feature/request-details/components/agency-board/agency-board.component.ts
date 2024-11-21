@@ -19,7 +19,6 @@ export class AgencyBoardComponent implements OnInit {
   ngOnInit() {
     this.data = this.briefing.type as I_Agency_Board_Response;
     this.otherCompanies = this.data.briefing.otherCompanies?.split(', ') || [];
-    console.log(this.data)
   }
 
   getCities(route: I_Other_Route_Data) {
