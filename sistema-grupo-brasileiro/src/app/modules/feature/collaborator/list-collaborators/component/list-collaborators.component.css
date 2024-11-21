@@ -20,10 +20,11 @@
 .card-body {
   transition: height 0.5s ease;
   max-height: auto;
+  min-height: 15rem !important;
 }
 
 .card-selected .card-body {
-  max-height: 300px;
+  max-height: auto;
 }
 
 .card-custom {
