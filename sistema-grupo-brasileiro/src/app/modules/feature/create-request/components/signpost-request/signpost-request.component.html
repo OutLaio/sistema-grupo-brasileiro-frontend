@@ -54,23 +54,23 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-9">
-                <div class="form-group pt-3 ms-5">
+            <div class="col-12 col-md-9 mt-3 mt-md-0">
+                <div class="form-group pt-3 ms-md-5">
                     <div class="title">
                         <p class="fw-bold">Material *</p>
                     </div>
                     <div class="d-flex flex-column">
-                        <div class="form-check">
+                        <div class="form-check mb-2">
                             <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="aluminio"
                                 required formControlName="boardType" value="1">
-                            <label class="form-check-label" for="aluminio">Aluminio</label>
+                            <label class="form-check-label" for="aluminio">Alumínio</label>
                         </div>
-                        <div class="form-check">
+                        <div class="form-check mb-2">
                             <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="Polietileno"
                                 required formControlName="boardType" value="2">
                             <label class="form-check-label" for="Polietileno">Polietileno</label>
                         </div>
-                        <div *ngIf="signPostForm.get('boardType')?.invalid  && formDir.submitted"
+                        <div *ngIf="signPostForm.get('boardType')?.invalid && formDir.submitted"
                             class="validation-warning">
                             <p>Selecione o material da placa</p>
                         </div>

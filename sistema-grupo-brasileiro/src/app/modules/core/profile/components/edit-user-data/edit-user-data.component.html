@@ -34,7 +34,7 @@
 
           <div class="form-outline mb-4">
             <input type="text" class="form-focus border-0 border-bottom border-2 w-100" placeholder="Telefone"
-              formControlName="phone" required />
+              formControlName="phone" required appPhoneMask />
             <div *ngIf="phone.invalid && formDir.submitted" class="validation-warning">
               <p *ngIf="phone.errors?.['required']">O telefone é obrigatório!</p>
               <p *ngIf="phone.errors?.['pattern']">Por favor, insira um número de telefone válido no formato

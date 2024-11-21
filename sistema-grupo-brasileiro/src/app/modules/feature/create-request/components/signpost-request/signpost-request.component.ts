@@ -86,8 +86,10 @@ export class SignpostRequestComponent implements OnInit {
       const companyIndex = this.selectedCompanies.findIndex(company => company.name === 'Outras');
       if (companyIndex >= 0) {
         this.selectedCompanies[companyIndex].name = otherValue;
+        this.signPostForm.get('othersText')?.reset();
       } else {
         this.selectedCompanies.push({ name: otherValue, isCustom: true });
+        this.signPostForm.get('othersText')?.reset();
       }
     }
   }
@@ -99,7 +101,6 @@ export class SignpostRequestComponent implements OnInit {
         name: otherCompany,
         isCustom: true
       });
-      this.signPostForm.get('othersText')?.reset();
       this.isOtherCompaniesSelected = false;
     }
   }

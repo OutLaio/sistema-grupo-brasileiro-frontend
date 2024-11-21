@@ -29,7 +29,7 @@
 
         <div class="form-outline mb-4">
             <input type="email" class="form-focus border-0 border-bottom border-2 w-100" placeholder="E-mail"
-                formControlName="email" />
+                formControlName="email" autocomplete="off" required />
             <div *ngIf="email.invalid && (registerForm.get('email')?.touched || formDir.submitted)"
                 class="validation-warning">
                 <p *ngIf="registerForm.get('email')?.errors?.['required']">O email é obrigatório!</p>
@@ -39,7 +39,7 @@
 
         <div class="form-outline mb-4">
             <input type="password" class="form-focus border-0 border-bottom border-2 w-100" placeholder="Senha"
-                formControlName="password" />
+                formControlName="password" autocomplete="new-password" required />
             <div *ngIf="password.invalid && (registerForm.get('password')?.touched || formDir.submitted)"
                 class="validation-warning">
                 <p *ngIf="registerForm.get('password')?.errors?.['required']">A senha é obrigatória!</p>

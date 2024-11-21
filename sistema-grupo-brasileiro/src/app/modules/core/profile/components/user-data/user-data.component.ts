@@ -59,11 +59,10 @@ export class UserDataComponent implements OnInit {
       text: 'Tem certeza de que deseja deletar sua conta? Essa ação não pode ser desfeita.',
       icon: 'warning',
       showDenyButton: true,
+      denyButtonColor: '#f15649',
       confirmButtonColor: '#029982',
-      denyButtonColor: '#f44336',
       confirmButtonText: 'Sim, deletar',
       denyButtonText: 'Cancelar',
-      reverseButtons: true,
     }).then((result) => {
       if (result.isConfirmed) {
         this.profileService
@@ -108,7 +107,8 @@ export class UserDataComponent implements OnInit {
         `<input type="password" id="confirmPassword" class="swal2-input" placeholder="Repetir Nova Senha">`,
       focusConfirm: false,
       confirmButtonText: 'Confirmar',
-      confirmButtonColor: '#027373',
+      confirmButtonColor: '#029982',
+      denyButtonColor: '#f15649',
       denyButtonText: 'Cancelar',
       showDenyButton: true,
       didOpen: () => {
