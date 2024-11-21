@@ -40,7 +40,7 @@ export class UserDataComponent implements OnInit {
   editProfile(): void {
     const dialogRef = this.dialog.open(EditUserDataComponent, {
       width: '1200px',
-      height: '800px',
+      height: '600px',
       data: {
         userProfile: this.userProfile
       }

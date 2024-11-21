@@ -1,9 +1,9 @@
 <div class="px-3 overflow-custom scroll-bar">
     <form (ngSubmit)="submit()" [formGroup]="registerForm" #formDir="ngForm">
         <div class="container text-center title my-2">
-            <h3>Cadastrar Colaborador</h3>
+            <h4 [colorClass]="'#027373'">Cadastrar</h4>
+            <hr class="title-underline rounded mx-auto">
         </div>
-        <hr>
         <div class="row">
             <div class="form-outline mb-4">
                 <input type="text" class="form-focus border-0 border-bottom border-2 w-100" placeholder="Nome"
