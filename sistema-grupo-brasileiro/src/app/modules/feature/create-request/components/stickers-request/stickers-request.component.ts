@@ -12,14 +12,13 @@ enum Company {
   'Cidade Real' = 5,
   'Pauma' = 6,
 }
-
 @Component({
-  selector: 'app-signpost-request',
-  templateUrl: './signpost-request.component.html',
-  styleUrl: './signpost-request.component.css'
+  selector: 'app-stickers-request',
+  templateUrl: './stickers-request.component.html',
+  styleUrl: './stickers-request.component.css'
 })
-export class SignpostRequestComponent implements OnInit {
-  signPostForm!: FormGroup;
+export class StickersRequestComponent implements OnInit {
+  stickersForm!: FormGroup;
   isButtonDisabled: boolean = false;
 
   isSingleCompany: boolean = true;
@@ -30,32 +29,42 @@ export class SignpostRequestComponent implements OnInit {
   isOtherCompaniesSelected = false;
 
 
-  constructor(private fb: FormBuilder, private signpostService: CreateRequestService, private toastrService: ToastrService) {  }
+  constructor(private fb: FormBuilder, private createRequestService: CreateRequestService, private toastrService: ToastrService) { }
 
   ngOnInit(): void {
-    this.signPostForm = new FormGroup({
+    this.stickersForm = new FormGroup({
       description: new FormControl('', [Validators.required]),
-      signLocation: new FormControl('', [Validators.required]),
       width: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
       height: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
+      stickerType: new FormControl('', [Validators.required]),
+      stickerInformationType: new FormControl('', [Validators.required]),
       selectedCompany: new FormControl('', [Validators.required]),
       sector: new FormControl('', [Validators.required]),
       othersText: new FormControl(''),
-      boardType: new FormControl('', [Validators.required]),
+      observations: new FormControl('', [Validators.required]),
+    });
+    this.stickersForm.get('stickerType')?.valueChanges.subscribe(value => {
+      if (value === '2') {
+        this.stickersForm.get('stickerInformationType')?.setValidators([Validators.required]);
+      } else {
+        this.stickersForm.get('stickerInformationType')?.clearValidators();
+      }
+      this.stickersForm.get('stickerInformationType')?.updateValueAndValidity();
     });
   }
 
-  get width() { return this.signPostForm.get('width')!; }
-  get height() { return this.signPostForm.get('height')!; }
-  get description() { return this.signPostForm.get('description')!; }
-  get signLocation() { return this.signPostForm.get('signLocation')!; }
-  get sector() { return this.signPostForm.get('sector')!; }
-  get boardType() { return this.signPostForm.get('boardType')!; }
-  get othersText() { return this.signPostForm.get('othersText')!; }
-  get selectedCompany() { return this.signPostForm.get('selectedCompany')!; }
+  get width() { return this.stickersForm.get('width')!; }
+  get height() { return this.stickersForm.get('height')!; }
+  get stickerType() { return this.stickersForm.get('stickerType')!; }
+  get description() { return this.stickersForm.get('description')!; }
+  get observations() { return this.stickersForm.get('observations')!; }
+  get sector() { return this.stickersForm.get('sector')!; }
+  get stickerInformationType() { return this.stickersForm.get('stickerInformationType')!; }
+  get othersText() { return this.stickersForm.get('othersText')!; }
+  get selectedCompany() { return this.stickersForm.get('selectedCompany')!; }
 
   clearForm() {
-    this.signPostForm.reset();
+    this.stickersForm.reset();
     this.selectedCompanies = [];
   }
 
@@ -75,27 +84,27 @@ export class SignpostRequestComponent implements OnInit {
   onOthersCompanies() {
     this.isOtherCompaniesSelected = !this.isOtherCompaniesSelected;
     if (!this.isOtherCompaniesSelected) {
-      this.signPostForm.get('othersText')?.setValue('');
+      this.stickersForm.get('othersText')?.setValue('');
       this.selectedCompanies = this.selectedCompanies.filter(company => company.name !== 'Outras');
     }
   }
 
   updateOthersCompanies() {
-    const otherValue = this.signPostForm.get('othersText')?.value;
+    const otherValue = this.stickersForm.get('othersText')?.value;
     if (otherValue) {
       const companyIndex = this.selectedCompanies.findIndex(company => company.name === 'Outras');
       if (companyIndex >= 0) {
         this.selectedCompanies[companyIndex].name = otherValue;
-        this.signPostForm.get('othersText')?.reset();
+        this.stickersForm.get('othersText')?.reset();
       } else {
         this.selectedCompanies.push({ name: otherValue, isCustom: true });
-        this.signPostForm.get('othersText')?.reset();
+        this.stickersForm.get('othersText')?.reset();
       }
     }
   }
 
   confirmOtherMultiCompany() {
-    const otherCompany = this.signPostForm.get('othersText')?.value;
+    const otherCompany = this.stickersForm.get('othersText')?.value;
     if (otherCompany && !this.selectedCompanies.some(c => c.name === otherCompany)) {
       this.selectedCompanies.push({
         name: otherCompany,
@@ -131,14 +140,15 @@ export class SignpostRequestComponent implements OnInit {
 
   submit() {
     this.saveCompanies(this.selectedCompanies);
-    const boardType = this.signPostForm.get('boardType')?.value;
-    const boardLocation = this.signPostForm.get('signLocation')?.value;
-    const sector = this.signPostForm.get('sector')?.value;
-    const description = this.signPostForm.get('description')?.value;
-    const height = this.signPostForm.get('height')?.value;
-    const width = this.signPostForm.get('width')?.value;
+    const stickerType = this.stickersForm.get('stickerType')?.value;
+    const stickerInformationType = this.stickersForm.get('stickerInformationType')?.value;
+    const sector = this.stickersForm.get('sector')?.value;
+    const description = this.stickersForm.get('description')?.value;
+    const height = this.stickersForm.get('height')?.value;
+    const width = this.stickersForm.get('width')?.value;
+    const observations = this.stickersForm.get('observations')?.value;
 
-    if (this.signPostForm.invalid) {
+    if (this.stickersForm.invalid) {
       this.toastrService.error("Erro ao realizar solicitação. Verifique se os campos estão preenchidos corretamente.");
       this.isButtonDisabled = true;
       setTimeout(() => {
@@ -147,15 +157,16 @@ export class SignpostRequestComponent implements OnInit {
       return;
     }
 
-    this.signpostService.submitSignpostRequest(
+    this.createRequestService.submitStickersRequest(
       this.sendCompanies,
       this.sendOthersCompanies,
-      boardType,
-      boardLocation,
+      stickerType,
+      stickerInformationType,
       sector,
       description,
       height,
       width,
+      observations,
     ).subscribe({
       next: (response) => {
         this.toastrService.success("Solicitação realizada com sucesso!");
