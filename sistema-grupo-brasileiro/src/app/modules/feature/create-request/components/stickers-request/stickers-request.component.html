@@ -1,30 +1,17 @@
 <div class="conatiner d-flex flex-column p-3 mb-4 scroll-bar overflow-custom">
-    <form [formGroup]="signPostForm" (ngSubmit)="submit()" #formDir="ngForm">
+    <form [formGroup]="stickersForm" (ngSubmit)="submit()" #formDir="ngForm">
         <div class="row pb-4">
-            <div class="form-group pt-3">
-                <label class="fw-bold" for="signLocation">Local da Placa *</label>
-                <textarea [backgroundColorClass]="'#ebebeb'" id="signLocation" required formControlName="signLocation"
-                    type="text" class="form-control border-dark-subtle rounded-3 form-focus"
-                    placeholder="Escreva a localização da placa"></textarea>
+            <div class="col-12 col-md-9">
+                <div class="form-group pt-3">
+                    <label class="fw-bold" for="description">Descrição Detalhada*</label>
+                    <textarea [backgroundColorClass]="'#ebebeb'" id="description" required formControlName="description"
+                        type="text" class="form-control border-dark-subtle rounded-3 form-focus"
+                        placeholder="Escreva a descrição da solicitação"></textarea>
+                </div>
+                <div *ngIf="description.invalid && formDir.submitted" class="validation-warning">
+                    <p>A descrição da solicitação é obrigatória. Escreva uma breve descrição da placa.</p>
+                </div>
             </div>
-            <div *ngIf="signLocation.invalid && formDir.submitted" class="validation-warning">
-                <p>Por favor, informe o local onde a placa será instalada</p>
-            </div>
-        </div>
-
-        <div class="row pb-4">
-            <div class="form-group pt-3">
-                <label class="fw-bold" for="description">Descrição *</label>
-                <textarea [backgroundColorClass]="'#ebebeb'" id="description" required formControlName="description"
-                    type="text" class="form-control border-dark-subtle rounded-3 form-focus"
-                    placeholder="Escreva a descrição da solicitação"></textarea>
-            </div>
-            <div *ngIf="description.invalid && formDir.submitted" class="validation-warning">
-                <p>A descrição da solicitação é obrigatória. Escreva uma breve descrição da placa.</p>
-            </div>
-        </div>
-
-        <div class="row pb-4 pt-2 border-bottom">
             <div class="col-12 col-md-3">
                 <div class="form-group pt-3">
                     <label class="fw-bold">Medida *</label>
@@ -54,25 +41,49 @@
                     </div>
                 </div>
             </div>
-            <div class="col-12 col-md-9 mt-3 mt-md-0">
-                <div class="form-group pt-3 ms-md-5">
-                    <div class="title">
-                        <p class="fw-bold">Material *</p>
+        </div>
+
+        <div class="row pb-4 pt-2 border-bottom">
+            <div class="row pb-4 pt-2 border-bottom">
+                <div class="col-12 col-md-3">
+                    <div class="form-group pt-3">
+                        <label class="fw-bold" for="stickerType">Adesivo *</label>
+                        <select [backgroundColorClass]="'#ebebeb'" id="stickerType"
+                            class="form-select border-dark-subtle rounded-3 form-focus w-100"
+                            formControlName="stickerType">
+                            <option value="1">Plotagem de veículos</option>
+                            <option value="2">Adesivos informativos</option>
+                        </select>
                     </div>
-                    <div class="d-flex flex-column">
-                        <div class="form-check mb-2">
-                            <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="aluminio"
-                                required formControlName="boardType" value="1">
-                            <label class="form-check-label" for="aluminio">Alumínio</label>
+                    <div *ngIf="stickerType.invalid  && formDir.submitted" class="validation-warning">
+                        <p>Selecione qual o modelo do adesivo</p>
+                    </div>
+                </div>
+                <div *ngIf="stickerType.value === '2'" class="col-12 col-md-9">
+                    <div class="form-group pt-3">
+                        <div class="title">
+                            <p class="fw-bold">Tipo *</p>
                         </div>
-                        <div class="form-check mb-2">
-                            <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="Polietileno"
-                                required formControlName="boardType" value="2">
-                            <label class="form-check-label" for="Polietileno">Polietileno</label>
+                        <div class="d-flex flex-wrap">
+                            <div class="form-check me-3 mb-2">
+                                <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="leitoso"
+                                    formControlName="stickerInformationType" value="1">
+                                <label class="form-check-label" for="leitoso">Leitoso</label>
+                            </div>
+                            <div class="form-check me-3 mb-2">
+                                <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="jateado"
+                                    formControlName="stickerInformationType" value="2">
+                                <label class="form-check-label" for="jateado">Jateado</label>
+                            </div>
+                            <div class="form-check me-3 mb-2">
+                                <input [borderColorClass]="'#027373'" class="form-check-input" type="radio"
+                                    id="perfurado" formControlName="stickerInformationType" value="3">
+                                <label class="form-check-label" for="perfurado">Perfurado</label>
+                            </div>
                         </div>
-                        <div *ngIf="signPostForm.get('boardType')?.invalid && formDir.submitted"
+                        <div *ngIf="stickerType.value === '2' && stickerInformationType.invalid && formDir.submitted"
                             class="validation-warning">
-                            <p>Selecione o material da placa</p>
+                            <p>Selecione o tipo do adesivo</p>
                         </div>
                     </div>
                 </div>
@@ -167,6 +178,14 @@
             </div>
             <div *ngIf="sector.invalid  && formDir.submitted" class="validation-warning">
                 <p>Por favor, informe o setor.</p>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="form-group pt-3 w-100 py-3">
+                <label class="fw-bold" for="observations">Observações *</label>
+                <textarea [backgroundColorClass]="'#ebebeb'" id="observations" formControlName="observations" type="text"
+                    class="form-control border-dark-subtle rounded-3 form-focus" placeholder="Escreva aqui" required></textarea>
             </div>
         </div>
 

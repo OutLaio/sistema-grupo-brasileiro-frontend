@@ -13,7 +13,25 @@ export class CreateRequestService {
   private readonly apiUrl = 'http://localhost:8080/api/v1';
 
   constructor(private http: HttpClient) { }
+  submitAgencyBoardRequest(
+    projectForm: I_Project_Request,
+    briefingForm: I_Briefing_Request,
+    bAgencyBoardsForm: I_Agency_Board_Data
+  ): Observable<any> {
+    const authToken = sessionStorage.getItem('auth-token');
+    const requestBody = {
+      projectForm, briefingForm, bAgencyBoardsForm
+    };
 
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${authToken}`
+    });
+
+    return this.http.post(`${this.apiUrl}/agency-boards`, requestBody, { headers, withCredentials: true });
+  }
+
+  
   submitSignpostRequest(
     sendCompanies: number[],
     sendOthersCompanies: string[],
@@ -32,7 +50,7 @@ export class CreateRequestService {
         title: 'Placa de Sinalização'
       },
       briefing: {
-        expected_date: '2023-10-25',
+        expected_date: '',
         detailed_description: description,
         companies: sendCompanies.map(id => ({ id_company: id })),
         otherCompany: sendOthersCompanies.join(', '),
@@ -57,14 +75,41 @@ export class CreateRequestService {
     return this.http.post(`${this.apiUrl}/signposts`, requestBody, { headers, withCredentials: true });
   }
 
-  submitAgencyBoardRequest(
-    projectForm: I_Project_Request,
-    briefingForm: I_Briefing_Request,
-    bAgencyBoardsForm: I_Agency_Board_Data
+  submitStickersRequest(
+    sendCompanies: number[],
+    sendOthersCompanies: string[],
+    stickerType: number,
+    stickerTypeInformation: number,
+    sector: string,
+    description: string,
+    height: number,
+    width: number,
+    observations: string,
   ): Observable<any> {
+    const idUser = sessionStorage.getItem('idUser');
     const authToken = sessionStorage.getItem('auth-token');
     const requestBody = {
-      projectForm, briefingForm, bAgencyBoardsForm
+      project: {
+        id_client: Number(idUser),
+        title: 'Adesivos'
+      },
+      briefing: {
+        expectedDate: '',
+        detailedDescription: description,
+        companies: sendCompanies.map(id => ({ id_company: id })),
+        otherCompany: sendOthersCompanies.join(', '),
+        idBriefingType: '3',
+        measurement: {
+          height: height,
+          length: width
+        }
+      },
+      sticker: {
+        idStickerType: stickerType,
+        idStickerInformationType: stickerTypeInformation,
+        sector: sector,
+        observations: observations
+      }
     };
 
     const headers = new HttpHeaders({
@@ -72,6 +117,7 @@ export class CreateRequestService {
       'Authorization': `Bearer ${authToken}`
     });
 
-    return this.http.post(`${this.apiUrl}/agency-boards`, requestBody, { headers, withCredentials: true });
+    return this.http.post(`${this.apiUrl}/stickers`, requestBody, { headers, withCredentials: true });
   }
+
 }
