@@ -1,4 +1,4 @@
-import { ProjectStatus } from "../../../../feature/check-requests/enums/project-status";
+import { ProjectStatus } from "../../../enums/project-status";
 
 export interface I_Project_Request {
   idClient: string;

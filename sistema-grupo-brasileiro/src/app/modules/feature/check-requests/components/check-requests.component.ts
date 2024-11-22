@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { LoginRegisterService } from '../../../services/login-register/login-register.service';
-import { CardsAttributes } from '../interfaces/cards-attributes';
 import { CheckRequestsService } from '../services/check-requests.service';
-import { ProjectStatus } from '../enums/project-status';
 import { Router } from '@angular/router';
+import { StorageService } from '../../../services/storage/storage.service';
+import { I_Project_Data } from '../../../shared/interfaces/project/view/project-view';
 
 @Component({
   selector: 'app-check-requests',
@@ -13,19 +13,19 @@ import { Router } from '@angular/router';
 export class CheckRequestsComponent implements OnInit {
   userRole: number | undefined;
 
-  allProjects: CardsAttributes[] = [];
-  toDoCards: CardsAttributes[] = [];
-  inProgressCards: CardsAttributes[] = [];
-  awaitingApprovalCards: CardsAttributes[] = [];
-  approvedCards: CardsAttributes[] = [];
-  inProductionCards: CardsAttributes[] = [];
-  completedCards: CardsAttributes[] = [];
-  standByCards: CardsAttributes[] = [];
+  allProjects: I_Project_Data[] = [];
+  toDoCards: I_Project_Data[] = [];
+  inProgressCards: I_Project_Data[] = [];
+  awaitingApprovalCards: I_Project_Data[] = [];
+  approvedCards: I_Project_Data[] = [];
+  inProductionCards: I_Project_Data[] = [];
+  completedCards: I_Project_Data[] = [];
+  standByCards: I_Project_Data[] = [];
   errorMessage: string = '';
 
   constructor(
-    private loginRegisterService: LoginRegisterService,
     private checkRequestServices: CheckRequestsService,
+    private storageService: StorageService,
     private router: Router,
   ) { }
 
@@ -36,7 +36,7 @@ export class CheckRequestsComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    const role = this.loginRegisterService.getUserRole() ?? "";
+    const role = this.storageService.getUserRole() ?? "";
     this.userRole = this.roleMapping[role];
     this.getProjects();
   }
@@ -44,7 +44,7 @@ export class CheckRequestsComponent implements OnInit {
   getProjects(): void {
     this.checkRequestServices.getProjects().subscribe({
       next: (response) => {
-        this.allProjects = response;
+        this.allProjects = response.data!;
         this.projectsMapper(this.allProjects);
       },
       error: (error) => {
@@ -54,7 +54,7 @@ export class CheckRequestsComponent implements OnInit {
     });
   }
 
-  private projectsMapper(allProjects: CardsAttributes[]): void {
+  private projectsMapper(allProjects: I_Project_Data[]): void {
     this.toDoCards = allProjects.filter(project => project.status === 'TO_DO').map(project => ({ ...project, isTruncated: true }));
     this.inProgressCards = allProjects.filter(project => project.status === 'IN_PROGRESS').map(project => ({ ...project, isTruncated: true }));
     this.awaitingApprovalCards = allProjects.filter(project => project.status === 'WAITING_APPROVAL').map(project => ({ ...project, isTruncated: true }));
@@ -66,7 +66,7 @@ export class CheckRequestsComponent implements OnInit {
 
   isTruncated: boolean = true;
 
-  toggleTruncate(item: CardsAttributes): void {
+  toggleTruncate(item: I_Project_Data): void {
     item.isTruncated = !item.isTruncated;
   }
 

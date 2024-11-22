@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SidebarService } from '../../../services/sidebar/sidebar.service';
-import { LoginRegisterService } from '../../../services/login-register/login-register.service';
+import { StorageService } from '../../../services/storage/storage.service';
 
 @Component({
   selector: 'app-header',
@@ -11,12 +11,13 @@ export class HeaderComponent {
 
   userName: string = "";
 
-  constructor(private sidebarService: SidebarService,
-     private loginRegisterService: LoginRegisterService
+  constructor(
+    private sidebarService: SidebarService,
+    private storageService: StorageService
   ){}
 
   ngOnInit(): void {
-    this.userName = this.loginRegisterService.getUserName() || '';
+    this.userName = this.storageService.getUserFullName() || '';
   }
 
   toggleSidebar() {

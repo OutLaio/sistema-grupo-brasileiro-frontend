@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { SidebarService } from '../../../services/sidebar/sidebar.service';
 import { Router } from '@angular/router';
 import { LoginRegisterService } from '../../../services/login-register/login-register.service';
+import { StorageService } from '../../../services/storage/storage.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -14,14 +15,15 @@ export class SidenavComponent implements OnInit {
 
   constructor(
     private sidebarService: SidebarService,
+    private storageService: StorageService,
     private router: Router,
-    private loginRegisterService: LoginRegisterService, 
+    private loginRegisterService: LoginRegisterService,
   ) { }
 
   ngOnInit() {
     this.sidebarService.sidebarVisibility$.subscribe((isVisible) => {
       this.isSidebarVisible = isVisible;
-      this.userRole = this.loginRegisterService.getUserRole() ?? '';
+      this.userRole = this.storageService.getUserRole() ?? '';
     });
   }
 

@@ -41,7 +41,7 @@
               </div>
             </div>
 
-            <div *ngIf="getSessionProfile() == idSupervisor" class="col-xl-4 col-lg-6 d-flex justify-content-between">
+            <div *ngIf="isSupervisor()" class="col-xl-4 col-lg-6 d-flex justify-content-between">
               <button class="btn btn-bd-primary btn-sm border" (click)="showModalAlterColaborator()" style="height: 40px;">Atribuir
                 Colaborador</button>
             </div>
@@ -58,7 +58,7 @@
               </div>
             </div>
 
-            <div *ngIf="getSessionProfile() == idSupervisor" class="d-flex gap-3">
+            <div *ngIf="isSupervisor()" class="d-flex gap-3">
               <button class="btn btn-bd-primary btn-sm border" (click)="showModalAlterColaborator()" style="height: 40px">Alterar
                 Colaborador</button>
             </div>
@@ -68,13 +68,13 @@
 
         <div class="card-body p-4 card-scroll scroll-bar" #scrollableContent>
           <div class="row">
-            <div *ngFor="let data of response">
-              <div *ngIf="getSessionId() == data.employee.id; else their_message">
+            <div *ngFor="let message of messages">
+              <div *ngIf="isMyMessage(message); else their_message">
                 <div class="d-flex gap-3 my-1 your-message" #your_message>
                   <img src="/assets/images/profile.png" alt="Profile Avatar" height="40px">
                   <div>
-                    <p class="text-conversation px-3 py-2 mb-1 rounded-4"> {{ data.dialog }} </p>
-                    <span class="fst-italic" style="font-size: 12px;"> {{ data.time | date: "dd/MM/yy HH:mm" }} </span>
+                    <p class="text-conversation px-3 py-2 mb-1 rounded-4"> {{ message.dialog }} </p>
+                    <span class="fst-italic" style="font-size: 12px;"> {{ message.time | date: "dd/MM/yy HH:mm" }} </span>
                   </div>
                 </div>
               </div>
@@ -84,10 +84,10 @@
                   <div>
                     <div class="bg-their p-2 mb-1 rounded-4">
                       <p class="text-conversation mb-0 fw-bold fst-italic" style="color: #026d56;"> {{
-                        data.employee.fullName }} </p>
-                      <p class="text-conversation px-3 mb-0"> {{ data.dialog }} </p>
+                        message.employee.fullName }} </p>
+                      <p class="text-conversation px-3 mb-0"> {{ message.dialog }} </p>
                     </div>
-                    <span class="fst-italic" style="font-size: 12px;"> {{ data.time | date: "dd/MM/yy HH:mm" }} </span>
+                    <span class="fst-italic" style="font-size: 12px;"> {{ message.time | date: "dd/MM/yy HH:mm" }} </span>
                   </div>
                 </div>
               </ng-template>

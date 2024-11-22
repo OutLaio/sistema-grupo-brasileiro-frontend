@@ -5,8 +5,8 @@
         <div class="card-body p-2">
           <div class="row">
             <div class="col-lg-7 card-scroll scroll-bar">
-              <app-agency-board *ngIf="isBriefingType(E_Briefing_Type.ITINERARIOS)" [briefing]="data"></app-agency-board>
-              <app-signpost *ngIf="isBriefingType(E_Briefing_Type.SINALIZACAO_INTERNA)" [briefing]="data"></app-signpost>
+              <app-agency-board *ngIf="briefingType == E_Briefing_Type.ITINERARIOS.name" [briefing]="data"></app-agency-board>
+              <app-signpost *ngIf="briefingType == E_Briefing_Type.SINALIZACAO_INTERNA.name" [briefing]="data"></app-signpost>
             </div>
             <div class="col-lg-5 d-flex align-items-center justify-content-center">
               <app-dialog-box [project]="data.type.project"></app-dialog-box>

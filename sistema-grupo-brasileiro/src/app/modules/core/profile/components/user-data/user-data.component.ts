@@ -8,6 +8,7 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { I_Change_Password_Request } from '../../../../shared/interfaces/auth/form/password-form';
 import { MatDialog } from '@angular/material/dialog';
 import { EditUserDataComponent } from '../edit-user-data/edit-user-data.component';
+import { StorageService } from '../../../../services/storage/storage.service';
 
 @Component({
   selector: 'app-user-data',
@@ -15,7 +16,7 @@ import { EditUserDataComponent } from '../edit-user-data/edit-user-data.componen
   styleUrls: ['./user-data.component.css'],
 })
 export class UserDataComponent implements OnInit {
-  userProfile!: I_Employee_View_Data | null;
+  activeUser!: I_Employee_View_Data | null;
   userRole: string = "";
 
   private roleMapping: { [key: string]: string } = {
@@ -27,13 +28,14 @@ export class UserDataComponent implements OnInit {
   constructor(
     private profileService: ProfileService,
     private loginRegisterService: LoginRegisterService,
+    private storageService: StorageService,
     private router: Router,
     private dialog: MatDialog
   ) { }
 
   ngOnInit(): void {
-    this.userProfile = this.profileService.getUserProfile();
-    const role = this.loginRegisterService.getUserRole() ?? "";
+    this.activeUser = this.storageService.getSessionProfile();
+    const role = this.storageService.getUserRole() ?? "";
     this.userRole = this.roleMapping[role] || '';
   }
 
@@ -42,7 +44,7 @@ export class UserDataComponent implements OnInit {
       width: '1200px',
       height: '600px',
       data: {
-        userProfile: this.userProfile
+        activeUser: this.activeUser
       }
     });
 
@@ -66,11 +68,10 @@ export class UserDataComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         this.profileService
-          .deleteAccount(this.userProfile?.id)
-          .subscribe({
-            next: (value: any) => {
+          .deleteAccount(this.activeUser?.id).subscribe({
+            next: (value) => {
               Swal.fire({
-                title: 'Conta Deletada',
+                title: value.message,
                 text: 'Sua conta foi deletada com sucesso.',
                 icon: 'success',
                 showConfirmButton: false,
@@ -142,15 +143,15 @@ export class UserDataComponent implements OnInit {
     }).then((result) => {
       if (result.isConfirmed) {
         const userPasswordRequest: I_Change_Password_Request = {
-          idUser: this.userProfile?.id!,
+          idUser: this.activeUser?.id!,
           currentPassword: result.value!.currentPassword,
           newPassword: result.value!.newPassword,
         };
 
         this.profileService.editPassword(userPasswordRequest)
           .subscribe({
-            next: (value: any) => {
-              Swal.fire('Sucesso', value, 'success')
+            next: (value) => {
+              Swal.fire('Sucesso', value.message, 'success')
             },
             error: (err: { message: HttpErrorResponse; }) => {
               Swal.fire('Erro', `Erro ao alterar a senha: ${err.message}`, 'error');

@@ -6,6 +6,8 @@ import { I_Employee_Form_Data } from '../../../../shared/interfaces/user/form/em
 import { ProfileService } from '../../services/profile/profile.service';
 import { Router } from '@angular/router';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
+import { StorageService } from '../../../../services/storage/storage.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-edit-user-data',
@@ -14,46 +16,47 @@ import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 })
 export class EditUserDataComponent {
   editForm!: FormGroup;
-  userProfile!: I_Employee_View_Data | null;
-  userProfileEdit!: I_Employee_Form_Data | null;
+  activeUser!: I_Employee_View_Data | null;
+  activeUserEdit!: I_Employee_Form_Data | null;
 
   constructor(
     private profileService: ProfileService,
     private toastrService: ToastrService,
     private router: Router,
+    private storageService: StorageService,
     public dialogRef: MatDialogRef<EditUserDataComponent>,
     @Inject(MAT_DIALOG_DATA) public data: any
   ) {
-    if (data && data.userProfile) {
-      this.userProfile = data.userProfile;
+    if (data && data.activeUser) {
+      this.activeUser = data.activeUser;
     }
   }
 
   ngOnInit(): void {
-    this.userProfile = this.profileService.getUserProfile();
-    if (this.userProfile) {
-      this.userProfileEdit = {
-        name: this.userProfile.name || '',
-        lastname: this.userProfile.lastname || '',
-        phoneNumber: this.userProfile.phoneNumber || '',
-        sector: this.userProfile.sector || '',
-        occupation: this.userProfile.occupation || '',
-        agency: this.userProfile.agency || '',
-        avatar: this.userProfile.avatar,
+    this.activeUser = this.storageService.getSessionProfile();
+    if (this.activeUser) {
+      this.activeUserEdit = {
+        name: this.activeUser.name || '',
+        lastname: this.activeUser.lastname || '',
+        phoneNumber: this.activeUser.phoneNumber || '',
+        sector: this.activeUser.sector || '',
+        occupation: this.activeUser.occupation || '',
+        agency: this.activeUser.agency || '',
+        avatar: this.activeUser.avatar,
       };
     }
 
     this.editForm = new FormGroup({
-      name: new FormControl(this.userProfile?.name, [Validators.required]),
-      lastname: new FormControl(this.userProfile?.lastname, [Validators.required]),
-      phone: new FormControl(this.userProfile?.phoneNumber, [
+      name: new FormControl(this.activeUser?.name, [Validators.required]),
+      lastname: new FormControl(this.activeUser?.lastname, [Validators.required]),
+      phone: new FormControl(this.activeUser?.phoneNumber, [
         Validators.required,
         Validators.pattern(/^\(\d{2}\) \d{4,5}-\d{4}$/),
       ]),
-      email: new FormControl(this.userProfile?.user.email, [Validators.required, Validators.email]),
-      sector: new FormControl(this.userProfile?.sector, [Validators.required]),
-      occupation: new FormControl(this.userProfile?.occupation, [Validators.required]),
-      nop: new FormControl(this.userProfile?.agency, [Validators.required]),
+      email: new FormControl(this.activeUser?.user.email, [Validators.required, Validators.email]),
+      sector: new FormControl(this.activeUser?.sector, [Validators.required]),
+      occupation: new FormControl(this.activeUser?.occupation, [Validators.required]),
+      nop: new FormControl(this.activeUser?.agency, [Validators.required]),
     });
   }
 
@@ -70,39 +73,30 @@ export class EditUserDataComponent {
       return;
     }
 
-    this.userProfileEdit!.name = this.name.value;
-    this.userProfileEdit!.lastname = this.lastname.value;
-    this.userProfileEdit!.phoneNumber = this.phone.value;
-    this.userProfileEdit!.sector = this.sector.value;
-    this.userProfileEdit!.occupation = this.occupation.value;
-    this.userProfileEdit!.agency = this.nop.value;
+    this.activeUserEdit!.name = this.name.value;
+    this.activeUserEdit!.lastname = this.lastname.value;
+    this.activeUserEdit!.phoneNumber = this.phone.value;
+    this.activeUserEdit!.sector = this.sector.value;
+    this.activeUserEdit!.occupation = this.occupation.value;
+    this.activeUserEdit!.agency = this.nop.value;
 
-    this.profileService.updateProfileUser(this.userProfileEdit!, this.userProfile?.id).subscribe(
+    this.profileService.updateProfileUser(this.activeUserEdit!, this.activeUser?.id).subscribe(
       (response) => {
-        this.toastrService.success("Dados atualizados com sucesso!");
-
-        this.profileService.getUserProfileFromServer(this.userProfile?.id).subscribe(
-          (updatedProfile) => {
-            sessionStorage.setItem('userProfile', JSON.stringify(updatedProfile));
-            setTimeout(() => {
-              location.reload();
-            }, 1000);
-          },
-          (error) => {
-            this.toastrService.error("Erro ao atualizar o perfil, por favor tente novamente.");
-          }
-        );
-
-        this.dialogRef.close(this.userProfile);
+        this.toastrService.success(response.message);
+        this.storageService.setSessionProfile(response.data!);
+        setTimeout(() => {
+          location.reload();
+        }, 1000);
+        this.dialogRef.close(this.activeUser);
       },
-      (error) => {
-        this.toastrService.error("Erro ao atualizar os dados, por favor tente novamente.");
+      (err: HttpErrorResponse) => {
+        this.toastrService.error(err.error.message);
       }
     );
   }
 
 
   cancel() {
-    this.dialogRef.close(this.userProfile);
+    this.dialogRef.close(this.activeUser);
   }
 }

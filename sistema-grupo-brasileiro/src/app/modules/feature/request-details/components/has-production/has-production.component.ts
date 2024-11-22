@@ -3,6 +3,7 @@ import Swal from 'sweetalert2';
 import { StorageService } from '../../../../services/storage/storage.service';
 import { RequestDetailsService } from '../../services/request-details/request-details.service';
 import { I_Project_Data } from '../../../../shared/interfaces/project/view/project-view';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-has-production',
@@ -32,12 +33,12 @@ export class HasProductionComponent {
       if (result.isConfirmed) {
         this.requestService.hasProduction(this.project?.id!, true).subscribe({
           next: (value) => Swal.fire('Em confecção', value.message, 'success').then(() => window.location.reload()),
-          error: (err) => Swal.fire('Erro ao atualizar o status!', err.message, 'error').then(() => window.location.reload())
+          error: (err: HttpErrorResponse) => Swal.fire('Erro ao atualizar o status!', err.error.message, 'error').then(() => window.location.reload())
         });
       } else {
         this.requestService.hasProduction(this.project?.id!, false).subscribe({
-          next: () => Swal.fire('Finalizado', 'O status do projeto foi atualizado com sucesso!', 'success').then(() => window.location.reload()),
-          error: (err) => Swal.fire('Erro ao atualizar o status!', err.message, 'error').then(() => window.location.reload())
+          next: (value) => Swal.fire('Finalizado', value.message, 'success').then(() => window.location.reload()),
+          error: (err: HttpErrorResponse) => Swal.fire('Erro ao atualizar o status!', err.error.message, 'error').then(() => window.location.reload())
         })
       }
     });

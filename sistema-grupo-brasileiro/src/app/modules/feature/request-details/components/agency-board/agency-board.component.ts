@@ -22,7 +22,7 @@ export class AgencyBoardComponent implements OnInit {
 
   ngOnInit() {
     this.data = this.briefing.type as I_Agency_Board_Response;
-    this.otherCompanies = this.data.briefing.otherCompanies?.split(', ') || [];
+    this.otherCompanies = this.data.briefing.otherCompanies!.length > 1 ? this.data.briefing.otherCompanies!.split(', ') : [];
   }
 
   getCities(route: I_Other_Route_Data) {

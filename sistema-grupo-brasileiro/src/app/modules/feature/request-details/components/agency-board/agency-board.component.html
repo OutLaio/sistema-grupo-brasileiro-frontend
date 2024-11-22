@@ -9,11 +9,18 @@
       </div>
       <div class="d-flex flex-column align-items-center">
         <p class="fw-bold mb-1 text-exo">Data Prevista de Entrega</p>
-        <span class="text-exo mb-0 px-3 py-2 fst-italic bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{
-          data.briefing.expectedTime | date : 'dd/MM/yyyy'}}
-          <button *ngIf="!isClient()" type="button" class="btn btn-sm p-0 m-0" (click)="alterDate()"><img
-              src="/assets/icons/edit-icon.svg" alt="Editar Título" height="16px"></button>
+        <div class="d-flex gap-2 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;">
+          <span *ngIf="data.briefing.expectedTime; else no_date" class="text-exo mb-0 fst-italic"> {{
+            data.briefing.expectedTime | date : 'dd/MM/yyyy'}}
         </span>
+        <button *ngIf="!isClient()" type="button" class="btn btn-sm p-0 m-0" (click)="alterDate()"><img
+          src="/assets/icons/edit-icon.svg" alt="Editar Título" height="16px"></button>
+        </div>
+        <ng-template #no_date>
+          <p class="text-exo mb-0 fst-italic">
+            Não definida
+          </p>
+        </ng-template>
       </div>
     </div>
     <div class=" d-flex justify-content-between align-items-center pe-5 mt-4 border-bottom">
@@ -54,11 +61,15 @@
     </div>
     <div class="mt-4">
       <p class="text-exo fw-bold">Empresas</p>
-      <div class="d-flex gap-3" *ngIf="data.briefing.companies?.companies?.length">
-        <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"
-          *ngFor="let company of data.briefing.companies?.companies"> {{ company.name }} </p>
-        <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"
+      <div class="d-flex gap-3">
+        <div class="d-flex gap-3" *ngIf="data.briefing.companies?.companies?.length">
+          <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"
+          *ngFor="let company of data.briefing.companies?.companies">{{ company.name }}</p>
+        </div>
+        <div class="d-flex gap-3" *ngIf="otherCompanies.length">
+          <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"
           *ngFor="let otherCompany of otherCompanies"> {{ otherCompany.toUpperCase() }} </p>
+        </div>
       </div>
     </div>
 

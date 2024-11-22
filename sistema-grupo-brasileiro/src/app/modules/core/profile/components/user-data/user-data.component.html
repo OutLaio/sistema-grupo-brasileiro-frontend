@@ -6,8 +6,8 @@
 					<img src="/assets/images/profile.png" alt="Profile Image" class="img-fluid me-3"
 						style="height: 70px;">
 					<div class="info-card">
-						<h4>{{ userProfile?.name + " " + userProfile?.lastname }}</h4>
-						<span>{{ userProfile?.occupation }}</span>
+						<h4>{{ activeUser?.name + " " + activeUser?.lastname }}</h4>
+						<span>{{ activeUser?.occupation }}</span>
 						<p>{{ userRole }}</p>
 					</div>
 				</div>
@@ -28,15 +28,15 @@
 			<div class="row">
 				<div class="info-data col-md-4">
 					<p>Nome Completo</p>
-					<span>{{ userProfile?.name + " " + userProfile?.lastname }}</span>
+					<span>{{ activeUser?.name + " " + activeUser?.lastname }}</span>
 				</div>
 				<div class="info-data col-md-4">
 					<p>Telefone</p>
-					<span>{{ userProfile?.phoneNumber }}</span>
+					<span>{{ activeUser?.phoneNumber }}</span>
 				</div>
 				<div class="info-data col-md-4">
 					<p>E-mail</p>
-					<span>{{ userProfile?.user?.email }}</span>
+					<span>{{ activeUser?.user?.email }}</span>
 				</div>
 			</div>
 		</div>
@@ -46,15 +46,15 @@
 			<div class="row">
 				<div class="info-data col-md-4">
 					<p>Função</p>
-					<span>{{ userProfile?.occupation }}</span>
+					<span>{{ activeUser?.occupation }}</span>
 				</div>
 				<div class="info-data col-md-4">
 					<p>Setor/Departamento</p>
-					<span>{{ userProfile?.sector }}</span>
+					<span>{{ activeUser?.sector }}</span>
 				</div>
 				<div class="info-data col-md-4">
 					<p>Núcleo Operacional de Origem/Agência</p>
-					<span>{{ userProfile?.agency }}</span>
+					<span>{{ activeUser?.agency }}</span>
 				</div>
 			</div>
 		</div>

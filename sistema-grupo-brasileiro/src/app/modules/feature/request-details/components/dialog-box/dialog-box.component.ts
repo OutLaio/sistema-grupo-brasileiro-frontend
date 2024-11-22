@@ -15,6 +15,7 @@ import { I_Employee_Simple_View_Data } from '../../../../shared/interfaces/user/
 import { I_Assign_Collaborator_Request } from '../../../../shared/interfaces/project/form/assign-collaborator-form';
 import { I_Project_Data } from '../../../../shared/interfaces/project/view/project-view';
 import Swal from 'sweetalert2';
+import { StorageService } from '../../../../services/storage/storage.service';
 
 @Component({
   selector: 'app-dialog-box',
@@ -25,9 +26,8 @@ export class DialogBoxComponent implements OnInit {
   @Input() project!: I_Project_Data | undefined;
 
   @ViewChild('scrollableContent') private scrollableContent!: ElementRef;
-  idSupervisor = 'ROLE_SUPERVISOR';
   messageText = '';
-  response!: I_Dialog_Box_Response[];
+  messages!: I_Dialog_Box_Response[];
   isModalOpen = false;
 
   allCollaborators!: I_Employee_View_Data[];
@@ -35,22 +35,35 @@ export class DialogBoxComponent implements OnInit {
 
   constructor(
     private service: RequestDetailsService,
-    private cdr: ChangeDetectorRef
+    private cdr: ChangeDetectorRef,
+    private storageService: StorageService
   ) {}
 
   ngOnInit(): void {
     this.service.getDialoguesByRequestId(this.project!.id).subscribe((res) => {
-      this.response = res.sort((a, b) => Number(a.id) - Number(b.id));
+      this.messages = res.data!.sort((a, b) => Number(a.id) - Number(b.id));
       this.cdr.detectChanges();
       this.scrollToBottom();
     });
 
-    if (this.getSessionProfile() === this.idSupervisor) {
-      this.service.getAllCollaborators().subscribe((res) => {
-        this.allCollaborators = res.content as Array<I_Employee_View_Data>;
-        console.log(this.allCollaborators);
+    if (this.storageService.isSupervisor()) {
+      this.service.getAllCollaborators(0, 20).subscribe((res) => {
+        if(res.data!.last)
+          this.allCollaborators = res.data?.content as I_Employee_View_Data[];
+        else
+          this.service.getAllCollaborators(0, res.data!.totalElements + 1).subscribe((newRes) => {
+            this.allCollaborators = newRes.data!.content as I_Employee_View_Data[];
+        })
       });
     }
+  }
+
+  isSupervisor() {
+    return this.storageService.isSupervisor();
+  }
+
+  isMyMessage(message: I_Dialog_Box_Response) {
+    return this.storageService.getUserId() === message.employee.id;
   }
 
   private scrollToBottom() {
@@ -62,14 +75,6 @@ export class DialogBoxComponent implements OnInit {
     }
   }
 
-  getSessionId() {
-    return sessionStorage.getItem('idUser');
-  }
-
-  getSessionProfile() {
-    return sessionStorage.getItem('userRole');
-  }
-
   newMessage() {
     if (this.messageText.trim() === '') {
       this.messageText = '';
@@ -77,11 +82,11 @@ export class DialogBoxComponent implements OnInit {
     }
     const request: I_Dialog_Box_Request = {
       idBriefing: this.project!.id,
-      idEmployee: this.getSessionId()!,
+      idEmployee: this.storageService.getUserId(),
       message: this.messageText,
     };
     this.service.setNewDialogue(request).subscribe((res) => {
-      this.response.push(res);
+      this.messages.push(res.data!);
       this.messageText = '';
       this.scrollToBottom();
     });
@@ -143,7 +148,7 @@ export class DialogBoxComponent implements OnInit {
         }
         this.service
           .assignCollaborator(this.project!.id, request)
-          .subscribe(() => {
+          .subscribe((res) => {
             this.project!.collaborator = {
               id: this.selectedCollaborator?.id!,
               fullName:
@@ -154,10 +159,7 @@ export class DialogBoxComponent implements OnInit {
             };
             Swal.fire({
               title: 'Sucesso!',
-              text:
-                'O(a) colaborador(a) ' +
-                this.selectedCollaborator?.name +
-                ' foi atribuído(a) ao projeto.',
+              text: res.message,
               icon: 'success',
               iconColor: '#029982',
               confirmButtonColor: '#029982',

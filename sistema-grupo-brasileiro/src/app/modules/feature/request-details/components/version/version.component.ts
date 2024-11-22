@@ -129,20 +129,12 @@ export class VersionComponent {
       } as I_New_Version_Request)
       .subscribe((response) => {
         Swal.fire({
-          title: 'Nova Arte Criada com Sucesso!',
+          title: response.message,
           text: 'Aguardando aprovação do supervisor.',
           icon: 'success',
           confirmButtonColor: '#029982',
         });
-        this.requestDetailsService
-          .setNewDialogue({
-            idEmployee: sessionStorage.getItem('idUser')!,
-            idBriefing: this.data?.type.project.id,
-            message:
-              'Uma nova arte foi criada. Aguardando aprovação do supervisor.',
-          } as I_Dialog_Box_Request)
-          .subscribe();
-        this.data?.type.briefing.versions!.push(response);
+        this.data?.type.briefing.versions!.push(response.data!);
       });
   }
 
@@ -229,12 +221,12 @@ export class VersionComponent {
             : 'O projeto foi retornado para desenvolvimento!';
           this.requestDetailsService
             .supervisorApproval(request)
-            .subscribe((res) => (version = res));
+            .subscribe((res) => (version = res.data!));
         } else if (this.isClient()) {
           text = result.value.status ? '' : 'Sua solicitação está em análise!';
           this.requestDetailsService
             .clientApproval(request)
-            .subscribe((res) => (version = res));
+            .subscribe((res) => (version = res.data!));
         }
         Swal.fire({
           title: title,

@@ -3,6 +3,11 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { CompanyDetails } from '../../interface/company-details';
 import { CreateRequestService } from '../../services/create-request.service';
 import { ToastrService } from 'ngx-toastr';
+import { I_Signpost_Request } from '../../../../shared/interfaces/briefing/signpost/form/signpost-register-form';
+import { StorageService } from '../../../../services/storage/storage.service';
+import { E_Briefing_Type } from '../../../../shared/enums/briefing-types';
+import { I_Company_Briefing_Form_Data } from '../../../../shared/interfaces/company/form/company-briefing-form';
+import { HttpErrorResponse } from '@angular/common/http';
 
 enum Company {
   'Rota Transportes' = 1,
@@ -30,7 +35,12 @@ export class SignpostRequestComponent implements OnInit {
   isOtherCompaniesSelected = false;
 
 
-  constructor(private fb: FormBuilder, private signpostService: CreateRequestService, private toastrService: ToastrService) {  }
+  constructor(
+    private fb: FormBuilder,
+    private signpostService: CreateRequestService,
+    private toastrService: ToastrService,
+    private storageService: StorageService
+  ) {  }
 
   ngOnInit(): void {
     this.signPostForm = new FormGroup({
@@ -131,13 +141,6 @@ export class SignpostRequestComponent implements OnInit {
 
   submit() {
     this.saveCompanies(this.selectedCompanies);
-    const boardType = this.signPostForm.get('boardType')?.value;
-    const boardLocation = this.signPostForm.get('signLocation')?.value;
-    const sector = this.signPostForm.get('sector')?.value;
-    const description = this.signPostForm.get('description')?.value;
-    const height = this.signPostForm.get('height')?.value;
-    const width = this.signPostForm.get('width')?.value;
-    const observation = this.signPostForm.get('observation')?.value;
 
     if (this.signPostForm.invalid) {
       this.toastrService.error("Erro ao realizar solicitação. Verifique se os campos estão preenchidos corretamente.");
@@ -148,24 +151,39 @@ export class SignpostRequestComponent implements OnInit {
       return;
     }
 
-    this.signpostService.submitSignpostRequest(
-      this.sendCompanies,
-      this.sendOthersCompanies,
-      boardType,
-      boardLocation,
-      sector,
-      description,
-      height,
-      width,
-    ).subscribe({
+    const request: I_Signpost_Request = {
+      project: {
+        title: 'Placa de Sinalização',
+        idClient: this.storageService.getUserId(),
+      },
+      briefing: {
+        detailedDescription: this.signPostForm.get('description')!.value,
+        idBriefingType: E_Briefing_Type.SINALIZACAO_INTERNA.id,
+        companies: this.sendCompanies.map((item) => {
+          return { idCompany: item.toString() } as I_Company_Briefing_Form_Data;
+        }),
+        otherCompany: this.sendOthersCompanies.join(', '),
+        measurement: {
+          height: this.signPostForm.get('height')!.value,
+          length: this.signPostForm.get('width')!.value,
+        },
+      },
+      signpost: {
+        boardLocation: this.signPostForm.get('signLocation')!.value,
+        idMaterial: this.signPostForm.get('boardType')!.value,
+        sector: this.signPostForm.get('sector')!.value,
+      },
+    };
+
+    this.signpostService.submitSignpostRequest(request).subscribe({
       next: (response) => {
-        this.toastrService.success("Solicitação realizada com sucesso!");
+        this.toastrService.success(response.message);
         setTimeout(() => {
           window.location.reload();
         }, 2000);
       },
-      error: (error) => {
-        this.toastrService.error("Erro ao realizar solicitação.");
+      error: (err: HttpErrorResponse) => {
+        this.toastrService.error(err.error.message);
       }
     });
   }

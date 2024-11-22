@@ -9,11 +9,19 @@ export class StorageService {
   constructor() { }
 
   getSessionProfile(): I_Employee_View_Data {
-    const userProfile = sessionStorage.getItem('userProfile');
-    if (userProfile === null) {
+    const activeUser = sessionStorage.getItem('activeUser');
+    if (activeUser === null) {
       throw new Error('User profile not found in session storage');
     }
-    return JSON.parse(userProfile) as I_Employee_View_Data;
+    return JSON.parse(activeUser) as I_Employee_View_Data;
+  }
+
+  setSessionProfile(profile: I_Employee_View_Data) {
+    sessionStorage.setItem('activeUser', JSON.stringify(profile));
+  }
+
+  getUserFullName(): string {
+    return `${this.getSessionProfile().name} ${this.getSessionProfile().lastname}`;
   }
 
   isClient(): boolean {
@@ -34,5 +42,13 @@ export class StorageService {
 
   getUserId(): string {
     return this.getSessionProfile().id;
+  }
+
+  getToken(): string {
+    return sessionStorage.getItem('auth-token')?? '';
+  }
+
+  isAutenticated(): boolean {
+    return !!this.getToken();
   }
 }

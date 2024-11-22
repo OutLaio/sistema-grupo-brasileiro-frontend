@@ -30,14 +30,7 @@ export class UtilsService {
           newTitle: result.value
         };
         this.requestService.updateTitle(idProject, newTitle).subscribe({
-          next: (value) => {
-            this.requestService.setNewDialogue({
-              idBriefing: idProject,
-              idEmployee: this.storageService.getUserId(),
-              message:"O título foi renomeado para uma melhor identificação do projeto! Novo título segue como: " + result.value
-            }).subscribe()
-            Swal.fire('Título Alterado!', value.message, 'success').then(() => window.location.reload());
-          },
+          next: (value) => Swal.fire('Título Alterado!', value.message, 'success').then(() => window.location.reload()),
           error: (err: HttpErrorResponse) => Swal.fire('Título Não Alterado!', err.message, 'error')
         });
       }
@@ -57,14 +50,7 @@ export class UtilsService {
           newDate: result.value
         };
         this.requestService.updateDate(idProject, newDate).subscribe({
-          next: (value) => {
-            this.requestService.setNewDialogue({
-              idBriefing: idProject,
-              idEmployee: this.storageService.getUserId(),
-              message:"Temos uma nova data de entrega prevista! Seu projeto será entregue até o dia " + result.value
-            }).subscribe()
-            Swal.fire('Data Alterada!', value.message, 'success').then(() => window.location.reload());
-          },
+          next: (value) => Swal.fire('Data Alterada!', value.message, 'success').then(() => window.location.reload()),
           error: (err: HttpErrorResponse) => Swal.fire('Data Não Alterada!', err.message, 'error')
         });
       }

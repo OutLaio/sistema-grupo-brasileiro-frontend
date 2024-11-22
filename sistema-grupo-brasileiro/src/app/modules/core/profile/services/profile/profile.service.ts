@@ -1,77 +1,53 @@
 import { HttpClient, HttpHeaders, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { I_Employee_View_Data } from '../../../../shared/interfaces/user/view/employee-view';
-import { Observable } from 'rxjs';
 import { I_Change_Password_Request } from '../../../../shared/interfaces/auth/form/password-form';
 import { I_Employee_Form_Data } from '../../../../shared/interfaces/user/form/employee-form';
+import { StorageService } from '../../../../services/storage/storage.service';
+import { I_Api_Response } from '../../../../shared/interfaces/api-response';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ProfileService {
-  private readonly apiUrl = 'http://localhost:8080/api/v1/users';
-  private readonly apiEditUrl = 'http://localhost:8080/api/v1/employees';
+  private readonly baseUrl = 'http://localhost:8080/api/v1';
+  private readonly authToken = this.storageService.getToken();
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private storageService: StorageService
+  ) {}
 
-  getUserProfile(): I_Employee_View_Data | null {
-    const profile = sessionStorage.getItem('userProfile');
-    return profile ? JSON.parse(profile) : null;
-  }
-
-  getUserProfileFromServer(userId?: string): Observable<I_Employee_View_Data> {
-    const authToken = sessionStorage.getItem('auth-token');
-    const headers = new HttpHeaders({
+  private getHeaders() {
+    return new HttpHeaders({
       'Content-Type': 'application/json',
-      'Authorization': `Bearer ${authToken}`
-    });
-
-    return this.http.get<I_Employee_View_Data>(`${this.apiEditUrl}/${userId}`, {
-      headers,
-      withCredentials: true
+      Authorization: `Bearer ${this.authToken}`,
     });
   }
 
-  updateProfileUser(userData: I_Employee_Form_Data, userId?: string) {
-    const authToken = sessionStorage.getItem('auth-token');
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${authToken}`
-    });
-
-    return this.http.put(`${this.apiEditUrl}/${userId}`, userData, {
+  updateProfileUser(req: I_Employee_Form_Data, userId?: string) {
+    const headers = this.getHeaders();
+    return this.http.put<I_Api_Response<I_Employee_View_Data>>(`${this.baseUrl}/employees/${userId}`, req, {
       headers,
-      withCredentials: true
+      withCredentials: true,
     });
   }
 
   deleteAccount(userId?: string) {
-    const authToken = sessionStorage.getItem('auth-token');
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${authToken}`
-    });
-
-    return this.http.put(`${this.apiUrl}/${userId}/deactivate`, {},
-      {
+    const headers = this.getHeaders();
+    return this.http.put<I_Api_Response<void>>(`${this.baseUrl}/users/${userId}/deactivate`,{},{
         headers,
         withCredentials: true,
-        responseType: 'text'
       }
     );
   }
 
-  editPassword(userPasswordRequest: I_Change_Password_Request): Observable<any> {
-    const authToken = sessionStorage.getItem('auth-token');
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${authToken}`
-    });
-
-    return this.http.post(`${this.apiUrl}/changePassword`, userPasswordRequest, {
-      headers,
-      withCredentials: true,
-      responseType: 'text'
-    });
+  editPassword(req: I_Change_Password_Request) {
+    const headers = this.getHeaders();
+    return this.http.post<I_Api_Response<void>>(`${this.baseUrl}/users/changePassword`,req,{
+        headers,
+        withCredentials: true
+      }
+    );
   }
 }

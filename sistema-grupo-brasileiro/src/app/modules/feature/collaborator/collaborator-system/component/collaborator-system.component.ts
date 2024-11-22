@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { LoginRegisterService } from '../../../../services/login-register/login-register.service';
 import { Router } from '@angular/router';
+import { StorageService } from '../../../../services/storage/storage.service';
 
 @Component({
 	selector: 'app-collaborator-system',
@@ -9,10 +10,12 @@ import { Router } from '@angular/router';
 })
 export class CollaboratorSystemComponent {
 
-	constructor(private loginRegisterService: LoginRegisterService, private router: Router){}
+	constructor(
+    private storageService: StorageService,
+    private router: Router){}
 
 	ngOnInit() {
-		if (this.loginRegisterService.getUserRole() !== 'ROLE_SUPERVISOR') {
+		if (this.storageService.getUserRole() !== 'ROLE_SUPERVISOR') {
 			this.router.navigate(['/acompanhamento']);
 		}
 	}
