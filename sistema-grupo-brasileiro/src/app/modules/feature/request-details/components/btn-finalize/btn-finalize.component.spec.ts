@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { HasProductionComponent } from './has-production.component';
+import { BtnFinalizeComponent } from './btn-finalize.component';
 
-describe('HasProductionComponent', () => {
-  let component: HasProductionComponent;
-  let fixture: ComponentFixture<HasProductionComponent>;
+describe('BtnFinalizeComponent', () => {
+  let component: BtnFinalizeComponent;
+  let fixture: ComponentFixture<BtnFinalizeComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [HasProductionComponent]
+      declarations: [BtnFinalizeComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(HasProductionComponent);
+    fixture = TestBed.createComponent(BtnFinalizeComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

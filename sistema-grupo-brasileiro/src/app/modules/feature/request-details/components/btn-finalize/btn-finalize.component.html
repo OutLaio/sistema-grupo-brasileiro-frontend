@@ -1,0 +1,6 @@
+<div *ngIf="isApproved()" class="d-flex h-75">
+  <button class="btn btn-outline-primary shadow-custom btn-sm" (click)="confirmConfection()">Há Confecção?</button>
+</div>
+<div *ngIf="isConfection()" class="d-flex h-75">
+  <button class="btn btn-outline-primary shadow-custom btn-sm" (click)="confirmFinish()">Finalizar</button>
+</div>

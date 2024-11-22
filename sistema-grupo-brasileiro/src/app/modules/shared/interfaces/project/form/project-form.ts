@@ -1,7 +1,5 @@
-import { ProjectStatus } from "../../../enums/project-status";
-
 export interface I_Project_Request {
   idClient: string;
   title: string;
-  status?: ProjectStatus;
+  status?: string;
 }

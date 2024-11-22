@@ -8,6 +8,7 @@ import { I_New_Version_Request } from '../../../../shared/interfaces/project/for
 import { I_Dialog_Box_Request } from '../../../../shared/interfaces/dialog-box/form/dialog-box-form';
 import { StorageService } from '../../../../services/storage/storage.service';
 import { I_Any_Briefing } from '../../../../shared/interfaces/briefing/any-briefing';
+import { C_PROJECT_STATUS } from '../../../../shared/enums/project-status';
 
 @Component({
   selector: 'app-version',
@@ -133,7 +134,7 @@ export class VersionComponent {
           text: 'Aguardando aprovação do supervisor.',
           icon: 'success',
           confirmButtonColor: '#029982',
-        });
+        }).then(() => {window.location.reload()});
         this.data?.type.briefing.versions!.push(response.data!);
       });
   }
@@ -208,7 +209,6 @@ export class VersionComponent {
         const icon = result.value.status ? 'success' : 'error';
         let text = '';
         let request: I_Approve_Request = {
-          idProject: this.data?.type.project.id!,
           idVersion: version.id,
           approved: result.value.status,
           feedback: result.value.forceApprove === null ? result.value.feedback : version.feedback,
@@ -220,12 +220,12 @@ export class VersionComponent {
               : 'Aguardando aprovação do cliente!'
             : 'O projeto foi retornado para desenvolvimento!';
           this.requestDetailsService
-            .supervisorApproval(request)
+            .supervisorApproval(this.data?.type.project.id!, request)
             .subscribe((res) => (version = res.data!));
         } else if (this.isClient()) {
           text = result.value.status ? '' : 'Sua solicitação está em análise!';
           this.requestDetailsService
-            .clientApproval(request)
+            .clientApproval(this.data?.type.project.id!, request)
             .subscribe((res) => (version = res.data!));
         }
         Swal.fire({
@@ -291,12 +291,15 @@ export class VersionComponent {
             version.productLink
           }" alt="Arte" style="max-height: 200px;">
         </div>
-        <div class="d-flex flex-column align-items-center py-3 border-bottom border-top">
-          <p>Baixe a arte clicando no link abaixo:</p>
-          <a href="${version.productLink}" target="_blank">${
-      version.productLink
-    }</a>
-        </div>
+        ${(this.isVersionOpenToMe(version) || this.isVersionApproved(version))? `
+          <div class="d-flex flex-column align-items-center py-3 border-bottom border-top">
+            <p>Baixe a arte clicando no link abaixo:</p>
+            <a href="${version.productLink}" target="_blank">${
+              version.productLink
+            }</a>
+          </div>`
+          : ''
+        }
         <div class="mt-4">
           ${
             this.versionStatus(version) == this.approve
@@ -350,7 +353,7 @@ export class VersionComponent {
   }
 
   versionStatus(version: I_Version_Data) {
-    if (version.supervisorApprove && version.clientApprove) return this.approve;
+    if (version.supervisorApprove && version.clientApprove !== null) return this.approve;
     else if (
       version.supervisorApprove === false ||
       version.clientApprove === false
@@ -362,8 +365,8 @@ export class VersionComponent {
   isOpenToNewVersion() {
     if(this.isCollaborator())
       return (
-        this.data?.type.project.status === 'IN_PROGRESS' ||
-        this.data?.type.project.status === 'WAITING_APPROVAL'
+        this.data?.type.project.status === C_PROJECT_STATUS.IN_PROGRESS.en ||
+        this.data?.type.project.status === C_PROJECT_STATUS.WAITING_APPROVAL.en
       );
     return false;
   }
@@ -371,7 +374,7 @@ export class VersionComponent {
   willForce(version: I_Version_Data) {
     return (
       this.isSupervisor() &&
-      version.supervisorApprove === true &&
+      version.supervisorApprove === null &&
       version.clientApprove === false
     );
   }

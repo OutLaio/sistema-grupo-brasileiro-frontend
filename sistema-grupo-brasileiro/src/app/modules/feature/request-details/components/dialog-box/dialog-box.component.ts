@@ -164,7 +164,7 @@ export class DialogBoxComponent implements OnInit {
               iconColor: '#029982',
               confirmButtonColor: '#029982',
             }).then(() => {
-              this.closeModal();
+              window.location.reload();
             });
           });
       }

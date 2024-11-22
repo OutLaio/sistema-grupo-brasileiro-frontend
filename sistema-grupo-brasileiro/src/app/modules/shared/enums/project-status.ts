@@ -1,9 +1,9 @@
-export enum ProjectStatus {
-    TO_DO = "to_do",
-    IN_PROGRESS = "in_progress",
-    WAITING_APPROVAL = "waiting_approval",
-    APPROVED = "approved",
-    IN_PRODUCTION = "in_production",
-    COMPLETED = "completed",
-    STAND_BY = "stand_by",
-}
+export const C_PROJECT_STATUS = {
+  TO_DO: { en: 'TO_DO', pt: 'A Fazer' },
+  IN_PROGRESS: { en: 'IN_PROGRESS', pt: 'Em Andamento' },
+  WAITING_APPROVAL: { en: 'WAITING_APPROVAL', pt: 'Aguardando Aprovação' },
+  APPROVED: { en: 'APPROVED', pt: 'Aprovado' },
+  IN_PRODUCTION: { en: 'IN_PRODUCTION', pt: 'Em Confecção' },
+  COMPLETED: { en: 'COMPLETED', pt: 'Concluído' },
+  STAND_BY: { en: 'STAND_BY', pt: 'StandBy' },
+};

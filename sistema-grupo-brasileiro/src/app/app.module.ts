@@ -41,7 +41,7 @@ import { AgencyBoardRequestComponent } from './modules/feature/create-request/co
 import { LoadingFileComponent } from './modules/feature/create-request/components/loading-file/loading-file.component';
 import { DndDirective } from './modules/directives/dnd/dnd.directive.directive';
 import { SignpostRequestComponent } from './modules/feature/create-request/components/signpost-request/signpost-request.component';
-import { HasProductionComponent } from './modules/feature/request-details/components/has-production/has-production.component';
+import { BtnFinalizeComponent } from './modules/feature/request-details/components/btn-finalize/btn-finalize.component';
 
 @NgModule({
   declarations: [
@@ -72,7 +72,7 @@ import { HasProductionComponent } from './modules/feature/request-details/compon
     DndDirective,
     SignpostRequestComponent,
     VersionComponent,
-    HasProductionComponent,
+    BtnFinalizeComponent,
 
   ],
   imports: [

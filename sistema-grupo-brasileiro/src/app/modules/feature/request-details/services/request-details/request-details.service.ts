@@ -13,6 +13,7 @@ import { I_Api_Response } from '../../../../shared/interfaces/api-response';
 import { I_Any_Briefing } from '../../../../shared/interfaces/briefing/any-briefing';
 import { I_Employee_View_Data } from '../../../../shared/interfaces/user/view/employee-view';
 import { ListCollaboratorsService } from '../../../collaborator/list-collaborators/services/list-collaborators.service';
+import { I_Alter_Status_Request } from '../../../../shared/interfaces/project/form/alter-status-form';
 
 @Injectable({
   providedIn: 'root',
@@ -61,13 +62,13 @@ export class RequestDetailsService {
     return this.http.put<I_Api_Response<I_Version_Data>>(url, request, { headers: this.getHeaders() });
   }
 
-  supervisorApproval(request: I_Approve_Request){
-    const url = `${this.baseUrl}/projects/approve/supervisor`;
+  supervisorApproval(projectId: string, request: I_Approve_Request){
+    const url = `${this.baseUrl}/projects/${projectId}/approve/supervisor`;
     return this.http.put<I_Api_Response<I_Version_Data>>(url, request, { headers: this.getHeaders() });
   }
 
-  clientApproval(request: I_Approve_Request){
-    const url = `${this.baseUrl}/projects/approve/client`;
+  clientApproval(projectId: string, request: I_Approve_Request){
+    const url = `${this.baseUrl}/projects/${projectId}/approve/client`;
     return this.http.put<I_Api_Response<I_Version_Data>>(url, request, { headers: this.getHeaders() });
   }
 
@@ -81,6 +82,11 @@ export class RequestDetailsService {
     return this.http.put<I_Api_Response<void>>(url, request, { headers: this.getHeaders() });
   }
 
+  updateStatus(id: string ,request: I_Alter_Status_Request) {
+    const url = `${this.baseUrl}/projects/${id}/alterStatus`;
+    return this.http.put<I_Api_Response<void>>(url, request, { headers: this.getHeaders() });
+  }
+
   hasProduction(id: string, hasConfection: boolean) {
     const url = `${this.baseUrl}/projects/${id}/hasProduction?hasConfection=${hasConfection}`;
     return this.http.put<I_Api_Response<void>>(url, null, { headers: this.getHeaders() });
@@ -88,6 +94,6 @@ export class RequestDetailsService {
 
   finishProject(id: string) {
     const url = `${this.baseUrl}/projects/${id}/finish`;
-    return this.http.put<I_Api_Response<void>>(url, { headers: this.getHeaders() });
+    return this.http.put<I_Api_Response<void>>(url, null, { headers: this.getHeaders() });
   }
 }
