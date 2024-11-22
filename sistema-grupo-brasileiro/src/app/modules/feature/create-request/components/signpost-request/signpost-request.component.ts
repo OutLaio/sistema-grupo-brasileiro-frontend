@@ -137,7 +137,6 @@ export class SignpostRequestComponent implements OnInit {
     const description = this.signPostForm.get('description')?.value;
     const height = this.signPostForm.get('height')?.value;
     const width = this.signPostForm.get('width')?.value;
-    const observation = this.signPostForm.get('observation')?.value;
 
     if (this.signPostForm.invalid) {
       this.toastrService.error("Erro ao realizar solicitação. Verifique se os campos estão preenchidos corretamente.");
@@ -167,6 +166,10 @@ export class SignpostRequestComponent implements OnInit {
       error: (error) => {
         this.toastrService.error("Erro ao realizar solicitação.");
       }
-    });
+    }); 
+    this.isButtonDisabled = true;
+    setTimeout(() => {
+      this.isButtonDisabled = false;
+    }, 3000);
   }
 }
