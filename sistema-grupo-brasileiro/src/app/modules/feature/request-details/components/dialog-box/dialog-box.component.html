@@ -41,7 +41,7 @@
               </div>
             </div>
 
-            <div *ngIf="isSupervisor()" class="col-xl-4 col-lg-6 d-flex justify-content-between">
+            <div *ngIf="canEdit()" class="col-xl-4 col-lg-6 d-flex justify-content-between">
               <button class="btn btn-bd-primary btn-sm border" (click)="showModalAlterColaborator()" style="height: 40px;">Atribuir
                 Colaborador</button>
             </div>
@@ -58,7 +58,7 @@
               </div>
             </div>
 
-            <div *ngIf="isSupervisor()" class="d-flex gap-3">
+            <div *ngIf="canEdit()" class="d-flex gap-3">
               <button class="btn btn-bd-primary btn-sm border" (click)="showModalAlterColaborator()" style="height: 40px">Alterar
                 Colaborador</button>
             </div>
@@ -69,7 +69,24 @@
         <div class="card-body p-4 card-scroll scroll-bar" #scrollableContent>
           <div class="row">
             <div *ngFor="let message of messages">
-              <div *ngIf="isMyMessage(message); else their_message">
+
+              <div class="d-flex gap-3 my-1 system-message"
+                [ngClass]="{
+                  'your-message': isMyMessage(message) === true,
+                  'their-message': isMyMessage(message) === false,
+                  'system-message': isMyMessage(message) === null,
+                }">
+                <img src="/assets/images/profile.png" id="message-img" alt="Profile Avatar" height="40px">
+                <div class="d-flex flex-column" id="message-box">
+                  <div class="p-2 mb-1 rounded-4" id="message-content">
+                    <p class="text-conversation mb-0 fw-bold fst-italic" id="employee" style="color: #026d56;"> {{message.employee.fullName }} </p>
+                    <p class="text-conversation px-3 mb-0"> {{ message.dialog }} </p>
+                  </div>
+                  <span class="fst-italic" style="font-size: 12px;"> {{ message.time | date: "dd/MM/yy HH:mm" }} </span>
+                </div>
+              </div>
+
+              <!-- <div *ngIf="isMyMessage(message); else their_message">
                 <div class="d-flex gap-3 my-1 your-message" #your_message>
                   <img src="/assets/images/profile.png" alt="Profile Avatar" height="40px">
                   <div>
@@ -90,16 +107,16 @@
                     <span class="fst-italic" style="font-size: 12px;"> {{ message.time | date: "dd/MM/yy HH:mm" }} </span>
                   </div>
                 </div>
-              </ng-template>
+              </ng-template> -->
             </div>
           </div>
         </div>
         <div class="card-footer p-3">
           <div class="input-group gap-2">
             <input type="text" class="form-control p-2 rounded text-conversation" placeholder="Digite sua mensagem..."
-              aria-describedby="button-addon2" [(ngModel)]="messageText">
+              [disabled]="isFinished()" aria-describedby="button-addon2" [(ngModel)]="messageText">
             <button class="btn btn-bd-primary px-3 rounded" type="button" id="button-addon2"
-              (click)="newMessage()">Enviar</button>
+              [disabled]="isFinished()" (click)="newMessage()">Enviar</button>
           </div>
         </div>
       </div>

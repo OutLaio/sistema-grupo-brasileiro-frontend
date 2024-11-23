@@ -30,6 +30,10 @@ export class AgencyBoardComponent implements OnInit {
     return route.city.split(', ');
   }
 
+  canEdit() {
+    return !this.storageService.isClient() && this.data.project.status !== C_PROJECT_STATUS.COMPLETED.en
+  }
+
   isClient() {
     return this.storageService.isClient();
   }
@@ -43,7 +47,7 @@ export class AgencyBoardComponent implements OnInit {
   }
 
   alterStatus() {
-    return this.utilsService.alterStatus(this.data.project.id);
+    return this.utilsService.alterStatus(this.data.project.id, this.data.project.status);
   }
 
   getStatus() {
@@ -54,5 +58,9 @@ export class AgencyBoardComponent implements OnInit {
       }
     }
     return null;
+  }
+
+  isFinished() {
+    return this.data.project.status === C_PROJECT_STATUS.COMPLETED.en;
   }
 }

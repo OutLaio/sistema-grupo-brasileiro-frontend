@@ -6,6 +6,7 @@ import { I_Version_Data } from '../../../../shared/interfaces/project/view/versi
 import { StorageService } from '../../../../services/storage/storage.service';
 import { UtilsService } from '../../services/utils/utils.service';
 import { Router } from '@angular/router';
+import { C_PROJECT_STATUS } from '../../../../shared/enums/project-status';
 
 @Component({
   selector: 'app-signpost',
@@ -57,6 +58,13 @@ export class SignpostComponent implements OnInit {
     }
   }
 
+  canEdit() {
+    return (
+      !this.storageService.isClient() &&
+      this.data.project.status !== C_PROJECT_STATUS.COMPLETED.en
+    );
+  }
+
   isClient() {
     return this.storageService.isClient();
   }
@@ -67,5 +75,26 @@ export class SignpostComponent implements OnInit {
 
   alterDate() {
     return this.utilsService.alterDate(this.data.project.id);
+  }
+
+  alterStatus() {
+    return this.utilsService.alterStatus(
+      this.data.project.id,
+      this.data.project.status
+    );
+  }
+
+  getStatus() {
+    const status = this.data.project.status;
+    for (const [key, value] of Object.entries(C_PROJECT_STATUS)) {
+      if (value.en === status || value.pt === status) {
+        return value.pt;
+      }
+    }
+    return null;
+  }
+
+  isFinished() {
+    return this.data.project.status === C_PROJECT_STATUS.COMPLETED.en;
   }
 }

@@ -16,6 +16,7 @@ import { I_Assign_Collaborator_Request } from '../../../../shared/interfaces/pro
 import { I_Project_Data } from '../../../../shared/interfaces/project/view/project-view';
 import Swal from 'sweetalert2';
 import { StorageService } from '../../../../services/storage/storage.service';
+import { C_PROJECT_STATUS } from '../../../../shared/enums/project-status';
 
 @Component({
   selector: 'app-dialog-box',
@@ -63,6 +64,8 @@ export class DialogBoxComponent implements OnInit {
   }
 
   isMyMessage(message: I_Dialog_Box_Response) {
+    if(message.employee.id == '0')
+      return null;
     return this.storageService.getUserId() === message.employee.id;
   }
 
@@ -80,6 +83,10 @@ export class DialogBoxComponent implements OnInit {
       this.messageText = '';
       return;
     }
+
+    if (this.isFinished())
+      return;
+
     const request: I_Dialog_Box_Request = {
       idBriefing: this.project!.id,
       idEmployee: this.storageService.getUserId(),
@@ -195,5 +202,16 @@ export class DialogBoxComponent implements OnInit {
     </div>
     `;
     return html;
+  }
+
+  canEdit() {
+    return (
+      this.storageService.isSupervisor() &&
+      this.project!.status !== C_PROJECT_STATUS.COMPLETED.en
+    );
+  }
+
+  isFinished() {
+    return this.project!.status === C_PROJECT_STATUS.COMPLETED.en;
   }
 }

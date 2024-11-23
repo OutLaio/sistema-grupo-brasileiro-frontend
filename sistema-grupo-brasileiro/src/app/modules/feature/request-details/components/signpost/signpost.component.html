@@ -1,27 +1,37 @@
 <div *ngIf="data">
-
   <div class="container mt-2">
     <div class="d-flex align-items-center justify-content-between pb-4 border-bottom">
       <div>
         <p class="h5 d-flex align-items-start gap-2 mb-1 fw-bold text-exo">{{ data.project.title }}
-          <button *ngIf="!isClient()" type="button" class="btn btn-sm p-0 m-0" (click)="alterTitle()"><img src="/assets/icons/edit-icon.svg" alt="Editar Título" height="16px"></button>
+          <button *ngIf="canEdit()" type="button" class="btn btn-sm p-0 m-0" (click)="alterTitle()"><img src="/assets/icons/edit-icon.svg" alt="Editar Título" height="16px"></button>
         </p>
         <p class="mt-3 fw-bold text-exo">{{ data.briefing.briefingType.description }} </p>
+        <p class="d-flex align-items-center gap-2 mb-1 text-exo">Status Atual: <span class="text-exo bg-secondary px-3 py-2 rounded-3" style="--bs-bg-opacity: .2;">{{ getStatus() }}
+            <button *ngIf="!isClient()" type="button" class="btn btn-sm p-0 m-0" (click)="alterStatus()"><img src="/assets/icons/edit-icon.svg" alt="Editar Status" height="16px"></button>
+          </span>
+        </p>
       </div>
       <div class="d-flex flex-column align-items-center">
-        <p class="fw-bold mb-1 text-exo">Data Prevista de Entrega</p>
-        <span class="text-exo mb-0 px-3 py-2 fst-italic bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{
-          data.briefing.expectedTime | date : 'dd/MM/yyyy'}}
-          <button *ngIf="!isClient()" type="button" class="btn btn-sm p-0 m-0" (click)="alterDate()"><img src="/assets/icons/edit-icon.svg" alt="Editar Título" height="16px"></button>
-          </span>
+        <p class="fw-bold mb-1 text-exo">Data <span *ngIf="!isFinished()" class="fw-bold mb-1 text-exo">Prevista</span> de Entrega</p>
+        <div class="d-flex gap-2 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;">
+          <p *ngIf="!data.briefing.expectedTime; else date" class="text-exo mb-0 fst-italic">
+            Não definida
+          </p>
+          <button *ngIf="canEdit()" type="button" class="btn btn-sm p-0 m-0" (click)="alterDate()"><img
+            src="/assets/icons/edit-icon.svg" alt="Editar Data" height="16px"></button>
+        </div>
+        <ng-template #date>
+          <span *ngIf="!isFinished(); else date_finish" class="text-exo mb-0 fst-italic"> {{ data.briefing.expectedTime | date : 'dd/MM/yyyy'}} </span>
+        </ng-template>
+        <ng-template #date_finish>
+          <span class="text-exo mb-0 fst-italic"> {{ data.briefing.finishTime | date :'dd/MM/yyyy'}} </span>
+        </ng-template>
       </div>
     </div>
-
     <div class=" d-flex justify-content-between align-items-center pe-5 mt-4 border-bottom">
       <app-version [data]="briefing"></app-version>
       <app-btn-finalize [project]="briefing.type.project"></app-btn-finalize>
     </div>
-
     <p class="text-exo fw-bold mt-3">Informações da Placa</p>
     <div class="mt-4">
       <p class="text-exo fw-bold">Local da Placa</p>

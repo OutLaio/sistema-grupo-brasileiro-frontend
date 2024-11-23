@@ -59,7 +59,7 @@ export class UtilsService {
     });
   }
 
-  alterStatus(idProject: string) {
+  alterStatus(idProject: string, currentStatus: string) {
     Swal.fire({
       html: '<h4>Alterar Status do Projeto </h4>',
       input: 'select',
@@ -77,6 +77,10 @@ export class UtilsService {
       confirmButtonColor: '#029982',
     }).then((result) => {
       if (result.isConfirmed) {
+        if (currentStatus === result.value) {
+          Swal.fire('Status já está ativo!', 'Nada foi alterado.', 'info');
+          return;
+        }
         const newStatus: I_Alter_Status_Request = {
           newStatus: result.value,
         };
