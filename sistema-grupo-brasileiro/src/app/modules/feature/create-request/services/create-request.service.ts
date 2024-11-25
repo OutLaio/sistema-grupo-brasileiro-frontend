@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
 import { I_Agency_Board_Request } from '../../../shared/interfaces/briefing/agency-board/form/agency-board-register-form';
-import { StorageService } from '../../../services/storage/storage.service';
 import { I_Signpost_Request } from '../../../shared/interfaces/briefing/signpost/form/signpost-register-form';
+import { I_Stickers_Request } from '../../../shared/interfaces/briefing/stickers/form/stickers-register-form';
+
+import { StorageService } from '../../../services/storage/storage.service';
 import { I_Api_Response } from '../../../shared/interfaces/api-response';
 import { I_Sticker_Request } from '../../../shared/interfaces/briefing/sticker/form/register-sticker-form';
 
@@ -18,7 +21,7 @@ export class CreateRequestService {
   constructor(
     private http: HttpClient,
     private storageService: StorageService
-  ) {}
+  ) { }
 
   private getHeaders() {
     return new HttpHeaders({
@@ -43,9 +46,12 @@ export class CreateRequestService {
     });
   }
 
-  submitStickersRequest(req: I_Sticker_Request) {
+  submitStickersRequest(req: I_Stickers_Request) {
     const headers = this.getHeaders();
-    return this.http.post<any>(`${this.apiUrl}/stickers`, req, { headers });
+    return this.http.post<I_Api_Response<void>>(`${this.apiUrl}/stickers`, req, {
+      headers,
+      withCredentials: true,
+    });
   }
 
 }

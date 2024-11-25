@@ -3,9 +3,12 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { CompanyDetails } from '../../interface/company-details';
 import { CreateRequestService } from '../../services/create-request.service';
 import { ToastrService } from 'ngx-toastr';
-import { I_Sticker_Request } from '../../../../shared/interfaces/briefing/sticker/form/register-sticker-form';
 import { StorageService } from '../../../../services/storage/storage.service';
+
+import { I_Stickers_Request } from '../../../../shared/interfaces/briefing/stickers/form/stickers-register-form';
+import { E_Briefing_Type } from '../../../../shared/enums/briefing-types';
 import { I_Company_Briefing_Form_Data } from '../../../../shared/interfaces/company/form/company-briefing-form';
+import { HttpErrorResponse } from '@angular/common/http';
 
 enum Company {
   'Rota Transportes' = 1,
@@ -151,14 +154,6 @@ export class StickersRequestComponent implements OnInit {
 
   submit() {
     this.saveCompanies(this.selectedCompanies);
-    const stickerType = this.stickersForm.get('stickerType')?.value;
-    const stickerInformationType = this.stickersForm.get('stickerInformationType')?.value;
-    const sector = this.stickersForm.get('sector')?.value;
-    const description = this.stickersForm.get('description')?.value;
-    const height = this.stickersForm.get('height')?.value;
-    const width = this.stickersForm.get('width')?.value;
-    const observations = this.stickersForm.get('observations')?.value;
-
     if (this.stickersForm.invalid) {
       console.log(this.stickersForm)
       this.toastrService.error("Erro ao realizar solicitação. Verifique se os campos estão preenchidos corretamente.");
@@ -169,40 +164,41 @@ export class StickersRequestComponent implements OnInit {
       return;
     }
 
-    const requestData: I_Sticker_Request = {
+    const request: I_Stickers_Request = {
       project: {
+        title: 'Adesivos',
         idClient: this.storageService.getUserId(),
-        title: "FALTA O CAMPO DE OBTER O TÍTULO"
       },
       briefing: {
-        detailedDescription: description,
-        idBriefingType: 3,
+        detailedDescription: this.description!.value,
+        idBriefingType: E_Briefing_Type.ADESIVOS.id,
         companies: this.sendCompanies.map((item) => {
           return { idCompany: item } as I_Company_Briefing_Form_Data;
         }),
-        otherCompany: this.sendOthersCompanies.join(", "),
+        otherCompany: this.sendOthersCompanies.join(', '),
         measurement: {
-          height: height,
-          length: width
-        }
+          height: this.height!.value,
+          length: this.width!.value,
+        },
       },
       sticker: {
-        idStickerType: stickerType,
-        idStickerInformationType: stickerInformationType,
-        observations: observations,
-        sector: sector
-      }
-    }
+        idStickerType: this.stickerType!.value,
+        idStickerInformationType: this.stickerInformationType!.value,
+        sector: this.sector!.value,
+        observations: this.observations!.value,
+      },
+    };
 
-    this.createRequestService.submitStickersRequest(requestData).subscribe({
+
+    this.createRequestService.submitStickersRequest(request).subscribe({
       next: (response) => {
-        this.toastrService.success("Solicitação realizada com sucesso!");
+        this.toastrService.success(response.message);
         setTimeout(() => {
           window.location.reload();
         }, 2000);
       },
-      error: (error) => {
-        this.toastrService.error("Erro ao realizar solicitação.");
+      error: (err: HttpErrorResponse) => {
+        this.toastrService.error(err.error.message);
       }
     });
     this.isButtonDisabled = true;
