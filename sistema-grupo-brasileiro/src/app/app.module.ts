@@ -42,6 +42,7 @@ import { LoadingFileComponent } from './modules/feature/create-request/component
 import { DndDirective } from './modules/directives/dnd/dnd.directive.directive';
 import { SignpostRequestComponent } from './modules/feature/create-request/components/signpost-request/signpost-request.component';
 import { BtnFinalizeComponent } from './modules/feature/request-details/components/btn-finalize/btn-finalize.component';
+import { StickersRequestComponent } from './modules/feature/create-request/components/stickers-request/stickers-request.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { BtnFinalizeComponent } from './modules/feature/request-details/componen
     SignpostRequestComponent,
     VersionComponent,
     BtnFinalizeComponent,
+    StickersRequestComponent,
 
   ],
   imports: [

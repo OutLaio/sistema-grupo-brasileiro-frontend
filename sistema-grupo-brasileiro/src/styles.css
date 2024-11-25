@@ -5,6 +5,10 @@
   font-family: Inter, sans-serif !important;
 }
 
+:root {
+  --primary-color: #297373;
+}
+
 .validation-warning p {
   padding: 0;
   margin: 0;
@@ -74,7 +78,6 @@
   * {
     font-size: 13px !important;
   }
-
 }
 
 @media (max-width: 1280px) {

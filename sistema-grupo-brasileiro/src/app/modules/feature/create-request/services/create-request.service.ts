@@ -41,4 +41,51 @@ export class CreateRequestService {
       withCredentials: true,
     });
   }
+
+  submitStickersRequest(
+    sendCompanies: number[],
+    sendOthersCompanies: string[],
+    stickerType: number,
+    stickerTypeInformation: number,
+    sector: string,
+    description: string,
+    height: number,
+    width: number,
+    observations: string,
+  ): Observable<any> {
+    const idUser = sessionStorage.getItem('idUser');
+    const authToken = sessionStorage.getItem('auth-token');
+    const requestBody = {
+      project: {
+        id_client: Number(idUser),
+        title: 'Adesivos'
+      },
+      briefing: {
+        expectedDate: '',
+        detailedDescription: description,
+        companies: sendCompanies.map(id => ({ id_company: id })),
+        otherCompany: sendOthersCompanies.join(', '),
+        idBriefingType: '3',
+        measurement: {
+          height: height,
+          length: width
+        }
+      },
+      sticker: {
+        idStickerType: stickerType,
+        idStickerInformationType: stickerTypeInformation,
+        sector: sector,
+        observations: observations
+      }
+    };
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${authToken}`
+    });
+
+    return this.http.post<any>(`${this.apiUrl}/stickers`, requestBody, { headers });
+  }
+
+
 }

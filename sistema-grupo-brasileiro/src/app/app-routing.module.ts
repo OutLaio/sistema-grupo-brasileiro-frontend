@@ -92,6 +92,11 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
+    path: 'adesivos',
+    redirectTo: 'nova-solicitacao/adesivos',
+    pathMatch: 'full'
+  },
+  {
     path: '',
     redirectTo: '/acompanhamento',
     pathMatch: 'full',

@@ -9,13 +9,7 @@ import { Router } from '@angular/router';
 export class MainCreateRequestComponent implements OnInit {
   mainOptions = [
     { name: 'Placa de Itinerários', route: '/placa-de-itinerarios' },
-    {
-      name: 'Adesivos',
-      subOptions: [
-        { name: 'Plotagem de Veículos', route: '/plotagem-veiculos' },
-        { name: 'Adesivos Informativos', route: '/adesivos-informativos' }
-      ]
-    },
+    { name: 'Adesivos', route: '/adesivos' },
     {
       name: 'Impressos',
       subOptions: [

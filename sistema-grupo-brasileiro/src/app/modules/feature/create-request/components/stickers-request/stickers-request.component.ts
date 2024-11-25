@@ -3,11 +3,6 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { CompanyDetails } from '../../interface/company-details';
 import { CreateRequestService } from '../../services/create-request.service';
 import { ToastrService } from 'ngx-toastr';
-import { I_Signpost_Request } from '../../../../shared/interfaces/briefing/signpost/form/signpost-register-form';
-import { StorageService } from '../../../../services/storage/storage.service';
-import { E_Briefing_Type } from '../../../../shared/enums/briefing-types';
-import { I_Company_Briefing_Form_Data } from '../../../../shared/interfaces/company/form/company-briefing-form';
-import { HttpErrorResponse } from '@angular/common/http';
 
 enum Company {
   'Rota Transportes' = 1,
@@ -17,14 +12,13 @@ enum Company {
   'Cidade Real' = 5,
   'Pauma' = 6,
 }
-
 @Component({
-  selector: 'app-signpost-request',
-  templateUrl: './signpost-request.component.html',
-  styleUrl: './signpost-request.component.css'
+  selector: 'app-stickers-request',
+  templateUrl: './stickers-request.component.html',
+  styleUrl: './stickers-request.component.css'
 })
-export class SignpostRequestComponent implements OnInit {
-  signPostForm!: FormGroup;
+export class StickersRequestComponent implements OnInit {
+  stickersForm!: FormGroup;
   isButtonDisabled: boolean = false;
 
   isSingleCompany: boolean = true;
@@ -35,37 +29,42 @@ export class SignpostRequestComponent implements OnInit {
   isOtherCompaniesSelected = false;
 
 
-  constructor(
-    private fb: FormBuilder,
-    private signpostService: CreateRequestService,
-    private toastrService: ToastrService,
-    private storageService: StorageService
-  ) {  }
+  constructor(private fb: FormBuilder, private createRequestService: CreateRequestService, private toastrService: ToastrService) { }
 
   ngOnInit(): void {
-    this.signPostForm = new FormGroup({
+    this.stickersForm = new FormGroup({
       description: new FormControl('', [Validators.required]),
-      signLocation: new FormControl('', [Validators.required]),
       width: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
       height: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
+      stickerType: new FormControl('', [Validators.required]),
+      stickerInformationType: new FormControl('', [Validators.required]),
       selectedCompany: new FormControl('', [Validators.required]),
       sector: new FormControl('', [Validators.required]),
       othersText: new FormControl(''),
-      boardType: new FormControl('', [Validators.required]),
+      observations: new FormControl('', [Validators.required]),
+    });
+    this.stickersForm.get('stickerType')?.valueChanges.subscribe(value => {
+      if (value === '2') {
+        this.stickersForm.get('stickerInformationType')?.setValidators([Validators.required]);
+      } else {
+        this.stickersForm.get('stickerInformationType')?.clearValidators();
+      }
+      this.stickersForm.get('stickerInformationType')?.updateValueAndValidity();
     });
   }
 
-  get width() { return this.signPostForm.get('width')!; }
-  get height() { return this.signPostForm.get('height')!; }
-  get description() { return this.signPostForm.get('description')!; }
-  get signLocation() { return this.signPostForm.get('signLocation')!; }
-  get sector() { return this.signPostForm.get('sector')!; }
-  get boardType() { return this.signPostForm.get('boardType')!; }
-  get othersText() { return this.signPostForm.get('othersText')!; }
-  get selectedCompany() { return this.signPostForm.get('selectedCompany')!; }
+  get width() { return this.stickersForm.get('width')!; }
+  get height() { return this.stickersForm.get('height')!; }
+  get stickerType() { return this.stickersForm.get('stickerType')!; }
+  get description() { return this.stickersForm.get('description')!; }
+  get observations() { return this.stickersForm.get('observations')!; }
+  get sector() { return this.stickersForm.get('sector')!; }
+  get stickerInformationType() { return this.stickersForm.get('stickerInformationType')!; }
+  get othersText() { return this.stickersForm.get('othersText')!; }
+  get selectedCompany() { return this.stickersForm.get('selectedCompany')!; }
 
   clearForm() {
-    this.signPostForm.reset();
+    this.stickersForm.reset();
     this.selectedCompanies = [];
   }
 
@@ -85,27 +84,27 @@ export class SignpostRequestComponent implements OnInit {
   onOthersCompanies() {
     this.isOtherCompaniesSelected = !this.isOtherCompaniesSelected;
     if (!this.isOtherCompaniesSelected) {
-      this.signPostForm.get('othersText')?.setValue('');
+      this.stickersForm.get('othersText')?.setValue('');
       this.selectedCompanies = this.selectedCompanies.filter(company => company.name !== 'Outras');
     }
   }
 
   updateOthersCompanies() {
-    const otherValue = this.signPostForm.get('othersText')?.value;
+    const otherValue = this.stickersForm.get('othersText')?.value;
     if (otherValue) {
       const companyIndex = this.selectedCompanies.findIndex(company => company.name === 'Outras');
       if (companyIndex >= 0) {
         this.selectedCompanies[companyIndex].name = otherValue;
-        this.signPostForm.get('othersText')?.reset();
+        this.stickersForm.get('othersText')?.reset();
       } else {
         this.selectedCompanies.push({ name: otherValue, isCustom: true });
-        this.signPostForm.get('othersText')?.reset();
+        this.stickersForm.get('othersText')?.reset();
       }
     }
   }
 
   confirmOtherMultiCompany() {
-    const otherCompany = this.signPostForm.get('othersText')?.value;
+    const otherCompany = this.stickersForm.get('othersText')?.value;
     if (otherCompany && !this.selectedCompanies.some(c => c.name === otherCompany)) {
       this.selectedCompanies.push({
         name: otherCompany,
@@ -141,8 +140,15 @@ export class SignpostRequestComponent implements OnInit {
 
   submit() {
     this.saveCompanies(this.selectedCompanies);
+    const stickerType = this.stickersForm.get('stickerType')?.value;
+    const stickerInformationType = this.stickersForm.get('stickerInformationType')?.value;
+    const sector = this.stickersForm.get('sector')?.value;
+    const description = this.stickersForm.get('description')?.value;
+    const height = this.stickersForm.get('height')?.value;
+    const width = this.stickersForm.get('width')?.value;
+    const observations = this.stickersForm.get('observations')?.value;
 
-    if (this.signPostForm.invalid) {
+    if (this.stickersForm.invalid) {
       this.toastrService.error("Erro ao realizar solicitação. Verifique se os campos estão preenchidos corretamente.");
       this.isButtonDisabled = true;
       setTimeout(() => {
@@ -151,39 +157,25 @@ export class SignpostRequestComponent implements OnInit {
       return;
     }
 
-    const request: I_Signpost_Request = {
-      project: {
-        title: 'Placa de Sinalização',
-        idClient: this.storageService.getUserId(),
-      },
-      briefing: {
-        detailedDescription: this.signPostForm.get('description')!.value,
-        idBriefingType: E_Briefing_Type.SINALIZACAO_INTERNA.id,
-        companies: this.sendCompanies.map((item) => {
-          return { idCompany: item.toString() } as I_Company_Briefing_Form_Data;
-        }),
-        otherCompany: this.sendOthersCompanies.join(', '),
-        measurement: {
-          height: this.signPostForm.get('height')!.value,
-          length: this.signPostForm.get('width')!.value,
-        },
-      },
-      signpost: {
-        boardLocation: this.signPostForm.get('signLocation')!.value,
-        idMaterial: this.signPostForm.get('boardType')!.value,
-        sector: this.signPostForm.get('sector')!.value,
-      },
-    };
-
-    this.signpostService.submitSignpostRequest(request).subscribe({
+    this.createRequestService.submitStickersRequest(
+      this.sendCompanies,
+      this.sendOthersCompanies,
+      stickerType,
+      stickerInformationType,
+      sector,
+      description,
+      height,
+      width,
+      observations,
+    ).subscribe({
       next: (response) => {
-        this.toastrService.success(response.message);
+        this.toastrService.success("Solicitação realizada com sucesso!");
         setTimeout(() => {
           window.location.reload();
         }, 2000);
       },
-      error: (err: HttpErrorResponse) => {
-        this.toastrService.error(err.error.message);
+      error: (error) => {
+        this.toastrService.error("Erro ao realizar solicitação.");
       }
     }); 
     this.isButtonDisabled = true;
