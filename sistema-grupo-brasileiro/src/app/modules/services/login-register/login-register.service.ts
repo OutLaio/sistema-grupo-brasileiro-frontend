@@ -1,9 +1,15 @@
+import { I_Employee_Form_Data } from './../../shared/interfaces/user/form/employee-form';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { tap } from 'rxjs';
-import { LoginResponse } from '../../core/login/interface/login-response';
+import { I_Api_Response } from '../../shared/interfaces/api-response';
+import { I_Token_Response } from '../../shared/interfaces/auth/view/token-view';
 import { I_Employee_View_Data } from '../../shared/interfaces/user/view/employee-view';
 import { Router } from '@angular/router';
+import { I_User_Request } from '../../shared/interfaces/user/form/user-details-form';
+import { I_Login_Request } from '../../shared/interfaces/auth/form/login-form';
+import { I_Recovery_Password_Request } from '../../shared/interfaces/auth/form/recovery-password-form';
+import { I_Reset_Password_Request } from '../../shared/interfaces/auth/form/reset-password-form';
 
 @Injectable({
   providedIn: 'root',
@@ -13,131 +19,30 @@ export class LoginRegisterService {
 
   constructor(private router: Router, private httpClient: HttpClient) { }
 
-  registerUser(
-    name: string,
-    lastname: string,
-    email: string,
-    password: string,
-    phoneNumber: string,
-    sector: string,
-    occupation: string,
-    agency: string,
-    avatar: number = 1,
-    profile: number = 3
-  ) {
-    const payload = {
-      employeeForm: {
-        name,
-        lastname,
-        phoneNumber,
-        sector,
-        occupation,
-        agency,
-        avatar
-      },
-      userForm: {
-        email,
-        password,
-        profile
-      }
-    };
-
-    return this.httpClient.post(`${this.prefix}/register`, payload);
+  registerUser(req: I_User_Request) {
+    return this.httpClient.post<I_Api_Response<I_Employee_View_Data>>(`${this.prefix}/register`, req);
   }
 
-  registerCollaborator(
-    name: string,
-    lastname: string,
-    email: string,
-    password: string,
-    phoneNumber: string,
-    sector: string,
-    occupation: string,
-    agency: string,
-    avatar: number = 1,
-    profile: number = 2,
-  ) {
-    const payload = {
-      employeeForm: {
-        name,
-        lastname,
-        phoneNumber,
-        sector,
-        occupation,
-        agency,
-        avatar
-      },
-      userForm: {
-        email,
-        password,
-        profile
-      }
-    };
-
-    return this.httpClient.post(`${this.prefix}/register`, payload);
-  }
-
-  loginUser(email: string, password: string) {
-    return this.httpClient
-      .post<LoginResponse>(`${this.prefix}/login`, {
-        email,
-        password,
-      })
+  loginUser(req: I_Login_Request) {
+    return this.httpClient.post<I_Api_Response<I_Token_Response>>(`${this.prefix}/login`, req)
       .pipe(
         tap((value) => {
-          sessionStorage.setItem('auth-token', value.token);
-          sessionStorage.setItem('idUser', value.employee.id.toString());
-          sessionStorage.setItem('userRole', value.employee.user.profile.description);
-
-          const userProfile: I_Employee_View_Data = {
-            id: value.employee.id,
-            user: value.employee.user,
-            name: value.employee.name,
-            lastname: value.employee.lastname,
-            phoneNumber: value.employee.phoneNumber,
-            sector: value.employee.sector,
-            occupation: value.employee.occupation,
-            agency: value.employee.agency,
-            avatar: value.employee.avatar
-          };
-
-          sessionStorage.setItem('userProfile', JSON.stringify(userProfile));
+          sessionStorage.setItem('auth-token', value.data?.token!);
+          sessionStorage.setItem('activeUser', JSON.stringify(value.data?.employee!));
         })
       );
   }
 
-  recoveryPassword(email: string) {
-    return this.httpClient
-      .post(`${this.prefix}/requestReset`, { email }, { responseType: 'text' });
+  recoveryPassword(req: I_Recovery_Password_Request) {
+    return this.httpClient.post<I_Api_Response<void>>(`${this.prefix}/requestReset`, req);
   }
 
 
-  resetPassword(password: string, token: string) {
-    return this.httpClient
-      .post(`${this.prefix}/resetPassword`, { password, token }, { responseType: 'text' });
-  }
-
-  getUserRole() {
-    return sessionStorage.getItem('userRole');
-  }
-
-
-  getUserName(): string | null {
-    const profile = sessionStorage.getItem('userProfile');
-    if (profile) {
-      const userProfile: I_Employee_View_Data = JSON.parse(profile);
-      return userProfile.name + " " + userProfile.lastname;
-    }
-    return null;
-  }
-
-  isAuthenticated() {
-    return !!sessionStorage.getItem('auth-token');
+  resetPassword(req: I_Reset_Password_Request) {
+    return this.httpClient.post<I_Api_Response<void>>(`${this.prefix}/resetPassword`, req);
   }
 
   logout() {
-    sessionStorage.removeItem('auth-token');
-    sessionStorage.removeItem('idUser');
     sessionStorage.clear();
     this.router.navigate(['/login']);
   }

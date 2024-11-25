@@ -1,8 +1,10 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { RequestDetailsService } from '../../services/request-details.service';
 import { I_Agency_Board_Response } from '../../../../shared/interfaces/briefing/agency-board/view/agency-board-detailed-view';
 import { I_Any_Briefing } from '../../../../shared/interfaces/briefing/any-briefing';
 import { I_Other_Route_Data } from '../../../../shared/interfaces/briefing/agency-board/view/other-route-view';
+import { StorageService } from '../../../../services/storage/storage.service';
+import { UtilsService } from '../../services/utils/utils.service';
+import { C_PROJECT_STATUS } from '../../../../shared/enums/project-status';
 
 @Component({
   selector: 'app-agency-board',
@@ -14,15 +16,51 @@ export class AgencyBoardComponent implements OnInit {
   data!: I_Agency_Board_Response;
   otherCompanies!: string[];
 
-  constructor(private service: RequestDetailsService) {}
+  constructor(
+    private storageService: StorageService,
+    private utilsService: UtilsService
+  ) {}
 
   ngOnInit() {
     this.data = this.briefing.type as I_Agency_Board_Response;
-    this.otherCompanies = this.data.briefing.otherCompanies?.split(', ') || [];
+    this.otherCompanies = this.data.briefing.otherCompanies!.length > 1 ? this.data.briefing.otherCompanies!.split(', ') : [];
   }
 
   getCities(route: I_Other_Route_Data) {
     return route.city.split(', ');
   }
 
+  canEdit() {
+    return !this.storageService.isClient() && this.data.project.status !== C_PROJECT_STATUS.COMPLETED.en
+  }
+
+  isClient() {
+    return this.storageService.isClient();
+  }
+
+  alterTitle() {
+    return this.utilsService.alterTitle(this.data.project.id);
+  }
+
+  alterDate() {
+    return this.utilsService.alterDate(this.data.project.id);
+  }
+
+  alterStatus() {
+    return this.utilsService.alterStatus(this.data.project.id, this.data.project.status);
+  }
+
+  getStatus() {
+    const status = this.data.project.status;
+    for (const [key, value] of Object.entries(C_PROJECT_STATUS)) {
+      if (value.en === status || value.pt === status) {
+        return value.pt;
+      }
+    }
+    return null;
+  }
+
+  isFinished() {
+    return this.data.project.status === C_PROJECT_STATUS.COMPLETED.en;
+  }
 }

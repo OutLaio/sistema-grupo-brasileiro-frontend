@@ -1,42 +1,30 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { map, Observable } from 'rxjs';
-import { CardsAttributes } from '../interfaces/cards-attributes';
+import { StorageService } from '../../../services/storage/storage.service';
+import { I_Api_Response } from '../../../shared/interfaces/api-response';
+import { I_Project_Data } from '../../../shared/interfaces/project/view/project-view';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CheckRequestsService {
-
+  private readonly authToken = this.storageService.getToken();
   private apiUrl = 'http://localhost:8080/api/v1/projects';
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private http: HttpClient,
+    private storageService: StorageService
+  ) {}
 
-  getProjects(): Observable<CardsAttributes[]> {
-    const token = sessionStorage.getItem('auth-token');
-    const headers = new HttpHeaders({
-      'Authorization': `Bearer ${token}`
+  private getHeaders() {
+    return new HttpHeaders({
+      'Content-Type': 'application/json',
+      Authorization: `Bearer ${this.authToken}`,
     });
-
-    return this.http.get<CardsAttributes[]>(this.apiUrl, { headers }).pipe(
-      map(response => {
-        return response.map((project: CardsAttributes) => ({
-          id: project.id,
-          title: project.title,
-          status: project.status,
-          collaborator: project.collaborator ? {
-            id: project.collaborator.id,
-            fullName: project.collaborator.fullName,
-            avatar: project.collaborator.avatar,
-        } : null,
-          client: {
-            id: project.client.id,
-            fullName: project.client.fullName,
-            avatar: project.client.avatar,
-          }
-        }));
-      })
-    );
   }
 
+  getProjects() {
+    const headers = this.getHeaders();
+    return this.http.get<I_Api_Response<I_Project_Data[]>>(this.apiUrl, { headers });
+  }
 }

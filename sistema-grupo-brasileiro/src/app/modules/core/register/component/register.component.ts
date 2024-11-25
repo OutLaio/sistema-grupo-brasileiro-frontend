@@ -5,6 +5,7 @@ import { LoginRegisterService } from '../../../services/login-register/login-reg
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { I_User_Request } from '../../../shared/interfaces/user/form/user-details-form';
 
 @Component({
   selector: 'app-register',
@@ -25,7 +26,7 @@ export class RegisterComponent implements OnInit {
     this.registerForm = new FormGroup({
       name: new FormControl('', [
         Validators.required,
-        Validators.pattern('^[A-Za-zÀ-ÿ]{3,}( [A-Za-zÀ-ÿ]+)*$') 
+        Validators.pattern('^[A-Za-zÀ-ÿ]{3,}( [A-Za-zÀ-ÿ]+)*$')
       ]),
       lastname: new FormControl('', [
         Validators.required,
@@ -67,16 +68,24 @@ export class RegisterComponent implements OnInit {
       return;
     }
 
-    this.registerService.registerUser(
-      this.name.value,
-      this.lastname.value,
-      this.email.value,
-      this.password.value,
-      this.phone.value,
-      this.sector.value,
-      this.occupation.value,
-      this.nop.value,
-    ).subscribe({
+    const data: I_User_Request = {
+      employee: {
+        name: this.name.value,
+        lastname: this.lastname.value,
+        phoneNumber: this.phone.value,
+        sector: this.sector.value,
+        occupation: this.occupation.value,
+        agency: this.nop.value,
+        avatar: 1,
+      },
+      user: {
+        email: this.email.value,
+        password: this.password.value,
+        profile: 3, // 3 = Client, 2 = Collaborator, 1 = Supervisor
+      }
+    };
+
+    this.registerService.registerUser(data).subscribe({
       next: () => {
         this.toastrService.success("Cadastro realizado com sucesso!");
 				this.isButtonDisabled = true;

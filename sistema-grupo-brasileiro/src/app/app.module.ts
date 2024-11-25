@@ -41,6 +41,7 @@ import { AgencyBoardRequestComponent } from './modules/feature/create-request/co
 import { LoadingFileComponent } from './modules/feature/create-request/components/loading-file/loading-file.component';
 import { DndDirective } from './modules/directives/dnd/dnd.directive.directive';
 import { SignpostRequestComponent } from './modules/feature/create-request/components/signpost-request/signpost-request.component';
+import { BtnFinalizeComponent } from './modules/feature/request-details/components/btn-finalize/btn-finalize.component';
 import { StickersRequestComponent } from './modules/feature/create-request/components/stickers-request/stickers-request.component';
 
 @NgModule({
@@ -72,6 +73,7 @@ import { StickersRequestComponent } from './modules/feature/create-request/compo
     DndDirective,
     SignpostRequestComponent,
     VersionComponent,
+    BtnFinalizeComponent,
     StickersRequestComponent,
 
   ],

@@ -12,6 +12,8 @@ import { ActivatedRoute } from '@angular/router';
 import { LoginRegisterService } from '../../../services/login-register/login-register.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router'; // Importa o Router
+import { I_Reset_Password_Request } from '../../../shared/interfaces/auth/form/reset-password-form';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-reset-password',
@@ -59,14 +61,19 @@ export class ResetPasswordComponent implements OnInit {
       return;
     }
 
+    const request: I_Reset_Password_Request = {
+      token: this.token,
+      password: this.password.value
+    }
+
     this.loginRegisterService
-      .resetPassword(this.password.value, this.token).subscribe({
-        next: () => {
-          this.toastrService.success("Senha alterada com sucesso!"),
+      .resetPassword(request).subscribe({
+        next: (res) => {
+          this.toastrService.success(res.message),
           this.resetForm.reset();
           this.router.navigate(['/login']);
         },
-        error: (error) => {
+        error: (error: HttpErrorResponse) => {
           this.toastrService.error(error.error.message)
         }
       });

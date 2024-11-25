@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginRegisterService } from '../../../../services/login-register/login-register.service';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
+import { I_User_Request } from '../../../../shared/interfaces/user/form/user-details-form';
 
 @Component({
 	selector: 'app-register-collaborator',
@@ -65,18 +66,26 @@ export class RegisterCollaboratorComponent {
 			return;
 		}
 
-		this.registerService.registerCollaborator(
-			this.name.value,
-			this.lastname.value,
-			this.email.value,
-			this.password.value,
-			this.phone.value,
-			this.sector.value,
-			this.occupation.value,
-			this.nop.value
-		).subscribe({
-			next: () => {
-				this.toastrService.success("Cadastro realizado com sucesso!");
+    const data: I_User_Request = {
+      employee: {
+        name: this.name.value,
+        lastname: this.lastname.value,
+        phoneNumber: this.phone.value,
+        sector: this.sector.value,
+        occupation: this.occupation.value,
+        agency: this.nop.value,
+        avatar: 1,
+      },
+      user: {
+        email: this.email.value,
+        password: this.password.value,
+        profile: 2, // 3 = Client, 2 = Collaborator, 1 = Supervisor
+      },
+    };
+
+		this.registerService.registerUser(data).subscribe({
+			next: (res) => {
+				this.toastrService.success(res.message);
 				this.isButtonDisabled = true;
 				setTimeout(() => {
 					window.location.reload();

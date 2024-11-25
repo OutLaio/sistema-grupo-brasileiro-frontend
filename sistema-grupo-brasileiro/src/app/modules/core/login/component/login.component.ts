@@ -4,6 +4,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginRegisterService } from '../../../services/login-register/login-register.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { I_Api_Response } from '../../../shared/interfaces/api-response';
+import { I_Login_Request } from '../../../shared/interfaces/auth/form/login-form';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +19,7 @@ export class LoginComponent implements OnInit {
   constructor(
     private loginService: LoginRegisterService,
     private toastrService: ToastrService,
-    private router: Router 
+    private router: Router
   ) {}
 
   ngOnInit(): void {
@@ -32,13 +34,16 @@ export class LoginComponent implements OnInit {
 
   submit(){
     if(this.loginForm.invalid){return}
-    this.loginService.loginUser(this.email.value, this.password.value).subscribe({
-      next: () =>{
-        this.toastrService.success("Login realizado com sucesso!"),
+    const data: I_Login_Request = {
+      email: this.email.value,
+      password: this.password.value
+    }
+    this.loginService.loginUser(data).subscribe({
+      next: (res) =>{
+        this.toastrService.success(res.message),
         this.router.navigate(['/acompanhamento']);
       },
       error: (value: HttpErrorResponse) =>{
-        
         this.toastrService.error(value.error.message);
       }
     })

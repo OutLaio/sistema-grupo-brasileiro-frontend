@@ -3,6 +3,7 @@ import { ListCollaboratorsService } from '../services/list-collaborators.service
 import { PageEvent } from '@angular/material/paginator';
 import { I_Employee_View_Data } from '../../../../shared/interfaces/user/view/employee-view';
 import { I_Page } from '../../../../shared/interfaces/pageable/pageable';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-list-collaborators',
@@ -11,7 +12,6 @@ import { I_Page } from '../../../../shared/interfaces/pageable/pageable';
 })
 
 export class ListCollaboratorsComponent implements OnInit {
-  page!: I_Page;
   collaborators: I_Employee_View_Data[] = [];
   loading: boolean = false;
   errorMessage: string = '';
@@ -30,12 +30,12 @@ export class ListCollaboratorsComponent implements OnInit {
   loadCollaborators(page: number, size: number): void {
     this.listCollaboratorsService.getAllCollaborators(page - 1, size).subscribe({
       next: (response) => {
-        this.collaborators = response.content;
-        this.totalElements = response.totalElements;
+        this.collaborators = response.data?.content!;
+        this.totalElements = response.data?.totalElements!;
         this.loading = false;
       },
-      error: (error) => {
-        this.errorMessage = 'Erro ao carregar colaboradores.';
+      error: (err: HttpErrorResponse) => {
+        this.errorMessage = err.error.message;
         this.loading = false;
       },
       complete: () => {

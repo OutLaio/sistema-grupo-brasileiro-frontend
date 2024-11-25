@@ -1,7 +1,7 @@
 import { E_Briefing_Type } from './../../../../shared/enums/briefing-types';
 import { Component } from '@angular/core';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import { RequestDetailsService } from '../../services/request-details.service';
+import { RequestDetailsService } from '../../services/request-details/request-details.service';
 import { I_Any_Briefing } from '../../../../shared/interfaces/briefing/any-briefing';
 
 @Component({
@@ -10,7 +10,7 @@ import { I_Any_Briefing } from '../../../../shared/interfaces/briefing/any-brief
   styleUrl: './request-details.component.css',
 })
 export class RequestDetailsComponent {
-  data = {} as I_Any_Briefing;
+  data = {} as any;
   briefingType: string = '';
   E_Briefing_Type = E_Briefing_Type;
 
@@ -19,12 +19,8 @@ export class RequestDetailsComponent {
   ngOnInit(): void {
     const idProject = history.state.id;
     this.service.getRequestDetailsById(idProject).subscribe((res) => {
-      this.data.type = res;
+      this.data.type = res.data!;
       this.briefingType = this.data.type.briefing.briefingType.description;
     });
-  }
-
-  isBriefingType(type: E_Briefing_Type): boolean {
-    return this.briefingType === type;
   }
 }

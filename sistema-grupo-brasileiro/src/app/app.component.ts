@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SidebarService } from './modules/services/sidebar/sidebar.service';
-import { LoginRegisterService } from './modules/services/login-register/login-register.service';
+import { StorageService } from './modules/services/storage/storage.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +12,7 @@ export class AppComponent {
   isSidebarVisible = false;
   constructor(
     private sidebarService: SidebarService,
-    private loginRegisterService: LoginRegisterService, 
+    private storageService: StorageService,
   ) {}
 
   ngOnInit() {
@@ -22,7 +22,7 @@ export class AppComponent {
   }
 
   isAuthenticated(){
-    return this.loginRegisterService.isAuthenticated();
+    return this.storageService.isAutenticated();
   }
 
 }

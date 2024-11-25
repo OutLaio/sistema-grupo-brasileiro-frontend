@@ -11,6 +11,9 @@ import { I_Company_Briefing_Form_Data } from '../../../../shared/interfaces/comp
 import { I_Agency_Board_Routes } from '../../../../shared/interfaces/briefing/agency-board/form/agency-board-routes-form';
 import { I_Agency_Board_Others_Routes } from '../../../../shared/interfaces/briefing/agency-board/form/agency-board-others-routes-form';
 import { Router } from '@angular/router';
+import { StorageService } from '../../../../services/storage/storage.service';
+import { E_Briefing_Type } from '../../../../shared/enums/briefing-types';
+import { HttpErrorResponse } from '@angular/common/http';
 
 enum Cities {
   'SÃO PAULO' = '1',
@@ -57,10 +60,10 @@ export class AgencyBoardRequestComponent implements OnInit {
   files: { name: string, url: string }[] = [];
 
   constructor(
-    private fb: FormBuilder, 
-    private createRequestService: 
-    CreateRequestService, 
+    private fb: FormBuilder,
+    private createRequestService: CreateRequestService,
     private toastrService: ToastrService,
+    private storageService: StorageService,
     private router: Router) { }
 
   ngOnInit(): void {
@@ -108,6 +111,7 @@ export class AgencyBoardRequestComponent implements OnInit {
     this.showCompanyFields = false;
     this.isSingleCompany = true;
     this.isOtherCompanySelected = false;
+    this.isOtherCompanySelected = false;
     this.isOtherCompaniesSelected = false;
     this.selectedCompanies = [];
     this.selectedOthersCompanies = [];
@@ -130,6 +134,7 @@ export class AgencyBoardRequestComponent implements OnInit {
 
   updateCompanyName(selectionType: number, company: string) {
     this.isOtherCompanySelected = !this.isOtherCompanySelected;
+    this.isOtherCompanySelected = !this.isOtherCompanySelected;
     if (selectionType === 1) {
       this.companies = [{ name: company, companyMainRoutes: [], companyConnections: [], isCustom: false }];
     } else {
@@ -144,6 +149,7 @@ export class AgencyBoardRequestComponent implements OnInit {
 
   onOtherCompany() {
     this.isOtherCompanySelected = !this.isOtherCompanySelected;
+    this.isOtherCompanySelected = !this.isOtherCompanySelected;
     if (this.companies.length > 0)
       this.companies = [];
     this.agencyBoardForm.get('otherText')?.setValue('');
@@ -154,6 +160,7 @@ export class AgencyBoardRequestComponent implements OnInit {
     this.companies = [];
     this.companies.push({ name: otherValue, companyMainRoutes: [], companyConnections: [], isCustom: true });
     this.agencyBoardForm.get('otherText')?.reset();
+    this.agencyBoardForm.get('otherText')?.reset();
   }
 
   confirmOtherSingleCompany() {
@@ -162,8 +169,9 @@ export class AgencyBoardRequestComponent implements OnInit {
       this.companies.push({ name: otherCompany, companyMainRoutes: [], companyConnections: [], isCustom: true });
       this.agencyBoardForm.get('otherText')?.reset();
       this.isOtherCompanySelected = false;
+      this.isOtherCompanySelected = false;
     }
-    
+
   }
 
 
@@ -182,8 +190,10 @@ export class AgencyBoardRequestComponent implements OnInit {
       if (companyIndex >= 0) {
         this.companies[companyIndex].name = otherValue;
         this.agencyBoardForm.get('othersText')?.reset();
+        this.agencyBoardForm.get('othersText')?.reset();
       } else {
         this.companies.push({ name: otherValue, companyMainRoutes: [], companyConnections: [], isCustom: true });
+        this.agencyBoardForm.get('othersText')?.reset();
         this.agencyBoardForm.get('othersText')?.reset();
       }
     }
@@ -283,22 +293,20 @@ export class AgencyBoardRequestComponent implements OnInit {
     this.separateCompanies();
 
     const projectForm: I_Project_Request = {
-      idClient: sessionStorage.getItem('idUser')!.toString(),
+      idClient: this.storageService.getUserId(),
       title: 'Placa de Agência',
     }
 
     const briefingForm: I_Briefing_Request = {
-      expectedDate: '2023-10-25',
       detailedDescription: this.agencyBoardForm.get('description')?.value,
       companies: this.selectedCompanies,
       otherCompany: this.selectedOthersCompanies.join(', '),
-      idBriefingType: '1',
+      idBriefingType: E_Briefing_Type.ITINERARIOS.id,
       measurement: {
         length: this.agencyBoardForm.get('length')?.value,
         height: this.agencyBoardForm.get('height')?.value,
-      },
+      }
     }
-
 
     const companyMainRoutes: I_Agency_Board_Routes[] = this.companies.flatMap(company => {
       if (!company.isCustom) {
@@ -311,7 +319,6 @@ export class AgencyBoardRequestComponent implements OnInit {
         return [];
       }
     });
-
 
     const connections: I_Agency_Board_Routes[] = this.companies.flatMap(company => {
       if (!company.isCustom) {
@@ -362,9 +369,7 @@ export class AgencyBoardRequestComponent implements OnInit {
       othersRoutes: agencyBoardOthersRoutes,
     }
 
-    return { projectForm: projectForm, briefingForm: briefingForm, bAgencyBoardsForm: bAgencyBoardsForm };
-
-
+    return { projectForm: projectForm, briefingForm: briefingForm, bAgencyBoardsForm: bAgencyBoardsForm }
   }
 
   validateCompanies(): boolean {
@@ -386,16 +391,16 @@ export class AgencyBoardRequestComponent implements OnInit {
       return;
     }
     const requestData = this.prepareSubmit();
-    this.createRequestService.submitAgencyBoardRequest(requestData.projectForm, requestData.briefingForm, requestData.bAgencyBoardsForm)
+    this.createRequestService.submitAgencyBoardRequest(requestData)
       .subscribe({
         next: (response) => {
-          this.toastrService.success("Solicitação realizada com sucesso!");
+          this.toastrService.success(response.message);
           setTimeout(() => {
             window.location.reload();
           },3000);
         },
-        error: (error) => {
-          this.toastrService.error("Erro ao realizar solicitação.");
+        error: (err: HttpErrorResponse) => {
+          this.toastrService.error(err.error.message);
         }
       });
     this.isButtonDisabled = true;

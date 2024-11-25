@@ -3,6 +3,8 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { LoginRegisterService } from '../../../services/login-register/login-register.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';  // Importação do Router
+import { I_Recovery_Password_Request } from '../../../shared/interfaces/auth/form/recovery-password-form';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-recovery-password',
@@ -33,15 +35,19 @@ export class RecoveryPasswordComponent implements OnInit {
 
     this.loading = true;
 
-    this.recoveryService.recoveryPassword(this.email.value).subscribe({
-      next: () => {
-        this.toastrService.success('Sua solicitação de recuperação de senha foi enviada com sucesso! Verifique seu e-mail.');
+    const request: I_Recovery_Password_Request = {
+      email: this.email.value
+    }
+
+    this.recoveryService.recoveryPassword(request).subscribe({
+      next: (res) => {
+        this.toastrService.success(res.message);
         this.recoveryForm.reset();
         this.loading = false;
         this.router.navigate(['/login']);
       },
-      error: (error) => {
-        this.toastrService.error('Houve um erro ao tentar recuperar a senha. Tente novamente.');
+      error: (res: HttpErrorResponse) => {
+        this.toastrService.error(res.error.message);
         this.loading = false;
       }
     });
