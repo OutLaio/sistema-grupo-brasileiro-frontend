@@ -1,9 +1,12 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+
 import { I_Agency_Board_Request } from '../../../shared/interfaces/briefing/agency-board/form/agency-board-register-form';
-import { StorageService } from '../../../services/storage/storage.service';
 import { I_Signpost_Request } from '../../../shared/interfaces/briefing/signpost/form/signpost-register-form';
+import { I_Stickers_Request } from '../../../shared/interfaces/briefing/stickers/form/stickers-register-form';
+
+import { StorageService } from '../../../services/storage/storage.service';
 import { I_Api_Response } from '../../../shared/interfaces/api-response';
 
 @Injectable({
@@ -17,7 +20,7 @@ export class CreateRequestService {
   constructor(
     private http: HttpClient,
     private storageService: StorageService
-  ) {}
+  ) { }
 
   private getHeaders() {
     return new HttpHeaders({
@@ -42,50 +45,12 @@ export class CreateRequestService {
     });
   }
 
-  submitStickersRequest(
-    sendCompanies: number[],
-    sendOthersCompanies: string[],
-    stickerType: number,
-    stickerTypeInformation: number,
-    sector: string,
-    description: string,
-    height: number,
-    width: number,
-    observations: string,
-  ): Observable<any> {
-    const idUser = sessionStorage.getItem('idUser');
-    const authToken = sessionStorage.getItem('auth-token');
-    const requestBody = {
-      project: {
-        id_client: Number(idUser),
-        title: 'Adesivos'
-      },
-      briefing: {
-        expectedDate: '',
-        detailedDescription: description,
-        companies: sendCompanies.map(id => ({ id_company: id })),
-        otherCompany: sendOthersCompanies.join(', '),
-        idBriefingType: '3',
-        measurement: {
-          height: height,
-          length: width
-        }
-      },
-      sticker: {
-        idStickerType: stickerType,
-        idStickerInformationType: stickerTypeInformation,
-        sector: sector,
-        observations: observations
-      }
-    };
-
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${authToken}`
+  submitStickersRequest(req: I_Stickers_Request) {
+    const headers = this.getHeaders();
+    return this.http.post<I_Api_Response<void>>(`${this.apiUrl}/stickers`, req, {
+      headers,
+      withCredentials: true,
     });
-
-    return this.http.post<any>(`${this.apiUrl}/stickers`, requestBody, { headers });
   }
-
 
 }

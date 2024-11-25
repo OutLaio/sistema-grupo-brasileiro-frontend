@@ -3,6 +3,12 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { CompanyDetails } from '../../interface/company-details';
 import { CreateRequestService } from '../../services/create-request.service';
 import { ToastrService } from 'ngx-toastr';
+import { StorageService } from '../../../../services/storage/storage.service';
+
+import { I_Stickers_Request } from '../../../../shared/interfaces/briefing/stickers/form/stickers-register-form';
+import { E_Briefing_Type } from '../../../../shared/enums/briefing-types';
+import { I_Company_Briefing_Form_Data } from '../../../../shared/interfaces/company/form/company-briefing-form';
+import { HttpErrorResponse } from '@angular/common/http';
 
 enum Company {
   'Rota Transportes' = 1,
@@ -29,7 +35,12 @@ export class StickersRequestComponent implements OnInit {
   isOtherCompaniesSelected = false;
 
 
-  constructor(private fb: FormBuilder, private createRequestService: CreateRequestService, private toastrService: ToastrService) { }
+  constructor(
+    private fb: FormBuilder,
+    private createRequestService: CreateRequestService,
+    private toastrService: ToastrService,
+    private storageService: StorageService
+  ) { }
 
   ngOnInit(): void {
     this.stickersForm = new FormGroup({
@@ -140,14 +151,6 @@ export class StickersRequestComponent implements OnInit {
 
   submit() {
     this.saveCompanies(this.selectedCompanies);
-    const stickerType = this.stickersForm.get('stickerType')?.value;
-    const stickerInformationType = this.stickersForm.get('stickerInformationType')?.value;
-    const sector = this.stickersForm.get('sector')?.value;
-    const description = this.stickersForm.get('description')?.value;
-    const height = this.stickersForm.get('height')?.value;
-    const width = this.stickersForm.get('width')?.value;
-    const observations = this.stickersForm.get('observations')?.value;
-
     if (this.stickersForm.invalid) {
       this.toastrService.error("Erro ao realizar solicitação. Verifique se os campos estão preenchidos corretamente.");
       this.isButtonDisabled = true;
@@ -157,27 +160,43 @@ export class StickersRequestComponent implements OnInit {
       return;
     }
 
-    this.createRequestService.submitStickersRequest(
-      this.sendCompanies,
-      this.sendOthersCompanies,
-      stickerType,
-      stickerInformationType,
-      sector,
-      description,
-      height,
-      width,
-      observations,
-    ).subscribe({
+    const request: I_Stickers_Request = {
+      project: {
+        title: 'Adesivos',
+        idClient: this.storageService.getUserId(),
+      },
+      briefing: {
+        detailedDescription: this.description!.value,
+        idBriefingType: E_Briefing_Type.ADESIVOS.id,
+        companies: this.sendCompanies.map((item) => {
+          return { idCompany: item.toString() } as I_Company_Briefing_Form_Data;
+        }),
+        otherCompany: this.sendOthersCompanies.join(', '),
+        measurement: {
+          height: this.height!.value,
+          length: this.width!.value,
+        },
+      },
+      sticker: {
+        idStickerType: this.stickerType!.value,
+        idStickerInformationType: this.stickerInformationType!.value,
+        sector: this.sector!.value,
+        observations: this.observations!.value,
+      },
+    };
+
+
+    this.createRequestService.submitStickersRequest(request).subscribe({
       next: (response) => {
-        this.toastrService.success("Solicitação realizada com sucesso!");
+        this.toastrService.success(response.message);
         setTimeout(() => {
           window.location.reload();
         }, 2000);
       },
-      error: (error) => {
-        this.toastrService.error("Erro ao realizar solicitação.");
+      error: (err: HttpErrorResponse) => {
+        this.toastrService.error(err.error.message);
       }
-    }); 
+    });
     this.isButtonDisabled = true;
     setTimeout(() => {
       this.isButtonDisabled = false;

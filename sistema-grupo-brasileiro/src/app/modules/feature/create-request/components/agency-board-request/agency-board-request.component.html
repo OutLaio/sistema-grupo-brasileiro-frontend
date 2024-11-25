@@ -248,7 +248,7 @@
                                     <select [backgroundColorClass]="'#ebebeb'" id="mainRoute"
                                         class="form-select border-dark-subtle rounded-3 form-focus me-2 w-100"
                                         formControlName="mainRoute">
-                                        <option *ngFor="let route of listMainRoutes" [value]="route">{{ route }}
+                                        <option *ngFor="let route of listMainRoutes" [value]="route">{{ route.name }}
                                         </option>
                                     </select>
                                     <button [backgroundColorClass]="'#027373'" type="button" class="btn text-white"
@@ -283,7 +283,7 @@
                                         class="form-select border-dark-subtle rounded-3 form-focus me-2 w-100"
                                         formControlName="connections">
                                         <option *ngFor="let connection of listConnections" [value]="connection">{{
-                                            connection }}
+                                            connection.name }}
                                         </option>
                                     </select>
                                 </div>

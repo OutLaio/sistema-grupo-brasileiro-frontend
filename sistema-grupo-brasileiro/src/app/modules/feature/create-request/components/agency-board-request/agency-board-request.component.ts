@@ -1,8 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ToastrService } from 'ngx-toastr';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { HttpErrorResponse } from '@angular/common/http';
+
 import { CompanyDetails } from '../../interface/company-details';
-import { CreateRequestService } from '../../services/create-request.service';
+import { StorageService } from '../../../../services/storage/storage.service';
+import { E_Briefing_Type } from '../../../../shared/enums/briefing-types';
+
 import { I_Agency_Board_Request } from '../../../../shared/interfaces/briefing/agency-board/form/agency-board-register-form';
 import { I_Briefing_Request } from '../../../../shared/interfaces/project/form/briefing-form';
 import { I_Project_Request } from '../../../../shared/interfaces/project/form/project-form';
@@ -10,10 +15,12 @@ import { I_Agency_Board_Data } from '../../../../shared/interfaces/briefing/agen
 import { I_Company_Briefing_Form_Data } from '../../../../shared/interfaces/company/form/company-briefing-form';
 import { I_Agency_Board_Routes } from '../../../../shared/interfaces/briefing/agency-board/form/agency-board-routes-form';
 import { I_Agency_Board_Others_Routes } from '../../../../shared/interfaces/briefing/agency-board/form/agency-board-others-routes-form';
-import { Router } from '@angular/router';
-import { StorageService } from '../../../../services/storage/storage.service';
-import { E_Briefing_Type } from '../../../../shared/enums/briefing-types';
-import { HttpErrorResponse } from '@angular/common/http';
+import { I_City_Data } from '../../../../shared/interfaces/briefing/agency-board/view/city-view';
+
+
+import { CreateRequestService } from '../../services/create-request.service';
+import { CitiesCompaniesService } from '../../services/cities-companies.service';
+import { map } from 'rxjs';
 
 enum Cities {
   'SÃO PAULO' = '1',
@@ -53,8 +60,8 @@ export class AgencyBoardRequestComponent implements OnInit {
   isOtherCompaniesSelected = false;
   showCompanyFields: boolean = false;
 
-  listMainRoutes: string[] = Object.keys(Cities);
-  listConnections: string[] = Object.keys(Cities);
+  listMainRoutes: I_City_Data[] = [];
+  listConnections: I_City_Data[] = [];
 
   // TODO: Adicionar ID para identificação da imagem
   files: { name: string, url: string }[] = [];
@@ -64,9 +71,17 @@ export class AgencyBoardRequestComponent implements OnInit {
     private createRequestService: CreateRequestService,
     private toastrService: ToastrService,
     private storageService: StorageService,
+    private citiesCompaniesService: CitiesCompaniesService,
     private router: Router) { }
 
   ngOnInit(): void {
+    this.citiesCompaniesService.getCities().pipe(
+      map(cities => cities.map(city => ({ id: city.id, name: city.name })))
+    ).subscribe(cities => {
+      this.listMainRoutes = cities;
+      this.listConnections = cities;
+    });
+
     this.agencyBoardForm = new FormGroup({
       description: new FormControl('', [Validators.required]),
       signLocation: new FormControl('', [Validators.required]),
@@ -102,6 +117,7 @@ export class AgencyBoardRequestComponent implements OnInit {
   get selectedCompany() { return this.agencyBoardForm.get('selectedCompany')!; }
   get mainRoute() { return this.agencyBoardForm.get('mainRoute')!; }
   get connection() { return this.agencyBoardForm.get('connection')!; }
+  get observation() { return this.agencyBoardForm.get('observation')!; }
 
 
   clearForm() {
@@ -361,10 +377,10 @@ export class AgencyBoardRequestComponent implements OnInit {
     const agencyBoardOthersRoutes: I_Agency_Board_Others_Routes[] = [...mainOthersRoutes, ...othersConnections];
 
     const bAgencyBoardsForm: I_Agency_Board_Data = {
-      idAgencyBoardType: this.agencyBoardForm.get('agencyBoardType')?.value.toString(),
-      boardLocation: this.agencyBoardForm.get('signLocation')?.value,
-      observation: this.agencyBoardForm.get('observation')?.value,
-      idBoardType: this.agencyBoardForm.get('boardType')?.value.toString(),
+      idAgencyBoardType: this.agencyBoardType?.value.toString(),
+      boardLocation: this.signLocation?.value,
+      observation: this.observation!.value,
+      idBoardType: this.boardType?.value.toString(),
       routes: agencyBoardRoutes,
       othersRoutes: agencyBoardOthersRoutes,
     }
