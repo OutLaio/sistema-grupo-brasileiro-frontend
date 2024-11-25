@@ -238,17 +238,17 @@
                                 <div *ngFor="let routeAdded of company.companyMainRoutes" class="me-2">
                                     <div [backgroundColorClass]="'#ebebeb'"
                                         class="border border-dark-subtle rounded-3 mb-2">
-                                        <span class="p-1 ">{{ routeAdded }} </span>
+                                        <span class="p-1 ">{{ routeAdded.name }} </span>
                                         <button [backgroundColorClass]="'#ff6f6f'" type="button"
                                             class="border-0 rounded-end text-white px-2"
-                                            (click)="removeMainRoute(company.name, routeAdded)"> - </button>
+                                            (click)="removeMainRoute(company.name, routeAdded.id)"> - </button>
                                     </div>
                                 </div>
                                 <div class="d-flex">
                                     <select [backgroundColorClass]="'#ebebeb'" id="mainRoute"
                                         class="form-select border-dark-subtle rounded-3 form-focus me-2 w-100"
                                         formControlName="mainRoute">
-                                        <option *ngFor="let route of listMainRoutes" [value]="route">{{ route.name }}
+                                        <option *ngFor="let route of listMainRoutes" [ngValue]="route">{{ route.name }}
                                         </option>
                                     </select>
                                     <button [backgroundColorClass]="'#027373'" type="button" class="btn text-white"
@@ -272,17 +272,17 @@
                                 <div *ngFor="let connectionAdded of company.companyConnections" class="me-2">
                                     <div [backgroundColorClass]="'#ebebeb'"
                                         class="border border-dark-subtle rounded-3 mb-2">
-                                        <span class="p-3 ">{{ connectionAdded }} </span>
+                                        <span class="p-3 ">{{ connectionAdded.name }} </span>
                                         <button [backgroundColorClass]="'#ff6f6f'" type="button"
                                             class="border-0 rounded-end text-white px-2"
-                                            (click)="removeConnection(company.name, connectionAdded)"> - </button>
+                                            (click)="removeConnection(company.name, connectionAdded.id)"> - </button>
                                     </div>
                                 </div>
                                 <div class="d-flex">
                                     <select [backgroundColorClass]="'#ebebeb'" id="connections"
                                         class="form-select border-dark-subtle rounded-3 form-focus me-2 w-100"
                                         formControlName="connections">
-                                        <option *ngFor="let connection of listConnections" [value]="connection">{{
+                                        <option *ngFor="let connection of listConnections" [ngValue]="connection">{{
                                             connection.name }}
                                         </option>
                                     </select>

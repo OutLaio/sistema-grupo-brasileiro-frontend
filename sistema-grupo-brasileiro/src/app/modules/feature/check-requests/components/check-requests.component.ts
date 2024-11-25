@@ -55,6 +55,7 @@ export class CheckRequestsComponent implements OnInit {
     });
   }
 
+
   private projectsMapper(allProjects: I_Project_Data[]): void {
     this.toDoCards = allProjects.filter(project => project.status === C_PROJECT_STATUS.TO_DO.en).map(project => ({ ...project, isTruncated: true }));
     this.inProgressCards = allProjects.filter(project => project.status === C_PROJECT_STATUS.IN_PROGRESS.en).map(project => ({ ...project, isTruncated: true }));
