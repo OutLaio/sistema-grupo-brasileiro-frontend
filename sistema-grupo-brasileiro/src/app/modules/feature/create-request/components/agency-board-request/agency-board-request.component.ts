@@ -22,19 +22,6 @@ import { CreateRequestService } from '../../services/create-request.service';
 import { CitiesCompaniesService } from '../../services/cities-companies.service';
 import { map } from 'rxjs';
 
-enum Cities {
-  'SÃO PAULO' = '1',
-  'RIO DE JANEIRO' = '2',
-  'BELO HORIZONTE' = '3',
-  'PORTO ALEGRE' = '4',
-  'CURITIBA' = '5',
-  'FORTALEZA' = '6',
-  'SALVADOR' = '7',
-  'BRASÍLIA' = '8',
-  'RECIFE' = '9',
-  'GOIÂNIA' = '10',
-}
-
 enum Company {
   'Rota Transportes' = '1',
   'Cidade Sol' = '2',
@@ -237,12 +224,12 @@ export class AgencyBoardRequestComponent implements OnInit {
   }
 
   addMainRoute(companyName: string) {
-    const selectedMainRoute = this.agencyBoardForm.get('mainRoute')?.value;
+    const selectedMainRoute: I_City_Data | null = this.agencyBoardForm.get('mainRoute')?.value;
 
     if (selectedMainRoute) {
       const company = this.companies.find(c => c.name === companyName);
       if (company) {
-        const routeExists = company.companyMainRoutes.includes(selectedMainRoute);
+        const routeExists = company.companyMainRoutes.some(route => route.id === selectedMainRoute.id);
         if (!routeExists) {
           company.companyMainRoutes.push(selectedMainRoute);
           this.agencyBoardForm.get('mainRoute')?.reset();
@@ -252,23 +239,24 @@ export class AgencyBoardRequestComponent implements OnInit {
   }
 
 
-  removeMainRoute(companyName: string, routeToRemove: string) {
+  removeMainRoute(companyName: string, routeIdToRemove: string) {
     const company = this.companies.find(c => c.name === companyName);
     if (company) {
-      const index = company.companyMainRoutes.indexOf(routeToRemove);
+      const index = company.companyMainRoutes.findIndex(route => route.id === routeIdToRemove);
       if (index !== -1) {
         company.companyMainRoutes.splice(index, 1);
       }
     }
   }
 
+
   addConnection(companyName: string) {
-    const selectedConnection = this.agencyBoardForm.get('connections')?.value;
+    const selectedConnection: I_City_Data | null = this.agencyBoardForm.get('connections')?.value;
 
     if (selectedConnection) {
       const company = this.companies.find(c => c.name === companyName);
       if (company) {
-        const connectionExists = company.companyConnections.includes(selectedConnection);
+        const connectionExists = company.companyConnections.some(connection => connection.id === selectedConnection.id);
         if (!connectionExists) {
           company.companyConnections.push(selectedConnection);
           this.agencyBoardForm.get('connections')?.reset();
@@ -278,15 +266,17 @@ export class AgencyBoardRequestComponent implements OnInit {
   }
 
 
-  removeConnection(companyName: string, connectionToRemove: string) {
+
+  removeConnection(companyName: string, connectionIdToRemove: string) {
     const company = this.companies.find(c => c.name === companyName);
     if (company) {
-      const index = company.companyConnections.indexOf(connectionToRemove);
+      const index = company.companyConnections.findIndex(connection => connection.id === connectionIdToRemove);
       if (index !== -1) {
         company.companyConnections.splice(index, 1);
       }
     }
   }
+
 
   onFilesLoaded(newFiles: { name: string, url: string }[]): void {
     this.files = newFiles;
@@ -328,7 +318,7 @@ export class AgencyBoardRequestComponent implements OnInit {
       if (!company.isCustom) {
         return [{
           idCompany: Company[company.name as keyof typeof Company],
-          idCities: company.companyMainRoutes.map(route => Cities[route as keyof typeof Cities]),
+          idCities: company.companyMainRoutes.map(route => route.id),
           type: 'main',
         }];
       } else {
@@ -336,11 +326,12 @@ export class AgencyBoardRequestComponent implements OnInit {
       }
     });
 
+
     const connections: I_Agency_Board_Routes[] = this.companies.flatMap(company => {
       if (!company.isCustom) {
         return [{
           idCompany: Company[company.name as keyof typeof Company],
-          idCities: company.companyConnections.map(connection => Cities[connection as keyof typeof Cities]),
+          idCities: company.companyConnections.map(connection => connection.id),
           type: 'connection',
         }];
       } else {
@@ -354,7 +345,7 @@ export class AgencyBoardRequestComponent implements OnInit {
       if (company.isCustom) {
         return company.companyMainRoutes.map(route => ({
           company: company.name,
-          city: route,
+          city: route.name,
           type: 'main',
         }));
       } else {
@@ -366,7 +357,7 @@ export class AgencyBoardRequestComponent implements OnInit {
       if (company.isCustom) {
         return company.companyConnections.map(route => ({
           company: company.name,
-          city: route,
+          city: route.name,
           type: 'connection',
         }));
       } else {
@@ -413,7 +404,7 @@ export class AgencyBoardRequestComponent implements OnInit {
           this.toastrService.success(response.message);
           setTimeout(() => {
             window.location.reload();
-          },3000);
+          }, 3000);
         },
         error: (err: HttpErrorResponse) => {
           this.toastrService.error(err.error.message);
