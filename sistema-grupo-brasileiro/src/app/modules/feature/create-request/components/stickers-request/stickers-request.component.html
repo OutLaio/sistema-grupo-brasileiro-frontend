@@ -50,7 +50,7 @@
                         <label class="fw-bold" for="stickerType">Adesivo *</label>
                         <select [backgroundColorClass]="'#ebebeb'" id="stickerType"
                             class="form-select border-dark-subtle rounded-3 form-focus w-100"
-                            formControlName="stickerType">
+                            formControlName="stickerType" (change)="onValueChanged()">
                             <option value="1">Plotagem de veículos</option>
                             <option value="2">Adesivos informativos</option>
                         </select>

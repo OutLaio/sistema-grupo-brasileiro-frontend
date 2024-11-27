@@ -1,5 +1,5 @@
 export interface I_Agency_Board_Routes {
-  idCompany: string;
+  idCompany: number;
   idCities: string[];
   type: string;
 }

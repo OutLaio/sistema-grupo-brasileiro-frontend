@@ -29,10 +29,10 @@ enum Cities {
 }
 
 enum Company {
-  'Rota Transportes' = '1',
-  'Cidade Sol' = '2',
-  'Via Metro' = '3',
-  'Brasileiro' = '4',
+  'Rota Transportes' = 1,
+  'Cidade Sol' = 2,
+  'Via Metro' = 3,
+  'Brasileiro' = 4,
 }
 
 @Component({

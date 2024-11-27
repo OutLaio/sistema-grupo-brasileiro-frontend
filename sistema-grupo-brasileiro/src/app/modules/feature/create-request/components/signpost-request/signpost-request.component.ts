@@ -160,7 +160,7 @@ export class SignpostRequestComponent implements OnInit {
         detailedDescription: this.signPostForm.get('description')!.value,
         idBriefingType: E_Briefing_Type.SINALIZACAO_INTERNA.id,
         companies: this.sendCompanies.map((item) => {
-          return { idCompany: item.toString() } as I_Company_Briefing_Form_Data;
+          return { idCompany: item } as I_Company_Briefing_Form_Data;
         }),
         otherCompany: this.sendOthersCompanies.join(', '),
         measurement: {
@@ -185,7 +185,7 @@ export class SignpostRequestComponent implements OnInit {
       error: (err: HttpErrorResponse) => {
         this.toastrService.error(err.error.message);
       }
-    }); 
+    });
     this.isButtonDisabled = true;
     setTimeout(() => {
       this.isButtonDisabled = false;

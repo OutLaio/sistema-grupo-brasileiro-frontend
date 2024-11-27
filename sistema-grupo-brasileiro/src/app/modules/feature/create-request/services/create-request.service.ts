@@ -5,6 +5,7 @@ import { I_Agency_Board_Request } from '../../../shared/interfaces/briefing/agen
 import { StorageService } from '../../../services/storage/storage.service';
 import { I_Signpost_Request } from '../../../shared/interfaces/briefing/signpost/form/signpost-register-form';
 import { I_Api_Response } from '../../../shared/interfaces/api-response';
+import { I_Sticker_Request } from '../../../shared/interfaces/briefing/sticker/form/register-sticker-form';
 
 @Injectable({
   providedIn: 'root',
@@ -42,50 +43,9 @@ export class CreateRequestService {
     });
   }
 
-  submitStickersRequest(
-    sendCompanies: number[],
-    sendOthersCompanies: string[],
-    stickerType: number,
-    stickerTypeInformation: number,
-    sector: string,
-    description: string,
-    height: number,
-    width: number,
-    observations: string,
-  ): Observable<any> {
-    const idUser = sessionStorage.getItem('idUser');
-    const authToken = sessionStorage.getItem('auth-token');
-    const requestBody = {
-      project: {
-        id_client: Number(idUser),
-        title: 'Adesivos'
-      },
-      briefing: {
-        expectedDate: '',
-        detailedDescription: description,
-        companies: sendCompanies.map(id => ({ id_company: id })),
-        otherCompany: sendOthersCompanies.join(', '),
-        idBriefingType: '3',
-        measurement: {
-          height: height,
-          length: width
-        }
-      },
-      sticker: {
-        idStickerType: stickerType,
-        idStickerInformationType: stickerTypeInformation,
-        sector: sector,
-        observations: observations
-      }
-    };
-
-    const headers = new HttpHeaders({
-      'Content-Type': 'application/json',
-      'Authorization': `Bearer ${authToken}`
-    });
-
-    return this.http.post<any>(`${this.apiUrl}/stickers`, requestBody, { headers });
+  submitStickersRequest(req: I_Sticker_Request) {
+    const headers = this.getHeaders();
+    return this.http.post<any>(`${this.apiUrl}/stickers`, req, { headers });
   }
-
 
 }

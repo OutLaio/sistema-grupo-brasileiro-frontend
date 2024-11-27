@@ -3,6 +3,9 @@ import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms'
 import { CompanyDetails } from '../../interface/company-details';
 import { CreateRequestService } from '../../services/create-request.service';
 import { ToastrService } from 'ngx-toastr';
+import { I_Sticker_Request } from '../../../../shared/interfaces/briefing/sticker/form/register-sticker-form';
+import { StorageService } from '../../../../services/storage/storage.service';
+import { I_Company_Briefing_Form_Data } from '../../../../shared/interfaces/company/form/company-briefing-form';
 
 enum Company {
   'Rota Transportes' = 1,
@@ -29,7 +32,12 @@ export class StickersRequestComponent implements OnInit {
   isOtherCompaniesSelected = false;
 
 
-  constructor(private fb: FormBuilder, private createRequestService: CreateRequestService, private toastrService: ToastrService) { }
+  constructor(
+    private fb: FormBuilder,
+    private createRequestService: CreateRequestService,
+    private toastrService: ToastrService,
+    private storageService: StorageService
+  ) { }
 
   ngOnInit(): void {
     this.stickersForm = new FormGroup({
@@ -37,19 +45,11 @@ export class StickersRequestComponent implements OnInit {
       width: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
       height: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
       stickerType: new FormControl('', [Validators.required]),
-      stickerInformationType: new FormControl('', [Validators.required]),
+      stickerInformationType: new FormControl(''),
       selectedCompany: new FormControl('', [Validators.required]),
       sector: new FormControl('', [Validators.required]),
       othersText: new FormControl(''),
       observations: new FormControl('', [Validators.required]),
-    });
-    this.stickersForm.get('stickerType')?.valueChanges.subscribe(value => {
-      if (value === '2') {
-        this.stickersForm.get('stickerInformationType')?.setValidators([Validators.required]);
-      } else {
-        this.stickersForm.get('stickerInformationType')?.clearValidators();
-      }
-      this.stickersForm.get('stickerInformationType')?.updateValueAndValidity();
     });
   }
 
@@ -66,6 +66,17 @@ export class StickersRequestComponent implements OnInit {
   clearForm() {
     this.stickersForm.reset();
     this.selectedCompanies = [];
+  }
+
+  onValueChanged() {
+    this.stickersForm.get('stickerType')?.valueChanges.subscribe(value => {
+      if (value === '2') {
+        this.stickersForm.get('stickerInformationType')?.setValidators([Validators.required]);
+      } else {
+        this.stickersForm.get('stickerInformationType')?.clearValidators();
+      }
+      this.stickersForm.get('stickerInformationType')?.updateValueAndValidity();
+    });
   }
 
   onCompanyChange(type: string) {
@@ -149,6 +160,7 @@ export class StickersRequestComponent implements OnInit {
     const observations = this.stickersForm.get('observations')?.value;
 
     if (this.stickersForm.invalid) {
+      console.log(this.stickersForm)
       this.toastrService.error("Erro ao realizar solicitação. Verifique se os campos estão preenchidos corretamente.");
       this.isButtonDisabled = true;
       setTimeout(() => {
@@ -157,17 +169,32 @@ export class StickersRequestComponent implements OnInit {
       return;
     }
 
-    this.createRequestService.submitStickersRequest(
-      this.sendCompanies,
-      this.sendOthersCompanies,
-      stickerType,
-      stickerInformationType,
-      sector,
-      description,
-      height,
-      width,
-      observations,
-    ).subscribe({
+    const requestData: I_Sticker_Request = {
+      project: {
+        idClient: this.storageService.getUserId(),
+        title: "FALTA O CAMPO DE OBTER O TÍTULO"
+      },
+      briefing: {
+        detailedDescription: description,
+        idBriefingType: 3,
+        companies: this.sendCompanies.map((item) => {
+          return { idCompany: item } as I_Company_Briefing_Form_Data;
+        }),
+        otherCompany: this.sendOthersCompanies.join(", "),
+        measurement: {
+          height: height,
+          length: width
+        }
+      },
+      sticker: {
+        idStickerType: stickerType,
+        idStickerInformationType: stickerInformationType,
+        observations: observations,
+        sector: sector
+      }
+    }
+
+    this.createRequestService.submitStickersRequest(requestData).subscribe({
       next: (response) => {
         this.toastrService.success("Solicitação realizada com sucesso!");
         setTimeout(() => {
@@ -177,7 +204,7 @@ export class StickersRequestComponent implements OnInit {
       error: (error) => {
         this.toastrService.error("Erro ao realizar solicitação.");
       }
-    }); 
+    });
     this.isButtonDisabled = true;
     setTimeout(() => {
       this.isButtonDisabled = false;
