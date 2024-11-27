@@ -44,6 +44,7 @@ export class StickersRequestComponent implements OnInit {
 
   ngOnInit(): void {
     this.stickersForm = new FormGroup({
+      title: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
       width: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
       height: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
@@ -56,6 +57,7 @@ export class StickersRequestComponent implements OnInit {
     });
   }
 
+  get title() { return this.stickersForm.get('title')!; }
   get width() { return this.stickersForm.get('width')!; }
   get height() { return this.stickersForm.get('height')!; }
   get stickerType() { return this.stickersForm.get('stickerType')!; }
@@ -93,6 +95,8 @@ export class StickersRequestComponent implements OnInit {
     } else {
       this.selectedCompanies.push({ name: company, isCustom: false });
     }
+    if(this.selectedCompanies.length == 0)
+      console.log(this.selectedCompanies);
   }
 
   onOthersCompanies() {
@@ -115,6 +119,8 @@ export class StickersRequestComponent implements OnInit {
         this.stickersForm.get('othersText')?.reset();
       }
     }
+    if(this.selectedCompanies.length == 0)
+      console.log(this.selectedCompanies);
   }
 
   confirmOtherMultiCompany() {
@@ -154,8 +160,7 @@ export class StickersRequestComponent implements OnInit {
 
   submit() {
     this.saveCompanies(this.selectedCompanies);
-    if (this.stickersForm.invalid) {
-      console.log(this.stickersForm)
+    if (this.stickersForm.invalid || this.selectedCompanies.length == 0) {
       this.toastrService.error("Erro ao realizar solicitação. Verifique se os campos estão preenchidos corretamente.");
       this.isButtonDisabled = true;
       setTimeout(() => {
@@ -166,7 +171,7 @@ export class StickersRequestComponent implements OnInit {
 
     const request: I_Stickers_Request = {
       project: {
-        title: 'Adesivos',
+        title: this.title.value,
         idClient: this.storageService.getUserId(),
       },
       briefing: {
