@@ -44,6 +44,7 @@ export class SignpostRequestComponent implements OnInit {
 
   ngOnInit(): void {
     this.signPostForm = new FormGroup({
+      title: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
       signLocation: new FormControl('', [Validators.required]),
       width: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
@@ -55,6 +56,7 @@ export class SignpostRequestComponent implements OnInit {
     });
   }
 
+  get title() { return this.signPostForm.get('title')!; }
   get width() { return this.signPostForm.get('width')!; }
   get height() { return this.signPostForm.get('height')!; }
   get description() { return this.signPostForm.get('description')!; }
@@ -142,7 +144,7 @@ export class SignpostRequestComponent implements OnInit {
   submit() {
     this.saveCompanies(this.selectedCompanies);
 
-    if (this.signPostForm.invalid) {
+    if (this.signPostForm.invalid || this.selectedCompanies.length == 0) {
       this.toastrService.error("Erro ao realizar solicitação. Verifique se os campos estão preenchidos corretamente.");
       this.isButtonDisabled = true;
       setTimeout(() => {
@@ -153,7 +155,7 @@ export class SignpostRequestComponent implements OnInit {
 
     const request: I_Signpost_Request = {
       project: {
-        title: 'Placa de Sinalização',
+        title: this.title.value,
         idClient: this.storageService.getUserId(),
       },
       briefing: {

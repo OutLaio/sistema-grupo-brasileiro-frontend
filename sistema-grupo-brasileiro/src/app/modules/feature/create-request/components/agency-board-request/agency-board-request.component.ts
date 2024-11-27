@@ -70,6 +70,7 @@ export class AgencyBoardRequestComponent implements OnInit {
     });
 
     this.agencyBoardForm = new FormGroup({
+      title: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
       signLocation: new FormControl('', [Validators.required]),
       length: new FormControl('', [Validators.required, Validators.pattern('^[0-9]+(\.[0-9]+)?$')]),
@@ -94,6 +95,7 @@ export class AgencyBoardRequestComponent implements OnInit {
     });
   }
 
+  get title() { return this.agencyBoardForm.get('title')!; }
   get length() { return this.agencyBoardForm.get('length')!; }
   get height() { return this.agencyBoardForm.get('height')!; }
   get description() { return this.agencyBoardForm.get('description')!; }
@@ -300,7 +302,7 @@ export class AgencyBoardRequestComponent implements OnInit {
 
     const projectForm: I_Project_Request = {
       idClient: this.storageService.getUserId(),
-      title: 'Placa de Agência',
+      title: this.title.value,
     }
 
     const briefingForm: I_Briefing_Request = {
@@ -309,8 +311,8 @@ export class AgencyBoardRequestComponent implements OnInit {
       otherCompany: this.selectedOthersCompanies.join(', '),
       idBriefingType: E_Briefing_Type.ITINERARIOS.id,
       measurement: {
-        length: this.agencyBoardForm.get('length')?.value,
-        height: this.agencyBoardForm.get('height')?.value,
+        length: this.length.value,
+        height: this.height.value,
       }
     }
 
