@@ -6,7 +6,7 @@
     font-weight: 600;
 }
 
-.request-title {
+.request-briefing-type {
     display: inline-block;
     font-size: 9px;
     background-color: #03A696;
@@ -16,7 +16,13 @@
     max-width: 100%;
 }
 
-.request-subtitle {
+.request-title{
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.text-custom {
     font-size: 12px;
     color: #666;
     cursor: pointer;
