@@ -86,12 +86,20 @@
       <div class="d-flex gap-3">
         <div class="d-flex gap-3" *ngIf="data.briefing.companies?.companies?.length">
           <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"
+<<<<<<< HEAD
             *ngFor="let company of data.briefing.companies?.companies"
             [appCapitalize]="company.name"></p>
         </div>
         <div class="d-flex gap-3" *ngIf="otherCompanies.length">
           <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"
             *ngFor="let otherCompany of otherCompanies" [appCapitalize]="otherCompany"></p>
+=======
+            *ngFor="let company of data.briefing.companies?.companies">{{ company.name }}</p>
+        </div>
+        <div class="d-flex gap-3" *ngIf="otherCompanies.length">
+          <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"
+            *ngFor="let otherCompany of otherCompanies"> {{ otherCompany.toUpperCase() }} </p>
+>>>>>>> 1f0fc2d (Added Stickers Details)
         </div>
       </div>
     </div>
