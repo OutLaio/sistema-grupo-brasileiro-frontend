@@ -10,6 +10,7 @@ import { LoginComponent } from './modules/core/login/component/login.component';
 import { RecoveryPasswordComponent } from './modules/core/recovery-password/component/recovery-password.component';
 import { RegisterComponent } from './modules/core/register/component/register.component';
 import { AuthGuard } from './modules/core/guards/guard.guard';
+import { ListClientsComponent } from './modules/feature/client/list-clients/component/list-clients/list-clients.component';
 
 const routes: Routes = [
   {
@@ -42,6 +43,11 @@ const routes: Routes = [
   {
     path: 'colaboradores',
     component: CollaboratorSystemComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'clientes',
+    component: ListClientsComponent,
     canActivate: [AuthGuard]
   },
   {
