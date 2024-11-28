@@ -76,7 +76,7 @@ export class RegisterComponent implements OnInit {
         sector: this.sector.value,
         occupation: this.occupation.value,
         agency: this.nop.value,
-        avatar: 1,
+        avatar: 99,
       },
       user: {
         email: this.email.value,
