@@ -1,0 +1,80 @@
+
+.profile-img{
+  width: 5rem;
+}
+
+.daddy-card{
+  width: 75vw;
+}
+
+.card-selected {
+  background-color: #e0e0e0;
+  border-left: 4px solid #027373; 
+}
+
+.card-body {
+  transition: height 0.5s ease;
+  max-height: auto;
+  min-height: 15rem !important;
+}
+
+.card-selected .card-body {
+  max-height: auto;
+}
+
+.card-custom {
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-size: 1rem;
+  background-color: #EEEEEE;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-custom:hover {
+  background-color: #e5e5e5;
+}
+
+.btn-system {
+  background-color: #027373;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.btn-outline-system {
+  border-color: #027373;
+  color: #027373;
+  transition: background-color 0.3s ease;
+}
+
+.btn-system:hover, .btn-outline-system:hover {
+  background-color: rgba(2, 115, 115, 0.1);
+}
+
+
+.overflow-custom {
+  height: 75vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  .card-body {
+    font-size: 0.9rem;
+  }
+}
+
+
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #027373;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #03A696;
+}
