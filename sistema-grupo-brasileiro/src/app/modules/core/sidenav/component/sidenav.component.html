@@ -39,19 +39,19 @@
                 </a>
             </li>
             <li *ngIf="userRole == 'ROLE_SUPERVISOR'" class="nav-item mb-1">
+                <a routerLink="/clientes" routerLinkActive="active">
+                    <img class="mx-2" src="/assets/icons/collaborator-icon.svg" alt="client icone">
+                    <i class="fa-solid"></i>
+                    Clientes
+                </a>
+            </li>
+            <li *ngIf="userRole == 'ROLE_SUPERVISOR'" class="nav-item mb-1">
                 <a routerLink="/colaboradores" routerLinkActive="active">
                     <img class="mx-2" src="/assets/icons/collaborator-icon.svg" alt="colaborador icone">
                     <i class="fa-solid"></i>
                     Colaboradores
                 </a>
             </li>
-            <!-- <li class="nav-item mb-1">
-                <a routerLink="agenda" routerLinkActive="active">
-                    <img class="mx-2" src="/assets/icons/request-icon.svg" alt="acompanhamento icone">
-                    <i class="fa-solid fa-graduation-cap"></i>
-                    Agenda
-                </a>
-            </li> -->
         </ul>
     </div>
     <hr>
