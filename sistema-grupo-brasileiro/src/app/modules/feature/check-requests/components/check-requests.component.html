@@ -13,12 +13,11 @@
                             class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
                             <div>
                                 <p class="request-briefing-type me-2">{{ item.briefingType }}</p>
-                                <div class="d-flex justify-content-start"
-                                    *ngIf="item.collaborator; else noCollaborator">
+                                <div *ngIf="item.collaborator; else noCollaborator">
                                     <p class="text-muted text-custom"><img class="me-1 perfil-img"
                                             src="/assets/images/profile.png"
                                             [alt]="item.client.fullName + ' ' + 'avatar'" />
-                                        <span>{{ item.collaborator.fullName }}</span>
+                                        <span class="request-briefing-type">{{ item.collaborator.fullName }}</span>
                                     </p>
                                 </div>
                                 <ng-template #noCollaborator>
@@ -33,9 +32,8 @@
                                 </p>
                             </div>
                             <div class="d-flex justify-content-start">
-                                <p class="text-muted text-custom"><img class="me-1 perfil-img"
-                                        src="/assets/images/profile.png"
-                                        [alt]="item.client.fullName + ' ' + 'avatar'" />
+                                <p class="text-muted text-custom"><img [src]="'/assets/images/avatars/' + (item.client.avatar) + '.png'"
+                                    [alt]="item.client.fullName + ' ' + 'avatar'" class="perfil-img me-3">
                                     <span>{{ item.client.fullName }}</span>
                                 </p>
                             </div>
@@ -58,13 +56,10 @@
                     <div class="card-body overflow-auto scrollbar-ff">
                         <div *ngFor="let item of inProgressCards "
                             class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
-                            <div class="d-flex">
-                                <p class="request-briefing-type me-2">{{ item.briefingType }}</p>
-                                <div class="d-flex justify-content-start"
-                                    *ngIf="item.collaborator; else noCollaborator">
-                                    <p [backgroundColorClass]="'#ff7474'" class="request-briefing-type">
-                                        {{item.collaborator.fullName}}</p>
-                                </div>
+                            <p class="request-briefing-type me-2">{{ item.briefingType }}</p>
+                            <div class="d-flex justify-content-start" *ngIf="item.collaborator; else noCollaborator">
+                                <p [backgroundColorClass]="'#ff7474'" class="request-briefing-type">
+                                    {{item.collaborator.fullName}}</p>
                             </div>
                             <div class="request-title">
                                 <p (click)="toggleTruncate(item)" class="text-muted"
@@ -72,8 +67,9 @@
                                     {{ item.title}}
                                 </p>
                             </div>
-                            <p class="text-muted text-custom"><img class="me-1 perfil-img"
-                                    src="/assets/images/profile.png" [alt]="item.client.fullName + ' ' + 'avatar'" />
+                            <p class="text-muted text-custom">
+                                <img [src]="'/assets/images/avatars/' + (item.client.avatar) + '.png'"
+                                    [alt]="item.client.fullName + ' ' + 'avatar'" class="perfil-img me-3">
                                 <span>{{ item.client.fullName }}</span>
                             </p>
                             <ng-template #noCollaborator>
@@ -98,12 +94,10 @@
                     <div class="card-body overflow-auto scrollbar-ff">
                         <div *ngFor="let item of awaitingApprovalCards "
                             class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
-                            <div class="d-flex">
-                                <p class="request-briefing-type me-2">{{ item.briefingType }}</p>
-                                <div *ngIf="item.collaborator; else noCollaborator">
-                                    <p [backgroundColorClass]="'#ff7474'" class="request-briefing-type">
-                                        {{item.collaborator.fullName}}</p>
-                                </div>
+                            <p class="request-briefing-type me-2">{{ item.briefingType }}</p>
+                            <div *ngIf="item.collaborator; else noCollaborator">
+                                <p [backgroundColorClass]="'#ff7474'" class="request-briefing-type">
+                                    {{item.collaborator.fullName}}</p>
                             </div>
                             <div class="request-title">
                                 <p (click)="toggleTruncate(item)" class="text-muted"
@@ -112,9 +106,8 @@
                                 </p>
                             </div>
                             <div class="d-flex justify-content-start">
-                                <p class="text-muted text-custom"><img class="me-1 perfil-img"
-                                        src="/assets/images/profile.png"
-                                        [alt]="item.client.fullName + ' ' + 'avatar'" />
+                                <p class="text-muted text-custom"><img [src]="'/assets/images/avatars/' + (item.client.avatar) + '.png'"
+                                    [alt]="item.client.fullName + ' ' + 'avatar'" class="perfil-img me-3">
                                     <span>{{ item.client.fullName }}</span>
                                 </p>
                             </div>
@@ -140,12 +133,10 @@
                     <div class="card-body overflow-auto scrollbar-ff">
                         <div *ngFor="let item of approvedCards "
                             class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
-                            <div class="d-flex">
-                                <p class="request-briefing-type me-2">{{ item.briefingType }}</p>
-                                <div *ngIf="item.collaborator; else noCollaborator">
-                                    <p [backgroundColorClass]="'#ff7474'" class="request-briefing-type">
-                                        {{item.collaborator.fullName}}</p>
-                                </div>
+                            <p class="request-briefing-type me-2">{{ item.briefingType }}</p>
+                            <div *ngIf="item.collaborator; else noCollaborator">
+                                <p [backgroundColorClass]="'#ff7474'" class="request-briefing-type">
+                                    {{item.collaborator.fullName}}</p>
                             </div>
                             <div class="request-title">
                                 <p (click)="toggleTruncate(item)" class="text-muted"
@@ -154,9 +145,8 @@
                                 </p>
                             </div>
                             <div class="d-flex justify-content-start">
-                                <p class="text-muted text-custom"><img class="me-1 perfil-img"
-                                        src="/assets/images/profile.png"
-                                        [alt]="item.client.fullName + ' ' + 'avatar'" />
+                                <p class="text-muted text-custom"><img [src]="'/assets/images/avatars/' + (item.client.avatar) + '.png'"
+                                    [alt]="item.client.fullName + ' ' + 'avatar'" class="perfil-img me-3">
                                     <span>{{ item.client.fullName }}</span>
                                 </p>
                             </div>
@@ -182,12 +172,10 @@
                     <div class="card-body overflow-auto scrollbar-ff">
                         <div *ngFor="let item of inProductionCards "
                             class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
-                            <div class="d-flex">
-                                <p class="request-briefing-type me-2">{{ item.briefingType }}</p>
-                                <div *ngIf="item.collaborator; else noCollaborator">
-                                    <p [backgroundColorClass]="'#ff7474'" class="request-briefing-type">
-                                        {{item.collaborator.fullName}}</p>
-                                </div>
+                            <p class="request-briefing-type me-2">{{ item.briefingType }}</p>
+                            <div *ngIf="item.collaborator; else noCollaborator">
+                                <p [backgroundColorClass]="'#ff7474'" class="request-briefing-type">
+                                    {{item.collaborator.fullName}}</p>
                             </div>
                             <div class="request-title">
                                 <p (click)="toggleTruncate(item)" class="text-muted"
@@ -196,9 +184,8 @@
                                 </p>
                             </div>
                             <div class="d-flex justify-content-start">
-                                <p class="text-muted text-custom"><img class="me-1 perfil-img"
-                                        src="/assets/images/profile.png"
-                                        [alt]="item.client.fullName + ' ' + 'avatar'" />
+                                <p class="text-muted text-custom"><img [src]="'/assets/images/avatars/' + (item.client.avatar) + '.png'"
+                                    [alt]="item.client.fullName + ' ' + 'avatar'" class="perfil-img me-3">
                                     <span>{{ item.client.fullName }}</span>
                                 </p>
                             </div>
@@ -224,12 +211,10 @@
                     <div class="card-body overflow-auto scrollbar-ff">
                         <div *ngFor="let item of completedCards "
                             class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
-                            <div class="d-flex">
-                                <p class="request-briefing-type me-2">{{ item.briefingType }}</p>
-                                <div *ngIf="item.collaborator; else noCollaborator">
-                                    <p [backgroundColorClass]="'#ff7474'" class="request-briefing-type">
-                                        {{item.collaborator.fullName}}</p>
-                                </div>
+                            <p class="request-briefing-type me-2">{{ item.briefingType }}</p>
+                            <div *ngIf="item.collaborator; else noCollaborator">
+                                <p [backgroundColorClass]="'#ff7474'" class="request-briefing-type">
+                                    {{item.collaborator.fullName}}</p>
                             </div>
                             <div class="request-title">
                                 <p (click)="toggleTruncate(item)" class="text-muted"
@@ -238,9 +223,8 @@
                                 </p>
                             </div>
                             <div class="d-flex justify-content-start" *ngIf="item.collaborator; else noCollaborator">
-                                <p class="text-muted text-custom"><img class="me-1 perfil-img"
-                                        src="/assets/images/profile.png"
-                                        [alt]="item.client.fullName + ' ' + 'avatar'" />
+                                <p class="text-muted text-custom"><img [src]="'/assets/images/avatars/' + (item.client.avatar) + '.png'"
+                                    [alt]="item.client.fullName + ' ' + 'avatar'" class="perfil-img me-3">
                                     <span>{{ item.client.fullName }}</span>
                                 </p>
                             </div>
@@ -265,12 +249,10 @@
                     <div class="card-body overflow-auto scrollbar-ff">
                         <div *ngFor="let item of standByCards"
                             class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
-                            <div class="d-flex">
-                                <p class="request-briefing-type me-2">{{ item.briefingType }}</p>
-                                <div *ngIf="item.collaborator; else noCollaborator">
-                                    <p [backgroundColorClass]="'#ff7474'" class="request-briefing-type">
-                                        {{item.collaborator.fullName}}</p>
-                                </div>
+                            <p class="request-briefing-type me-2">{{ item.briefingType }}</p>
+                            <div *ngIf="item.collaborator; else noCollaborator">
+                                <p [backgroundColorClass]="'#ff7474'" class="request-briefing-type">
+                                    {{item.collaborator.fullName}}</p>
                             </div>
                             <div class="request-title">
                                 <p (click)="toggleTruncate(item)" class="text-muted"
@@ -279,9 +261,8 @@
                                 </p>
                             </div>
                             <div class="d-flex justify-content-start" *ngIf="item.collaborator; else noCollaborator">
-                                <p class="text-muted text-custom"><img class="me-1 perfil-img"
-                                        src="/assets/images/profile.png"
-                                        [alt]="item.client.fullName + ' ' + 'avatar'" />
+                                <p class="text-muted text-custom"><img [src]="'/assets/images/avatars/' + (item.client.avatar) + '.png'"
+                                    [alt]="item.client.fullName + ' ' + 'avatar'" class="perfil-img me-3">
                                     <span>{{ item.client.fullName }}</span>
                                 </p>
                             </div>

@@ -6,9 +6,10 @@
                 (click)="selectCollaborator(collaborator)">
                 <div class="card-body text-center">
                     <div class="mb-3">
-                        <img class="rounded-circle profile-img"  src="/assets/images/profile.png" alt="profile image">
+                        <img [src]="'/assets/images/avatars/' + (collaborator?.avatar || 'default') + '.png'"
+                            alt="Profile Image" class="img-fluid me-3" style="height: 70px;">
                     </div>
-                    <p class="card-text fw-semibold mb-1">{{ collaborator.name }}</p>
+                    <p class="card-text fw-semibold mb-1">{{ collaborator.name + ' ' + collaborator.lastname }}</p>
                     <p class="card-text text-muted mb-3">{{ collaborator.user.email }}</p>
                     
                     <div *ngIf="collaborator === selectedCollaborator" class="pt-3 border-top mt-2">

@@ -3,7 +3,7 @@
         <div class="col-12">
             <div class="card text-black shadow-custom">
                 <div class="card-body">
-                    <!-- <div class="row pb-3 border-bottom mx-auto">
+                    <div *ngIf="isMobile" class="row pb-3 border-bottom mx-auto">
                         <div class="col-6 text-center">
                             <button class="btn w-100 text-white"
                                 [ngClass]="{'active bg-color-menu': isFormVisible, 'text-muted': !isFormVisible}"
@@ -14,14 +14,15 @@
                                 [ngClass]="{'active bg-color-menu': !isFormVisible, 'text-muted': isFormVisible}"
                                 (click)="showList()">Verificar Colaboradores</button>
                         </div>
-                    </div> -->
+                    </div>
+
                     <div class="d-flex col-12">
-                        <div class="col-md-4 border-end">
+                        <div class="col-md-4 border-end" *ngIf="isFormVisible || !isMobile">
                             <div class="me-3">
                                 <app-register-collaborator></app-register-collaborator>
                             </div>
                         </div>
-                        <div class="col-md-8">
+                        <div class="col-md-8" *ngIf="!isFormVisible || !isMobile">
                             <app-list-collaborators></app-list-collaborators>
                         </div>
                     </div>
