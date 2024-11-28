@@ -1,6 +1,11 @@
 .img-profile {
-    padding: 10px;
-    margin-bottom: 20px;
+    height: 6rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.img-profile:hover {
+    background-color: rgba(2, 115, 115, 0.2);
 }
 
 .container-fluid {
@@ -50,10 +55,58 @@
     text-decoration: underline !important;
 }
 
+
+.avatar-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar-modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 80%;
+    max-width: 400px;
+    text-align: center;
+}
+
+.avatar-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+}
+
+.avatar-option {
+    cursor: pointer;
+    transition: transform 0.2s;
+    padding: 5px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+}
+
+.avatar-option:hover {
+    transform: scale(1.1);
+    background-color: rgba(2, 115, 115, 0.2);
+}
+
+.avatar-option.selected {
+    border-color: #03A696;
+    background-color: rgba(2, 115, 115, 0.2);
+}
+
 @media (min-width: 768px) {
     .system-form {
         height: 100vh !important;
     }
+
     .container-fluid {
         padding-inline: 0 !important;
     }

@@ -8,6 +8,7 @@ import { Router } from '@angular/router';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 import { StorageService } from '../../../../services/storage/storage.service';
 import { HttpErrorResponse } from '@angular/common/http';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-edit-user-data',
@@ -18,6 +19,10 @@ export class EditUserDataComponent {
   editForm!: FormGroup;
   activeUser!: I_Employee_View_Data | null;
   activeUserEdit!: I_Employee_Form_Data | null;
+
+  isAvatarModalOpen = false;
+  selectedAvatar!: number | undefined; 
+  avatars = Array(20).fill(null);
 
   constructor(
     private profileService: ProfileService,
@@ -33,6 +38,7 @@ export class EditUserDataComponent {
   }
 
   ngOnInit(): void {
+    this.selectedAvatar = this.activeUser?.avatar; 
     this.activeUser = this.storageService.getSessionProfile();
     if (this.activeUser) {
       this.activeUserEdit = {
@@ -66,6 +72,27 @@ export class EditUserDataComponent {
   get sector() { return this.editForm.get('sector')!; }
   get occupation() { return this.editForm.get('occupation')!; }
   get nop() { return this.editForm.get('nop')!; }
+
+  openAvatarModal() {
+    this.isAvatarModalOpen = true;
+  }
+
+  closeAvatarModal() {
+    this.isAvatarModalOpen = false;
+  }
+
+  selectAvatar(index: number) {
+    this.selectedAvatar = index + 1;
+  }
+
+  saveAvatar() {
+    if (this.selectedAvatar !== null) {
+      this.activeUserEdit!.avatar = this.selectedAvatar!;
+      this.closeAvatarModal();
+    } else {
+      this.toastrService.error('Por favor, selecione um avatar!');
+    }
+  }
 
   submit() {
     if (this.editForm.invalid) {
