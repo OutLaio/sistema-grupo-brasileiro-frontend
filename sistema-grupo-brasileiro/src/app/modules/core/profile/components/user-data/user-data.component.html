@@ -3,8 +3,8 @@
 		<div class="row mb-3">
 			<div class="col-md-8 d-flex align-items-center">
 				<div class="card-profile d-flex align-items-center">
-					<img src="/assets/images/profile.png" alt="Profile Image" class="img-fluid me-3"
-						style="height: 70px;">
+					<img [src]="'/assets/images/avatars/' + (activeUser?.avatar || 'default') + '.png'"
+						alt="Profile Image" class="img-fluid me-3" style="height: 70px;">
 					<div class="info-card">
 						<h4>{{ activeUser?.name + " " + activeUser?.lastname }}</h4>
 						<span>{{ activeUser?.occupation }}</span>
