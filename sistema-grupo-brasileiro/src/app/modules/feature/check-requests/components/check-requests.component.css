@@ -1,3 +1,7 @@
+.perfil-img{
+    width: 2.5rem;
+}
+
 .height-div {
     height: 5px;
 }
@@ -8,7 +12,7 @@
 
 .request-briefing-type {
     display: inline-block;
-    font-size: 9px;
+    font-size: 9px !important;
     background-color: #03A696;
     color: #fff;
     padding: 1px 4px; 
