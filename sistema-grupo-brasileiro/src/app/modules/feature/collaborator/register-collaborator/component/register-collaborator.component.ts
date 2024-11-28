@@ -5,6 +5,7 @@ import { LoginRegisterService } from '../../../../services/login-register/login-
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
 import { I_User_Request } from '../../../../shared/interfaces/user/form/user-details-form';
+import Swal from 'sweetalert2';
 
 @Component({
 	selector: 'app-register-collaborator',
@@ -107,4 +108,25 @@ export class RegisterCollaboratorComponent {
 	showHistory() {
 		this.isFormVisible = false;
 	}
+
+  getLink() {
+    this.registerService.getLink().subscribe({
+      next: (res) => {
+        Swal.fire({
+          html: `
+            <h4>${res.message}</h4>
+            <p>Copie o link abaixo e compartilhe o acesso ao cadastro</p>
+            <div class="py-5">
+              <input readonly type="text" value="${res.data}" class="form-control p-3" />
+            </div>`,
+            showConfirmButton: false,
+          showCloseButton: true,
+          width: '70%'
+        })
+      },
+      error: (err: HttpErrorResponse) => {
+        this.toastrService.error(err.error.message)
+      }
+    })
+  }
 }

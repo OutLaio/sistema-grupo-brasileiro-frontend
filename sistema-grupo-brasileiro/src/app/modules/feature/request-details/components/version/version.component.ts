@@ -16,8 +16,6 @@ import { C_PROJECT_STATUS } from '../../../../shared/enums/project-status';
   styleUrl: './version.component.css',
 })
 export class VersionComponent {
-  // @Input() versions!: I_Version_Data[] | undefined;
-  // @Input() idBriefing!: string | undefined;
   @Input() data: I_Any_Briefing | undefined;
 
   open = 'open';

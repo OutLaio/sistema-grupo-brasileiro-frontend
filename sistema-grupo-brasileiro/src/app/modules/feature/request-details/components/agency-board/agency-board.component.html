@@ -69,11 +69,11 @@
       <div class="d-flex gap-3">
         <div class="d-flex gap-3" *ngIf="data.briefing.companies?.companies?.length">
           <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"
-          *ngFor="let company of data.briefing.companies?.companies">{{ company.name }}</p>
+          *ngFor="let company of data.briefing.companies?.companies" [appCapitalize]="company.name"></p>
         </div>
         <div class="d-flex gap-3" *ngIf="otherCompanies.length">
           <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"
-          *ngFor="let otherCompany of otherCompanies"> {{ otherCompany.toUpperCase() }} </p>
+          *ngFor="let otherCompany of otherCompanies" [appCapitalize]="otherCompany"></p>
         </div>
       </div>
     </div>
@@ -82,14 +82,14 @@
       <p class="text-exo fw-bold">Itinerários</p>
       <div *ngIf="data.bAgencyBoard.routes?.length">
         <div *ngFor="let company of data.briefing.companies?.companies" class="pb-4">
-          <p class="mb-0 text-exo fw-bold mt-4"> {{ company.name }} </p>
+          <p class="mb-0 text-exo fw-bold mt-4" [appCapitalize]="company.name"></p>
           <div *ngFor="let route of data.bAgencyBoard.routes" class="my-1">
             <div *ngIf="route.company.id == company.id && route.type == 'main'" class="d-flex flex-column gap-1">
               <p class="text-exo mt-3 mb-0 d-flex align-items-center">Principais</p>
               <div class="d-flex gap-3">
                 <div *ngFor="let city of route.cities">
-                  <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;">
-                    {{ city.name }} </p>
+                  <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3"
+                  [appCapitalize]="city.name" style="--bs-bg-opacity: .2;"></p>
                 </div>
               </div>
             </div>
@@ -97,8 +97,8 @@
               <p class="text-exo mt-3 mb-0 d-flex align-items-center">Conexões</p>
               <div class="d-flex gap-3">
                 <div *ngFor="let city of route.cities">
-                  <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;">
-                    {{ city.name }} </p>
+                  <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3"
+                  [appCapitalize]="city.name" style="--bs-bg-opacity: .2;"></p>
                 </div>
               </div>
             </div>
@@ -108,14 +108,14 @@
 
       <div *ngIf="data.bAgencyBoard.otherRoutes?.length">
         <div *ngFor="let company of otherCompanies" class="pb-4 border-bottom">
-          <p class="text-exo fw-bold mt-4"> {{ company }} </p>
+          <p class="text-exo fw-bold mt-4" [appCapitalize]="company"></p>
           <div *ngFor="let route of data.bAgencyBoard.otherRoutes" class="my-1">
             <div *ngIf="route.company == company && route.type == 'main'" class="d-flex flex-column gap-1">
               <p class="text-exo mb-0 d-flex align-items-center">Principais</p>
               <div class="d-flex gap-3">
                 <div *ngFor="let city of getCities(route)">
-                  <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;">
-                    {{ city }} </p>
+                  <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3"
+                  [appCapitalize]="city" style="--bs-bg-opacity: .2;"></p>
                 </div>
               </div>
             </div>
@@ -123,8 +123,8 @@
               <p class="text-exo mb-0 d-flex align-items-center">Conexões</p>
               <div class="d-flex gap-3">
                 <div *ngFor="let city of getCities(route)">
-                  <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;">
-                    {{ city }} </p>
+                  <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3"
+                  [appCapitalize]="city" style="--bs-bg-opacity: .2;"></p>
                 </div>
               </div>
             </div>

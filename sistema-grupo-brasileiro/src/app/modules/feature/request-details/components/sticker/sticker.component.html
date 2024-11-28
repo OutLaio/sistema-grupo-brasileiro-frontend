@@ -64,32 +64,34 @@
           </div>
         </div>
       </div>
+      <div class="d-flex gap-5">
+        <div class="d-flex flex-column gap-3">
+          <p class="text-exo fw-bold">Adesivo</p>
+          <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3"
+            [appCapitalize]="data.sticker.stickerType.description" style="--bs-bg-opacity: .2;"></p>
+        </div>
+
+        <div *ngIf="data.sticker.stickerInformationType" class="d-flex flex-column gap-3">
+          <p class="text-exo fw-bold">Tipo</p>
+          <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3"
+            [appCapitalize]="data.sticker.stickerInformationType.description" style="--bs-bg-opacity: .2;"></p>
+        </div>
+      </div>
     </div>
 
-    <div class="d-flex gap-5 mt-4">
-      <div class="d-flex flex-column">
-        <p class="text-exo fw-bold">Adesivo</p>
-        <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{
-          data.sticker.stickerType.description }}</p>
-      </div>
 
-      <div *ngIf="data.sticker.stickerInformationType" class="d-flex flex-column">
-        <p class="text-exo fw-bold">Tipo</p>
-        <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{
-          data.sticker.stickerInformationType.description }}</p>
-      </div>
-    </div>
 
     <div class="mt-4">
       <p class="text-exo fw-bold">Empresas</p>
       <div class="d-flex gap-3">
         <div class="d-flex gap-3" *ngIf="data.briefing.companies?.companies?.length">
           <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"
-            *ngFor="let company of data.briefing.companies?.companies">{{ company.name }}</p>
+            *ngFor="let company of data.briefing.companies?.companies"
+            [appCapitalize]="company.name"></p>
         </div>
         <div class="d-flex gap-3" *ngIf="otherCompanies.length">
           <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"
-            *ngFor="let otherCompany of otherCompanies"> {{ otherCompany.toUpperCase() }} </p>
+            *ngFor="let otherCompany of otherCompanies" [appCapitalize]="otherCompany"></p>
         </div>
       </div>
     </div>

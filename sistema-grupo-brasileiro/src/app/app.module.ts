@@ -44,6 +44,7 @@ import { SignpostRequestComponent } from './modules/feature/create-request/compo
 import { BtnFinalizeComponent } from './modules/feature/request-details/components/btn-finalize/btn-finalize.component';
 import { StickersRequestComponent } from './modules/feature/create-request/components/stickers-request/stickers-request.component';
 import { StickerComponent } from './modules/feature/request-details/components/sticker/sticker.component';
+import { CapitalizeDirective } from './modules/directives/capitalize/capitalize.directive';
 
 @NgModule({
   declarations: [
@@ -77,6 +78,7 @@ import { StickerComponent } from './modules/feature/request-details/components/s
     BtnFinalizeComponent,
     StickersRequestComponent,
     StickerComponent,
+    CapitalizeDirective,
 
   ],
   imports: [

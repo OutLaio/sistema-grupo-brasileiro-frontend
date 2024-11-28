@@ -67,8 +67,8 @@
 
       <div class="d-flex flex-column gap-2">
         <p class="text-exo fw-bold">Material</p>
-        <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"> {{
-          data.signpost.material.description }}</p>
+        <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3"
+        [appCapitalize]="data.signpost.material.description" style="--bs-bg-opacity: .2;"></p>
       </div>
     </div>
 
@@ -77,11 +77,11 @@
       <div class="d-flex gap-3">
         <div class="d-flex gap-3" *ngIf="data.briefing.companies?.companies?.length">
           <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"
-            *ngFor="let company of data.briefing.companies?.companies">{{ company.name }}</p>
+            *ngFor="let company of data.briefing.companies?.companies" [appCapitalize]="company.name"></p>
         </div>
         <div class="d-flex gap-3" *ngIf="otherCompanies.length">
           <p class="small-text text-exo mb-0 px-3 py-2 bg-secondary rounded-3" style="--bs-bg-opacity: .2;"
-            *ngFor="let otherCompany of otherCompanies"> {{ otherCompany.toUpperCase() }} </p>
+            *ngFor="let otherCompany of otherCompanies" [appCapitalize]="otherCompany"></p>
         </div>
       </div>
     </div>

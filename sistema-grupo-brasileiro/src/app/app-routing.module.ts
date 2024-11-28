@@ -14,6 +14,7 @@ import { AuthGuard } from './modules/core/guards/guard.guard';
 const routes: Routes = [
   {
     path: 'acompanhamento',
+    title: 'Acompanhamento',
     component: CheckRequestsComponent,
     canActivate: [AuthGuard]
   },

@@ -30,6 +30,7 @@ input {
 
 .text-custom:hover {
     text-decoration: underline !important;
+    cursor: pointer;
 }
 
 .card-scale {
