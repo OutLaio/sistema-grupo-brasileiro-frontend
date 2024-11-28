@@ -13,6 +13,7 @@ import { C_PROJECT_STATUS } from '../../../shared/enums/project-status';
 })
 export class CheckRequestsComponent implements OnInit {
   userRole: number | undefined;
+  isTruncated: boolean = true;
 
   allProjects: I_Project_Data[] = [];
   toDoCards: I_Project_Data[] = [];
@@ -55,34 +56,27 @@ export class CheckRequestsComponent implements OnInit {
     });
   }
 
+
   private projectsMapper(allProjects: I_Project_Data[]): void {
     this.toDoCards = allProjects.filter(project => project.status === C_PROJECT_STATUS.TO_DO.en).map(project => ({ ...project, isTruncated: true }));
+    this.toDoCards.sort((a, b) => {return Number(b.id) - Number(a.id)});
     this.inProgressCards = allProjects.filter(project => project.status === C_PROJECT_STATUS.IN_PROGRESS.en).map(project => ({ ...project, isTruncated: true }));
+    this.inProgressCards.sort((a, b) => { return Number(b.id) - Number(a.id)});
     this.awaitingApprovalCards = allProjects.filter(project => project.status === C_PROJECT_STATUS.WAITING_APPROVAL.en).map(project => ({ ...project, isTruncated: true }));
+    this.awaitingApprovalCards.sort((a, b) => { return Number(b.id) - Number(a.id)});
     this.approvedCards = allProjects.filter(project => project.status === C_PROJECT_STATUS.APPROVED.en).map(project => ({ ...project, isTruncated: true }));
+    this.approvedCards.sort((a, b) => { return Number(b.id) - Number(a.id)});
     this.inProductionCards = allProjects.filter(project => project.status === C_PROJECT_STATUS.IN_PRODUCTION.en).map(project => ({ ...project, isTruncated: true }));
+    this.inProductionCards.sort((a, b) => { return Number(b.id) - Number(a.id)});
     this.completedCards = allProjects.filter(project => project.status === C_PROJECT_STATUS.COMPLETED.en).map(project => ({ ...project, isTruncated: true }));
+    this.completedCards.sort((a, b) => { return Number(b.id) - Number(a.id)});
     this.standByCards = allProjects.filter(project => project.status === C_PROJECT_STATUS.STAND_BY.en).map(project => ({ ...project, isTruncated: true }));
+    this.standByCards.sort((a, b) => { return Number(b.id) - Number(a.id)});
   }
-
-  isTruncated: boolean = true;
 
   toggleTruncate(item: I_Project_Data): void {
     item.isTruncated = !item.isTruncated;
   }
-
-  // showCollaboratorName = false;
-  // showClientName = false;
-
-  // toggleTooltip(type: string) {
-  //   if (type === 'collaborator') {
-  //     this.showCollaboratorName = !this.showCollaboratorName;
-  //     this.showClientName = false;
-  //   } else if (type === 'client') {
-  //     this.showClientName = !this.showClientName;
-  //     this.showCollaboratorName = false;
-  //   }
-  // }
 
   deadline: Date = new Date;
 

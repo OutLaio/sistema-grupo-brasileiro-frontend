@@ -44,6 +44,7 @@ export class SignpostRequestComponent implements OnInit {
 
   ngOnInit(): void {
     this.signPostForm = new FormGroup({
+      title: new FormControl('', [Validators.required]),
       description: new FormControl('', [Validators.required]),
       signLocation: new FormControl('', [Validators.required]),
       width: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
@@ -55,6 +56,7 @@ export class SignpostRequestComponent implements OnInit {
     });
   }
 
+  get title() { return this.signPostForm.get('title')!; }
   get width() { return this.signPostForm.get('width')!; }
   get height() { return this.signPostForm.get('height')!; }
   get description() { return this.signPostForm.get('description')!; }
@@ -142,7 +144,7 @@ export class SignpostRequestComponent implements OnInit {
   submit() {
     this.saveCompanies(this.selectedCompanies);
 
-    if (this.signPostForm.invalid) {
+    if (this.signPostForm.invalid || this.selectedCompanies.length == 0) {
       this.toastrService.error("Erro ao realizar solicitação. Verifique se os campos estão preenchidos corretamente.");
       this.isButtonDisabled = true;
       setTimeout(() => {
@@ -153,25 +155,25 @@ export class SignpostRequestComponent implements OnInit {
 
     const request: I_Signpost_Request = {
       project: {
-        title: 'Placa de Sinalização',
+        title: this.title.value,
         idClient: this.storageService.getUserId(),
       },
       briefing: {
-        detailedDescription: this.signPostForm.get('description')!.value,
+        detailedDescription: this.description!.value,
         idBriefingType: E_Briefing_Type.SINALIZACAO_INTERNA.id,
         companies: this.sendCompanies.map((item) => {
           return { idCompany: item.toString() } as I_Company_Briefing_Form_Data;
         }),
         otherCompany: this.sendOthersCompanies.join(', '),
         measurement: {
-          height: this.signPostForm.get('height')!.value,
-          length: this.signPostForm.get('width')!.value,
+          height: this.height!.value,
+          length: this.width!.value,
         },
       },
       signpost: {
-        boardLocation: this.signPostForm.get('signLocation')!.value,
-        idMaterial: this.signPostForm.get('boardType')!.value,
-        sector: this.signPostForm.get('sector')!.value,
+        boardLocation: this.signLocation!.value,
+        idMaterial: this.boardType!.value,
+        sector: this.sector!.value,
       },
     };
 

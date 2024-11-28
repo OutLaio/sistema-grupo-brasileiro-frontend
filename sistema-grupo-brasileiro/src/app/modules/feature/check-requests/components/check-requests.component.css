@@ -1,3 +1,7 @@
+.perfil-img{
+    width: 2.5rem;
+}
+
 .height-div {
     height: 5px;
 }
@@ -6,9 +10,9 @@
     font-weight: 600;
 }
 
-.request-title {
+.request-briefing-type {
     display: inline-block;
-    font-size: 9px;
+    font-size: 9px !important;
     background-color: #03A696;
     color: #fff;
     padding: 1px 4px; 
@@ -16,7 +20,13 @@
     max-width: 100%;
 }
 
-.request-subtitle {
+.request-title{
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+.text-custom {
     font-size: 12px;
     color: #666;
     cursor: pointer;
