@@ -1,210 +1,205 @@
 <div class="conatiner d-flex flex-column p-3 mb-4 scroll-bar overflow-custom">
-    <form [formGroup]="stickersForm" (ngSubmit)="submit()" #formDir="ngForm">
-        <div class="row pb-4">
+  <form [formGroup]="stickersForm" (ngSubmit)="submit()" #formDir="ngForm">
+    <div class="row pb-4">
+      <div class="col-lg-6 col-md-12 row pb-4">
+        <div class="form-group pt-3">
+          <label class="fw-bold" for="title">Título *</label>
+          <textarea [backgroundColorClass]="'#ebebeb'" id="title" formControlName="title" type="text"
+            class="form-control border-dark-subtle rounded-3 form-focus"
+            placeholder="Escreva o título da solicitação"></textarea>
+        </div>
+        <div *ngIf="title.invalid && formDir.submitted" class="validation-warning">
+          <p>Por favor, informe o título.</p>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12">
+        <div class="form-group pt-3">
+          <label class="fw-bold" for="description">Descrição *</label>
+          <textarea [backgroundColorClass]="'#ebebeb'" id="description" required formControlName="description"
+            type="text" class="form-control border-dark-subtle rounded-3 form-focus"
+            placeholder="Escreva a descrição da solicitação"></textarea>
+        </div>
+        <div *ngIf="description.invalid && formDir.submitted" class="validation-warning">
+          <p>A descrição da solicitação é obrigatória. Escreva uma breve descrição da placa.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="row border-bottom">
+      <div class="col-lg-5 col-sm-12 form-group pt-3">
+        <label class="fw-bold">Medida *</label>
+        <div class="d-flex align-items-center w-75 mb-2">
+          <div class="d-flex flex-column">
+            <label>Largura</label>
+            <input [backgroundColorClass]="'#ebebeb'" type="text"
+              class="border border-dark-subtle p-1 rounded-3 me-2 w-100 form-focus" placeholder="cm" required
+              formControlName="width" />
+          </div>
+          <div class="pt-4">
+            <span class="mx-3">X</span>
+          </div>
+          <div class="d-flex flex-column">
+            <label>Altura</label>
+            <input [backgroundColorClass]="'#ebebeb'" type="text"
+              class="border border-dark-subtle p-1 rounded-3 me-2 w-100 form-focus" placeholder="cm" required
+              formControlName="height" />
+          </div>
+        </div>
+        <div *ngIf="(width.invalid || height.invalid) && formDir.submitted" class="validation-warning">
+          <p>Informe as medidas completas da placa (largura e altura) em centímetros.</p>
+        </div>
+        <div *ngIf="(width.errors?.['pattern'] || height.errors?.['pattern']) && formDir.submitted"
+          class="validation-warning">
+          <p>As medidas devem conter apenas números.</p>
+        </div>
+      </div>
+
+      <div class="col-lg-7 col-sm-12 row pb-4 pt-2">
+        <div class="row pb-4 pt-2">
+          <div class="col-lg-5 col-sm-6">
             <div class="form-group pt-3">
-                <label class="fw-bold" for="title">Título *</label>
-                <textarea [backgroundColorClass]="'#ebebeb'" id="title" formControlName="title" type="text"
-                    class="form-control border-dark-subtle rounded-3 form-focus"
-                    placeholder="Escreva o título da solicitação"></textarea>
+              <label class="fw-bold" for="stickerType">Adesivo *</label>
+              <select [backgroundColorClass]="'#ebebeb'" id="stickerType"
+                class="form-select border-dark-subtle rounded-3 form-focus w-100" formControlName="stickerType"
+                (change)="onValueChanged()">
+                <option value="1">Plotagem de veículos</option>
+                <option value="2">Adesivos informativos</option>
+              </select>
             </div>
-            <div *ngIf="title.invalid && formDir.submitted" class="validation-warning">
-                <p>Por favor, informe o título.</p>
+            <div *ngIf="stickerType.invalid  && formDir.submitted" class="validation-warning">
+              <p>Selecione qual o modelo do adesivo</p>
             </div>
+          </div>
+          <div *ngIf="stickerType.value === '2'" class="row col-lg-7 col-sm-6">
+            <div class="form-group pt-3">
+              <div class="title">
+                <p class="fw-bold">Tipo *</p>
+              </div>
+              <div class="d-flex flex-wrap">
+                <div class="form-check me-3 mb-2">
+                  <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="leitoso"
+                    formControlName="stickerInformationType" value="1">
+                  <label class="form-check-label" for="leitoso">Leitoso</label>
+                </div>
+                <div class="form-check me-3 mb-2">
+                  <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="jateado"
+                    formControlName="stickerInformationType" value="2">
+                  <label class="form-check-label" for="jateado">Jateado</label>
+                </div>
+                <div class="form-check me-3 mb-2">
+                  <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="perfurado"
+                    formControlName="stickerInformationType" value="3">
+                  <label class="form-check-label" for="perfurado">Perfurado</label>
+                </div>
+              </div>
+              <div *ngIf="stickerType.value === '2' && stickerInformationType.invalid && formDir.submitted"
+                class="validation-warning">
+                <p>Selecione o tipo do adesivo</p>
+              </div>
+            </div>
+          </div>
         </div>
-        <div class="row pb-4">
-            <div class="col-12 col-md-9">
-                <div class="form-group pt-3">
-                    <label class="fw-bold" for="description">Descrição Detalhada*</label>
-                    <textarea [backgroundColorClass]="'#ebebeb'" id="description" required formControlName="description"
-                        type="text" class="form-control border-dark-subtle rounded-3 form-focus"
-                        placeholder="Escreva a descrição da solicitação"></textarea>
-                </div>
-                <div *ngIf="description.invalid && formDir.submitted" class="validation-warning">
-                    <p>A descrição da solicitação é obrigatória. Escreva uma breve descrição da placa.</p>
-                </div>
-            </div>
-            <div class="col-12 col-md-3">
-                <div class="form-group pt-3">
-                    <label class="fw-bold">Medida *</label>
-                    <div class="d-flex align-items-center mb-2">
-                        <div class="d-flex flex-column">
-                            <label>Largura</label>
-                            <input [backgroundColorClass]="'#ebebeb'" type="text"
-                                class="border border-dark-subtle rounded-3 me-2 w-100 form-focus" placeholder="cm"
-                                required formControlName="width" />
-                        </div>
-                        <div class="pt-4">
-                            <span class="mx-3">X</span>
-                        </div>
-                        <div class="d-flex flex-column">
-                            <label>Altura</label>
-                            <input [backgroundColorClass]="'#ebebeb'" type="text"
-                                class="border border-dark-subtle rounded-3 me-2 w-100 form-focus" placeholder="cm"
-                                required formControlName="height" />
-                        </div>
-                    </div>
-                    <div *ngIf="(width.invalid || height.invalid) && formDir.submitted" class="validation-warning">
-                        <p>Informe as medidas completas da placa (largura e altura) em centímetros.</p>
-                    </div>
-                    <div *ngIf="(width.errors?.['pattern'] || height.errors?.['pattern']) && formDir.submitted"
-                        class="validation-warning">
-                        <p>As medidas devem conter apenas números.</p>
-                    </div>
-                </div>
-            </div>
+      </div>
+    </div>
+
+
+    <div>
+      <div class="row mt-5 border-bottom pb-4">
+        <div class="col-12">
+          <p class="fw-bold">Selecione as Empresas *</p>
         </div>
-
-        <div class="row pb-4 pt-2 border-bottom">
-            <div class="row pb-4 pt-2 border-bottom">
-                <div class="col-12 col-md-3">
-                    <div class="form-group pt-3">
-                        <label class="fw-bold" for="stickerType">Adesivo *</label>
-                        <select [backgroundColorClass]="'#ebebeb'" id="stickerType"
-                            class="form-select border-dark-subtle rounded-3 form-focus w-100"
-                            formControlName="stickerType" (change)="onValueChanged()">
-                            <option value="1">Plotagem de veículos</option>
-                            <option value="2">Adesivos informativos</option>
-                        </select>
-                    </div>
-                    <div *ngIf="stickerType.invalid  && formDir.submitted" class="validation-warning">
-                        <p>Selecione qual o modelo do adesivo</p>
-                    </div>
-                </div>
-                <div *ngIf="stickerType.value === '2'" class="col-12 col-md-9">
-                    <div class="form-group pt-3">
-                        <div class="title">
-                            <p class="fw-bold">Tipo *</p>
-                        </div>
-                        <div class="d-flex flex-wrap">
-                            <div class="form-check me-3 mb-2">
-                                <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="leitoso"
-                                    formControlName="stickerInformationType" value="1">
-                                <label class="form-check-label" for="leitoso">Leitoso</label>
-                            </div>
-                            <div class="form-check me-3 mb-2">
-                                <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="jateado"
-                                    formControlName="stickerInformationType" value="2">
-                                <label class="form-check-label" for="jateado">Jateado</label>
-                            </div>
-                            <div class="form-check me-3 mb-2">
-                                <input [borderColorClass]="'#027373'" class="form-check-input" type="radio"
-                                    id="perfurado" formControlName="stickerInformationType" value="3">
-                                <label class="form-check-label" for="perfurado">Perfurado</label>
-                            </div>
-                        </div>
-                        <div *ngIf="stickerType.value === '2' && stickerInformationType.invalid && formDir.submitted"
-                            class="validation-warning">
-                            <p>Selecione o tipo do adesivo</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="col-12 d-flex flex-wrap gap-3">
+          <div class="form-check">
+            <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox" id="rotaMulti"
+              formControlName="selectedCompany" (change)="updateCompanyName(2, 'Rota Transportes')">
+            <label class="form-check-label" for="rotaMulti">Rota Transportes</label>
+          </div>
+          <div class="form-check">
+            <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox" id="cidadeSolMulti"
+              formControlName="selectedCompany" (change)="updateCompanyName(2, 'Cidade Sol')">
+            <label class="form-check-label" for="cidadeSolMulti">Cidade Sol</label>
+          </div>
+          <div class="form-check">
+            <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox" id="brasileiroMulti"
+              formControlName="selectedCompany" (change)="updateCompanyName(2, 'Brasileiro')">
+            <label class="form-check-label" for="brasileiroMulti">Brasileiro</label>
+          </div>
+          <div class="form-check">
+            <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox" id="viaMetroMulti"
+              formControlName="selectedCompany" (change)="updateCompanyName(2, 'Via Metro')">
+            <label class="form-check-label" for="viaMetroMulti">Via Metro</label>
+          </div>
+          <div class="form-check">
+            <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox" id="cidadeRealMulti"
+              formControlName="selectedCompany" (change)="updateCompanyName(2, 'Cidade Real')">
+            <label class="form-check-label" for="cidadeRealMulti">Cidade Real</label>
+          </div>
+          <div class="form-check">
+            <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox" id="paumaMulti"
+              formControlName="selectedCompany" (change)="updateCompanyName(2, 'Pauma')">
+            <label class="form-check-label" for="paumaMulti">Pauma</label>
+          </div>
+          <div class="form-check d-flex align-items-center">
+            <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox" id="otherMulti"
+              formControlName="selectedCompany" (change)="onOthersCompanies()">
+            <label class="form-check-label ms-2" for="otherMulti">Outras</label>
+            <input *ngIf="isOtherCompaniesSelected" type="text" class="form-control ms-2"
+              placeholder="Especificar empresa" formControlName="othersText" (change)="updateOthersCompanies()">
+            <button [backgroundColorClass]="'#027373'" *ngIf="isOtherCompaniesSelected" type="button"
+              class="btn btn-sm text-white ms-2" (click)="confirmOtherMultiCompany()">OK</button>
+          </div>
         </div>
-
-
-        <div>
-            <div class="row mt-5 border-bottom pb-4">
-                <div class="col-12">
-                    <p class="fw-bold">Selecione as Empresas *</p>
-                </div>
-                <div class="col-12 d-flex flex-wrap gap-3">
-                    <div class="form-check">
-                        <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox" id="rotaMulti"
-                            formControlName="selectedCompany" (change)="updateCompanyName(2, 'Rota Transportes')">
-                        <label class="form-check-label" for="rotaMulti">Rota Transportes</label>
-                    </div>
-                    <div class="form-check">
-                        <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox"
-                            id="cidadeSolMulti" formControlName="selectedCompany"
-                            (change)="updateCompanyName(2, 'Cidade Sol')">
-                        <label class="form-check-label" for="cidadeSolMulti">Cidade Sol</label>
-                    </div>
-                    <div class="form-check">
-                        <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox"
-                            id="brasileiroMulti" formControlName="selectedCompany"
-                            (change)="updateCompanyName(2, 'Brasileiro')">
-                        <label class="form-check-label" for="brasileiroMulti">Brasileiro</label>
-                    </div>
-                    <div class="form-check">
-                        <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox"
-                            id="viaMetroMulti" formControlName="selectedCompany"
-                            (change)="updateCompanyName(2, 'Via Metro')">
-                        <label class="form-check-label" for="viaMetroMulti">Via Metro</label>
-                    </div>
-                    <div class="form-check">
-                        <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox"
-                            id="cidadeRealMulti" formControlName="selectedCompany"
-                            (change)="updateCompanyName(2, 'Cidade Real')">
-                        <label class="form-check-label" for="cidadeRealMulti">Cidade Real</label>
-                    </div>
-                    <div class="form-check">
-                        <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox" id="paumaMulti"
-                            formControlName="selectedCompany" (change)="updateCompanyName(2, 'Pauma')">
-                        <label class="form-check-label" for="paumaMulti">Pauma</label>
-                    </div>
-                    <div class="form-check d-flex align-items-center">
-                        <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox" id="otherMulti"
-                            formControlName="selectedCompany" (change)="onOthersCompanies()">
-                        <label class="form-check-label ms-2" for="otherMulti">Outras</label>
-                        <input *ngIf="isOtherCompaniesSelected" type="text" class="form-control ms-2"
-                            placeholder="Especificar empresa" formControlName="othersText"
-                            (change)="updateOthersCompanies()">
-                        <button [backgroundColorClass]="'#027373'" *ngIf="isOtherCompaniesSelected" type="button"
-                            class="btn btn-sm text-white ms-2" (click)="confirmOtherMultiCompany()">OK</button>
-                    </div>
-                </div>
-                <div *ngIf="selectedCompanies.length == 0  && formDir.submitted" class="validation-warning">
-                    <p>Ao menos uma empresa deve ser selecionada.</p>
-                </div>
-            </div>
+        <div *ngIf="selectedCompanies.length == 0  && formDir.submitted" class="validation-warning">
+          <p>Ao menos uma empresa deve ser selecionada.</p>
         </div>
+      </div>
+    </div>
 
 
 
-        <div *ngIf="selectedCompanies.length != 0" class="row mt-5 border-bottom pb-4">
-            <div>
-                <p class="fw-bold">Empresas Selecionadas</p>
-            </div>
-            <div class="d-flex flex-wrap gap-2">
-                <div *ngFor="let company of selectedCompanies" [backgroundColorClass]="'#ebebeb'"
-                    class="d-flex align-items-center border border-dark-subtle rounded px-3 py-2">
-                    <p class="fw-bold mb-0 me-3">
-                        {{ company.name }}
-                    </p>
-                    <button *ngIf="company.isCustom" [backgroundColorClass]="'#ff6f6f'"
-                        class="btn btn-sm text-white border-0" type="button" (click)="removeCompany(company)">
-                        Remover
-                    </button>
-                </div>
-            </div>
+    <div *ngIf="selectedCompanies.length != 0" class="row mt-5 border-bottom pb-4">
+      <div>
+        <p class="fw-bold">Empresas Selecionadas</p>
+      </div>
+      <div class="d-flex flex-wrap gap-2">
+        <div *ngFor="let company of selectedCompanies" [backgroundColorClass]="'#ebebeb'"
+          class="d-flex align-items-center border border-dark-subtle rounded px-3 py-2">
+          <p class="fw-bold mb-0 me-3">
+            {{ company.name }}
+          </p>
+          <button *ngIf="company.isCustom" [backgroundColorClass]="'#ff6f6f'" class="btn btn-sm text-white border-0"
+            type="button" (click)="removeCompany(company)">
+            Remover
+          </button>
         </div>
+      </div>
+    </div>
 
 
-        <div class="row">
-            <div class="form-group pt-3 w-100 py-3">
-                <label class="fw-bold" for="sector">Setor *</label>
-                <textarea [backgroundColorClass]="'#ebebeb'" id="sector" required formControlName="sector" type="text"
-                    class="form-control border-dark-subtle rounded-3 form-focus" placeholder="Escreva aqui"></textarea>
-            </div>
-            <div *ngIf="sector.invalid  && formDir.submitted" class="validation-warning">
-                <p>Por favor, informe o setor.</p>
-            </div>
-        </div>
+    <div class="row">
+      <div class="form-group pt-3 w-100 py-3">
+        <label class="fw-bold" for="sector">Setor *</label>
+        <textarea [backgroundColorClass]="'#ebebeb'" id="sector" required formControlName="sector" type="text"
+          class="form-control border-dark-subtle rounded-3 form-focus" placeholder="Escreva aqui"></textarea>
+      </div>
+      <div *ngIf="sector.invalid  && formDir.submitted" class="validation-warning">
+        <p>Por favor, informe o setor.</p>
+      </div>
+    </div>
 
-        <div class="row">
-            <div class="form-group pt-3 w-100 py-3">
-                <label class="fw-bold" for="observations">Observações *</label>
-                <textarea [backgroundColorClass]="'#ebebeb'" id="observations" formControlName="observations"
-                    type="text" class="form-control border-dark-subtle rounded-3 form-focus" placeholder="Escreva aqui"
-                    required></textarea>
-            </div>
-        </div>
+    <div class="row">
+      <div class="form-group pt-3 w-100 py-3">
+        <label class="fw-bold" for="observations">Observações *</label>
+        <textarea [backgroundColorClass]="'#ebebeb'" id="observations" formControlName="observations" type="text"
+          class="form-control border-dark-subtle rounded-3 form-focus" placeholder="Escreva aqui" required></textarea>
+      </div>
+    </div>
 
 
-        <div class="d-flex gap-3 justify-content-end pt-2">
-            <button type="reset" (click)="clearForm()" class="btn btn-outline-danger">Redefinir Formulário</button>
-            <button [disabled]="isButtonDisabled" [backgroundColorClass]="'#027373'" type="submit"
-                class="btn text-white">Enviar</button>
-        </div>
-    </form>
+    <div class="d-flex gap-3 justify-content-end pt-2">
+      <button type="reset" (click)="clearForm()" class="btn btn-outline-danger">Redefinir Formulário</button>
+      <button [disabled]="isButtonDisabled" [backgroundColorClass]="'#027373'" type="submit"
+        class="btn text-white">Enviar</button>
+    </div>
+  </form>
 </div>

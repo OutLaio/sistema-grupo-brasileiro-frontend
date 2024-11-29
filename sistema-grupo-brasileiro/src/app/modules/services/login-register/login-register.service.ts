@@ -20,8 +20,7 @@ export class LoginRegisterService {
 
   constructor(
     private router: Router,
-    private httpClient: HttpClient,
-    private storageService: StorageService
+    private httpClient: HttpClient
   ) {}
 
   private getHeaders() {
@@ -75,13 +74,5 @@ export class LoginRegisterService {
   logout() {
     sessionStorage.clear();
     this.router.navigate(['/login']);
-  }
-
-  getLink() {
-    const header = this.getHeaders();
-    return this.httpClient.get<I_Api_Response<string>>(
-      `${this.prefix}/requestRegister`,
-      { headers: header }
-    )
   }
 }

@@ -9,7 +9,7 @@
 
 .card-selected {
   background-color: #e0e0e0;
-  border-left: 4px solid #027373; 
+  border-left: 4px solid #027373;
 }
 
 .card-body {
@@ -51,6 +51,15 @@
   background-color: rgba(2, 115, 115, 0.1);
 }
 
+.text-custom {
+    color: #027373 !important;
+    font-weight: 600;
+}
+
+.text-custom:hover {
+    text-decoration: underline !important;
+    cursor: pointer;
+}
 
 .overflow-custom {
   height: 75vh;

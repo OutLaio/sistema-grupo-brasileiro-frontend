@@ -1,42 +1,44 @@
 <div class="container-fluid">
-    <div class="row d-flex justify-content-center h-100">
-        <div class="card daddy-card text-black">
-            <div class="card-body">
-                <div class="container-fluid custom-container mt-3 overflow-custom scroll-bar">
-                    <div class="row">
-                        <div *ngFor="let client of clients" class="col-12 col-md-3 mb-3">
-                            <div class="card card-custom rounded-4 py-2"
-                                [ngClass]="{'card-selected': isSelected(client)}" (click)="selectClient(client)">
-                                <div class="card-body text-center">
-                                    <div class="mb-3">
-                                        <img [src]="'/assets/images/avatars/' + (client?.avatar || 'default') + '.png'"
-                                            alt="Profile Image" class="img-fluid me-3" style="height: 70px;">
-                                    </div>
-                                    <p class="card-text fw-semibold mb-1">{{ client.name + ' ' + client.lastname }}</p>
-                                    <p class="card-text text-muted mb-3">{{ client.user.email }}</p>
+  <div class="row d-flex justify-content-center h-100">
+    <div class="card daddy-card text-black">
+      <div class="card-body">
+        <div
+          class="container-fluid d-flex flex-column justify-content-between custom-container mt-3 overflow-custom scroll-bar">
+          <div class="row">
+            <p class="text-custom" (click)="getLink()">Gerar link de cadastro de cliente</p>
+            <div *ngFor="let client of clients" class="col-12 col-md-3 mb-3">
+              <div class="card card-custom rounded-4 py-2" [ngClass]="{'card-selected': isSelected(client)}"
+                (click)="selectClient(client)">
+                <div class="card-body text-center">
+                  <div class="mb-3">
+                    <img [src]="'/assets/images/avatars/' + (client?.avatar || 'default') + '.png'" alt="Profile Image"
+                      class="img-fluid me-3" style="height: 70px;">
+                  </div>
+                  <p class="card-text fw-semibold mb-1">{{ client.name + ' ' + client.lastname }}</p>
+                  <p class="card-text text-muted mb-3">{{ client.user.email }}</p>
 
-                                    <div *ngIf="client === selectedClient" class="pt-3 border-top mt-2">
-                                        <p class="card-text mb-1"><strong>Telefone:</strong> {{ client.phoneNumber }}
-                                        </p>
-                                        <p class="card-text mb-1"><strong>Função:</strong> {{ client.occupation }}</p>
-                                        <p class="card-text mb-1"><strong>Setor:</strong> {{ client.sector }}</p>
-                                        <p class="card-text"><strong>Agência:</strong> {{ client.agency }}</p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="row mt-4">
-                        <div class="col-12">
-                            <mat-paginator [length]="totalElements" [pageSize]="itemsPerPage"
-                                [pageSizeOptions]="[6, 12, 24]" (page)="onPageChange($event)">
-                            </mat-paginator>
-                        </div>
-                    </div>
+                  <div *ngIf="client === selectedClient" class="pt-3 border-top mt-2">
+                    <p class="card-text mb-1"><strong>Telefone:</strong> {{ client.phoneNumber }}
+                    </p>
+                    <p class="card-text mb-1"><strong>Função:</strong> {{ client.occupation }}</p>
+                    <p class="card-text mb-1"><strong>Setor:</strong> {{ client.sector }}</p>
+                    <p class="card-text"><strong>Agência:</strong> {{ client.agency }}</p>
+                  </div>
                 </div>
-
+              </div>
             </div>
+          </div>
+
+          <div class="row mt-4">
+            <div class="col-12">
+              <mat-paginator [length]="totalElements" [pageSize]="itemsPerPage" [pageSizeOptions]="[6, 12, 24]"
+                (page)="onPageChange($event)">
+              </mat-paginator>
+            </div>
+          </div>
         </div>
+
+      </div>
     </div>
+  </div>
 </div>

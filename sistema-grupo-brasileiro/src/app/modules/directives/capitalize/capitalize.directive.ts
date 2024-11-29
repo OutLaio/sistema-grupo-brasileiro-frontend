@@ -16,7 +16,6 @@ export class CapitalizeDirective implements OnChanges {
       const words = this.appCapitalize.split(' ');
       let capitalizedWords = words.map(word => this.capitalizeWords(word));
       this.el.nativeElement.innerText = capitalizedWords.join(' ');
-      console.log(capitalizedWords)
     }
   }
 

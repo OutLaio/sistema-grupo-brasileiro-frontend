@@ -9,6 +9,7 @@ import { I_Dialog_Box_Request } from '../../../../shared/interfaces/dialog-box/f
 import { StorageService } from '../../../../services/storage/storage.service';
 import { I_Any_Briefing } from '../../../../shared/interfaces/briefing/any-briefing';
 import { C_PROJECT_STATUS } from '../../../../shared/enums/project-status';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-version',
@@ -52,7 +53,10 @@ export class VersionComponent {
   showNewVersion() {
     Swal.fire({
       title: '<h5 class="text-exo fw-bold">Inserir Nova Arte</h5>',
-      html: this.getHtmlNewVersionModal(),
+      html: `
+        <div class="form-group d-flex align-items-start flex-column gap-2">
+          <input type="file" id="inputImage" class="form-control"">
+        </div>`,
       showCloseButton: true,
       showCancelButton: true,
       confirmButtonText: 'Salvar',
@@ -63,77 +67,53 @@ export class VersionComponent {
       width: '40%',
       padding: '3rem',
       preConfirm: () => {
-        const inputTitle = document.getElementById(
-          'inputTitle'
-        ) as HTMLInputElement;
-        const inputDescription = document.getElementById(
-          'inputDescription'
-        ) as HTMLTextAreaElement;
         const fileInput = document.getElementById(
           'inputImage'
         ) as HTMLInputElement;
 
-        if (!inputTitle || !inputDescription || !fileInput) {
-          throw new Error('Input elements not found');
+        if (!fileInput) {
+          throw new Error('Input element not found');
         }
 
-        const artTitle = inputTitle.value;
-        const artDescription = inputDescription.value;
         const artImage = fileInput.files?.[0];
 
         if (!artImage) {
           Swal.showValidationMessage('Selecione uma imagem!');
           return false;
         }
-        return { artTitle, artDescription, artImage };
+        return { artImage };
       },
     }).then((result) => {
       if (result.isConfirmed) {
-        this.newVersion(
-          result.value.artTitle,
-          result.value.artDescription,
-          result.value.artImage
-        );
+        this.newVersion(result.value.artImage);
       }
     });
   }
 
-  getHtmlNewVersionModal() {
-    return `
-        <div class="d-flex flex-column gap-4">
-          <div class="form-group d-flex align-items-start flex-column gap-2">
-            <label for="inputTitle">Título da Arte</label>
-            <input type="text" id="inputTitle" class="form-control" [(ngModel)]="artTitle" name="artTitle">
-          </div>
-          <div class="form-group d-flex align-items-start flex-column gap-2">
-            <label for="inputDescription">Descrição da Arte</label>
-            <textarea id="inputDescription" class="form-control" [(ngModel)]="artDescription" name="artDescription"></textarea>
-          </div>
-          <div class="form-group d-flex align-items-start flex-column gap-2">
-            <label for="inputImage">Imagem da Arte</label>
-            <input type="file" id="inputImage" class="form-control"">
-            </div>
-        </div>
-      `;
-  }
-
-  newVersion(
-    artTitle: string,
-    artDescription: string,
-    artImage: File | undefined
-  ): void {
-    this.requestDetailsService
-      .newVersion(this.data?.type.project.id!, {
-        productLink: artImage!.name,
-      } as I_New_Version_Request)
-      .subscribe((response) => {
-        Swal.fire({
-          title: response.message,
-          text: 'Aguardando aprovação do supervisor.',
-          icon: 'success',
-          confirmButtonColor: '#029982',
-        }).then(() => {window.location.reload()});
-        this.data?.type.briefing.versions!.push(response.data!);
+  newVersion(artImage: File | undefined): void {
+    console.log(artImage);
+    if (artImage)
+      this.requestDetailsService.uploadFile(artImage).subscribe({
+        next: (res) => {
+          console.log(res.message);
+          this.requestDetailsService
+            .newVersion(this.data?.type.project.id!, {
+              productLink: res.data!.fileDownloadUri,
+            } as I_New_Version_Request)
+            .subscribe((response) => {
+              Swal.fire({
+                title: response.message,
+                text: 'Aguardando aprovação do supervisor.',
+                icon: 'success',
+                confirmButtonColor: '#029982',
+              }).then(() => {
+                window.location.reload();
+              });
+              this.data?.type.briefing.versions!.push(response.data!);
+            });
+        },
+        error: (err: HttpErrorResponse) =>
+          Swal.fire('Arte não salva', err.error.message, 'error'),
       });
   }
 
@@ -180,7 +160,7 @@ export class VersionComponent {
         } else if (reviewInput && reviewInput.checked) {
           forceApprove = false;
           status = false;
-        } else if (forceApproveInput && forceApproveInput.checked){
+        } else if (forceApproveInput && forceApproveInput.checked) {
           forceApprove = true;
           status = true;
         }
@@ -209,9 +189,12 @@ export class VersionComponent {
         let request: I_Approve_Request = {
           idVersion: version.id,
           approved: result.value.status,
-          feedback: result.value.forceApprove === null ? result.value.feedback : version.feedback,
+          feedback:
+            result.value.forceApprove === null
+              ? result.value.feedback
+              : version.feedback,
         };
-        if (this.isSupervisor() ) {
+        if (this.isSupervisor()) {
           text = result.value.status
             ? result.value.forceApprove
               ? ''
@@ -259,7 +242,7 @@ export class VersionComponent {
   }
 
   isVersionApproved(version: I_Version_Data) {
-    return version.clientApprove === true && version.supervisorApprove === true;
+    return version.clientApprove !== null && version.supervisorApprove === true;
   }
 
   isVersionDisapproved(version: I_Version_Data) {
@@ -277,7 +260,10 @@ export class VersionComponent {
 
   isVersionOpenToMe(version: I_Version_Data) {
     if (this.isSupervisor()) return version.supervisorApprove === null;
-    else if (this.isClient()) return version.clientApprove === null && version.supervisorApprove === true;
+    else if (this.isClient())
+      return (
+        version.clientApprove === null && version.supervisorApprove === true
+      );
     else return false;
   }
 
@@ -285,18 +271,18 @@ export class VersionComponent {
     return `
       <div class="d-flex flex-column gap-2">
         <div class="d-flex gap-5 justify-content-center">
-          <img src="/assets/images/${
+          <img src="${
             version.productLink
           }" alt="Arte" style="max-height: 200px;">
         </div>
-        ${(this.isVersionOpenToMe(version) || this.isVersionApproved(version))? `
+        ${
+          this.isVersionOpenToMe(version) || this.isVersionApproved(version)
+            ? `
           <div class="d-flex flex-column align-items-center py-3 border-bottom border-top">
             <p>Baixe a arte clicando no link abaixo:</p>
-            <a href="${version.productLink}" target="_blank">${
-              version.productLink
-            }</a>
+            <a href="${version.productLink}" target="_blank">${version.productLink}</a>
           </div>`
-          : ''
+            : ''
         }
         <div class="mt-4">
           ${
@@ -316,7 +302,7 @@ export class VersionComponent {
               </div>
               ${
                 this.willForce(version)
-                ? `<div class="d-flex flex-column gap-3 align-items-end justify-content-between">
+                  ? `<div class="d-flex flex-column gap-3 align-items-end justify-content-between">
                     <div class="d-flex align-items-center justify-content-center w-100 gap-3 py-3">
                       <input class="in-radio" type="radio" name="approveVersion" id="review">
                       <label class="lb" for="review">Aceitar Revisão</label>
@@ -325,7 +311,7 @@ export class VersionComponent {
                       <label class="lb lb-reject" for="force-approve">Forçar Aprovação</label>
                     </div>
                   </div>`
-                : ``
+                  : ``
               }
               `
               : this.isVersionOpenToMe(version)
@@ -351,7 +337,8 @@ export class VersionComponent {
   }
 
   versionStatus(version: I_Version_Data) {
-    if (version.supervisorApprove && version.clientApprove !== null) return this.approve;
+    if (version.supervisorApprove && version.clientApprove !== null)
+      return this.approve;
     else if (
       version.supervisorApprove === false ||
       version.clientApprove === false
@@ -361,7 +348,7 @@ export class VersionComponent {
   }
 
   isOpenToNewVersion() {
-    if(this.isCollaborator())
+    if (this.isCollaborator())
       return (
         this.data?.type.project.status === C_PROJECT_STATUS.IN_PROGRESS.en ||
         this.data?.type.project.status === C_PROJECT_STATUS.WAITING_APPROVAL.en

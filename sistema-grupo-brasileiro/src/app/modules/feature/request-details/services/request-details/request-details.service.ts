@@ -14,6 +14,7 @@ import { I_Any_Briefing } from '../../../../shared/interfaces/briefing/any-brief
 import { I_Employee_View_Data } from '../../../../shared/interfaces/user/view/employee-view';
 import { ListCollaboratorsService } from '../../../collaborator/list-collaborators/services/list-collaborators.service';
 import { I_Alter_Status_Request } from '../../../../shared/interfaces/project/form/alter-status-form';
+import { I_Upload_Response } from '../../../../shared/interfaces/upload/upload-file-view';
 
 @Injectable({
   providedIn: 'root',
@@ -95,5 +96,11 @@ export class RequestDetailsService {
   finishProject(id: string) {
     const url = `${this.baseUrl}/projects/${id}/finish`;
     return this.http.put<I_Api_Response<void>>(url, null, { headers: this.getHeaders() });
+  }
+
+  uploadFile(file: File) {
+    const formData = new FormData();
+    formData.append('file', file);
+    return this.http.post<I_Api_Response<I_Upload_Response>>(`${this.baseUrl}/file/uploadFile`, formData, { headers: this.getHeaders() });
   }
 }

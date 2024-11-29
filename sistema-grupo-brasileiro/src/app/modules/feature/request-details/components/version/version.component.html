@@ -2,12 +2,12 @@
   <div>
     <p class="text-exo fw-bold">Artes Desenvolvidas</p>
   </div>
-  <div class="d-flex gap-5 justify-content-between">
-    <div class="d-flex gap-5">
+  <div class="d-flex justify-content-between">
+    <div class="d-flex flex-wrap">
       <p *ngIf="data?.type?.briefing?.versions?.length == 0; else hasVersions" class="small-text pb-4 text-exo ">Ainda não há versões
         disponibilizadas para este projeto!</p>
       <ng-template #hasVersions>
-        <div *ngFor="let version of data?.type?.briefing?.versions" class="pb-4">
+        <div *ngFor="let version of data?.type?.briefing?.versions" class="pb-4 me-3">
           <button type="button" class="btn btn-sm"
           [ngClass]="{
             'btn-outline-secondary': versionStatus(version) == open,
@@ -20,7 +20,7 @@
       </ng-template>
     </div>
     <div *ngIf="isOpenToNewVersion()" class="d-flex h-75">
-      <button class="btn btn-outline-primary shadow-custom btn-sm" (click)="showNewVersion()">Inserir Nova Arte</button>
+      <button class="btn btn-bd-primary shadow-custom btn-sm" (click)="showNewVersion()">Inserir Nova Arte</button>
     </div>
   </div>
 </div>
