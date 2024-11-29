@@ -8,6 +8,7 @@ import { I_Stickers_Request } from '../../../shared/interfaces/briefing/stickers
 
 import { StorageService } from '../../../services/storage/storage.service';
 import { I_Api_Response } from '../../../shared/interfaces/api-response';
+import { I_Sticker_Request } from '../../../shared/interfaces/briefing/sticker/form/register-sticker-form';
 
 @Injectable({
   providedIn: 'root',

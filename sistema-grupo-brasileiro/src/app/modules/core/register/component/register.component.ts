@@ -4,7 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { LoginRegisterService } from '../../../services/login-register/login-register.service';
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { I_User_Request } from '../../../shared/interfaces/user/form/user-details-form';
 
 @Component({
@@ -15,22 +15,34 @@ import { I_User_Request } from '../../../shared/interfaces/user/form/user-detail
 export class RegisterComponent implements OnInit {
   registerForm!: FormGroup;
   isButtonDisabled: boolean = false;
+  token!: string;
 
   constructor(
+    private route: ActivatedRoute,
     private registerService: LoginRegisterService,
     private toastrService: ToastrService,
     private router: Router
-  ) { }
+  ) {}
 
   ngOnInit(): void {
+    this.route.queryParams.subscribe((params) => {
+      this.token = params['token'];
+    });
+    this.registerService.verifyToken(this.token).subscribe({
+      next: (res) => { this.toastrService.success(res.message)},
+      error: (error: HttpErrorResponse) => {
+        this.toastrService.error(error.error.message);
+        this.router.navigate(['/']);
+       }
+    })
     this.registerForm = new FormGroup({
       name: new FormControl('', [
         Validators.required,
-        Validators.pattern('^[A-Za-zÀ-ÿ]{3,}( [A-Za-zÀ-ÿ]+)*$')
+        Validators.pattern('^[A-Za-zÀ-ÿ]{3,}( [A-Za-zÀ-ÿ]+)*$'),
       ]),
       lastname: new FormControl('', [
         Validators.required,
-        Validators.pattern('^(?:[A-Za-zÀ-ÿ]+(?: [A-Za-zÀ-ÿ]+)*){3,}$')
+        Validators.pattern('^(?:[A-Za-zÀ-ÿ]+(?: [A-Za-zÀ-ÿ]+)*){3,}$'),
       ]),
       email: new FormControl('', [Validators.required, Validators.email]),
       password: new FormControl('', [
@@ -49,18 +61,36 @@ export class RegisterComponent implements OnInit {
     });
   }
 
-  get name() { return this.registerForm.get('name')!; }
-  get lastname() { return this.registerForm.get('lastname')!; }
-  get email() { return this.registerForm.get('email')!; }
-  get password() { return this.registerForm.get('password')!; }
-  get phone() { return this.registerForm.get('phone')!; }
-  get sector() { return this.registerForm.get('sector')!; }
-  get occupation() { return this.registerForm.get('occupation')!; }
-  get nop() { return this.registerForm.get('nop')!; }
+  get name() {
+    return this.registerForm.get('name')!;
+  }
+  get lastname() {
+    return this.registerForm.get('lastname')!;
+  }
+  get email() {
+    return this.registerForm.get('email')!;
+  }
+  get password() {
+    return this.registerForm.get('password')!;
+  }
+  get phone() {
+    return this.registerForm.get('phone')!;
+  }
+  get sector() {
+    return this.registerForm.get('sector')!;
+  }
+  get occupation() {
+    return this.registerForm.get('occupation')!;
+  }
+  get nop() {
+    return this.registerForm.get('nop')!;
+  }
 
   submit() {
     if (this.registerForm.invalid) {
-      this.toastrService.error("Erro ao realizar o cadastro. Verifique se os campos estão preenchidos corretamente.");
+      this.toastrService.error(
+        'Erro ao realizar o cadastro. Verifique se os campos estão preenchidos corretamente.'
+      );
       this.isButtonDisabled = true;
       setTimeout(() => {
         this.isButtonDisabled = false;
@@ -82,20 +112,20 @@ export class RegisterComponent implements OnInit {
         email: this.email.value,
         password: this.password.value,
         profile: 3, // 3 = Client, 2 = Collaborator, 1 = Supervisor
-      }
+      },
     };
 
     this.registerService.registerUser(data).subscribe({
       next: () => {
-        this.toastrService.success("Cadastro realizado com sucesso!");
-				this.isButtonDisabled = true;
-				setTimeout(() => {
+        this.toastrService.success('Cadastro realizado com sucesso!');
+        this.isButtonDisabled = true;
+        setTimeout(() => {
           this.router.navigate(['/login']);
-				}, 2000);
+        }, 2000);
       },
       error: (value: HttpErrorResponse) => {
         this.toastrService.error(value.error.message);
-      }
+      },
     });
   }
 }

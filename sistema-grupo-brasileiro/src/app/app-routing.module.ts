@@ -15,6 +15,7 @@ import { ListClientsComponent } from './modules/feature/client/list-clients/comp
 const routes: Routes = [
   {
     path: 'acompanhamento',
+    title: 'Acompanhamento',
     component: CheckRequestsComponent,
     canActivate: [AuthGuard]
   },

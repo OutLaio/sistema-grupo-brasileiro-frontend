@@ -48,20 +48,12 @@ export class StickersRequestComponent implements OnInit {
       description: new FormControl('', [Validators.required]),
       width: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
       height: new FormControl('', [Validators.required, Validators.pattern('^[0-9]*$')]),
-      stickerType: new FormControl(''),
-      stickerInformationType: new FormControl('', [Validators.required]),
+      stickerType: new FormControl('', [Validators.required]),
+      stickerInformationType: new FormControl(''),
       selectedCompany: new FormControl('', [Validators.required]),
       sector: new FormControl('', [Validators.required]),
       othersText: new FormControl(''),
       observations: new FormControl('', [Validators.required]),
-    });
-    this.stickersForm.get('stickerType')?.valueChanges.subscribe(value => {
-      if (value === '2') {
-        this.stickersForm.get('stickerInformationType')?.setValidators([Validators.required]);
-      } else {
-        this.stickersForm.get('stickerInformationType')?.clearValidators();
-      }
-      this.stickersForm.get('stickerInformationType')?.updateValueAndValidity();
     });
   }
 
@@ -79,6 +71,17 @@ export class StickersRequestComponent implements OnInit {
   clearForm() {
     this.stickersForm.reset();
     this.selectedCompanies = [];
+  }
+
+  onValueChanged() {
+    this.stickersForm.get('stickerType')?.valueChanges.subscribe(value => {
+      if (value === '2') {
+        this.stickersForm.get('stickerInformationType')?.setValidators([Validators.required]);
+      } else {
+        this.stickersForm.get('stickerInformationType')?.clearValidators();
+      }
+      this.stickersForm.get('stickerInformationType')?.updateValueAndValidity();
+    });
   }
 
   onCompanyChange(type: string) {
@@ -175,7 +178,7 @@ export class StickersRequestComponent implements OnInit {
         detailedDescription: this.description!.value,
         idBriefingType: E_Briefing_Type.ADESIVOS.id,
         companies: this.sendCompanies.map((item) => {
-          return { idCompany: item.toString() } as I_Company_Briefing_Form_Data;
+          return { idCompany: item } as I_Company_Briefing_Form_Data;
         }),
         otherCompany: this.sendOthersCompanies.join(', '),
         measurement: {

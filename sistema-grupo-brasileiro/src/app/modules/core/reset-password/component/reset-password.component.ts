@@ -35,6 +35,13 @@ export class ResetPasswordComponent implements OnInit {
     this.route.queryParams.subscribe((params) => {
       this.token = params['token'];
     });
+    this.loginRegisterService.verifyToken(this.token).subscribe({
+      next: (res) => { this.toastrService.success(res.message)},
+      error: (error: HttpErrorResponse) => {
+        this.toastrService.error(error.error.message);
+        this.router.navigate(['/']);
+       }
+    })
     this.resetForm = new FormGroup(
       {
         password: new FormControl('', [

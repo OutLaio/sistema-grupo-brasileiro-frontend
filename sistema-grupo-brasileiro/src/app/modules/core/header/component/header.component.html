@@ -6,7 +6,7 @@
     <button class="btn-custom m-5">
       <img class="w-75 h-75" src="/assets/icons/notifications.svg" alt="menu icon">
     </button>
-    <img class="profile-info-img" src="/assets/images/profile.png" alt="Profile Picture">
-    <span>{{userName}}</span>
+    <img class="profile-info-img" [src]="'/assets/images/avatars/' + (activeUser.avatar) + '.png'" alt="Profile Picture">
+    <span>{{ activeUser.name }} {{ activeUser.lastname }} </span>
   </div>
 </div>

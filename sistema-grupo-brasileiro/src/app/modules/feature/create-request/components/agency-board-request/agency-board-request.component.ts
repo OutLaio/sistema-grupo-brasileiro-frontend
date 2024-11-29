@@ -19,14 +19,14 @@ import { I_City_Data } from '../../../../shared/interfaces/briefing/agency-board
 
 
 import { CreateRequestService } from '../../services/create-request.service';
-import { CitiesCompaniesService } from '../../services/cities-companies.service';
 import { map } from 'rxjs';
+import { DataService } from '../../../../services/data/data.service';
 
 enum Company {
-  'Rota Transportes' = '1',
-  'Cidade Sol' = '2',
-  'Via Metro' = '3',
-  'Brasileiro' = '4',
+  'Rota Transportes' = 1,
+  'Cidade Sol' = 2,
+  'Via Metro' = 3,
+  'Brasileiro' = 4,
 }
 
 @Component({
@@ -58,14 +58,14 @@ export class AgencyBoardRequestComponent implements OnInit {
     private createRequestService: CreateRequestService,
     private toastrService: ToastrService,
     private storageService: StorageService,
-    private citiesCompaniesService: CitiesCompaniesService,
+    private dataService: DataService,
     private router: Router) { }
 
   ngOnInit(): void {
-    this.citiesCompaniesService.getCities().pipe(
-      map(cities => cities.map(city => ({ id: city.id, name: city.name })))
+    this.dataService.getCities().pipe(
+      map(cities => cities.data!.map(city => ({ id: city.id, name: city.name })))
     ).subscribe(cities => {
-      this.listMainRoutes = cities;
+      this.listMainRoutes = cities.sort((a, b) => { return a.name.localeCompare(b.name) });
       this.listConnections = cities;
     });
 

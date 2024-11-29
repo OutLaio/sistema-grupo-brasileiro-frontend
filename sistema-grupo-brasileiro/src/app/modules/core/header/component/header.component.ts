@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SidebarService } from '../../../services/sidebar/sidebar.service';
 import { StorageService } from '../../../services/storage/storage.service';
+import { I_Employee_View_Data } from '../../../shared/interfaces/user/view/employee-view';
 
 @Component({
   selector: 'app-header',
@@ -9,7 +10,7 @@ import { StorageService } from '../../../services/storage/storage.service';
 })
 export class HeaderComponent {
 
-  userName: string = "";
+  activeUser!: I_Employee_View_Data;
 
   constructor(
     private sidebarService: SidebarService,
@@ -17,7 +18,7 @@ export class HeaderComponent {
   ){}
 
   ngOnInit(): void {
-    this.userName = this.storageService.getUserFullName() || '';
+    this.activeUser = this.storageService.getSessionProfile();
   }
 
   toggleSidebar() {

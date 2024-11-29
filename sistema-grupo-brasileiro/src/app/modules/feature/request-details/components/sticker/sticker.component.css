@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:ital,wght@0,100..900;1,100..900&display=swap');
+
+
+.text-exo {
+  font-family: "Exo" !important;
+}
+
+.shadow-custom {
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
+}
+
+.small-text {
+  font-size: 12px;
+}

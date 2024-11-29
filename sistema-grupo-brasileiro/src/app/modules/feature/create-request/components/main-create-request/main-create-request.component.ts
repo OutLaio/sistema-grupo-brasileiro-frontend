@@ -8,8 +8,9 @@ import { Router } from '@angular/router';
 })
 export class MainCreateRequestComponent implements OnInit {
   mainOptions = [
-    { name: 'Placa de Itinerários', route: '/placa-de-itinerarios' },
-    { name: 'Adesivos', route: '/adesivos' },
+    { name: 'Placa de Itinerários', route: '/placa-de-itinerarios', active: true },
+    { name: 'Placa de Sinalização', route: '/placa-de-sinalizacao', active: true },
+    { name: 'Adesivos', route: '/adesivos', active: true },
     {
       name: 'Impressos',
       subOptions: [
@@ -29,11 +30,11 @@ export class MainCreateRequestComponent implements OnInit {
         { name: 'Cartão de Visita', route: '/cartao-de-visita' },
         { name: 'Crachá', route: '/cracha' },
         { name: 'Cordão de Crachá', route: '/cordao-cracha' }
-      ]
+      ],
+      active: false
     },
-    { name: 'Campanhas Internas', route: '/campanhas-internas' },
-    { name: 'Comunicados', route: '/comunicados' },
-    { name: 'Placa de Sinalização', route: '/placa-de-sinalizacao' },
+    { name: 'Campanhas Internas', route: '/campanhas-internas', active: false },
+    { name: 'Comunicados', route: '/comunicados', active: false },
     {
       name: 'Layouts p/Brindes',
       subOptions: [
@@ -51,13 +52,14 @@ export class MainCreateRequestComponent implements OnInit {
         { name: 'Necessaire', route: '/necessaire' },
         { name: 'Calendário', route: '/calendario' },
         { name: 'Outros', route: '/outros-brindes' }
-      ]
+      ],
+      active: false
     }
   ];
 
   selectedOption: any;
   activeOption: any;
-  activeSubOption: any; 
+  activeSubOption: any;
 
   constructor(private router: Router) {}
 
@@ -68,8 +70,8 @@ export class MainCreateRequestComponent implements OnInit {
   }
 
   selectOption(option: any): void {
-    this.activeOption = option;  
-    this.activeSubOption = null;  
+    this.activeOption = option;
+    this.activeSubOption = null;
 
     if (option.subOptions && option.subOptions.length > 0) {
       this.selectedOption = this.selectedOption === option ? null : option;
@@ -80,7 +82,7 @@ export class MainCreateRequestComponent implements OnInit {
   }
 
   selectSubOption(subOption: any): void {
-    this.activeSubOption = subOption; 
+    this.activeSubOption = subOption;
     this.router.navigate([subOption.route]);
   }
 }

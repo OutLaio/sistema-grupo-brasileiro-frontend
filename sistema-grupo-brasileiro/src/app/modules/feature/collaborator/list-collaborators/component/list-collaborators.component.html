@@ -1,8 +1,8 @@
-<div class="container-fluid custom-container mt-3 overflow-custom scroll-bar">
+<div class="d-flex flex-column justify-content-between container-fluid custom-container mt-3 overflow-custom scroll-bar">
     <div class="row">
         <div *ngFor="let collaborator of collaborators" class="col-12 col-md-4 mb-3">
             <div class="card card-custom rounded-4 py-2"
-                [ngClass]="{'card-selected': isSelected(collaborator)}" 
+                [ngClass]="{'card-selected': isSelected(collaborator)}"
                 (click)="selectCollaborator(collaborator)">
                 <div class="card-body text-center">
                     <div class="mb-3">
@@ -11,7 +11,7 @@
                     </div>
                     <p class="card-text fw-semibold mb-1">{{ collaborator.name + ' ' + collaborator.lastname }}</p>
                     <p class="card-text text-muted mb-3">{{ collaborator.user.email }}</p>
-                    
+
                     <div *ngIf="collaborator === selectedCollaborator" class="pt-3 border-top mt-2">
                         <p class="card-text mb-1"><strong>Telefone:</strong> {{ collaborator.phoneNumber }}</p>
                         <p class="card-text mb-1"><strong>Função:</strong> {{ collaborator.occupation }}</p>

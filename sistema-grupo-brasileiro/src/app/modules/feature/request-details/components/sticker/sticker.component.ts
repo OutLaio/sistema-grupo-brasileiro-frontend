@@ -1,21 +1,19 @@
-import { Component, Input, OnInit } from '@angular/core';
-import { I_Signpost_Response } from '../../../../shared/interfaces/briefing/signpost/view/signpost-detailed-view';
-import { RequestDetailsService } from '../../services/request-details/request-details.service';
+import { Component, Input } from '@angular/core';
 import { I_Any_Briefing } from '../../../../shared/interfaces/briefing/any-briefing';
+import { I_Sticker_Response } from '../../../../shared/interfaces/briefing/sticker/view/sticker-detailed-view';
 import { I_Version_Data } from '../../../../shared/interfaces/project/view/version-view';
 import { StorageService } from '../../../../services/storage/storage.service';
 import { UtilsService } from '../../services/utils/utils.service';
-import { Router } from '@angular/router';
 import { C_PROJECT_STATUS } from '../../../../shared/enums/project-status';
 
 @Component({
-  selector: 'app-signpost',
-  templateUrl: './signpost.component.html',
-  styleUrl: './signpost.component.css',
+  selector: 'app-sticker',
+  templateUrl: './sticker.component.html',
+  styleUrl: './sticker.component.css',
 })
-export class SignpostComponent implements OnInit {
+export class StickerComponent {
   @Input() briefing!: I_Any_Briefing;
-  data!: I_Signpost_Response;
+  data!: I_Sticker_Response;
   otherCompanies!: string[];
   isNewVersionModalOpen = false;
   isVersionModalOpen = false;
@@ -32,7 +30,7 @@ export class SignpostComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.data = this.briefing.type as I_Signpost_Response;
+    this.data = this.briefing.type as I_Sticker_Response;
     this.otherCompanies = this.data.briefing.otherCompanies!.length > 1 ? this.data.briefing.otherCompanies!.split(', ') : [];
   }
 

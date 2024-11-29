@@ -5,6 +5,7 @@ import { LoginRegisterService } from '../../../../services/login-register/login-
 import { ToastrService } from 'ngx-toastr';
 import { HttpErrorResponse } from '@angular/common/http';
 import { I_User_Request } from '../../../../shared/interfaces/user/form/user-details-form';
+import Swal from 'sweetalert2';
 
 @Component({
 	selector: 'app-register-collaborator',
