@@ -11,6 +11,7 @@ import { I_Login_Request } from '../../shared/interfaces/auth/form/login-form';
 import { I_Recovery_Password_Request } from '../../shared/interfaces/auth/form/recovery-password-form';
 import { I_Reset_Password_Request } from '../../shared/interfaces/auth/form/reset-password-form';
 import { StorageService } from '../storage/storage.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root',
@@ -20,15 +21,9 @@ export class LoginRegisterService {
 
   constructor(
     private router: Router,
-    private httpClient: HttpClient
-  ) {}
-
-  private getHeaders() {
-    const token = sessionStorage.getItem('auth-token');
-    return new HttpHeaders({
-      Authorization: `Bearer ${token}`,
-    });
-  }
+    private httpClient: HttpClient,
+    private cookieService: CookieService
+  ) { }
 
   registerUser(req: I_User_Request) {
     return this.httpClient.post<I_Api_Response<I_Employee_View_Data>>(
@@ -42,11 +37,17 @@ export class LoginRegisterService {
       .post<I_Api_Response<I_Token_Response>>(`${this.prefix}/login`, req)
       .pipe(
         tap((value) => {
-          sessionStorage.setItem('auth-token', value.data?.token!);
-          sessionStorage.setItem(
+          const expiration = new Date();
+          expiration.setHours(expiration.getHours() + 1);
+
+          this.cookieService.set('auth-token', value.data?.token!, expiration, '/');
+          this.cookieService.set(
             'activeUser',
-            JSON.stringify(value.data?.employee!)
+            JSON.stringify(value.data?.employee!),
+            expiration,
+            '/'
           );
+          this.router.navigate(['/acompanhamento']);
         })
       );
   }
@@ -72,7 +73,9 @@ export class LoginRegisterService {
   }
 
   logout() {
-    sessionStorage.clear();
+    // Limpa os cookies
+    this.cookieService.delete('auth-token', '/');
+    this.cookieService.delete('activeUser', '/');
     this.router.navigate(['/login']);
   }
 }

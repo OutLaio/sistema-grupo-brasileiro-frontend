@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { I_Dialog_Box_Response } from '../../../../shared/interfaces/dialog-box/view/dialog-box-view';
 import { I_Dialog_Box_Request } from '../../../../shared/interfaces/dialog-box/form/dialog-box-form';
-import { I_Page } from '../../../../shared/interfaces/pageable/pageable';
 import { I_Assign_Collaborator_Request } from '../../../../shared/interfaces/project/form/assign-collaborator-form';
 import { I_New_Version_Request } from '../../../../shared/interfaces/project/form/new-version-form';
 import { I_Version_Data } from '../../../../shared/interfaces/project/view/version-view';
@@ -11,10 +10,10 @@ import { I_Alter_Title_Request } from '../../../../shared/interfaces/project/for
 import { I_Alter_Date_Request } from '../../../../shared/interfaces/project/form/alter-date-form';
 import { I_Api_Response } from '../../../../shared/interfaces/api-response';
 import { I_Any_Briefing } from '../../../../shared/interfaces/briefing/any-briefing';
-import { I_Employee_View_Data } from '../../../../shared/interfaces/user/view/employee-view';
 import { ListCollaboratorsService } from '../../../collaborator/list-collaborators/services/list-collaborators.service';
 import { I_Alter_Status_Request } from '../../../../shared/interfaces/project/form/alter-status-form';
 import { I_Upload_Response } from '../../../../shared/interfaces/upload/upload-file-view';
+import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
   providedIn: 'root',
@@ -24,11 +23,12 @@ export class RequestDetailsService {
 
   constructor(
     private http: HttpClient,
-    private collaboratorsService: ListCollaboratorsService
+    private collaboratorsService: ListCollaboratorsService,
+    private cookieService: CookieService
   ) {}
 
   private getHeaders(){
-    const token = sessionStorage.getItem('auth-token');
+    const token = this.cookieService.get('auth-token') || '';
     return new HttpHeaders({
       Authorization: `Bearer ${token}`,
     });

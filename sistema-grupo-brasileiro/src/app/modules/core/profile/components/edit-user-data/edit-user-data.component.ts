@@ -81,6 +81,11 @@ export class EditUserDataComponent {
     this.isAvatarModalOpen = false;
   }
 
+  cancelAvatarModal(){
+    this.isAvatarModalOpen = false;
+    this.selectedAvatar = this.activeUser?.avatar; 
+  }
+
   selectAvatar(index: number) {
     this.selectedAvatar = index + 1;
   }

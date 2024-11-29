@@ -69,25 +69,20 @@
 }
 
 .avatar-modal-content {
+    display: flex;
+    flex-direction: column;
     background-color: white;
     padding: 20px;
     border-radius: 8px;
-    width: 80%;
-    max-width: 400px;
+    max-width: 30rem;
+    max-height: 85vh;
     text-align: center;
-}
-
-.avatar-options {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
 }
 
 .avatar-option {
     cursor: pointer;
     transition: transform 0.2s;
-    padding: 5px;
+    padding: 1px;
     border: 2px solid transparent;
     border-radius: 8px;
 }
@@ -101,6 +96,17 @@
     border-color: #03A696;
     background-color: rgba(2, 115, 115, 0.2);
 }
+
+.avatar-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.avatar-img{
+    width: 3rem;
+}
+
 
 @media (min-width: 768px) {
     .system-form {
