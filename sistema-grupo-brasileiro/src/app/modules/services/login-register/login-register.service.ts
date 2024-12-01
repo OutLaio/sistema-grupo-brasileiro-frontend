@@ -16,12 +16,9 @@ import { StorageService } from '../storage/storage.service';
   providedIn: 'root',
 })
 export class LoginRegisterService {
-  private readonly prefix = 'http://localhost:8080/api/v1/auth';
+  private readonly prefix = 'http://54.200.23.253:8000/api/v1/auth';
 
-  constructor(
-    private router: Router,
-    private httpClient: HttpClient
-  ) {}
+  constructor(private router: Router, private httpClient: HttpClient) {}
 
   private getHeaders() {
     const token = sessionStorage.getItem('auth-token');

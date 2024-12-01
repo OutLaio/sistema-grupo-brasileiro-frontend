@@ -15,8 +15,8 @@
     font-size: 9px !important;
     background-color: #03A696;
     color: #fff;
-    padding: 1px 4px; 
-    border-radius: 4px; 
+    padding: 1px 4px;
+    border-radius: 4px;
     max-width: 100%;
 }
 
@@ -114,14 +114,14 @@
 
     .request-title {
         font-size: 11px;
-        padding: 1px 4px; 
+        padding: 1px 4px;
     }
-    
+
     .request-subtitle {
         font-size: 15px;
     }
-    
-    .card-custom { 
+
+    .card-custom {
         max-width: 82vw;
         min-width: 82vw;
         height: 80vh;
@@ -130,7 +130,7 @@
 }
 
 @media (min-width: 768px) and (max-width: 1160px) {
-    .card-custom { 
+    .card-custom {
         max-width: 32vw;
         min-width: 32vw;
         height: 80vh;

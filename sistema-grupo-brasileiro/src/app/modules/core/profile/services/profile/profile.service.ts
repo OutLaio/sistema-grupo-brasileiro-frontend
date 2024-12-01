@@ -10,7 +10,7 @@ import { I_Api_Response } from '../../../../shared/interfaces/api-response';
   providedIn: 'root',
 })
 export class ProfileService {
-  private readonly baseUrl = 'http://localhost:8080/api/v1';
+  private readonly baseUrl = 'http://54.200.23.253:8000/api/v1';
   private readonly authToken = this.storageService.getToken();
 
   constructor(
@@ -27,15 +27,22 @@ export class ProfileService {
 
   updateProfileUser(req: I_Employee_Form_Data, userId?: string) {
     const headers = this.getHeaders();
-    return this.http.put<I_Api_Response<I_Employee_View_Data>>(`${this.baseUrl}/employees/${userId}`, req, {
-      headers,
-      withCredentials: true,
-    });
+    return this.http.put<I_Api_Response<I_Employee_View_Data>>(
+      `${this.baseUrl}/employees/${userId}`,
+      req,
+      {
+        headers,
+        withCredentials: true,
+      }
+    );
   }
 
   deleteAccount(userId?: string) {
     const headers = this.getHeaders();
-    return this.http.put<I_Api_Response<void>>(`${this.baseUrl}/users/${userId}/deactivate`,{},{
+    return this.http.put<I_Api_Response<void>>(
+      `${this.baseUrl}/users/${userId}/deactivate`,
+      {},
+      {
         headers,
         withCredentials: true,
       }
@@ -44,9 +51,12 @@ export class ProfileService {
 
   editPassword(req: I_Change_Password_Request) {
     const headers = this.getHeaders();
-    return this.http.post<I_Api_Response<void>>(`${this.baseUrl}/users/changePassword`,req,{
+    return this.http.post<I_Api_Response<void>>(
+      `${this.baseUrl}/users/changePassword`,
+      req,
+      {
         headers,
-        withCredentials: true
+        withCredentials: true,
       }
     );
   }

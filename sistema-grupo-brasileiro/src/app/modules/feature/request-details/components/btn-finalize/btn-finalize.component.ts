@@ -66,10 +66,10 @@ export class BtnFinalizeComponent {
   }
 
   isApproved() {
-    return this.project?.status === C_PROJECT_STATUS.APPROVED.en && this.storageService.isSupervisor();
+    return this.project?.status === C_PROJECT_STATUS.APPROVED.en && !this.storageService.isClient();
   }
 
   isConfection() {
-    return this.project?.status === C_PROJECT_STATUS.IN_PRODUCTION.en && this.storageService.isSupervisor();
+    return this.project?.status === C_PROJECT_STATUS.IN_PRODUCTION.en && !this.storageService.isClient();
   }
 }

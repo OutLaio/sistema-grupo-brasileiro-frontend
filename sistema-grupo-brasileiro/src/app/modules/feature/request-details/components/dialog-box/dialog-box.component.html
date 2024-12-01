@@ -15,7 +15,7 @@
                     <input type="radio" class="btn-check" name="options-outlined" id="{{ c.id }}"
                       autocomplete="off" [(ngModel)]="selectedCollaborator" [value]="c">
                     <label class="btn btn-outline-success d-flex gap-2 align-items-center" for="{{ c.id }}">
-                      <img src="/assets/images/profile.png" alt="profile image">
+                      <img src="/assets/images/avatars/{{c.avatar}}.png" alt="{{c.avatar}} Avatar">
                       <p class="mb-0">{{ c.name }}</p>
                     </label>
                   </div>
@@ -34,7 +34,7 @@
           <div
             class="card-header text-white p-3 d-flex align-items-center justify-content-between bg-system">
             <div class="col-xl-8 col-lg-6 d-flex gap-3 align-items-center">
-              <img src="/assets/images/do-utilizador.png" alt="Profile Picture" width="40px" height="40px">
+              <img src="/assets/images/avatars/99.png" alt="Default Avatar" width="40px" height="40px">
               <div>
                 <p class="small-text mb-0">Colaborador Atual</p>
                 <p class="mb-0">Nenhum colaborador associado!</p>
@@ -51,7 +51,7 @@
         <div *ngIf="project?.collaborator; else no_collaborator">
           <div class="card-header text-white p-3 d-flex align-items-center justify-content-between bg-system">
             <div class="d-flex gap-3 align-items-center">
-              <img src="/assets/images/profile.png" alt="Profile Picture" width="40px" height="40px">
+              <img src="/assets/images/avatars/{{project?.collaborator?.avatar}}.png" alt="{{project?.collaborator?.fullName}} Avatar" width="40px" height="40px">
               <div>
                 <p class="small-text mb-0">Colaborador Atual</p>
                 <p class="mb-0"> {{ project?.collaborator?.fullName }} </p>
@@ -76,7 +76,7 @@
                   'their-message': isMyMessage(message) === false,
                   'system-message': isMyMessage(message) === null,
                 }">
-                <img src="/assets/images/profile.png" id="message-img" alt="Profile Avatar" height="40px">
+                <img src="/assets/images/avatars/{{message.employee.avatar}}.png" id="message-img" alt="{{message.employee.fullName}} Avatar" height="40px">
                 <div class="d-flex flex-column" id="message-box">
                   <div class="p-2 mb-1 rounded-4" id="message-content">
                     <p class="text-conversation mb-0 fw-bold fst-italic" id="employee" style="color: #026d56;"> {{message.employee.fullName }} </p>
@@ -85,29 +85,6 @@
                   <span class="fst-italic" style="font-size: 12px;"> {{ message.time | date: "dd/MM/yy HH:mm" }} </span>
                 </div>
               </div>
-
-              <!-- <div *ngIf="isMyMessage(message); else their_message">
-                <div class="d-flex gap-3 my-1 your-message" #your_message>
-                  <img src="/assets/images/profile.png" alt="Profile Avatar" height="40px">
-                  <div>
-                    <p class="text-conversation px-3 py-2 mb-1 rounded-4"> {{ message.dialog }} </p>
-                    <span class="fst-italic" style="font-size: 12px;"> {{ message.time | date: "dd/MM/yy HH:mm" }} </span>
-                  </div>
-                </div>
-              </div>
-              <ng-template #their_message>
-                <div class="d-flex gap-3 my-1 their-message">
-                  <img src="/assets/images/profile.png" alt="Profile Avatar" height="40px">
-                  <div>
-                    <div class="bg-their p-2 mb-1 rounded-4">
-                      <p class="text-conversation mb-0 fw-bold fst-italic" style="color: #026d56;"> {{
-                        message.employee.fullName }} </p>
-                      <p class="text-conversation px-3 mb-0"> {{ message.dialog }} </p>
-                    </div>
-                    <span class="fst-italic" style="font-size: 12px;"> {{ message.time | date: "dd/MM/yy HH:mm" }} </span>
-                  </div>
-                </div>
-              </ng-template> -->
             </div>
           </div>
         </div>

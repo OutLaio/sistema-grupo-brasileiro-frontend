@@ -12,8 +12,10 @@
                 <div class="card-body text-center">
                   <div class="mb-3">
                     <img [src]="'/assets/images/avatars/' + (client?.avatar || 'default') + '.png'" alt="Profile Image"
-                      class="img-fluid me-3" style="height: 70px;">
+                      class="img-fluid" style="height: 70px;">
                   </div>
+                  <p *ngIf="client.user.profile.id == '2'" class="bg-profile fw-semibold mb-1">Colaborador</p>
+                  <p *ngIf="client.user.profile.id == '1'" class="bg-profile fw-semibold mb-1">Supervisor</p>
                   <p class="card-text fw-semibold mb-1">{{ client.name + ' ' + client.lastname }}</p>
                   <p class="card-text text-muted mb-3">{{ client.user.email }}</p>
 

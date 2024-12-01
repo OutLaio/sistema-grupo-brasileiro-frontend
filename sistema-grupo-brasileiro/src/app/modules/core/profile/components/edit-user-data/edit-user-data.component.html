@@ -3,7 +3,7 @@
     <div class="row g-0 swap-columns">
       <div class="card-body p-md-3 mx-md-4">
         <div class="text-center my-5">
-          <img [src]="'/assets/images/avatars/' + (selectedAvatar || 'default') + '.png'" alt="Profile Image"
+          <img [src]="'/assets/images/avatars/' + (selectedAvatar || '99') + '.png'" alt="Profile Image"
             class="img-fluid img-profile rounded p-2 mb-3" (click)="openAvatarModal()">
         </div>
         <form (ngSubmit)="submit()" [formGroup]="editForm" #formDir="ngForm">
