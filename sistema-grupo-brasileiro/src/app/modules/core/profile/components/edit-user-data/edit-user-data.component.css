@@ -103,15 +103,12 @@
     justify-content: center;
 }
 
-.avatar-img{
+.avatar-img {
     width: 3rem;
 }
 
 
 @media (min-width: 768px) {
-    .system-form {
-        height: 100vh !important;
-    }
 
     .container-fluid {
         padding-inline: 0 !important;
