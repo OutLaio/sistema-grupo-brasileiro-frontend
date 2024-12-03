@@ -22,7 +22,7 @@ export class AppComponent {
   }
 
   isAuthenticated(){
-    return this.storageService.isAutenticated();
+    return this.storageService.isAuthenticated();
   }
 
 }

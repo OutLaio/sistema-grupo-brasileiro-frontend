@@ -42,11 +42,13 @@ const routes: Routes = [
   },
   {
     path: 'colaboradores',
+    title: 'Colaboradores',
     component: CollaboratorSystemComponent,
     canActivate: [AuthGuard]
   },
   {
     path: 'clientes',
+    title: 'Clientes',
     component: ListClientsComponent,
     canActivate: [AuthGuard]
   },

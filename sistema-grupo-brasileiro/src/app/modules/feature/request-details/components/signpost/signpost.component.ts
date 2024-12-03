@@ -1,11 +1,9 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { I_Signpost_Response } from '../../../../shared/interfaces/briefing/signpost/view/signpost-detailed-view';
-import { RequestDetailsService } from '../../services/request-details/request-details.service';
 import { I_Any_Briefing } from '../../../../shared/interfaces/briefing/any-briefing';
 import { I_Version_Data } from '../../../../shared/interfaces/project/view/version-view';
 import { StorageService } from '../../../../services/storage/storage.service';
 import { UtilsService } from '../../services/utils/utils.service';
-import { Router } from '@angular/router';
 import { C_PROJECT_STATUS } from '../../../../shared/enums/project-status';
 
 @Component({
@@ -29,7 +27,7 @@ export class SignpostComponent implements OnInit {
   constructor(
     private storageService: StorageService,
     private utilsService: UtilsService
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.data = this.briefing.type as I_Signpost_Response;
@@ -37,7 +35,7 @@ export class SignpostComponent implements OnInit {
   }
 
   getSessionProfile() {
-    return sessionStorage.getItem('userRole');
+    return this.storageService.getUserRole(); // Alterado para buscar o papel do usuário dos cookies
   }
 
   toggleNewVersionModal() {
