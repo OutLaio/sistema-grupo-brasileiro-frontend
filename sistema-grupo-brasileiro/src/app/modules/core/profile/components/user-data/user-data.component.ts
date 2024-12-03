@@ -42,15 +42,9 @@ export class UserDataComponent implements OnInit {
   editProfile(): void {
     const dialogRef = this.dialog.open(EditUserDataComponent, {
       width: '1200px',
-      height: '600px',
+      height: 'auto',
       data: {
         activeUser: this.activeUser
-      }
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      if (result) {
-        console.log('Modal fechado com dados:', result);
       }
     });
   }

@@ -2,6 +2,10 @@
   padding: 5px 0;
 }
 
+.img-profile {
+  width: 5rem;
+}
+
 .btn-edit {
   cursor: pointer;
   background: none;
@@ -66,3 +70,4 @@ h3 {
 ::-webkit-scrollbar-thumb:hover {
   background: #03A696;
 }
+
