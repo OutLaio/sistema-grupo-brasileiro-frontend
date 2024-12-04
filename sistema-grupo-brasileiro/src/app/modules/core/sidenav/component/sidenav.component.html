@@ -10,7 +10,7 @@
     <hr>
     <div>
         <ul class="mynav nav nav-pills d-flex flex-column mb-auto">
-            <li class="nav-item mb-1">
+            <!-- <li class="nav-item mb-1">
                 <a routerLink="dashboard" routerLinkActive="active">
                     <img class="mx-2" src="/assets/icons/dashboard.svg" alt="dashboard icone">
                     <i class="fa-regular"></i>
@@ -23,19 +23,19 @@
                     <i class="fa-regular"></i>
                     Histórico
                 </a>
+            </li> -->
+            <li class="nav-item mb-1">
+                <a routerLink="acompanhamento" routerLinkActive="active">
+                    <img class="mx-2" src="/assets/icons/request-icon.svg" alt="acompanhamento icone">
+                    <i class="ps-1 fa-solid"></i>
+                    Acompanhamento
+                </a>
             </li>
             <li class="nav-item mb-1">
                 <a routerLink="nova-solicitacao" routerLinkActive="active">
                     <img class="mx-2" src="/assets/icons/new-request.svg" alt="nova solicitação icone">
                     <i class="fa-regular"></i>
                     Nova Solicitação
-                </a>
-            </li>
-            <li class="nav-item mb-1">
-                <a routerLink="acompanhamento" routerLinkActive="active">
-                    <img class="mx-2" src="/assets/icons/request-icon.svg" alt="acompanhamento icone">
-                    <i class="ps-1 fa-solid"></i>
-                    Acompanhamento
                 </a>
             </li>
             <li *ngIf="userRole == 'ROLE_SUPERVISOR'" class="nav-item mb-1">
