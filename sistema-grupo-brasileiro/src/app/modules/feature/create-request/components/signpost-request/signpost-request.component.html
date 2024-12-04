@@ -14,26 +14,26 @@
             </div>
             <div class="col-12 col-md-6">
                 <div class="form-group pt-3">
-                    <label class="fw-bold" for="signLocation">Local da Placa *</label>
-                    <textarea [backgroundColorClass]="'#ebebeb'" id="signLocation" formControlName="signLocation"
+                    <label class="fw-bold" for="description">Descrição *</label>
+                    <textarea [backgroundColorClass]="'#ebebeb'" id="description" formControlName="description"
                         type="text" class="form-control border-dark-subtle rounded-3 form-focus"
-                        placeholder="Escreva a localização da placa"></textarea>
+                        placeholder="Escreva a descrição da solicitação"></textarea>
                 </div>
-                <div *ngIf="signLocation.invalid && formDir.submitted" class="validation-warning">
-                    <p>Por favor, informe o local onde a placa será instalada</p>
+                <div *ngIf="description.invalid && formDir.submitted" class="validation-warning">
+                    <p>A descrição da solicitação é obrigatória. Escreva uma breve descrição da placa.</p>
                 </div>
             </div>
         </div>
 
         <div class="row pb-4">
             <div class="form-group pt-3">
-                <label class="fw-bold" for="description">Descrição *</label>
-                <textarea [backgroundColorClass]="'#ebebeb'" id="description" formControlName="description" type="text"
-                    class="form-control border-dark-subtle rounded-3 form-focus"
-                    placeholder="Escreva a descrição da solicitação"></textarea>
+                <label class="fw-bold" for="signLocation">Local da Placa *</label>
+                <textarea [backgroundColorClass]="'#ebebeb'" id="signLocation" formControlName="signLocation"
+                    type="text" class="form-control border-dark-subtle rounded-3 form-focus"
+                    placeholder="Escreva a localização da placa"></textarea>
             </div>
-            <div *ngIf="description.invalid && formDir.submitted" class="validation-warning">
-                <p>A descrição da solicitação é obrigatória. Escreva uma breve descrição da placa.</p>
+            <div *ngIf="signLocation.invalid && formDir.submitted" class="validation-warning">
+                <p>Por favor, informe o local onde a placa será instalada</p>
             </div>
         </div>
 
