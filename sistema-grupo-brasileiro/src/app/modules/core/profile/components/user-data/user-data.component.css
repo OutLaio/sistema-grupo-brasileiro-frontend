@@ -11,10 +11,20 @@
   background: none;
   border: none;
   transition: background-color 0.3s ease-in-out;
+  background-color: #e9e9e9;
 }
 
-.btn-edit:hover {
-  background-color: #d4d4d4;
+.delete-account{
+  color: red;
+}
+
+.delete-account:hover {
+  background-color: #ff5555;
+  color: black;
+}
+
+.password-edit:hover {
+  background-color: #00c0c0;
 }
 
 h4,
