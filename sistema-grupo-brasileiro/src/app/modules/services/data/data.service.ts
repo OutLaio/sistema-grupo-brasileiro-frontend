@@ -15,7 +15,8 @@ import { I_Material_Data } from '../../shared/interfaces/briefing/signpost/view/
   providedIn: 'root',
 })
 export class DataService {
-  private urlBase = 'http://54.200.23.253:8000/api/v1/data';
+  // private urlBase = 'http://54.200.23.253:8000/api/v1/data';
+  private urlBase = 'http://localhost:8080/api/v1/data';
 
   constructor(private http: HttpClient) {}
 

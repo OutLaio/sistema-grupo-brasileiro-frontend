@@ -21,7 +21,7 @@ export class EditUserDataComponent {
   activeUserEdit!: I_Employee_Form_Data | null;
 
   isAvatarModalOpen = false;
-  selectedAvatar!: number | undefined; 
+  selectedAvatar!: number | undefined;
   avatars = Array(20).fill(null);
 
   constructor(
@@ -38,7 +38,7 @@ export class EditUserDataComponent {
   }
 
   ngOnInit(): void {
-    this.selectedAvatar = this.activeUser?.avatar; 
+    this.selectedAvatar = this.activeUser?.avatar;
     this.activeUser = this.storageService.getSessionProfile();
     if (this.activeUser) {
       this.activeUserEdit = {
@@ -48,6 +48,7 @@ export class EditUserDataComponent {
         sector: this.activeUser.sector || '',
         occupation: this.activeUser.occupation || '',
         agency: this.activeUser.agency || '',
+        registrationNumber: this.activeUser.registrationNumber || '',
         avatar: this.activeUser.avatar,
       };
     }
@@ -83,7 +84,7 @@ export class EditUserDataComponent {
 
   cancelAvatarModal(){
     this.isAvatarModalOpen = false;
-    this.selectedAvatar = this.activeUser?.avatar; 
+    this.selectedAvatar = this.activeUser?.avatar;
   }
 
   selectAvatar(index: number) {

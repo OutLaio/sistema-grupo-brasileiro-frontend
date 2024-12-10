@@ -10,7 +10,8 @@ import { I_Api_Response } from '../../../../shared/interfaces/api-response';
   providedIn: 'root',
 })
 export class ProfileService {
-  private readonly baseUrl = 'http://54.200.23.253:8000/api/v1';
+  // private readonly baseUrl = 'http://54.200.23.253:8000/api/v1';
+  private readonly baseUrl = 'http://localhost:8080/api/v1';
   private readonly authToken = this.storageService.getToken();
 
   constructor(

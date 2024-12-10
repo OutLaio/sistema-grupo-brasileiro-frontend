@@ -75,6 +75,7 @@ export class RegisterCollaboratorComponent {
         sector: this.sector.value,
         occupation: this.occupation.value,
         agency: this.nop.value,
+        registrationNumber: "FALTA CAMPO DE NÚMERO DE MATRÍCULA",
         avatar: 99,
       },
       user: {

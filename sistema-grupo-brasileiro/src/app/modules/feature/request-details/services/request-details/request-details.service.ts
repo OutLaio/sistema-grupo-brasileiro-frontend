@@ -19,7 +19,8 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root',
 })
 export class RequestDetailsService {
-  private baseUrl = 'http://54.200.23.253:8000/api/v1';
+  // private baseUrl = 'http://54.200.23.253:8000/api/v1';
+  private baseUrl = 'http://localhost:8080/api/v1';
 
   constructor(
     private http: HttpClient,
@@ -27,8 +28,7 @@ export class RequestDetailsService {
     private cookieService: CookieService
   ) {}
 
-
-  private getHeaders(){
+  private getHeaders() {
     const token = this.cookieService.get('auth-token') || '';
     return new HttpHeaders({
       Authorization: `Bearer ${token}`,

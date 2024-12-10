@@ -14,7 +14,8 @@ import { I_Sticker_Request } from '../../../shared/interfaces/briefing/sticker/f
   providedIn: 'root',
 })
 export class CreateRequestService {
-  private readonly apiUrl = 'http://54.200.23.253:8000/api/v1';
+  // private readonly apiUrl = 'http://54.200.23.253:8000/api/v1';
+  private readonly apiUrl = 'http://localhost:8080/api/v1';
   private readonly authToken = this.storageService.getToken();
   private readonly idUser = this.storageService.getUserId();
 

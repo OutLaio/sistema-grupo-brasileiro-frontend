@@ -11,7 +11,8 @@ import { I_Api_Response } from '../../../../shared/interfaces/api-response';
   providedIn: 'root',
 })
 export class ListClientsService {
-  private apiUrl = 'http://54.200.23.253:8000/api/v1';
+  // private apiUrl = 'http://54.200.23.253:8000/api/v1';
+  private apiUrl = 'http://localhost:8080/api/v1';
 
   constructor(
     private http: HttpClient,

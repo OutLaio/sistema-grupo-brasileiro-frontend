@@ -9,7 +9,8 @@ import { I_Project_Data } from '../../../shared/interfaces/project/view/project-
 })
 export class CheckRequestsService {
   private readonly authToken = this.storageService.getToken();
-  private apiUrl = 'http://54.200.23.253:8000/api/v1/projects';
+  // private apiUrl = 'http://54.200.23.253:8000/api/v1/projects';
+  private apiUrl = 'http://localhost:8080/api/v1/projects';
 
   constructor(
     private http: HttpClient,

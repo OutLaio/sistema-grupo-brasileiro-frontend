@@ -9,7 +9,8 @@ import { I_Company_Data } from '../../../shared/interfaces/company/view/company-
   providedIn: 'root',
 })
 export class CitiesCompaniesService {
-  private apiUrl = 'http://54.200.23.253:8000/api/v1/data';
+  // private apiUrl = 'http://54.200.23.253:8000/api/v1/data';
+  private apiUrl = 'http://localhost:8080/api/v1/data';
 
   constructor(
     private http: HttpClient,
