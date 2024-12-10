@@ -1,23 +1,30 @@
 import { Injectable } from '@angular/core';
 import { I_Employee_View_Data } from '../../shared/interfaces/user/view/employee-view';
-
+import { CookieService } from 'ngx-cookie-service';
 @Injectable({
   providedIn: 'root'
 })
 export class StorageService {
 
-  constructor() { }
+  constructor(private cookieService: CookieService) { }
 
   getSessionProfile(): I_Employee_View_Data {
-    const activeUser = sessionStorage.getItem('activeUser');
-    if (activeUser === null) {
-      throw new Error('User profile not found in session storage');
+    const activeUser = this.cookieService.get('activeUser');
+    if (!activeUser) {
+      throw new Error('User profile not found in cookies');
     }
     return JSON.parse(activeUser) as I_Employee_View_Data;
   }
 
   setSessionProfile(profile: I_Employee_View_Data) {
-    sessionStorage.setItem('activeUser', JSON.stringify(profile));
+    const expiration = new Date();
+    expiration.setHours(expiration.getHours() + 1);
+    this.cookieService.set(
+      'activeUser',
+      JSON.stringify(profile),
+      expiration,
+      '/'
+    );
   }
 
   getUserFullName(): string {
@@ -45,10 +52,10 @@ export class StorageService {
   }
 
   getToken(): string {
-    return sessionStorage.getItem('auth-token')?? '';
+    return this.cookieService.get('auth-token') || '';
   }
 
-  isAutenticated(): boolean {
+  isAuthenticated(): boolean {
     return !!this.getToken();
   }
 }

@@ -53,7 +53,7 @@ export class StickersRequestComponent implements OnInit {
       selectedCompany: new FormControl('', [Validators.required]),
       sector: new FormControl('', [Validators.required]),
       othersText: new FormControl(''),
-      observations: new FormControl('', [Validators.required]),
+      observations: new FormControl(''),
     });
   }
 

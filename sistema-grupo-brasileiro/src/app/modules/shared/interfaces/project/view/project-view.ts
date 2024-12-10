@@ -7,5 +7,6 @@ export interface I_Project_Data {
   briefingType: string;
   client: I_Employee_Simple_View_Data;
   collaborator?: I_Employee_Simple_View_Data;
+  startDate: Date;
   isTruncated?: boolean;
 }

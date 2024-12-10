@@ -88,15 +88,15 @@
 <div *ngIf="isAvatarModalOpen" class="avatar-modal">
   <div class="avatar-modal-content">
     <h4>Escolha um avatar</h4>
-    <div class="avatar-options">
-      <div *ngFor="let avatar of avatars; let i = index" class="avatar-option"
-        [ngClass]="{'selected': selectedAvatar === i + 1}" (click)="selectAvatar(i)">
-        <img [src]="'/assets/images/avatars/' + (i + 1) + '.png'" alt="Avatar {{i + 1}}"
-          style="width: 70px; height: 70px; cursor: pointer;" />
+    <div class="avatar-options row g-1">
+      <div *ngFor="let avatar of avatars; let i = index" class="col-6 col-sm-4 col-md-3">
+        <div class="avatar-option" [ngClass]="{'selected': selectedAvatar === i + 1}" (click)="selectAvatar(i)">
+          <img [src]="'/assets/images/avatars/' + (i + 1) + '.png'" alt="Avatar {{i + 1}}" class="img-fluid avatar-img" />
+        </div>
       </div>
     </div>
     <div class="d-flex justify-content-center gap-3 my-4">
-      <button class="btn btn-secondary" (click)="closeAvatarModal()">Cancelar</button>
+      <button class="btn btn-secondary" (click)="cancelAvatarModal()">Cancelar</button>
       <button class="btn btn-success" (click)="saveAvatar()">Salvar</button>
     </div>
   </div>

@@ -3,7 +3,8 @@
 }
 
 .height-div {
-    height: 5px;
+    min-height: 5px;
+    max-height: 5px;
 }
 
 .card-title{

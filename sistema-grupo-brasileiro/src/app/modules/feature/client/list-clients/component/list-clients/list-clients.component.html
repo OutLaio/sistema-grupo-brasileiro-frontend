@@ -18,29 +18,28 @@
                   <p *ngIf="client.user.profile.id == '1'" class="bg-profile fw-semibold mb-1">Supervisor</p>
                   <p class="card-text fw-semibold mb-1">{{ client.name + ' ' + client.lastname }}</p>
                   <p class="card-text text-muted mb-3">{{ client.user.email }}</p>
+                                    <div *ngIf="client === selectedClient" class="pt-3 border-top mt-2">
+                                        <p class="card-text mb-1"><strong>Telefone:</strong> {{ client.phoneNumber }}
+                                        </p>
+                                        <p class="card-text mb-1"><strong>Função:</strong> {{ client.occupation }}</p>
+                                        <p class="card-text mb-1"><strong>Setor:</strong> {{ client.sector }}</p>
+                                        <p class="card-text"><strong>Agência:</strong> {{ client.agency }}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
-                  <div *ngIf="client === selectedClient" class="pt-3 border-top mt-2">
-                    <p class="card-text mb-1"><strong>Telefone:</strong> {{ client.phoneNumber }}
-                    </p>
-                    <p class="card-text mb-1"><strong>Função:</strong> {{ client.occupation }}</p>
-                    <p class="card-text mb-1"><strong>Setor:</strong> {{ client.sector }}</p>
-                    <p class="card-text"><strong>Agência:</strong> {{ client.agency }}</p>
-                  </div>
+                    <div class="row mt-4">
+                        <div class="col-12">
+                            <mat-paginator [length]="totalElements" [pageSize]="itemsPerPage"
+                                [pageSizeOptions]="[6, 12, 24]" (page)="onPageChange($event)">
+                            </mat-paginator>
+                        </div>
+                    </div>
                 </div>
-              </div>
-            </div>
-          </div>
 
-          <div class="row mt-4">
-            <div class="col-12">
-              <mat-paginator [length]="totalElements" [pageSize]="itemsPerPage" [pageSizeOptions]="[6, 12, 24]"
-                (page)="onPageChange($event)">
-              </mat-paginator>
             </div>
-          </div>
         </div>
-
-      </div>
     </div>
-  </div>
 </div>

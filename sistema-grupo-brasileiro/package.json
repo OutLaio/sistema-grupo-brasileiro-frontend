@@ -6,7 +6,10 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "compodoc:build": "compodoc -p tsconfig.doc.json",
+    "compodoc:build-and-serve": "compodoc -p tsconfig.doc.json -s",
+    "compodoc:serve": "compodoc -s"
   },
   "private": true,
   "dependencies": {
@@ -28,6 +31,7 @@
     "bootstrap": "^5.3.3",
     "faker-br": "^0.4.1",
     "ng-circle-progress": "^1.7.1",
+    "ngx-cookie-service": "^18.0.0",
     "ngx-drag-drop": "^18.0.2",
     "ngx-file-upload": "^0.0.1",
     "ngx-mask": "^18.0.0",
@@ -45,6 +49,7 @@
     "@angular/cli": "^18.0.2",
     "@angular/compiler-cli": "^18.0.0",
     "@angular/localize": "^18.0.0",
+    "@compodoc/compodoc": "^1.1.26",
     "@faker-js/faker": "^8.4.1",
     "@types/jasmine": "~5.1.0",
     "jasmine-core": "~5.1.0",

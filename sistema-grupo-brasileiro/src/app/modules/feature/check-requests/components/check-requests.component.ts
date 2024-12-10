@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { LoginRegisterService } from '../../../services/login-register/login-register.service';
 import { CheckRequestsService } from '../services/check-requests.service';
 import { Router } from '@angular/router';
 import { StorageService } from '../../../services/storage/storage.service';
@@ -77,8 +76,6 @@ export class CheckRequestsComponent implements OnInit {
   toggleTruncate(item: I_Project_Data): void {
     item.isTruncated = !item.isTruncated;
   }
-
-  deadline: Date = new Date;
 
   goToDetails(id: string) {
     this.router.navigate(['/detalhes-solicitacao'], { state: { id: id } });

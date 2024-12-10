@@ -1,0 +1,980 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>sistema-grupo-brasileiro documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">sistema-grupo-brasileiro documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  MainCreateRequestComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/modules/feature/create-request/components/main-create-request/main-create-request.component.ts</code>
+</p>
+
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-main-create-request</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./main-create-request.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./main-create-request.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#activeOption" >activeOption</a>
+                            </li>
+                            <li>
+                                <a href="#activeSubOption" >activeSubOption</a>
+                            </li>
+                            <li>
+                                <a href="#mainOptions" >mainOptions</a>
+                            </li>
+                            <li>
+                                <a href="#selectedOption" >selectedOption</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#selectOption" >selectOption</a>
+                            </li>
+                            <li>
+                                <a href="#selectSubOption" >selectSubOption</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(router: Router)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/modules/feature/create-request/components/main-create-request/main-create-request.component.ts:62</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="66"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/main-create-request/main-create-request.component.ts:66</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectOption"></a>
+                    <span class="name">
+                        <span ><b>selectOption</b></span>
+                        <a href="#selectOption"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>selectOption(option: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="72"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/main-create-request/main-create-request.component.ts:72</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>option</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectSubOption"></a>
+                    <span class="name">
+                        <span ><b>selectSubOption</b></span>
+                        <a href="#selectSubOption"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>selectSubOption(subOption: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="84"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/main-create-request/main-create-request.component.ts:84</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>subOption</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="activeOption"></a>
+                    <span class="name">
+                        <span ><b>activeOption</b></span>
+                        <a href="#activeOption"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/modules/feature/create-request/components/main-create-request/main-create-request.component.ts:61</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="activeSubOption"></a>
+                    <span class="name">
+                        <span ><b>activeSubOption</b></span>
+                        <a href="#activeSubOption"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/modules/feature/create-request/components/main-create-request/main-create-request.component.ts:62</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="mainOptions"></a>
+                    <span class="name">
+                        <span ><b>mainOptions</b></span>
+                        <a href="#mainOptions"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[
+    { name: &#x27;Placa de Itinerários&#x27;, route: &#x27;/placa-de-itinerarios&#x27;, active: true },
+    { name: &#x27;Placa de Sinalização&#x27;, route: &#x27;/placa-de-sinalizacao&#x27;, active: true },
+    { name: &#x27;Adesivos&#x27;, route: &#x27;/adesivos&#x27;, active: true },
+    {
+      name: &#x27;Impressos&#x27;,
+      subOptions: [
+        { name: &#x27;Panfleto&#x27;, route: &#x27;/panfleto&#x27; },
+        { name: &#x27;Cartaz&#x27;, route: &#x27;/cartaz&#x27; },
+        { name: &#x27;Folder&#x27;, route: &#x27;/folder&#x27; },
+        { name: &#x27;Cartilha&#x27;, route: &#x27;/cartilha&#x27; },
+        { name: &#x27;Outdoor&#x27;, route: &#x27;/outdoor&#x27; },
+        { name: &#x27;Busdoor&#x27;, route: &#x27;/busdoor&#x27; },
+        { name: &#x27;Faixa&#x27;, route: &#x27;/faixa&#x27; },
+        { name: &#x27;Mural&#x27;, route: &#x27;/mural&#x27; },
+        { name: &#x27;Banner&#x27;, route: &#x27;/banner&#x27; },
+        { name: &#x27;Windbanner&#x27;, route: &#x27;/windbanner&#x27; },
+        { name: &#x27;Tag&#x27;, route: &#x27;/tag&#x27; },
+        { name: &#x27;Etiqueta&#x27;, route: &#x27;/etiqueta&#x27; },
+        { name: &#x27;Cartão&#x27;, route: &#x27;/cartao&#x27; },
+        { name: &#x27;Cartão de Visita&#x27;, route: &#x27;/cartao-de-visita&#x27; },
+        { name: &#x27;Crachá&#x27;, route: &#x27;/cracha&#x27; },
+        { name: &#x27;Cordão de Crachá&#x27;, route: &#x27;/cordao-cracha&#x27; }
+      ],
+      active: false
+    },
+    { name: &#x27;Campanhas Internas&#x27;, route: &#x27;/campanhas-internas&#x27;, active: false },
+    { name: &#x27;Comunicados&#x27;, route: &#x27;/comunicados&#x27;, active: false },
+    {
+      name: &#x27;Layouts p/Brindes&#x27;,
+      subOptions: [
+        { name: &#x27;Viseira&#x27;, route: &#x27;/viseira&#x27; },
+        { name: &#x27;Boné&#x27;, route: &#x27;/bone&#x27; },
+        { name: &#x27;Copo&#x27;, route: &#x27;/copo&#x27; },
+        { name: &#x27;Squeeze&#x27;, route: &#x27;/squeeze&#x27; },
+        { name: &#x27;Caneta&#x27;, route: &#x27;/caneta&#x27; },
+        { name: &#x27;Agenda&#x27;, route: &#x27;/agenda&#x27; },
+        { name: &#x27;Camisa&#x27;, route: &#x27;/camisa&#x27; },
+        { name: &#x27;Almofada&#x27;, route: &#x27;/almofada&#x27; },
+        { name: &#x27;Almofada de Pescoço&#x27;, route: &#x27;/almofada-pescoço&#x27; },
+        { name: &#x27;Tapa Olho&#x27;, route: &#x27;/tapa-olho&#x27; },
+        { name: &#x27;Mochila&#x27;, route: &#x27;/mochila&#x27; },
+        { name: &#x27;Necessaire&#x27;, route: &#x27;/necessaire&#x27; },
+        { name: &#x27;Calendário&#x27;, route: &#x27;/calendario&#x27; },
+        { name: &#x27;Outros&#x27;, route: &#x27;/outros-brindes&#x27; }
+      ],
+      active: false
+    }
+  ]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/modules/feature/create-request/components/main-create-request/main-create-request.component.ts:10</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedOption"></a>
+                    <span class="name">
+                        <span ><b>selectedOption</b></span>
+                        <a href="#selectedOption"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/modules/feature/create-request/components/main-create-request/main-create-request.component.ts:60</a></div>
+                        </td>
+                    </tr>
+
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+
+@Component({
+  selector: &#x27;app-main-create-request&#x27;,
+  templateUrl: &#x27;./main-create-request.component.html&#x27;,
+  styleUrls: [&#x27;./main-create-request.component.css&#x27;]
+})
+export class MainCreateRequestComponent implements OnInit {
+  mainOptions &#x3D; [
+    { name: &#x27;Placa de Itinerários&#x27;, route: &#x27;/placa-de-itinerarios&#x27;, active: true },
+    { name: &#x27;Placa de Sinalização&#x27;, route: &#x27;/placa-de-sinalizacao&#x27;, active: true },
+    { name: &#x27;Adesivos&#x27;, route: &#x27;/adesivos&#x27;, active: true },
+    {
+      name: &#x27;Impressos&#x27;,
+      subOptions: [
+        { name: &#x27;Panfleto&#x27;, route: &#x27;/panfleto&#x27; },
+        { name: &#x27;Cartaz&#x27;, route: &#x27;/cartaz&#x27; },
+        { name: &#x27;Folder&#x27;, route: &#x27;/folder&#x27; },
+        { name: &#x27;Cartilha&#x27;, route: &#x27;/cartilha&#x27; },
+        { name: &#x27;Outdoor&#x27;, route: &#x27;/outdoor&#x27; },
+        { name: &#x27;Busdoor&#x27;, route: &#x27;/busdoor&#x27; },
+        { name: &#x27;Faixa&#x27;, route: &#x27;/faixa&#x27; },
+        { name: &#x27;Mural&#x27;, route: &#x27;/mural&#x27; },
+        { name: &#x27;Banner&#x27;, route: &#x27;/banner&#x27; },
+        { name: &#x27;Windbanner&#x27;, route: &#x27;/windbanner&#x27; },
+        { name: &#x27;Tag&#x27;, route: &#x27;/tag&#x27; },
+        { name: &#x27;Etiqueta&#x27;, route: &#x27;/etiqueta&#x27; },
+        { name: &#x27;Cartão&#x27;, route: &#x27;/cartao&#x27; },
+        { name: &#x27;Cartão de Visita&#x27;, route: &#x27;/cartao-de-visita&#x27; },
+        { name: &#x27;Crachá&#x27;, route: &#x27;/cracha&#x27; },
+        { name: &#x27;Cordão de Crachá&#x27;, route: &#x27;/cordao-cracha&#x27; }
+      ],
+      active: false
+    },
+    { name: &#x27;Campanhas Internas&#x27;, route: &#x27;/campanhas-internas&#x27;, active: false },
+    { name: &#x27;Comunicados&#x27;, route: &#x27;/comunicados&#x27;, active: false },
+    {
+      name: &#x27;Layouts p/Brindes&#x27;,
+      subOptions: [
+        { name: &#x27;Viseira&#x27;, route: &#x27;/viseira&#x27; },
+        { name: &#x27;Boné&#x27;, route: &#x27;/bone&#x27; },
+        { name: &#x27;Copo&#x27;, route: &#x27;/copo&#x27; },
+        { name: &#x27;Squeeze&#x27;, route: &#x27;/squeeze&#x27; },
+        { name: &#x27;Caneta&#x27;, route: &#x27;/caneta&#x27; },
+        { name: &#x27;Agenda&#x27;, route: &#x27;/agenda&#x27; },
+        { name: &#x27;Camisa&#x27;, route: &#x27;/camisa&#x27; },
+        { name: &#x27;Almofada&#x27;, route: &#x27;/almofada&#x27; },
+        { name: &#x27;Almofada de Pescoço&#x27;, route: &#x27;/almofada-pescoço&#x27; },
+        { name: &#x27;Tapa Olho&#x27;, route: &#x27;/tapa-olho&#x27; },
+        { name: &#x27;Mochila&#x27;, route: &#x27;/mochila&#x27; },
+        { name: &#x27;Necessaire&#x27;, route: &#x27;/necessaire&#x27; },
+        { name: &#x27;Calendário&#x27;, route: &#x27;/calendario&#x27; },
+        { name: &#x27;Outros&#x27;, route: &#x27;/outros-brindes&#x27; }
+      ],
+      active: false
+    }
+  ];
+
+  selectedOption: any;
+  activeOption: any;
+  activeSubOption: any;
+
+  constructor(private router: Router) {}
+
+  ngOnInit(): void {
+    const defaultOption &#x3D; this.mainOptions[0];
+    this.activeOption &#x3D; defaultOption;
+    this.router.navigate([defaultOption.route]);
+  }
+
+  selectOption(option: any): void {
+    this.activeOption &#x3D; option;
+    this.activeSubOption &#x3D; null;
+
+    if (option.subOptions &amp;&amp; option.subOptions.length &gt; 0) {
+      this.selectedOption &#x3D; this.selectedOption &#x3D;&#x3D;&#x3D; option ? null : option;
+    } else {
+      this.selectedOption &#x3D; null;
+      this.router.navigate([option.route]);
+    }
+  }
+
+  selectSubOption(subOption: any): void {
+    this.activeSubOption &#x3D; subOption;
+    this.router.navigate([subOption.route]);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container-fluid&quot;&gt;
+    &lt;div class&#x3D;&quot;card text-black&quot;&gt;
+        &lt;div class&#x3D;&quot;card-body p-0&quot;&gt;
+            &lt;div [backgroundColorClass]&#x3D;&quot;&#x27;#027373&#x27;&quot; class&#x3D;&quot;btn-group m-0 p-0 w-100&quot; role&#x3D;&quot;group&quot; aria-label&#x3D;&quot;opções principais&quot;&gt;
+                &lt;button *ngFor&#x3D;&quot;let option of mainOptions&quot; (click)&#x3D;&quot;selectOption(option)&quot;
+                    [ngClass]&#x3D;&quot;{&#x27;active-option&#x27;: activeOption &#x3D;&#x3D;&#x3D; option}&quot;
+                    [disabled]&#x3D;&quot;!option.active&quot;
+                    type&#x3D;&quot;button&quot;
+                    class&#x3D;&quot;btn btn-radius btn-outline-primary text-custom border-0 py-2 bg-hover&quot;&gt;
+                    {{ option.name }}
+                &lt;/button&gt;
+            &lt;/div&gt;
+
+            &lt;div [backgroundColorClass]&#x3D;&quot;&#x27;#027373&#x27;&quot; class&#x3D;&quot;btn-group2 m-0 p-0 w-100&quot; *ngIf&#x3D;&quot;selectedOption?.subOptions?.length &gt; 0&quot; role&#x3D;&quot;group&quot;
+                aria-label&#x3D;&quot;sub opções&quot;&gt;
+                &lt;button *ngFor&#x3D;&quot;let subOption of selectedOption.subOptions&quot; (click)&#x3D;&quot;selectSubOption(subOption)&quot;
+                    [ngClass]&#x3D;&quot;{&#x27;active-option&#x27;: activeSubOption &#x3D;&#x3D;&#x3D; subOption}&quot;
+                    type&#x3D;&quot;button&quot;
+                    class&#x3D;&quot;btn rounded-0 btn-outline-primary text-custom border-0 py-2 bg-hover&quot;&gt;
+                    {{ subOption.name }}
+                &lt;/button&gt;
+            &lt;/div&gt;
+            &lt;div&gt;
+                &lt;router-outlet&gt;&lt;/router-outlet&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./main-create-request.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.form-focus:focus {
+    border: none;
+    outline: none;
+}
+
+.bg-hover:hover {
+    background-color: #03A696;
+}
+
+.shadow-custom {
+    box-shadow: 3px 4.5px 4px rgba(0, 0, 0, 0.3);
+}
+
+.text-custom {
+    color: white !important;
+    font-weight: 600;
+}
+
+.text-custom:hover {
+    text-decoration: none;
+}
+
+.card {
+    height: 85vh; 
+    overflow-y: hidden; /* Para permitir rolagem vertical no card */
+    overflow-x: hidden;
+    width: 78vw;
+    background-color: #fff;
+    border-radius: 10px;
+    position: relative;
+}
+
+
+.menu-div {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    background-color: #fff;
+    border-radius: 10px 10px 0 0;
+}
+
+.btn-group {
+    position: sticky;
+    top: 0;
+    z-index: 2; 
+    background-color: #fff; 
+    border-radius: 10px 10px 0 0;
+    overflow-x: auto;
+}
+
+.btn-group2 {
+    display: flex;
+    position: sticky;
+    top: 40px;
+    z-index: 1;
+    background-color: #fff; 
+    overflow-x: auto;
+}
+
+.btn-radius {
+    border-radius: 10px 10px 0 0;
+}
+
+.active-option {
+    background-color: #03A696 !important;
+    color: #fff !important;
+    border-color: #03A696 !important;
+}
+
+.scroll-bar::-webkit-scrollbar {
+    width: 12px;
+}
+
+.scroll-bar::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 10px;
+}
+
+.scroll-bar::-webkit-scrollbar-thumb {
+    background-color: #03A696;
+    border-radius: 10px;
+}
+
+.scroll-bar::-webkit-scrollbar-thumb:active {
+    background-color: #026d56;
+}
+
+.scroll-bar::-webkit-scrollbar-thumb:hover {
+    background-color: #029982;
+}
+
+.scroll-bar {
+    scrollbar-width: thin;
+    scrollbar-color: #03A696 #f1f1f1;
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="container-fluid">    <div class="card text-black">        <div class="card-body p-0">            <div [backgroundColorClass]="\'#027373\'" class="btn-group m-0 p-0 w-100" role="group" aria-label="opções principais">                <button *ngFor="let option of mainOptions" (click)="selectOption(option)"                    [ngClass]="{\'active-option\': activeOption === option}"                    [disabled]="!option.active"                    type="button"                    class="btn btn-radius btn-outline-primary text-custom border-0 py-2 bg-hover">                    {{ option.name }}                </button>            </div>            <div [backgroundColorClass]="\'#027373\'" class="btn-group2 m-0 p-0 w-100" *ngIf="selectedOption?.subOptions?.length > 0" role="group"                aria-label="sub opções">                <button *ngFor="let subOption of selectedOption.subOptions" (click)="selectSubOption(subOption)"                    [ngClass]="{\'active-option\': activeSubOption === subOption}"                    type="button"                    class="btn rounded-0 btn-outline-primary text-custom border-0 py-2 bg-hover">                    {{ subOption.name }}                </button>            </div>            <div>                <router-outlet></router-outlet>            </div>        </div>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidenavComponent', 'selector': 'app-sidenav'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
+    var DIRECTIVES = [{'name': 'CapitalizeDirective', 'selector': '[appCapitalize]'},{'name': 'ColorClassDirective', 'selector': '[colorClass], [backgroundColorClass], [borderColorClass]'},{'name': 'DndDirective', 'selector': '[appDndDirective]'},{'name': 'PhoneMaskDirective', 'selector': '[appPhoneMask]'}];
+    var ACTUAL_COMPONENT = {'name': 'MainCreateRequestComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'MainCreateRequestComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

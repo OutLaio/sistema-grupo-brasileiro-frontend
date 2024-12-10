@@ -42,5 +42,6 @@
 @media (max-width: 767px) {
   .main-container{
     flex-direction: column;
+    width: 90vw;
   }
 }

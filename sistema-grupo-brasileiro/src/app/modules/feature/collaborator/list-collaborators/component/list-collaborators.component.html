@@ -1,10 +1,10 @@
-<div class="d-flex flex-column justify-content-between container-fluid custom-container mt-3 overflow-custom scroll-bar">
+<div
+    class="d-flex flex-column justify-content-between container-fluid custom-container mt-3 overflow-custom scroll-bar">
     <div class="row">
         <div *ngFor="let collaborator of collaborators" class="col-12 col-md-4 mb-3">
-            <div class="card card-custom rounded-4 py-2"
-                [ngClass]="{'card-selected': isSelected(collaborator)}"
+            <div class="card card-custom rounded-4 py-2" [ngClass]="{'card-selected': isSelected(collaborator)}"
                 (click)="selectCollaborator(collaborator)">
-                <div class="card-body text-center">
+                <div class="d-flex flex-column justify-content-center align-items-center card-body text-center">
                     <div class="mb-3">
                         <img [src]="'/assets/images/avatars/' + (collaborator?.avatar || 'default') + '.png'"
                             alt="Profile Image" class="img-fluid me-3" style="height: 70px;">
@@ -25,10 +25,8 @@
 
     <div class="row mt-4">
         <div class="col-12">
-            <mat-paginator [length]="totalElements"
-                           [pageSize]="itemsPerPage"
-                           [pageSizeOptions]="[6, 12, 24]"
-                           (page)="onPageChange($event)">
+            <mat-paginator [length]="totalElements" [pageSize]="itemsPerPage" [pageSizeOptions]="[6, 12, 24]"
+                (page)="onPageChange($event)">
             </mat-paginator>
         </div>
     </div>
