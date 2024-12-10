@@ -6,7 +6,10 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "compodoc:build": "compodoc -p tsconfig.doc.json",
+    "compodoc:build-and-serve": "compodoc -p tsconfig.doc.json -s",
+    "compodoc:serve": "compodoc -s"
   },
   "private": true,
   "dependencies": {
@@ -46,6 +49,7 @@
     "@angular/cli": "^18.0.2",
     "@angular/compiler-cli": "^18.0.0",
     "@angular/localize": "^18.0.0",
+    "@compodoc/compodoc": "^1.1.26",
     "@faker-js/faker": "^8.4.1",
     "@types/jasmine": "~5.1.0",
     "jasmine-core": "~5.1.0",
