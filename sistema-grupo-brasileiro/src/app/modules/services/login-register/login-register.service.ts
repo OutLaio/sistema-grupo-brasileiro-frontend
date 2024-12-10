@@ -17,7 +17,7 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root',
 })
 export class LoginRegisterService {
-  private readonly prefix = 'http://localhost:8080/api/v1/auth';
+  private readonly prefix = 'http://54.200.23.253:8000/api/v1/auth';
 
   constructor(
     private router: Router,

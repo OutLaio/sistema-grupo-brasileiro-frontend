@@ -19,13 +19,14 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root',
 })
 export class RequestDetailsService {
-  private baseUrl = 'http://localhost:8080/api/v1';
+  private baseUrl = 'http://54.200.23.253:8000/api/v1';
 
   constructor(
     private http: HttpClient,
     private collaboratorsService: ListCollaboratorsService,
     private cookieService: CookieService
   ) {}
+
 
   private getHeaders(){
     const token = this.cookieService.get('auth-token') || '';
@@ -36,71 +37,99 @@ export class RequestDetailsService {
 
   getRequestDetailsById(id: string) {
     const url = `${this.baseUrl}/projects/${id}`;
-    return this.http.get<I_Api_Response<I_Any_Briefing>>(url, { headers: this.getHeaders() });
+    return this.http.get<I_Api_Response<I_Any_Briefing>>(url, {
+      headers: this.getHeaders(),
+    });
   }
 
   getDialoguesByRequestId(id: string) {
     const url = `${this.baseUrl}/dialogs/briefing/${id}`;
-    return this.http.get<I_Api_Response<I_Dialog_Box_Response[]>>(url, { headers: this.getHeaders() });
+    return this.http.get<I_Api_Response<I_Dialog_Box_Response[]>>(url, {
+      headers: this.getHeaders(),
+    });
   }
 
   setNewDialogue(request: I_Dialog_Box_Request) {
     const url = `${this.baseUrl}/dialogs`;
-    return this.http.post<I_Api_Response<I_Dialog_Box_Response>>(url, request, { headers: this.getHeaders() });
+    return this.http.post<I_Api_Response<I_Dialog_Box_Response>>(url, request, {
+      headers: this.getHeaders(),
+    });
   }
 
   getAllCollaborators(page: number, size: number) {
     return this.collaboratorsService.getAllCollaborators(page, size);
   }
 
-  assignCollaborator(id:string, request: I_Assign_Collaborator_Request) {
+  assignCollaborator(id: string, request: I_Assign_Collaborator_Request) {
     const url = `${this.baseUrl}/projects/${id}/assignCollaborator`;
-    return this.http.put<I_Api_Response<void>>(url, request, { headers: this.getHeaders() });
+    return this.http.put<I_Api_Response<void>>(url, request, {
+      headers: this.getHeaders(),
+    });
   }
 
-  newVersion(id: string, request: I_New_Version_Request){
+  newVersion(id: string, request: I_New_Version_Request) {
     const url = `${this.baseUrl}/projects/${id}/newVersion`;
-    return this.http.put<I_Api_Response<I_Version_Data>>(url, request, { headers: this.getHeaders() });
+    return this.http.put<I_Api_Response<I_Version_Data>>(url, request, {
+      headers: this.getHeaders(),
+    });
   }
 
-  supervisorApproval(projectId: string, request: I_Approve_Request){
+  supervisorApproval(projectId: string, request: I_Approve_Request) {
     const url = `${this.baseUrl}/projects/${projectId}/approve/supervisor`;
-    return this.http.put<I_Api_Response<I_Version_Data>>(url, request, { headers: this.getHeaders() });
+    return this.http.put<I_Api_Response<I_Version_Data>>(url, request, {
+      headers: this.getHeaders(),
+    });
   }
 
-  clientApproval(projectId: string, request: I_Approve_Request){
+  clientApproval(projectId: string, request: I_Approve_Request) {
     const url = `${this.baseUrl}/projects/${projectId}/approve/client`;
-    return this.http.put<I_Api_Response<I_Version_Data>>(url, request, { headers: this.getHeaders() });
+    return this.http.put<I_Api_Response<I_Version_Data>>(url, request, {
+      headers: this.getHeaders(),
+    });
   }
 
-  updateTitle(id: string ,request: I_Alter_Title_Request) {
+  updateTitle(id: string, request: I_Alter_Title_Request) {
     const url = `${this.baseUrl}/projects/${id}/alterTitle`;
-    return this.http.put<I_Api_Response<void>>(url, request, { headers: this.getHeaders() });
+    return this.http.put<I_Api_Response<void>>(url, request, {
+      headers: this.getHeaders(),
+    });
   }
 
-  updateDate(id: string ,request: I_Alter_Date_Request) {
+  updateDate(id: string, request: I_Alter_Date_Request) {
     const url = `${this.baseUrl}/projects/${id}/alterDate`;
-    return this.http.put<I_Api_Response<void>>(url, request, { headers: this.getHeaders() });
+    return this.http.put<I_Api_Response<void>>(url, request, {
+      headers: this.getHeaders(),
+    });
   }
 
-  updateStatus(id: string ,request: I_Alter_Status_Request) {
+  updateStatus(id: string, request: I_Alter_Status_Request) {
     const url = `${this.baseUrl}/projects/${id}/alterStatus`;
-    return this.http.put<I_Api_Response<void>>(url, request, { headers: this.getHeaders() });
+    return this.http.put<I_Api_Response<void>>(url, request, {
+      headers: this.getHeaders(),
+    });
   }
 
   hasProduction(id: string, hasConfection: boolean) {
     const url = `${this.baseUrl}/projects/${id}/hasProduction?hasConfection=${hasConfection}`;
-    return this.http.put<I_Api_Response<void>>(url, null, { headers: this.getHeaders() });
+    return this.http.put<I_Api_Response<void>>(url, null, {
+      headers: this.getHeaders(),
+    });
   }
 
   finishProject(id: string) {
     const url = `${this.baseUrl}/projects/${id}/finish`;
-    return this.http.put<I_Api_Response<void>>(url, null, { headers: this.getHeaders() });
+    return this.http.put<I_Api_Response<void>>(url, null, {
+      headers: this.getHeaders(),
+    });
   }
 
   uploadFile(file: File) {
     const formData = new FormData();
     formData.append('file', file);
-    return this.http.post<I_Api_Response<I_Upload_Response>>(`${this.baseUrl}/file/uploadFile`, formData, { headers: this.getHeaders() });
+    return this.http.post<I_Api_Response<I_Upload_Response>>(
+      `${this.baseUrl}/file/uploadFile`,
+      formData,
+      { headers: this.getHeaders() }
+    );
   }
 }

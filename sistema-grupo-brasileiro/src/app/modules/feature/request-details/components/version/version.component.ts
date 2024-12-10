@@ -270,17 +270,21 @@ export class VersionComponent {
   getHtmlVersionModal(version: I_Version_Data) {
     return `
       <div class="d-flex flex-column gap-2">
-        <div class="d-flex gap-5 justify-content-center">
-          <img src="${
-            version.productLink
-          }" alt="Arte" style="max-height: 200px;">
+        <div class="d-flex gap-5 justify-content-center pb-3">
+          <div class="spinner-container" id="spinnerContainer" style="display: block;">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Carregando...</span>
+            </div>
+          </div>
+          <img src="${version.productLink}" alt="Arte" style="max-height: 200px; display: none;"
+          onload="document.getElementById('spinnerContainer').style.display='none'; this.style.display='block';">
         </div>
         ${
           this.isVersionOpenToMe(version) || this.isVersionApproved(version)
             ? `
           <div class="d-flex flex-column align-items-center py-3 border-bottom border-top">
             <p>Baixe a arte clicando no link abaixo:</p>
-            <a href="${version.productLink}" target="_blank">${version.productLink}</a>
+            <a href="${version.productLink}" target="_blank">Clique Aqui!</a>
           </div>`
             : ''
         }

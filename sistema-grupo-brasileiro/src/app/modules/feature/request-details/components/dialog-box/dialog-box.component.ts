@@ -187,7 +187,7 @@ export class DialogBoxComponent implements OnInit {
             <input type="radio" class="btn-check" name="options-outlined" id="${collaborator.id}"
               autocomplete="off" [value]="${collaborator}">
             <label class="btn btn-outline-success d-flex gap-2 align-items-center" for="${collaborator.id}">
-              <img src="/assets/images/profile.png" alt="profile image">
+              <img src="/assets/images/avatars/${collaborator.avatar}.png" alt="profile image" height="40px">
               <p class="mb-0">${collaborator.name + ' ' + collaborator.lastname}</p>
             </label>
           </div>`

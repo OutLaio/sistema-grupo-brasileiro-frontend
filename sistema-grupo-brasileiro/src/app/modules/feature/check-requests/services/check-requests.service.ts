@@ -9,7 +9,7 @@ import { I_Project_Data } from '../../../shared/interfaces/project/view/project-
 })
 export class CheckRequestsService {
   private readonly authToken = this.storageService.getToken();
-  private apiUrl = 'http://localhost:8080/api/v1/projects';
+  private apiUrl = 'http://54.200.23.253:8000/api/v1/projects';
 
   constructor(
     private http: HttpClient,
@@ -25,6 +25,8 @@ export class CheckRequestsService {
 
   getProjects() {
     const headers = this.getHeaders();
-    return this.http.get<I_Api_Response<I_Project_Data[]>>(this.apiUrl, { headers });
+    return this.http.get<I_Api_Response<I_Project_Data[]>>(this.apiUrl, {
+      headers,
+    });
   }
 }

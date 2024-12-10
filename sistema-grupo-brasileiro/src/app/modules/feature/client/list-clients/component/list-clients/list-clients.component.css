@@ -35,6 +35,16 @@
   background-color: #e5e5e5;
 }
 
+.bg-profile {
+    display: inline-block;
+    font-size: 9px !important;
+    background-color: #03A696;
+    color: #fff;
+    padding: 1px 4px;
+    border-radius: 4px;
+    max-width: 100%;
+}
+
 .btn-system {
   background-color: #027373;
   color: white;
