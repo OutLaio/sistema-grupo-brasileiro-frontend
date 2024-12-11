@@ -22,6 +22,7 @@ export class VersionComponent {
   open = 'open';
   reject = 'reject';
   approve = 'approve';
+  waiting: boolean = false;
 
   constructor(
     private requestDetailsService: RequestDetailsService,
@@ -48,6 +49,10 @@ export class VersionComponent {
 
   isClient() {
     return this.storageService.isClient();
+  }
+
+  getActiveUser() {
+    return this.storageService.getSessionProfile();
   }
 
   showNewVersion() {
@@ -85,6 +90,7 @@ export class VersionComponent {
       },
     }).then((result) => {
       if (result.isConfirmed) {
+        this.waiting = true;
         this.newVersion(result.value.artImage);
       }
     });
@@ -95,7 +101,7 @@ export class VersionComponent {
     if (artImage)
       this.requestDetailsService.uploadFile(artImage).subscribe({
         next: (res) => {
-          console.log(res.message);
+          this.waiting = false;
           this.requestDetailsService
             .newVersion(this.data?.type.project.id!, {
               productLink: res.data!.fileDownloadUri,
@@ -194,7 +200,7 @@ export class VersionComponent {
               ? result.value.feedback
               : version.feedback,
         };
-        if (this.isSupervisor()) {
+        if (this.isSupervisor() && version.supervisorApprove === null) {
           text = result.value.status
             ? result.value.forceApprove
               ? ''
@@ -203,7 +209,7 @@ export class VersionComponent {
           this.requestDetailsService
             .supervisorApproval(this.data?.type.project.id!, request)
             .subscribe((res) => (version = res.data!));
-        } else if (this.isClient()) {
+        } else if (this.data?.type.project.client.id == this.getActiveUser().id) {
           text = result.value.status ? '' : 'Sua solicitação está em análise!';
           this.requestDetailsService
             .clientApproval(this.data?.type.project.id!, request)
@@ -259,8 +265,8 @@ export class VersionComponent {
   }
 
   isVersionOpenToMe(version: I_Version_Data) {
-    if (this.isSupervisor()) return version.supervisorApprove === null;
-    else if (this.isClient())
+    if (this.isSupervisor() && version.supervisorApprove === null) return true;
+    else if (this.data?.type.project.client.id == this.getActiveUser().id)
       return (
         version.clientApprove === null && version.supervisorApprove === true
       );

@@ -64,6 +64,7 @@ export class EditUserDataComponent {
       sector: new FormControl(this.activeUser?.sector, [Validators.required]),
       occupation: new FormControl(this.activeUser?.occupation, [Validators.required]),
       nop: new FormControl(this.activeUser?.agency, [Validators.required]),
+      registrationNumber: new FormControl(this.activeUser?.registrationNumber, [Validators.required]),
     });
   }
 
@@ -73,6 +74,7 @@ export class EditUserDataComponent {
   get sector() { return this.editForm.get('sector')!; }
   get occupation() { return this.editForm.get('occupation')!; }
   get nop() { return this.editForm.get('nop')!; }
+  get registrationNumber() { return this.editForm.get('registrationNumber')!; }
 
   openAvatarModal() {
     this.isAvatarModalOpen = true;

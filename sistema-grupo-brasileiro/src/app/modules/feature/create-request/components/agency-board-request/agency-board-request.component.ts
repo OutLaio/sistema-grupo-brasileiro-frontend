@@ -51,7 +51,7 @@ export class AgencyBoardRequestComponent implements OnInit {
   listConnections: I_City_Data[] = [];
 
   // TODO: Adicionar ID para identificação da imagem
-  files: { name: string, url: string }[] = [];
+  files: File[] = [];
 
   constructor(
     private fb: FormBuilder,
@@ -280,7 +280,7 @@ export class AgencyBoardRequestComponent implements OnInit {
   }
 
 
-  onFilesLoaded(newFiles: { name: string, url: string }[]): void {
+  onFilesLoaded(newFiles: File[]): void {
     this.files = newFiles;
   }
 
@@ -400,6 +400,7 @@ export class AgencyBoardRequestComponent implements OnInit {
       return;
     }
     const requestData = this.prepareSubmit();
+    console.log(this.files);
     this.createRequestService.submitAgencyBoardRequest(requestData)
       .subscribe({
         next: (response) => {

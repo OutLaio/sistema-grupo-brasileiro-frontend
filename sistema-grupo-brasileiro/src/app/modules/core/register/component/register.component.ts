@@ -29,12 +29,14 @@ export class RegisterComponent implements OnInit {
       this.token = params['token'];
     });
     this.registerService.verifyToken(this.token).subscribe({
-      next: (res) => { this.toastrService.success(res.message)},
+      next: (res) => {
+        this.toastrService.success(res.message);
+      },
       error: (error: HttpErrorResponse) => {
         this.toastrService.error(error.error.message);
         this.router.navigate(['/']);
-       }
-    })
+      },
+    });
     this.registerForm = new FormGroup({
       name: new FormControl('', [
         Validators.required,
@@ -58,6 +60,7 @@ export class RegisterComponent implements OnInit {
       sector: new FormControl('', [Validators.required]),
       occupation: new FormControl('', [Validators.required]),
       nop: new FormControl('', [Validators.required]),
+      registrationNumber: new FormControl('', [Validators.required]),
     });
   }
 
@@ -85,6 +88,9 @@ export class RegisterComponent implements OnInit {
   get nop() {
     return this.registerForm.get('nop')!;
   }
+  get registrationNumber() {
+    return this.registerForm.get('registrationNumber')!;
+  }
 
   submit() {
     if (this.registerForm.invalid) {
@@ -106,7 +112,7 @@ export class RegisterComponent implements OnInit {
         sector: this.sector.value,
         occupation: this.occupation.value,
         agency: this.nop.value,
-        registrationNumber: "FALTA CAMPO DE NÚMERO DE MATRÍCULA",
+        registrationNumber: this.registrationNumber.value,
         avatar: 99,
       },
       user: {

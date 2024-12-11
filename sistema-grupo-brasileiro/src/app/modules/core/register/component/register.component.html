@@ -97,13 +97,27 @@
                 </div>
               </div>
 
-              <div class="form-outline mb-2">
-                <input type="text" class="form-control form-focus border-0 border-bottom border-2 w-100"
-                  placeholder="Núcleo Operacional de Origem/Agência" formControlName="nop" required />
-                <div *ngIf="nop.invalid && formDir.submitted" class="validation-warning">
-                  <p>O NOP/Agência é obrigatório!</p>
+              <div class="row">
+                <div class="col-md-6 mb-2">
+                  <div class="form-outline">
+                    <input type="text" class="form-control form-focus border-0 border-bottom border-2 w-100"
+                      placeholder="Nº de Matrícula" formControlName="registrationNumber" required />
+                    <div *ngIf="registrationNumber.invalid && formDir.submitted" class="validation-warning">
+                      <p>O Nº de Matrícula é obrigatório!</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6 mb-2">
+                  <div class="form-outline">
+                    <input type="text" class="form-control form-focus border-0 border-bottom border-2 w-100"
+                    placeholder="Núcleo Operacional de Origem/Agência" formControlName="nop" required />
+                    <div *ngIf="nop.invalid && formDir.submitted" class="validation-warning">
+                      <p>O NOP/Agência é obrigatório!</p>
+                    </div>
+                  </div>
                 </div>
               </div>
+
 
               <div class="text-center py-2">
                 <button [disabled]="isButtonDisabled" [backgroundColorClass]="'#027373'"
