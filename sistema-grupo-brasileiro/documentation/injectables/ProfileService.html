@@ -119,6 +119,14 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Serviço responsável por gerenciar as operações relacionadas ao perfil do usuário.
+Este serviço permite atualizar dados do perfil, alterar a senha e desativar a conta do usuário.</p>
+
+            </p>
 
 
 
@@ -192,12 +200,17 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/modules/core/profile/services/profile/profile.service.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/modules/core/profile/services/profile/profile.service.ts:22</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Construtor do serviço de perfil.</p>
+<p>O construtor inicializa o serviço <code>HttpClient</code> para realizar requisições à API
+e o serviço <code>StorageService</code> para acessar o token de autenticação armazenado.
+O token é utilizado para autenticar todas as operações realizadas pelo serviço.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -206,6 +219,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -220,6 +234,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço Angular para realizar requisições HTTP.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>storageService</td>
@@ -232,6 +250,13 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço responsável por gerenciar o armazenamento local e de sessão.</p>
+<p>O construtor inicializa o serviço <code>HttpClient</code> para realizar requisições à API 
+e o serviço <code>StorageService</code> para acessar o token de autenticação armazenado. 
+O token é utilizado para autenticar todas as operações realizadas pelo serviço.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -267,14 +292,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="36"
-                                    class="link-to-prism">src/app/modules/core/profile/services/profile/profile.service.ts:36</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="69"
+                                    class="link-to-prism">src/app/modules/core/profile/services/profile/profile.service.ts:69</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Desativa a conta do usuário.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -285,6 +312,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -299,6 +327,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>ID do usuário cuja conta será desativada.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -308,7 +340,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Observable com a resposta da API.</p>
+
                             </div>
                 </td>
             </tr>
@@ -334,14 +367,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="45"
-                                    class="link-to-prism">src/app/modules/core/profile/services/profile/profile.service.ts:45</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="83"
+                                    class="link-to-prism">src/app/modules/core/profile/services/profile/profile.service.ts:83</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Altera a senha do usuário.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -352,6 +387,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -366,6 +402,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Objeto contendo os dados necessários para alterar a senha.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -375,7 +415,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Observable com a resposta da API.</p>
+
                             </div>
                 </td>
             </tr>
@@ -403,19 +444,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="21"
-                                    class="link-to-prism">src/app/modules/core/profile/services/profile/profile.service.ts:21</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="43"
+                                    class="link-to-prism">src/app/modules/core/profile/services/profile/profile.service.ts:43</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Retorna os cabeçalhos HTTP necessários para autenticação e envio de JSON.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>Cabeçalhos com <code>Content-Type</code> e <code>Authorization</code>.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -440,14 +487,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="28"
-                                    class="link-to-prism">src/app/modules/core/profile/services/profile/profile.service.ts:28</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="56"
+                                    class="link-to-prism">src/app/modules/core/profile/services/profile/profile.service.ts:56</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Atualiza os dados do perfil do usuário.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -458,6 +507,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -472,6 +522,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Dados do formulário do usuário a serem atualizados.</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>userId</td>
@@ -484,6 +538,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>ID do usuário a ser atualizado.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -493,7 +551,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Observable com a resposta da API contendo os dados atualizados do usuário.</p>
+
                             </div>
                 </td>
             </tr>
@@ -525,10 +584,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/modules/core/profile/services/profile/profile.service.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/modules/core/profile/services/profile/profile.service.ts:22</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Token de autenticação obtido da service de armazenamento.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -558,10 +623,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/modules/core/profile/services/profile/profile.service.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/modules/core/profile/services/profile/profile.service.ts:19</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>URL base para as requisições da service.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -579,18 +650,40 @@ import { I_Employee_Form_Data } from &#x27;../../../../shared/interfaces/user/fo
 import { StorageService } from &#x27;../../../../services/storage/storage.service&#x27;;
 import { I_Api_Response } from &#x27;../../../../shared/interfaces/api-response&#x27;;
 
+/**
+ * Serviço responsável por gerenciar as operações relacionadas ao perfil do usuário.
+ * Este serviço permite atualizar dados do perfil, alterar a senha e desativar a conta do usuário.
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;,
 })
 export class ProfileService {
+
+  /** URL base para as requisições da service. */
   private readonly baseUrl &#x3D; &#x27;http://localhost:8080/api/v1&#x27;;
+
+  /** Token de autenticação obtido da service de armazenamento. */
   private readonly authToken &#x3D; this.storageService.getToken();
 
+  /**
+   * Construtor do serviço de perfil.
+   * 
+   * @param http Serviço Angular para realizar requisições HTTP.
+   * @param storageService Serviço responsável por gerenciar o armazenamento local e de sessão.
+   * 
+   * O construtor inicializa o serviço &#x60;HttpClient&#x60; para realizar requisições à API 
+   * e o serviço &#x60;StorageService&#x60; para acessar o token de autenticação armazenado. 
+   * O token é utilizado para autenticar todas as operações realizadas pelo serviço.
+   */
   constructor(
     private http: HttpClient,
     private storageService: StorageService
-  ) {}
+  ) { }
 
+  /**
+   * Retorna os cabeçalhos HTTP necessários para autenticação e envio de JSON.
+   * @returns Cabeçalhos com &#x60;Content-Type&#x60; e &#x60;Authorization&#x60;.
+   */
   private getHeaders() {
     return new HttpHeaders({
       &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
@@ -598,6 +691,12 @@ export class ProfileService {
     });
   }
 
+  /**
+   * Atualiza os dados do perfil do usuário.
+   * @param req Dados do formulário do usuário a serem atualizados.
+   * @param userId ID do usuário a ser atualizado.
+   * @returns Observable com a resposta da API contendo os dados atualizados do usuário.
+   */
   updateProfileUser(req: I_Employee_Form_Data, userId?: string) {
     const headers &#x3D; this.getHeaders();
     return this.http.put&lt;I_Api_Response&lt;I_Employee_View_Data&gt;&gt;(&#x60;${this.baseUrl}/employees/${userId}&#x60;, req, {
@@ -606,21 +705,31 @@ export class ProfileService {
     });
   }
 
+  /**
+   * Desativa a conta do usuário.
+   * @param userId ID do usuário cuja conta será desativada.
+   * @returns Observable com a resposta da API.
+   */
   deleteAccount(userId?: string) {
     const headers &#x3D; this.getHeaders();
-    return this.http.put&lt;I_Api_Response&lt;void&gt;&gt;(&#x60;${this.baseUrl}/users/${userId}/deactivate&#x60;,{},{
-        headers,
-        withCredentials: true,
-      }
+    return this.http.put&lt;I_Api_Response&lt;void&gt;&gt;(&#x60;${this.baseUrl}/users/${userId}/deactivate&#x60;, {}, {
+      headers,
+      withCredentials: true,
+    }
     );
   }
 
+  /**
+   * Altera a senha do usuário.
+   * @param req Objeto contendo os dados necessários para alterar a senha.
+   * @returns Observable com a resposta da API.
+   */
   editPassword(req: I_Change_Password_Request) {
     const headers &#x3D; this.getHeaders();
-    return this.http.post&lt;I_Api_Response&lt;void&gt;&gt;(&#x60;${this.baseUrl}/users/changePassword&#x60;,req,{
-        headers,
-        withCredentials: true
-      }
+    return this.http.post&lt;I_Api_Response&lt;void&gt;&gt;(&#x60;${this.baseUrl}/users/changePassword&#x60;, req, {
+      headers,
+      withCredentials: true
+    }
     );
   }
 }

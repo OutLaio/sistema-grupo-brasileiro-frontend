@@ -119,6 +119,14 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Serviço para gerenciar operações relacionadas à listagem de clientes.
+Inclui funcionalidades para buscar colaboradores e gerar links de cadastro.</p>
+
+            </p>
 
 
 
@@ -183,12 +191,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/modules/feature/client/list-clients/services/list-clients.service.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/modules/feature/client/list-clients/services/list-clients.service.ts:19</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Construtor que injeta as dependências necessárias para o funcionamento do serviço.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -197,6 +207,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -211,6 +222,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço Angular para realizar requisições HTTP.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>storageService</td>
@@ -223,6 +238,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço para gerenciamento de armazenamento local e recuperação de tokens.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -258,14 +277,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="27"
-                                    class="link-to-prism">src/app/modules/feature/client/list-clients/services/list-clients.service.ts:27</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="48"
+                                    class="link-to-prism">src/app/modules/feature/client/list-clients/services/list-clients.service.ts:48</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Busca todos os colaboradores com paginação.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -276,6 +297,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -290,6 +312,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Número da página (0-indexado).</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>size</td>
@@ -302,6 +328,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Quantidade de itens por página.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -311,7 +341,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Observable com a resposta da API, contendo os dados paginados de colaboradores.</p>
+
                             </div>
                 </td>
             </tr>
@@ -339,19 +370,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="21"
-                                    class="link-to-prism">src/app/modules/feature/client/list-clients/services/list-clients.service.ts:21</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="35"
+                                    class="link-to-prism">src/app/modules/feature/client/list-clients/services/list-clients.service.ts:35</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Gera os cabeçalhos necessários para as requisições HTTP.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>Um objeto HttpHeaders com o tipo de conteúdo e token de autorização.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -376,19 +413,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="34"
-                                    class="link-to-prism">src/app/modules/feature/client/list-clients/services/list-clients.service.ts:34</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="59"
+                                    class="link-to-prism">src/app/modules/feature/client/list-clients/services/list-clients.service.ts:59</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Obtém o link para solicitação de cadastro.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>Observable com a resposta da API, contendo o link gerado.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -424,10 +467,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/modules/feature/client/list-clients/services/list-clients.service.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/modules/feature/client/list-clients/services/list-clients.service.ts:19</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>URL base da API utilizada pelo serviço.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -439,30 +488,51 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { HttpClient, HttpHeaders } from &#x27;@angular/common/http&#x27;;
-import { Observable } from &#x27;rxjs&#x27;;
-import { map } from &#x27;rxjs/operators&#x27;;
 import { I_Employee_View_Data } from &#x27;../../../../shared/interfaces/user/view/employee-view&#x27;;
 import { I_Page } from &#x27;../../../../shared/interfaces/pageable/pageable&#x27;;
 import { StorageService } from &#x27;../../../../services/storage/storage.service&#x27;;
 import { I_Api_Response } from &#x27;../../../../shared/interfaces/api-response&#x27;;
 
+/**
+ * Serviço para gerenciar operações relacionadas à listagem de clientes.
+ * Inclui funcionalidades para buscar colaboradores e gerar links de cadastro.
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;,
 })
 export class ListClientsService {
+  /**
+   * URL base da API utilizada pelo serviço.
+   */
   private apiUrl &#x3D; &#x27;http://localhost:8080/api/v1&#x27;;
 
+  /**
+   * Construtor que injeta as dependências necessárias para o funcionamento do serviço.
+   * @param http Serviço Angular para realizar requisições HTTP.
+   * @param storageService Serviço para gerenciamento de armazenamento local e recuperação de tokens.
+   */
   constructor(
     private http: HttpClient,
     private storageService: StorageService
   ) {}
 
+  /**
+   * Gera os cabeçalhos necessários para as requisições HTTP.
+   * @returns Um objeto HttpHeaders com o tipo de conteúdo e token de autorização.
+   */
   private getHeaders() {
     const token &#x3D; this.storageService.getToken();
     return new HttpHeaders({
       Authorization: &#x60;Bearer ${token}&#x60;,
     });
   }
+  
+  /**
+   * Busca todos os colaboradores com paginação.
+   * @param page Número da página (0-indexado).
+   * @param size Quantidade de itens por página.
+   * @returns Observable com a resposta da API, contendo os dados paginados de colaboradores.
+   */
   getAllClients(page: number, size: number) {
     let url &#x3D; &#x60;${this.apiUrl}/employees/allCollaborators?page&#x3D;${page}&amp;size&#x3D;${size}&#x60;;
     return this.http.get&lt;I_Api_Response&lt;I_Page&lt;I_Employee_View_Data&gt;&gt;&gt;(url, {
@@ -470,6 +540,10 @@ export class ListClientsService {
     });
   }
 
+  /**
+   * Obtém o link para solicitação de cadastro.
+   * @returns Observable com a resposta da API, contendo o link gerado.
+   */
   getLink() {
     const header &#x3D; this.getHeaders();
     return this.http.get&lt;I_Api_Response&lt;string&gt;&gt;(&#x60;${this.apiUrl}/auth/requestRegister&#x60;,{ headers: header });

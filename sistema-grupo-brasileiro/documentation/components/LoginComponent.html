@@ -120,6 +120,15 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente responsável pela autenticação de usuários.</p>
+<p>Este componente fornece um formulário para que os usuários insiram suas credenciais
+(e-mail e senha) e realizem o login no sistema.</p>
+
+    </p>
 
 
     <p class="comment">
@@ -249,12 +258,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/modules/core/login/component/login.component.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/modules/core/login/component/login.component.ts:28</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Construtor do componente LoginComponent.
+Injeta as dependências necessárias.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -263,6 +275,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -277,6 +290,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço responsável por realizar chamadas de autenticação.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>toastrService</td>
@@ -289,6 +306,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço para exibição de notificações ao usuário.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>router</td>
@@ -301,6 +322,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço para navegação entre as rotas do aplicativo.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -340,14 +365,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="25"
-                                    class="link-to-prism">src/app/modules/core/login/component/login.component.ts:25</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="49"
+                                    class="link-to-prism">src/app/modules/core/login/component/login.component.ts:49</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método do ciclo de vida executado ao inicializar o componente.</p>
+<p>Inicializa o <code>loginForm</code> com os campos e validações necessários.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -377,14 +405,19 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="35"
-                                    class="link-to-prism">src/app/modules/core/login/component/login.component.ts:35</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="74"
+                                    class="link-to-prism">src/app/modules/core/login/component/login.component.ts:74</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método chamado ao enviar o formulário de login.
+Verifica se o formulário é válido.
+Em caso de sucesso, exibe uma mensagem e redireciona o usuário para a tela principal.
+Em caso de falha, exibe uma mensagem sobre o possível erro.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -419,10 +452,17 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/modules/core/login/component/login.component.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/modules/core/login/component/login.component.ts:28</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Representa o formulário de login do usuário.
+Contém os campos <code>email</code> e <code>password</code> com suas respectivas validações.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -448,9 +488,18 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/modules/core/login/component/login.component.ts:32</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/modules/core/login/component/login.component.ts:60</a></div>
                                 </td>
                             </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Obtém o FormControl associado ao campo <code>email</code> no formulário de login.</p>
+</div>
+
+                                <div>
+                                </div>
+                        </td>
+                    </tr>
 
             </tbody>
         </table>
@@ -470,9 +519,18 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/modules/core/login/component/login.component.ts:33</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/modules/core/login/component/login.component.ts:66</a></div>
                                 </td>
                             </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Obtém o FormControl associado ao campo <code>password</code> no formulário de login.</p>
+</div>
+
+                                <div>
+                                </div>
+                        </td>
+                    </tr>
 
             </tbody>
         </table>
@@ -490,6 +548,12 @@ import { Router } from &#x27;@angular/router&#x27;;
 import { I_Api_Response } from &#x27;../../../shared/interfaces/api-response&#x27;;
 import { I_Login_Request } from &#x27;../../../shared/interfaces/auth/form/login-form&#x27;;
 
+/**
+ * Componente responsável pela autenticação de usuários.
+ *
+ * Este componente fornece um formulário para que os usuários insiram suas credenciais
+ * (e-mail e senha) e realizem o login no sistema.
+ */
 @Component({
   selector: &#x27;app-login&#x27;,
   templateUrl: &#x27;./login.component.html&#x27;,
@@ -497,36 +561,69 @@ import { I_Login_Request } from &#x27;../../../shared/interfaces/auth/form/login
 })
 export class LoginComponent implements OnInit {
 
+
+  /**
+   * Representa o formulário de login do usuário.
+   * Contém os campos &#x60;email&#x60; e &#x60;password&#x60; com suas respectivas validações.
+   */
   loginForm!: FormGroup;
 
+  /**
+   * Construtor do componente LoginComponent.
+   * Injeta as dependências necessárias.
+   *
+   * @param loginService Serviço responsável por realizar chamadas de autenticação.
+   * @param toastrService Serviço para exibição de notificações ao usuário.
+   * @param router Serviço para navegação entre as rotas do aplicativo.
+   */
   constructor(
     private loginService: LoginRegisterService,
     private toastrService: ToastrService,
     private router: Router
-  ) {}
+  ) { }
 
+  /**
+    * Método do ciclo de vida executado ao inicializar o componente.
+   * 
+    * Inicializa o &#x60;loginForm&#x60; com os campos e validações necessários.
+    */
   ngOnInit(): void {
     this.loginForm &#x3D; new FormGroup({
       email: new FormControl(&#x27;&#x27;, [Validators.required, Validators.email]),
       password: new FormControl(&#x27;&#x27;, [Validators.required])
     })
   }
+  /**
+  * Obtém o FormControl associado ao campo &#x60;email&#x60; no formulário de login.
+  *
+  * @returns {FormControl} O controlador do campo &#x60;email&#x60; do formulário.
+  */
+  get email() { return this.loginForm.get(&#x27;email&#x27;)!; }
+  /**
+  * Obtém o FormControl associado ao campo &#x60;password&#x60; no formulário de login.
+  *
+  * @returns {FormControl} O controlador do campo &#x60;password&#x60; do formulário.
+  */
+  get password() { return this.loginForm.get(&#x27;password&#x27;)!; }
 
-  get email(){return this.loginForm.get(&#x27;email&#x27;)!;}
-  get password(){return this.loginForm.get(&#x27;password&#x27;)!;}
-
-  submit(){
-    if(this.loginForm.invalid){return}
+  /**
+   * Método chamado ao enviar o formulário de login.
+   * Verifica se o formulário é válido.
+   * Em caso de sucesso, exibe uma mensagem e redireciona o usuário para a tela principal.
+   * Em caso de falha, exibe uma mensagem sobre o possível erro.
+   */
+  submit() {
+    if (this.loginForm.invalid) { return }
     const data: I_Login_Request &#x3D; {
       email: this.email.value,
       password: this.password.value
     }
     this.loginService.loginUser(data).subscribe({
-      next: (res) &#x3D;&gt;{
+      next: (res) &#x3D;&gt; {
         this.toastrService.success(res.message),
-        this.router.navigate([&#x27;/acompanhamento&#x27;]);
+          this.router.navigate([&#x27;/acompanhamento&#x27;]);
       },
-      error: (value: HttpErrorResponse) &#x3D;&gt;{
+      error: (value: HttpErrorResponse) &#x3D;&gt; {
         this.toastrService.error(value.error.message);
       }
     })
@@ -607,7 +704,7 @@ export class LoginComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><section class="system-form">    <div class="container-fluid h-100">        <div class="row d-flex justify-content-center align-items-center min-vh-100">            <div class="col-xl-4 col-lg-6 col-md-8 col-sm-10">                <div class="card text-center rounded-4 shadow-lg">                    <div class="card-body">                        <div class="d-flex justify-content-center align-items-center mb-3">                            <div class="col-6">                                <img class="img-fluid" src="/assets/images/logo-grupobrasileiro.png" alt="logo grupo brasileiro">                            </div>                            <div class="col-6">                                <img class="img-fluid" src="/assets/images/logo-mktGB-color.svg" alt="logo grupo brasileiro">                            </div>                        </div>                        <form (ngSubmit)="submit()" [formGroup]="loginForm" #formDir="ngForm">                            <div class="form-outline mb-4">                                <input type="email" class="form-control border-0 border-bottom border-2 form-focus border-2"                                    placeholder="E-mail" formControlName="email" required />                                <div *ngIf="email.invalid && formDir.submitted" class="validation-warning">                                    <p *ngIf="email.errors?.[\'required\']">Digite seu e-mail!</p>                                    <p *ngIf="email.errors?.[\'email\']">Formato de e-mail inválido!</p>                                </div>                            </div>                            <div class="form-outline mb-4">                                <input type="password" class="form-control form-focus border-0 border-bottom border-2"                                    placeholder="Senha" formControlName="password" required />                                <div *ngIf="password.invalid && formDir.submitted" class="validation-warning">                                    <p>Digite sua senha!</p>                                </div>                            </div>                            <div class="d-flex flex-column align-items-center gap-2 pb-2">                              <button class="btn bg-color-system bg-hover text-white" type="submit">Entrar</button>                              <a class="text-muted text-custom" routerLink="/recuperar-senha">Esqueci minha senha</a>                            </div>                        </form>                    </div>                </div>            </div>        </div>    </div></section></div>'
-    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidenavComponent', 'selector': 'app-sidenav'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
+    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
     var DIRECTIVES = [{'name': 'CapitalizeDirective', 'selector': '[appCapitalize]'},{'name': 'ColorClassDirective', 'selector': '[colorClass], [backgroundColorClass], [borderColorClass]'},{'name': 'DndDirective', 'selector': '[appDndDirective]'},{'name': 'PhoneMaskDirective', 'selector': '[appPhoneMask]'}];
     var ACTUAL_COMPONENT = {'name': 'LoginComponent'};
 </script>

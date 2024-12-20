@@ -120,6 +120,15 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente responsável por exibir botões para finalizar ou confirmar a confecção de um projeto.</p>
+<p>Quando o botão de finalização é clicado, ele solicita a confirmação do usuário e, dependendo da escolha, atualiza o status do projeto.
+O componente permite que apenas supervisores aprovem ou atualizem o status do projeto para &quot;em produção&quot; ou &quot;finalizado&quot;.</p>
+
+    </p>
 
 
 
@@ -232,12 +241,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/modules/feature/request-details/components/btn-finalize/btn-finalize.component.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/modules/feature/request-details/components/btn-finalize/btn-finalize.component.ts:25</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Cria uma instância da classe que utiliza o StorageService e o RequestDetailsService.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -246,6 +257,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -260,6 +272,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>Serviço responsável pela manipulação de dados de armazenamento.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>requestService</td>
@@ -272,6 +290,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>Serviço responsável pela obtenção e manipulação de detalhes de requisição.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -305,9 +329,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/modules/feature/request-details/components/btn-finalize/btn-finalize.component.ts:16</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/modules/feature/request-details/components/btn-finalize/btn-finalize.component.ts:25</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>O projeto ao qual o botão de finalização está associado</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -339,14 +369,19 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="23"
-                                    class="link-to-prism">src/app/modules/feature/request-details/components/btn-finalize/btn-finalize.component.ts:23</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="45"
+                                    class="link-to-prism">src/app/modules/feature/request-details/components/btn-finalize/btn-finalize.component.ts:45</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Confirma a necessidade de confecção do projeto.
+Se a opção for &quot;Sim&quot;, o status do projeto será atualizado para &quot;em confecção&quot;.
+Caso contrário, o projeto será finalizado.
+Exibe um pop-up de confirmação com a opção de selecionar &quot;Sim&quot; ou &quot;Não&quot;.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -376,14 +411,18 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="48"
-                                    class="link-to-prism">src/app/modules/feature/request-details/components/btn-finalize/btn-finalize.component.ts:48</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="75"
+                                    class="link-to-prism">src/app/modules/feature/request-details/components/btn-finalize/btn-finalize.component.ts:75</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Confirma a finalização do projeto.
+Exibe um pop-up de confirmação com a opção de selecionar &quot;Sim&quot; ou &quot;Não&quot;.
+Se confirmado, o status do projeto será atualizado para &quot;Finalizado&quot;.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -413,19 +452,27 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="68"
-                                    class="link-to-prism">src/app/modules/feature/request-details/components/btn-finalize/btn-finalize.component.ts:68</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="99"
+                                    class="link-to-prism">src/app/modules/feature/request-details/components/btn-finalize/btn-finalize.component.ts:99</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Verifica se o projeto foi aprovado e se o usuário é um supervisor.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <ul>
+<li><code>true</code> se o projeto for aprovado e o usuário for supervisor, caso contrário <code>false</code></li>
+</ul>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -450,19 +497,27 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="72"
-                                    class="link-to-prism">src/app/modules/feature/request-details/components/btn-finalize/btn-finalize.component.ts:72</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="107"
+                                    class="link-to-prism">src/app/modules/feature/request-details/components/btn-finalize/btn-finalize.component.ts:107</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Verifica se o projeto está em produção e se o usuário é um supervisor.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <ul>
+<li><code>true</code> se o projeto estiver em produção e o usuário for supervisor, caso contrário <code>false</code></li>
+</ul>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -481,20 +536,42 @@ import { I_Project_Data } from &#x27;../../../../shared/interfaces/project/view/
 import { HttpErrorResponse } from &#x27;@angular/common/http&#x27;;
 import { C_PROJECT_STATUS } from &#x27;../../../../shared/enums/project-status&#x27;;
 
+/**
+ * Componente responsável por exibir botões para finalizar ou confirmar a confecção de um projeto.
+ * 
+ * Quando o botão de finalização é clicado, ele solicita a confirmação do usuário e, dependendo da escolha, atualiza o status do projeto.
+ * O componente permite que apenas supervisores aprovem ou atualizem o status do projeto para &quot;em produção&quot; ou &quot;finalizado&quot;.
+ */
 @Component({
   selector: &#x27;app-btn-finalize&#x27;,
   templateUrl: &#x27;./btn-finalize.component.html&#x27;,
   styleUrl: &#x27;./btn-finalize.component.css&#x27;
 })
 export class BtnFinalizeComponent {
-
+  /**
+   * O projeto ao qual o botão de finalização está associado
+   * @type {I_Project_Data | null}
+   */
   @Input() project: I_Project_Data | null &#x3D; null;
 
+  /**
+   * @constructor
+   * Cria uma instância da classe que utiliza o StorageService e o RequestDetailsService.
+   * 
+   * @param {StorageService} storageService - Serviço responsável pela manipulação de dados de armazenamento.
+   * @param {RequestDetailsService} requestService - Serviço responsável pela obtenção e manipulação de detalhes de requisição.
+ */
   constructor(
     private storageService: StorageService,
     private requestService: RequestDetailsService
-  ) {}
+  ) { }
 
+  /**
+   * Confirma a necessidade de confecção do projeto.
+   * Se a opção for &quot;Sim&quot;, o status do projeto será atualizado para &quot;em confecção&quot;.
+   * Caso contrário, o projeto será finalizado.
+   * Exibe um pop-up de confirmação com a opção de selecionar &quot;Sim&quot; ou &quot;Não&quot;.
+   */
   confirmConfection() {
     Swal.fire({
       html: &#x60;&lt;h4&gt;Confirmação de Confecção&lt;/h4&gt;
@@ -520,6 +597,11 @@ export class BtnFinalizeComponent {
     });
   }
 
+  /**
+    * Confirma a finalização do projeto.
+    * Exibe um pop-up de confirmação com a opção de selecionar &quot;Sim&quot; ou &quot;Não&quot;.
+    * Se confirmado, o status do projeto será atualizado para &quot;Finalizado&quot;.
+    */
   confirmFinish() {
     Swal.fire({
       html: &#x60;&lt;h4&gt;Confirmação de Finalização&lt;/h4&gt;
@@ -540,10 +622,18 @@ export class BtnFinalizeComponent {
     });
   }
 
+  /**
+   * Verifica se o projeto foi aprovado e se o usuário é um supervisor.
+   * @returns {boolean} - &#x60;true&#x60; se o projeto for aprovado e o usuário for supervisor, caso contrário &#x60;false&#x60;
+   */
   isApproved() {
     return this.project?.status &#x3D;&#x3D;&#x3D; C_PROJECT_STATUS.APPROVED.en &amp;&amp; this.storageService.isSupervisor();
   }
 
+  /**
+   * Verifica se o projeto está em produção e se o usuário é um supervisor.
+   * @returns {boolean} - &#x60;true&#x60; se o projeto estiver em produção e o usuário for supervisor, caso contrário &#x60;false&#x60;
+   */
   isConfection() {
     return this.project?.status &#x3D;&#x3D;&#x3D; C_PROJECT_STATUS.IN_PRODUCTION.en &amp;&amp; this.storageService.isSupervisor();
   }
@@ -588,7 +678,7 @@ export class BtnFinalizeComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div *ngIf="isApproved()" class="d-flex h-75">  <button class="btn btn-outline-primary shadow-custom btn-sm" (click)="confirmConfection()">Há Confecção?</button></div><div *ngIf="isConfection()" class="d-flex h-75">  <button class="btn btn-outline-primary shadow-custom btn-sm" (click)="confirmFinish()">Finalizar</button></div></div>'
-    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidenavComponent', 'selector': 'app-sidenav'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
+    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
     var DIRECTIVES = [{'name': 'CapitalizeDirective', 'selector': '[appCapitalize]'},{'name': 'ColorClassDirective', 'selector': '[colorClass], [backgroundColorClass], [borderColorClass]'},{'name': 'DndDirective', 'selector': '[appDndDirective]'},{'name': 'PhoneMaskDirective', 'selector': '[appPhoneMask]'}];
     var ACTUAL_COMPONENT = {'name': 'BtnFinalizeComponent'};
 </script>

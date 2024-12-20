@@ -10,21 +10,52 @@ import { MatDialog } from '@angular/material/dialog';
 import { EditUserDataComponent } from '../edit-user-data/edit-user-data.component';
 import { StorageService } from '../../../../services/storage/storage.service';
 
+
+/**
+ * Componente responsável por gerenciar os dados de perfil do usuário.
+ * 
+ * Este componente permite:
+ * - Visualizar dados do perfil do usuário ativo.
+ * - Editar o perfil do usuário.
+ * - Alterar a senha do usuário.
+ * - Excluir a conta do usuário.
+ */
 @Component({
   selector: 'app-user-data',
   templateUrl: './user-data.component.html',
   styleUrls: ['./user-data.component.css'],
 })
 export class UserDataComponent implements OnInit {
+  /**
+   * Dados do usuário ativo obtidos a partir da sessão.
+   * @type {I_Employee_View_Data | null}
+   */
   activeUser!: I_Employee_View_Data | null;
+  /**
+   * Representa o nível do usuário logado.
+   * @type {string}
+  */
   userRole: string = "";
 
+  /**
+   * Mapeamento de roles do sistema para representações legíveis.
+   * @type {Record<string, string>}
+   */
   private roleMapping: { [key: string]: string } = {
     'ROLE_CLIENT': 'Cliente',
     'ROLE_COLLABORATOR': 'Colaborador',
     'ROLE_SUPERVISOR': 'Supervisor',
   };
 
+  /**
+   * Construtor do componente.
+   * 
+   * @param {ProfileService} profileService Serviço para gerenciar o perfil do usuário.
+   * @param {LoginRegisterService} loginRegisterService Serviço para operações de login e logout.
+   * @param {StorageService} storageService Serviço para acessar os dados armazenados localmente.
+   * @param {Router} router Serviço de navegação e rotas.
+   * @param {MatDialog} dialog Serviço para abrir diálogos e modais.
+   */
   constructor(
     private profileService: ProfileService,
     private loginRegisterService: LoginRegisterService,
@@ -33,12 +64,20 @@ export class UserDataComponent implements OnInit {
     private dialog: MatDialog
   ) { }
 
+  /**
+   * Método do ciclo de vida executado ao inicializar o componente.
+   * 
+   * Obtém os dados do perfil do usuário ativo e a role mapeada.
+   */
   ngOnInit(): void {
     this.activeUser = this.storageService.getSessionProfile();
     const role = this.storageService.getUserRole() ?? "";
     this.userRole = this.roleMapping[role] || '';
   }
 
+  /**
+   * Abre o modal para editar o perfil do usuário.
+   */
   editProfile(): void {
     const dialogRef = this.dialog.open(EditUserDataComponent, {
       width: '1200px',
@@ -49,6 +88,11 @@ export class UserDataComponent implements OnInit {
     });
   }
 
+  /**
+   * Deleta a conta do usuário após uma confirmação.
+   * Exibe uma caixa de diálogo de confirmação para garantir que o usuário deseja realmente excluir sua conta.
+   * Caso confirmado, realiza a chamada ao serviço para excluir a conta e, em seguida, realiza o logout do usuário.
+   */
   deleteAccount() {
     Swal.fire({
       title: 'Deletar Conta',
@@ -84,8 +128,10 @@ export class UserDataComponent implements OnInit {
     });
   }
 
-
-
+  /**
+   * Abre o modal para alterar a senha do usuário.
+   * A nova senha deve atender a certos critérios de segurança (como comprimento mínimo, presença de letras maiúsculas e minúsculas, números e caracteres especiais).
+   */
   editPassword(): void {
     Swal.fire({
       title: 'Alterar Senha',

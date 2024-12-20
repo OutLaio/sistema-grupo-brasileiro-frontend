@@ -120,6 +120,15 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente responsável por gerenciar a solicitação de adesivos.
+Ele permite que o usuário preencha as informações do adesivo, selecione empresas envolvidas,
+e envie as informações para o servidor.</p>
+
+    </p>
 
 
     <p class="comment">
@@ -318,12 +327,15 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:35</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:62</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Construtor do componente <code>StickersRequestComponent</code>.
+Inicializa as dependências necessárias para o componente, como o formulário, serviços e feedback do usuário.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -332,6 +344,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -346,6 +359,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>Serviço utilizado para construir o formulário reativo.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>createRequestService</td>
@@ -358,6 +377,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>Serviço responsável por enviar a solicitação de adesivo.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>toastrService</td>
@@ -370,6 +395,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>Serviço utilizado para exibir mensagens de feedback (sucesso ou erro).</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>storageService</td>
@@ -382,6 +413,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>Serviço que acessa os dados armazenados no localStorage, como o ID do usuário.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -421,14 +458,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="71"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:71</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="118"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:118</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Limpa o formulário e reinicia a lista de empresas selecionadas.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -458,19 +497,24 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="126"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:126</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="197"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:197</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Confirma a adição de uma empresa customizada.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                            <div class="io-description">
+                                
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -495,14 +539,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="45"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:45</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="85"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:85</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método de ciclo de vida chamado ao inicializar o componente.
+Inicializa o formulário com os controles necessários e suas respectivas validações.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -532,14 +579,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="87"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:87</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="142"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:142</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Limpa a seleção de empresas quando o tipo de empresa for alterado.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -550,6 +599,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -564,6 +614,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>O tipo de empresa selecionado.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -599,14 +655,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="102"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:102</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="166"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:166</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Alterna a seleção da opção &quot;Outras empresas&quot; no formulário.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -636,14 +694,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="76"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:76</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="127"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:127</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método acionado quando há mudanças no valor de &quot;stickerType&quot;.
+Ajusta as validações para o campo &quot;stickerInformationType&quot; conforme o valor de &quot;stickerType&quot;.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -673,14 +734,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="137"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:137</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="212"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:212</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Remove uma empresa da lista de empresas selecionadas.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -691,6 +754,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -705,6 +769,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>A empresa a ser removida.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -740,14 +810,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="144"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:144</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="222"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:222</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Converte a lista de empresas selecionadas para o formato necessário para enviar a solicitação.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -807,14 +879,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="161"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:161</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="243"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:243</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Envia a solicitação de adesivo após validar o formulário e as empresas selecionadas.
+Caso haja algum erro, exibe uma mensagem de erro para o usuário.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -844,14 +919,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="91"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:91</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="152"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:152</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Atualiza a seleção das empresas. Se a empresa já foi selecionada, ela é removida.
+Caso contrário, é adicionada à lista de empresas selecionadas.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -862,6 +940,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -876,6 +955,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>O tipo de seleção (ex: única ou múltiplas empresas).</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>company</td>
@@ -888,6 +973,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>O nome da empresa a ser adicionada/removida.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -923,14 +1014,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="110"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:110</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="177"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:177</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Atualiza a seleção de empresas customizadas inseridas pelo usuário.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -970,10 +1063,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:28</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:40</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Controle de habilitação do botão de envio para evitar múltiplos cliques.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -995,10 +1094,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:35</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:62</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Flag que indica se a opção &quot;Outras empresas&quot; foi selecionada.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1026,10 +1131,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:30</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:45</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indica se a solicitação envolve uma única empresa ou múltiplas.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1057,10 +1168,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:31</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:49</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista das empresas selecionadas pelo usuário.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1088,10 +1205,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:32</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:53</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de IDs das empresas selecionadas para enviar.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1119,10 +1242,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:33</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:57</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de empresas customizadas inseridas pelo usuário (não pré-definidas).</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1145,10 +1274,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:36</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Formulário reativo utilizado para coletar as informações de solicitação de adesivos.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1174,9 +1309,16 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:60</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:104</a></div>
                                 </td>
                             </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Getters para facilitar o acesso aos controles do formulário</p>
+</div>
+
+                        </td>
+                    </tr>
 
             </tbody>
         </table>
@@ -1196,7 +1338,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:61</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:105</a></div>
                                 </td>
                             </tr>
 
@@ -1218,7 +1360,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:62</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:106</a></div>
                                 </td>
                             </tr>
 
@@ -1240,7 +1382,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:63</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:107</a></div>
                                 </td>
                             </tr>
 
@@ -1262,7 +1404,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:64</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:108</a></div>
                                 </td>
                             </tr>
 
@@ -1284,7 +1426,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:65</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:109</a></div>
                                 </td>
                             </tr>
 
@@ -1306,7 +1448,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:66</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:110</a></div>
                                 </td>
                             </tr>
 
@@ -1328,7 +1470,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:67</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:111</a></div>
                                 </td>
                             </tr>
 
@@ -1350,7 +1492,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="68" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:68</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:112</a></div>
                                 </td>
                             </tr>
 
@@ -1372,7 +1514,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="69" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:69</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">src/app/modules/feature/create-request/components/stickers-request/stickers-request.component.ts:113</a></div>
                                 </td>
                             </tr>
 
@@ -1403,23 +1545,58 @@ enum Company {
   &#x27;Cidade Real&#x27; &#x3D; 5,
   &#x27;Pauma&#x27; &#x3D; 6,
 }
+
+/**
+ * Componente responsável por gerenciar a solicitação de adesivos.
+ * Ele permite que o usuário preencha as informações do adesivo, selecione empresas envolvidas, 
+ * e envie as informações para o servidor.
+ */
 @Component({
   selector: &#x27;app-stickers-request&#x27;,
   templateUrl: &#x27;./stickers-request.component.html&#x27;,
   styleUrl: &#x27;./stickers-request.component.css&#x27;
 })
 export class StickersRequestComponent implements OnInit {
+  /**
+   * Formulário reativo utilizado para coletar as informações de solicitação de adesivos.
+   */
   stickersForm!: FormGroup;
+  /**
+   * Controle de habilitação do botão de envio para evitar múltiplos cliques.
+   */
   isButtonDisabled: boolean &#x3D; false;
 
+  /**
+   * Indica se a solicitação envolve uma única empresa ou múltiplas.
+   */
   isSingleCompany: boolean &#x3D; true;
+  /**
+   * Lista das empresas selecionadas pelo usuário.
+   */
   selectedCompanies: Partial&lt;CompanyDetails&gt;[] &#x3D; [];
+  /**
+   * Lista de IDs das empresas selecionadas para enviar.
+   */
   sendCompanies: number[] &#x3D; [];
+  /**
+   * Lista de empresas customizadas inseridas pelo usuário (não pré-definidas).
+   */
   sendOthersCompanies: string[] &#x3D; [];
 
+  /**
+   * Flag que indica se a opção &quot;Outras empresas&quot; foi selecionada.
+   */
   isOtherCompaniesSelected &#x3D; false;
 
-
+  /**
+   * Construtor do componente &#x60;StickersRequestComponent&#x60;.
+   * Inicializa as dependências necessárias para o componente, como o formulário, serviços e feedback do usuário.
+   * 
+   * @param {FormBuilder} fb - Serviço utilizado para construir o formulário reativo.
+   * @param {CreateRequestService} createRequestService - Serviço responsável por enviar a solicitação de adesivo.
+   * @param {ToastrService} toastrService - Serviço utilizado para exibir mensagens de feedback (sucesso ou erro).
+   * @param {StorageService} storageService - Serviço que acessa os dados armazenados no localStorage, como o ID do usuário.
+   */
   constructor(
     private fb: FormBuilder,
     private createRequestService: CreateRequestService,
@@ -1427,6 +1604,11 @@ export class StickersRequestComponent implements OnInit {
     private storageService: StorageService
   ) { }
 
+
+  /**
+   * Método de ciclo de vida chamado ao inicializar o componente. 
+   * Inicializa o formulário com os controles necessários e suas respectivas validações.
+   */
   ngOnInit(): void {
     this.stickersForm &#x3D; new FormGroup({
       title: new FormControl(&#x27;&#x27;, [Validators.required]),
@@ -1442,6 +1624,10 @@ export class StickersRequestComponent implements OnInit {
     });
   }
 
+  /** 
+   * Getters para facilitar o acesso aos controles do formulário
+   *  
+  */
   get title() { return this.stickersForm.get(&#x27;title&#x27;)!; }
   get width() { return this.stickersForm.get(&#x27;width&#x27;)!; }
   get height() { return this.stickersForm.get(&#x27;height&#x27;)!; }
@@ -1453,11 +1639,18 @@ export class StickersRequestComponent implements OnInit {
   get othersText() { return this.stickersForm.get(&#x27;othersText&#x27;)!; }
   get selectedCompany() { return this.stickersForm.get(&#x27;selectedCompany&#x27;)!; }
 
+  /**
+   * Limpa o formulário e reinicia a lista de empresas selecionadas.
+   */
   clearForm() {
     this.stickersForm.reset();
     this.selectedCompanies &#x3D; [];
   }
 
+  /**
+   * Método acionado quando há mudanças no valor de &quot;stickerType&quot;.
+   * Ajusta as validações para o campo &quot;stickerInformationType&quot; conforme o valor de &quot;stickerType&quot;.
+   */
   onValueChanged() {
     this.stickersForm.get(&#x27;stickerType&#x27;)?.valueChanges.subscribe(value &#x3D;&gt; {
       if (value &#x3D;&#x3D;&#x3D; &#x27;2&#x27;) {
@@ -1469,10 +1662,20 @@ export class StickersRequestComponent implements OnInit {
     });
   }
 
+  /**
+   * Limpa a seleção de empresas quando o tipo de empresa for alterado.
+   * @param {string} type - O tipo de empresa selecionado.
+   */
   onCompanyChange(type: string) {
     this.selectedCompanies &#x3D; [];
   }
 
+  /**
+   * Atualiza a seleção das empresas. Se a empresa já foi selecionada, ela é removida. 
+   * Caso contrário, é adicionada à lista de empresas selecionadas.
+   * @param {number} selectionType - O tipo de seleção (ex: única ou múltiplas empresas).
+   * @param {string} company - O nome da empresa a ser adicionada/removida.
+   */
   updateCompanyName(selectionType: number, company: string) {
     const existingCompany &#x3D; this.selectedCompanies.find(c &#x3D;&gt; c.name &#x3D;&#x3D;&#x3D; company);
     if (existingCompany) {
@@ -1484,6 +1687,9 @@ export class StickersRequestComponent implements OnInit {
       console.log(this.selectedCompanies);
   }
 
+  /**
+   * Alterna a seleção da opção &quot;Outras empresas&quot; no formulário.
+   */
   onOthersCompanies() {
     this.isOtherCompaniesSelected &#x3D; !this.isOtherCompaniesSelected;
     if (!this.isOtherCompaniesSelected) {
@@ -1492,6 +1698,9 @@ export class StickersRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Atualiza a seleção de empresas customizadas inseridas pelo usuário.
+   */
   updateOthersCompanies() {
     const otherValue &#x3D; this.stickersForm.get(&#x27;othersText&#x27;)?.value;
     if (otherValue) {
@@ -1508,6 +1717,10 @@ export class StickersRequestComponent implements OnInit {
       console.log(this.selectedCompanies);
   }
 
+  /**
+   * Confirma a adição de uma empresa customizada.
+   * @returns {void}
+   */
   confirmOtherMultiCompany() {
     const otherCompany &#x3D; this.stickersForm.get(&#x27;othersText&#x27;)?.value;
     if (otherCompany &amp;&amp; !this.selectedCompanies.some(c &#x3D;&gt; c.name &#x3D;&#x3D;&#x3D; otherCompany)) {
@@ -1519,6 +1732,10 @@ export class StickersRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Remove uma empresa da lista de empresas selecionadas.
+   * @param {Partial&lt;CompanyDetails&gt;} company - A empresa a ser removida.
+   */
   removeCompany(company: Partial&lt;CompanyDetails&gt;) {
     const index &#x3D; this.selectedCompanies.findIndex((c) &#x3D;&gt; c.name &#x3D;&#x3D;&#x3D; company.name);
     if (index &gt;&#x3D; 0) {
@@ -1526,6 +1743,9 @@ export class StickersRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Converte a lista de empresas selecionadas para o formato necessário para enviar a solicitação.
+   */
   saveCompanies(companies: Partial&lt;CompanyDetails&gt;[]) {
     this.sendCompanies &#x3D; [];
     this.sendOthersCompanies &#x3D; [];
@@ -1543,6 +1763,10 @@ export class StickersRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Envia a solicitação de adesivo após validar o formulário e as empresas selecionadas.
+   * Caso haja algum erro, exibe uma mensagem de erro para o usuário.
+   */
   submit() {
     this.saveCompanies(this.selectedCompanies);
     if (this.stickersForm.invalid || this.selectedCompanies.length &#x3D;&#x3D; 0) {
@@ -1836,7 +2060,7 @@ export class StickersRequestComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div class="conatiner d-flex flex-column p-3 mb-4 scroll-bar overflow-custom">  <form [formGroup]="stickersForm" (ngSubmit)="submit()" #formDir="ngForm">    <div class="row pb-4">      <div class="col-lg-6 col-md-12 row pb-4">        <div class="form-group pt-3">          <label class="fw-bold" for="title">Título *</label>          <textarea [backgroundColorClass]="\'#ebebeb\'" id="title" formControlName="title" type="text"            class="form-control border-dark-subtle rounded-3 form-focus"            placeholder="Escreva o título da solicitação"></textarea>        </div>        <div *ngIf="title.invalid && formDir.submitted" class="validation-warning">          <p>Por favor, informe o título.</p>        </div>      </div>      <div class="col-lg-6 col-md-12">        <div class="form-group pt-3">          <label class="fw-bold" for="description">Descrição *</label>          <textarea [backgroundColorClass]="\'#ebebeb\'" id="description" required formControlName="description"            type="text" class="form-control border-dark-subtle rounded-3 form-focus"            placeholder="Escreva a descrição da solicitação"></textarea>        </div>        <div *ngIf="description.invalid && formDir.submitted" class="validation-warning">          <p>A descrição da solicitação é obrigatória. Escreva uma breve descrição da placa.</p>        </div>      </div>    </div>    <div class="row border-bottom">      <div class="col-lg-5 col-sm-12 form-group pt-3">        <label class="fw-bold">Medida *</label>        <div class="d-flex align-items-center w-75 mb-2">          <div class="d-flex flex-column">            <label>Largura</label>            <input [backgroundColorClass]="\'#ebebeb\'" type="text"              class="border border-dark-subtle p-1 rounded-3 me-2 w-100 form-focus" placeholder="cm" required              formControlName="width" />          </div>          <div class="pt-4">            <span class="mx-3">X</span>          </div>          <div class="d-flex flex-column">            <label>Altura</label>            <input [backgroundColorClass]="\'#ebebeb\'" type="text"              class="border border-dark-subtle p-1 rounded-3 me-2 w-100 form-focus" placeholder="cm" required              formControlName="height" />          </div>        </div>        <div *ngIf="(width.invalid || height.invalid) && formDir.submitted" class="validation-warning">          <p>Informe as medidas completas da placa (largura e altura) em centímetros.</p>        </div>        <div *ngIf="(width.errors?.[\'pattern\'] || height.errors?.[\'pattern\']) && formDir.submitted"          class="validation-warning">          <p>As medidas devem conter apenas números.</p>        </div>      </div>      <div class="col-lg-7 col-sm-12 row pb-4 pt-2">        <div class="row pb-4 pt-2">          <div class="col-lg-5 col-sm-6">            <div class="form-group pt-3">              <label class="fw-bold" for="stickerType">Adesivo *</label>              <select [backgroundColorClass]="\'#ebebeb\'" id="stickerType"                class="form-select border-dark-subtle rounded-3 form-focus w-100" formControlName="stickerType"                (change)="onValueChanged()">                <option value="1">Plotagem de veículos</option>                <option value="2">Adesivos informativos</option>              </select>            </div>            <div *ngIf="stickerType.invalid  && formDir.submitted" class="validation-warning">              <p>Selecione qual o modelo do adesivo</p>            </div>          </div>          <div *ngIf="stickerType.value === \'2\'" class="row col-lg-7 col-sm-6">            <div class="form-group pt-3">              <div class="title">                <p class="fw-bold">Tipo *</p>              </div>              <div class="d-flex flex-wrap">                <div class="form-check me-3 mb-2">                  <input [borderColorClass]="\'#027373\'" class="form-check-input" type="radio" id="leitoso"                    formControlName="stickerInformationType" value="1">                  <label class="form-check-label" for="leitoso">Leitoso</label>                </div>                <div class="form-check me-3 mb-2">                  <input [borderColorClass]="\'#027373\'" class="form-check-input" type="radio" id="jateado"                    formControlName="stickerInformationType" value="2">                  <label class="form-check-label" for="jateado">Jateado</label>                </div>                <div class="form-check me-3 mb-2">                  <input [borderColorClass]="\'#027373\'" class="form-check-input" type="radio" id="perfurado"                    formControlName="stickerInformationType" value="3">                  <label class="form-check-label" for="perfurado">Perfurado</label>                </div>              </div>              <div *ngIf="stickerType.value === \'2\' && stickerInformationType.invalid && formDir.submitted"                class="validation-warning">                <p>Selecione o tipo do adesivo</p>              </div>            </div>          </div>        </div>      </div>    </div>    <div>      <div class="row mt-5 border-bottom pb-4">        <div class="col-12">          <p class="fw-bold">Selecione as Empresas *</p>        </div>        <div class="col-12 d-flex flex-wrap gap-3">          <div class="form-check">            <input [borderColorClass]="\'#027373\'" class="form-check-input" type="checkbox" id="rotaMulti"              formControlName="selectedCompany" (change)="updateCompanyName(2, \'Rota Transportes\')">            <label class="form-check-label" for="rotaMulti">Rota Transportes</label>          </div>          <div class="form-check">            <input [borderColorClass]="\'#027373\'" class="form-check-input" type="checkbox" id="cidadeSolMulti"              formControlName="selectedCompany" (change)="updateCompanyName(2, \'Cidade Sol\')">            <label class="form-check-label" for="cidadeSolMulti">Cidade Sol</label>          </div>          <div class="form-check">            <input [borderColorClass]="\'#027373\'" class="form-check-input" type="checkbox" id="brasileiroMulti"              formControlName="selectedCompany" (change)="updateCompanyName(2, \'Brasileiro\')">            <label class="form-check-label" for="brasileiroMulti">Brasileiro</label>          </div>          <div class="form-check">            <input [borderColorClass]="\'#027373\'" class="form-check-input" type="checkbox" id="viaMetroMulti"              formControlName="selectedCompany" (change)="updateCompanyName(2, \'Via Metro\')">            <label class="form-check-label" for="viaMetroMulti">Via Metro</label>          </div>          <div class="form-check">            <input [borderColorClass]="\'#027373\'" class="form-check-input" type="checkbox" id="cidadeRealMulti"              formControlName="selectedCompany" (change)="updateCompanyName(2, \'Cidade Real\')">            <label class="form-check-label" for="cidadeRealMulti">Cidade Real</label>          </div>          <div class="form-check">            <input [borderColorClass]="\'#027373\'" class="form-check-input" type="checkbox" id="paumaMulti"              formControlName="selectedCompany" (change)="updateCompanyName(2, \'Pauma\')">            <label class="form-check-label" for="paumaMulti">Pauma</label>          </div>          <div class="form-check d-flex align-items-center">            <input [borderColorClass]="\'#027373\'" class="form-check-input" type="checkbox" id="otherMulti"              formControlName="selectedCompany" (change)="onOthersCompanies()">            <label class="form-check-label ms-2" for="otherMulti">Outras</label>            <input *ngIf="isOtherCompaniesSelected" type="text" class="form-control ms-2"              placeholder="Especificar empresa" formControlName="othersText" (change)="updateOthersCompanies()">            <button [backgroundColorClass]="\'#027373\'" *ngIf="isOtherCompaniesSelected" type="button"              class="btn btn-sm text-white ms-2" (click)="confirmOtherMultiCompany()">OK</button>          </div>        </div>        <div *ngIf="selectedCompanies.length == 0  && formDir.submitted" class="validation-warning">          <p>Ao menos uma empresa deve ser selecionada.</p>        </div>      </div>    </div>    <div *ngIf="selectedCompanies.length != 0" class="row mt-5 border-bottom pb-4">      <div>        <p class="fw-bold">Empresas Selecionadas</p>      </div>      <div class="d-flex flex-wrap gap-2">        <div *ngFor="let company of selectedCompanies" [backgroundColorClass]="\'#ebebeb\'"          class="d-flex align-items-center border border-dark-subtle rounded px-3 py-2">          <p class="fw-bold mb-0 me-3">            {{ company.name }}          </p>          <button *ngIf="company.isCustom" [backgroundColorClass]="\'#ff6f6f\'" class="btn btn-sm text-white border-0"            type="button" (click)="removeCompany(company)">            Remover          </button>        </div>      </div>    </div>    <div class="row">      <div class="form-group pt-3 w-100 py-3">        <label class="fw-bold" for="sector">Setor *</label>        <textarea [backgroundColorClass]="\'#ebebeb\'" id="sector" required formControlName="sector" type="text"          class="form-control border-dark-subtle rounded-3 form-focus" placeholder="Escreva aqui"></textarea>      </div>      <div *ngIf="sector.invalid  && formDir.submitted" class="validation-warning">        <p>Por favor, informe o setor.</p>      </div>    </div>    <div class="row">      <div class="form-group pt-3 w-100 py-3">        <label class="fw-bold" for="observations">Observações</label>        <textarea [backgroundColorClass]="\'#ebebeb\'" id="observations" formControlName="observations" type="text"          class="form-control border-dark-subtle rounded-3 form-focus" placeholder="Escreva aqui"></textarea>      </div>    </div>    <div class="d-flex gap-3 justify-content-end pt-2">      <button type="reset" (click)="clearForm()" class="btn btn-outline-danger">Redefinir Formulário</button>      <button [disabled]="isButtonDisabled" [backgroundColorClass]="\'#027373\'" type="submit"        class="btn text-white">Enviar</button>    </div>  </form></div></div>'
-    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidenavComponent', 'selector': 'app-sidenav'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
+    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
     var DIRECTIVES = [{'name': 'CapitalizeDirective', 'selector': '[appCapitalize]'},{'name': 'ColorClassDirective', 'selector': '[colorClass], [backgroundColorClass], [borderColorClass]'},{'name': 'DndDirective', 'selector': '[appDndDirective]'},{'name': 'PhoneMaskDirective', 'selector': '[appPhoneMask]'}];
     var ACTUAL_COMPONENT = {'name': 'StickersRequestComponent'};
 </script>

@@ -120,6 +120,16 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente responsável pelo registro de novos usuários no sistema.</p>
+<p>Este componente apresenta um formulário com validações para capturar os dados do usuário,
+como nome, sobrenome, email, senha, telefone, setor, função e NOP/Agência.
+Também valida um token de registro antes de permitir o cadastro.</p>
+
+    </p>
 
 
     <p class="comment">
@@ -273,12 +283,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/modules/core/register/component/register.component.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/modules/core/register/component/register.component.ts:36</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Construtor do componente.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -287,6 +299,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -301,6 +314,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço de rota ativa para acessar os parâmetros da URL.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>registerService</td>
@@ -313,6 +330,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço responsável pelas operações de registro do usuário.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>toastrService</td>
@@ -325,6 +346,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço para exibir notificações de sucesso ou erro para o usuário.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>router</td>
@@ -337,6 +362,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço para navegação entre rotas.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -376,14 +405,21 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="27"
-                                    class="link-to-prism">src/app/modules/core/register/component/register.component.ts:27</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="60"
+                                    class="link-to-prism">src/app/modules/core/register/component/register.component.ts:60</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método do ciclo de vida executado ao inicializar o componente.</p>
+<ul>
+<li>Extrai o token de registro dos parâmetros da URL.</li>
+<li>Verifica a validade do token de registro.</li>
+<li>Inicializa o formulário de registro com os campos e suas validações.</li>
+</ul>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -413,14 +449,21 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="89"
-                                    class="link-to-prism">src/app/modules/core/register/component/register.component.ts:89</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="161"
+                                    class="link-to-prism">src/app/modules/core/register/component/register.component.ts:161</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Envia os dados do formulário de registro.</p>
+<ul>
+<li>Verifica se o formulário é válido.</li>
+<li>Prepara o objeto <code>I_User_Request</code> com os dados do usuário e do funcionário.</li>
+<li>Chama o serviço de registro e lida com o sucesso ou erro da operação.</li>
+</ul>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -460,10 +503,17 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/modules/core/register/component/register.component.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/modules/core/register/component/register.component.ts:32</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indica se o botão de envio está desativado.
+Utilizado para prevenir múltiplos envios do formulário.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -486,10 +536,17 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/modules/core/register/component/register.component.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/modules/core/register/component/register.component.ts:27</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Representa o formulário de registro do usuário.
+Contém campos validados como <code>name</code>, <code>lastname</code>, <code>email</code>, <code>password</code>, <code>phone</code>, <code>sector</code>, <code>occupation</code>, e <code>nop</code>.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -512,10 +569,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/modules/core/register/component/register.component.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/modules/core/register/component/register.component.ts:36</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Token de registro extraído dos parâmetros da URL, verificado antes de permitir o registro.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -541,9 +604,18 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/modules/core/register/component/register.component.ts:64</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/app/modules/core/register/component/register.component.ts:101</a></div>
                                 </td>
                             </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Obtém o controlador do campo <code>name</code>.</p>
+</div>
+
+                                <div>
+                                </div>
+                        </td>
+                    </tr>
 
             </tbody>
         </table>
@@ -563,9 +635,18 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/app/modules/core/register/component/register.component.ts:67</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">src/app/modules/core/register/component/register.component.ts:108</a></div>
                                 </td>
                             </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Obtém o controlador do campo <code>lastname</code>.</p>
+</div>
+
+                                <div>
+                                </div>
+                        </td>
+                    </tr>
 
             </tbody>
         </table>
@@ -585,9 +666,18 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/app/modules/core/register/component/register.component.ts:70</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">src/app/modules/core/register/component/register.component.ts:115</a></div>
                                 </td>
                             </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Obtém o controlador do campo <code>email</code>.</p>
+</div>
+
+                                <div>
+                                </div>
+                        </td>
+                    </tr>
 
             </tbody>
         </table>
@@ -607,9 +697,18 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="73" class="link-to-prism">src/app/modules/core/register/component/register.component.ts:73</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="122" class="link-to-prism">src/app/modules/core/register/component/register.component.ts:122</a></div>
                                 </td>
                             </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Obtém o controlador do campo <code>password</code>.</p>
+</div>
+
+                                <div>
+                                </div>
+                        </td>
+                    </tr>
 
             </tbody>
         </table>
@@ -629,9 +728,18 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="76" class="link-to-prism">src/app/modules/core/register/component/register.component.ts:76</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="129" class="link-to-prism">src/app/modules/core/register/component/register.component.ts:129</a></div>
                                 </td>
                             </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Obtém o controlador do campo <code>phone</code>.</p>
+</div>
+
+                                <div>
+                                </div>
+                        </td>
+                    </tr>
 
             </tbody>
         </table>
@@ -651,9 +759,18 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/app/modules/core/register/component/register.component.ts:79</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="136" class="link-to-prism">src/app/modules/core/register/component/register.component.ts:136</a></div>
                                 </td>
                             </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Obtém o controlador do campo <code>sector</code>.</p>
+</div>
+
+                                <div>
+                                </div>
+                        </td>
+                    </tr>
 
             </tbody>
         </table>
@@ -673,9 +790,18 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="82" class="link-to-prism">src/app/modules/core/register/component/register.component.ts:82</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="143" class="link-to-prism">src/app/modules/core/register/component/register.component.ts:143</a></div>
                                 </td>
                             </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Obtém o controlador do campo <code>occupation</code>.</p>
+</div>
+
+                                <div>
+                                </div>
+                        </td>
+                    </tr>
 
             </tbody>
         </table>
@@ -695,9 +821,18 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/app/modules/core/register/component/register.component.ts:85</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="150" class="link-to-prism">src/app/modules/core/register/component/register.component.ts:150</a></div>
                                 </td>
                             </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Obtém o controlador do campo <code>nop</code>.</p>
+</div>
+
+                                <div>
+                                </div>
+                        </td>
+                    </tr>
 
             </tbody>
         </table>
@@ -715,33 +850,66 @@ import { HttpErrorResponse } from &#x27;@angular/common/http&#x27;;
 import { ActivatedRoute, Router } from &#x27;@angular/router&#x27;;
 import { I_User_Request } from &#x27;../../../shared/interfaces/user/form/user-details-form&#x27;;
 
+/**
+ * Componente responsável pelo registro de novos usuários no sistema.
+ * 
+ * Este componente apresenta um formulário com validações para capturar os dados do usuário,
+ * como nome, sobrenome, email, senha, telefone, setor, função e NOP/Agência.
+ * Também valida um token de registro antes de permitir o cadastro.
+ */
 @Component({
   selector: &#x27;app-register&#x27;,
   templateUrl: &#x27;./register.component.html&#x27;,
   styleUrl: &#x27;./register.component.css&#x27;,
 })
 export class RegisterComponent implements OnInit {
+  /**
+   * Representa o formulário de registro do usuário.
+   * Contém campos validados como &#x60;name&#x60;, &#x60;lastname&#x60;, &#x60;email&#x60;, &#x60;password&#x60;, &#x60;phone&#x60;, &#x60;sector&#x60;, &#x60;occupation&#x60;, e &#x60;nop&#x60;.
+   */
   registerForm!: FormGroup;
+  /**
+   * Indica se o botão de envio está desativado.
+   * Utilizado para prevenir múltiplos envios do formulário.
+   */
   isButtonDisabled: boolean &#x3D; false;
+  /**
+   * Token de registro extraído dos parâmetros da URL, verificado antes de permitir o registro.
+   */
   token!: string;
 
+  /**
+   * Construtor do componente.
+   * 
+   * @param route Serviço de rota ativa para acessar os parâmetros da URL.
+   * @param registerService Serviço responsável pelas operações de registro do usuário.
+   * @param toastrService Serviço para exibir notificações de sucesso ou erro para o usuário.
+   * @param router Serviço para navegação entre rotas.
+   */
   constructor(
     private route: ActivatedRoute,
     private registerService: LoginRegisterService,
     private toastrService: ToastrService,
     private router: Router
-  ) {}
+  ) { }
 
+  /**
+   * Método do ciclo de vida executado ao inicializar o componente.
+   * 
+   * - Extrai o token de registro dos parâmetros da URL.
+   * - Verifica a validade do token de registro.
+   * - Inicializa o formulário de registro com os campos e suas validações.
+   */
   ngOnInit(): void {
     this.route.queryParams.subscribe((params) &#x3D;&gt; {
       this.token &#x3D; params[&#x27;token&#x27;];
     });
     this.registerService.verifyToken(this.token).subscribe({
-      next: (res) &#x3D;&gt; { this.toastrService.success(res.message)},
+      next: (res) &#x3D;&gt; { this.toastrService.success(res.message) },
       error: (error: HttpErrorResponse) &#x3D;&gt; {
         this.toastrService.error(error.error.message);
         this.router.navigate([&#x27;/&#x27;]);
-       }
+      }
     })
     this.registerForm &#x3D; new FormGroup({
       name: new FormControl(&#x27;&#x27;, [
@@ -769,31 +937,70 @@ export class RegisterComponent implements OnInit {
     });
   }
 
+  /**
+   * Obtém o controlador do campo &#x60;name&#x60;.
+   * @returns {FormControl} Controlador do campo &#x60;name&#x60;.
+   */
   get name() {
     return this.registerForm.get(&#x27;name&#x27;)!;
   }
+  /**
+   * Obtém o controlador do campo &#x60;lastname&#x60;.
+   * @returns {FormControl} Controlador do campo &#x60;lastname&#x60;.
+   */
   get lastname() {
     return this.registerForm.get(&#x27;lastname&#x27;)!;
   }
+  /**
+   * Obtém o controlador do campo &#x60;email&#x60;.
+   * @returns {FormControl} Controlador do campo &#x60;email&#x60;.
+   */
   get email() {
     return this.registerForm.get(&#x27;email&#x27;)!;
   }
+  /**
+   * Obtém o controlador do campo &#x60;password&#x60;.
+   * @returns {FormControl} Controlador do campo &#x60;password&#x60;.
+   */
   get password() {
     return this.registerForm.get(&#x27;password&#x27;)!;
   }
+  /**
+   * Obtém o controlador do campo &#x60;phone&#x60;.
+   * @returns {FormControl} Controlador do campo &#x60;phone&#x60;.
+   */
   get phone() {
     return this.registerForm.get(&#x27;phone&#x27;)!;
   }
+  /**
+   * Obtém o controlador do campo &#x60;sector&#x60;.
+   * @returns {FormControl} Controlador do campo &#x60;sector&#x60;.
+   */
   get sector() {
     return this.registerForm.get(&#x27;sector&#x27;)!;
   }
+  /**
+   * Obtém o controlador do campo &#x60;occupation&#x60;.
+   * @returns {FormControl} Controlador do campo &#x60;occupation&#x60;.
+   */
   get occupation() {
     return this.registerForm.get(&#x27;occupation&#x27;)!;
   }
+  /**
+   * Obtém o controlador do campo &#x60;nop&#x60;.
+   * @returns {FormControl} Controlador do campo &#x60;nop&#x60;.
+   */
   get nop() {
     return this.registerForm.get(&#x27;nop&#x27;)!;
   }
 
+  /**
+ * Envia os dados do formulário de registro.
+ * 
+ * - Verifica se o formulário é válido.
+ * - Prepara o objeto &#x60;I_User_Request&#x60; com os dados do usuário e do funcionário.
+ * - Chama o serviço de registro e lida com o sucesso ou erro da operação.
+ */
   submit() {
     if (this.registerForm.invalid) {
       this.toastrService.error(
@@ -990,7 +1197,7 @@ export class RegisterComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><section class="system-form">  <div class="container-fluid h-100">    <div class="row d-flex justify-content-center align-items-center min-vh-100">      <div class="col-xl-4 col-lg-6 col-md-8 col-sm-10">        <div class="card d-flex justify-content-center align-items-center rounded-4 shadow-custom">          <div class="card-body d-flex flex-column justify-content-center w-100">            <div class="d-flex justify-content-center align-items-center mb-3">              <div class="col-6">                <img class="img-fluid" src="/assets/images/logo-grupobrasileiro.png" alt="logo grupo brasileiro">              </div>              <div class="col-6">                <img class="img-fluid" src="/assets/images/logo-mktGB-color.svg" alt="logo grupo brasileiro">              </div>            </div>            <form (ngSubmit)="submit()" [formGroup]="registerForm" #formDir="ngForm" class="w-100">              <div class="row">                <div class="col-md-6 mb-2">                  <div class="form-outline">                    <input type="text" class="form-control form-focus border-0 border-bottom border-2 w-100"                      placeholder="Nome" formControlName="name" required />                    <div                      *ngIf="registerForm.get(\'name\')?.invalid && (registerForm.get(\'name\')?.touched || formDir.submitted)"                      class="validation-warning">                      <p *ngIf="registerForm.get(\'name\')?.errors?.[\'required\']">O nome é obrigatório!</p>                      <p *ngIf="registerForm.get(\'name\')?.errors?.[\'pattern\']">O nome deve ter no mínimo 3 letras e não                        pode                        conter números ou caracteres especiais!</p>                    </div>                  </div>                </div>                <div class="col-md-6 mb-2">                  <div class="form-outline">                    <input type="text" class="form-control form-focus border-0 border-bottom border-2 w-100"                      placeholder="Sobrenome" formControlName="lastname" required />                    <div                      *ngIf="registerForm.get(\'lastname\')?.invalid && (registerForm.get(\'lastname\')?.touched || formDir.submitted)"                      class="validation-warning">                      <p *ngIf="registerForm.get(\'lastname\')?.errors?.[\'required\']">O sobrenome é obrigatório!</p>                      <p *ngIf="registerForm.get(\'lastname\')?.errors?.[\'pattern\']">O sobrenome deve ter no mínimo 3                        letras e não                        pode conter números ou caracteres especiais!</p>                    </div>                  </div>                </div>              </div>              <div class="form-outline mb-2">                <input type="email" class="form-control form-focus border-0 border-bottom border-2 w-100"                  placeholder="E-mail" formControlName="email" autocomplete="off" required />                <div *ngIf="email.invalid && formDir.submitted" class="validation-warning">                  <p *ngIf="email.errors?.[\'required\']">O email é obrigatório!</p>                  <p *ngIf="email.errors?.[\'email\']">Digite um e-mail válido!</p>                </div>              </div>              <div class="form-outline mb-2">                <input type="password" class="form-control form-focus border-0 border-bottom border-2 w-100"                  placeholder="Senha" formControlName="password" autocomplete="new-password" required />                <div *ngIf="password.invalid && formDir.submitted" class="validation-warning">                  <p *ngIf="password.errors?.[\'required\']">A senha é obrigatória!</p>                  <p *ngIf="password.errors?.[\'pattern\']">Sua senha deve ter pelo menos 8 caracteres, incluindo uma                    letra                    maiúscula, uma letra minúscula, um número e um caractere especial.</p>                </div>              </div>              <div class="form-outline mb-2">                <input type="text" class="form-control form-focus border-0 border-bottom border-2 w-100"                  placeholder="Telefone" formControlName="phone" appPhoneMask required />                <div *ngIf="phone.invalid && formDir.submitted" class="validation-warning">                  <p *ngIf="phone.errors?.[\'required\']">O telefone é obrigatório!</p>                  <p *ngIf="phone.errors?.[\'pattern\']">Por favor, insira um número de telefone válido no formato (XX)                    XXXXX-XXXX ou                    (XX) XXXX-XXXX.</p>                </div>              </div>              <div class="row">                <div class="col-md-6 mb-2">                  <div class="form-outline">                    <input type="text" class="form-control form-focus border-0 border-bottom border-2 w-100"                      placeholder="Setor/Departamento" formControlName="sector" required />                    <div *ngIf="sector.invalid && formDir.submitted" class="validation-warning">                      <p>O setor é obrigatório!</p>                    </div>                  </div>                </div>                <div class="col-md-6 mb-2">                  <div class="form-outline">                    <input type="text" class="form-control form-focus border-0 border-bottom border-2 w-100"                      placeholder="Função" formControlName="occupation" required />                    <div *ngIf="occupation.invalid && formDir.submitted" class="validation-warning">                      <p>A função é obrigatória!</p>                    </div>                  </div>                </div>              </div>              <div class="form-outline mb-2">                <input type="text" class="form-control form-focus border-0 border-bottom border-2 w-100"                  placeholder="Núcleo Operacional de Origem/Agência" formControlName="nop" required />                <div *ngIf="nop.invalid && formDir.submitted" class="validation-warning">                  <p>O NOP/Agência é obrigatório!</p>                </div>              </div>              <div class="text-center py-2">                <button [disabled]="isButtonDisabled" [backgroundColorClass]="\'#027373\'"                  class="btn btn-block bg-hover text-white shadow rounded-4 mb-3 py-2 w-100"                  type="submit">Cadastrar</button>                <a class="text-muted text-decoration-none text-custom" routerLink="/login">Já estou cadastrado!</a>              </div>            </form>          </div>        </div>      </div>    </div>  </div></section></div>'
-    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidenavComponent', 'selector': 'app-sidenav'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
+    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
     var DIRECTIVES = [{'name': 'CapitalizeDirective', 'selector': '[appCapitalize]'},{'name': 'ColorClassDirective', 'selector': '[colorClass], [backgroundColorClass], [borderColorClass]'},{'name': 'DndDirective', 'selector': '[appDndDirective]'},{'name': 'PhoneMaskDirective', 'selector': '[appPhoneMask]'}];
     var ACTUAL_COMPONENT = {'name': 'RegisterComponent'};
 </script>

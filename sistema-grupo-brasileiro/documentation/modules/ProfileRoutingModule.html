@@ -134,7 +134,15 @@ import { UserDataComponent } from &quot;../user-data/user-data.component&quot;;
 import { EditUserDataComponent } from &quot;../edit-user-data/edit-user-data.component&quot;;
 import { NgModule } from &quot;@angular/core&quot;;
 
-
+/**
+ * Definição das rotas do módulo de Perfil.
+ * - &#x60;meus-dados&#x60;: Rota para exibir os dados do usuário.
+ * - &#x60;editar&#x60;: Rota para a edição de informações de perfil do usuário.
+ * - &#x60;segurança&#x60;: Rota para exibir as configurações de segurança do perfil.
+ * - &#x60;notificacoes&#x60;: Rota para exibir as preferências de notificações do usuário.
+ * - &#x60;historico&#x60;: Rota para exibir o histórico de atividades do perfil.
+ * - Redirecionamento padrão: Redireciona para &#x60;meus-dados&#x60; se nenhuma rota for especificada.
+ */
 const routes: Routes &#x3D; [
   {
     path: &#x27;meus-dados&#x27;,
@@ -163,6 +171,10 @@ const routes: Routes &#x3D; [
   },
 ];
 
+/**
+ * Módulo de roteamento para a funcionalidade de Perfil.
+ * Responsável por configurar e exportar as rotas relacionadas ao perfil do usuário.
+ */
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]

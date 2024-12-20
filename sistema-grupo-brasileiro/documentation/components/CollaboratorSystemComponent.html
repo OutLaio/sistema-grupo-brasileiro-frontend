@@ -120,6 +120,15 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente responsável pelo sistema de colaboradores.
+Controla a exibição de formulários, navegação com base em permissões de usuário,
+e a responsividade para dispositivos móveis.</p>
+
+    </p>
 
 
 
@@ -254,12 +263,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/modules/feature/collaborator/collaborator-system/component/collaborator-system.component.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/modules/feature/collaborator/collaborator-system/component/collaborator-system.component.ts:25</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Construtor que injeta os serviços necessários.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -268,6 +279,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -282,6 +294,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço para gerenciar o armazenamento local e verificar informações do usuário.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>router</td>
@@ -294,6 +310,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço para navegação entre rotas.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -328,12 +348,20 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="28"
-                                    class="link-to-prism">src/app/modules/feature/collaborator/collaborator-system/component/collaborator-system.component.ts:28</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="54"
+                                    class="link-to-prism">src/app/modules/feature/collaborator/collaborator-system/component/collaborator-system.component.ts:54</a></div>
                         </td>
                     </tr>
 
 
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Escuta eventos de redimensionamento da janela.
+Atualiza a propriedade <code>isMobile</code> sempre que a janela é redimensionada.</p>
+</div>
+
+                </td>
+            </tr>
         </tbody>
     </table>
 </section>
@@ -364,14 +392,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="32"
-                                    class="link-to-prism">src/app/modules/feature/collaborator/collaborator-system/component/collaborator-system.component.ts:32</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="62"
+                                    class="link-to-prism">src/app/modules/feature/collaborator/collaborator-system/component/collaborator-system.component.ts:62</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Verifica se o dispositivo é mobile com base na largura da janela.
+Define 768px como ponto de corte para dispositivos móveis.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -401,14 +432,18 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="20"
-                                    class="link-to-prism">src/app/modules/feature/collaborator/collaborator-system/component/collaborator-system.component.ts:20</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="42"
+                                    class="link-to-prism">src/app/modules/feature/collaborator/collaborator-system/component/collaborator-system.component.ts:42</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método de inicialização do componente.
+Verifica o papel do usuário e redireciona caso ele não seja supervisor.
+Também chama a função para determinar se o dispositivo é mobile.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -447,14 +482,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="28"
-                                    class="link-to-prism">src/app/modules/feature/collaborator/collaborator-system/component/collaborator-system.component.ts:28</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="54"
+                                    class="link-to-prism">src/app/modules/feature/collaborator/collaborator-system/component/collaborator-system.component.ts:54</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Escuta eventos de redimensionamento da janela.
+Atualiza a propriedade <code>isMobile</code> sempre que a janela é redimensionada.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -484,14 +522,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="36"
-                                    class="link-to-prism">src/app/modules/feature/collaborator/collaborator-system/component/collaborator-system.component.ts:36</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="69"
+                                    class="link-to-prism">src/app/modules/feature/collaborator/collaborator-system/component/collaborator-system.component.ts:69</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Exibe o formulário no layout, ocultando a lista.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -521,14 +561,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="40"
-                                    class="link-to-prism">src/app/modules/feature/collaborator/collaborator-system/component/collaborator-system.component.ts:40</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="76"
+                                    class="link-to-prism">src/app/modules/feature/collaborator/collaborator-system/component/collaborator-system.component.ts:76</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Exibe a lista no layout, ocultando o formulário.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -568,10 +610,17 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/modules/feature/collaborator/collaborator-system/component/collaborator-system.component.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/modules/feature/collaborator/collaborator-system/component/collaborator-system.component.ts:21</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Controla a visibilidade do formulário.
+Quando verdadeiro, o formulário é exibido; caso contrário, exibe a lista.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -599,10 +648,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/modules/feature/collaborator/collaborator-system/component/collaborator-system.component.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/modules/feature/collaborator/collaborator-system/component/collaborator-system.component.ts:25</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indica se o dispositivo atual é classificado como mobile.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -617,20 +672,42 @@ import { LoginRegisterService } from &#x27;../../../../services/login-register/l
 import { Router } from &#x27;@angular/router&#x27;;
 import { StorageService } from &#x27;../../../../services/storage/storage.service&#x27;;
 
+/**
+ * Componente responsável pelo sistema de colaboradores.
+ * Controla a exibição de formulários, navegação com base em permissões de usuário,
+ * e a responsividade para dispositivos móveis.
+ */
 @Component({
 	selector: &#x27;app-collaborator-system&#x27;,
 	templateUrl: &#x27;./collaborator-system.component.html&#x27;,
 	styleUrl: &#x27;./collaborator-system.component.css&#x27;
 })
 export class CollaboratorSystemComponent {
+	/**
+	 * Controla a visibilidade do formulário.
+	 * Quando verdadeiro, o formulário é exibido; caso contrário, exibe a lista.
+	 */
+	isFormVisible: boolean &#x3D; true;
+  /**
+   * Indica se o dispositivo atual é classificado como mobile.
+   */
+	isMobile: boolean &#x3D; false;
+
+  /**
+   * Construtor que injeta os serviços necessários.
+   * @param storageService Serviço para gerenciar o armazenamento local e verificar informações do usuário.
+   * @param router Serviço para navegação entre rotas.
+   */
 	constructor(
 		private storageService: StorageService,
 		private router: Router
-	) {}
+	) { }
 
-	isFormVisible: boolean &#x3D; true;
-	isMobile: boolean &#x3D; false;
-
+  /**
+   * Método de inicialização do componente. 
+   * Verifica o papel do usuário e redireciona caso ele não seja supervisor.
+   * Também chama a função para determinar se o dispositivo é mobile.
+   */
 	ngOnInit() {
 		if (this.storageService.getUserRole() !&#x3D;&#x3D; &#x27;ROLE_SUPERVISOR&#x27;) {
 			this.router.navigate([&#x27;/acompanhamento&#x27;]);
@@ -638,19 +715,33 @@ export class CollaboratorSystemComponent {
 		this.checkIfMobile(); // Verificar se é mobile ao iniciar
 	}
 
+  /**
+   * Escuta eventos de redimensionamento da janela.
+   * Atualiza a propriedade &#x60;isMobile&#x60; sempre que a janela é redimensionada.
+   */
 	@HostListener(&#x27;window:resize&#x27;, [])
 	onResize() {
 		this.checkIfMobile();
 	}
 
+  /**
+   * Verifica se o dispositivo é mobile com base na largura da janela.
+   * Define 768px como ponto de corte para dispositivos móveis.
+   */
 	private checkIfMobile() {
 		this.isMobile &#x3D; window.innerWidth &lt;&#x3D; 768; // Define 768px como ponto de corte para mobile
 	}
 
+  /**
+   * Exibe o formulário no layout, ocultando a lista.
+   */
 	showForm() {
 		this.isFormVisible &#x3D; true;
 	}
 
+  /**
+   * Exibe a lista no layout, ocultando o formulário.
+   */
 	showList() {
 		this.isFormVisible &#x3D; false;
 	}
@@ -721,7 +812,7 @@ export class CollaboratorSystemComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div class="container-fluid">    <div class="row d-flex justify-content-center h-100">        <div class="col-12">            <div class="card text-black shadow-custom">                <div class="card-body">                    <div *ngIf="isMobile" class="row pb-3 border-bottom mx-auto">                        <div class="col-6 text-center">                            <button class="btn w-100 text-white"                                [ngClass]="{\'active bg-color-menu\': isFormVisible, \'text-muted\': !isFormVisible}"                                (click)="showForm()">Cadastrar Colaborador</button>                        </div>                        <div class="col-6 text-center">                            <button class="btn w-100 text-white"                                [ngClass]="{\'active bg-color-menu\': !isFormVisible, \'text-muted\': isFormVisible}"                                (click)="showList()">Verificar Colaboradores</button>                        </div>                    </div>                    <div class="d-flex col-12">                        <div class="col-md-4 border-end" *ngIf="isFormVisible || !isMobile">                            <div class="me-3">                                <app-register-collaborator></app-register-collaborator>                            </div>                        </div>                        <div class="col-md-8" *ngIf="!isFormVisible || !isMobile">                            <app-list-collaborators></app-list-collaborators>                        </div>                    </div>                </div>            </div>        </div>    </div></div></div>'
-    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidenavComponent', 'selector': 'app-sidenav'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
+    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
     var DIRECTIVES = [{'name': 'CapitalizeDirective', 'selector': '[appCapitalize]'},{'name': 'ColorClassDirective', 'selector': '[colorClass], [backgroundColorClass], [borderColorClass]'},{'name': 'DndDirective', 'selector': '[appDndDirective]'},{'name': 'PhoneMaskDirective', 'selector': '[appPhoneMask]'}];
     var ACTUAL_COMPONENT = {'name': 'CollaboratorSystemComponent'};
 </script>

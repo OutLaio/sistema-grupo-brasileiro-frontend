@@ -120,6 +120,14 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente responsável pelo cabeçalho da aplicação.</p>
+<p>Este componente exibe informações do usuário ativo e permite alternar a visibilidade da barra lateral (sidebar).</p>
+
+    </p>
 
 
 
@@ -226,12 +234,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/modules/core/header/component/header.component.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/modules/core/header/component/header.component.ts:23</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Construtor do componente.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -240,6 +250,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -254,6 +265,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço responsável por controlar o estado da barra lateral.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>storageService</td>
@@ -266,6 +281,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço responsável por acessar dados do armazenamento local, como o perfil do usuário.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -305,14 +324,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="20"
-                                    class="link-to-prism">src/app/modules/core/header/component/header.component.ts:20</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="41"
+                                    class="link-to-prism">src/app/modules/core/header/component/header.component.ts:41</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método do ciclo de vida executado ao inicializar o componente.</p>
+<p>Obtém os dados do perfil do usuário ativo a partir do serviço de armazenamento.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -342,14 +364,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="24"
-                                    class="link-to-prism">src/app/modules/core/header/component/header.component.ts:24</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="50"
+                                    class="link-to-prism">src/app/modules/core/header/component/header.component.ts:50</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Alterna a visibilidade da barra lateral (sidebar).</p>
+<p>Utiliza o serviço de controle da sidebar para atualizar o estado de visibilidade.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -384,10 +409,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/modules/core/header/component/header.component.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/modules/core/header/component/header.component.ts:23</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Dados do usuário ativo obtidos a partir da sessão.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -402,6 +433,11 @@ import { SidebarService } from &#x27;../../../services/sidebar/sidebar.service&#
 import { StorageService } from &#x27;../../../services/storage/storage.service&#x27;;
 import { I_Employee_View_Data } from &#x27;../../../shared/interfaces/user/view/employee-view&#x27;;
 
+/**
+ * Componente responsável pelo cabeçalho da aplicação.
+ * 
+ * Este componente exibe informações do usuário ativo e permite alternar a visibilidade da barra lateral (sidebar).
+ */
 @Component({
   selector: &#x27;app-header&#x27;,
   templateUrl: &#x27;./header.component.html&#x27;,
@@ -409,17 +445,38 @@ import { I_Employee_View_Data } from &#x27;../../../shared/interfaces/user/view/
 })
 export class HeaderComponent {
 
+  /**
+   * Dados do usuário ativo obtidos a partir da sessão.
+   * 
+   * @type {I_Employee_View_Data}
+   */
   activeUser!: I_Employee_View_Data;
 
+  /**
+   * Construtor do componente.
+   * 
+   * @param {SidebarService} sidebarService Serviço responsável por controlar o estado da barra lateral.
+   * @param {StorageService} storageService Serviço responsável por acessar dados do armazenamento local, como o perfil do usuário.
+   */
   constructor(
     private sidebarService: SidebarService,
     private storageService: StorageService
-  ){}
+  ) { }
 
+  /**
+   * Método do ciclo de vida executado ao inicializar o componente.
+   * 
+   * Obtém os dados do perfil do usuário ativo a partir do serviço de armazenamento.
+   */
   ngOnInit(): void {
     this.activeUser &#x3D; this.storageService.getSessionProfile();
   }
 
+  /**
+   * Alterna a visibilidade da barra lateral (sidebar).
+   * 
+   * Utiliza o serviço de controle da sidebar para atualizar o estado de visibilidade.
+   */
   toggleSidebar() {
     this.sidebarService.toggleSidebar();
   }
@@ -470,7 +527,7 @@ export class HeaderComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div class="header ">  <button class="btn-custom" (click)="toggleSidebar()">    <img class="w-50 h-50" src="/assets/icons/menu-icon.svg" alt="menu icon">  </button>  <div class="profile-info mx-5">    <button class="btn-custom m-5">      <img class="w-75 h-75" src="/assets/icons/notifications.svg" alt="menu icon">    </button>    <img class="profile-info-img" [src]="\'/assets/images/avatars/\' + (activeUser.avatar) + \'.png\'" alt="Profile Picture">    <span>{{ activeUser.name }} {{ activeUser.lastname }} </span>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidenavComponent', 'selector': 'app-sidenav'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
+    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
     var DIRECTIVES = [{'name': 'CapitalizeDirective', 'selector': '[appCapitalize]'},{'name': 'ColorClassDirective', 'selector': '[colorClass], [backgroundColorClass], [borderColorClass]'},{'name': 'DndDirective', 'selector': '[appDndDirective]'},{'name': 'PhoneMaskDirective', 'selector': '[appPhoneMask]'}];
     var ACTUAL_COMPONENT = {'name': 'HeaderComponent'};
 </script>

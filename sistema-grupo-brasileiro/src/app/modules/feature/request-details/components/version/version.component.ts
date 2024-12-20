@@ -11,45 +11,80 @@ import { I_Any_Briefing } from '../../../../shared/interfaces/briefing/any-brief
 import { C_PROJECT_STATUS } from '../../../../shared/enums/project-status';
 import { HttpErrorResponse } from '@angular/common/http';
 
+/**
+ * Componente responsável por gerenciar a versão do projeto.
+ * Permite visualizar, aprovar, ou rejeitar versões de arte, além de adicionar novas versões.
+ */
 @Component({
   selector: 'app-version',
   templateUrl: './version.component.html',
   styleUrl: './version.component.css',
 })
 export class VersionComponent {
+  /**
+  * Dados do briefing que contém as versões do projeto.
+  */
   @Input() data: I_Any_Briefing | undefined;
 
-  open = 'open';
-  reject = 'reject';
-  approve = 'approve';
+  open = 'open'; /** Status da versão em aberto */
+  reject = 'reject'; /** Status da versão rejeitada */
+  approve = 'approve'; /** Status da versão aprovada */
 
+  /**
+   * Cria uma instância da classe que depende de RequestDetailsService e StorageService.
+   * 
+   * @param {RequestDetailsService} requestDetailsService - Serviço responsável pela obtenção e manipulação de detalhes das requisições.
+   * @param {StorageService} storageService - Serviço responsável pela manipulação de dados de armazenamento.
+   */
   constructor(
     private requestDetailsService: RequestDetailsService,
     private storageService: StorageService
-  ) {}
+  ) { }
 
+  /**
+   * Método de ciclo de vida do Angular. Executado quando o componente é inicializado.
+   * Inicializa o componente e ordena as versões do briefing.
+   */
   ngOnInit() {
     this.sortVersions();
   }
 
+  /**
+   * Ordena as versões do briefing com base no número da versão.
+   */
   private sortVersions() {
     this.data?.type.briefing.versions?.sort((a, b) => {
       return a.versionNumber - b.versionNumber;
     });
   }
 
+  /**
+   * Verifica se o usuário é um supervisor.
+   * @returns `true` se o usuário for um supervisor.
+   */
   isSupervisor() {
     return this.storageService.isSupervisor();
   }
 
+  /**
+   * Verifica se o usuário é um colaborador.
+   * @returns `true` se o usuário for um colaborador.
+   */
   isCollaborator() {
     return this.storageService.isCollaborator();
   }
 
+  /**
+   * Verifica se o usuário é um cliente.
+   * @returns `true` se o usuário for um cliente.
+   */
   isClient() {
     return this.storageService.isClient();
   }
 
+  /**
+  * Exibe o modal para inserir uma nova versão de arte.
+  */
   showNewVersion() {
     Swal.fire({
       title: '<h5 class="text-exo fw-bold">Inserir Nova Arte</h5>',
@@ -90,6 +125,10 @@ export class VersionComponent {
     });
   }
 
+  /**
+   * Faz o upload do arquivo de imagem e cria uma nova versão.
+   * @param artImage A imagem de arte a ser enviada.
+   */
   newVersion(artImage: File | undefined): void {
     console.log(artImage);
     if (artImage)
@@ -116,7 +155,10 @@ export class VersionComponent {
           Swal.fire('Arte não salva', err.error.message, 'error'),
       });
   }
-
+  /**
+   * Exibe os detalhes de uma versão específica.
+   * @param version A versão do projeto a ser visualizada.
+   */
   showVersion(version: I_Version_Data) {
     Swal.fire({
       title: `<h5 class="text-exo fw-bold">Detalhes da Arte</h5>`,
@@ -241,16 +283,34 @@ export class VersionComponent {
     }, 0);
   }
 
+  /**
+   * Verifica se a versão foi aprovada.
+   * @param version A versão a ser verificada.
+   * @returns `true` se a versão foi aprovada.
+   */
   isVersionApproved(version: I_Version_Data) {
     return version.clientApprove !== null && version.supervisorApprove === true;
   }
 
+  /**
+   * Verifica se a versão foi rejeitada.
+   * @param version A versão a ser verificada.
+   * @returns `true` se a versão foi rejeitada.
+   */
   isVersionDisapproved(version: I_Version_Data) {
     return (
       version.clientApprove === false || version.supervisorApprove === false
     );
   }
 
+  /**
+   * Verifica se a versão foi reprovada e quem foi o responsável pela reprovação.
+   * 
+   * @param {I_Version_Data} version - O objeto representando a versão a ser verificada.
+   * @returns {string} - Retorna 'cliente' se o cliente reprovou, 'supervisor' se o supervisor reprovou, ou uma string vazia caso a versão não tenha sido reprovada.
+   *
+   * const approvalStatus = this.isDisapprovedBy(version); // Retorna 'cliente'
+   */
   isDisapprovedBy(version: I_Version_Data) {
     if (this.isVersionDisapproved(version)) {
       return version.clientApprove === false ? 'cliente' : 'supervisor';
@@ -258,6 +318,12 @@ export class VersionComponent {
     return '';
   }
 
+  /**
+   * Verifica se a versão está aberta para o usuário interagir.
+   * 
+   * @param {I_Version_Data} version - A versão a ser verificada.
+   * @returns {boolean} Retorna true se a versão estiver aberta.
+   */
   isVersionOpenToMe(version: I_Version_Data) {
     if (this.isSupervisor()) return version.supervisorApprove === null;
     else if (this.isClient())
@@ -267,42 +333,43 @@ export class VersionComponent {
     else return false;
   }
 
+  /**
+   * Gera o HTML do modal de versão com base na versão fornecida.
+   * 
+   * @param {I_Version_Data} version - A versão cujos detalhes serão exibidos no modal.
+   * @returns {string} O HTML do modal.
+   */
   getHtmlVersionModal(version: I_Version_Data) {
     return `
       <div class="d-flex flex-column gap-2">
         <div class="d-flex gap-5 justify-content-center">
-          <img src="${
-            version.productLink
-          }" alt="Arte" style="max-height: 200px;">
+          <img src="${version.productLink
+      }" alt="Arte" style="max-height: 200px;">
         </div>
-        ${
-          this.isVersionOpenToMe(version) || this.isVersionApproved(version)
-            ? `
+        ${this.isVersionOpenToMe(version) || this.isVersionApproved(version)
+        ? `
           <div class="d-flex flex-column align-items-center py-3 border-bottom border-top">
             <p>Baixe a arte clicando no link abaixo:</p>
             <a href="${version.productLink}" target="_blank">${version.productLink}</a>
           </div>`
-            : ''
-        }
+        : ''
+      }
         <div class="mt-4">
-          ${
-            this.versionStatus(version) == this.approve
-              ? `<p class="text-exo fw-bold fst-italic text-success">Esta arte foi aprovada!</p>`
-              : this.versionStatus(version) == this.reject
-              ? `<p class="text-exo fw-bold fst-italic text-danger">A arte não foi aprovada pelo ${
-                  this.isDisapprovedBy(version) === 'supervisor'
-                    ? 'supervisor'
-                    : 'cliente'
-                }!</p>
+          ${this.versionStatus(version) == this.approve
+        ? `<p class="text-exo fw-bold fst-italic text-success">Esta arte foi aprovada!</p>`
+        : this.versionStatus(version) == this.reject
+          ? `<p class="text-exo fw-bold fst-italic text-danger">A arte não foi aprovada pelo ${this.isDisapprovedBy(version) === 'supervisor'
+            ? 'supervisor'
+            : 'cliente'
+          }!</p>
               <div class="d-flex flex-column align-items-start w-100 mt-4">
                 <p class="text-exo fw-bold">Feedback:</p>
                 <p class="d-flex small-text w-100 text-exo mb-0 px-4 py-3 bg-secondary rounded-3 text-align-start"
                   style="--bs-bg-opacity: .2;"> ${version.feedback || ''}
                 </p>
               </div>
-              ${
-                this.willForce(version)
-                  ? `<div class="d-flex flex-column gap-3 align-items-end justify-content-between">
+              ${this.willForce(version)
+            ? `<div class="d-flex flex-column gap-3 align-items-end justify-content-between">
                     <div class="d-flex align-items-center justify-content-center w-100 gap-3 py-3">
                       <input class="in-radio" type="radio" name="approveVersion" id="review">
                       <label class="lb" for="review">Aceitar Revisão</label>
@@ -311,11 +378,11 @@ export class VersionComponent {
                       <label class="lb lb-reject" for="force-approve">Forçar Aprovação</label>
                     </div>
                   </div>`
-                  : ``
-              }
+            : ``
+          }
               `
-              : this.isVersionOpenToMe(version)
-              ? `<div class="d-flex flex-column gap-3 align-items-end justify-content-between">
+          : this.isVersionOpenToMe(version)
+            ? `<div class="d-flex flex-column gap-3 align-items-end justify-content-between">
                   <div class="d-flex align-items-center justify-content-center w-100 gap-3 py-3">
                     <input class="in-radio" type="radio" name="approveVersion" id="approve">
                     <label class="lb" for="approve">Aprovar</label>
@@ -329,13 +396,19 @@ export class VersionComponent {
                       id="feedback" rows="5"></textarea>
                   </div>
                 </div>`
-              : `<p class="text-exo fw-bold fst-italic text-warning">Aguardando aprovação ...</p>`
-          }
+            : `<p class="text-exo fw-bold fst-italic text-warning">Aguardando aprovação ...</p>`
+      }
         </div>
       </div>
     `;
   }
 
+  /**
+   * Verifica o status da versão e retorna a string correspondente ao status.
+   * 
+   * @param {I_Version_Data} version - A versão a ser verificada.
+   * @returns {string} O status da versão: 'approve', 'reject' ou 'open'.
+   */
   versionStatus(version: I_Version_Data) {
     if (version.supervisorApprove && version.clientApprove !== null)
       return this.approve;
@@ -347,6 +420,13 @@ export class VersionComponent {
     else return this.open;
   }
 
+  /**
+   * Verifica se o colaborador tem permissão para acessar uma nova versão do projeto, baseado no status do projeto.
+   * 
+   * @returns {boolean} - Retorna true se o colaborador tem permissão para acessar a nova versão, ou false caso contrário. 
+   * O acesso é permitido se o status do projeto for 'em andamento' ou 'aguardando aprovação'.
+   *
+  */
   isOpenToNewVersion() {
     if (this.isCollaborator())
       return (
@@ -356,6 +436,12 @@ export class VersionComponent {
     return false;
   }
 
+  /**
+   * Verifica se a opção "Forçar Aprovação" está disponível para a versão.
+   * 
+   * @param {I_Version_Data} version - A versão a ser verificada.
+   * @returns {boolean} Retorna `true` se a opção "Forçar Aprovação" está disponível.
+   */
   willForce(version: I_Version_Data) {
     return (
       this.isSupervisor() &&

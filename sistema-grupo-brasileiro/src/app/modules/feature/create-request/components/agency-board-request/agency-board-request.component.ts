@@ -29,30 +29,95 @@ enum Company {
   'Brasileiro' = 4,
 }
 
+/**
+ * @component AgencyBoardRequestComponent
+ * Componente responsável pelo gerenciamento das solicitações de placa de agências, incluindo seleção de empresas, rotas e conexões.
+ */
 @Component({
   selector: 'app-agency-board-request',
   templateUrl: './agency-board-request.component.html',
   styleUrls: ['./agency-board-request.component.css']
 })
 export class AgencyBoardRequestComponent implements OnInit {
+  /**
+   * Indicador de desabilitação do botão de envio.
+   */
   isButtonDisabled = false;
+
+  /**
+   * Formulário de solicitação de quadro publicitário.
+   */
   agencyBoardForm!: FormGroup;
+
+  /**
+   * Flag para indicar se há apenas uma empresa selecionada.
+   */
   isSingleCompany: boolean = true;
+
+  /**
+   * Lista de empresas disponíveis para seleção.
+   */
   companies: CompanyDetails[] = [];
 
+  /**
+   * Empresas selecionadas para o briefing.
+   */
   selectedCompanies: I_Company_Briefing_Form_Data[] = [];
+
+  /**
+   * Empresas adicionais selecionadas.
+   */
   selectedOthersCompanies: string[] = [];
 
+  /**
+   * Flag para indicar se uma empresa "Outras" foi selecionada.
+   */
   isOtherCompanySelected = false;
+
+  /**
+   * Flag para indicar se múltiplas empresas foram selecionadas.
+   */
   isOtherCompaniesSelected = false;
+
+  /**
+   * Flag para exibir os campos de empresa.
+   */
   showCompanyFields: boolean = false;
 
+  /**
+   * Lista de rotas principais disponíveis.
+   */
   listMainRoutes: I_City_Data[] = [];
+
+  /**
+   * Lista de conexões disponíveis.
+   */
   listConnections: I_City_Data[] = [];
 
   // TODO: Adicionar ID para identificação da imagem
+  /**
+   * Lista de arquivos carregados.
+   */
   files: { name: string, url: string }[] = [];
 
+  /**
+   * Construtor para inicializar o componente de painel de agência.
+   * 
+   * Este construtor injeta os serviços necessários no componente:
+   * - `FormBuilder`: Para criar e gerenciar formulários reativos.
+   * - `CreateRequestService`: Para enviar as solicitações de painel de agências.
+   * - `ToastrService`: Para exibir mensagens de sucesso ou erro para o usuário.
+   * - `StorageService`: Para gerenciar dados persistentes do usuário.
+   * - `DataService`: Para acessar dados adicionais necessários no componente.
+   * - `Router`: Para navegação entre rotas.
+   * 
+   * @param {FormBuilder} fb Serviço para construção de formulários reativos.
+   * @param {CreateRequestService} createRequestService Serviço para criação de solicitações de painel de agências.
+   * @param {ToastrService} toastrService Serviço para exibição de notificações de sucesso ou erro.
+   * @param {StorageService} storageService Serviço para gerenciamento de dados persistentes.
+   * @param {DataService} dataService Serviço para acesso a dados adicionais.
+   * @param {Router} router Serviço para navegação entre rotas.
+   */
   constructor(
     private fb: FormBuilder,
     private createRequestService: CreateRequestService,
@@ -61,6 +126,11 @@ export class AgencyBoardRequestComponent implements OnInit {
     private dataService: DataService,
     private router: Router) { }
 
+
+  /**
+   * Método de ciclo de vida do Angular.
+   * Inicialização do componente. Carrega as cidades e configura o formulário.
+   */
   ngOnInit(): void {
     this.dataService.getCities().pipe(
       map(cities => cities.data!.map(city => ({ id: city.id, name: city.name })))
@@ -95,6 +165,9 @@ export class AgencyBoardRequestComponent implements OnInit {
     });
   }
 
+  /**
+   * Métodos de acesso aos campos do formulário.
+   */
   get title() { return this.agencyBoardForm.get('title')!; }
   get length() { return this.agencyBoardForm.get('length')!; }
   get height() { return this.agencyBoardForm.get('height')!; }
@@ -109,6 +182,9 @@ export class AgencyBoardRequestComponent implements OnInit {
   get observation() { return this.agencyBoardForm.get('observation')!; }
 
 
+  /**
+   * Método para limpar os campos do formulário.
+   */
   clearForm() {
     this.agencyBoardForm.reset();
     this.companies = [];
@@ -122,6 +198,10 @@ export class AgencyBoardRequestComponent implements OnInit {
     this.selectedOthersCompanies = [];
   }
 
+  /**
+   * Método para alterar o tipo de seleção de empresa (única ou múltiplas).
+   * @param type Tipo de seleção (single ou multiple).
+   */
   onCompanyChange(type: string) {
     this.isSingleCompany = (type === 'single');
     this.companies = [];
@@ -137,6 +217,11 @@ export class AgencyBoardRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Método para atualizar o nome da empresa selecionada.
+   * @param selectionType Tipo de seleção.
+   * @param company Nome da empresa.
+   */
   updateCompanyName(selectionType: number, company: string) {
     this.isOtherCompanySelected = !this.isOtherCompanySelected;
     this.isOtherCompanySelected = !this.isOtherCompanySelected;
@@ -152,6 +237,9 @@ export class AgencyBoardRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Método para lidar com a seleção da empresa "Outras".
+   */
   onOtherCompany() {
     this.isOtherCompanySelected = !this.isOtherCompanySelected;
     this.isOtherCompanySelected = !this.isOtherCompanySelected;
@@ -160,6 +248,9 @@ export class AgencyBoardRequestComponent implements OnInit {
     this.agencyBoardForm.get('otherText')?.setValue('');
   }
 
+  /**
+   * Método para adicionar uma nova empresa "Outras".
+   */
   updateOtherCompany() {
     const otherValue = this.agencyBoardForm.get('otherText')?.value;
     this.companies = [];
@@ -168,6 +259,9 @@ export class AgencyBoardRequestComponent implements OnInit {
     this.agencyBoardForm.get('otherText')?.reset();
   }
 
+  /**
+   * Método para confirmar a adição de uma empresa "Outras".
+   */
   confirmOtherSingleCompany() {
     const otherCompany = this.agencyBoardForm.get('otherText')?.value;
     if (otherCompany && !this.companies.some(c => c.name === otherCompany)) {
@@ -180,6 +274,9 @@ export class AgencyBoardRequestComponent implements OnInit {
   }
 
 
+  /**
+   * Método para lidar com a seleção de múltiplas empresas "Outras".
+   */
   onOthersCompanies() {
     this.isOtherCompaniesSelected = !this.isOtherCompaniesSelected;
     if (!this.isOtherCompaniesSelected) {
@@ -188,6 +285,9 @@ export class AgencyBoardRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Método para atualizar as empresas "Outras".
+   */
   updateOthersCompanies() {
     const otherValue = this.agencyBoardForm.get('othersText')?.value;
     if (otherValue) {
@@ -204,6 +304,9 @@ export class AgencyBoardRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Método para confirmar a adição de múltiplas empresas "Outras".
+   */
   confirmOtherMultiCompany() {
     const otherCompany = this.agencyBoardForm.get('othersText')?.value;
     if (otherCompany && !this.companies.some(c => c.name === otherCompany)) {
@@ -218,6 +321,10 @@ export class AgencyBoardRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Método para remover uma empresa selecionada.
+   * @param companyName Nome da empresa a ser removida.
+   */
   removeCompany(companyName: string) {
     const companyIndex = this.companies.findIndex(c => c.name === companyName && c.isCustom);
     if (companyIndex >= 0) {
@@ -225,6 +332,10 @@ export class AgencyBoardRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Método para adicionar uma rota principal a uma empresa.
+   * @param companyName Nome da empresa.
+   */
   addMainRoute(companyName: string) {
     const selectedMainRoute: I_City_Data | null = this.agencyBoardForm.get('mainRoute')?.value;
 
@@ -241,6 +352,11 @@ export class AgencyBoardRequestComponent implements OnInit {
   }
 
 
+  /**
+   * Método para remover uma rota principal de uma empresa.
+   * @param companyName Nome da empresa.
+   * @param routeIdToRemove ID da rota a ser removida.
+   */
   removeMainRoute(companyName: string, routeIdToRemove: string) {
     const company = this.companies.find(c => c.name === companyName);
     if (company) {
@@ -252,6 +368,10 @@ export class AgencyBoardRequestComponent implements OnInit {
   }
 
 
+  /**
+   * Método para adicionar uma conexão a uma empresa.
+   * @param companyName Nome da empresa.
+   */
   addConnection(companyName: string) {
     const selectedConnection: I_City_Data | null = this.agencyBoardForm.get('connections')?.value;
 
@@ -269,6 +389,11 @@ export class AgencyBoardRequestComponent implements OnInit {
 
 
 
+  /**
+   * Método para remover uma conexão de uma empresa.
+   * @param companyName Nome da empresa.
+   * @param connectionIdToRemove ID da conexão a ser removida.
+   */
   removeConnection(companyName: string, connectionIdToRemove: string) {
     const company = this.companies.find(c => c.name === companyName);
     if (company) {
@@ -280,10 +405,17 @@ export class AgencyBoardRequestComponent implements OnInit {
   }
 
 
+  /**
+   * Método para carregar arquivos.
+   * @param newFiles Lista de arquivos carregados.
+   */
   onFilesLoaded(newFiles: { name: string, url: string }[]): void {
     this.files = newFiles;
   }
 
+  /**
+   * Método para separar as empresas selecionadas.
+   */
   separateCompanies() {
     this.selectedCompanies = this.companies.filter(company => !company.isCustom).map(company => {
       const companyName = company.name as keyof typeof Company;
@@ -296,7 +428,10 @@ export class AgencyBoardRequestComponent implements OnInit {
     this.selectedOthersCompanies = this.companies.filter(company => company.isCustom).map(company => company.name);
   }
 
-
+  /**
+   * Método para preparar os dados para envio.
+   * @returns Dados preparados para o envio.
+   */
   prepareSubmit(): I_Agency_Board_Request {
     this.separateCompanies();
 
@@ -381,6 +516,18 @@ export class AgencyBoardRequestComponent implements OnInit {
     return { projectForm: projectForm, briefingForm: briefingForm, bAgencyBoardsForm: bAgencyBoardsForm }
   }
 
+
+  /**
+   * Valida se todos os campos necessários em cada empresa foram preenchidos corretamente.
+   * 
+   * Este método verifica se as empresas têm os seguintes campos obrigatórios preenchidos:
+   * - `name`: nome da empresa.
+   * - `companyMainRoutes`: deve conter ao menos uma rota principal.
+   * - `companyConnections`: deve conter ao menos uma conexão.
+   * - `isCustom`: deve ser do tipo booleano.
+   * 
+   * @returns {boolean} Retorna `true` se todas as empresas passarem na validação, caso contrário, retorna `false`.
+   */
   validateCompanies(): boolean {
     return this.companies.every(company =>
       company.name &&
@@ -390,6 +537,15 @@ export class AgencyBoardRequestComponent implements OnInit {
     );
   }
 
+  /**
+   * Envia a solicitação de criação do painel de agência.
+   * 
+   * Este método verifica se o formulário está válido e se a validação das empresas foi concluída com sucesso.
+   * Se algum dos requisitos falhar, uma mensagem de erro será exibida. Caso contrário, os dados serão preparados e enviados ao servidor.
+   * Após o envio bem-sucedido, a página será recarregada após um tempo de espera.
+   * 
+   * @returns {void} Nada é retornado.
+   */
   submit() {
     if (this.agencyBoardForm.invalid || !this.validateCompanies()) {
       this.toastrService.error("Erro ao realizar solicitação. Verifique se os campos estão preenchidos corretamente.");

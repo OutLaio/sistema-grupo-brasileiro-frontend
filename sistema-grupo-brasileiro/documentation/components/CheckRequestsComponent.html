@@ -124,6 +124,14 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente responsável por exibir e gerenciar os projetos em diferentes status.
+Este componente divide os projetos em várias categorias com base no status e permite que o usuário visualize os detalhes de cada projeto.</p>
+
+    </p>
 
 
     <p class="comment">
@@ -280,12 +288,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:46</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Construtor que injeta os serviços necessários para este componente.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -294,6 +304,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -308,6 +319,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço responsável por obter os projetos.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>storageService</td>
@@ -320,6 +335,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço responsável por acessar os dados de armazenamento.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>router</td>
@@ -332,6 +351,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço de roteamento para navegação.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -371,14 +394,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="45"
-                                    class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:45</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="83"
+                                    class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:83</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método que solicita os projetos ao serviço <code>CheckRequestsService</code> e os organiza por status.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -408,14 +433,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="80"
-                                    class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:80</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="132"
+                                    class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:132</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Redireciona o usuário para a página de detalhes do projeto.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -426,6 +453,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -440,6 +468,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>O ID do projeto cujos detalhes devem ser exibidos.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -475,14 +507,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="39"
-                                    class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:39</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="74"
+                                    class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:74</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método de inicialização do componente.
+Obtém o papel do usuário e carrega os projetos ao inicializar.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -514,14 +549,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="59"
-                                    class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:59</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="101"
+                                    class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:101</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método que organiza os projetos por status em diferentes categorias.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -532,6 +569,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -546,6 +584,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Lista de projetos para serem mapeados.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -581,14 +623,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="76"
-                                    class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:76</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="123"
+                                    class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:123</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Alterna a exibição truncada do título de um projeto.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -599,6 +643,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -613,6 +658,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>O projeto cujo estado do título truncado deve ser alterado.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -658,10 +707,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:30</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Contém todos os projetos recebidos do servidor.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -689,7 +744,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:21</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:38</a></div>
                         </td>
                     </tr>
 
@@ -720,7 +775,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:37</a></div>
                         </td>
                     </tr>
 
@@ -751,7 +806,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:23</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:40</a></div>
                         </td>
                     </tr>
 
@@ -782,10 +837,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:25</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:46</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Mensagem de erro caso a requisição de projetos falhe.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -813,7 +874,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:39</a></div>
                         </td>
                     </tr>
 
@@ -844,7 +905,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:36</a></div>
                         </td>
                     </tr>
 
@@ -875,10 +936,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:25</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Controla a exibição truncada do título dos projetos.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -911,10 +978,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:33</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:64</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Mapeamento de funções de usuários para seus respectivos IDs.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -942,7 +1015,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:24</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:41</a></div>
                         </td>
                     </tr>
 
@@ -973,10 +1046,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:35</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Contém projetos filtrados por cada status.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -999,10 +1078,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/modules/feature/check-requests/components/check-requests.component.ts:21</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Nível do usuário atual, que pode ser CLIENTE, COLABORADOR ou SUPERVISOR.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1019,16 +1104,33 @@ import { StorageService } from &#x27;../../../services/storage/storage.service&#
 import { I_Project_Data } from &#x27;../../../shared/interfaces/project/view/project-view&#x27;;
 import { C_PROJECT_STATUS } from &#x27;../../../shared/enums/project-status&#x27;;
 
+/**
+ * Componente responsável por exibir e gerenciar os projetos em diferentes status.
+ * Este componente divide os projetos em várias categorias com base no status e permite que o usuário visualize os detalhes de cada projeto.
+ */
 @Component({
   selector: &#x27;app-check-requests&#x27;,
   templateUrl: &#x27;./check-requests.component.html&#x27;,
   styleUrls: [&#x27;./check-requests.component.css&#x27;]
 })
 export class CheckRequestsComponent implements OnInit {
+  /**
+   * Nível do usuário atual, que pode ser CLIENTE, COLABORADOR ou SUPERVISOR.
+   */
   userRole: number | undefined;
+  /**
+   * Controla a exibição truncada do título dos projetos.
+   */
   isTruncated: boolean &#x3D; true;
 
+  /**
+   * Contém todos os projetos recebidos do servidor.
+   */
   allProjects: I_Project_Data[] &#x3D; [];
+
+  /**
+   * Contém projetos filtrados por cada status.
+   */
   toDoCards: I_Project_Data[] &#x3D; [];
   inProgressCards: I_Project_Data[] &#x3D; [];
   awaitingApprovalCards: I_Project_Data[] &#x3D; [];
@@ -1036,26 +1138,47 @@ export class CheckRequestsComponent implements OnInit {
   inProductionCards: I_Project_Data[] &#x3D; [];
   completedCards: I_Project_Data[] &#x3D; [];
   standByCards: I_Project_Data[] &#x3D; [];
+
+  /**
+   * Mensagem de erro caso a requisição de projetos falhe.
+   */
   errorMessage: string &#x3D; &#x27;&#x27;;
 
+  /**
+   * Construtor que injeta os serviços necessários para este componente.
+   * 
+   * @param checkRequestServices Serviço responsável por obter os projetos.
+   * @param storageService Serviço responsável por acessar os dados de armazenamento.
+   * @param router Serviço de roteamento para navegação.
+   */
   constructor(
     private checkRequestServices: CheckRequestsService,
     private storageService: StorageService,
     private router: Router,
   ) { }
 
+  /**
+   * Mapeamento de funções de usuários para seus respectivos IDs.
+   */
   private roleMapping: { [key: string]: number } &#x3D; {
     &#x27;ROLE_CLIENT&#x27;: 3,
     &#x27;ROLE_COLLABORATOR&#x27;: 2,
     &#x27;ROLE_SUPERVISOR&#x27;: 1
   };
 
+  /**
+   * Método de inicialização do componente. 
+   * Obtém o papel do usuário e carrega os projetos ao inicializar.
+   */
   ngOnInit(): void {
     const role &#x3D; this.storageService.getUserRole() ?? &quot;&quot;;
     this.userRole &#x3D; this.roleMapping[role];
     this.getProjects();
   }
 
+  /**
+   * Método que solicita os projetos ao serviço &#x60;CheckRequestsService&#x60; e os organiza por status.
+   */
   getProjects(): void {
     this.checkRequestServices.getProjects().subscribe({
       next: (response) &#x3D;&gt; {
@@ -1069,28 +1192,42 @@ export class CheckRequestsComponent implements OnInit {
     });
   }
 
-
+  /**
+   * Método que organiza os projetos por status em diferentes categorias.
+   * 
+   * @param allProjects Lista de projetos para serem mapeados.
+   */
   private projectsMapper(allProjects: I_Project_Data[]): void {
     this.toDoCards &#x3D; allProjects.filter(project &#x3D;&gt; project.status &#x3D;&#x3D;&#x3D; C_PROJECT_STATUS.TO_DO.en).map(project &#x3D;&gt; ({ ...project, isTruncated: true }));
-    this.toDoCards.sort((a, b) &#x3D;&gt; {return Number(b.id) - Number(a.id)});
+    this.toDoCards.sort((a, b) &#x3D;&gt; { return Number(b.id) - Number(a.id) });
     this.inProgressCards &#x3D; allProjects.filter(project &#x3D;&gt; project.status &#x3D;&#x3D;&#x3D; C_PROJECT_STATUS.IN_PROGRESS.en).map(project &#x3D;&gt; ({ ...project, isTruncated: true }));
-    this.inProgressCards.sort((a, b) &#x3D;&gt; { return Number(b.id) - Number(a.id)});
+    this.inProgressCards.sort((a, b) &#x3D;&gt; { return Number(b.id) - Number(a.id) });
     this.awaitingApprovalCards &#x3D; allProjects.filter(project &#x3D;&gt; project.status &#x3D;&#x3D;&#x3D; C_PROJECT_STATUS.WAITING_APPROVAL.en).map(project &#x3D;&gt; ({ ...project, isTruncated: true }));
-    this.awaitingApprovalCards.sort((a, b) &#x3D;&gt; { return Number(b.id) - Number(a.id)});
+    this.awaitingApprovalCards.sort((a, b) &#x3D;&gt; { return Number(b.id) - Number(a.id) });
     this.approvedCards &#x3D; allProjects.filter(project &#x3D;&gt; project.status &#x3D;&#x3D;&#x3D; C_PROJECT_STATUS.APPROVED.en).map(project &#x3D;&gt; ({ ...project, isTruncated: true }));
-    this.approvedCards.sort((a, b) &#x3D;&gt; { return Number(b.id) - Number(a.id)});
+    this.approvedCards.sort((a, b) &#x3D;&gt; { return Number(b.id) - Number(a.id) });
     this.inProductionCards &#x3D; allProjects.filter(project &#x3D;&gt; project.status &#x3D;&#x3D;&#x3D; C_PROJECT_STATUS.IN_PRODUCTION.en).map(project &#x3D;&gt; ({ ...project, isTruncated: true }));
-    this.inProductionCards.sort((a, b) &#x3D;&gt; { return Number(b.id) - Number(a.id)});
+    this.inProductionCards.sort((a, b) &#x3D;&gt; { return Number(b.id) - Number(a.id) });
     this.completedCards &#x3D; allProjects.filter(project &#x3D;&gt; project.status &#x3D;&#x3D;&#x3D; C_PROJECT_STATUS.COMPLETED.en).map(project &#x3D;&gt; ({ ...project, isTruncated: true }));
-    this.completedCards.sort((a, b) &#x3D;&gt; { return Number(b.id) - Number(a.id)});
+    this.completedCards.sort((a, b) &#x3D;&gt; { return Number(b.id) - Number(a.id) });
     this.standByCards &#x3D; allProjects.filter(project &#x3D;&gt; project.status &#x3D;&#x3D;&#x3D; C_PROJECT_STATUS.STAND_BY.en).map(project &#x3D;&gt; ({ ...project, isTruncated: true }));
-    this.standByCards.sort((a, b) &#x3D;&gt; { return Number(b.id) - Number(a.id)});
+    this.standByCards.sort((a, b) &#x3D;&gt; { return Number(b.id) - Number(a.id) });
   }
 
+  /**
+   * Alterna a exibição truncada do título de um projeto.
+   * 
+   * @param item O projeto cujo estado do título truncado deve ser alterado.
+   */
   toggleTruncate(item: I_Project_Data): void {
     item.isTruncated &#x3D; !item.isTruncated;
   }
 
+  /**
+   * Redireciona o usuário para a página de detalhes do projeto.
+   * 
+   * @param id O ID do projeto cujos detalhes devem ser exibidos.
+   */
   goToDetails(id: string) {
     this.router.navigate([&#x27;/detalhes-solicitacao&#x27;], { state: { id: id } });
   }
@@ -1576,7 +1713,7 @@ export class CheckRequestsComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div class="container-fluid">    <div class="cards-div">        <div class="p-1 mx-auto">            <div class="card-wrapper gap-2">                <div class="card card-custom rounded-0">                    <div [backgroundColorClass]="\'#D9534F\'" class="height-div"></div>                    <div class="container text-center py-3">                        <p class="card-title">A Fazer</p>                        <hr>                    </div>                    <div class="card-body overflow-auto scrollbar-ff">                        <div *ngFor="let item of toDoCards"                            class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">                            <div>                                <p class="request-briefing-type me-2">{{ item.briefingType }}</p>                                <div *ngIf="item.collaborator; else noCollaborator">                                    <p class="text-muted text-custom"><img class="me-1 perfil-img"                                            src="/assets/images/profile.png"                                            [alt]="item.client.fullName + \' \' + \'avatar\'" />                                        <span class="request-briefing-type">{{ item.collaborator.fullName }}</span>                                    </p>                                </div>                                <ng-template #noCollaborator>                                    <p [backgroundColorClass]="\'#ff7474\'" class="request-briefing-type">Colaborador não                                        alocado</p>                                </ng-template>                            </div>                            <div class="request-title">                                <p (click)="toggleTruncate(item)" class="text-muted"                                    [ngClass]="{\'text-truncate\': item.isTruncated}">                                    {{ item.title}}                                </p>                            </div>                            <div class="d-flex justify-content-start">                                <p class="text-muted text-custom"><img                                        [src]="\'/assets/images/avatars/\' + (item.client.avatar) + \'.png\'"                                        [alt]="item.client.fullName + \' \' + \'avatar\'" class="perfil-img me-3">                                    <span>{{ item.client.fullName }}</span>                                </p>                            </div>                            <div class="d-flex justify-content-between">                                <p class="text-muted text-custom"> {{                                    item.startDate| date: \'dd/MM/yyyy\' }}</p>                                <i class="text-custom" [colorClass]="\'#005d54\'"                                    (click)="goToDetails(item.id.toString())">Veja mais</i>                            </div>                        </div>                    </div>                </div>                <div class="card card-custom rounded-0">                    <div [backgroundColorClass]="\'#A267D0\'" class="height-div"></div>                    <div class="container text-center py-3">                        <p class="card-title">Em Andamento</p>                        <hr>                    </div>                    <div class="card-body overflow-auto scrollbar-ff">                        <div *ngFor="let item of inProgressCards "                            class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">                            <div class="d-flex">                                <p class="request-briefing-type me-2">{{ item.briefingType }}</p>                                <div class="d-flex justify-content-start"                                    *ngIf="item.collaborator; else noCollaborator">                                    <p [backgroundColorClass]="\'#ff7474\'" class="request-briefing-type">                                        {{item.collaborator.fullName}}</p>                                </div>                            </div>                            <div class="request-title">                                <p (click)="toggleTruncate(item)" class="text-muted"                                    [ngClass]="{\'text-truncate\': item.isTruncated}">                                    {{ item.title}}                                </p>                            </div>                            <p class="text-muted text-custom">                                <img [src]="\'/assets/images/avatars/\' + (item.client.avatar) + \'.png\'"                                    [alt]="item.client.fullName + \' \' + \'avatar\'" class="perfil-img me-3">                                <span>{{ item.client.fullName }}</span>                            </p>                            <ng-template #noCollaborator>                                <p class="text-muted">Colaborador: Não alocado</p>                            </ng-template>                            <div class="d-flex justify-content-between">                                <p class="text-muted text-custom"> {{                                    item.startDate| date: \'dd/MM/yyyy\' }}</p>                                <i class="text-custom" [colorClass]="\'#005d54\'"                                    (click)="goToDetails(item.id.toString())">Veja mais</i>                            </div>                        </div>                    </div>                </div>                <div class="card card-custom rounded-0">                    <div [backgroundColorClass]="\'#305BF2\'" class="height-div"></div>                    <div class="container text-center py-3">                        <p class="card-title">Aguardando Aprovação</p>                        <hr>                    </div>                    <div class="card-body overflow-auto scrollbar-ff">                        <div *ngFor="let item of awaitingApprovalCards "                            class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">                            <div class="d-flex">                                <p class="request-briefing-type me-2">{{ item.briefingType }}</p>                                <div *ngIf="item.collaborator; else noCollaborator">                                    <p [backgroundColorClass]="\'#ff7474\'" class="request-briefing-type">                                        {{item.collaborator.fullName}}</p>                                </div>                            </div>                            <div class="request-title">                                <p (click)="toggleTruncate(item)" class="text-muted"                                    [ngClass]="{\'text-truncate\': item.isTruncated}">                                    {{ item.title}}                                </p>                            </div>                            <div class="d-flex justify-content-start">                                <p class="text-muted text-custom"><img                                        [src]="\'/assets/images/avatars/\' + (item.client.avatar) + \'.png\'"                                        [alt]="item.client.fullName + \' \' + \'avatar\'" class="perfil-img me-3">                                    <span>{{ item.client.fullName }}</span>                                </p>                            </div>                            <ng-template #noCollaborator>                                <p class="text-muted">Colaborador: Não alocado</p>                            </ng-template>                            <div class="d-flex justify-content-between">                                <p class="text-muted text-custom"> {{                                    item.startDate| date: \'dd/MM/yyyy\' }}</p>                                <i class="text-custom" [colorClass]="\'#005d54\'"                                    (click)="goToDetails(item.id.toString())">Veja mais</i>                            </div>                        </div>                    </div>                </div>                <div class="card card-custom rounded-0">                    <div [backgroundColorClass]="\'#FAFE3A\'" class="height-div"></div>                    <div class="container text-center py-3">                        <p class="card-title">Aprovado</p>                        <hr>                    </div>                    <div class="card-body overflow-auto scrollbar-ff">                        <div *ngFor="let item of approvedCards "                            class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">                            <div class="d-flex">                                <p class="request-briefing-type me-2">{{ item.briefingType }}</p>                                <div *ngIf="item.collaborator; else noCollaborator">                                    <p [backgroundColorClass]="\'#ff7474\'" class="request-briefing-type">                                        {{item.collaborator.fullName}}</p>                                </div>                            </div>                            <div class="request-title">                                <p (click)="toggleTruncate(item)" class="text-muted"                                    [ngClass]="{\'text-truncate\': item.isTruncated}">                                    {{ item.title}}                                </p>                            </div>                            <div class="d-flex justify-content-start">                                <p class="text-muted text-custom"><img                                        [src]="\'/assets/images/avatars/\' + (item.client.avatar) + \'.png\'"                                        [alt]="item.client.fullName + \' \' + \'avatar\'" class="perfil-img me-3">                                    <span>{{ item.client.fullName }}</span>                                </p>                            </div>                            <ng-template #noCollaborator>                                <p class="text-muted">Colaborador: Não alocado</p>                            </ng-template>                            <div class="d-flex justify-content-between">                                <p class="text-muted text-custom"> {{                                    item.startDate| date: \'dd/MM/yyyy\' }}</p>                                <i class="text-custom" [colorClass]="\'#005d54\'"                                    (click)="goToDetails(item.id.toString())">Veja mais</i>                            </div>                        </div>                    </div>                </div>                <div class="card card-custom rounded-0">                    <div [backgroundColorClass]="\'#FF822E\'" class="height-div"></div>                    <div class="container text-center py-3">                        <p class="card-title">Em Confecção</p>                        <hr>                    </div>                    <div class="card-body overflow-auto scrollbar-ff">                        <div *ngFor="let item of inProductionCards "                            class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">                            <div class="d-flex">                                <p class="request-briefing-type me-2">{{ item.briefingType }}</p>                                <div *ngIf="item.collaborator; else noCollaborator">                                    <p [backgroundColorClass]="\'#ff7474\'" class="request-briefing-type">                                        {{item.collaborator.fullName}}</p>                                </div>                            </div>                            <div class="request-title">                                <p (click)="toggleTruncate(item)" class="text-muted"                                    [ngClass]="{\'text-truncate\': item.isTruncated}">                                    {{ item.title}}                                </p>                            </div>                            <div class="d-flex justify-content-start">                                <p class="text-muted text-custom"><img                                        [src]="\'/assets/images/avatars/\' + (item.client.avatar) + \'.png\'"                                        [alt]="item.client.fullName + \' \' + \'avatar\'" class="perfil-img me-3">                                    <span>{{ item.client.fullName }}</span>                                </p>                            </div>                            <ng-template #noCollaborator>                                <p class="text-muted">Colaborador: Não alocado</p>                            </ng-template>                            <div class="d-flex justify-content-between">                                <p class="text-muted text-custom"> {{                                    item.startDate| date: \'dd/MM/yyyy\' }}</p>                                <i class="text-custom" [colorClass]="\'#005d54\'"                                    (click)="goToDetails(item.id.toString())">Veja mais</i>                            </div>                        </div>                    </div>                </div>                <div class="card card-custom rounded-0">                    <div [backgroundColorClass]="\'#70D067\'" class="height-div"></div>                    <div class="container text-center py-3">                        <p class="card-title">Concluído</p>                        <hr>                    </div>                    <div class="card-body overflow-auto scrollbar-ff">                        <div *ngFor="let item of completedCards "                            class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">                            <div class="d-flex">                                <p class="request-briefing-type me-2">{{ item.briefingType }}</p>                                <div *ngIf="item.collaborator; else noCollaborator">                                    <p [backgroundColorClass]="\'#ff7474\'" class="request-briefing-type">                                        {{item.collaborator.fullName}}</p>                                </div>                            </div>                            <div class="request-title">                                <p (click)="toggleTruncate(item)" class="text-muted"                                    [ngClass]="{\'text-truncate\': item.isTruncated}">                                    {{ item.title}}                                </p>                            </div>                            <div class="d-flex justify-content-start" *ngIf="item.collaborator; else noCollaborator">                                <p class="text-muted text-custom"><img                                        [src]="\'/assets/images/avatars/\' + (item.client.avatar) + \'.png\'"                                        [alt]="item.client.fullName + \' \' + \'avatar\'" class="perfil-img me-3">                                    <span>{{ item.client.fullName }}</span>                                </p>                            </div>                            <ng-template #noCollaborator>                                <p class="text-muted">Colaborador: Não alocado</p>                            </ng-template>                            <div class="d-flex justify-content-between">                                <p class="text-muted text-custom"> {{                                    item.startDate| date: \'dd/MM/yyyy\' }}</p>                                <i class="text-custom" [colorClass]="\'#005d54\'"                                    (click)="goToDetails(item.id.toString())">Veja mais</i>                            </div>                        </div>                    </div>                </div>                <div class="card card-custom rounded-0">                    <div [backgroundColorClass]="\'#999999\'" class="height-div"></div>                    <div class="container text-center py-3">                        <p class="card-title"> StandBy </p>                        <hr>                    </div>                    <div class="card-body overflow-auto scrollbar-ff">                        <div *ngFor="let item of standByCards"                            class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">                            <div class="d-flex">                                <p class="request-briefing-type me-2">{{ item.briefingType }}</p>                                <div *ngIf="item.collaborator; else noCollaborator">                                    <p [backgroundColorClass]="\'#ff7474\'" class="request-briefing-type">                                        {{item.collaborator.fullName}}</p>                                </div>                            </div>                            <div class="request-title">                                <p (click)="toggleTruncate(item)" class="text-muted"                                    [ngClass]="{\'text-truncate\': item.isTruncated}">                                    {{ item.title}}                                </p>                            </div>                            <div class="d-flex justify-content-start" *ngIf="item.collaborator; else noCollaborator">                                <p class="text-muted text-custom"><img                                        [src]="\'/assets/images/avatars/\' + (item.client.avatar) + \'.png\'"                                        [alt]="item.client.fullName + \' \' + \'avatar\'" class="perfil-img me-3">                                    <span>{{ item.client.fullName }}</span>                                </p>                            </div>                            <ng-template #noCollaborator>                                <p class="text-muted">Colaborador: Não alocado</p>                            </ng-template>                            <div class="d-flex justify-content-between">                                <p class="text-muted text-custom"> {{                                    item.startDate| date: \'dd/MM/yyyy\' }}</p>                                <i class="text-custom" [colorClass]="\'#005d54\'"                                    (click)="goToDetails(item.id.toString())">Veja mais</i>                            </div>                        </div>                    </div>                </div>            </div>        </div>    </div></div></div>'
-    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidenavComponent', 'selector': 'app-sidenav'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
+    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
     var DIRECTIVES = [{'name': 'CapitalizeDirective', 'selector': '[appCapitalize]'},{'name': 'ColorClassDirective', 'selector': '[colorClass], [backgroundColorClass], [borderColorClass]'},{'name': 'DndDirective', 'selector': '[appDndDirective]'},{'name': 'PhoneMaskDirective', 'selector': '[appPhoneMask]'}];
     var ACTUAL_COMPONENT = {'name': 'CheckRequestsComponent'};
 </script>

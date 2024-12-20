@@ -13,18 +13,40 @@ import { I_Reset_Password_Request } from '../../shared/interfaces/auth/form/rese
 import { StorageService } from '../storage/storage.service';
 import { CookieService } from 'ngx-cookie-service';
 
+/**
+ * Serviço `LoginRegisterService`
+ * 
+ * Gerencia operações relacionadas ao login, registro de usuários, recuperação de senha
+ * e manipulação de autenticação no sistema.
+ */
 @Injectable({
   providedIn: 'root',
 })
 export class LoginRegisterService {
+  /**
+   * URL base para as operações de autenticação e registro.
+   */
   private readonly prefix = 'http://localhost:8080/api/v1/auth';
 
+  /**
+   * Construtor do serviço `LoginRegisterService`.
+   * 
+   * @param router - Serviço de navegação para redirecionar o usuário.
+   * @param httpClient - Instância para realizar requisições HTTP.
+   * @param cookieService - Serviço para manipulação de cookies, utilizado para armazenar os dados do usuário após o login.
+   */
   constructor(
     private router: Router,
     private httpClient: HttpClient,
     private cookieService: CookieService
   ) { }
 
+  /**
+   * Registra um novo usuário no sistema.
+   * 
+   * @param req - Objeto contendo as informações do usuário.
+   * @returns Observable com a resposta da API contendo os dados do funcionário registrado.
+   */
   registerUser(req: I_User_Request) {
     return this.httpClient.post<I_Api_Response<I_Employee_View_Data>>(
       `${this.prefix}/register`,
@@ -32,6 +54,15 @@ export class LoginRegisterService {
     );
   }
 
+  /**
+   * Realiza login do usuário no sistema.
+   * 
+   * - Armazena o token de autenticação e os dados do usuário nos cookies.
+   * - Redireciona para a página de acompanhamento após o login.
+   * 
+   * @param req - Objeto contendo as credenciais de login.
+   * @returns Observable com a resposta da API contendo o token de autenticação e os dados do usuário.
+   */
   loginUser(req: I_Login_Request) {
     return this.httpClient
       .post<I_Api_Response<I_Token_Response>>(`${this.prefix}/login`, req)
@@ -52,6 +83,12 @@ export class LoginRegisterService {
       );
   }
 
+  /**
+   * Solicita a recuperação de senha para o email informado.
+   * 
+   * @param req - Objeto contendo o email do usuário.
+   * @returns Observable com a resposta da API.
+   */
   recoveryPassword(req: I_Recovery_Password_Request) {
     return this.httpClient.post<I_Api_Response<void>>(
       `${this.prefix}/requestReset`,
@@ -59,12 +96,24 @@ export class LoginRegisterService {
     );
   }
 
+  /**
+   * Verifica se o token de redefinição de senha é válido.
+   * 
+   * @param token - Token de redefinição de senha.
+   * @returns Observable com a resposta da API.
+   */
   verifyToken(token: string) {
     return this.httpClient.get<I_Api_Response<void>>(
       `${this.prefix}/verifyToken?token=${token}`
     );
   }
 
+  /**
+   * Redefine a senha do usuário.
+   * 
+   * @param req - Objeto contendo o token e a nova senha.
+   * @returns Observable com a resposta da API.
+   */
   resetPassword(req: I_Reset_Password_Request) {
     return this.httpClient.post<I_Api_Response<void>>(
       `${this.prefix}/resetPassword`,
@@ -72,8 +121,13 @@ export class LoginRegisterService {
     );
   }
 
+  /**
+   * Realiza logout do usuário no sistema.
+   * 
+   * - Remove os cookies de autenticação e do usuário ativo.
+   * - Redireciona para a página de login.
+   */
   logout() {
-    // Limpa os cookies
     this.cookieService.delete('auth-token', '/');
     this.cookieService.delete('activeUser', '/');
     this.router.navigate(['/login']);

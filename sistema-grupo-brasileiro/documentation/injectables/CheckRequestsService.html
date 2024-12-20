@@ -119,6 +119,14 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Serviço responsável por gerenciar requisições relacionadas aos projetos.
+Ele fornece métodos para obter dados de projetos do servidor.</p>
+
+            </p>
 
 
 
@@ -185,12 +193,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/modules/feature/check-requests/services/check-requests.service.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/modules/feature/check-requests/services/check-requests.service.ts:22</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Construtor do serviço que injeta as dependências necessárias.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -199,6 +209,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -213,6 +224,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço HttpClient para realizar requisições HTTP.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>storageService</td>
@@ -225,6 +240,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço de armazenamento para obter o token de autenticação.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -262,19 +281,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="19"
-                                    class="link-to-prism">src/app/modules/feature/check-requests/services/check-requests.service.ts:19</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="38"
+                                    class="link-to-prism">src/app/modules/feature/check-requests/services/check-requests.service.ts:38</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Gera os cabeçalhos necessários para as requisições HTTP.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>Um objeto HttpHeaders com o tipo de conteúdo e token de autorização.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -299,19 +324,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="26"
-                                    class="link-to-prism">src/app/modules/feature/check-requests/services/check-requests.service.ts:26</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="49"
+                                    class="link-to-prism">src/app/modules/feature/check-requests/services/check-requests.service.ts:49</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Obtém a lista de projetos do servidor.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>Um observable com a resposta da API contendo os dados dos projetos.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -347,10 +378,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/modules/feature/check-requests/services/check-requests.service.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/modules/feature/check-requests/services/check-requests.service.ts:22</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>URL base da API para operações relacionadas aos projetos.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -374,10 +411,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/modules/feature/check-requests/services/check-requests.service.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/modules/feature/check-requests/services/check-requests.service.ts:18</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Token de autenticação recuperado do armazenamento local.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -393,18 +436,37 @@ import { StorageService } from &#x27;../../../services/storage/storage.service&#
 import { I_Api_Response } from &#x27;../../../shared/interfaces/api-response&#x27;;
 import { I_Project_Data } from &#x27;../../../shared/interfaces/project/view/project-view&#x27;;
 
+/**
+ * Serviço responsável por gerenciar requisições relacionadas aos projetos.
+ * Ele fornece métodos para obter dados de projetos do servidor.
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;,
 })
 export class CheckRequestsService {
+  /**
+   * Token de autenticação recuperado do armazenamento local.
+   */
   private readonly authToken &#x3D; this.storageService.getToken();
+  /**
+   * URL base da API para operações relacionadas aos projetos.
+   */
   private apiUrl &#x3D; &#x27;http://localhost:8080/api/v1/projects&#x27;;
 
+  /**
+   * Construtor do serviço que injeta as dependências necessárias.
+   * @param http Serviço HttpClient para realizar requisições HTTP.
+   * @param storageService Serviço de armazenamento para obter o token de autenticação.
+   */
   constructor(
     private http: HttpClient,
     private storageService: StorageService
   ) {}
 
+  /**
+   * Gera os cabeçalhos necessários para as requisições HTTP.
+   * @returns Um objeto HttpHeaders com o tipo de conteúdo e token de autorização.
+   */
   private getHeaders() {
     return new HttpHeaders({
       &#x27;Content-Type&#x27;: &#x27;application/json&#x27;,
@@ -412,6 +474,10 @@ export class CheckRequestsService {
     });
   }
 
+  /**
+   * Obtém a lista de projetos do servidor.
+   * @returns Um observable com a resposta da API contendo os dados dos projetos.
+   */
   getProjects() {
     const headers &#x3D; this.getHeaders();
     return this.http.get&lt;I_Api_Response&lt;I_Project_Data[]&gt;&gt;(this.apiUrl, { headers });

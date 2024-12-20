@@ -89,7 +89,7 @@
   <li class="breadcrumb-item">Components</li>
   <li class="breadcrumb-item"
   >
-  SidenavComponent</li>
+  SidebarComponent</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -116,10 +116,19 @@
     <h3>File</h3>
 </p>
 <p class="comment">
-    <code>src/app/modules/core/sidenav/component/sidenav.component.ts</code>
+    <code>src/app/modules/core/sidenav/component/sidebar.component.ts</code>
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente responsável pela exibição da barra lateral (sidebar).</p>
+<p>Este componente controla a visibilidade da barra lateral, navegação de links,
+e permite o logout do usuário.</p>
+
+    </p>
 
 
     <p class="comment">
@@ -158,14 +167,14 @@
 
             <tr>
                 <td class="col-md-3">templateUrl</td>
-                <td class="col-md-9"><code>./sidenav.component.html</code></td>
+                <td class="col-md-9"><code>./sidebar.component.html</code></td>
             </tr>
 
 
 
             <tr>
                 <td class="col-md-3">styleUrl</td>
-                <td class="col-md-9"><code>./sidenav.component.css</code></td>
+                <td class="col-md-9"><code>./sidebar.component.css</code></td>
             </tr>
 
 
@@ -241,12 +250,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/modules/core/sidenav/component/sidenav.component.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/modules/core/sidenav/component/sidebar.component.ts:28</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Construtor do componente.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -255,6 +266,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -269,6 +281,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço responsável por gerenciar a visibilidade da sidebar.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>storageService</td>
@@ -281,6 +297,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço para acessar dados armazenados localmente, como o nível do usuário.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>router</td>
@@ -293,6 +313,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço de navegação para manipular as rotas.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>loginRegisterService</td>
@@ -305,6 +329,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço responsável por gerenciar autenticação.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -344,14 +372,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="35"
-                                    class="link-to-prism">src/app/modules/core/sidenav/component/sidenav.component.ts:35</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="75"
+                                    class="link-to-prism">src/app/modules/core/sidenav/component/sidebar.component.ts:75</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Verifica se o link correspondente à rota fornecida está ativo.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -362,6 +392,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -376,6 +407,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>A rota a ser verificada.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -385,7 +420,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p><code>true</code> se a rota estiver ativa, caso contrário <code>false</code>.</p>
+
                             </div>
                 </td>
             </tr>
@@ -411,14 +447,21 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="39"
-                                    class="link-to-prism">src/app/modules/core/sidenav/component/sidenav.component.ts:39</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="86"
+                                    class="link-to-prism">src/app/modules/core/sidenav/component/sidebar.component.ts:86</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Realiza o logout do usuário.</p>
+<ul>
+<li>Chama o método de logout no serviço de autenticação.</li>
+<li>Redireciona o usuário para a página de login.</li>
+<li>Recarrega a aplicação para limpar o estado.</li>
+</ul>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -448,14 +491,20 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="23"
-                                    class="link-to-prism">src/app/modules/core/sidenav/component/sidenav.component.ts:23</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="51"
+                                    class="link-to-prism">src/app/modules/core/sidenav/component/sidebar.component.ts:51</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método executado na inicialização do componente.</p>
+<ul>
+<li>Subscreve-se às alterações de visibilidade da sidebar.</li>
+<li>Obtém o nível do usuário armazenado no serviço de armazenamento, para mostrar somente as opções do seu nível</li>
+</ul>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -485,14 +534,20 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="30"
-                                    class="link-to-prism">src/app/modules/core/sidenav/component/sidenav.component.ts:30</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="64"
+                                    class="link-to-prism">src/app/modules/core/sidenav/component/sidebar.component.ts:64</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Alterna a visibilidade da sidebar.</p>
+<ul>
+<li>Atualiza o estado local de visibilidade.</li>
+<li>Notifica o serviço responsável sobre a alteração.</li>
+</ul>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -526,10 +581,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/modules/core/sidenav/component/sidenav.component.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/modules/core/sidenav/component/sidebar.component.ts:23</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indica se a sidebar está visível.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -557,10 +618,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/modules/core/sidenav/component/sidenav.component.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/modules/core/sidenav/component/sidebar.component.ts:28</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Representa o nível do usuário logado.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -576,15 +643,37 @@ import { Router } from &#x27;@angular/router&#x27;;
 import { LoginRegisterService } from &#x27;../../../services/login-register/login-register.service&#x27;;
 import { StorageService } from &#x27;../../../services/storage/storage.service&#x27;;
 
+/**
+ * Componente responsável pela exibição da barra lateral (sidebar).
+ * 
+ * Este componente controla a visibilidade da barra lateral, navegação de links, 
+ * e permite o logout do usuário.
+ */
 @Component({
   selector: &#x27;app-sidebar&#x27;,
-  templateUrl: &#x27;./sidenav.component.html&#x27;,
-  styleUrl: &#x27;./sidenav.component.css&#x27;,
+  templateUrl: &#x27;./sidebar.component.html&#x27;,
+  styleUrl: &#x27;./sidebar.component.css&#x27;,
 })
-export class SidenavComponent implements OnInit {
+export class SidebarComponent implements OnInit {
+  /**
+   * Indica se a sidebar está visível.
+   * @type {boolean}
+  */
   isSidebarVisible &#x3D; false;
+  /**
+   * Representa o nível do usuário logado.
+   * @type {string}
+  */
   userRole: string &#x3D; &#x27;&#x27;;
 
+  /**
+  * Construtor do componente.
+  * 
+  * @param sidebarService Serviço responsável por gerenciar a visibilidade da sidebar.
+  * @param storageService Serviço para acessar dados armazenados localmente, como o nível do usuário.
+  * @param router Serviço de navegação para manipular as rotas.
+  * @param loginRegisterService Serviço responsável por gerenciar autenticação.
+  */
   constructor(
     private sidebarService: SidebarService,
     private storageService: StorageService,
@@ -592,6 +681,12 @@ export class SidenavComponent implements OnInit {
     private loginRegisterService: LoginRegisterService,
   ) { }
 
+  /**
+   * Método executado na inicialização do componente.
+   * 
+   * - Subscreve-se às alterações de visibilidade da sidebar.
+   * - Obtém o nível do usuário armazenado no serviço de armazenamento, para mostrar somente as opções do seu nível
+   */
   ngOnInit() {
     this.sidebarService.sidebarVisibility$.subscribe((isVisible) &#x3D;&gt; {
       this.isSidebarVisible &#x3D; isVisible;
@@ -599,16 +694,35 @@ export class SidenavComponent implements OnInit {
     });
   }
 
+  /**
+  * Alterna a visibilidade da sidebar.
+  * 
+  * - Atualiza o estado local de visibilidade.
+  * - Notifica o serviço responsável sobre a alteração.
+  */
   toggleSidebar() {
     this.isSidebarVisible &#x3D; !this.isSidebarVisible;
     this.sidebarService.toggleSidebar();
   }
 
+  /**
+   * Verifica se o link correspondente à rota fornecida está ativo.
+   * 
+   * @param route A rota a ser verificada.
+   * @returns {boolean} &#x60;true&#x60; se a rota estiver ativa, caso contrário &#x60;false&#x60;.
+   */
   isActiveLink(route: string): boolean {
     return this.router.url.includes(route);
   }
 
-  logoutUser(){
+  /**
+   * Realiza o logout do usuário.
+   * 
+   * - Chama o método de logout no serviço de autenticação.
+   * - Redireciona o usuário para a página de login.
+   * - Recarrega a aplicação para limpar o estado.
+   */
+  logoutUser() {
     this.loginRegisterService.logout();
     this.router.navigate([&#x27;/login&#x27;]);
     location.reload();
@@ -725,9 +839,9 @@ export class SidenavComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div id="bdSidebar" class="d-flex flex-column flex-shrink-0 bg-sidebar text-white"    [ngClass]="{ \'showSidebar\': isSidebarVisible, \'hideSidebar\': !isSidebarVisible }">    <div class="d-flex justify-content-center align-items-center bg-color-system">        <div class="text-white">            <div class="justify-content-center align-items-center d-flex my-4">                <img src="/assets/images/grupo-brasileiro-logo-short.png" height="80" alt="logo grupo brasileiro">            </div>        </div>    </div>    <hr>    <div>        <ul class="mynav nav nav-pills d-flex flex-column mb-auto">            <!-- <li class="nav-item mb-1">                <a routerLink="dashboard" routerLinkActive="active">                    <img class="mx-2" src="/assets/icons/dashboard.svg" alt="dashboard icone">                    <i class="fa-regular"></i>                    Dashboard                </a>            </li>            <li class="nav-item mb-1">                <a routerLink="demandas" routerLinkActive="active">                    <img class="mx-2" src="/assets/icons/book.svg" alt="acompanhamento icone">                    <i class="fa-regular"></i>                    Histórico                </a>            </li> -->            <li class="nav-item mb-1">                <a routerLink="acompanhamento" routerLinkActive="active">                    <img class="mx-2" src="/assets/icons/request-icon.svg" alt="acompanhamento icone">                    <i class="ps-1 fa-solid"></i>                    Acompanhamento                </a>            </li>            <li class="nav-item mb-1">                <a routerLink="nova-solicitacao" routerLinkActive="active">                    <img class="mx-2" src="/assets/icons/new-request.svg" alt="nova solicitação icone">                    <i class="fa-regular"></i>                    Nova Solicitação                </a>            </li>            <li *ngIf="userRole == \'ROLE_SUPERVISOR\'" class="nav-item mb-1">                <a routerLink="/clientes" routerLinkActive="active">                    <img class="mx-2" src="/assets/icons/collaborator-icon.svg" alt="client icone">                    <i class="fa-solid"></i>                    Clientes                </a>            </li>            <li *ngIf="userRole == \'ROLE_SUPERVISOR\'" class="nav-item mb-1">                <a routerLink="/colaboradores" routerLinkActive="active">                    <img class="mx-2" src="/assets/icons/collaborator-icon.svg" alt="colaborador icone">                    <i class="fa-solid"></i>                    Colaboradores                </a>            </li>        </ul>    </div>    <hr>    <div class="d-flex logout-menu mt-auto">        <ul class="mynav nav nav-pills flex-column">            <li class="nav-item mb-1">                <a routerLink="/perfil" routerLinkActive="active">                    <img class="mx-2" src="/assets/icons/profile-icon.svg" alt="perfil icone">                    <i class="fa-regular"></i>                    Perfil                </a>            </li>            <li class="nav-item mb-1">                <a class="pointer" (click)="logoutUser()" routerLinkActive="active">                    <img class="mx-2" src="/assets/icons/logout-icon.svg" alt="logout icone">                    <i class="fa-regular"></i>                    Sair                </a>            </li>        </ul>    </div></div></div>'
-    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidenavComponent', 'selector': 'app-sidebar'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
+    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
     var DIRECTIVES = [{'name': 'CapitalizeDirective', 'selector': '[appCapitalize]'},{'name': 'ColorClassDirective', 'selector': '[colorClass], [backgroundColorClass], [borderColorClass]'},{'name': 'DndDirective', 'selector': '[appDndDirective]'},{'name': 'PhoneMaskDirective', 'selector': '[appPhoneMask]'}];
-    var ACTUAL_COMPONENT = {'name': 'SidenavComponent'};
+    var ACTUAL_COMPONENT = {'name': 'SidebarComponent'};
 </script>
 <script src="../js/tree.js"></script>
 
@@ -773,7 +887,7 @@ export class SidenavComponent implements OnInit {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
-            var COMPODOC_CURRENT_PAGE_URL = 'SidenavComponent.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'SidebarComponent.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

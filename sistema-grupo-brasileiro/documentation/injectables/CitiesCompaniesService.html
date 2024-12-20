@@ -119,6 +119,14 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Serviço responsável por buscar dados de cidades e empresas.
+Realiza chamadas HTTP para endpoints protegidos utilizando autenticação via token.</p>
+
+            </p>
 
 
 
@@ -183,12 +191,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/modules/feature/create-request/services/cities-companies.service.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/modules/feature/create-request/services/cities-companies.service.ts:19</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Construtor do serviço.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -197,6 +207,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -211,6 +222,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço Angular para realizar chamadas HTTP.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>storageService</td>
@@ -223,6 +238,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço para gerenciar o token de autenticação.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -258,19 +277,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="26"
-                                    class="link-to-prism">src/app/modules/feature/create-request/services/cities-companies.service.ts:26</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="47"
+                                    class="link-to-prism">src/app/modules/feature/create-request/services/cities-companies.service.ts:47</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Busca os dados de cidades da API.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>Um <code>Observable</code> contendo uma lista de dados de cidades (<code>I_City_Data[]</code>).</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -295,19 +320,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="31"
-                                    class="link-to-prism">src/app/modules/feature/create-request/services/cities-companies.service.ts:31</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="56"
+                                    class="link-to-prism">src/app/modules/feature/create-request/services/cities-companies.service.ts:56</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Busca os dados de empresas da API.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>Um <code>Observable</code> contendo uma lista de dados de empresas (<code>I_Company_Data[]</code>).</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -334,19 +365,26 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="20"
-                                    class="link-to-prism">src/app/modules/feature/create-request/services/cities-companies.service.ts:20</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="36"
+                                    class="link-to-prism">src/app/modules/feature/create-request/services/cities-companies.service.ts:36</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Obtém os cabeçalhos HTTP necessários para autenticação.
+Inclui o token de autenticação no cabeçalho <code>Authorization</code>.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>Um objeto <code>HttpHeaders</code> configurado.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -382,10 +420,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/modules/feature/create-request/services/cities-companies.service.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/modules/feature/create-request/services/cities-companies.service.ts:19</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>URL base para chamadas à API.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -402,29 +446,54 @@ import { I_Api_Response } from &#x27;../../../shared/interfaces/api-response&#x2
 import { I_City_Data } from &#x27;../../../shared/interfaces/briefing/agency-board/view/city-view&#x27;;
 import { I_Company_Data } from &#x27;../../../shared/interfaces/company/view/company-view&#x27;;
 
+/**
+ * Serviço responsável por buscar dados de cidades e empresas.
+ * Realiza chamadas HTTP para endpoints protegidos utilizando autenticação via token.
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
 export class CitiesCompaniesService {
-
+  /**
+   * URL base para chamadas à API.
+   */
   private apiUrl &#x3D; &#x27;http://localhost:8080/api/v1/data&#x27;;
 
+  /**
+   * Construtor do serviço.
+   * @param http Serviço Angular para realizar chamadas HTTP.
+   * @param storageService Serviço para gerenciar o token de autenticação.
+   */
   constructor(
     private http: HttpClient,
     private storageService: StorageService,
   ) { }
 
+  /**
+   * Obtém os cabeçalhos HTTP necessários para autenticação.
+   * Inclui o token de autenticação no cabeçalho &#x60;Authorization&#x60;.
+   * @returns Um objeto &#x60;HttpHeaders&#x60; configurado.
+   */
   private getHeaders(){
     const token &#x3D; this.storageService.getToken();
     return new HttpHeaders({
       Authorization: &#x60;Bearer ${token}&#x60;,
     });
   }
+
+  /**
+   * Busca os dados de cidades da API.
+   * @returns Um &#x60;Observable&#x60; contendo uma lista de dados de cidades (&#x60;I_City_Data[]&#x60;).
+   */
   getCities() {
     let url &#x3D; &#x60;${this.apiUrl}/cities&#x60;;
     return this.http.get&lt;I_City_Data[]&gt;(url, { headers: this.getHeaders() });
   }
 
+  /**
+   * Busca os dados de empresas da API.
+   * @returns Um &#x60;Observable&#x60; contendo uma lista de dados de empresas (&#x60;I_Company_Data[]&#x60;).
+   */
   getCompanies() {
     let url &#x3D; &#x60;${this.apiUrl}/companies&#x60;;
     return this.http.get&lt;I_Company_Data[]&gt;(url, { headers: this.getHeaders() });

@@ -121,6 +121,17 @@
             </p>
 
 
+                <p class="comment">
+                <h3>Description</h3>
+                </p>
+                <p class="comment">
+                    <p>Guard de autenticação (AuthGuard)</p>
+<p>Este serviço atua como um mecanismo de proteção de rotas no Angular, garantindo que
+apenas usuários autenticados possam acessar rotas específicas. Caso um usuário
+não autenticado tente acessar uma rota protegida, ele será redirecionado para a
+página de login.</p>
+
+                </p>
 
 
 
@@ -164,12 +175,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/modules/core/guards/guard.guard.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/modules/core/guards/guard.guard.ts:17</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Construtor do AuthGuard.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -178,6 +191,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -192,6 +206,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço para manipulação dos dados de sessão.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>router</td>
@@ -204,6 +222,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço Angular para navegação entre rotas.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -239,14 +261,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="13"
-                                    class="link-to-prism">src/app/modules/core/guards/guard.guard.ts:13</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="34"
+                                    class="link-to-prism">src/app/modules/core/guards/guard.guard.ts:34</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Determina se uma rota pode ser ativada com base no status de autenticação do usuário.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -257,6 +281,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -271,6 +296,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>O snapshot da rota que está sendo avaliada.</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>state</td>
@@ -283,6 +312,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>O estado atual do roteamento, incluindo a URL da rota solicitada.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -292,7 +325,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p><code>true</code> se o usuário estiver autenticado; caso contrário, redireciona para <code>/login</code> e retorna <code>false</code>.</p>
+
                             </div>
                 </td>
             </tr>
@@ -308,13 +342,34 @@ import { Injectable } from &#x27;@angular/core&#x27;;
 import { LoginRegisterService } from &#x27;../../services/login-register/login-register.service&#x27;;
 import { StorageService } from &#x27;../../services/storage/storage.service&#x27;;
 
+/**
+ * Guard de autenticação (AuthGuard)
+ * 
+ * Este serviço atua como um mecanismo de proteção de rotas no Angular, garantindo que 
+ * apenas usuários autenticados possam acessar rotas específicas. Caso um usuário 
+ * não autenticado tente acessar uma rota protegida, ele será redirecionado para a 
+ * página de login.
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
 export class AuthGuard implements CanActivate {
 
-  constructor(private storageService: StorageService, private router: Router) {}
+  /**
+   * Construtor do AuthGuard.
+   * 
+   * @param storageService Serviço para manipulação dos dados de sessão.
+   * @param router Serviço Angular para navegação entre rotas.
+   */
+  constructor(private storageService: StorageService, private router: Router) { }
 
+   /**
+   * Determina se uma rota pode ser ativada com base no status de autenticação do usuário.
+   * 
+   * @param route O snapshot da rota que está sendo avaliada.
+   * @param state O estado atual do roteamento, incluindo a URL da rota solicitada.
+   * @returns &#x60;true&#x60; se o usuário estiver autenticado; caso contrário, redireciona para &#x60;/login&#x60; e retorna &#x60;false&#x60;.
+   */
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
     if (this.storageService.isAuthenticated()) {
       return true;

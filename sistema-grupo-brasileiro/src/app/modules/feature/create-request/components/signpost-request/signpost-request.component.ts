@@ -18,30 +18,68 @@ enum Company {
   'Pauma' = 6,
 }
 
+/**
+ * Componente responsável pela criação de solicitações de sinalização.
+ * Permite o preenchimento de um formulário com informações sobre a sinalização, incluindo dados do projeto, tipo de material, empresas selecionadas e outras informações.
+ * O formulário valida os campos antes de enviar a solicitação para o serviço de criação de requisição.
+ */
 @Component({
   selector: 'app-signpost-request',
   templateUrl: './signpost-request.component.html',
   styleUrl: './signpost-request.component.css'
 })
 export class SignpostRequestComponent implements OnInit {
+  /** 
+   * O formulário de sinalização que será preenchido pelo usuário. 
+   */
   signPostForm!: FormGroup;
+
+  /** 
+   * Define se o botão de envio deve ser desabilitado. 
+   */
   isButtonDisabled: boolean = false;
 
+  /** 
+   * Indica se a solicitação é para uma única empresa. 
+   */
   isSingleCompany: boolean = true;
+  /** 
+   * Lista das empresas selecionadas pelo usuário. 
+   */
   selectedCompanies: Partial<CompanyDetails>[] = [];
+  /** 
+   * Lista das empresas a serem enviadas no formulário. 
+   */
   sendCompanies: number[] = [];
+  /** 
+   * Lista das empresas personalizadas (outros) a serem enviadas no formulário. 
+   */
   sendOthersCompanies: string[] = [];
 
+  /** 
+   * Indica se a opção "Outras Empresas" foi selecionada. 
+   */
   isOtherCompaniesSelected = false;
 
-
+  /**
+   * Construtor que injeta os serviços necessários no componente.
+   * @param fb FormBuilder para construir o formulário reativo.
+   * @param signpostService Serviço responsável pela criação da requisição de sinalização.
+   * @param toastrService Serviço para exibição de mensagens de alerta.
+   * @param storageService Serviço para acessar dados armazenados no armazenamento local.
+   */
   constructor(
     private fb: FormBuilder,
     private signpostService: CreateRequestService,
     private toastrService: ToastrService,
     private storageService: StorageService
-  ) {  }
+  ) { }
 
+
+  /**
+   * Método de ciclo de vida do componente.
+   * Inicializa o formulário com controles e validadores.
+   */
   ngOnInit(): void {
     this.signPostForm = new FormGroup({
       title: new FormControl('', [Validators.required]),
@@ -56,6 +94,10 @@ export class SignpostRequestComponent implements OnInit {
     });
   }
 
+  /**
+   * Getters para acessar os controles de formulário do componente.
+   * Estes métodos retornam as instâncias dos campos do formulário para facilitar a manipulação de seus valores e validações.
+   */
   get title() { return this.signPostForm.get('title')!; }
   get width() { return this.signPostForm.get('width')!; }
   get height() { return this.signPostForm.get('height')!; }
@@ -66,15 +108,27 @@ export class SignpostRequestComponent implements OnInit {
   get othersText() { return this.signPostForm.get('othersText')!; }
   get selectedCompany() { return this.signPostForm.get('selectedCompany')!; }
 
+  /**
+   * Limpa o formulário e reseta a lista de empresas selecionadas.
+   */
   clearForm() {
     this.signPostForm.reset();
     this.selectedCompanies = [];
   }
 
+  /**
+   * Altera a seleção de empresas e limpa a lista de empresas selecionadas.
+   * @param type Tipo de seleção.
+   */
   onCompanyChange(type: string) {
     this.selectedCompanies = [];
   }
 
+  /**
+   * Atualiza a lista de empresas selecionadas com base na escolha do usuário.
+   * @param selectionType Tipo de seleção da empresa.
+   * @param company Nome da empresa.
+   */
   updateCompanyName(selectionType: number, company: string) {
     const existingCompany = this.selectedCompanies.find(c => c.name === company);
     if (existingCompany) {
@@ -84,6 +138,9 @@ export class SignpostRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Alterna a seleção da opção "Outras Empresas".
+   */
   onOthersCompanies() {
     this.isOtherCompaniesSelected = !this.isOtherCompaniesSelected;
     if (!this.isOtherCompaniesSelected) {
@@ -92,6 +149,9 @@ export class SignpostRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Atualiza o nome das empresas personalizadas inseridas pelo usuário.
+   */
   updateOthersCompanies() {
     const otherValue = this.signPostForm.get('othersText')?.value;
     if (otherValue) {
@@ -106,6 +166,9 @@ export class SignpostRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Confirma a seleção de empresas "Outras" e adiciona à lista de empresas selecionadas.
+   */
   confirmOtherMultiCompany() {
     const otherCompany = this.signPostForm.get('othersText')?.value;
     if (otherCompany && !this.selectedCompanies.some(c => c.name === otherCompany)) {
@@ -117,6 +180,10 @@ export class SignpostRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Remove uma empresa da lista de empresas selecionadas.
+   * @param company Empresa a ser removida.
+   */
   removeCompany(company: Partial<CompanyDetails>) {
     const index = this.selectedCompanies.findIndex((c) => c.name === company.name);
     if (index >= 0) {
@@ -124,6 +191,10 @@ export class SignpostRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Preenche as listas de empresas para envio.
+   * @param companies Lista de empresas selecionadas.
+   */
   saveCompanies(companies: Partial<CompanyDetails>[]) {
     this.sendCompanies = [];
     this.sendOthersCompanies = [];
@@ -141,6 +212,10 @@ export class SignpostRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Submete a solicitação de sinalização após validação do formulário.
+   * Exibe mensagens de erro ou sucesso dependendo do resultado.
+   */
   submit() {
     this.saveCompanies(this.selectedCompanies);
 

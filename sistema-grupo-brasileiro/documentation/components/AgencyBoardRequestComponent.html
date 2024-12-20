@@ -124,6 +124,13 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente responsável pelo gerenciamento das solicitações de placa de agências, incluindo seleção de empresas, rotas e conexões.</p>
+
+    </p>
 
 
     <p class="comment">
@@ -370,12 +377,23 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:54</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:101</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Construtor para inicializar o componente de painel de agência.</p>
+<p>Este construtor injeta os serviços necessários no componente:</p>
+<ul>
+<li><code>FormBuilder</code>: Para criar e gerenciar formulários reativos.</li>
+<li><code>CreateRequestService</code>: Para enviar as solicitações de painel de agências.</li>
+<li><code>ToastrService</code>: Para exibir mensagens de sucesso ou erro para o usuário.</li>
+<li><code>StorageService</code>: Para gerenciar dados persistentes do usuário.</li>
+<li><code>DataService</code>: Para acessar dados adicionais necessários no componente.</li>
+<li><code>Router</code>: Para navegação entre rotas.</li>
+</ul>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -384,6 +402,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -398,6 +417,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço para construção de formulários reativos.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>createRequestService</td>
@@ -410,6 +433,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço para criação de solicitações de painel de agências.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>toastrService</td>
@@ -422,6 +449,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço para exibição de notificações de sucesso ou erro.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>storageService</td>
@@ -434,6 +465,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço para gerenciamento de dados persistentes.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>dataService</td>
@@ -446,6 +481,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço para acesso a dados adicionais.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>router</td>
@@ -458,6 +497,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço para navegação entre rotas.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -497,14 +540,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="255"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:255</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="375"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:375</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método para adicionar uma conexão a uma empresa.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -515,6 +560,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -529,6 +575,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Nome da empresa.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -564,14 +614,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="228"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:228</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="339"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:339</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método para adicionar uma rota principal a uma empresa.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -582,6 +634,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -596,6 +649,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Nome da empresa.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -631,14 +688,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="112"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:112</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="188"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:188</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método para limpar os campos do formulário.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -668,14 +727,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="207"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:207</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="310"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:310</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método para confirmar a adição de múltiplas empresas &quot;Outras&quot;.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -705,14 +766,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="171"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:171</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="265"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:265</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método para confirmar a adição de uma empresa &quot;Outras&quot;.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -742,14 +805,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="64"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:64</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="134"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:134</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método de ciclo de vida do Angular.
+Inicialização do componente. Carrega as cidades e configura o formulário.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -779,14 +845,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="125"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:125</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="205"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:205</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método para alterar o tipo de seleção de empresa (única ou múltiplas).</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -797,6 +865,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -811,6 +880,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Tipo de seleção (single ou multiple).</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -846,14 +919,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="283"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:283</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="412"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:412</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método para carregar arquivos.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -864,6 +939,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -878,6 +954,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Lista de arquivos carregados.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -913,14 +993,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="155"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:155</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="243"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:243</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método para lidar com a seleção da empresa &quot;Outras&quot;.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -950,14 +1032,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="183"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:183</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="280"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:280</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método para lidar com a seleção de múltiplas empresas &quot;Outras&quot;.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -987,19 +1071,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="300"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:300</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="435"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:435</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método para preparar os dados para envio.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="../interfaces/I_Agency_Board_Request.html" target="_self" >I_Agency_Board_Request</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>Dados preparados para o envio.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -1024,14 +1114,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="221"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:221</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="328"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:328</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método para remover uma empresa selecionada.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -1042,6 +1134,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1056,6 +1149,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Nome da empresa a ser removida.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1091,14 +1188,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="272"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:272</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="397"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:397</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método para remover uma conexão de uma empresa.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -1109,6 +1208,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1123,6 +1223,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Nome da empresa.</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>connectionIdToRemove</td>
@@ -1135,6 +1239,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>ID da conexão a ser removida.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1170,14 +1278,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="244"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:244</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="360"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:360</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método para remover uma rota principal de uma empresa.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -1188,6 +1298,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1202,6 +1313,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Nome da empresa.</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>routeIdToRemove</td>
@@ -1214,6 +1329,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>ID da rota a ser removida.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1249,14 +1368,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="287"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:287</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="419"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:419</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método para separar as empresas selecionadas.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -1286,19 +1407,28 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="393"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:393</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="549"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:549</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Envia a solicitação de criação do painel de agência.</p>
+<p>Este método verifica se o formulário está válido e se a validação das empresas foi concluída com sucesso.
+Se algum dos requisitos falhar, uma mensagem de erro será exibida. Caso contrário, os dados serão preparados e enviados ao servidor.
+Após o envio bem-sucedido, a página será recarregada após um tempo de espera.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>Nada é retornado.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -1323,14 +1453,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="140"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:140</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="225"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:225</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método para atualizar o nome da empresa selecionada.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -1341,6 +1473,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1355,6 +1488,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Tipo de seleção.</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>company</td>
@@ -1367,6 +1504,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Nome da empresa.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1402,14 +1543,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="163"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:163</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="254"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:254</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método para adicionar uma nova empresa &quot;Outras&quot;.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -1439,14 +1582,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="191"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:191</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="291"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:291</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método para atualizar as empresas &quot;Outras&quot;.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -1476,19 +1621,32 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="384"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:384</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="531"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:531</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Valida se todos os campos necessários em cada empresa foram preenchidos corretamente.</p>
+<p>Este método verifica se as empresas têm os seguintes campos obrigatórios preenchidos:</p>
+<ul>
+<li><code>name</code>: nome da empresa.</li>
+<li><code>companyMainRoutes</code>: deve conter ao menos uma rota principal.</li>
+<li><code>companyConnections</code>: deve conter ao menos uma conexão.</li>
+<li><code>isCustom</code>: deve ser do tipo booleano.</li>
+</ul>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>Retorna <code>true</code> se todas as empresas passarem na validação, caso contrário, retorna <code>false</code>.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -1518,10 +1676,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:39</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:50</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Formulário de solicitação de quadro publicitário.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1549,10 +1713,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:41</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:60</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de empresas disponíveis para seleção.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1580,10 +1750,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="54" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:54</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:101</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de arquivos carregados.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1605,10 +1781,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:38</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:45</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indicador de desabilitação do botão de envio.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1630,10 +1812,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:47</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="80" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:80</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Flag para indicar se múltiplas empresas foram selecionadas.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1655,10 +1843,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:46</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:75</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Flag para indicar se uma empresa &quot;Outras&quot; foi selecionada.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1686,10 +1880,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:40</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:55</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Flag para indicar se há apenas uma empresa selecionada.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1717,10 +1917,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:51</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:95</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de conexões disponíveis.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1748,10 +1954,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:50</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="90" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:90</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de rotas principais disponíveis.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1779,10 +1991,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:43</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:65</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Empresas selecionadas para o briefing.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1810,10 +2028,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:44</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="70" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:70</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Empresas adicionais selecionadas.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1841,10 +2065,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:48</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="85" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:85</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Flag para exibir os campos de empresa.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1870,9 +2100,16 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="98" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:98</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="171" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:171</a></div>
                                 </td>
                             </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Métodos de acesso aos campos do formulário.</p>
+</div>
+
+                        </td>
+                    </tr>
 
             </tbody>
         </table>
@@ -1892,7 +2129,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:99</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="172" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:172</a></div>
                                 </td>
                             </tr>
 
@@ -1914,7 +2151,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="100" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:100</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="173" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:173</a></div>
                                 </td>
                             </tr>
 
@@ -1936,7 +2173,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:101</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="174" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:174</a></div>
                                 </td>
                             </tr>
 
@@ -1958,7 +2195,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:102</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="175" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:175</a></div>
                                 </td>
                             </tr>
 
@@ -1980,7 +2217,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:103</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="176" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:176</a></div>
                                 </td>
                             </tr>
 
@@ -2002,7 +2239,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:104</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="177" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:177</a></div>
                                 </td>
                             </tr>
 
@@ -2024,7 +2261,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:105</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="178" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:178</a></div>
                                 </td>
                             </tr>
 
@@ -2046,7 +2283,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:106</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="179" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:179</a></div>
                                 </td>
                             </tr>
 
@@ -2068,7 +2305,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:107</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="180" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:180</a></div>
                                 </td>
                             </tr>
 
@@ -2090,7 +2327,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:108</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="181" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:181</a></div>
                                 </td>
                             </tr>
 
@@ -2112,7 +2349,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:109</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="182" class="link-to-prism">src/app/modules/feature/create-request/components/agency-board-request/agency-board-request.component.ts:182</a></div>
                                 </td>
                             </tr>
 
@@ -2154,30 +2391,95 @@ enum Company {
   &#x27;Brasileiro&#x27; &#x3D; 4,
 }
 
+/**
+ * @component AgencyBoardRequestComponent
+ * Componente responsável pelo gerenciamento das solicitações de placa de agências, incluindo seleção de empresas, rotas e conexões.
+ */
 @Component({
   selector: &#x27;app-agency-board-request&#x27;,
   templateUrl: &#x27;./agency-board-request.component.html&#x27;,
   styleUrls: [&#x27;./agency-board-request.component.css&#x27;]
 })
 export class AgencyBoardRequestComponent implements OnInit {
+  /**
+   * Indicador de desabilitação do botão de envio.
+   */
   isButtonDisabled &#x3D; false;
+
+  /**
+   * Formulário de solicitação de quadro publicitário.
+   */
   agencyBoardForm!: FormGroup;
+
+  /**
+   * Flag para indicar se há apenas uma empresa selecionada.
+   */
   isSingleCompany: boolean &#x3D; true;
+
+  /**
+   * Lista de empresas disponíveis para seleção.
+   */
   companies: CompanyDetails[] &#x3D; [];
 
+  /**
+   * Empresas selecionadas para o briefing.
+   */
   selectedCompanies: I_Company_Briefing_Form_Data[] &#x3D; [];
+
+  /**
+   * Empresas adicionais selecionadas.
+   */
   selectedOthersCompanies: string[] &#x3D; [];
 
+  /**
+   * Flag para indicar se uma empresa &quot;Outras&quot; foi selecionada.
+   */
   isOtherCompanySelected &#x3D; false;
+
+  /**
+   * Flag para indicar se múltiplas empresas foram selecionadas.
+   */
   isOtherCompaniesSelected &#x3D; false;
+
+  /**
+   * Flag para exibir os campos de empresa.
+   */
   showCompanyFields: boolean &#x3D; false;
 
+  /**
+   * Lista de rotas principais disponíveis.
+   */
   listMainRoutes: I_City_Data[] &#x3D; [];
+
+  /**
+   * Lista de conexões disponíveis.
+   */
   listConnections: I_City_Data[] &#x3D; [];
 
   // TODO: Adicionar ID para identificação da imagem
+  /**
+   * Lista de arquivos carregados.
+   */
   files: { name: string, url: string }[] &#x3D; [];
 
+  /**
+   * Construtor para inicializar o componente de painel de agência.
+   * 
+   * Este construtor injeta os serviços necessários no componente:
+   * - &#x60;FormBuilder&#x60;: Para criar e gerenciar formulários reativos.
+   * - &#x60;CreateRequestService&#x60;: Para enviar as solicitações de painel de agências.
+   * - &#x60;ToastrService&#x60;: Para exibir mensagens de sucesso ou erro para o usuário.
+   * - &#x60;StorageService&#x60;: Para gerenciar dados persistentes do usuário.
+   * - &#x60;DataService&#x60;: Para acessar dados adicionais necessários no componente.
+   * - &#x60;Router&#x60;: Para navegação entre rotas.
+   * 
+   * @param {FormBuilder} fb Serviço para construção de formulários reativos.
+   * @param {CreateRequestService} createRequestService Serviço para criação de solicitações de painel de agências.
+   * @param {ToastrService} toastrService Serviço para exibição de notificações de sucesso ou erro.
+   * @param {StorageService} storageService Serviço para gerenciamento de dados persistentes.
+   * @param {DataService} dataService Serviço para acesso a dados adicionais.
+   * @param {Router} router Serviço para navegação entre rotas.
+   */
   constructor(
     private fb: FormBuilder,
     private createRequestService: CreateRequestService,
@@ -2186,6 +2488,11 @@ export class AgencyBoardRequestComponent implements OnInit {
     private dataService: DataService,
     private router: Router) { }
 
+
+  /**
+   * Método de ciclo de vida do Angular.
+   * Inicialização do componente. Carrega as cidades e configura o formulário.
+   */
   ngOnInit(): void {
     this.dataService.getCities().pipe(
       map(cities &#x3D;&gt; cities.data!.map(city &#x3D;&gt; ({ id: city.id, name: city.name })))
@@ -2220,6 +2527,9 @@ export class AgencyBoardRequestComponent implements OnInit {
     });
   }
 
+  /**
+   * Métodos de acesso aos campos do formulário.
+   */
   get title() { return this.agencyBoardForm.get(&#x27;title&#x27;)!; }
   get length() { return this.agencyBoardForm.get(&#x27;length&#x27;)!; }
   get height() { return this.agencyBoardForm.get(&#x27;height&#x27;)!; }
@@ -2234,6 +2544,9 @@ export class AgencyBoardRequestComponent implements OnInit {
   get observation() { return this.agencyBoardForm.get(&#x27;observation&#x27;)!; }
 
 
+  /**
+   * Método para limpar os campos do formulário.
+   */
   clearForm() {
     this.agencyBoardForm.reset();
     this.companies &#x3D; [];
@@ -2247,6 +2560,10 @@ export class AgencyBoardRequestComponent implements OnInit {
     this.selectedOthersCompanies &#x3D; [];
   }
 
+  /**
+   * Método para alterar o tipo de seleção de empresa (única ou múltiplas).
+   * @param type Tipo de seleção (single ou multiple).
+   */
   onCompanyChange(type: string) {
     this.isSingleCompany &#x3D; (type &#x3D;&#x3D;&#x3D; &#x27;single&#x27;);
     this.companies &#x3D; [];
@@ -2262,6 +2579,11 @@ export class AgencyBoardRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Método para atualizar o nome da empresa selecionada.
+   * @param selectionType Tipo de seleção.
+   * @param company Nome da empresa.
+   */
   updateCompanyName(selectionType: number, company: string) {
     this.isOtherCompanySelected &#x3D; !this.isOtherCompanySelected;
     this.isOtherCompanySelected &#x3D; !this.isOtherCompanySelected;
@@ -2277,6 +2599,9 @@ export class AgencyBoardRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Método para lidar com a seleção da empresa &quot;Outras&quot;.
+   */
   onOtherCompany() {
     this.isOtherCompanySelected &#x3D; !this.isOtherCompanySelected;
     this.isOtherCompanySelected &#x3D; !this.isOtherCompanySelected;
@@ -2285,6 +2610,9 @@ export class AgencyBoardRequestComponent implements OnInit {
     this.agencyBoardForm.get(&#x27;otherText&#x27;)?.setValue(&#x27;&#x27;);
   }
 
+  /**
+   * Método para adicionar uma nova empresa &quot;Outras&quot;.
+   */
   updateOtherCompany() {
     const otherValue &#x3D; this.agencyBoardForm.get(&#x27;otherText&#x27;)?.value;
     this.companies &#x3D; [];
@@ -2293,6 +2621,9 @@ export class AgencyBoardRequestComponent implements OnInit {
     this.agencyBoardForm.get(&#x27;otherText&#x27;)?.reset();
   }
 
+  /**
+   * Método para confirmar a adição de uma empresa &quot;Outras&quot;.
+   */
   confirmOtherSingleCompany() {
     const otherCompany &#x3D; this.agencyBoardForm.get(&#x27;otherText&#x27;)?.value;
     if (otherCompany &amp;&amp; !this.companies.some(c &#x3D;&gt; c.name &#x3D;&#x3D;&#x3D; otherCompany)) {
@@ -2305,6 +2636,9 @@ export class AgencyBoardRequestComponent implements OnInit {
   }
 
 
+  /**
+   * Método para lidar com a seleção de múltiplas empresas &quot;Outras&quot;.
+   */
   onOthersCompanies() {
     this.isOtherCompaniesSelected &#x3D; !this.isOtherCompaniesSelected;
     if (!this.isOtherCompaniesSelected) {
@@ -2313,6 +2647,9 @@ export class AgencyBoardRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Método para atualizar as empresas &quot;Outras&quot;.
+   */
   updateOthersCompanies() {
     const otherValue &#x3D; this.agencyBoardForm.get(&#x27;othersText&#x27;)?.value;
     if (otherValue) {
@@ -2329,6 +2666,9 @@ export class AgencyBoardRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Método para confirmar a adição de múltiplas empresas &quot;Outras&quot;.
+   */
   confirmOtherMultiCompany() {
     const otherCompany &#x3D; this.agencyBoardForm.get(&#x27;othersText&#x27;)?.value;
     if (otherCompany &amp;&amp; !this.companies.some(c &#x3D;&gt; c.name &#x3D;&#x3D;&#x3D; otherCompany)) {
@@ -2343,6 +2683,10 @@ export class AgencyBoardRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Método para remover uma empresa selecionada.
+   * @param companyName Nome da empresa a ser removida.
+   */
   removeCompany(companyName: string) {
     const companyIndex &#x3D; this.companies.findIndex(c &#x3D;&gt; c.name &#x3D;&#x3D;&#x3D; companyName &amp;&amp; c.isCustom);
     if (companyIndex &gt;&#x3D; 0) {
@@ -2350,6 +2694,10 @@ export class AgencyBoardRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Método para adicionar uma rota principal a uma empresa.
+   * @param companyName Nome da empresa.
+   */
   addMainRoute(companyName: string) {
     const selectedMainRoute: I_City_Data | null &#x3D; this.agencyBoardForm.get(&#x27;mainRoute&#x27;)?.value;
 
@@ -2366,6 +2714,11 @@ export class AgencyBoardRequestComponent implements OnInit {
   }
 
 
+  /**
+   * Método para remover uma rota principal de uma empresa.
+   * @param companyName Nome da empresa.
+   * @param routeIdToRemove ID da rota a ser removida.
+   */
   removeMainRoute(companyName: string, routeIdToRemove: string) {
     const company &#x3D; this.companies.find(c &#x3D;&gt; c.name &#x3D;&#x3D;&#x3D; companyName);
     if (company) {
@@ -2377,6 +2730,10 @@ export class AgencyBoardRequestComponent implements OnInit {
   }
 
 
+  /**
+   * Método para adicionar uma conexão a uma empresa.
+   * @param companyName Nome da empresa.
+   */
   addConnection(companyName: string) {
     const selectedConnection: I_City_Data | null &#x3D; this.agencyBoardForm.get(&#x27;connections&#x27;)?.value;
 
@@ -2394,6 +2751,11 @@ export class AgencyBoardRequestComponent implements OnInit {
 
 
 
+  /**
+   * Método para remover uma conexão de uma empresa.
+   * @param companyName Nome da empresa.
+   * @param connectionIdToRemove ID da conexão a ser removida.
+   */
   removeConnection(companyName: string, connectionIdToRemove: string) {
     const company &#x3D; this.companies.find(c &#x3D;&gt; c.name &#x3D;&#x3D;&#x3D; companyName);
     if (company) {
@@ -2405,10 +2767,17 @@ export class AgencyBoardRequestComponent implements OnInit {
   }
 
 
+  /**
+   * Método para carregar arquivos.
+   * @param newFiles Lista de arquivos carregados.
+   */
   onFilesLoaded(newFiles: { name: string, url: string }[]): void {
     this.files &#x3D; newFiles;
   }
 
+  /**
+   * Método para separar as empresas selecionadas.
+   */
   separateCompanies() {
     this.selectedCompanies &#x3D; this.companies.filter(company &#x3D;&gt; !company.isCustom).map(company &#x3D;&gt; {
       const companyName &#x3D; company.name as keyof typeof Company;
@@ -2421,7 +2790,10 @@ export class AgencyBoardRequestComponent implements OnInit {
     this.selectedOthersCompanies &#x3D; this.companies.filter(company &#x3D;&gt; company.isCustom).map(company &#x3D;&gt; company.name);
   }
 
-
+  /**
+   * Método para preparar os dados para envio.
+   * @returns Dados preparados para o envio.
+   */
   prepareSubmit(): I_Agency_Board_Request {
     this.separateCompanies();
 
@@ -2506,6 +2878,18 @@ export class AgencyBoardRequestComponent implements OnInit {
     return { projectForm: projectForm, briefingForm: briefingForm, bAgencyBoardsForm: bAgencyBoardsForm }
   }
 
+
+  /**
+   * Valida se todos os campos necessários em cada empresa foram preenchidos corretamente.
+   * 
+   * Este método verifica se as empresas têm os seguintes campos obrigatórios preenchidos:
+   * - &#x60;name&#x60;: nome da empresa.
+   * - &#x60;companyMainRoutes&#x60;: deve conter ao menos uma rota principal.
+   * - &#x60;companyConnections&#x60;: deve conter ao menos uma conexão.
+   * - &#x60;isCustom&#x60;: deve ser do tipo booleano.
+   * 
+   * @returns {boolean} Retorna &#x60;true&#x60; se todas as empresas passarem na validação, caso contrário, retorna &#x60;false&#x60;.
+   */
   validateCompanies(): boolean {
     return this.companies.every(company &#x3D;&gt;
       company.name &amp;&amp;
@@ -2515,6 +2899,15 @@ export class AgencyBoardRequestComponent implements OnInit {
     );
   }
 
+  /**
+   * Envia a solicitação de criação do painel de agência.
+   * 
+   * Este método verifica se o formulário está válido e se a validação das empresas foi concluída com sucesso.
+   * Se algum dos requisitos falhar, uma mensagem de erro será exibida. Caso contrário, os dados serão preparados e enviados ao servidor.
+   * Após o envio bem-sucedido, a página será recarregada após um tempo de espera.
+   * 
+   * @returns {void} Nada é retornado.
+   */
   submit() {
     if (this.agencyBoardForm.invalid || !this.validateCompanies()) {
       this.toastrService.error(&quot;Erro ao realizar solicitação. Verifique se os campos estão preenchidos corretamente.&quot;);
@@ -3010,7 +3403,7 @@ input[type&#x3D;&quot;radio&quot;]:checked {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div class="conatiner d-flex flex-column p-3 mb-4 scroll-bar overflow-custom">    <form [formGroup]="agencyBoardForm" (ngSubmit)="submit()" #formDir="ngForm">        <div class="row pb-4">            <div class="col-12 col-md-6">                <div class="form-group pt-3">                    <label class="fw-bold" for="title">Título *</label>                    <textarea [backgroundColorClass]="\'#ebebeb\'" id="title" formControlName="title" type="text"                        class="form-control border-dark-subtle rounded-3 form-focus"                        placeholder="Escreva o título da solicitação"></textarea>                </div>                <div *ngIf="title.invalid && formDir.submitted" class="validation-warning">                    <p>Por favor, informe o título.</p>                </div>            </div>            <div class="col-12 col-md-6">                <div class="form-group pt-3">                    <label class="fw-bold" for="description">Descrição *</label>                    <textarea [backgroundColorClass]="\'#ebebeb\'" id="description" formControlName="description"                        type="text" class="form-control border-dark-subtle rounded-3 form-focus"                        placeholder="Escreva a descrição da solicitação"></textarea>                </div>                <div *ngIf="description.invalid && formDir.submitted" class="validation-warning">                    <p>Por favor, informe a descrição da placa.</p>                </div>            </div>        </div>        <div class="row pb-4">            <div class="col-12 col-md-6">                <div class="form-group pt-3">                    <label class="fw-bold" for="signLocation">Local da Placa *</label>                    <textarea [backgroundColorClass]="\'#ebebeb\'" id="signLocation" formControlName="signLocation"                        type="text" class="form-control border-dark-subtle rounded-3 form-focus"                        placeholder="Escreva a localização da placa"></textarea>                </div>                <div *ngIf="signLocation.invalid && formDir.submitted" class="validation-warning">                    <p>Por favor, informe o local onde a placa será instalada</p>                </div>            </div>            <div class="col-12 col-md-6">                <div class="form-group pt-3">                    <label class="fw-bold">Medida *</label>                    <div class="d-flex align-items-center mb-2">                        <div class="">                            <label>Largura</label>                            <input [backgroundColorClass]="\'#ebebeb\'" type="text"                                class="border border-dark-subtle rounded-3 p-1 me-2 w-100 form-focus" placeholder="cm"                                formControlName="length" />                        </div>                        <div class="pt-4">                            <span class="mx-3">X</span>                        </div>                        <div class="">                            <label>Altura</label>                            <input [backgroundColorClass]="\'#ebebeb\'" type="text"                                class="border border-dark-subtle rounded-3 p-1 me-2 w-100 form-focus" placeholder="cm"                                formControlName="height" />                        </div>                    </div>                    <div *ngIf="(length.invalid || height.invalid) && formDir.submitted" class="validation-warning">                        <p>Informe as medidas completas da placa (largura e altura) em centímetros.</p>                    </div>                    <div *ngIf="(length.errors?.[\'pattern\'] || height.errors?.[\'pattern\']) && formDir.submitted"                        class="validation-warning">                        <p>As medidas devem conter apenas números.</p>                    </div>                </div>            </div>        </div>        <div class="row pb-4 pt-2 border-bottom">            <div class="col-12 col-md-3">                <div class="form-group pt-3">                    <label class="fw-bold" for="agencyBoardType">Placa *</label>                    <select [backgroundColorClass]="\'#ebebeb\'" id="agencyBoardType"                        class="form-select border-dark-subtle rounded-3 form-focus w-100"                        formControlName="agencyBoardType">                        <option value="1">Luminoso Completo</option>                        <option value="2">Troca de Lona</option>                        <option value="3">Placa adesivada em Polietileno 1mm</option>                    </select>                </div>                <div *ngIf="agencyBoardType.invalid  && formDir.submitted" class="validation-warning">                    <p>Selecione qual o modelo da placa</p>                </div>            </div>            <div *ngIf="agencyBoardType.value === \'2\'" class="col-12 col-md-9">                <div class="form-group pt-3">                    <div class="title">                        <p class="fw-bold">Tipo *</p>                    </div>                    <div class="d-flex flex-wrap">                        <div class="form-check me-3 mb-2">                            <input [borderColorClass]="\'#027373\'" class="form-check-input" type="radio" id="backLight"                                formControlName="boardType" value="1">                            <label class="form-check-label" for="backLight">BackLight (Luminoso)</label>                        </div>                        <div class="form-check me-3 mb-2">                            <input [borderColorClass]="\'#027373\'" class="form-check-input" type="radio"                                id="frontLightWithLight" formControlName="boardType" value="2">                            <label class="form-check-label" for="frontLightWithLight">FrontLight Com Luz</label>                        </div>                        <div class="form-check me-3 mb-2">                            <input [borderColorClass]="\'#027373\'" class="form-check-input" type="radio"                                id="frontLightWithoutLight" formControlName="boardType" value="3">                            <label class="form-check-label" for="frontLightWithoutLight">FrontLight Sem Luz</label>                        </div>                        <div class="form-check me-3 mb-2">                            <input [borderColorClass]="\'#027373\'" class="form-check-input" type="radio"                                id="adhesiveOverCanvas" formControlName="boardType" value="4">                            <label class="form-check-label" for="adhesiveOverCanvas">Adesivo Sobre Lona</label>                        </div>                    </div>                    <div *ngIf="agencyBoardType.value === \'2\' && boardType.invalid && formDir.submitted"                        class="validation-warning">                        <p>Selecione o tipo da placa</p>                    </div>                </div>            </div>        </div>        <div class="row mt-5">            <div class="col-12">                <p class="fw-bold">Empresas</p>            </div>            <div class="col-12 d-flex flex-wrap align-items-center">                <label class="me-3">Compartilhado com outras empresas *:</label>                <div class="form-check me-5">                    <input [borderColorClass]="\'#027373\'" class="form-check-input" type="radio" id="singleCompany"                        formControlName="sharedCompany" (change)="onCompanyChange(\'multiple\')" value="true">                    <label class="form-check-label" for="singleCompany">Sim</label>                </div>                <div class="form-check">                    <input [borderColorClass]="\'#027373\'" class="form-check-input" type="radio" id="multipleCompanies"                        formControlName="sharedCompany" (change)="onCompanyChange(\'single\')" value="false">                    <label class="form-check-label" for="multipleCompanies">Não</label>                </div>            </div>            <div *ngIf="sharedCompany.invalid && formDir.submitted" class="validation-warning">                <p>Indique o compartilhamento com a(s) empresa(s)</p>            </div>        </div>        <div *ngIf="showCompanyFields">            <div *ngIf="isSingleCompany" class="row mt-5 border-bottom pb-4">                <div class="col-12">                    <p class="fw-bold">Selecione a Empresa *</p>                </div>                <div class="col-12 d-flex flex-wrap gap-3">                    <div class="form-check">                        <input [borderColorClass]="\'#027373\'" class="form-check-input" type="radio" id="rotaSingle"                            formControlName="selectedCompany" value="Rota Transportes"                            (change)="updateCompanyName(1, \'Rota Transportes\')">                        <label class="form-check-label" for="rotaSingle">Rota Transportes</label>                    </div>                    <div class="form-check">                        <input [borderColorClass]="\'#027373\'" class="form-check-input" type="radio" id="cidadeSolSingle"                            formControlName="selectedCompany" value="Cidade Sol"                            (change)="updateCompanyName(1, \'Cidade Sol\')">                        <label class="form-check-label" for="cidadeSolSingle">Cidade Sol</label>                    </div>                    <div class="form-check">                        <input [borderColorClass]="\'#027373\'" class="form-check-input" type="radio"                            id="brasileiroSingle" formControlName="selectedCompany" value="Brasileiro"                            (change)="updateCompanyName(1, \'Brasileiro\')">                        <label class="form-check-label" for="brasileiroSingle">Brasileiro</label>                    </div>                    <div class="form-check d-flex gap-2">                        <input [borderColorClass]="\'#027373\'" class="form-check-input" type="radio" id="otherSingle"                            formControlName="selectedCompany" value="Outro" (change)="onOtherCompany()">                        <label class="form-check-label" for="otherSingle">Outra</label>                        <input *ngIf="selectedCompany?.value === \'Outro\'" type="text" class="form-control mt-2"                            formControlName="otherText" placeholder="Especificar empresa"                            (change)="updateOtherCompany()">                        <button [backgroundColorClass]="\'#027373\'" *ngIf="isOtherCompanySelected" type="button"                            class="btn btn-sm text-white ms-2" (click)="confirmOtherSingleCompany()">OK</button>                    </div>                </div>                <div *ngIf="selectedCompany.invalid && formDir.submitted" class="validation-warning">                    <p>Selecione ou indique outra empresa.</p>                </div>            </div>            <div *ngIf="!isSingleCompany" class="row mt-5 border-bottom pb-4">                <div class="col-12">                    <p class="fw-bold">Selecione as Empresas *</p>                </div>                <div class="col-12 d-flex flex-wrap gap-3">                    <div class="form-check">                        <input [borderColorClass]="\'#027373\'" class="form-check-input" type="checkbox" id="rotaMulti"                            formControlName="selectedCompany" (change)="updateCompanyName(2, \'Rota Transportes\')">                        <label class="form-check-label" for="rotaMulti">Rota Transportes</label>                    </div>                    <div class="form-check">                        <input [borderColorClass]="\'#027373\'" class="form-check-input" type="checkbox"                            id="cidadeSolMulti" formControlName="selectedCompany"                            (change)="updateCompanyName(2, \'Cidade Sol\')">                        <label class="form-check-label" for="cidadeSolMulti">Cidade Sol</label>                    </div>                    <div class="form-check">                        <input [borderColorClass]="\'#027373\'" class="form-check-input" type="checkbox"                            id="brasileiroMulti" formControlName="selectedCompany"                            (change)="updateCompanyName(2, \'Brasileiro\')">                        <label class="form-check-label" for="brasileiroMulti">Brasileiro</label>                    </div>                    <div class="form-check d-flex align-items-center">                        <input [borderColorClass]="\'#027373\'" class="form-check-input" type="checkbox" id="otherMulti"                            formControlName="selectedCompany" (change)="onOthersCompanies()">                        <label class="form-check-label ms-2" for="otherMulti">Outras</label>                        <input *ngIf="isOtherCompaniesSelected" type="text" class="form-control ms-2"                            placeholder="Especificar empresa" formControlName="othersText"                            (change)="updateOthersCompanies()">                        <button [backgroundColorClass]="\'#027373\'" *ngIf="isOtherCompaniesSelected" type="button"                            class="btn btn-sm text-white ms-2" (click)="confirmOtherMultiCompany()">OK</button>                    </div>                </div>                <div *ngIf="(selectedCompany.invalid || companies.length < 2) && formDir.submitted"                    class="validation-warning">                    <p>Selecione ou indique duas ou mais empresas. </p>                </div>            </div>        </div>        <div *ngIf="companies.length != 0" class="row mt-5 border-bottom pb-4">            <div>                <p class="fw-bold">Itinerários</p>            </div>            <div *ngFor="let company of companies">                <div [backgroundColorClass]="\'#ebebeb\'" class="border border-dark-subtle p-3 m-2 rounded">                    <div>                        <p class="fw-bold">                            {{ company.name }}                            <button *ngIf="company.isCustom" [backgroundColorClass]="\'#ff6f6f\'" type="button"                                class="border-0 ps-2 rounded text-white" (click)="removeCompany(company.name)"> Remover                            </button>                        </p>                    </div>                    <div class="mb-3">                        <div class="d-flex flex-wrap align-items-center">                            <div>                                <label class="me-3" for="mainRoute">Principais *:</label>                            </div>                            <div class="d-flex flex-wrap align-items-center">                                <div *ngFor="let routeAdded of company.companyMainRoutes" class="me-2">                                    <div [backgroundColorClass]="\'#ebebeb\'"                                        class="border border-dark-subtle rounded-3 mb-2">                                        <span class="p-1 ">{{ routeAdded.name }} </span>                                        <button [backgroundColorClass]="\'#ff6f6f\'" type="button"                                            class="border-0 rounded-end text-white px-2"                                            (click)="removeMainRoute(company.name, routeAdded.id)"> - </button>                                    </div>                                </div>                                <div class="d-flex">                                    <select [backgroundColorClass]="\'#ebebeb\'" id="mainRoute"                                        class="form-select border-dark-subtle rounded-3 form-focus me-2 w-100"                                        formControlName="mainRoute">                                        <option *ngFor="let route of listMainRoutes" [ngValue]="route">{{ route.name }}                                        </option>                                    </select>                                    <button [backgroundColorClass]="\'#027373\'" type="button" class="btn text-white"                                        (click)="addMainRoute(company.name)">+</button>                                </div>                            </div>                            <div *ngIf="company.companyMainRoutes.length == 0 && formDir.submitted"                                class="validation-warning">                                <p>Indique ao menos uma rota principal. </p>                            </div>                        </div>                    </div>                    <div class="mb-3">                        <div class="d-flex flex-wrap align-items-center">                            <div>                                <label class="me-3" for="connections">Conexões *:</label>                            </div>                            <div class="d-flex flex-wrap align-items-center">                                <div *ngFor="let connectionAdded of company.companyConnections" class="me-2">                                    <div [backgroundColorClass]="\'#ebebeb\'"                                        class="border border-dark-subtle rounded-3 mb-2">                                        <span class="p-3 ">{{ connectionAdded.name }} </span>                                        <button [backgroundColorClass]="\'#ff6f6f\'" type="button"                                            class="border-0 rounded-end text-white px-2"                                            (click)="removeConnection(company.name, connectionAdded.id)"> - </button>                                    </div>                                </div>                                <div class="d-flex">                                    <select [backgroundColorClass]="\'#ebebeb\'" id="connections"                                        class="form-select border-dark-subtle rounded-3 form-focus me-2 w-100"                                        formControlName="connections">                                        <option *ngFor="let connection of listConnections" [ngValue]="connection">{{                                            connection.name }}                                        </option>                                    </select>                                </div>                                <button [backgroundColorClass]="\'#027373\'" type="button" class="btn text-white"                                    (click)="addConnection(company.name)">+</button>                            </div>                        </div>                        <div *ngIf="company.companyConnections.length == 0 && formDir.submitted"                            class="validation-warning">                            <p>Indique ao menos uma conexão. </p>                        </div>                    </div>                </div>            </div>        </div>        <!-- <div class="row mt-5 border-bottom pb-4">            <div class="title">                <p class="fw-bold">Adicionar Imagens do Local</p>            </div>            <div class="col-12">                <div                    class="d-flex flex-column justify-content-center align-itens-center border border-dark-subtle rounded-3 p-3 ">                    <app-loading-file (filesLoaded)="onFilesLoaded($event)"></app-loading-file>                </div>            </div>        </div> -->        <div class="form-group pt-3 w-100 py-3">            <label class="fw-bold" for="observation">Observações</label>            <textarea [backgroundColorClass]="\'#ebebeb\'" id="observation" formControlName="observation" type="text"                class="form-control border-dark-subtle rounded-3 form-focus" placeholder="Escreva aqui"></textarea>        </div>        <div class="d-flex gap-3 justify-content-end pt-2">            <button type="reset" (click)="clearForm()" class="btn btn-outline-danger">Redefinir                Formulário</button>            <button [disabled]="isButtonDisabled" [style.backgroundColor]="\'#027373\'" type="submit"                class="btn text-white">                Enviar            </button>        </div>    </form></div></div>'
-    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidenavComponent', 'selector': 'app-sidenav'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
+    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
     var DIRECTIVES = [{'name': 'CapitalizeDirective', 'selector': '[appCapitalize]'},{'name': 'ColorClassDirective', 'selector': '[colorClass], [backgroundColorClass], [borderColorClass]'},{'name': 'DndDirective', 'selector': '[appDndDirective]'},{'name': 'PhoneMaskDirective', 'selector': '[appPhoneMask]'}];
     var ACTUAL_COMPONENT = {'name': 'AgencyBoardRequestComponent'};
 </script>
