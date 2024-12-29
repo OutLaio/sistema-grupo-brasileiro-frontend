@@ -86,6 +86,7 @@ export class EditUserDataComponent {
         sector: this.activeUser.sector || '',
         occupation: this.activeUser.occupation || '',
         agency: this.activeUser.agency || '',
+        registrationNumber: this.activeUser.registrationNumber || '',
         avatar: this.activeUser.avatar,
       };
     }
@@ -101,6 +102,7 @@ export class EditUserDataComponent {
       sector: new FormControl(this.activeUser?.sector, [Validators.required]),
       occupation: new FormControl(this.activeUser?.occupation, [Validators.required]),
       nop: new FormControl(this.activeUser?.agency, [Validators.required]),
+      registrationNumber: new FormControl(this.activeUser?.registrationNumber, [Validators.required]),
     });
   }
 
@@ -113,6 +115,7 @@ export class EditUserDataComponent {
   get sector() { return this.editForm.get('sector')!; }
   get occupation() { return this.editForm.get('occupation')!; }
   get nop() { return this.editForm.get('nop')!; }
+  get registrationNumber() { return this.editForm.get('registrationNumber')!; }
 
   /**
   * Abre o modal para seleção de avatar.

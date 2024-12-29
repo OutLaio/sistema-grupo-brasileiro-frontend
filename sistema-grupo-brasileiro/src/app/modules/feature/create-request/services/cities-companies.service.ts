@@ -10,12 +10,13 @@ import { I_Company_Data } from '../../../shared/interfaces/company/view/company-
  * Realiza chamadas HTTP para endpoints protegidos utilizando autenticação via token.
  */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CitiesCompaniesService {
   /**
    * URL base para chamadas à API.
    */
+  // private apiUrl = 'http://54.200.23.253:8000/api/v1/data';
   private apiUrl = 'http://localhost:8080/api/v1/data';
 
   /**
@@ -25,15 +26,15 @@ export class CitiesCompaniesService {
    */
   constructor(
     private http: HttpClient,
-    private storageService: StorageService,
-  ) { }
+    private storageService: StorageService
+  ) {}
 
   /**
    * Obtém os cabeçalhos HTTP necessários para autenticação.
    * Inclui o token de autenticação no cabeçalho `Authorization`.
    * @returns Um objeto `HttpHeaders` configurado.
    */
-  private getHeaders(){
+  private getHeaders() {
     const token = this.storageService.getToken();
     return new HttpHeaders({
       Authorization: `Bearer ${token}`,

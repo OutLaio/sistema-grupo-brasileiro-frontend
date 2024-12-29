@@ -30,7 +30,7 @@ export class LoadingFileComponent {
    * Evento emitido quando os arquivos são carregados com sucesso.
    * Emite um array de objetos com o nome e a URL dos arquivos carregados.
    */
-  @Output() filesLoaded: EventEmitter<{ name: string, url: string }[]> = new EventEmitter();
+  @Output() filesLoaded: EventEmitter<File[]> = new EventEmitter();
 
 
   /**
@@ -61,12 +61,11 @@ export class LoadingFileComponent {
    * @param {FileList} files Lista de arquivos selecionados pelo usuário.
    */
   onFileUpload(files: FileList): void {
-    const uploadedFiles: { name: string, url: string }[] = [];
+    const uploadedFiles: File[] = [];
 
     for (let i = 0; i < files.length; i++) {
       const file = files[i];
-      const url = URL.createObjectURL(file);
-      uploadedFiles.push({ name: file.name, url });
+      uploadedFiles.push(file);
     }
 
     this.filesLoaded.emit(uploadedFiles);
@@ -95,7 +94,7 @@ export class LoadingFileComponent {
       return;
     }
     this.files.splice(index, 1);
-    this.filesLoaded.emit(this.files.map(file => ({ name: file.name, url: URL.createObjectURL(file) })));
+    this.filesLoaded.emit(this.files);
   }
 
   /**
@@ -137,8 +136,8 @@ export class LoadingFileComponent {
       this.fileDropEl.nativeElement.value = "";
     }
     this.uploadFilesSimulator(0);
-    this.filesLoaded.emit(this.files.map(file => ({ name: file.name, url: file.url })));
-  }
+    this.filesLoaded.emit(this.files);
+}
 
 
   /**

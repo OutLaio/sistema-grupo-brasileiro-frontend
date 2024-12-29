@@ -16,6 +16,7 @@ export class ListClientsService {
   /**
    * URL base da API utilizada pelo serviço.
    */
+  // private apiUrl = 'http://54.200.23.253:8000/api/v1';
   private apiUrl = 'http://localhost:8080/api/v1';
 
   /**
@@ -46,7 +47,7 @@ export class ListClientsService {
    * @returns Observable com a resposta da API, contendo os dados paginados de colaboradores.
    */
   getAllClients(page: number, size: number) {
-    let url = `${this.apiUrl}/employees/allCollaborators?page=${page}&size=${size}`;
+    let url = `${this.apiUrl}/employees/allEmployees?page=${page}&size=${size}`;
     return this.http.get<I_Api_Response<I_Page<I_Employee_View_Data>>>(url, {
       headers: this.getHeaders(),
     });
@@ -58,6 +59,9 @@ export class ListClientsService {
    */
   getLink() {
     const header = this.getHeaders();
-    return this.http.get<I_Api_Response<string>>(`${this.apiUrl}/auth/requestRegister`,{ headers: header });
+    return this.http.get<I_Api_Response<string>>(
+      `${this.apiUrl}/auth/requestRegister`,
+      { headers: header }
+    );
   }
 }

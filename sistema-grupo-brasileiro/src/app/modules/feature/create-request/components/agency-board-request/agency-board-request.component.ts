@@ -98,7 +98,7 @@ export class AgencyBoardRequestComponent implements OnInit {
   /**
    * Lista de arquivos carregados.
    */
-  files: { name: string, url: string }[] = [];
+  files: File[] = [];
 
   /**
    * Construtor para inicializar o componente de painel de agência.
@@ -409,7 +409,7 @@ export class AgencyBoardRequestComponent implements OnInit {
    * Método para carregar arquivos.
    * @param newFiles Lista de arquivos carregados.
    */
-  onFilesLoaded(newFiles: { name: string, url: string }[]): void {
+  onFilesLoaded(newFiles: File[]): void {
     this.files = newFiles;
   }
 
@@ -556,6 +556,7 @@ export class AgencyBoardRequestComponent implements OnInit {
       return;
     }
     const requestData = this.prepareSubmit();
+    console.log(this.files);
     this.createRequestService.submitAgencyBoardRequest(requestData)
       .subscribe({
         next: (response) => {

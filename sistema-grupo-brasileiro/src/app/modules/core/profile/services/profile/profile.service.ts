@@ -16,6 +16,7 @@ import { I_Api_Response } from '../../../../shared/interfaces/api-response';
 export class ProfileService {
 
   /** URL base para as requisições da service. */
+  // private readonly baseUrl = 'http://54.200.23.253:8000/api/v1';
   private readonly baseUrl = 'http://localhost:8080/api/v1';
 
   /** Token de autenticação obtido da service de armazenamento. */
@@ -55,10 +56,14 @@ export class ProfileService {
    */
   updateProfileUser(req: I_Employee_Form_Data, userId?: string) {
     const headers = this.getHeaders();
-    return this.http.put<I_Api_Response<I_Employee_View_Data>>(`${this.baseUrl}/employees/${userId}`, req, {
-      headers,
-      withCredentials: true,
-    });
+    return this.http.put<I_Api_Response<I_Employee_View_Data>>(
+      `${this.baseUrl}/employees/${userId}`,
+      req,
+      {
+        headers,
+        withCredentials: true,
+      }
+    );
   }
 
   /**

@@ -21,6 +21,7 @@ export class CreateRequestService {
   /**
    * URL base para as chamadas à API.
    */
+  // private readonly apiUrl = 'http://54.200.23.253:8000/api/v1';
   private readonly apiUrl = 'http://localhost:8080/api/v1';
 
   /**
@@ -41,7 +42,7 @@ export class CreateRequestService {
   constructor(
     private http: HttpClient,
     private storageService: StorageService
-  ) { }
+  ) {}
 
   /**
    * Obtém os cabeçalhos HTTP necessários para autenticação.
@@ -62,10 +63,14 @@ export class CreateRequestService {
    */
   submitSignpostRequest(req: I_Signpost_Request) {
     const headers = this.getHeaders();
-    return this.http.post<I_Api_Response<void>>(`${this.apiUrl}/signposts`, req, {
-      headers,
-      withCredentials: true,
-    });
+    return this.http.post<I_Api_Response<void>>(
+      `${this.apiUrl}/signposts`,
+      req,
+      {
+        headers,
+        withCredentials: true,
+      }
+    );
   }
 
   /**
@@ -75,10 +80,14 @@ export class CreateRequestService {
    */
   submitAgencyBoardRequest(req: I_Agency_Board_Request) {
     const headers = this.getHeaders();
-    return this.http.post<I_Api_Response<void>>(`${this.apiUrl}/agency-boards`, req, {
-      headers,
-      withCredentials: true,
-    });
+    return this.http.post<I_Api_Response<void>>(
+      `${this.apiUrl}/agency-boards`,
+      req,
+      {
+        headers,
+        withCredentials: true,
+      }
+    );
   }
 
   /**
@@ -88,10 +97,13 @@ export class CreateRequestService {
    */
   submitStickersRequest(req: I_Stickers_Request) {
     const headers = this.getHeaders();
-    return this.http.post<I_Api_Response<void>>(`${this.apiUrl}/stickers`, req, {
-      headers,
-      withCredentials: true,
-    });
+    return this.http.post<I_Api_Response<void>>(
+      `${this.apiUrl}/stickers`,
+      req,
+      {
+        headers,
+        withCredentials: true,
+      }
+    );
   }
-
 }

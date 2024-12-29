@@ -97,7 +97,7 @@ export class BtnFinalizeComponent {
    * @returns {boolean} - `true` se o projeto for aprovado e o usuário for supervisor, caso contrário `false`
    */
   isApproved() {
-    return this.project?.status === C_PROJECT_STATUS.APPROVED.en && this.storageService.isSupervisor();
+    return this.project?.status === C_PROJECT_STATUS.APPROVED.en && !this.storageService.isClient();
   }
 
   /**
@@ -105,6 +105,6 @@ export class BtnFinalizeComponent {
    * @returns {boolean} - `true` se o projeto estiver em produção e o usuário for supervisor, caso contrário `false`
    */
   isConfection() {
-    return this.project?.status === C_PROJECT_STATUS.IN_PRODUCTION.en && this.storageService.isSupervisor();
+    return this.project?.status === C_PROJECT_STATUS.IN_PRODUCTION.en && !this.storageService.isClient();
   }
 }

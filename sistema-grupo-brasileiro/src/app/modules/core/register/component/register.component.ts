@@ -91,6 +91,7 @@ export class RegisterComponent implements OnInit {
       sector: new FormControl('', [Validators.required]),
       occupation: new FormControl('', [Validators.required]),
       nop: new FormControl('', [Validators.required]),
+      registrationNumber: new FormControl('', [Validators.required]),
     });
   }
 
@@ -150,6 +151,9 @@ export class RegisterComponent implements OnInit {
   get nop() {
     return this.registerForm.get('nop')!;
   }
+  get registrationNumber() {
+    return this.registerForm.get('registrationNumber')!;
+  }
 
   /**
  * Envia os dados do formulário de registro.
@@ -178,6 +182,7 @@ export class RegisterComponent implements OnInit {
         sector: this.sector.value,
         occupation: this.occupation.value,
         agency: this.nop.value,
+        registrationNumber: this.registrationNumber.value,
         avatar: 99,
       },
       user: {

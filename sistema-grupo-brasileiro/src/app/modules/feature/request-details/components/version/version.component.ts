@@ -29,6 +29,7 @@ export class VersionComponent {
   open = 'open'; /** Status da versão em aberto */
   reject = 'reject'; /** Status da versão rejeitada */
   approve = 'approve'; /** Status da versão aprovada */
+  waiting: boolean = false;
 
   /**
    * Cria uma instância da classe que depende de RequestDetailsService e StorageService.
@@ -81,6 +82,10 @@ export class VersionComponent {
   isClient() {
     return this.storageService.isClient();
   }
+  
+  getActiveUser() {
+    return this.storageService.getSessionProfile();
+  }
 
   /**
   * Exibe o modal para inserir uma nova versão de arte.
@@ -120,6 +125,7 @@ export class VersionComponent {
       },
     }).then((result) => {
       if (result.isConfirmed) {
+        this.waiting = true;
         this.newVersion(result.value.artImage);
       }
     });
@@ -134,7 +140,7 @@ export class VersionComponent {
     if (artImage)
       this.requestDetailsService.uploadFile(artImage).subscribe({
         next: (res) => {
-          console.log(res.message);
+          this.waiting = false;
           this.requestDetailsService
             .newVersion(this.data?.type.project.id!, {
               productLink: res.data!.fileDownloadUri,
@@ -236,7 +242,7 @@ export class VersionComponent {
               ? result.value.feedback
               : version.feedback,
         };
-        if (this.isSupervisor()) {
+        if (this.isSupervisor() && version.supervisorApprove === null) {
           text = result.value.status
             ? result.value.forceApprove
               ? ''
@@ -245,7 +251,7 @@ export class VersionComponent {
           this.requestDetailsService
             .supervisorApproval(this.data?.type.project.id!, request)
             .subscribe((res) => (version = res.data!));
-        } else if (this.isClient()) {
+        } else if (this.data?.type.project.client.id == this.getActiveUser().id) {
           text = result.value.status ? '' : 'Sua solicitação está em análise!';
           this.requestDetailsService
             .clientApproval(this.data?.type.project.id!, request)
@@ -325,8 +331,8 @@ export class VersionComponent {
    * @returns {boolean} Retorna true se a versão estiver aberta.
    */
   isVersionOpenToMe(version: I_Version_Data) {
-    if (this.isSupervisor()) return version.supervisorApprove === null;
-    else if (this.isClient())
+    if (this.isSupervisor() && version.supervisorApprove === null) return true;
+    else if (this.data?.type.project.client.id == this.getActiveUser().id)
       return (
         version.clientApprove === null && version.supervisorApprove === true
       );
@@ -342,15 +348,20 @@ export class VersionComponent {
   getHtmlVersionModal(version: I_Version_Data) {
     return `
       <div class="d-flex flex-column gap-2">
-        <div class="d-flex gap-5 justify-content-center">
-          <img src="${version.productLink
-      }" alt="Arte" style="max-height: 200px;">
+        <div class="d-flex gap-5 justify-content-center pb-3">
+          <div class="spinner-container" id="spinnerContainer" style="display: block;">
+            <div class="spinner-border text-primary" role="status">
+              <span class="visually-hidden">Carregando...</span>
+            </div>
+          </div>
+          <img src="${version.productLink}" alt="Arte" style="max-height: 200px; display: none;"
+          onload="document.getElementById('spinnerContainer').style.display='none'; this.style.display='block';">
         </div>
         ${this.isVersionOpenToMe(version) || this.isVersionApproved(version)
         ? `
           <div class="d-flex flex-column align-items-center py-3 border-bottom border-top">
             <p>Baixe a arte clicando no link abaixo:</p>
-            <a href="${version.productLink}" target="_blank">${version.productLink}</a>
+            <a href="${version.productLink}" target="_blank">Clique Aqui!</a>
           </div>`
         : ''
       }

@@ -3,7 +3,7 @@
     <div class="row g-0 swap-columns">
       <div class="card-body p-md-3 mx-md-4">
         <div class="text-center my-5">
-          <img [src]="'/assets/images/avatars/' + (selectedAvatar || 'default') + '.png'" alt="Profile Image"
+          <img [src]="'/assets/images/avatars/' + (selectedAvatar || '99') + '.png'" alt="Profile Image"
             class="img-fluid img-profile rounded p-2 mb-3" (click)="openAvatarModal()">
         </div>
         <form (ngSubmit)="submit()" [formGroup]="editForm" #formDir="ngForm">
@@ -66,11 +66,17 @@
             </div>
           </div>
 
-          <div class="form-outline mb-4">
-            <input type="text" class="form-focus border-0 border-bottom border-2 w-100"
+          <div class="row">
+            <div class="col-md-6 form-outline mb-4">
+              <input type="text" class="form-focus border-0 border-bottom border-2 w-100" placeholder="Nº de Matrícula"
+                formControlName="registrationNumber" required readonly />
+            </div>
+            <div class="col-md-6 form-outline mb-4">
+              <input type="text" class="form-focus border-0 border-bottom border-2 w-100"
               placeholder="Núcleo Operacional de Origem/Agência" formControlName="nop" required />
-            <div *ngIf="nop.invalid && formDir.submitted" class="validation-warning">
-              <p>O NOP/Agência é obrigatório!</p>
+              <div *ngIf="nop.invalid && formDir.submitted" class="validation-warning">
+                <p>O NOP/Agência é obrigatório!</p>
+              </div>
             </div>
           </div>
 

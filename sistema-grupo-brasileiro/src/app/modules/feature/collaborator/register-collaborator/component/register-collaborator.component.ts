@@ -47,29 +47,30 @@ export class RegisterCollaboratorComponent {
 	*/
 	ngOnInit(): void {
 		this.registerForm = new FormGroup({
-			name: new FormControl('', [
-				Validators.required,
-				Validators.pattern('^[A-Za-zÀ-ÿ]{3,}( [A-Za-zÀ-ÿ]+)*$')
-			]),
-			lastname: new FormControl('', [
-				Validators.required,
-				Validators.pattern('^(?:[A-Za-zÀ-ÿ]+(?: [A-Za-zÀ-ÿ]+)*){3,}$')
-			]),
-			email: new FormControl('', [Validators.required, Validators.email]),
-			password: new FormControl('', [
-				Validators.required,
-				Validators.pattern(
-					/^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}$/
-				),
-			]),
-			phone: new FormControl('', [
-				Validators.required,
-				Validators.pattern(/^\(\d{2}\) \d{4,5}-\d{4}$/),
-			]),
-			sector: new FormControl('', [Validators.required]),
-			occupation: new FormControl('', [Validators.required]),
-			nop: new FormControl('', [Validators.required]),
-		});
+      name: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^[A-Za-zÀ-ÿ]{3,}( [A-Za-zÀ-ÿ]+)*$'),
+      ]),
+      lastname: new FormControl('', [
+        Validators.required,
+        Validators.pattern('^(?:[A-Za-zÀ-ÿ]+(?: [A-Za-zÀ-ÿ]+)*){3,}$'),
+      ]),
+      email: new FormControl('', [Validators.required, Validators.email]),
+      password: new FormControl('', [
+        Validators.required,
+        Validators.pattern(
+          /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[$*&@#])[0-9a-zA-Z$*&@#]{8,}$/
+        ),
+      ]),
+      phone: new FormControl('', [
+        Validators.required,
+        Validators.pattern(/^\(\d{2}\) \d{4,5}-\d{4}$/),
+      ]),
+      sector: new FormControl('', [Validators.required]),
+      occupation: new FormControl('', [Validators.required]),
+      nop: new FormControl('', [Validators.required]),
+      registrationNumber: new FormControl('', [Validators.required]),
+    });
 	}
 
 	/**
@@ -83,6 +84,7 @@ export class RegisterCollaboratorComponent {
 	get sector() { return this.registerForm.get('sector')!; }
 	get occupation() { return this.registerForm.get('occupation')!; }
 	get nop() { return this.registerForm.get('nop')!; }
+	get registrationNumber() { return this.registerForm.get('registrationNumber')!; }
 
 	/**
    * Alterna a exibição para o formulário de registro.
@@ -112,22 +114,23 @@ export class RegisterCollaboratorComponent {
 			return;
 		}
 
-		const data: I_User_Request = {
-			employee: {
-				name: this.name.value,
-				lastname: this.lastname.value,
-				phoneNumber: this.phone.value,
-				sector: this.sector.value,
-				occupation: this.occupation.value,
-				agency: this.nop.value,
-				avatar: 99,
-			},
-			user: {
-				email: this.email.value,
-				password: this.password.value,
-				profile: 2, // 3 = Client, 2 = Collaborator, 1 = Supervisor
-			},
-		};
+    const data: I_User_Request = {
+      employee: {
+        name: this.name.value,
+        lastname: this.lastname.value,
+        phoneNumber: this.phone.value,
+        sector: this.sector.value,
+        occupation: this.occupation.value,
+        agency: this.nop.value,
+        registrationNumber: this.registrationNumber.value,
+        avatar: 99,
+      },
+      user: {
+        email: this.email.value,
+        password: this.password.value,
+        profile: 2, // 3 = Client, 2 = Collaborator, 1 = Supervisor
+      },
+    };
 
 		this.registerService.registerUser(data).subscribe({
 			next: (res) => {

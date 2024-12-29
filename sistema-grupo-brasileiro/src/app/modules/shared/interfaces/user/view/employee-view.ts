@@ -9,5 +9,6 @@ export interface I_Employee_View_Data {
   sector: string;
   occupation: string;
   agency: string;
+  registrationNumber: string;
   avatar: number;
 }

@@ -83,7 +83,15 @@
             <input type="text" class="form-focus border-0 border-bottom border-2 w-100"
                 placeholder="Núcleo Operacional de Origem/Agência" formControlName="nop" />
             <div *ngIf="nop.invalid && formDir.submitted" class="validation-warning">
-                <p>O NOP/Agência é obrigatório!</p>
+                <p>O Núcleo/Agência é obrigatório!</p>
+            </div>
+        </div>
+
+        <div class="form-outline mb-4">
+            <input type="text" class="form-focus border-0 border-bottom border-2 w-100"
+                placeholder="Nº de Matrícula" formControlName="registrationNumber" />
+            <div *ngIf="registrationNumber.invalid && formDir.submitted" class="validation-warning">
+                <p>O Nº de Matrícula é obrigatório!</p>
             </div>
         </div>
 

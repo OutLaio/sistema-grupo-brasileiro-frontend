@@ -5,5 +5,6 @@ export interface I_Employee_Form_Data {
   sector: string;
   occupation: string;
   agency: string;
+  registrationNumber: string;
   avatar: number;
 }

@@ -15,7 +15,7 @@
                                 <p class="request-briefing-type me-2">{{ item.briefingType }}</p>
                                 <div *ngIf="item.collaborator; else noCollaborator">
                                     <p class="text-muted text-custom"><img class="me-1 perfil-img"
-                                            src="/assets/images/profile.png"
+                                            src="/assets/images/avatars/{{item.collaborator.avatar}}.png"
                                             [alt]="item.client.fullName + ' ' + 'avatar'" />
                                         <span class="request-briefing-type">{{ item.collaborator.fullName }}</span>
                                     </p>

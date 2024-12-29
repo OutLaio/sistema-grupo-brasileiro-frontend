@@ -17,6 +17,7 @@ export class ListCollaboratorsService {
   /**
    * URL base da API para obter a lista de colaboradores.
    */
+  // private apiUrl = 'http://54.200.23.253:8000/api/v1/employees/allCollaborators';
   private apiUrl = 'http://localhost:8080/api/v1/employees/allCollaborators';
 
   /**

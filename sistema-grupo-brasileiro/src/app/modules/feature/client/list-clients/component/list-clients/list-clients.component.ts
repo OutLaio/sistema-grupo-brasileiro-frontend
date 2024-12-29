@@ -71,7 +71,7 @@ export class ListClientsComponent {
   loadClients(page: number, size: number): void {
     this.listClientsService.getAllClients(page - 1, size).subscribe({
       next: (response) => {
-        this.clients = response.data?.content!;
+        this.clients = response.data!.content!.sort((a, b) => a.name.localeCompare(b.name));
         this.totalElements = response.data?.totalElements!;
         this.loading = false;
       },

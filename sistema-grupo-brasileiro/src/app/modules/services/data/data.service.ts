@@ -18,7 +18,7 @@ import { I_Material_Data } from '../../shared/interfaces/briefing/signpost/view/
  * cidades, empresas, tipos de adesivos, informações sobre adesivos e materiais utilizados no sistema.
  */
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class DataService {
   /**
@@ -51,6 +51,7 @@ export class DataService {
    */
   getBriefingTypes() {
     return this.http.get<I_Api_Response<I_Briefing_Type_Data[]>>(`${this.urlBase}/briefing-types`);
+
   }
 
   /**
@@ -59,7 +60,9 @@ export class DataService {
    * @returns Observable com a resposta da API contendo os dados dos tipos de placas de agência.
    */
   getAgencyBoardTypes() {
-    return this.http.get<I_Api_Response<I_Agency_Board_Type_Data[]>>(`${this.urlBase}/agency-board-types`);
+    return this.http.get<I_Api_Response<I_Agency_Board_Type_Data[]>>(
+      `${this.urlBase}/agency-board-types`
+    );
   }
 
   /**
@@ -68,7 +71,9 @@ export class DataService {
    * @returns Observable com a resposta da API contendo os dados dos tipos de placas.
    */
   getBoardTypes() {
-    return this.http.get<I_Api_Response<I_Board_Type_Data[]>>(`${this.urlBase}/board-types`);
+    return this.http.get<I_Api_Response<I_Board_Type_Data[]>>(
+      `${this.urlBase}/board-types`
+    );
   }
 
   /**
@@ -77,7 +82,9 @@ export class DataService {
    * @returns Observable com a resposta da API contendo os dados das cidades.
    */
   getCities() {
-    return this.http.get<I_Api_Response<I_City_Data[]>>(`${this.urlBase}/cities`);
+    return this.http.get<I_Api_Response<I_City_Data[]>>(
+      `${this.urlBase}/cities`
+    );
   }
 
   /**
@@ -86,7 +93,9 @@ export class DataService {
    * @returns Observable com a resposta da API contendo os dados das empresas.
    */
   getCompanies() {
-    return this.http.get<I_Api_Response<I_Company_Data[]>>(`${this.urlBase}/companies`);
+    return this.http.get<I_Api_Response<I_Company_Data[]>>(
+      `${this.urlBase}/companies`
+    );
   }
 
   /**
@@ -95,7 +104,9 @@ export class DataService {
    * @returns Observable com a resposta da API contendo os dados dos tipos de adesivos.
    */
   getStickerTypes() {
-    return this.http.get<I_Api_Response<I_Sticker_Type_Data[]>>(`${this.urlBase}/sticker-types`);
+    return this.http.get<I_Api_Response<I_Sticker_Type_Data[]>>(
+      `${this.urlBase}/sticker-types`
+    );
   }
 
   /**
@@ -104,7 +115,9 @@ export class DataService {
    * @returns Observable com a resposta da API contendo os dados das informações sobre tipos de adesivos.
    */
   getStickerInformationTypes() {
-    return this.http.get<I_Api_Response<I_Sticker_Information_Type_Data[]>>(`${this.urlBase}/sticker-information-types`);
+    return this.http.get<I_Api_Response<I_Sticker_Information_Type_Data[]>>(
+      `${this.urlBase}/sticker-information-types`
+    );
   }
   
   /**
@@ -113,6 +126,8 @@ export class DataService {
    * @returns Observable com a resposta da API contendo os dados dos materiais.
    */
   getMaterials() {
-    return this.http.get<I_Api_Response<I_Material_Data[]>>(`${this.urlBase}/materials`);
+    return this.http.get<I_Api_Response<I_Material_Data[]>>(
+      `${this.urlBase}/materials`
+    );
   }
 }

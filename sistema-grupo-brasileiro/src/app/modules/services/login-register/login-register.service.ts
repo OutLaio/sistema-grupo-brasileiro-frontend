@@ -26,6 +26,7 @@ export class LoginRegisterService {
   /**
    * URL base para as operações de autenticação e registro.
    */
+  // private readonly prefix = 'http://54.200.23.253:8000/api/v1/auth';
   private readonly prefix = 'http://localhost:8080/api/v1/auth';
 
   /**
@@ -39,7 +40,7 @@ export class LoginRegisterService {
     private router: Router,
     private httpClient: HttpClient,
     private cookieService: CookieService
-  ) { }
+  ) {}
 
   /**
    * Registra um novo usuário no sistema.
@@ -71,7 +72,12 @@ export class LoginRegisterService {
           const expiration = new Date();
           expiration.setHours(expiration.getHours() + 1);
 
-          this.cookieService.set('auth-token', value.data?.token!, expiration, '/');
+          this.cookieService.set(
+            'auth-token',
+            value.data?.token!,
+            expiration,
+            '/'
+          );
           this.cookieService.set(
             'activeUser',
             JSON.stringify(value.data?.employee!),

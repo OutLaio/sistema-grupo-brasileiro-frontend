@@ -19,6 +19,7 @@ export class CheckRequestsService {
   /**
    * URL base da API para operações relacionadas aos projetos.
    */
+  // private apiUrl = 'http://54.200.23.253:8000/api/v1/projects';
   private apiUrl = 'http://localhost:8080/api/v1/projects';
 
   /**
@@ -48,6 +49,8 @@ export class CheckRequestsService {
    */
   getProjects() {
     const headers = this.getHeaders();
-    return this.http.get<I_Api_Response<I_Project_Data[]>>(this.apiUrl, { headers });
+    return this.http.get<I_Api_Response<I_Project_Data[]>>(this.apiUrl, {
+      headers,
+    });
   }
 }
