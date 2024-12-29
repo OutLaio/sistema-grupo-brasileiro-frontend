@@ -124,6 +124,20 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente responsável por gerenciar os dados de perfil do usuário.</p>
+<p>Este componente permite:</p>
+<ul>
+<li>Visualizar dados do perfil do usuário ativo.</li>
+<li>Editar o perfil do usuário.</li>
+<li>Alterar a senha do usuário.</li>
+<li>Excluir a conta do usuário.</li>
+</ul>
+
+    </p>
 
 
     <p class="comment">
@@ -249,12 +263,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/modules/core/profile/components/user-data/user-data.component.ts:26</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/modules/core/profile/components/user-data/user-data.component.ts:48</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Construtor do componente.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -263,6 +279,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -277,6 +294,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço para gerenciar o perfil do usuário.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>loginRegisterService</td>
@@ -289,6 +310,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço para operações de login e logout.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>storageService</td>
@@ -301,6 +326,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço para acessar os dados armazenados localmente.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>router</td>
@@ -313,6 +342,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço de navegação e rotas.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>dialog</td>
@@ -325,6 +358,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço para abrir diálogos e modais.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -364,14 +401,18 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="52"
-                                    class="link-to-prism">src/app/modules/core/profile/components/user-data/user-data.component.ts:52</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="96"
+                                    class="link-to-prism">src/app/modules/core/profile/components/user-data/user-data.component.ts:96</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Deleta a conta do usuário após uma confirmação.
+Exibe uma caixa de diálogo de confirmação para garantir que o usuário deseja realmente excluir sua conta.
+Caso confirmado, realiza a chamada ao serviço para excluir a conta e, em seguida, realiza o logout do usuário.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -401,14 +442,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="89"
-                                    class="link-to-prism">src/app/modules/core/profile/components/user-data/user-data.component.ts:89</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="135"
+                                    class="link-to-prism">src/app/modules/core/profile/components/user-data/user-data.component.ts:135</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Abre o modal para alterar a senha do usuário.
+A nova senha deve atender a certos critérios de segurança (como comprimento mínimo, presença de letras maiúsculas e minúsculas, números e caracteres especiais).</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -438,14 +482,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="42"
-                                    class="link-to-prism">src/app/modules/core/profile/components/user-data/user-data.component.ts:42</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="81"
+                                    class="link-to-prism">src/app/modules/core/profile/components/user-data/user-data.component.ts:81</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Abre o modal para editar o perfil do usuário.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -475,14 +521,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="36"
-                                    class="link-to-prism">src/app/modules/core/profile/components/user-data/user-data.component.ts:36</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="72"
+                                    class="link-to-prism">src/app/modules/core/profile/components/user-data/user-data.component.ts:72</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método do ciclo de vida executado ao inicializar o componente.</p>
+<p>Obtém os dados do perfil do usuário ativo e a role mapeada.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -517,10 +566,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/modules/core/profile/components/user-data/user-data.component.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/modules/core/profile/components/user-data/user-data.component.ts:33</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Dados do usuário ativo obtidos a partir da sessão.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -553,10 +608,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/modules/core/profile/components/user-data/user-data.component.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/modules/core/profile/components/user-data/user-data.component.ts:44</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Mapeamento de roles do sistema para representações legíveis.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -584,10 +645,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/modules/core/profile/components/user-data/user-data.component.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/modules/core/profile/components/user-data/user-data.component.ts:38</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Representa o nível do usuário logado.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -609,21 +676,52 @@ import { MatDialog } from &#x27;@angular/material/dialog&#x27;;
 import { EditUserDataComponent } from &#x27;../edit-user-data/edit-user-data.component&#x27;;
 import { StorageService } from &#x27;../../../../services/storage/storage.service&#x27;;
 
+
+/**
+ * Componente responsável por gerenciar os dados de perfil do usuário.
+ * 
+ * Este componente permite:
+ * - Visualizar dados do perfil do usuário ativo.
+ * - Editar o perfil do usuário.
+ * - Alterar a senha do usuário.
+ * - Excluir a conta do usuário.
+ */
 @Component({
   selector: &#x27;app-user-data&#x27;,
   templateUrl: &#x27;./user-data.component.html&#x27;,
   styleUrls: [&#x27;./user-data.component.css&#x27;],
 })
 export class UserDataComponent implements OnInit {
+  /**
+   * Dados do usuário ativo obtidos a partir da sessão.
+   * @type {I_Employee_View_Data | null}
+   */
   activeUser!: I_Employee_View_Data | null;
+  /**
+   * Representa o nível do usuário logado.
+   * @type {string}
+  */
   userRole: string &#x3D; &quot;&quot;;
 
+  /**
+   * Mapeamento de roles do sistema para representações legíveis.
+   * @type {Record&lt;string, string&gt;}
+   */
   private roleMapping: { [key: string]: string } &#x3D; {
     &#x27;ROLE_CLIENT&#x27;: &#x27;Cliente&#x27;,
     &#x27;ROLE_COLLABORATOR&#x27;: &#x27;Colaborador&#x27;,
     &#x27;ROLE_SUPERVISOR&#x27;: &#x27;Supervisor&#x27;,
   };
 
+  /**
+   * Construtor do componente.
+   * 
+   * @param {ProfileService} profileService Serviço para gerenciar o perfil do usuário.
+   * @param {LoginRegisterService} loginRegisterService Serviço para operações de login e logout.
+   * @param {StorageService} storageService Serviço para acessar os dados armazenados localmente.
+   * @param {Router} router Serviço de navegação e rotas.
+   * @param {MatDialog} dialog Serviço para abrir diálogos e modais.
+   */
   constructor(
     private profileService: ProfileService,
     private loginRegisterService: LoginRegisterService,
@@ -632,12 +730,20 @@ export class UserDataComponent implements OnInit {
     private dialog: MatDialog
   ) { }
 
+  /**
+   * Método do ciclo de vida executado ao inicializar o componente.
+   * 
+   * Obtém os dados do perfil do usuário ativo e a role mapeada.
+   */
   ngOnInit(): void {
     this.activeUser &#x3D; this.storageService.getSessionProfile();
     const role &#x3D; this.storageService.getUserRole() ?? &quot;&quot;;
     this.userRole &#x3D; this.roleMapping[role] || &#x27;&#x27;;
   }
 
+  /**
+   * Abre o modal para editar o perfil do usuário.
+   */
   editProfile(): void {
     const dialogRef &#x3D; this.dialog.open(EditUserDataComponent, {
       width: &#x27;1200px&#x27;,
@@ -648,6 +754,11 @@ export class UserDataComponent implements OnInit {
     });
   }
 
+  /**
+   * Deleta a conta do usuário após uma confirmação.
+   * Exibe uma caixa de diálogo de confirmação para garantir que o usuário deseja realmente excluir sua conta.
+   * Caso confirmado, realiza a chamada ao serviço para excluir a conta e, em seguida, realiza o logout do usuário.
+   */
   deleteAccount() {
     Swal.fire({
       title: &#x27;Deletar Conta&#x27;,
@@ -683,8 +794,10 @@ export class UserDataComponent implements OnInit {
     });
   }
 
-
-
+  /**
+   * Abre o modal para alterar a senha do usuário.
+   * A nova senha deve atender a certos critérios de segurança (como comprimento mínimo, presença de letras maiúsculas e minúsculas, números e caracteres especiais).
+   */
   editPassword(): void {
     Swal.fire({
       title: &#x27;Alterar Senha&#x27;,
@@ -1001,7 +1114,7 @@ h3 {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div class="mt-4 overflow-custom scroll-bar">	<div class="container">		<div class="row mb-3">			<div class="col-md-8 d-flex align-items-center">				<div class="card-profile d-flex align-items-center">					<img [src]="\'/assets/images/avatars/\' + (activeUser?.avatar || \'default\') + \'.png\'"						alt="Profile Image" class="img-fluid img-profile me-3">					<div class="info-card">						<h4>{{ activeUser?.name + " " + activeUser?.lastname }}</h4>						<span>{{ activeUser?.occupation }}</span>						<p>{{ userRole }}</p>					</div>				</div>			</div>			<div class="d-flex justify-content-end align-items-center col-md-4 ">				<button class="d-flex btn-edit gap-2 rounded p-2" (click)="editProfile()">					<span class="text-muted">Editar Perfil</span>					<div class="img rounded-circle bg-success d-flex align-items-center justify-content-center"						style="height: 20px; width: 20px;">						<img src="/assets/icons/edit.png" alt="Icon Edit" class="img-fluid" style="height: 12px;">					</div>				</button>			</div>		</div>		<div class="mt-5">			<h3>Informações Pessoais</h3>			<hr>			<div class="row">				<div class="info-data col-md-4">					<p>Nome Completo</p>					<span>{{ activeUser?.name + " " + activeUser?.lastname }}</span>				</div>				<div class="info-data col-md-4">					<p>Telefone</p>					<span>{{ activeUser?.phoneNumber }}</span>				</div>				<div class="info-data col-md-4">					<p>E-mail</p>					<span>{{ activeUser?.user?.email }}</span>				</div>			</div>		</div>		<div class="mt-5">			<h3>Informações Profissionais</h3>			<hr>			<div class="row">				<div class="info-data col-md-4">					<p>Função</p>					<span>{{ activeUser?.occupation }}</span>				</div>				<div class="info-data col-md-4">					<p>Setor/Departamento</p>					<span>{{ activeUser?.sector }}</span>				</div>				<div class="info-data col-md-4">					<p>Núcleo Operacional de Origem/Agência</p>					<span>{{ activeUser?.agency }}</span>				</div>			</div>		</div>		<div class="mt-5">			<h3>Segurança</h3>			<hr>			<div class="row">				<div class="d-flex align-items-center  gap-2">					<button class="btn-edit password-edit rounded p-2" [colorClass]="\'#027373\'" (click)="editPassword()">Alterar						Senha</button>					<p class="text-muted">(Manter sua senha atualizada regularmente é uma prática importante para						garantir a						segurança de sua conta)</p>				</div>			</div>		</div>		<div class="mt-5">			<h3 [colorClass]="\'red\'">Deletar Conta</h3>			<hr>			<div class="row">				<div class="d-flex align-items-center gap-2">					<button class="btn-edit rounded p-2 delete-account" (click)="deleteAccount()">Deletar						Conta</button>					<p [colorClass]="\'red\'">(Essa ação é irreversível, pense bem antes de realizá-la)</p>				</div>			</div>		</div>	</div></div></div>'
-    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidenavComponent', 'selector': 'app-sidenav'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
+    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
     var DIRECTIVES = [{'name': 'CapitalizeDirective', 'selector': '[appCapitalize]'},{'name': 'ColorClassDirective', 'selector': '[colorClass], [backgroundColorClass], [borderColorClass]'},{'name': 'DndDirective', 'selector': '[appDndDirective]'},{'name': 'PhoneMaskDirective', 'selector': '[appPhoneMask]'}];
     var ACTUAL_COMPONENT = {'name': 'UserDataComponent'};
 </script>

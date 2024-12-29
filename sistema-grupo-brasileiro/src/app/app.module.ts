@@ -14,7 +14,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
 import { provideToastr } from 'ngx-toastr';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { HeaderComponent } from './modules/core/header/component/header.component';
-import { SidenavComponent } from './modules/core/sidenav/component/sidenav.component';
+import { SidebarComponent } from './modules/core/sidenav/component/sidebar.component';
 import { CollaboratorSystemComponent } from './modules/feature/collaborator/collaborator-system/component/collaborator-system.component';
 import { ListCollaboratorsComponent } from './modules/feature/collaborator/list-collaborators/component/list-collaborators.component';
 import { RegisterCollaboratorComponent } from './modules/feature/collaborator/register-collaborator/component/register-collaborator.component';
@@ -55,7 +55,7 @@ import { ListClientsComponent } from './modules/feature/client/list-clients/comp
     ResetPasswordComponent,
     RegisterComponent,
     HeaderComponent,
-    SidenavComponent,
+    SidebarComponent,
     CollaboratorSystemComponent,
     RegisterCollaboratorComponent,
     ListCollaboratorsComponent,

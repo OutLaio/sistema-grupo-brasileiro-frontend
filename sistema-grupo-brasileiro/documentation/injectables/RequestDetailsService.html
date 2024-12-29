@@ -119,6 +119,14 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Serviço responsável por interagir com a API para obter e modificar informações detalhadas sobre solicitações de projeto.
+Ele realiza operações como obter detalhes de uma solicitação, adicionar diálogos, atribuir colaboradores, e gerenciar versões e status de projetos.</p>
+
+            </p>
 
 
 
@@ -219,12 +227,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:28</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Construtor do serviço RequestDetailsService.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -233,6 +243,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -247,6 +258,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>Serviço HTTP do Angular para realizar requisições à API.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>collaboratorsService</td>
@@ -259,6 +276,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>Serviço para manipular dados dos colaboradores.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>cookieService</td>
@@ -271,6 +294,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>Serviço para acessar cookies no navegador.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -306,14 +335,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="56"
-                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:56</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="108"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:108</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Atribui um colaborador a um projeto específico.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -324,6 +355,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -338,6 +370,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>ID do projeto.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>request</td>
@@ -350,6 +388,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Dados do colaborador a ser atribuído.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -359,7 +403,10 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <ul>
+<li>Observable da resposta da API.</li>
+</ul>
+
                             </div>
                 </td>
             </tr>
@@ -385,14 +432,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="71"
-                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:71</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="144"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:144</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Aprova um projeto por um cliente.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -403,6 +452,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -417,6 +467,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>ID do projeto.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>request</td>
@@ -429,6 +485,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Dados de aprovação do cliente.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -438,7 +500,10 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <ul>
+<li>Observable com a versão aprovada.</li>
+</ul>
+
                             </div>
                 </td>
             </tr>
@@ -464,14 +529,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="96"
-                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:96</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="203"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:203</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Finaliza um projeto.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -482,6 +549,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -496,6 +564,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>ID do projeto.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -505,7 +579,10 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <ul>
+<li>Observable da resposta da API.</li>
+</ul>
+
                             </div>
                 </td>
             </tr>
@@ -531,14 +608,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="52"
-                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:52</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="96"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:96</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Obtém a lista de colaboradores.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -549,6 +628,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -563,6 +643,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Número da página.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>size</td>
@@ -575,6 +661,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Número de itens por página.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -584,7 +676,10 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <ul>
+<li>Observable contendo a lista de colaboradores.</li>
+</ul>
+
                             </div>
                 </td>
             </tr>
@@ -610,14 +705,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="42"
-                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:42</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="73"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:73</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Obtém todos os diálogos associados a uma solicitação de projeto usando seu ID.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -628,6 +725,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -642,6 +740,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>ID da solicitação.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -651,7 +755,10 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <ul>
+<li>Observable contendo a lista de diálogos associados.</li>
+</ul>
+
                             </div>
                 </td>
             </tr>
@@ -679,19 +786,27 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="30"
-                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:30</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="48"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:48</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Obtém os cabeçalhos de autorização usando o token de autenticação armazenado no cookie.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <ul>
+<li>Cabeçalhos de requisição com o token de autenticação.</li>
+</ul>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -716,14 +831,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="37"
-                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:37</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="61"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:61</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Obtém os detalhes de uma solicitação de projeto usando seu ID.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -734,6 +851,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -748,6 +866,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>ID do projeto.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -757,7 +881,10 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <ul>
+<li>Observable contendo a resposta da API com os detalhes do briefing.</li>
+</ul>
+
                             </div>
                 </td>
             </tr>
@@ -783,14 +910,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="91"
-                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:91</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="192"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:192</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Verifica se um projeto tem produção (confecção) associada.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -801,6 +930,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -815,6 +945,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>ID do projeto.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>hasConfection</td>
@@ -827,6 +963,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Indicador se há produção.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -836,7 +978,10 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <ul>
+<li>Observable da resposta da API.</li>
+</ul>
+
                             </div>
                 </td>
             </tr>
@@ -862,14 +1007,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="61"
-                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:61</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="120"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:120</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Cria uma nova versão de um projeto.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -880,6 +1027,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -894,6 +1042,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>ID do projeto.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>request</td>
@@ -906,6 +1060,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Dados da nova versão.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -915,7 +1075,10 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <ul>
+<li>Observable com os dados da versão criada.</li>
+</ul>
+
                             </div>
                 </td>
             </tr>
@@ -941,14 +1104,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="47"
-                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:47</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="84"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:84</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Cria um novo diálogo associado a uma solicitação de projeto.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -959,6 +1124,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -973,6 +1139,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Dados do diálogo a ser criado.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -982,7 +1154,10 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <ul>
+<li>Observable contendo a resposta da API.</li>
+</ul>
+
                             </div>
                 </td>
             </tr>
@@ -1008,14 +1183,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="66"
-                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:66</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="132"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:132</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Aprova um projeto por um supervisor.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -1026,6 +1203,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1040,6 +1218,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>ID do projeto.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>request</td>
@@ -1052,6 +1236,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Dados de aprovação do supervisor.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1061,7 +1251,10 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <ul>
+<li>Observable com a versão aprovada.</li>
+</ul>
+
                             </div>
                 </td>
             </tr>
@@ -1087,14 +1280,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="81"
-                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:81</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="168"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:168</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Atualiza a data de um projeto.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -1105,6 +1300,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1119,6 +1315,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>ID do projeto.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>request</td>
@@ -1131,6 +1333,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Dados da nova data.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1140,7 +1348,10 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <ul>
+<li>Observable da resposta da API.</li>
+</ul>
+
                             </div>
                 </td>
             </tr>
@@ -1166,14 +1377,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="86"
-                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:86</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="180"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:180</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Atualiza o status de um projeto.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -1184,6 +1397,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1198,6 +1412,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>ID do projeto.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>request</td>
@@ -1210,6 +1430,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Dados do novo status.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1219,7 +1445,10 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <ul>
+<li>Observable da resposta da API.</li>
+</ul>
+
                             </div>
                 </td>
             </tr>
@@ -1245,14 +1474,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="76"
-                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:76</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="156"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:156</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Atualiza o título de um projeto.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -1263,6 +1494,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1277,6 +1509,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>ID do projeto.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>request</td>
@@ -1289,6 +1527,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Dados do novo título.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1298,7 +1542,10 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <ul>
+<li>Observable da resposta da API.</li>
+</ul>
+
                             </div>
                 </td>
             </tr>
@@ -1324,14 +1571,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="101"
-                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:101</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="214"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:214</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Faz o upload de um arquivo.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -1342,6 +1591,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -1356,6 +1606,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Arquivo a ser enviado.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -1365,7 +1621,10 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <ul>
+<li>Observable com a resposta do upload.</li>
+</ul>
+
                             </div>
                 </td>
             </tr>
@@ -1402,10 +1661,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:28</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>URL base para as requisições da service.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1432,89 +1697,202 @@ import { I_Alter_Status_Request } from &#x27;../../../../shared/interfaces/proje
 import { I_Upload_Response } from &#x27;../../../../shared/interfaces/upload/upload-file-view&#x27;;
 import { CookieService } from &#x27;ngx-cookie-service&#x27;;
 
+/**
+ * Serviço responsável por interagir com a API para obter e modificar informações detalhadas sobre solicitações de projeto.
+ * Ele realiza operações como obter detalhes de uma solicitação, adicionar diálogos, atribuir colaboradores, e gerenciar versões e status de projetos.
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;,
 })
 export class RequestDetailsService {
+
+  /** URL base para as requisições da service. */
   private baseUrl &#x3D; &#x27;http://localhost:8080/api/v1&#x27;;
 
+  /**
+   * Construtor do serviço RequestDetailsService.
+   * 
+   * @param {HttpClient} http - Serviço HTTP do Angular para realizar requisições à API.
+   * @param {ListCollaboratorsService} collaboratorsService - Serviço para manipular dados dos colaboradores.
+   * @param {CookieService} cookieService - Serviço para acessar cookies no navegador.
+   */
   constructor(
     private http: HttpClient,
     private collaboratorsService: ListCollaboratorsService,
     private cookieService: CookieService
-  ) {}
+  ) { }
 
-  private getHeaders(){
+  /**
+   * Obtém os cabeçalhos de autorização usando o token de autenticação armazenado no cookie.
+   * 
+   * @returns {HttpHeaders} - Cabeçalhos de requisição com o token de autenticação.
+   */
+  private getHeaders() {
     const token &#x3D; this.cookieService.get(&#x27;auth-token&#x27;) || &#x27;&#x27;;
     return new HttpHeaders({
       Authorization: &#x60;Bearer ${token}&#x60;,
     });
   }
 
+  /**
+    * Obtém os detalhes de uma solicitação de projeto usando seu ID.
+    * 
+    * @param {string} id - ID do projeto.
+    * @returns {Observable&lt;I_Api_Response&lt;I_Any_Briefing&gt;&gt;} - Observable contendo a resposta da API com os detalhes do briefing.
+  */
   getRequestDetailsById(id: string) {
     const url &#x3D; &#x60;${this.baseUrl}/projects/${id}&#x60;;
     return this.http.get&lt;I_Api_Response&lt;I_Any_Briefing&gt;&gt;(url, { headers: this.getHeaders() });
   }
 
+  /**
+   * Obtém todos os diálogos associados a uma solicitação de projeto usando seu ID.
+   * 
+   * @param {string} id - ID da solicitação.
+   * @returns {Observable&lt;I_Api_Response&lt;I_Dialog_Box_Response[]&gt;&gt;} - Observable contendo a lista de diálogos associados.
+   * 
+   */
   getDialoguesByRequestId(id: string) {
     const url &#x3D; &#x60;${this.baseUrl}/dialogs/briefing/${id}&#x60;;
     return this.http.get&lt;I_Api_Response&lt;I_Dialog_Box_Response[]&gt;&gt;(url, { headers: this.getHeaders() });
   }
 
+  /**
+   * Cria um novo diálogo associado a uma solicitação de projeto.
+   * 
+   * @param {I_Dialog_Box_Request} request - Dados do diálogo a ser criado.
+   * @returns {Observable&lt;I_Api_Response&lt;I_Dialog_Box_Response&gt;&gt;} - Observable contendo a resposta da API.
+   */
   setNewDialogue(request: I_Dialog_Box_Request) {
     const url &#x3D; &#x60;${this.baseUrl}/dialogs&#x60;;
     return this.http.post&lt;I_Api_Response&lt;I_Dialog_Box_Response&gt;&gt;(url, request, { headers: this.getHeaders() });
   }
 
+  /**
+   * Obtém a lista de colaboradores.
+   * 
+   * @param {number} page - Número da página.
+   * @param {number} size - Número de itens por página.
+   * @returns {Observable&lt;I_Api_Response&lt;I_Collaborator[]&gt;&gt;} - Observable contendo a lista de colaboradores.
+   */
   getAllCollaborators(page: number, size: number) {
     return this.collaboratorsService.getAllCollaborators(page, size);
   }
 
-  assignCollaborator(id:string, request: I_Assign_Collaborator_Request) {
+  /**
+   * Atribui um colaborador a um projeto específico.
+   * 
+   * @param {string} id - ID do projeto.
+   * @param {I_Assign_Collaborator_Request} request - Dados do colaborador a ser atribuído.
+   * @returns {Observable&lt;I_Api_Response&lt;void&gt;&gt;} - Observable da resposta da API.
+   *
+   */
+  assignCollaborator(id: string, request: I_Assign_Collaborator_Request) {
     const url &#x3D; &#x60;${this.baseUrl}/projects/${id}/assignCollaborator&#x60;;
     return this.http.put&lt;I_Api_Response&lt;void&gt;&gt;(url, request, { headers: this.getHeaders() });
   }
 
-  newVersion(id: string, request: I_New_Version_Request){
+  /**
+   * Cria uma nova versão de um projeto.
+   * 
+   * @param {string} id - ID do projeto.
+   * @param {I_New_Version_Request} request - Dados da nova versão.
+   * @returns {Observable&lt;I_Api_Response&lt;I_Version_Data&gt;&gt;} - Observable com os dados da versão criada.
+   */
+  newVersion(id: string, request: I_New_Version_Request) {
     const url &#x3D; &#x60;${this.baseUrl}/projects/${id}/newVersion&#x60;;
     return this.http.put&lt;I_Api_Response&lt;I_Version_Data&gt;&gt;(url, request, { headers: this.getHeaders() });
   }
 
-  supervisorApproval(projectId: string, request: I_Approve_Request){
+  /**
+   * Aprova um projeto por um supervisor.
+   * 
+   * @param {string} projectId - ID do projeto.
+   * @param {I_Approve_Request} request - Dados de aprovação do supervisor.
+   * @returns {Observable&lt;I_Api_Response&lt;I_Version_Data&gt;&gt;} - Observable com a versão aprovada.
+   */
+  supervisorApproval(projectId: string, request: I_Approve_Request) {
     const url &#x3D; &#x60;${this.baseUrl}/projects/${projectId}/approve/supervisor&#x60;;
     return this.http.put&lt;I_Api_Response&lt;I_Version_Data&gt;&gt;(url, request, { headers: this.getHeaders() });
   }
 
-  clientApproval(projectId: string, request: I_Approve_Request){
+  /**
+   * Aprova um projeto por um cliente.
+   * 
+   * @param {string} projectId - ID do projeto.
+   * @param {I_Approve_Request} request - Dados de aprovação do cliente.
+   * @returns {Observable&lt;I_Api_Response&lt;I_Version_Data&gt;&gt;} - Observable com a versão aprovada.
+   */
+  clientApproval(projectId: string, request: I_Approve_Request) {
     const url &#x3D; &#x60;${this.baseUrl}/projects/${projectId}/approve/client&#x60;;
     return this.http.put&lt;I_Api_Response&lt;I_Version_Data&gt;&gt;(url, request, { headers: this.getHeaders() });
   }
 
-  updateTitle(id: string ,request: I_Alter_Title_Request) {
+  /**
+   * Atualiza o título de um projeto.
+   * 
+   * @param {string} id - ID do projeto.
+   * @param {I_Alter_Title_Request} request - Dados do novo título.
+   * @returns {Observable&lt;I_Api_Response&lt;void&gt;&gt;} - Observable da resposta da API.
+   */
+  updateTitle(id: string, request: I_Alter_Title_Request) {
     const url &#x3D; &#x60;${this.baseUrl}/projects/${id}/alterTitle&#x60;;
     return this.http.put&lt;I_Api_Response&lt;void&gt;&gt;(url, request, { headers: this.getHeaders() });
   }
 
-  updateDate(id: string ,request: I_Alter_Date_Request) {
+  /**
+   * Atualiza a data de um projeto.
+   * 
+   * @param {string} id - ID do projeto.
+   * @param {I_Alter_Date_Request} request - Dados da nova data.
+   * @returns {Observable&lt;I_Api_Response&lt;void&gt;&gt;} - Observable da resposta da API.
+   */
+  updateDate(id: string, request: I_Alter_Date_Request) {
     const url &#x3D; &#x60;${this.baseUrl}/projects/${id}/alterDate&#x60;;
     return this.http.put&lt;I_Api_Response&lt;void&gt;&gt;(url, request, { headers: this.getHeaders() });
   }
 
-  updateStatus(id: string ,request: I_Alter_Status_Request) {
+  /**
+   * Atualiza o status de um projeto.
+   * 
+   * @param {string} id - ID do projeto.
+   * @param {I_Alter_Status_Request} request - Dados do novo status.
+   * @returns {Observable&lt;I_Api_Response&lt;void&gt;&gt;} - Observable da resposta da API.
+   */
+  updateStatus(id: string, request: I_Alter_Status_Request) {
     const url &#x3D; &#x60;${this.baseUrl}/projects/${id}/alterStatus&#x60;;
     return this.http.put&lt;I_Api_Response&lt;void&gt;&gt;(url, request, { headers: this.getHeaders() });
   }
 
+  /**
+   * Verifica se um projeto tem produção (confecção) associada.
+   * 
+   * @param {string} id - ID do projeto.
+   * @param {boolean} hasConfection - Indicador se há produção.
+   * @returns {Observable&lt;I_Api_Response&lt;void&gt;&gt;} - Observable da resposta da API.
+   */
   hasProduction(id: string, hasConfection: boolean) {
     const url &#x3D; &#x60;${this.baseUrl}/projects/${id}/hasProduction?hasConfection&#x3D;${hasConfection}&#x60;;
     return this.http.put&lt;I_Api_Response&lt;void&gt;&gt;(url, null, { headers: this.getHeaders() });
   }
 
+  /**
+   * Finaliza um projeto.
+   * 
+   * @param {string} id - ID do projeto.
+   * @returns {Observable&lt;I_Api_Response&lt;void&gt;&gt;} - Observable da resposta da API.
+   */
   finishProject(id: string) {
     const url &#x3D; &#x60;${this.baseUrl}/projects/${id}/finish&#x60;;
     return this.http.put&lt;I_Api_Response&lt;void&gt;&gt;(url, null, { headers: this.getHeaders() });
   }
 
+  /**
+   * Faz o upload de um arquivo.
+   * 
+   * @param {File} file - Arquivo a ser enviado.
+   * @returns {Observable&lt;I_Api_Response&lt;I_Upload_Response&gt;&gt;} - Observable com a resposta do upload.
+   */
   uploadFile(file: File) {
     const formData &#x3D; new FormData();
     formData.append(&#x27;file&#x27;, file);

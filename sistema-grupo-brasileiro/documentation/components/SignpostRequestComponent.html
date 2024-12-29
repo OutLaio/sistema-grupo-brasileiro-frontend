@@ -120,6 +120,15 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente responsável pela criação de solicitações de sinalização.
+Permite o preenchimento de um formulário com informações sobre a sinalização, incluindo dados do projeto, tipo de material, empresas selecionadas e outras informações.
+O formulário valida os campos antes de enviar a solicitação para o serviço de criação de requisição.</p>
+
+    </p>
 
 
     <p class="comment">
@@ -312,12 +321,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:35</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:62</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Construtor que injeta os serviços necessários no componente.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -326,6 +337,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -340,6 +352,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>FormBuilder para construir o formulário reativo.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>signpostService</td>
@@ -352,6 +368,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço responsável pela criação da requisição de sinalização.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>toastrService</td>
@@ -364,6 +384,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço para exibição de mensagens de alerta.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>storageService</td>
@@ -376,6 +400,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço para acessar dados armazenados no armazenamento local.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -415,14 +443,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="69"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:69</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="114"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:114</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Limpa o formulário e reseta a lista de empresas selecionadas.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -452,14 +482,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="109"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:109</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="172"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:172</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Confirma a seleção de empresas &quot;Outras&quot; e adiciona à lista de empresas selecionadas.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -489,14 +521,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="45"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:45</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="83"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:83</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método de ciclo de vida do componente.
+Inicializa o formulário com controles e validadores.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -526,14 +561,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="74"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:74</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="123"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:123</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Altera a seleção de empresas e limpa a lista de empresas selecionadas.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -544,6 +581,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -558,6 +596,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Tipo de seleção.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -593,14 +635,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="87"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:87</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="144"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:144</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Alterna a seleção da opção &quot;Outras Empresas&quot;.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -630,14 +674,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="120"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:120</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="187"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:187</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Remove uma empresa da lista de empresas selecionadas.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -648,6 +694,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -662,6 +709,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Empresa a ser removida.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -697,14 +748,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="127"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:127</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="198"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:198</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Preenche as listas de empresas para envio.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -715,6 +768,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -729,6 +783,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Lista de empresas selecionadas.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -764,14 +822,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="144"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:144</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="219"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:219</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Submete a solicitação de sinalização após validação do formulário.
+Exibe mensagens de erro ou sucesso dependendo do resultado.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -801,14 +862,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="78"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:78</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="132"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:132</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Atualiza a lista de empresas selecionadas com base na escolha do usuário.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -819,6 +882,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -833,6 +897,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Tipo de seleção da empresa.</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>company</td>
@@ -845,6 +913,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Nome da empresa.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -880,14 +952,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="95"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:95</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="155"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:155</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Atualiza o nome das empresas personalizadas inseridas pelo usuário.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -927,10 +1001,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:28</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:40</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Define se o botão de envio deve ser desabilitado.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -952,10 +1032,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:35</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:62</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indica se a opção &quot;Outras Empresas&quot; foi selecionada.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -983,10 +1069,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:30</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:45</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indica se a solicitação é para uma única empresa.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1014,10 +1106,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:31</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:49</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista das empresas selecionadas pelo usuário.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1045,10 +1143,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:32</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:53</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista das empresas a serem enviadas no formulário.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1076,10 +1180,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:33</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:57</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista das empresas personalizadas (outros) a serem enviadas no formulário.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1102,10 +1212,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:27</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:35</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>O formulário de sinalização que será preenchido pelo usuário.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -1131,9 +1247,17 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:59</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:101</a></div>
                                 </td>
                             </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Getters para acessar os controles de formulário do componente.
+Estes métodos retornam as instâncias dos campos do formulário para facilitar a manipulação de seus valores e validações.</p>
+</div>
+
+                        </td>
+                    </tr>
 
             </tbody>
         </table>
@@ -1153,7 +1277,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:60</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:102</a></div>
                                 </td>
                             </tr>
 
@@ -1175,7 +1299,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:61</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:103</a></div>
                                 </td>
                             </tr>
 
@@ -1197,7 +1321,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:62</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:104</a></div>
                                 </td>
                             </tr>
 
@@ -1219,7 +1343,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:63</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:105</a></div>
                                 </td>
                             </tr>
 
@@ -1241,7 +1365,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="64" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:64</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:106</a></div>
                                 </td>
                             </tr>
 
@@ -1263,7 +1387,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="65" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:65</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:107</a></div>
                                 </td>
                             </tr>
 
@@ -1285,7 +1409,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:66</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:108</a></div>
                                 </td>
                             </tr>
 
@@ -1307,7 +1431,7 @@
                 </tr>
                             <tr>
                                 <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:67</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:109</a></div>
                                 </td>
                             </tr>
 
@@ -1338,30 +1462,68 @@ enum Company {
   &#x27;Pauma&#x27; &#x3D; 6,
 }
 
+/**
+ * Componente responsável pela criação de solicitações de sinalização.
+ * Permite o preenchimento de um formulário com informações sobre a sinalização, incluindo dados do projeto, tipo de material, empresas selecionadas e outras informações.
+ * O formulário valida os campos antes de enviar a solicitação para o serviço de criação de requisição.
+ */
 @Component({
   selector: &#x27;app-signpost-request&#x27;,
   templateUrl: &#x27;./signpost-request.component.html&#x27;,
   styleUrl: &#x27;./signpost-request.component.css&#x27;
 })
 export class SignpostRequestComponent implements OnInit {
+  /** 
+   * O formulário de sinalização que será preenchido pelo usuário. 
+   */
   signPostForm!: FormGroup;
+
+  /** 
+   * Define se o botão de envio deve ser desabilitado. 
+   */
   isButtonDisabled: boolean &#x3D; false;
 
+  /** 
+   * Indica se a solicitação é para uma única empresa. 
+   */
   isSingleCompany: boolean &#x3D; true;
+  /** 
+   * Lista das empresas selecionadas pelo usuário. 
+   */
   selectedCompanies: Partial&lt;CompanyDetails&gt;[] &#x3D; [];
+  /** 
+   * Lista das empresas a serem enviadas no formulário. 
+   */
   sendCompanies: number[] &#x3D; [];
+  /** 
+   * Lista das empresas personalizadas (outros) a serem enviadas no formulário. 
+   */
   sendOthersCompanies: string[] &#x3D; [];
 
+  /** 
+   * Indica se a opção &quot;Outras Empresas&quot; foi selecionada. 
+   */
   isOtherCompaniesSelected &#x3D; false;
 
-
+  /**
+   * Construtor que injeta os serviços necessários no componente.
+   * @param fb FormBuilder para construir o formulário reativo.
+   * @param signpostService Serviço responsável pela criação da requisição de sinalização.
+   * @param toastrService Serviço para exibição de mensagens de alerta.
+   * @param storageService Serviço para acessar dados armazenados no armazenamento local.
+   */
   constructor(
     private fb: FormBuilder,
     private signpostService: CreateRequestService,
     private toastrService: ToastrService,
     private storageService: StorageService
-  ) {  }
+  ) { }
 
+
+  /**
+   * Método de ciclo de vida do componente.
+   * Inicializa o formulário com controles e validadores.
+   */
   ngOnInit(): void {
     this.signPostForm &#x3D; new FormGroup({
       title: new FormControl(&#x27;&#x27;, [Validators.required]),
@@ -1376,6 +1538,10 @@ export class SignpostRequestComponent implements OnInit {
     });
   }
 
+  /**
+   * Getters para acessar os controles de formulário do componente.
+   * Estes métodos retornam as instâncias dos campos do formulário para facilitar a manipulação de seus valores e validações.
+   */
   get title() { return this.signPostForm.get(&#x27;title&#x27;)!; }
   get width() { return this.signPostForm.get(&#x27;width&#x27;)!; }
   get height() { return this.signPostForm.get(&#x27;height&#x27;)!; }
@@ -1386,15 +1552,27 @@ export class SignpostRequestComponent implements OnInit {
   get othersText() { return this.signPostForm.get(&#x27;othersText&#x27;)!; }
   get selectedCompany() { return this.signPostForm.get(&#x27;selectedCompany&#x27;)!; }
 
+  /**
+   * Limpa o formulário e reseta a lista de empresas selecionadas.
+   */
   clearForm() {
     this.signPostForm.reset();
     this.selectedCompanies &#x3D; [];
   }
 
+  /**
+   * Altera a seleção de empresas e limpa a lista de empresas selecionadas.
+   * @param type Tipo de seleção.
+   */
   onCompanyChange(type: string) {
     this.selectedCompanies &#x3D; [];
   }
 
+  /**
+   * Atualiza a lista de empresas selecionadas com base na escolha do usuário.
+   * @param selectionType Tipo de seleção da empresa.
+   * @param company Nome da empresa.
+   */
   updateCompanyName(selectionType: number, company: string) {
     const existingCompany &#x3D; this.selectedCompanies.find(c &#x3D;&gt; c.name &#x3D;&#x3D;&#x3D; company);
     if (existingCompany) {
@@ -1404,6 +1582,9 @@ export class SignpostRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Alterna a seleção da opção &quot;Outras Empresas&quot;.
+   */
   onOthersCompanies() {
     this.isOtherCompaniesSelected &#x3D; !this.isOtherCompaniesSelected;
     if (!this.isOtherCompaniesSelected) {
@@ -1412,6 +1593,9 @@ export class SignpostRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Atualiza o nome das empresas personalizadas inseridas pelo usuário.
+   */
   updateOthersCompanies() {
     const otherValue &#x3D; this.signPostForm.get(&#x27;othersText&#x27;)?.value;
     if (otherValue) {
@@ -1426,6 +1610,9 @@ export class SignpostRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Confirma a seleção de empresas &quot;Outras&quot; e adiciona à lista de empresas selecionadas.
+   */
   confirmOtherMultiCompany() {
     const otherCompany &#x3D; this.signPostForm.get(&#x27;othersText&#x27;)?.value;
     if (otherCompany &amp;&amp; !this.selectedCompanies.some(c &#x3D;&gt; c.name &#x3D;&#x3D;&#x3D; otherCompany)) {
@@ -1437,6 +1624,10 @@ export class SignpostRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Remove uma empresa da lista de empresas selecionadas.
+   * @param company Empresa a ser removida.
+   */
   removeCompany(company: Partial&lt;CompanyDetails&gt;) {
     const index &#x3D; this.selectedCompanies.findIndex((c) &#x3D;&gt; c.name &#x3D;&#x3D;&#x3D; company.name);
     if (index &gt;&#x3D; 0) {
@@ -1444,6 +1635,10 @@ export class SignpostRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Preenche as listas de empresas para envio.
+   * @param companies Lista de empresas selecionadas.
+   */
   saveCompanies(companies: Partial&lt;CompanyDetails&gt;[]) {
     this.sendCompanies &#x3D; [];
     this.sendOthersCompanies &#x3D; [];
@@ -1461,6 +1656,10 @@ export class SignpostRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Submete a solicitação de sinalização após validação do formulário.
+   * Exibe mensagens de erro ou sucesso dependendo do resultado.
+   */
   submit() {
     this.saveCompanies(this.selectedCompanies);
 
@@ -1739,7 +1938,7 @@ export class SignpostRequestComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div class="conatiner d-flex flex-column p-3 mb-4 scroll-bar overflow-custom">    <form [formGroup]="signPostForm" (ngSubmit)="submit()" #formDir="ngForm">        <div class="row pb-4">            <div class="col-12 col-md-6">                <div class="form-group pt-3">                    <label class="fw-bold" for="title">Título *</label>                    <textarea [backgroundColorClass]="\'#ebebeb\'" id="title" formControlName="title" type="text"                        class="form-control border-dark-subtle rounded-3 form-focus"                        placeholder="Escreva o título da solicitação"></textarea>                </div>                <div *ngIf="title.invalid && formDir.submitted" class="validation-warning">                    <p>Por favor, informe o título.</p>                </div>            </div>            <div class="col-12 col-md-6">                <div class="form-group pt-3">                    <label class="fw-bold" for="description">Descrição *</label>                    <textarea [backgroundColorClass]="\'#ebebeb\'" id="description" formControlName="description"                        type="text" class="form-control border-dark-subtle rounded-3 form-focus"                        placeholder="Escreva a descrição da solicitação"></textarea>                </div>                <div *ngIf="description.invalid && formDir.submitted" class="validation-warning">                    <p>A descrição da solicitação é obrigatória. Escreva uma breve descrição da placa.</p>                </div>            </div>        </div>        <div class="row pb-4">            <div class="form-group pt-3">                <label class="fw-bold" for="signLocation">Local da Placa *</label>                <textarea [backgroundColorClass]="\'#ebebeb\'" id="signLocation" formControlName="signLocation"                    type="text" class="form-control border-dark-subtle rounded-3 form-focus"                    placeholder="Escreva a localização da placa"></textarea>            </div>            <div *ngIf="signLocation.invalid && formDir.submitted" class="validation-warning">                <p>Por favor, informe o local onde a placa será instalada</p>            </div>        </div>        <div class="row pb-4 pt-2 border-bottom">            <div class="col-12 col-md-3">                <div class="form-group pt-3">                    <label class="fw-bold">Medida *</label>                    <div class="d-flex align-items-center mb-2">                        <div class="d-flex flex-column">                            <label>Largura</label>                            <input [backgroundColorClass]="\'#ebebeb\'" type="text"                                class="border border-dark-subtle rounded-3 me-2 w-100 form-focus" placeholder="cm"                                formControlName="width" />                        </div>                        <div class="pt-4">                            <span class="mx-3">X</span>                        </div>                        <div class="d-flex flex-column">                            <label>Altura</label>                            <input [backgroundColorClass]="\'#ebebeb\'" type="text"                                class="border border-dark-subtle rounded-3 me-2 w-100 form-focus" placeholder="cm"                                formControlName="height" />                        </div>                    </div>                    <div *ngIf="(width.invalid || height.invalid) && formDir.submitted" class="validation-warning">                        <p>Informe as medidas completas da placa (largura e altura) em centímetros.</p>                    </div>                    <div *ngIf="(width.errors?.[\'pattern\'] || height.errors?.[\'pattern\']) && formDir.submitted"                        class="validation-warning">                        <p>As medidas devem conter apenas números.</p>                    </div>                </div>            </div>            <div class="col-12 col-md-9 mt-3 mt-md-0">                <div class="form-group pt-3 ms-md-5">                    <div class="title">                        <p class="fw-bold">Material *</p>                    </div>                    <div class="d-flex flex-column">                        <div class="form-check mb-2">                            <input [borderColorClass]="\'#027373\'" class="form-check-input" type="radio" id="aluminio"                                formControlName="boardType" value="1">                            <label class="form-check-label" for="aluminio">Alumínio</label>                        </div>                        <div class="form-check mb-2">                            <input [borderColorClass]="\'#027373\'" class="form-check-input" type="radio" id="Polietileno"                                formControlName="boardType" value="2">                            <label class="form-check-label" for="Polietileno">Polietileno</label>                        </div>                        <div *ngIf="signPostForm.get(\'boardType\')?.invalid && formDir.submitted"                            class="validation-warning">                            <p>Selecione o material da placa</p>                        </div>                    </div>                </div>            </div>        </div>        <div>            <div class="row mt-5 border-bottom pb-4">                <div class="col-12">                    <p class="fw-bold">Selecione as Empresas *</p>                </div>                <div class="col-12 d-flex flex-wrap gap-3">                    <div class="form-check">                        <input [borderColorClass]="\'#027373\'" class="form-check-input" type="checkbox" id="rotaMulti"                            formControlName="selectedCompany" (change)="updateCompanyName(2, \'Rota Transportes\')">                        <label class="form-check-label" for="rotaMulti">Rota Transportes</label>                    </div>                    <div class="form-check">                        <input [borderColorClass]="\'#027373\'" class="form-check-input" type="checkbox"                            id="cidadeSolMulti" formControlName="selectedCompany"                            (change)="updateCompanyName(2, \'Cidade Sol\')">                        <label class="form-check-label" for="cidadeSolMulti">Cidade Sol</label>                    </div>                    <div class="form-check">                        <input [borderColorClass]="\'#027373\'" class="form-check-input" type="checkbox"                            id="brasileiroMulti" formControlName="selectedCompany"                            (change)="updateCompanyName(2, \'Brasileiro\')">                        <label class="form-check-label" for="brasileiroMulti">Brasileiro</label>                    </div>                    <div class="form-check">                        <input [borderColorClass]="\'#027373\'" class="form-check-input" type="checkbox"                            id="viaMetroMulti" formControlName="selectedCompany"                            (change)="updateCompanyName(2, \'Via Metro\')">                        <label class="form-check-label" for="viaMetroMulti">Via Metro</label>                    </div>                    <div class="form-check">                        <input [borderColorClass]="\'#027373\'" class="form-check-input" type="checkbox"                            id="cidadeRealMulti" formControlName="selectedCompany"                            (change)="updateCompanyName(2, \'Cidade Real\')">                        <label class="form-check-label" for="cidadeRealMulti">Cidade Real</label>                    </div>                    <div class="form-check">                        <input [borderColorClass]="\'#027373\'" class="form-check-input" type="checkbox" id="paumaMulti"                            formControlName="selectedCompany" (change)="updateCompanyName(2, \'Pauma\')">                        <label class="form-check-label" for="paumaMulti">Pauma</label>                    </div>                    <div class="form-check d-flex align-items-center">                        <input [borderColorClass]="\'#027373\'" class="form-check-input" type="checkbox" id="otherMulti"                            formControlName="selectedCompany" (change)="onOthersCompanies()">                        <label class="form-check-label ms-2" for="otherMulti">Outras</label>                        <input *ngIf="isOtherCompaniesSelected" type="text" class="form-control ms-2"                            placeholder="Especificar empresa" formControlName="othersText"                            (change)="updateOthersCompanies()">                        <button [backgroundColorClass]="\'#027373\'" *ngIf="isOtherCompaniesSelected" type="button"                            class="btn btn-sm text-white ms-2" (click)="confirmOtherMultiCompany()">OK</button>                    </div>                </div>                <div *ngIf="selectedCompanies.length == 0  && formDir.submitted" class="validation-warning">                    <p>Ao menos uma empresa deve ser selecionada.</p>                </div>            </div>        </div>        <div *ngIf="selectedCompanies.length != 0" class="row mt-5 border-bottom pb-4">            <div>                <p class="fw-bold">Empresas Selecionadas</p>            </div>            <div class="d-flex flex-wrap gap-2">                <div *ngFor="let company of selectedCompanies" [backgroundColorClass]="\'#ebebeb\'"                    class="d-flex align-items-center border border-dark-subtle rounded px-3 py-2">                    <p class="fw-bold mb-0 me-3">                        {{ company.name }}                    </p>                    <button *ngIf="company.isCustom" [backgroundColorClass]="\'#ff6f6f\'"                        class="btn btn-sm text-white border-0" type="button" (click)="removeCompany(company)">                        Remover                    </button>                </div>            </div>        </div>        <div class="row">            <div class="form-group pt-3 w-100 py-3">                <label class="fw-bold" for="sector">Setor *</label>                <textarea [backgroundColorClass]="\'#ebebeb\'" id="sector" formControlName="sector" type="text"                    class="form-control border-dark-subtle rounded-3 form-focus" placeholder="Escreva aqui"></textarea>            </div>            <div *ngIf="sector.invalid  && formDir.submitted" class="validation-warning">                <p>Por favor, informe o setor.</p>            </div>        </div>        <div class="d-flex gap-3 justify-content-end pt-2">            <button type="reset" (click)="clearForm()" class="btn btn-outline-danger">Redefinir Formulário</button>            <button [disabled]="isButtonDisabled" [backgroundColorClass]="\'#027373\'" type="submit"                class="btn text-white">Enviar</button>        </div>    </form></div></div>'
-    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidenavComponent', 'selector': 'app-sidenav'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
+    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
     var DIRECTIVES = [{'name': 'CapitalizeDirective', 'selector': '[appCapitalize]'},{'name': 'ColorClassDirective', 'selector': '[colorClass], [backgroundColorClass], [borderColorClass]'},{'name': 'DndDirective', 'selector': '[appDndDirective]'},{'name': 'PhoneMaskDirective', 'selector': '[appPhoneMask]'}];
     var ACTUAL_COMPONENT = {'name': 'SignpostRequestComponent'};
 </script>

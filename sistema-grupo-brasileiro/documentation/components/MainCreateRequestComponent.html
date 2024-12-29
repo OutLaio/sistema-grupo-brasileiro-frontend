@@ -124,6 +124,15 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente principal para a criação de solicitações, exibindo um menu de opções com rotas associadas.
+Cada opção pode ter sub-opções, que são exibidas dinamicamente com base na seleção do usuário.
+O componente permite que o usuário selecione opções e sub-opções, navegando para as rotas correspondentes.</p>
+
+    </p>
 
 
     <p class="comment">
@@ -248,12 +257,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/modules/feature/create-request/components/main-create-request/main-create-request.component.ts:62</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/app/modules/feature/create-request/components/main-create-request/main-create-request.component.ts:84</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Construtor do componente, inicializando a injeção de dependências.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -262,6 +273,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -276,6 +288,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>Serviço de roteamento para navegação entre páginas.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -315,14 +333,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="66"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/main-create-request/main-create-request.component.ts:66</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="96"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/main-create-request/main-create-request.component.ts:96</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método do ciclo de vida do Angular que é chamado quando o componente é inicializado.
+Define a opção padrão a ser selecionada e navega para a rota correspondente.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -352,14 +373,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="72"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/main-create-request/main-create-request.component.ts:72</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="107"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/main-create-request/main-create-request.component.ts:107</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método para selecionar uma opção principal no menu.
+Se a opção tiver sub-opções, elas serão exibidas; caso contrário, navega diretamente para a rota da opção.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -370,6 +394,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -384,6 +409,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>A opção principal selecionada.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -419,14 +450,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="84"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/main-create-request/main-create-request.component.ts:84</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="124"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/main-create-request/main-create-request.component.ts:124</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método para selecionar uma sub-opção no menu.
+Navega para a rota correspondente à sub-opção selecionada.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -437,6 +471,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -451,6 +486,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>A sub-opção selecionada.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -491,10 +532,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="61" class="link-to-prism">src/app/modules/feature/create-request/components/main-create-request/main-create-request.component.ts:61</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/app/modules/feature/create-request/components/main-create-request/main-create-request.component.ts:79</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Opção ativa atualmente no menu (pode ser uma opção principal ou uma sub-opção).</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -517,10 +564,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/modules/feature/create-request/components/main-create-request/main-create-request.component.ts:62</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="84" class="link-to-prism">src/app/modules/feature/create-request/components/main-create-request/main-create-request.component.ts:84</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Sub-opção atualmente ativa (se houver).</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -596,10 +649,18 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">src/app/modules/feature/create-request/components/main-create-request/main-create-request.component.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/modules/feature/create-request/components/main-create-request/main-create-request.component.ts:21</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de opções principais exibidas no menu.
+Cada opção possui um nome, uma rota e um estado ativo.
+Algumas opções podem ter sub-opções.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -622,10 +683,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="60" class="link-to-prism">src/app/modules/feature/create-request/components/main-create-request/main-create-request.component.ts:60</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="74" class="link-to-prism">src/app/modules/feature/create-request/components/main-create-request/main-create-request.component.ts:74</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Opção principal atualmente selecionada.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -638,12 +705,23 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
 import { Router } from &#x27;@angular/router&#x27;;
 
+/**
+ * Componente principal para a criação de solicitações, exibindo um menu de opções com rotas associadas.
+ * Cada opção pode ter sub-opções, que são exibidas dinamicamente com base na seleção do usuário.
+ * O componente permite que o usuário selecione opções e sub-opções, navegando para as rotas correspondentes.
+ */
 @Component({
   selector: &#x27;app-main-create-request&#x27;,
   templateUrl: &#x27;./main-create-request.component.html&#x27;,
   styleUrls: [&#x27;./main-create-request.component.css&#x27;]
 })
 export class MainCreateRequestComponent implements OnInit {
+
+  /**
+   * Lista de opções principais exibidas no menu.
+   * Cada opção possui um nome, uma rota e um estado ativo.
+   * Algumas opções podem ter sub-opções.
+   */
   mainOptions &#x3D; [
     { name: &#x27;Placa de Itinerários&#x27;, route: &#x27;/placa-de-itinerarios&#x27;, active: true },
     { name: &#x27;Placa de Sinalização&#x27;, route: &#x27;/placa-de-sinalizacao&#x27;, active: true },
@@ -694,18 +772,42 @@ export class MainCreateRequestComponent implements OnInit {
     }
   ];
 
+  /**
+   * Opção principal atualmente selecionada.
+   */
   selectedOption: any;
+
+  /**
+   * Opção ativa atualmente no menu (pode ser uma opção principal ou uma sub-opção).
+   */
   activeOption: any;
+
+  /**
+   * Sub-opção atualmente ativa (se houver).
+   */
   activeSubOption: any;
 
-  constructor(private router: Router) {}
+  /**
+   * Construtor do componente, inicializando a injeção de dependências.
+   * @param router - Serviço de roteamento para navegação entre páginas.
+   */
+  constructor(private router: Router) { }
 
+  /**
+   * Método do ciclo de vida do Angular que é chamado quando o componente é inicializado.
+   * Define a opção padrão a ser selecionada e navega para a rota correspondente.
+   */
   ngOnInit(): void {
     const defaultOption &#x3D; this.mainOptions[0];
     this.activeOption &#x3D; defaultOption;
     this.router.navigate([defaultOption.route]);
   }
 
+  /**
+   * Método para selecionar uma opção principal no menu.
+   * Se a opção tiver sub-opções, elas serão exibidas; caso contrário, navega diretamente para a rota da opção.
+   * @param option - A opção principal selecionada.
+   */
   selectOption(option: any): void {
     this.activeOption &#x3D; option;
     this.activeSubOption &#x3D; null;
@@ -718,6 +820,11 @@ export class MainCreateRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Método para selecionar uma sub-opção no menu.
+   * Navega para a rota correspondente à sub-opção selecionada.
+   * @param subOption - A sub-opção selecionada.
+   */
   selectSubOption(subOption: any): void {
     this.activeSubOption &#x3D; subOption;
     this.router.navigate([subOption.route]);
@@ -885,7 +992,7 @@ export class MainCreateRequestComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div class="container-fluid">    <div class="card text-black">        <div class="card-body p-0">            <div [backgroundColorClass]="\'#027373\'" class="btn-group m-0 p-0 w-100" role="group" aria-label="opções principais">                <button *ngFor="let option of mainOptions" (click)="selectOption(option)"                    [ngClass]="{\'active-option\': activeOption === option}"                    [disabled]="!option.active"                    type="button"                    class="btn btn-radius btn-outline-primary text-custom border-0 py-2 bg-hover">                    {{ option.name }}                </button>            </div>            <div [backgroundColorClass]="\'#027373\'" class="btn-group2 m-0 p-0 w-100" *ngIf="selectedOption?.subOptions?.length > 0" role="group"                aria-label="sub opções">                <button *ngFor="let subOption of selectedOption.subOptions" (click)="selectSubOption(subOption)"                    [ngClass]="{\'active-option\': activeSubOption === subOption}"                    type="button"                    class="btn rounded-0 btn-outline-primary text-custom border-0 py-2 bg-hover">                    {{ subOption.name }}                </button>            </div>            <div>                <router-outlet></router-outlet>            </div>        </div>    </div></div></div>'
-    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidenavComponent', 'selector': 'app-sidenav'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
+    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
     var DIRECTIVES = [{'name': 'CapitalizeDirective', 'selector': '[appCapitalize]'},{'name': 'ColorClassDirective', 'selector': '[colorClass], [backgroundColorClass], [borderColorClass]'},{'name': 'DndDirective', 'selector': '[appDndDirective]'},{'name': 'PhoneMaskDirective', 'selector': '[appPhoneMask]'}];
     var ACTUAL_COMPONENT = {'name': 'MainCreateRequestComponent'};
 </script>

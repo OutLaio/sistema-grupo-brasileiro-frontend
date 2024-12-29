@@ -119,6 +119,15 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Serviço <code>SidebarService</code></p>
+<p>Gerencia a visibilidade da barra lateral (sidebar) no sistema.
+Permite alternar o estado de visibilidade e disponibiliza um Observable para monitorar mudanças.</p>
+
+            </p>
 
 
 
@@ -194,14 +203,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="11"
-                                    class="link-to-prism">src/app/modules/services/sidebar/sidebar.service.ts:11</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="29"
+                                    class="link-to-prism">src/app/modules/services/sidebar/sidebar.service.ts:29</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Alterna o estado de visibilidade da sidebar.
+Se estiver visível, será ocultada; se estiver oculta, será exibida.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -235,10 +247,17 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/modules/services/sidebar/sidebar.service.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/modules/services/sidebar/sidebar.service.ts:23</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Observable que permite que outros componentes acompanhem as mudanças
+na visibilidade da sidebar.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -261,10 +280,17 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/modules/services/sidebar/sidebar.service.ts:8</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/modules/services/sidebar/sidebar.service.ts:18</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>BehaviorSubject que armazena o estado atual da visibilidade da sidebar.
+O valor inicial é <code>true</code> (sidebar visível).</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -277,13 +303,31 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { BehaviorSubject } from &#x27;rxjs&#x27;;
 
+/**
+ * Serviço &#x60;SidebarService&#x60;
+ * 
+ * Gerencia a visibilidade da barra lateral (sidebar) no sistema. 
+ * Permite alternar o estado de visibilidade e disponibiliza um Observable para monitorar mudanças.
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;,
 })
 export class SidebarService {
+  /**
+   * BehaviorSubject que armazena o estado atual da visibilidade da sidebar.
+   * O valor inicial é &#x60;true&#x60; (sidebar visível).
+   */
   private sidebarVisibilitySubject &#x3D; new BehaviorSubject&lt;boolean&gt;(true);
+  /**
+  * Observable que permite que outros componentes acompanhem as mudanças
+  * na visibilidade da sidebar.
+  */
   sidebarVisibility$ &#x3D; this.sidebarVisibilitySubject.asObservable();
 
+  /**
+   * Alterna o estado de visibilidade da sidebar.
+   * Se estiver visível, será ocultada; se estiver oculta, será exibida.
+   */
   toggleSidebar() {
     this.sidebarVisibilitySubject.next(!this.sidebarVisibilitySubject.value);
   }

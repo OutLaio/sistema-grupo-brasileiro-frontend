@@ -8,16 +8,33 @@ import { I_Alter_Date_Request } from '../../../../shared/interfaces/project/form
 import { StorageService } from '../../../../services/storage/storage.service';
 import { I_Alter_Status_Request } from '../../../../shared/interfaces/project/form/alter-status-form';
 
+/**
+ * Serviço responsável por realizar utilitários relacionados à alteração de título, data de entrega e status de um projeto.
+ * Utiliza a biblioteca `SweetAlert2` para exibir alertas modais interativos.
+ * Interage com o serviço `RequestDetailsService` para realizar as alterações de dados no servidor.
+ */
 @Injectable({
   providedIn: 'root'
 })
 export class UtilsService {
 
+  /**
+   * Construtor do serviço `UtilsService`.
+   * 
+   * @param requestService - Serviço que lida com requisições relacionadas aos detalhes do projeto.
+   * @param storageService - Serviço utilizado para gerenciar dados no armazenamento local.
+   */
   constructor(
     private requestService: RequestDetailsService,
     private storageService: StorageService
   ) { }
 
+  /**
+   * Exibe um modal para alterar o título de um projeto.
+   * Quando confirmado, envia a alteração para o servidor e exibe um alerta de sucesso ou erro.
+   * 
+   * @param idProject - Identificador do projeto cujo título será alterado.
+   */
   alterTitle(idProject: string) {
     Swal.fire({
       html: '<h4>Alterar Título do Projeto</h4>',
@@ -39,6 +56,12 @@ export class UtilsService {
     });
   }
 
+  /**
+  * Exibe um modal para alterar a data de entrega de um projeto.
+  * Quando confirmada, envia a alteração para o servidor e exibe um alerta de sucesso ou erro.
+  * 
+  * @param idProject - Identificador do projeto cuja data de entrega será alterada.
+  */
   alterDate(idProject: string) {
     Swal.fire({
       html: '<h4>Alterar Data de Entrega</h4>',
@@ -59,6 +82,14 @@ export class UtilsService {
     });
   }
 
+  /**
+   * Exibe um modal para alterar o status de um projeto.
+   * Quando confirmado, envia a alteração para o servidor e exibe um alerta de sucesso ou erro.
+   * Se o status atual for igual ao novo status selecionado, exibe um alerta informando que nada foi alterado.
+   * 
+   * @param idProject - Identificador do projeto cujo status será alterado.
+   * @param currentStatus - Status atual do projeto, utilizado para verificar se houve alteração.
+   */
   alterStatus(idProject: string, currentStatus: string) {
     Swal.fire({
       html: '<h4>Alterar Status do Projeto </h4>',

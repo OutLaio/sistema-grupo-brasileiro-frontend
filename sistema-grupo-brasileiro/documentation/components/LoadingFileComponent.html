@@ -124,6 +124,15 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente responsável pelo upload de arquivos com simulação de progresso.
+Permite arrastar e soltar arquivos ou selecionar através do input de arquivos.
+Exibe o progresso de upload e permite excluir arquivos após o upload completo.</p>
+
+    </p>
 
 
 
@@ -281,9 +290,16 @@
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:14</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:33</a></div>
                             </td>
                         </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Evento emitido quando os arquivos são carregados com sucesso.
+Emite um array de objetos com o nome e a URL dos arquivos carregados.</p>
+</div>
+                    </td>
+                </tr>
             </tbody>
         </table>
 </section>
@@ -314,14 +330,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="44"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:44</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="93"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:93</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Exclui um arquivo da lista de arquivos carregados.
+O arquivo só pode ser excluído se o progresso de upload for 100%.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -332,6 +351,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -346,6 +366,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>O índice do arquivo a ser excluído.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -381,14 +405,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="37"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:37</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="80"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:80</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Manipula o evento de seleção de arquivos através de um input de arquivo.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -399,6 +425,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -413,6 +440,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>O evento disparado pela ação de seleção de arquivos.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -448,14 +479,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="83"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:83</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="151"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:151</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Converte bytes para uma unidade legível como KB, MB, GB, etc.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -467,6 +500,7 @@
                                                 <td>Type</td>
                                             <td>Optional</td>
                                                 <td>Default value</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -483,6 +517,10 @@
                                             <td>
                                             </td>
 
+                                            <td>
+                                                    <p>O valor em bytes a ser convertido.</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>decimals</td>
@@ -498,6 +536,10 @@
                                                     <code>2</code>
                                             </td>
 
+                                            <td>
+                                                    <p>O número de casas decimais a ser exibido (opcional, padrão é 2).</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -507,7 +549,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>O valor convertido em uma unidade legível.</p>
+
                             </div>
                 </td>
             </tr>
@@ -533,14 +576,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="16"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:16</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="43"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:43</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Retorna a URL de um arquivo utilizando a API <code>URL.createObjectURL</code>.
+Isso é usado para criar uma URL temporária para exibição do arquivo.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -551,6 +597,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -565,6 +612,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>O arquivo que será exibido.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -574,7 +625,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>A URL temporária do arquivo.</p>
+
                             </div>
                 </td>
             </tr>
@@ -600,14 +652,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="94"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:94</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="166"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:166</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Libera os recursos usados pelo componente, como URLs de arquivos temporários.
+Chamado quando o componente é destruído.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -637,14 +692,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="20"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:20</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="53"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:53</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Manipula o evento de &quot;arrastar e soltar&quot; arquivos.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -655,6 +712,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -669,6 +727,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>O evento contendo os arquivos arrastados.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -704,14 +766,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="25"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:25</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="63"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:63</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Manipula o evento de upload de arquivos a partir de um input de arquivos.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -722,6 +786,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -736,6 +801,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Lista de arquivos selecionados pelo usuário.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -771,14 +840,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="69"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:69</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="130"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:130</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Prepara a lista de arquivos a serem carregados, configurando a URL e o progresso inicial de cada arquivo.
+Em seguida, emite o evento <code>filesLoaded</code>.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -789,6 +861,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -803,6 +876,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Lista de arquivos a serem carregados.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -838,14 +915,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="52"
-                                    class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:52</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="107"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:107</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Simula o processo de upload dos arquivos, aumentando o progresso de cada arquivo em intervalos regulares.
+Quando o upload de um arquivo é concluído, o próximo arquivo é iniciado.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -856,6 +936,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -870,6 +951,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>O índice do arquivo a ser carregado.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -920,10 +1005,17 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:24</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Referência ao elemento de drop de arquivos.
+Usado para arrastar e soltar arquivos.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -951,10 +1043,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:28</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de arquivos carregados, com informações como nome, URL e progresso de upload.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -982,10 +1080,17 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:18</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Progresso do upload do arquivo em porcentagem.
+Valor inicial é 0%.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -997,28 +1102,66 @@
     <div class="tab-pane fade  tab-source-code" id="source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ElementRef, EventEmitter, Output, ViewChild } from &#x27;@angular/core&#x27;;
 
+/**
+ * Componente responsável pelo upload de arquivos com simulação de progresso.
+ * Permite arrastar e soltar arquivos ou selecionar através do input de arquivos.
+ * Exibe o progresso de upload e permite excluir arquivos após o upload completo.
+ */
 @Component({
   selector: &#x27;app-loading-file&#x27;,
   templateUrl: &#x27;./loading-file.component.html&#x27;,
   styleUrls: [&#x27;./loading-file.component.css&#x27;]
 })
 export class LoadingFileComponent {
+  /**
+   * Progresso do upload do arquivo em porcentagem.
+   * Valor inicial é 0%.
+   */
   progress: number &#x3D; 0;
 
+  /**
+   * Referência ao elemento de drop de arquivos.
+   * Usado para arrastar e soltar arquivos.
+   */
   @ViewChild(&quot;fileDropRef&quot;, { static: false }) fileDropEl: ElementRef | undefined;
+  /**
+   * Lista de arquivos carregados, com informações como nome, URL e progresso de upload.
+   */
   files: any[] &#x3D; [];
-
+  /**
+   * Evento emitido quando os arquivos são carregados com sucesso.
+   * Emite um array de objetos com o nome e a URL dos arquivos carregados.
+   */
   @Output() filesLoaded: EventEmitter&lt;{ name: string, url: string }[]&gt; &#x3D; new EventEmitter();
 
+
+  /**
+   * Retorna a URL de um arquivo utilizando a API &#x60;URL.createObjectURL&#x60;.
+   * Isso é usado para criar uma URL temporária para exibição do arquivo.
+   * 
+   * @param {File} file O arquivo que será exibido.
+   * @returns {string} A URL temporária do arquivo.
+   */
   getImageUrl(file: File): string {
     return window.URL.createObjectURL(file);
   }
 
+
+  /**
+   * Manipula o evento de &quot;arrastar e soltar&quot; arquivos.
+   * 
+   * @param {any} $event O evento contendo os arquivos arrastados.
+   */
   onFileDropped($event: any) {
     const fileList &#x3D; $event as File[];
     this.prepareFilesList(fileList);
   }
 
+  /**
+   * Manipula o evento de upload de arquivos a partir de um input de arquivos.
+   * 
+   * @param {FileList} files Lista de arquivos selecionados pelo usuário.
+   */
   onFileUpload(files: FileList): void {
     const uploadedFiles: { name: string, url: string }[] &#x3D; [];
 
@@ -1031,6 +1174,11 @@ export class LoadingFileComponent {
     this.filesLoaded.emit(uploadedFiles);
   }
 
+  /**
+   * Manipula o evento de seleção de arquivos através de um input de arquivo.
+   * 
+   * @param {Event} event O evento disparado pela ação de seleção de arquivos.
+   */
   fileBrowseHandler(event: Event) {
     const inputElement &#x3D; event.target as HTMLInputElement;
     if (inputElement &amp;&amp; inputElement.files) {
@@ -1038,6 +1186,12 @@ export class LoadingFileComponent {
     }
   }
 
+  /**
+   * Exclui um arquivo da lista de arquivos carregados.
+   * O arquivo só pode ser excluído se o progresso de upload for 100%.
+   * 
+   * @param {number} index O índice do arquivo a ser excluído.
+   */
   deleteFile(index: number) {
     if (this.files[index].progress &lt; 100) {
       return;
@@ -1046,6 +1200,12 @@ export class LoadingFileComponent {
     this.filesLoaded.emit(this.files.map(file &#x3D;&gt; ({ name: file.name, url: URL.createObjectURL(file) })));
   }
 
+  /**
+   * Simula o processo de upload dos arquivos, aumentando o progresso de cada arquivo em intervalos regulares.
+   * Quando o upload de um arquivo é concluído, o próximo arquivo é iniciado.
+   * 
+   * @param {number} index O índice do arquivo a ser carregado.
+   */
   uploadFilesSimulator(index: number) {
     setTimeout(() &#x3D;&gt; {
       if (index &#x3D;&#x3D;&#x3D; this.files.length) {
@@ -1063,20 +1223,33 @@ export class LoadingFileComponent {
     }, 500);
   }
 
+  /**
+   * Prepara a lista de arquivos a serem carregados, configurando a URL e o progresso inicial de cada arquivo.
+   * Em seguida, emite o evento &#x60;filesLoaded&#x60;.
+   * 
+   * @param {Array&lt;any&gt;} files Lista de arquivos a serem carregados.
+   */
   prepareFilesList(files: Array&lt;any&gt;) {
     for (const item of files) {
-        item.progress &#x3D; 0;
-        item.url &#x3D; this.getImageUrl(item);
-        this.files.push(item);
+      item.progress &#x3D; 0;
+      item.url &#x3D; this.getImageUrl(item);
+      this.files.push(item);
     }
     if (this.fileDropEl) {
-        this.fileDropEl.nativeElement.value &#x3D; &quot;&quot;;
+      this.fileDropEl.nativeElement.value &#x3D; &quot;&quot;;
     }
     this.uploadFilesSimulator(0);
     this.filesLoaded.emit(this.files.map(file &#x3D;&gt; ({ name: file.name, url: file.url })));
-}
+  }
 
 
+  /**
+   * Converte bytes para uma unidade legível como KB, MB, GB, etc.
+   * 
+   * @param {number} bytes O valor em bytes a ser convertido.
+   * @param {number} [decimals&#x3D;2] O número de casas decimais a ser exibido (opcional, padrão é 2).
+   * @returns {string} O valor convertido em uma unidade legível.
+   */
   formatBytes(bytes: number, decimals &#x3D; 2) {
     if (bytes &#x3D;&#x3D;&#x3D; 0) {
       return &quot;0 Bytes&quot;;
@@ -1088,13 +1261,17 @@ export class LoadingFileComponent {
     return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + &quot; &quot; + sizes[i];
   }
 
+  /**
+   * Libera os recursos usados pelo componente, como URLs de arquivos temporários.
+   * Chamado quando o componente é destruído.
+   */
   ngOnDestroy() {
     this.files.forEach(file &#x3D;&gt; {
-        if (file.url) {
-            window.URL.revokeObjectURL(file.url);
-        }
+      if (file.url) {
+        window.URL.revokeObjectURL(file.url);
+      }
     });
-}
+  }
 }
 </code></pre>
     </div>
@@ -1287,7 +1464,7 @@ img.delete {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div class="container" appDnd (fileDropped)="onFileDropped($event)">    <input type="file" #fileDropRef id="fileDropRef" multiple class="position-absolute w-100 h-100 opacity-0"        (change)="fileBrowseHandler($event)" />    <img src="assets/icons/ic-upload-file.svg" alt="Upload Icon" class="mb-3">    <h5>Arraste e solte os arquivos aqui</h5>    <h5>ou</h5>    <label [backgroundColorClass]="\'#027373\'" for="fileDropRef" class="btn text-white">Pesquise os arquivos</label></div><div class="files-list">    <div class="single-file" *ngFor="let file of files; let i = index">        <ng-container *ngIf="file.type.startsWith(\'image/\') else showIcon">            <img [src]="file.url" class="file-img" alt="file image">        </ng-container>        <ng-template #showIcon>            <img src="assets/icons/ic-file.svg" width="45px" alt="file">        </ng-template>        <div class="info">            <h4 class="name">                {{ file?.name }}            </h4>            <p class="size">                {{ formatBytes(file?.size) }}            </p>            <div [backgroundColorClass]="\'#d0d0d0\'" class="progress-cont rounded w-100 position-relative">                <div [backgroundColorClass]="\'#027373\'"  class="progress" [style.width]="file?.progress + \'%\'">                </div>            </div>        </div>        <img src="assets/icons/ic-delete-file.svg" class="delete" width="20px" alt="file" (click)="deleteFile(i)">    </div></div></div>'
-    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidenavComponent', 'selector': 'app-sidenav'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
+    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
     var DIRECTIVES = [{'name': 'CapitalizeDirective', 'selector': '[appCapitalize]'},{'name': 'ColorClassDirective', 'selector': '[colorClass], [backgroundColorClass], [borderColorClass]'},{'name': 'DndDirective', 'selector': '[appDndDirective]'},{'name': 'PhoneMaskDirective', 'selector': '[appPhoneMask]'}];
     var ACTUAL_COMPONENT = {'name': 'LoadingFileComponent'};
 </script>

@@ -119,6 +119,15 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Serviço <code>StorageService</code></p>
+<p>Gerencia informações do perfil do usuário e autenticação utilizando cookies.
+Proporciona métodos &#39;pa&#39;ra acessar dados do perfil do usuário, verificar permissões e obter o token de autenticação.</p>
+
+            </p>
 
 
 
@@ -188,12 +197,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/app/modules/services/storage/storage.service.ts:7</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/modules/services/storage/storage.service.ts:14</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Construtor do componente <code>StorageService</code>.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -202,6 +213,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -216,6 +228,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>Serviço para manipulação de cookies, utilizado para coletar os dados do usuário.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -251,19 +269,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="11"
-                                    class="link-to-prism">src/app/modules/services/storage/storage.service.ts:11</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="28"
+                                    class="link-to-prism">src/app/modules/services/storage/storage.service.ts:28</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Obtém o perfil do usuário ativo da sessão.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="../interfaces/I_Employee_View_Data.html" target="_self" >I_Employee_View_Data</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>O perfil do usuário ativo (<code>I_Employee_View_Data</code>).</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -288,19 +312,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="54"
-                                    class="link-to-prism">src/app/modules/services/storage/storage.service.ts:54</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="103"
+                                    class="link-to-prism">src/app/modules/services/storage/storage.service.ts:103</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Obtém o token de autenticação armazenado nos cookies.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>O token de autenticação ou uma string vazia se não estiver disponível.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -325,19 +355,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="30"
-                                    class="link-to-prism">src/app/modules/services/storage/storage.service.ts:30</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="55"
+                                    class="link-to-prism">src/app/modules/services/storage/storage.service.ts:55</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Obtém o nome completo do usuário ativo.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>O nome completo no formato &quot;Nome Sobrenome&quot;.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -362,19 +398,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="50"
-                                    class="link-to-prism">src/app/modules/services/storage/storage.service.ts:50</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="95"
+                                    class="link-to-prism">src/app/modules/services/storage/storage.service.ts:95</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Obtém o ID do usuário ativo.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>O ID do usuário.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -399,19 +441,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="46"
-                                    class="link-to-prism">src/app/modules/services/storage/storage.service.ts:46</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="87"
+                                    class="link-to-prism">src/app/modules/services/storage/storage.service.ts:87</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Obtém a descrição do nível do usuário.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p>Uma string representando o nível do usuário.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -436,19 +484,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="58"
-                                    class="link-to-prism">src/app/modules/services/storage/storage.service.ts:58</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="111"
+                                    class="link-to-prism">src/app/modules/services/storage/storage.service.ts:111</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Verifica se o usuário está autenticado.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p><code>true</code> se o token de autenticação estiver presente, caso contrário <code>false</code>.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -473,19 +527,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="34"
-                                    class="link-to-prism">src/app/modules/services/storage/storage.service.ts:34</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="63"
+                                    class="link-to-prism">src/app/modules/services/storage/storage.service.ts:63</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Verifica se o usuário tem o nível de cliente.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p><code>true</code> se o nível for &#39;ROLE_CLIENT&#39;, caso contrário <code>false</code>.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -510,19 +570,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="38"
-                                    class="link-to-prism">src/app/modules/services/storage/storage.service.ts:38</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="71"
+                                    class="link-to-prism">src/app/modules/services/storage/storage.service.ts:71</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Verifica se o usuário tem o nível de colaborador.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p><code>true</code> se o nível for &#39;ROLE_COLLABORATOR&#39;, caso contrário <code>false</code>.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -547,19 +613,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="42"
-                                    class="link-to-prism">src/app/modules/services/storage/storage.service.ts:42</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="79"
+                                    class="link-to-prism">src/app/modules/services/storage/storage.service.ts:79</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Verifica se o usuário tem o nível de supervisor.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p><code>true</code> se o nível for &#39;ROLE_SUPERVISOR&#39;, caso contrário <code>false</code>.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -584,14 +656,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="19"
-                                    class="link-to-prism">src/app/modules/services/storage/storage.service.ts:19</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="40"
+                                    class="link-to-prism">src/app/modules/services/storage/storage.service.ts:40</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Define o perfil do usuário ativo na sessão e o armazena nos cookies.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -602,6 +676,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -616,6 +691,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>O perfil do usuário (<code>I_Employee_View_Data</code>).</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -640,13 +719,30 @@
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
 import { I_Employee_View_Data } from &#x27;../../shared/interfaces/user/view/employee-view&#x27;;
 import { CookieService } from &#x27;ngx-cookie-service&#x27;;
+
+/**
+ * Serviço &#x60;StorageService&#x60;
+ * 
+ * Gerencia informações do perfil do usuário e autenticação utilizando cookies.
+ * Proporciona métodos &#x27;pa&#x27;ra acessar dados do perfil do usuário, verificar permissões e obter o token de autenticação.
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;
 })
 export class StorageService {
 
+  /**
+   * Construtor do componente &#x60;StorageService&#x60;.
+   * 
+   * @param cookieService - Serviço para manipulação de cookies, utilizado para coletar os dados do usuário.
+   */
   constructor(private cookieService: CookieService) { }
 
+  /**
+   * Obtém o perfil do usuário ativo da sessão.
+   * @returns O perfil do usuário ativo (&#x60;I_Employee_View_Data&#x60;).
+   * @throws Erro se o perfil do usuário não estiver armazenado nos cookies.
+   */
   getSessionProfile(): I_Employee_View_Data {
     const activeUser &#x3D; this.cookieService.get(&#x27;activeUser&#x27;);
     if (!activeUser) {
@@ -655,6 +751,10 @@ export class StorageService {
     return JSON.parse(activeUser) as I_Employee_View_Data;
   }
 
+  /**
+   * Define o perfil do usuário ativo na sessão e o armazena nos cookies.
+   * @param profile O perfil do usuário (&#x60;I_Employee_View_Data&#x60;).
+   */
   setSessionProfile(profile: I_Employee_View_Data) {
     const expiration &#x3D; new Date();
     expiration.setHours(expiration.getHours() + 1);
@@ -666,34 +766,66 @@ export class StorageService {
     );
   }
 
+  /**
+    * Obtém o nome completo do usuário ativo.
+    * @returns O nome completo no formato &quot;Nome Sobrenome&quot;.
+    */
   getUserFullName(): string {
     return &#x60;${this.getSessionProfile().name} ${this.getSessionProfile().lastname}&#x60;;
   }
 
+  /**
+   * Verifica se o usuário tem o nível de cliente.
+   * @returns &#x60;true&#x60; se o nível for &#x27;ROLE_CLIENT&#x27;, caso contrário &#x60;false&#x60;.
+   */
   isClient(): boolean {
     return this.getSessionProfile().user.profile.description &#x3D;&#x3D;&#x3D; &#x27;ROLE_CLIENT&#x27;;
   }
 
+  /**
+   * Verifica se o usuário tem o nível de colaborador.
+   * @returns &#x60;true&#x60; se o nível for &#x27;ROLE_COLLABORATOR&#x27;, caso contrário &#x60;false&#x60;.
+   */
   isCollaborator(): boolean {
     return this.getSessionProfile().user.profile.description &#x3D;&#x3D;&#x3D; &#x27;ROLE_COLLABORATOR&#x27;;
   }
 
+  /**
+   * Verifica se o usuário tem o nível de supervisor.
+   * @returns &#x60;true&#x60; se o nível for &#x27;ROLE_SUPERVISOR&#x27;, caso contrário &#x60;false&#x60;.
+   */
   isSupervisor(): boolean {
     return this.getSessionProfile().user.profile.description &#x3D;&#x3D;&#x3D; &#x27;ROLE_SUPERVISOR&#x27;;
   }
 
+  /**
+   * Obtém a descrição do nível do usuário.
+   * @returns Uma string representando o nível do usuário.
+   */
   getUserRole(): string {
     return this.getSessionProfile().user.profile.description;
   }
 
+  /**
+   * Obtém o ID do usuário ativo.
+   * @returns O ID do usuário.
+   */
   getUserId(): string {
     return this.getSessionProfile().id;
   }
 
+  /**
+   * Obtém o token de autenticação armazenado nos cookies.
+   * @returns O token de autenticação ou uma string vazia se não estiver disponível.
+   */
   getToken(): string {
     return this.cookieService.get(&#x27;auth-token&#x27;) || &#x27;&#x27;;
   }
 
+  /**
+  * Verifica se o usuário está autenticado.
+  * @returns &#x60;true&#x60; se o token de autenticação estiver presente, caso contrário &#x60;false&#x60;.
+  */
   isAuthenticated(): boolean {
     return !!this.getToken();
   }

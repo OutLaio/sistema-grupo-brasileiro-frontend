@@ -120,6 +120,14 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente responsável por exibir os detalhes de uma solicitação de projeto.
+O componente carrega os dados do briefing e exibe informações sobre o tipo de briefing.</p>
+
+    </p>
 
 
 
@@ -229,12 +237,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/modules/feature/request-details/components/request-details/request-details.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/modules/feature/request-details/components/request-details/request-details.component.ts:31</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Construtor do componente.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -243,6 +253,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -257,6 +268,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço para obter detalhes da solicitação.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -296,14 +311,18 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="19"
-                                    class="link-to-prism">src/app/modules/feature/request-details/components/request-details/request-details.component.ts:19</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="44"
+                                    class="link-to-prism">src/app/modules/feature/request-details/components/request-details/request-details.component.ts:44</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Ciclo de vida do componente angular chamado ao inicializar o componente.
+Carrega os detalhes do briefing do projeto com base no id passado na navegação.
+Exibe o tipo de briefing associado ao projeto.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -343,10 +362,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/modules/feature/request-details/components/request-details/request-details.component.ts:14</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/modules/feature/request-details/components/request-details/request-details.component.ts:26</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Tipo de briefing que será exibido.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -368,10 +393,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">src/app/modules/feature/request-details/components/request-details/request-details.component.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/modules/feature/request-details/components/request-details/request-details.component.ts:21</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Dados do briefing associados ao projeto.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -393,10 +424,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/modules/feature/request-details/components/request-details/request-details.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/modules/feature/request-details/components/request-details/request-details.component.ts:31</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Enum de tipos de briefing.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -412,18 +449,43 @@ import { NgbModal } from &#x27;@ng-bootstrap/ng-bootstrap&#x27;;
 import { RequestDetailsService } from &#x27;../../services/request-details/request-details.service&#x27;;
 import { I_Any_Briefing } from &#x27;../../../../shared/interfaces/briefing/any-briefing&#x27;;
 
+/**
+ * Componente responsável por exibir os detalhes de uma solicitação de projeto.
+ * O componente carrega os dados do briefing e exibe informações sobre o tipo de briefing.
+ */
 @Component({
   selector: &#x27;app-request-details&#x27;,
   templateUrl: &#x27;./request-details.component.html&#x27;,
   styleUrl: &#x27;./request-details.component.css&#x27;,
 })
 export class RequestDetailsComponent {
+  /**
+   * Dados do briefing associados ao projeto.
+   * @type {any}
+   */
   data &#x3D; {} as any;
+  /**
+   * Tipo de briefing que será exibido.
+   * @type {string}
+   */
   briefingType: string &#x3D; &#x27;&#x27;;
+  /**
+   * Enum de tipos de briefing.
+   * @type {E_Briefing_Type}
+   */
   E_Briefing_Type &#x3D; E_Briefing_Type;
 
-  constructor(private service: RequestDetailsService) {}
+  /**
+  * Construtor do componente.
+  * @param {RequestDetailsService} service Serviço para obter detalhes da solicitação.
+  */
+  constructor(private service: RequestDetailsService) { }
 
+  /**
+   * Ciclo de vida do componente angular chamado ao inicializar o componente.
+   * Carrega os detalhes do briefing do projeto com base no id passado na navegação.
+   * Exibe o tipo de briefing associado ao projeto.
+   */
   ngOnInit(): void {
     const idProject &#x3D; history.state.id;
     this.service.getRequestDetailsById(idProject).subscribe((res) &#x3D;&gt; {
@@ -486,7 +548,7 @@ export class RequestDetailsComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div *ngIf="data.type" class="container-fluid">  <div class="row">    <div class="col-12">      <div class="card text-black shadow-custom">        <div class="card-body p-2">          <div class="row">            <div class="col-lg-7 card-scroll scroll-bar">              <app-agency-board *ngIf="briefingType == E_Briefing_Type.ITINERARIOS.name" [briefing]="data"></app-agency-board>              <app-signpost *ngIf="briefingType == E_Briefing_Type.SINALIZACAO_INTERNA.name" [briefing]="data"></app-signpost>              <app-sticker *ngIf="briefingType == E_Briefing_Type.ADESIVOS.name" [briefing]="data"></app-sticker>            </div>            <div class="col-lg-5 d-flex align-items-center justify-content-center">              <app-dialog-box [project]="data.type.project"></app-dialog-box>            </div>          </div>        </div>      </div>    </div>  </div></div></div>'
-    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidenavComponent', 'selector': 'app-sidenav'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
+    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
     var DIRECTIVES = [{'name': 'CapitalizeDirective', 'selector': '[appCapitalize]'},{'name': 'ColorClassDirective', 'selector': '[colorClass], [backgroundColorClass], [borderColorClass]'},{'name': 'DndDirective', 'selector': '[appDndDirective]'},{'name': 'PhoneMaskDirective', 'selector': '[appPhoneMask]'}];
     var ACTUAL_COMPONENT = {'name': 'RequestDetailsComponent'};
 </script>

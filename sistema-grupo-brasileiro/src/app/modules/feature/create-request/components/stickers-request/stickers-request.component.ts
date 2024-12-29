@@ -18,23 +18,58 @@ enum Company {
   'Cidade Real' = 5,
   'Pauma' = 6,
 }
+
+/**
+ * Componente responsável por gerenciar a solicitação de adesivos.
+ * Ele permite que o usuário preencha as informações do adesivo, selecione empresas envolvidas, 
+ * e envie as informações para o servidor.
+ */
 @Component({
   selector: 'app-stickers-request',
   templateUrl: './stickers-request.component.html',
   styleUrl: './stickers-request.component.css'
 })
 export class StickersRequestComponent implements OnInit {
+  /**
+   * Formulário reativo utilizado para coletar as informações de solicitação de adesivos.
+   */
   stickersForm!: FormGroup;
+  /**
+   * Controle de habilitação do botão de envio para evitar múltiplos cliques.
+   */
   isButtonDisabled: boolean = false;
 
+  /**
+   * Indica se a solicitação envolve uma única empresa ou múltiplas.
+   */
   isSingleCompany: boolean = true;
+  /**
+   * Lista das empresas selecionadas pelo usuário.
+   */
   selectedCompanies: Partial<CompanyDetails>[] = [];
+  /**
+   * Lista de IDs das empresas selecionadas para enviar.
+   */
   sendCompanies: number[] = [];
+  /**
+   * Lista de empresas customizadas inseridas pelo usuário (não pré-definidas).
+   */
   sendOthersCompanies: string[] = [];
 
+  /**
+   * Flag que indica se a opção "Outras empresas" foi selecionada.
+   */
   isOtherCompaniesSelected = false;
 
-
+  /**
+   * Construtor do componente `StickersRequestComponent`.
+   * Inicializa as dependências necessárias para o componente, como o formulário, serviços e feedback do usuário.
+   * 
+   * @param {FormBuilder} fb - Serviço utilizado para construir o formulário reativo.
+   * @param {CreateRequestService} createRequestService - Serviço responsável por enviar a solicitação de adesivo.
+   * @param {ToastrService} toastrService - Serviço utilizado para exibir mensagens de feedback (sucesso ou erro).
+   * @param {StorageService} storageService - Serviço que acessa os dados armazenados no localStorage, como o ID do usuário.
+   */
   constructor(
     private fb: FormBuilder,
     private createRequestService: CreateRequestService,
@@ -42,6 +77,11 @@ export class StickersRequestComponent implements OnInit {
     private storageService: StorageService
   ) { }
 
+
+  /**
+   * Método de ciclo de vida chamado ao inicializar o componente. 
+   * Inicializa o formulário com os controles necessários e suas respectivas validações.
+   */
   ngOnInit(): void {
     this.stickersForm = new FormGroup({
       title: new FormControl('', [Validators.required]),
@@ -57,6 +97,10 @@ export class StickersRequestComponent implements OnInit {
     });
   }
 
+  /** 
+   * Getters para facilitar o acesso aos controles do formulário
+   *  
+  */
   get title() { return this.stickersForm.get('title')!; }
   get width() { return this.stickersForm.get('width')!; }
   get height() { return this.stickersForm.get('height')!; }
@@ -68,11 +112,18 @@ export class StickersRequestComponent implements OnInit {
   get othersText() { return this.stickersForm.get('othersText')!; }
   get selectedCompany() { return this.stickersForm.get('selectedCompany')!; }
 
+  /**
+   * Limpa o formulário e reinicia a lista de empresas selecionadas.
+   */
   clearForm() {
     this.stickersForm.reset();
     this.selectedCompanies = [];
   }
 
+  /**
+   * Método acionado quando há mudanças no valor de "stickerType".
+   * Ajusta as validações para o campo "stickerInformationType" conforme o valor de "stickerType".
+   */
   onValueChanged() {
     this.stickersForm.get('stickerType')?.valueChanges.subscribe(value => {
       if (value === '2') {
@@ -84,10 +135,20 @@ export class StickersRequestComponent implements OnInit {
     });
   }
 
+  /**
+   * Limpa a seleção de empresas quando o tipo de empresa for alterado.
+   * @param {string} type - O tipo de empresa selecionado.
+   */
   onCompanyChange(type: string) {
     this.selectedCompanies = [];
   }
 
+  /**
+   * Atualiza a seleção das empresas. Se a empresa já foi selecionada, ela é removida. 
+   * Caso contrário, é adicionada à lista de empresas selecionadas.
+   * @param {number} selectionType - O tipo de seleção (ex: única ou múltiplas empresas).
+   * @param {string} company - O nome da empresa a ser adicionada/removida.
+   */
   updateCompanyName(selectionType: number, company: string) {
     const existingCompany = this.selectedCompanies.find(c => c.name === company);
     if (existingCompany) {
@@ -99,6 +160,9 @@ export class StickersRequestComponent implements OnInit {
       console.log(this.selectedCompanies);
   }
 
+  /**
+   * Alterna a seleção da opção "Outras empresas" no formulário.
+   */
   onOthersCompanies() {
     this.isOtherCompaniesSelected = !this.isOtherCompaniesSelected;
     if (!this.isOtherCompaniesSelected) {
@@ -107,6 +171,9 @@ export class StickersRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Atualiza a seleção de empresas customizadas inseridas pelo usuário.
+   */
   updateOthersCompanies() {
     const otherValue = this.stickersForm.get('othersText')?.value;
     if (otherValue) {
@@ -123,6 +190,10 @@ export class StickersRequestComponent implements OnInit {
       console.log(this.selectedCompanies);
   }
 
+  /**
+   * Confirma a adição de uma empresa customizada.
+   * @returns {void}
+   */
   confirmOtherMultiCompany() {
     const otherCompany = this.stickersForm.get('othersText')?.value;
     if (otherCompany && !this.selectedCompanies.some(c => c.name === otherCompany)) {
@@ -134,6 +205,10 @@ export class StickersRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Remove uma empresa da lista de empresas selecionadas.
+   * @param {Partial<CompanyDetails>} company - A empresa a ser removida.
+   */
   removeCompany(company: Partial<CompanyDetails>) {
     const index = this.selectedCompanies.findIndex((c) => c.name === company.name);
     if (index >= 0) {
@@ -141,6 +216,9 @@ export class StickersRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Converte a lista de empresas selecionadas para o formato necessário para enviar a solicitação.
+   */
   saveCompanies(companies: Partial<CompanyDetails>[]) {
     this.sendCompanies = [];
     this.sendOthersCompanies = [];
@@ -158,6 +236,10 @@ export class StickersRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Envia a solicitação de adesivo após validar o formulário e as empresas selecionadas.
+   * Caso haja algum erro, exibe uma mensagem de erro para o usuário.
+   */
   submit() {
     this.saveCompanies(this.selectedCompanies);
     if (this.stickersForm.invalid || this.selectedCompanies.length == 0) {

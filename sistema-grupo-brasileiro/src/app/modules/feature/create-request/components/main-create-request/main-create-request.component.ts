@@ -1,12 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
+/**
+ * Componente principal para a criação de solicitações, exibindo um menu de opções com rotas associadas.
+ * Cada opção pode ter sub-opções, que são exibidas dinamicamente com base na seleção do usuário.
+ * O componente permite que o usuário selecione opções e sub-opções, navegando para as rotas correspondentes.
+ */
 @Component({
   selector: 'app-main-create-request',
   templateUrl: './main-create-request.component.html',
   styleUrls: ['./main-create-request.component.css']
 })
 export class MainCreateRequestComponent implements OnInit {
+
+  /**
+   * Lista de opções principais exibidas no menu.
+   * Cada opção possui um nome, uma rota e um estado ativo.
+   * Algumas opções podem ter sub-opções.
+   */
   mainOptions = [
     { name: 'Placa de Itinerários', route: '/placa-de-itinerarios', active: true },
     { name: 'Placa de Sinalização', route: '/placa-de-sinalizacao', active: true },
@@ -57,18 +68,42 @@ export class MainCreateRequestComponent implements OnInit {
     }
   ];
 
+  /**
+   * Opção principal atualmente selecionada.
+   */
   selectedOption: any;
+
+  /**
+   * Opção ativa atualmente no menu (pode ser uma opção principal ou uma sub-opção).
+   */
   activeOption: any;
+
+  /**
+   * Sub-opção atualmente ativa (se houver).
+   */
   activeSubOption: any;
 
-  constructor(private router: Router) {}
+  /**
+   * Construtor do componente, inicializando a injeção de dependências.
+   * @param router - Serviço de roteamento para navegação entre páginas.
+   */
+  constructor(private router: Router) { }
 
+  /**
+   * Método do ciclo de vida do Angular que é chamado quando o componente é inicializado.
+   * Define a opção padrão a ser selecionada e navega para a rota correspondente.
+   */
   ngOnInit(): void {
     const defaultOption = this.mainOptions[0];
     this.activeOption = defaultOption;
     this.router.navigate([defaultOption.route]);
   }
 
+  /**
+   * Método para selecionar uma opção principal no menu.
+   * Se a opção tiver sub-opções, elas serão exibidas; caso contrário, navega diretamente para a rota da opção.
+   * @param option - A opção principal selecionada.
+   */
   selectOption(option: any): void {
     this.activeOption = option;
     this.activeSubOption = null;
@@ -81,6 +116,11 @@ export class MainCreateRequestComponent implements OnInit {
     }
   }
 
+  /**
+   * Método para selecionar uma sub-opção no menu.
+   * Navega para a rota correspondente à sub-opção selecionada.
+   * @param subOption - A sub-opção selecionada.
+   */
   selectSubOption(subOption: any): void {
     this.activeSubOption = subOption;
     this.router.navigate([subOption.route]);

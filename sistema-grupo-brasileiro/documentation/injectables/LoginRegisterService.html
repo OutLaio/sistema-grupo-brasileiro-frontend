@@ -119,6 +119,15 @@
         </p>
 
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Serviço <code>LoginRegisterService</code></p>
+<p>Gerencia operações relacionadas ao login, registro de usuários, recuperação de senha
+e manipulação de autenticação no sistema.</p>
+
+            </p>
 
 
 
@@ -192,12 +201,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/modules/services/login-register/login-register.service.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/modules/services/login-register/login-register.service.ts:29</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Construtor do serviço <code>LoginRegisterService</code>.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -206,6 +217,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -220,6 +232,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>Serviço de navegação para redirecionar o usuário.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>httpClient</td>
@@ -232,6 +250,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>Instância para realizar requisições HTTP.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>cookieService</td>
@@ -244,6 +268,12 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <ul>
+<li>Serviço para manipulação de cookies, utilizado para armazenar os dados do usuário após o login.</li>
+</ul>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -279,14 +309,20 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="35"
-                                    class="link-to-prism">src/app/modules/services/login-register/login-register.service.ts:35</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="66"
+                                    class="link-to-prism">src/app/modules/services/login-register/login-register.service.ts:66</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Realiza login do usuário no sistema.</p>
+<ul>
+<li>Armazena o token de autenticação e os dados do usuário nos cookies.</li>
+<li>Redireciona para a página de acompanhamento após o login.</li>
+</ul>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -297,6 +333,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -311,6 +348,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Objeto contendo as credenciais de login.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -320,7 +363,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Observable com a resposta da API contendo o token de autenticação e os dados do usuário.</p>
+
                             </div>
                 </td>
             </tr>
@@ -346,14 +390,20 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="75"
-                                    class="link-to-prism">src/app/modules/services/login-register/login-register.service.ts:75</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="130"
+                                    class="link-to-prism">src/app/modules/services/login-register/login-register.service.ts:130</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Realiza logout do usuário no sistema.</p>
+<ul>
+<li>Remove os cookies de autenticação e do usuário ativo.</li>
+<li>Redireciona para a página de login.</li>
+</ul>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -383,14 +433,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="55"
-                                    class="link-to-prism">src/app/modules/services/login-register/login-register.service.ts:55</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="92"
+                                    class="link-to-prism">src/app/modules/services/login-register/login-register.service.ts:92</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Solicita a recuperação de senha para o email informado.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -401,6 +453,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -415,6 +468,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Objeto contendo o email do usuário.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -424,7 +483,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Observable com a resposta da API.</p>
+
                             </div>
                 </td>
             </tr>
@@ -450,14 +510,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="28"
-                                    class="link-to-prism">src/app/modules/services/login-register/login-register.service.ts:28</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="50"
+                                    class="link-to-prism">src/app/modules/services/login-register/login-register.service.ts:50</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Registra um novo usuário no sistema.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -468,6 +530,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -482,6 +545,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Objeto contendo as informações do usuário.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -491,7 +560,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Observable com a resposta da API contendo os dados do funcionário registrado.</p>
+
                             </div>
                 </td>
             </tr>
@@ -517,14 +587,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="68"
-                                    class="link-to-prism">src/app/modules/services/login-register/login-register.service.ts:68</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="117"
+                                    class="link-to-prism">src/app/modules/services/login-register/login-register.service.ts:117</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Redefine a senha do usuário.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -535,6 +607,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -549,6 +622,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Objeto contendo o token e a nova senha.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -558,7 +637,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Observable com a resposta da API.</p>
+
                             </div>
                 </td>
             </tr>
@@ -584,14 +664,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="62"
-                                    class="link-to-prism">src/app/modules/services/login-register/login-register.service.ts:62</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="105"
+                                    class="link-to-prism">src/app/modules/services/login-register/login-register.service.ts:105</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Verifica se o token de redefinição de senha é válido.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -602,6 +684,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -616,6 +699,12 @@
                                             </td>
 
 
+                                            <td>
+                                                    <ul>
+<li>Token de redefinição de senha.</li>
+</ul>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -625,7 +714,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Observable com a resposta da API.</p>
+
                             </div>
                 </td>
             </tr>
@@ -663,10 +753,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/modules/services/login-register/login-register.service.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/modules/services/login-register/login-register.service.ts:29</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>URL base para as operações de autenticação e registro.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -691,18 +787,40 @@ import { I_Reset_Password_Request } from &#x27;../../shared/interfaces/auth/form
 import { StorageService } from &#x27;../storage/storage.service&#x27;;
 import { CookieService } from &#x27;ngx-cookie-service&#x27;;
 
+/**
+ * Serviço &#x60;LoginRegisterService&#x60;
+ * 
+ * Gerencia operações relacionadas ao login, registro de usuários, recuperação de senha
+ * e manipulação de autenticação no sistema.
+ */
 @Injectable({
   providedIn: &#x27;root&#x27;,
 })
 export class LoginRegisterService {
+  /**
+   * URL base para as operações de autenticação e registro.
+   */
   private readonly prefix &#x3D; &#x27;http://localhost:8080/api/v1/auth&#x27;;
 
+  /**
+   * Construtor do serviço &#x60;LoginRegisterService&#x60;.
+   * 
+   * @param router - Serviço de navegação para redirecionar o usuário.
+   * @param httpClient - Instância para realizar requisições HTTP.
+   * @param cookieService - Serviço para manipulação de cookies, utilizado para armazenar os dados do usuário após o login.
+   */
   constructor(
     private router: Router,
     private httpClient: HttpClient,
     private cookieService: CookieService
   ) { }
 
+  /**
+   * Registra um novo usuário no sistema.
+   * 
+   * @param req - Objeto contendo as informações do usuário.
+   * @returns Observable com a resposta da API contendo os dados do funcionário registrado.
+   */
   registerUser(req: I_User_Request) {
     return this.httpClient.post&lt;I_Api_Response&lt;I_Employee_View_Data&gt;&gt;(
       &#x60;${this.prefix}/register&#x60;,
@@ -710,6 +828,15 @@ export class LoginRegisterService {
     );
   }
 
+  /**
+   * Realiza login do usuário no sistema.
+   * 
+   * - Armazena o token de autenticação e os dados do usuário nos cookies.
+   * - Redireciona para a página de acompanhamento após o login.
+   * 
+   * @param req - Objeto contendo as credenciais de login.
+   * @returns Observable com a resposta da API contendo o token de autenticação e os dados do usuário.
+   */
   loginUser(req: I_Login_Request) {
     return this.httpClient
       .post&lt;I_Api_Response&lt;I_Token_Response&gt;&gt;(&#x60;${this.prefix}/login&#x60;, req)
@@ -730,6 +857,12 @@ export class LoginRegisterService {
       );
   }
 
+  /**
+   * Solicita a recuperação de senha para o email informado.
+   * 
+   * @param req - Objeto contendo o email do usuário.
+   * @returns Observable com a resposta da API.
+   */
   recoveryPassword(req: I_Recovery_Password_Request) {
     return this.httpClient.post&lt;I_Api_Response&lt;void&gt;&gt;(
       &#x60;${this.prefix}/requestReset&#x60;,
@@ -737,12 +870,24 @@ export class LoginRegisterService {
     );
   }
 
+  /**
+   * Verifica se o token de redefinição de senha é válido.
+   * 
+   * @param token - Token de redefinição de senha.
+   * @returns Observable com a resposta da API.
+   */
   verifyToken(token: string) {
     return this.httpClient.get&lt;I_Api_Response&lt;void&gt;&gt;(
       &#x60;${this.prefix}/verifyToken?token&#x3D;${token}&#x60;
     );
   }
 
+  /**
+   * Redefine a senha do usuário.
+   * 
+   * @param req - Objeto contendo o token e a nova senha.
+   * @returns Observable com a resposta da API.
+   */
   resetPassword(req: I_Reset_Password_Request) {
     return this.httpClient.post&lt;I_Api_Response&lt;void&gt;&gt;(
       &#x60;${this.prefix}/resetPassword&#x60;,
@@ -750,8 +895,13 @@ export class LoginRegisterService {
     );
   }
 
+  /**
+   * Realiza logout do usuário no sistema.
+   * 
+   * - Remove os cookies de autenticação e do usuário ativo.
+   * - Redireciona para a página de login.
+   */
   logout() {
-    // Limpa os cookies
     this.cookieService.delete(&#x27;auth-token&#x27;, &#x27;/&#x27;);
     this.cookieService.delete(&#x27;activeUser&#x27;, &#x27;/&#x27;);
     this.router.navigate([&#x27;/login&#x27;]);

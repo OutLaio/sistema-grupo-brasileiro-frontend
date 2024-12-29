@@ -120,6 +120,14 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente responsável por listar e gerenciar clientes.
+Fornece funcionalidades para paginação, seleção de clientes e geração de links para cadastro.</p>
+
+    </p>
 
 
 
@@ -256,12 +264,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/modules/feature/client/list-clients/component/list-clients/list-clients.component.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/modules/feature/client/list-clients/component/list-clients/list-clients.component.ts:46</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Construtor que injeta os serviços necessários para o funcionamento do componente.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -270,6 +280,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -284,6 +295,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço para gerenciar operações de clientes.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>toastrService</td>
@@ -296,6 +311,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço para exibir notificações ao usuário.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -335,14 +354,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="63"
-                                    class="link-to-prism">src/app/modules/feature/client/list-clients/component/list-clients/list-clients.component.ts:63</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="118"
+                                    class="link-to-prism">src/app/modules/feature/client/list-clients/component/list-clients/list-clients.component.ts:118</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Gera um link para compartilhar o cadastro de clientes.
+Exibe o link em um modal utilizando o SweetAlert.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -372,14 +394,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="53"
-                                    class="link-to-prism">src/app/modules/feature/client/list-clients/component/list-clients/list-clients.component.ts:53</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="100"
+                                    class="link-to-prism">src/app/modules/feature/client/list-clients/component/list-clients/list-clients.component.ts:100</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Verifica se um cliente está selecionado.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -390,6 +414,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -404,6 +429,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Cliente a ser verificado.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -413,7 +442,8 @@
 
                         </div>
                             <div class="io-description">
-                                
+                                <p>Verdadeiro se o cliente estiver selecionado, falso caso contrário.</p>
+
                             </div>
                 </td>
             </tr>
@@ -439,14 +469,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="33"
-                                    class="link-to-prism">src/app/modules/feature/client/list-clients/component/list-clients/list-clients.component.ts:33</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="71"
+                                    class="link-to-prism">src/app/modules/feature/client/list-clients/component/list-clients/list-clients.component.ts:71</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Carrega a lista de clientes de acordo com a página e o tamanho especificados.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -457,6 +489,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -471,6 +504,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Página a ser carregada (1-indexada).</p>
+
+                                            </td>
                                         </tr>
                                         <tr>
                                                 <td>size</td>
@@ -483,6 +520,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Número de itens por página.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -518,14 +559,17 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="29"
-                                    class="link-to-prism">src/app/modules/feature/client/list-clients/component/list-clients/list-clients.component.ts:29</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="62"
+                                    class="link-to-prism">src/app/modules/feature/client/list-clients/component/list-clients/list-clients.component.ts:62</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método de ciclo de vida do Angular.
+Carrega a lista de clientes ao inicializar o componente.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -555,14 +599,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="57"
-                                    class="link-to-prism">src/app/modules/feature/client/list-clients/component/list-clients/list-clients.component.ts:57</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="108"
+                                    class="link-to-prism">src/app/modules/feature/client/list-clients/component/list-clients/list-clients.component.ts:108</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Manipula a troca de página e recarrega a lista de clientes com base nos novos parâmetros.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -573,6 +619,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -587,6 +634,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>Evento de mudança de página.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -622,14 +673,16 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="48"
-                                    class="link-to-prism">src/app/modules/feature/client/list-clients/component/list-clients/list-clients.component.ts:48</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="90"
+                                    class="link-to-prism">src/app/modules/feature/client/list-clients/component/list-clients/list-clients.component.ts:90</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Seleciona um cliente na lista ou desmarca se já estiver selecionado.</p>
+</div>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
@@ -640,6 +693,7 @@
                                             <td>Name</td>
                                                 <td>Type</td>
                                             <td>Optional</td>
+                                                <td>Description</td>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -654,6 +708,10 @@
                                             </td>
 
 
+                                            <td>
+                                                    <p>O cliente a ser selecionado ou desmarcado.</p>
+
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>
@@ -699,10 +757,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/modules/feature/client/list-clients/component/list-clients/list-clients.component.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/modules/feature/client/list-clients/component/list-clients/list-clients.component.ts:42</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Página atual da listagem.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -730,10 +794,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/modules/feature/client/list-clients/component/list-clients/list-clients.component.ts:15</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/modules/feature/client/list-clients/component/list-clients/list-clients.component.ts:22</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de clientes carregados.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -761,10 +831,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/modules/feature/client/list-clients/component/list-clients/list-clients.component.ts:17</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/modules/feature/client/list-clients/component/list-clients/list-clients.component.ts:30</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Mensagem de erro exibida ao usuário, caso ocorra.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -792,10 +868,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/modules/feature/client/list-clients/component/list-clients/list-clients.component.ts:19</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/modules/feature/client/list-clients/component/list-clients/list-clients.component.ts:38</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Quantidade de itens exibidos por página.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -823,10 +905,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/modules/feature/client/list-clients/component/list-clients/list-clients.component.ts:16</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/modules/feature/client/list-clients/component/list-clients/list-clients.component.ts:26</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indica o estado de carregamento da lista.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -849,10 +937,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/modules/feature/client/list-clients/component/list-clients/list-clients.component.ts:22</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/modules/feature/client/list-clients/component/list-clients/list-clients.component.ts:46</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Cliente selecionado atualmente.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -880,10 +974,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/modules/feature/client/list-clients/component/list-clients/list-clients.component.ts:18</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/modules/feature/client/list-clients/component/list-clients/list-clients.component.ts:34</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Número total de elementos disponíveis para paginação.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -901,30 +1001,68 @@ import { HttpErrorResponse } from &#x27;@angular/common/http&#x27;;
 import { ToastrService } from &#x27;ngx-toastr&#x27;;
 import Swal from &#x27;sweetalert2&#x27;;
 
+/**
+ * Componente responsável por listar e gerenciar clientes.
+ * Fornece funcionalidades para paginação, seleção de clientes e geração de links para cadastro.
+ */
 @Component({
   selector: &#x27;app-list-clients&#x27;,
   templateUrl: &#x27;./list-clients.component.html&#x27;,
   styleUrl: &#x27;./list-clients.component.css&#x27;,
 })
 export class ListClientsComponent {
+  /**
+   * Lista de clientes carregados.
+   */
   clients: I_Employee_View_Data[] &#x3D; [];
+  /**
+   * Indica o estado de carregamento da lista.
+   */
   loading: boolean &#x3D; false;
+  /**
+   * Mensagem de erro exibida ao usuário, caso ocorra.
+   */
   errorMessage: string &#x3D; &#x27;&#x27;;
+  /**
+   * Número total de elementos disponíveis para paginação.
+   */
   totalElements: number &#x3D; 0;
+  /**
+   * Quantidade de itens exibidos por página.
+   */
   itemsPerPage: number &#x3D; 12;
+  /**
+   * Página atual da listagem.
+   */
   actualPage: number &#x3D; 1;
-
+  /**
+   * Cliente selecionado atualmente.
+   */
   selectedClient!: I_Employee_View_Data | null;
 
+  /**
+   * Construtor que injeta os serviços necessários para o funcionamento do componente.
+   * @param listClientsService Serviço para gerenciar operações de clientes.
+   * @param toastrService Serviço para exibir notificações ao usuário.
+   */
   constructor(
     private listClientsService: ListClientsService,
     private toastrService: ToastrService,
   ) {}
 
+  /**
+   * Método de ciclo de vida do Angular. 
+   * Carrega a lista de clientes ao inicializar o componente.
+   */
   ngOnInit(): void {
     this.loadClients(this.actualPage, this.itemsPerPage);
   }
 
+  /**
+   * Carrega a lista de clientes de acordo com a página e o tamanho especificados.
+   * @param page Página a ser carregada (1-indexada).
+   * @param size Número de itens por página.
+   */
   loadClients(page: number, size: number): void {
     this.listClientsService.getAllClients(page - 1, size).subscribe({
       next: (response) &#x3D;&gt; {
@@ -940,21 +1078,38 @@ export class ListClientsComponent {
     });
   }
 
+  /**
+   * Seleciona um cliente na lista ou desmarca se já estiver selecionado.
+   * @param colaborador O cliente a ser selecionado ou desmarcado.
+   */
   selectClient(colaborador: I_Employee_View_Data) {
     this.selectedClient &#x3D;
       this.selectedClient &#x3D;&#x3D;&#x3D; colaborador ? null : colaborador;
   }
 
+  /**
+   * Verifica se um cliente está selecionado.
+   * @param colaborador Cliente a ser verificado.
+   * @returns Verdadeiro se o cliente estiver selecionado, falso caso contrário.
+   */
   isSelected(colaborador: any): boolean {
     return this.selectedClient &#x3D;&#x3D;&#x3D; colaborador;
   }
 
+  /**
+   * Manipula a troca de página e recarrega a lista de clientes com base nos novos parâmetros.
+   * @param event Evento de mudança de página.
+   */
   onPageChange(event: PageEvent): void {
     this.actualPage &#x3D; event.pageIndex + 1;
     this.itemsPerPage &#x3D; event.pageSize;
     this.loadClients(this.actualPage, this.itemsPerPage);
   }
 
+  /**
+   * Gera um link para compartilhar o cadastro de clientes.
+   * Exibe o link em um modal utilizando o SweetAlert.
+   */
   getLink() {
     this.listClientsService.getLink().subscribe({
       next: (res) &#x3D;&gt; {
@@ -1051,7 +1206,7 @@ export class ListClientsComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div class="container-fluid">    <div class="row d-flex justify-content-center h-100">        <div class="card daddy-card text-black">            <div class="card-body">                <div                    class="container-fluid d-flex flex-column justify-content-between custom-container mt-3 overflow-custom scroll-bar">                    <div class="row">                        <p class="text-custom" (click)="getLink()">Gerar link de cadastro de cliente</p>                        <div *ngFor="let client of clients" class="col-12 col-md-3 mb-3">                            <div class="card card-custom rounded-4 py-2"                                [ngClass]="{\'card-selected\': isSelected(client)}" (click)="selectClient(client)">                                <div class="d-flex flex-column justify-content-center align-items-center card-body text-center">                                    <div class="mb-3">                                        <img [src]="\'/assets/images/avatars/\' + (client?.avatar || \'default\') + \'.png\'"                                            alt="Profile Image" class="img-fluid me-3" style="height: 70px;">                                    </div>                                    <p class="card-text fw-semibold mb-1">{{ client.name + \' \' + client.lastname }}</p>                                    <p class="card-text text-muted mb-3">{{ client.user.email }}</p>                                    <div *ngIf="client === selectedClient" class="pt-3 border-top mt-2">                                        <p class="card-text mb-1"><strong>Telefone:</strong> {{ client.phoneNumber }}                                        </p>                                        <p class="card-text mb-1"><strong>Função:</strong> {{ client.occupation }}</p>                                        <p class="card-text mb-1"><strong>Setor:</strong> {{ client.sector }}</p>                                        <p class="card-text"><strong>Agência:</strong> {{ client.agency }}</p>                                    </div>                                </div>                            </div>                        </div>                    </div>                    <div class="row mt-4">                        <div class="col-12">                            <mat-paginator [length]="totalElements" [pageSize]="itemsPerPage"                                [pageSizeOptions]="[6, 12, 24]" (page)="onPageChange($event)">                            </mat-paginator>                        </div>                    </div>                </div>            </div>        </div>    </div></div></div>'
-    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidenavComponent', 'selector': 'app-sidenav'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
+    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
     var DIRECTIVES = [{'name': 'CapitalizeDirective', 'selector': '[appCapitalize]'},{'name': 'ColorClassDirective', 'selector': '[colorClass], [backgroundColorClass], [borderColorClass]'},{'name': 'DndDirective', 'selector': '[appDndDirective]'},{'name': 'PhoneMaskDirective', 'selector': '[appPhoneMask]'}];
     var ACTUAL_COMPONENT = {'name': 'ListClientsComponent'};
 </script>

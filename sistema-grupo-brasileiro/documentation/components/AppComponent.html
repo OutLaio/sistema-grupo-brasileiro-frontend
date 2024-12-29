@@ -120,6 +120,15 @@
 </p>
 
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente Raiz da Aplicação (AppComponent)</p>
+<p>Este componente é o ponto de entrada principal para o front-end da aplicação Angular.
+Ele gerencia a visibilidade da barra lateral e verifica o estado de autenticação do usuário.</p>
+
+    </p>
 
 
 
@@ -229,12 +238,14 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/app.component.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/app.component.ts:25</a></div>
                             </td>
                         </tr>
 
                 <tr>
                     <td class="col-md-4">
+                            <div class="io-description"><p>Construtor do componente <code>AppComponent</code>.</p>
+</div>
                             <div>
                                     <b>Parameters :</b>
                                     <table class="params">
@@ -243,6 +254,7 @@
                                                 <td>Name</td>
                                                     <td>Type</td>
                                                 <td>Optional</td>
+                                                    <td>Description</td>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -257,6 +269,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço responsável por gerenciar a visibilidade da barra lateral.</p>
+
+                                                        </td>
                                                 </tr>
                                                 <tr>
                                                         <td>storageService</td>
@@ -269,6 +285,10 @@
                                                             No
                                                     </td>
                                                     
+                                                        <td>
+                                                                <p>Serviço responsável por gerenciar o armazenamento local e verificar o estado de autenticação.</p>
+
+                                                        </td>
                                                 </tr>
                                         </tbody>
                                     </table>
@@ -308,19 +328,25 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="24"
-                                    class="link-to-prism">src/app/app.component.ts:24</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="54"
+                                    class="link-to-prism">src/app/app.component.ts:54</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Método para verificar se o usuário está autenticado.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                         </div>
+                            <div class="io-description">
+                                <p><code>true</code> se o usuário estiver autenticado; caso contrário, <code>false</code>.</p>
+
+                            </div>
                 </td>
             </tr>
         </tbody>
@@ -345,14 +371,18 @@
 
                     <tr>
                         <td class="col-md-4">
-                            <div class="io-line">Defined in <a href="" data-line="18"
-                                    class="link-to-prism">src/app/app.component.ts:18</a></div>
+                            <div class="io-line">Defined in <a href="" data-line="43"
+                                    class="link-to-prism">src/app/app.component.ts:43</a></div>
                         </td>
                     </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                        <div class="io-description"><p>Ciclo de vida do componente angular chamado ao inicializar o componente.</p>
+<p>Este método se inscreve no Observable <code>sidebarVisibility$</code> do serviço <code>SidebarService</code>
+para monitorar mudanças na visibilidade da barra lateral.</p>
+</div>
 
                         <div class="io-description">
                             <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -386,10 +416,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/app.component.ts:12</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/app.component.ts:25</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Estado que determina se a barra lateral está visível ou não.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -417,10 +453,16 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/app.component.ts:11</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/app.component.ts:21</a></div>
                         </td>
                     </tr>
 
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Título da aplicação.</p>
+</div>
+                </td>
+            </tr>
 
         </tbody>
     </table>
@@ -434,26 +476,56 @@
 import { SidebarService } from &#x27;./modules/services/sidebar/sidebar.service&#x27;;
 import { StorageService } from &#x27;./modules/services/storage/storage.service&#x27;;
 
+/**
+ * Componente Raiz da Aplicação (AppComponent)
+ * 
+ * Este componente é o ponto de entrada principal para o front-end da aplicação Angular.
+ * Ele gerencia a visibilidade da barra lateral e verifica o estado de autenticação do usuário.
+ */
+
 @Component({
   selector: &#x27;app-root&#x27;,
   templateUrl: &#x27;./app.component.html&#x27;,
   styleUrl: &#x27;./app.component.css&#x27;,
 })
 export class AppComponent {
+  /**
+   * Título da aplicação.
+   */
   title &#x3D; &#x27;sistema-grupo-brasileiro&#x27;;
+  /**
+   * Estado que determina se a barra lateral está visível ou não.
+   */
   isSidebarVisible &#x3D; false;
+  /**
+   * Construtor do componente &#x60;AppComponent&#x60;.
+   * 
+   * @param sidebarService Serviço responsável por gerenciar a visibilidade da barra lateral.
+   * @param storageService Serviço responsável por gerenciar o armazenamento local e verificar o estado de autenticação.
+   */
   constructor(
     private sidebarService: SidebarService,
     private storageService: StorageService,
-  ) {}
+  ) { }
 
+  /**
+   * Ciclo de vida do componente angular chamado ao inicializar o componente.
+   * 
+   * Este método se inscreve no Observable &#x60;sidebarVisibility$&#x60; do serviço &#x60;SidebarService&#x60;
+   * para monitorar mudanças na visibilidade da barra lateral.
+   */
   ngOnInit() {
     this.sidebarService.sidebarVisibility$.subscribe((isVisible) &#x3D;&gt; {
       this.isSidebarVisible &#x3D; isVisible;
     });
   }
 
-  isAuthenticated(){
+  /**
+    * Método para verificar se o usuário está autenticado.
+    * 
+    * @returns &#x60;true&#x60; se o usuário estiver autenticado; caso contrário, &#x60;false&#x60;.
+    */
+  isAuthenticated() {
     return this.storageService.isAuthenticated();
   }
 
@@ -467,7 +539,7 @@ export class AppComponent {
 		&lt;app-header&gt;&lt;/app-header&gt;
 	&lt;/div&gt;
 	&lt;div class&#x3D;&quot;container-fluid&quot;&gt;
-		&lt;app-sidenav&gt;&lt;/app-sidenav&gt;
+		&lt;app-sidebar&gt;&lt;/app-sidebar&gt;
 	&lt;/div&gt;
 	&lt;div class&#x3D;&quot;content&quot; [ngClass]&#x3D;&quot;isSidebarVisible ? &#x27;with-sidebar&#x27; : &#x27;without-sidebar&#x27;&quot;&gt;
 		&lt;router-outlet&gt;&lt;/router-outlet&gt;
@@ -506,8 +578,8 @@ export class AppComponent {
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div *ngIf=isAuthenticated()>	<div class="app-header">		<app-header></app-header>	</div>	<div class="container-fluid">		<app-sidenav></app-sidenav>	</div>	<div class="content" [ngClass]="isSidebarVisible ? \'with-sidebar\' : \'without-sidebar\'">		<router-outlet></router-outlet>	</div></div><div *ngIf=!isAuthenticated()>	<router-outlet></router-outlet></div></div>'
-    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidenavComponent', 'selector': 'app-sidenav'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
+        var COMPONENT_TEMPLATE = '<div><div *ngIf=isAuthenticated()>	<div class="app-header">		<app-header></app-header>	</div>	<div class="container-fluid">		<app-sidebar></app-sidebar>	</div>	<div class="content" [ngClass]="isSidebarVisible ? \'with-sidebar\' : \'without-sidebar\'">		<router-outlet></router-outlet>	</div></div><div *ngIf=!isAuthenticated()>	<router-outlet></router-outlet></div></div>'
+    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
     var DIRECTIVES = [{'name': 'CapitalizeDirective', 'selector': '[appCapitalize]'},{'name': 'ColorClassDirective', 'selector': '[colorClass], [backgroundColorClass], [borderColorClass]'},{'name': 'DndDirective', 'selector': '[appDndDirective]'},{'name': 'PhoneMaskDirective', 'selector': '[appPhoneMask]'}];
     var ACTUAL_COMPONENT = {'name': 'AppComponent'};
 </script>
