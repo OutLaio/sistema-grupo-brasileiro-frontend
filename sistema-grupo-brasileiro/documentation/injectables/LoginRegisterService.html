@@ -96,15 +96,15 @@
 
 <ul class="nav nav-tabs" role="tablist">
         <li class="nav-item">
-            <a href="#info" 
+            <a href="#info"
                 class="nav-link"
                 class="nav-link active"
                 role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
         </li>
         <li class="nav-item">
-            <a href="#source" 
+            <a href="#source"
                 class="nav-link"
-                
+
                 role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
         </li>
 </ul>
@@ -223,15 +223,15 @@ e manipulação de autenticação no sistema.</p>
                                         <tbody>
                                                 <tr>
                                                         <td>router</td>
-                                                  
+
                                                         <td>
                                                                     <code>Router</code>
                                                         </td>
-                                                  
+
                                                     <td>
                                                             No
                                                     </td>
-                                                    
+
                                                         <td>
                                                                 <ul>
 <li>Serviço de navegação para redirecionar o usuário.</li>
@@ -241,15 +241,15 @@ e manipulação de autenticação no sistema.</p>
                                                 </tr>
                                                 <tr>
                                                         <td>httpClient</td>
-                                                  
+
                                                         <td>
                                                                     <code>HttpClient</code>
                                                         </td>
-                                                  
+
                                                     <td>
                                                             No
                                                     </td>
-                                                    
+
                                                         <td>
                                                                 <ul>
 <li>Instância para realizar requisições HTTP.</li>
@@ -259,15 +259,15 @@ e manipulação de autenticação no sistema.</p>
                                                 </tr>
                                                 <tr>
                                                         <td>cookieService</td>
-                                                  
+
                                                         <td>
                                                                     <code>CookieService</code>
                                                         </td>
-                                                  
+
                                                     <td>
                                                             No
                                                     </td>
-                                                    
+
                                                         <td>
                                                                 <ul>
 <li>Serviço para manipulação de cookies, utilizado para armazenar os dados do usuário após o login.</li>
@@ -285,7 +285,7 @@ e manipulação de autenticação no sistema.</p>
 </section>
 
             <section data-compodoc="block-methods">
-    
+
     <h3 id="methods">
         Methods
     </h3>
@@ -326,7 +326,7 @@ e manipulação de autenticação no sistema.</p>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
-                                
+
                                 <table class="params">
                                     <thead>
                                         <tr>
@@ -446,7 +446,7 @@ e manipulação de autenticação no sistema.</p>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
-                                
+
                                 <table class="params">
                                     <thead>
                                         <tr>
@@ -523,7 +523,7 @@ e manipulação de autenticação no sistema.</p>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
-                                
+
                                 <table class="params">
                                     <thead>
                                         <tr>
@@ -600,7 +600,7 @@ e manipulação de autenticação no sistema.</p>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
-                                
+
                                 <table class="params">
                                     <thead>
                                         <tr>
@@ -677,7 +677,7 @@ e manipulação de autenticação no sistema.</p>
 
                             <div class="io-description">
                                 <b>Parameters :</b>
-                                
+
                                 <table class="params">
                                     <thead>
                                         <tr>
@@ -723,7 +723,7 @@ e manipulação de autenticação no sistema.</p>
     </table>
 </section>
             <section data-compodoc="block-properties">
-    
+
     <h3 id="inputs">
         Properties
     </h3>
@@ -748,7 +748,7 @@ e manipulação de autenticação no sistema.</p>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Default value : </i><code>&#x27;http://localhost:8080/api/v1/auth&#x27;</code>
+                        <i>Default value : </i><code>&#x27;http://54.200.23.253:8000/api/v1/auth&#x27;</code>
                     </td>
                 </tr>
                     <tr>
@@ -789,7 +789,7 @@ import { CookieService } from &#x27;ngx-cookie-service&#x27;;
 
 /**
  * Serviço &#x60;LoginRegisterService&#x60;
- * 
+ *
  * Gerencia operações relacionadas ao login, registro de usuários, recuperação de senha
  * e manipulação de autenticação no sistema.
  */
@@ -800,11 +800,11 @@ export class LoginRegisterService {
   /**
    * URL base para as operações de autenticação e registro.
    */
-  private readonly prefix &#x3D; &#x27;http://localhost:8080/api/v1/auth&#x27;;
+  private readonly prefix &#x3D; &#x27;http://54.200.23.253:8000/api/v1/auth&#x27;;
 
   /**
    * Construtor do serviço &#x60;LoginRegisterService&#x60;.
-   * 
+   *
    * @param router - Serviço de navegação para redirecionar o usuário.
    * @param httpClient - Instância para realizar requisições HTTP.
    * @param cookieService - Serviço para manipulação de cookies, utilizado para armazenar os dados do usuário após o login.
@@ -817,7 +817,7 @@ export class LoginRegisterService {
 
   /**
    * Registra um novo usuário no sistema.
-   * 
+   *
    * @param req - Objeto contendo as informações do usuário.
    * @returns Observable com a resposta da API contendo os dados do funcionário registrado.
    */
@@ -830,10 +830,10 @@ export class LoginRegisterService {
 
   /**
    * Realiza login do usuário no sistema.
-   * 
+   *
    * - Armazena o token de autenticação e os dados do usuário nos cookies.
    * - Redireciona para a página de acompanhamento após o login.
-   * 
+   *
    * @param req - Objeto contendo as credenciais de login.
    * @returns Observable com a resposta da API contendo o token de autenticação e os dados do usuário.
    */
@@ -859,7 +859,7 @@ export class LoginRegisterService {
 
   /**
    * Solicita a recuperação de senha para o email informado.
-   * 
+   *
    * @param req - Objeto contendo o email do usuário.
    * @returns Observable com a resposta da API.
    */
@@ -872,7 +872,7 @@ export class LoginRegisterService {
 
   /**
    * Verifica se o token de redefinição de senha é válido.
-   * 
+   *
    * @param token - Token de redefinição de senha.
    * @returns Observable com a resposta da API.
    */
@@ -884,7 +884,7 @@ export class LoginRegisterService {
 
   /**
    * Redefine a senha do usuário.
-   * 
+   *
    * @param req - Objeto contendo o token e a nova senha.
    * @returns Observable com a resposta da API.
    */
@@ -897,7 +897,7 @@ export class LoginRegisterService {
 
   /**
    * Realiza logout do usuário no sistema.
-   * 
+   *
    * - Remove os cookies de autenticação e do usuário ativo.
    * - Redireciona para a página de login.
    */

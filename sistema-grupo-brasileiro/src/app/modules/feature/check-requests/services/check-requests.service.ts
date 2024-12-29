@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { StorageService } from '../../../services/storage/storage.service';
 import { I_Api_Response } from '../../../shared/interfaces/api-response';
 import { I_Project_Data } from '../../../shared/interfaces/project/view/project-view';
+import { enviroment } from '../../../../../enviroments/enviroment';
 
 /**
  * Serviço responsável por gerenciar requisições relacionadas aos projetos.
@@ -19,8 +20,7 @@ export class CheckRequestsService {
   /**
    * URL base da API para operações relacionadas aos projetos.
    */
-  // private apiUrl = 'http://54.200.23.253:8000/api/v1/projects';
-  private apiUrl = 'http://localhost:8080/api/v1/projects';
+  private apiUrl = enviroment.apiUrl + '/api/v1/projects';
 
   /**
    * Construtor do serviço que injeta as dependências necessárias.

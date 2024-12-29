@@ -4,6 +4,7 @@ import { I_Employee_View_Data } from '../../../../shared/interfaces/user/view/em
 import { I_Page } from '../../../../shared/interfaces/pageable/pageable';
 import { StorageService } from '../../../../services/storage/storage.service';
 import { I_Api_Response } from '../../../../shared/interfaces/api-response';
+import { enviroment } from '../../../../../../enviroments/enviroment';
 
 /**
  * Serviço para gerenciar operações relacionadas à listagem de clientes.
@@ -16,8 +17,7 @@ export class ListClientsService {
   /**
    * URL base da API utilizada pelo serviço.
    */
-  // private apiUrl = 'http://54.200.23.253:8000/api/v1';
-  private apiUrl = 'http://localhost:8080/api/v1';
+  private apiUrl = enviroment.apiUrl + '/api/v1';
 
   /**
    * Construtor que injeta as dependências necessárias para o funcionamento do serviço.
@@ -39,7 +39,7 @@ export class ListClientsService {
       Authorization: `Bearer ${token}`,
     });
   }
-  
+
   /**
    * Busca todos os colaboradores com paginação.
    * @param page Número da página (0-indexado).
