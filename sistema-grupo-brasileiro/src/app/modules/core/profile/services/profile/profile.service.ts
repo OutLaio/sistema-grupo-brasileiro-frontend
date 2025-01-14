@@ -5,7 +5,7 @@ import { I_Change_Password_Request } from '../../../../shared/interfaces/auth/fo
 import { I_Employee_Form_Data } from '../../../../shared/interfaces/user/form/employee-form';
 import { StorageService } from '../../../../services/storage/storage.service';
 import { I_Api_Response } from '../../../../shared/interfaces/api-response';
-import { enviroment } from '../../../../../../enviroments/enviroment';
+import { environment } from '../../../../../../environments/environment';
 
 /**
  * Serviço responsável por gerenciar as operações relacionadas ao perfil do usuário.
@@ -16,7 +16,7 @@ import { enviroment } from '../../../../../../enviroments/enviroment';
 })
 export class ProfileService {
   /** URL base para as requisições da service. */
-  private readonly baseUrl = enviroment.apiUrl + '/api/v1';
+  private readonly baseUrl = environment.apiUrl + '/api/v1';
 
   /** Token de autenticação obtido da service de armazenamento. */
   private readonly authToken = this.storageService.getToken();

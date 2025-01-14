@@ -14,7 +14,7 @@ import { ListCollaboratorsService } from '../../../collaborator/list-collaborato
 import { I_Alter_Status_Request } from '../../../../shared/interfaces/project/form/alter-status-form';
 import { I_Upload_Response } from '../../../../shared/interfaces/upload/upload-file-view';
 import { CookieService } from 'ngx-cookie-service';
-import { enviroment } from '../../../../../../enviroments/enviroment';
+import { environment } from '../../../../../../environments/environment';
 
 /**
  * Serviço responsável por interagir com a API para obter e modificar informações detalhadas sobre solicitações de projeto.
@@ -26,7 +26,7 @@ import { enviroment } from '../../../../../../enviroments/enviroment';
 export class RequestDetailsService {
 
   /** URL base para as requisições da service. */
-  private baseUrl = enviroment.apiUrl + '/api/v1';
+  private baseUrl = environment.apiUrl + '/api/v1';
 
   /**
    * Construtor do serviço RequestDetailsService.

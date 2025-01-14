@@ -10,7 +10,7 @@ import { I_Company_Data } from '../../shared/interfaces/company/view/company-vie
 import { I_Sticker_Type_Data } from '../../shared/interfaces/briefing/sticker/view/sticker-type-viem';
 import { I_Sticker_Information_Type_Data } from '../../shared/interfaces/briefing/sticker/view/sticker-information-type-view';
 import { I_Material_Data } from '../../shared/interfaces/briefing/signpost/view/material-view';
-import { enviroment } from '../../../../enviroments/enviroment';
+import { environment } from '../../../../environments/environment';
 
 /**
  * Serviço `DataService`
@@ -25,7 +25,7 @@ export class DataService {
   /**
    * URL base para as requisições à API.
    */
-  private urlBase = enviroment.apiUrl + '/api/v1/data';
+  private urlBase = environment.apiUrl + '/api/v1/data';
 
   /**
    * Construtor do serviço `DataService`.

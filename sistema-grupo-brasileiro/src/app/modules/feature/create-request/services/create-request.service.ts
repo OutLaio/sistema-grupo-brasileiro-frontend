@@ -9,7 +9,7 @@ import { I_Stickers_Request } from '../../../shared/interfaces/briefing/stickers
 import { StorageService } from '../../../services/storage/storage.service';
 import { I_Api_Response } from '../../../shared/interfaces/api-response';
 import { I_Sticker_Request } from '../../../shared/interfaces/briefing/sticker/form/register-sticker-form';
-import { enviroment } from '../../../../../enviroments/enviroment';
+import { environment } from '../../../../../environments/environment';
 
 /**
  * Serviço responsável por criar solicitações (requests) relacionadas a diferentes tipos de briefings,
@@ -22,7 +22,7 @@ export class CreateRequestService {
   /**
    * URL base para as chamadas à API.
    */
-  private readonly apiUrl = enviroment.apiUrl + '/api/v1';
+  private readonly apiUrl = environment.apiUrl + '/api/v1';
 
   /**
    * Token de autenticação JWT.

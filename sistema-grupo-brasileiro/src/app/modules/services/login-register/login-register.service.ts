@@ -12,7 +12,7 @@ import { I_Recovery_Password_Request } from '../../shared/interfaces/auth/form/r
 import { I_Reset_Password_Request } from '../../shared/interfaces/auth/form/reset-password-form';
 import { StorageService } from '../storage/storage.service';
 import { CookieService } from 'ngx-cookie-service';
-import { enviroment } from '../../../../enviroments/enviroment';
+import { environment } from '../../../../environments/environment';
 
 /**
  * Serviço `LoginRegisterService`
@@ -27,7 +27,7 @@ export class LoginRegisterService {
   /**
    * URL base para as operações de autenticação e registro.
    */
-  private readonly prefix = enviroment.apiUrl + '/api/v1/auth';
+  private readonly prefix = environment.apiUrl + '/api/v1/auth';
 
   /**
    * Construtor do serviço `LoginRegisterService`.

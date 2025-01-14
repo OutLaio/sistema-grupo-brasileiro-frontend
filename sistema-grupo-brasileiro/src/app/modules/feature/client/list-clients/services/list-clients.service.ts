@@ -4,7 +4,7 @@ import { I_Employee_View_Data } from '../../../../shared/interfaces/user/view/em
 import { I_Page } from '../../../../shared/interfaces/pageable/pageable';
 import { StorageService } from '../../../../services/storage/storage.service';
 import { I_Api_Response } from '../../../../shared/interfaces/api-response';
-import { enviroment } from '../../../../../../enviroments/enviroment';
+import { environment } from '../../../../../../environments/environment';
 
 /**
  * Serviço para gerenciar operações relacionadas à listagem de clientes.
@@ -17,7 +17,7 @@ export class ListClientsService {
   /**
    * URL base da API utilizada pelo serviço.
    */
-  private apiUrl = enviroment.apiUrl + '/api/v1';
+  private apiUrl = environment.apiUrl + '/api/v1';
 
   /**
    * Construtor que injeta as dependências necessárias para o funcionamento do serviço.
