@@ -1,0 +1,77 @@
+<div id="bdSidebar" class="d-flex flex-column flex-shrink-0 bg-sidebar text-white"
+    [ngClass]="{ 'showSidebar': isSidebarVisible, 'hideSidebar': !isSidebarVisible }">
+    <div class="d-flex justify-content-center align-items-center bg-color-system">
+        <div class="text-white">
+            <div class="justify-content-center align-items-center d-flex my-4">
+                <img src="/assets/images/grupo-brasileiro-logo-short.png" height="80" alt="logo grupo brasileiro">
+            </div>
+        </div>
+    </div>
+    <hr>
+    <div>
+        <ul class="mynav nav nav-pills d-flex flex-column mb-auto">
+            <!-- <li class="nav-item mb-1">
+                <a routerLink="dashboard" routerLinkActive="active">
+                    <img class="mx-2" src="/assets/icons/dashboard.svg" alt="dashboard icone">
+                    <i class="fa-regular"></i>
+                    Dashboard
+                </a>
+            </li>
+            <li class="nav-item mb-1">
+                <a routerLink="demandas" routerLinkActive="active">
+                    <img class="mx-2" src="/assets/icons/book.svg" alt="acompanhamento icone">
+                    <i class="fa-regular"></i>
+                    Histórico
+                </a>
+            </li> -->
+            <li class="nav-item mb-1">
+                <a routerLink="acompanhamento" routerLinkActive="active">
+                    <img class="mx-2" src="/assets/icons/request-icon.svg" alt="acompanhamento icone">
+                    <i class="ps-1 fa-solid"></i>
+                    Acompanhamento
+                </a>
+            </li>
+            <li class="nav-item mb-1">
+                <a routerLink="nova-solicitacao" routerLinkActive="active">
+                    <img class="mx-2" src="/assets/icons/new-request.svg" alt="nova solicitação icone">
+                    <i class="fa-regular"></i>
+                    Nova Solicitação
+                </a>
+            </li>
+            <li *ngIf="userRole == 'ROLE_SUPERVISOR'" class="nav-item mb-1">
+                <a routerLink="/clientes" routerLinkActive="active">
+                    <img class="mx-2" src="/assets/icons/collaborator-icon.svg" alt="client icone">
+                    <i class="fa-solid"></i>
+                    Clientes
+                </a>
+            </li>
+            <li *ngIf="userRole == 'ROLE_SUPERVISOR'" class="nav-item mb-1">
+                <a routerLink="/colaboradores" routerLinkActive="active">
+                    <img class="mx-2" src="/assets/icons/collaborator-icon.svg" alt="colaborador icone">
+                    <i class="fa-solid"></i>
+                    Colaboradores
+                </a>
+            </li>
+        </ul>
+    </div>
+    <hr>
+
+    <div class="d-flex logout-menu mt-auto">
+        <ul class="mynav nav nav-pills flex-column">
+            <li class="nav-item mb-1">
+                <a routerLink="/perfil" routerLinkActive="active">
+                    <img class="mx-2" src="/assets/icons/profile-icon.svg" alt="perfil icone">
+                    <i class="fa-regular"></i>
+                    Perfil
+                </a>
+            </li>
+            <li class="nav-item mb-1">
+                <a class="pointer" (click)="logoutUser()" routerLinkActive="active">
+                    <img class="mx-2" src="/assets/icons/logout-icon.svg" alt="logout icone">
+                    <i class="fa-regular"></i>
+                    Sair
+                </a>
+            </li>
+        </ul>
+    </div>
+</div>

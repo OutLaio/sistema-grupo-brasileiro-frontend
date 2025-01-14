@@ -1,0 +1,70 @@
+.bg-sidebar {
+  background-color: #027373 !important;
+}
+
+#bdSidebar {
+  margin: 0;
+  padding: 0;
+  height: 91vh;
+  width: 220px;
+}
+
+.hideSidebar {
+  transform: translateX(-100%);
+  opacity: 0;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+/* Define the final state when showing */
+.showSidebar {
+  transform: translateX(0);
+  opacity: 1;
+  transition: transform 0.3s, opacity 0.3s;
+}
+
+.mynav {
+  color: #fff;
+}
+
+.pointer{
+  cursor: pointer;
+}
+
+.mynav li a {
+  color: #fff;
+  text-decoration: none;
+  width: 100%;
+  display: block;
+  padding: 8px 5px;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.mynav li a.active,
+.mynav li a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.logout-menu {
+  width: 100% !important;
+  display: block !important;
+}
+
+.mynav li a i {
+  width: 25px;
+  text-align: center;
+}
+
+@media (max-width: 992px) {
+  #bdSidebar {
+    width: 100%;
+    opacity: 1;
+    transition: transform 0.3s, opacity 0.3s;
+    position: absolute;
+    z-index: 9999; /* Adiciona z-index para garantir que a sidebar fique por cima */
+  }
+
+  .showSidebar {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}

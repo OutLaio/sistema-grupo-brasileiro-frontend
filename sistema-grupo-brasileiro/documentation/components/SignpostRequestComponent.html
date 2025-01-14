@@ -1,0 +1,2033 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>sistema-grupo-brasileiro documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">sistema-grupo-brasileiro documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  SignpostRequestComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente responsável pela criação de solicitações de sinalização.
+Permite o preenchimento de um formulário com informações sobre a sinalização, incluindo dados do projeto, tipo de material, empresas selecionadas e outras informações.
+O formulário valida os campos antes de enviar a solicitação para o serviço de criação de requisição.</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-signpost-request</code></td>
+            </tr>
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./signpost-request.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./signpost-request.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#isButtonDisabled" >isButtonDisabled</a>
+                            </li>
+                            <li>
+                                <a href="#isOtherCompaniesSelected" >isOtherCompaniesSelected</a>
+                            </li>
+                            <li>
+                                <a href="#isSingleCompany" >isSingleCompany</a>
+                            </li>
+                            <li>
+                                <a href="#selectedCompanies" >selectedCompanies</a>
+                            </li>
+                            <li>
+                                <a href="#sendCompanies" >sendCompanies</a>
+                            </li>
+                            <li>
+                                <a href="#sendOthersCompanies" >sendOthersCompanies</a>
+                            </li>
+                            <li>
+                                <a href="#signPostForm" >signPostForm</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#clearForm" >clearForm</a>
+                            </li>
+                            <li>
+                                <a href="#confirmOtherMultiCompany" >confirmOtherMultiCompany</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onCompanyChange" >onCompanyChange</a>
+                            </li>
+                            <li>
+                                <a href="#onOthersCompanies" >onOthersCompanies</a>
+                            </li>
+                            <li>
+                                <a href="#removeCompany" >removeCompany</a>
+                            </li>
+                            <li>
+                                <a href="#saveCompanies" >saveCompanies</a>
+                            </li>
+                            <li>
+                                <a href="#submit" >submit</a>
+                            </li>
+                            <li>
+                                <a href="#updateCompanyName" >updateCompanyName</a>
+                            </li>
+                            <li>
+                                <a href="#updateOthersCompanies" >updateOthersCompanies</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#title" >title</a>
+                                </li>
+                                <li>
+                                    <a href="#width" >width</a>
+                                </li>
+                                <li>
+                                    <a href="#height" >height</a>
+                                </li>
+                                <li>
+                                    <a href="#description" >description</a>
+                                </li>
+                                <li>
+                                    <a href="#signLocation" >signLocation</a>
+                                </li>
+                                <li>
+                                    <a href="#sector" >sector</a>
+                                </li>
+                                <li>
+                                    <a href="#boardType" >boardType</a>
+                                </li>
+                                <li>
+                                    <a href="#othersText" >othersText</a>
+                                </li>
+                                <li>
+                                    <a href="#selectedCompany" >selectedCompany</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(fb: FormBuilder, signpostService: <a href="../injectables/CreateRequestService.html" target="_self">CreateRequestService</a>, toastrService: ToastrService, storageService: <a href="../injectables/StorageService.html" target="_self">StorageService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:62</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Construtor que injeta os serviços necessários no componente.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>fb</td>
+                                                  
+                                                        <td>
+                                                                    <code>FormBuilder</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>FormBuilder para construir o formulário reativo.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>signpostService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/CreateRequestService.html" target="_self" >CreateRequestService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Serviço responsável pela criação da requisição de sinalização.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>toastrService</td>
+                                                  
+                                                        <td>
+                                                                    <code>ToastrService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Serviço para exibição de mensagens de alerta.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>storageService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/StorageService.html" target="_self" >StorageService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Serviço para acessar dados armazenados no armazenamento local.</p>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clearForm"></a>
+                    <span class="name">
+                        <span ><b>clearForm</b></span>
+                        <a href="#clearForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clearForm()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="114"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:114</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Limpa o formulário e reseta a lista de empresas selecionadas.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="confirmOtherMultiCompany"></a>
+                    <span class="name">
+                        <span ><b>confirmOtherMultiCompany</b></span>
+                        <a href="#confirmOtherMultiCompany"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>confirmOtherMultiCompany()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="172"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:172</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Confirma a seleção de empresas &quot;Outras&quot; e adiciona à lista de empresas selecionadas.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="83"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:83</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Método de ciclo de vida do componente.
+Inicializa o formulário com controles e validadores.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onCompanyChange"></a>
+                    <span class="name">
+                        <span ><b>onCompanyChange</b></span>
+                        <a href="#onCompanyChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onCompanyChange(type: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="123"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:123</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Altera a seleção de empresas e limpa a lista de empresas selecionadas.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>type</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Tipo de seleção.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onOthersCompanies"></a>
+                    <span class="name">
+                        <span ><b>onOthersCompanies</b></span>
+                        <a href="#onOthersCompanies"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onOthersCompanies()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="144"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:144</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Alterna a seleção da opção &quot;Outras Empresas&quot;.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="removeCompany"></a>
+                    <span class="name">
+                        <span ><b>removeCompany</b></span>
+                        <a href="#removeCompany"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>removeCompany(company: <a href="../interfaces/CompanyDetails.html" target="_self">Partial&lt;CompanyDetails&gt;</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="187"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:187</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Remove uma empresa da lista de empresas selecionadas.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>company</td>
+                                            <td>
+                                                            <code><a href="../interfaces/CompanyDetails.html" target="_self" >Partial&lt;CompanyDetails&gt;</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Empresa a ser removida.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="saveCompanies"></a>
+                    <span class="name">
+                        <span ><b>saveCompanies</b></span>
+                        <a href="#saveCompanies"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>saveCompanies(companies: <a href="../interfaces/CompanyDetails.html" target="_self">Partial&lt;CompanyDetails&gt;[]</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="198"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:198</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Preenche as listas de empresas para envio.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>companies</td>
+                                            <td>
+                                                            <code><a href="../interfaces/CompanyDetails.html" target="_self" >Partial&lt;CompanyDetails&gt;[]</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Lista de empresas selecionadas.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="submit"></a>
+                    <span class="name">
+                        <span ><b>submit</b></span>
+                        <a href="#submit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>submit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="219"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:219</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Submete a solicitação de sinalização após validação do formulário.
+Exibe mensagens de erro ou sucesso dependendo do resultado.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateCompanyName"></a>
+                    <span class="name">
+                        <span ><b>updateCompanyName</b></span>
+                        <a href="#updateCompanyName"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateCompanyName(selectionType: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, company: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="132"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:132</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Atualiza a lista de empresas selecionadas com base na escolha do usuário.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>selectionType</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Tipo de seleção da empresa.</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>company</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Nome da empresa.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateOthersCompanies"></a>
+                    <span class="name">
+                        <span ><b>updateOthersCompanies</b></span>
+                        <a href="#updateOthersCompanies"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateOthersCompanies()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="155"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:155</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Atualiza o nome das empresas personalizadas inseridas pelo usuário.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isButtonDisabled"></a>
+                    <span class="name">
+                        <span ><b>isButtonDisabled</b></span>
+                        <a href="#isButtonDisabled"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Define se o botão de envio deve ser desabilitado.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isOtherCompaniesSelected"></a>
+                    <span class="name">
+                        <span ><b>isOtherCompaniesSelected</b></span>
+                        <a href="#isOtherCompaniesSelected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="62" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:62</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indica se a opção &quot;Outras Empresas&quot; foi selecionada.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isSingleCompany"></a>
+                    <span class="name">
+                        <span ><b>isSingleCompany</b></span>
+                        <a href="#isSingleCompany"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>true</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:45</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indica se a solicitação é para uma única empresa.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedCompanies"></a>
+                    <span class="name">
+                        <span ><b>selectedCompanies</b></span>
+                        <a href="#selectedCompanies"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/CompanyDetails.html" target="_self" >Partial&lt;CompanyDetails&gt;[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:49</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista das empresas selecionadas pelo usuário.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sendCompanies"></a>
+                    <span class="name">
+                        <span ><b>sendCompanies</b></span>
+                        <a href="#sendCompanies"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:53</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista das empresas a serem enviadas no formulário.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="sendOthersCompanies"></a>
+                    <span class="name">
+                        <span ><b>sendOthersCompanies</b></span>
+                        <a href="#sendOthersCompanies"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>string[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="57" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:57</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista das empresas personalizadas (outros) a serem enviadas no formulário.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="signPostForm"></a>
+                    <span class="name">
+                        <span ><b>signPostForm</b></span>
+                        <a href="#signPostForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:35</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>O formulário de sinalização que será preenchido pelo usuário.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="title"></a>
+                        <span class="name"><b>title</b><a href="#title"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>title()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="101" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:101</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Getters para acessar os controles de formulário do componente.
+Estes métodos retornam as instâncias dos campos do formulário para facilitar a manipulação de seus valores e validações.</p>
+</div>
+
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="width"></a>
+                        <span class="name"><b>width</b><a href="#width"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>width()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="102" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:102</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="height"></a>
+                        <span class="name"><b>height</b><a href="#height"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>height()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="103" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:103</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="description"></a>
+                        <span class="name"><b>description</b><a href="#description"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>description()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="104" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:104</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="signLocation"></a>
+                        <span class="name"><b>signLocation</b><a href="#signLocation"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>signLocation()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="105" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:105</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sector"></a>
+                        <span class="name"><b>sector</b><a href="#sector"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>sector()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="106" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:106</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="boardType"></a>
+                        <span class="name"><b>boardType</b><a href="#boardType"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>boardType()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:107</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="othersText"></a>
+                        <span class="name"><b>othersText</b><a href="#othersText"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>othersText()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="108" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:108</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="selectedCompany"></a>
+                        <span class="name"><b>selectedCompany</b><a href="#selectedCompany"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>selectedCompany()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="109" class="link-to-prism">src/app/modules/feature/create-request/components/signpost-request/signpost-request.component.ts:109</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { FormBuilder, FormControl, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
+import { CompanyDetails } from &#x27;../../interface/company-details&#x27;;
+import { CreateRequestService } from &#x27;../../services/create-request.service&#x27;;
+import { ToastrService } from &#x27;ngx-toastr&#x27;;
+import { I_Signpost_Request } from &#x27;../../../../shared/interfaces/briefing/signpost/form/signpost-register-form&#x27;;
+import { StorageService } from &#x27;../../../../services/storage/storage.service&#x27;;
+import { E_Briefing_Type } from &#x27;../../../../shared/enums/briefing-types&#x27;;
+import { I_Company_Briefing_Form_Data } from &#x27;../../../../shared/interfaces/company/form/company-briefing-form&#x27;;
+import { HttpErrorResponse } from &#x27;@angular/common/http&#x27;;
+
+enum Company {
+  &#x27;Rota Transportes&#x27; &#x3D; 1,
+  &#x27;Cidade Sol&#x27; &#x3D; 2,
+  &#x27;Via Metro&#x27; &#x3D; 3,
+  &#x27;Brasileiro&#x27; &#x3D; 4,
+  &#x27;Cidade Real&#x27; &#x3D; 5,
+  &#x27;Pauma&#x27; &#x3D; 6,
+}
+
+/**
+ * Componente responsável pela criação de solicitações de sinalização.
+ * Permite o preenchimento de um formulário com informações sobre a sinalização, incluindo dados do projeto, tipo de material, empresas selecionadas e outras informações.
+ * O formulário valida os campos antes de enviar a solicitação para o serviço de criação de requisição.
+ */
+@Component({
+  selector: &#x27;app-signpost-request&#x27;,
+  templateUrl: &#x27;./signpost-request.component.html&#x27;,
+  styleUrl: &#x27;./signpost-request.component.css&#x27;
+})
+export class SignpostRequestComponent implements OnInit {
+  /** 
+   * O formulário de sinalização que será preenchido pelo usuário. 
+   */
+  signPostForm!: FormGroup;
+
+  /** 
+   * Define se o botão de envio deve ser desabilitado. 
+   */
+  isButtonDisabled: boolean &#x3D; false;
+
+  /** 
+   * Indica se a solicitação é para uma única empresa. 
+   */
+  isSingleCompany: boolean &#x3D; true;
+  /** 
+   * Lista das empresas selecionadas pelo usuário. 
+   */
+  selectedCompanies: Partial&lt;CompanyDetails&gt;[] &#x3D; [];
+  /** 
+   * Lista das empresas a serem enviadas no formulário. 
+   */
+  sendCompanies: number[] &#x3D; [];
+  /** 
+   * Lista das empresas personalizadas (outros) a serem enviadas no formulário. 
+   */
+  sendOthersCompanies: string[] &#x3D; [];
+
+  /** 
+   * Indica se a opção &quot;Outras Empresas&quot; foi selecionada. 
+   */
+  isOtherCompaniesSelected &#x3D; false;
+
+  /**
+   * Construtor que injeta os serviços necessários no componente.
+   * @param fb FormBuilder para construir o formulário reativo.
+   * @param signpostService Serviço responsável pela criação da requisição de sinalização.
+   * @param toastrService Serviço para exibição de mensagens de alerta.
+   * @param storageService Serviço para acessar dados armazenados no armazenamento local.
+   */
+  constructor(
+    private fb: FormBuilder,
+    private signpostService: CreateRequestService,
+    private toastrService: ToastrService,
+    private storageService: StorageService
+  ) { }
+
+
+  /**
+   * Método de ciclo de vida do componente.
+   * Inicializa o formulário com controles e validadores.
+   */
+  ngOnInit(): void {
+    this.signPostForm &#x3D; new FormGroup({
+      title: new FormControl(&#x27;&#x27;, [Validators.required]),
+      description: new FormControl(&#x27;&#x27;, [Validators.required]),
+      signLocation: new FormControl(&#x27;&#x27;, [Validators.required]),
+      width: new FormControl(&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;^[0-9]*$&#x27;)]),
+      height: new FormControl(&#x27;&#x27;, [Validators.required, Validators.pattern(&#x27;^[0-9]*$&#x27;)]),
+      selectedCompany: new FormControl(&#x27;&#x27;, [Validators.required]),
+      sector: new FormControl(&#x27;&#x27;, [Validators.required]),
+      othersText: new FormControl(&#x27;&#x27;),
+      boardType: new FormControl(&#x27;&#x27;, [Validators.required]),
+    });
+  }
+
+  /**
+   * Getters para acessar os controles de formulário do componente.
+   * Estes métodos retornam as instâncias dos campos do formulário para facilitar a manipulação de seus valores e validações.
+   */
+  get title() { return this.signPostForm.get(&#x27;title&#x27;)!; }
+  get width() { return this.signPostForm.get(&#x27;width&#x27;)!; }
+  get height() { return this.signPostForm.get(&#x27;height&#x27;)!; }
+  get description() { return this.signPostForm.get(&#x27;description&#x27;)!; }
+  get signLocation() { return this.signPostForm.get(&#x27;signLocation&#x27;)!; }
+  get sector() { return this.signPostForm.get(&#x27;sector&#x27;)!; }
+  get boardType() { return this.signPostForm.get(&#x27;boardType&#x27;)!; }
+  get othersText() { return this.signPostForm.get(&#x27;othersText&#x27;)!; }
+  get selectedCompany() { return this.signPostForm.get(&#x27;selectedCompany&#x27;)!; }
+
+  /**
+   * Limpa o formulário e reseta a lista de empresas selecionadas.
+   */
+  clearForm() {
+    this.signPostForm.reset();
+    this.selectedCompanies &#x3D; [];
+  }
+
+  /**
+   * Altera a seleção de empresas e limpa a lista de empresas selecionadas.
+   * @param type Tipo de seleção.
+   */
+  onCompanyChange(type: string) {
+    this.selectedCompanies &#x3D; [];
+  }
+
+  /**
+   * Atualiza a lista de empresas selecionadas com base na escolha do usuário.
+   * @param selectionType Tipo de seleção da empresa.
+   * @param company Nome da empresa.
+   */
+  updateCompanyName(selectionType: number, company: string) {
+    const existingCompany &#x3D; this.selectedCompanies.find(c &#x3D;&gt; c.name &#x3D;&#x3D;&#x3D; company);
+    if (existingCompany) {
+      this.selectedCompanies &#x3D; this.selectedCompanies.filter(c &#x3D;&gt; c.name !&#x3D;&#x3D; company);
+    } else {
+      this.selectedCompanies.push({ name: company, isCustom: false });
+    }
+  }
+
+  /**
+   * Alterna a seleção da opção &quot;Outras Empresas&quot;.
+   */
+  onOthersCompanies() {
+    this.isOtherCompaniesSelected &#x3D; !this.isOtherCompaniesSelected;
+    if (!this.isOtherCompaniesSelected) {
+      this.signPostForm.get(&#x27;othersText&#x27;)?.setValue(&#x27;&#x27;);
+      this.selectedCompanies &#x3D; this.selectedCompanies.filter(company &#x3D;&gt; company.name !&#x3D;&#x3D; &#x27;Outras&#x27;);
+    }
+  }
+
+  /**
+   * Atualiza o nome das empresas personalizadas inseridas pelo usuário.
+   */
+  updateOthersCompanies() {
+    const otherValue &#x3D; this.signPostForm.get(&#x27;othersText&#x27;)?.value;
+    if (otherValue) {
+      const companyIndex &#x3D; this.selectedCompanies.findIndex(company &#x3D;&gt; company.name &#x3D;&#x3D;&#x3D; &#x27;Outras&#x27;);
+      if (companyIndex &gt;&#x3D; 0) {
+        this.selectedCompanies[companyIndex].name &#x3D; otherValue;
+        this.signPostForm.get(&#x27;othersText&#x27;)?.reset();
+      } else {
+        this.selectedCompanies.push({ name: otherValue, isCustom: true });
+        this.signPostForm.get(&#x27;othersText&#x27;)?.reset();
+      }
+    }
+  }
+
+  /**
+   * Confirma a seleção de empresas &quot;Outras&quot; e adiciona à lista de empresas selecionadas.
+   */
+  confirmOtherMultiCompany() {
+    const otherCompany &#x3D; this.signPostForm.get(&#x27;othersText&#x27;)?.value;
+    if (otherCompany &amp;&amp; !this.selectedCompanies.some(c &#x3D;&gt; c.name &#x3D;&#x3D;&#x3D; otherCompany)) {
+      this.selectedCompanies.push({
+        name: otherCompany,
+        isCustom: true
+      });
+      this.isOtherCompaniesSelected &#x3D; false;
+    }
+  }
+
+  /**
+   * Remove uma empresa da lista de empresas selecionadas.
+   * @param company Empresa a ser removida.
+   */
+  removeCompany(company: Partial&lt;CompanyDetails&gt;) {
+    const index &#x3D; this.selectedCompanies.findIndex((c) &#x3D;&gt; c.name &#x3D;&#x3D;&#x3D; company.name);
+    if (index &gt;&#x3D; 0) {
+      this.selectedCompanies.splice(index, 1);
+    }
+  }
+
+  /**
+   * Preenche as listas de empresas para envio.
+   * @param companies Lista de empresas selecionadas.
+   */
+  saveCompanies(companies: Partial&lt;CompanyDetails&gt;[]) {
+    this.sendCompanies &#x3D; [];
+    this.sendOthersCompanies &#x3D; [];
+
+    for (const company of companies) {
+      if (company.name) {
+        const enumKey &#x3D; Object.keys(Company).find(key &#x3D;&gt; key &#x3D;&#x3D;&#x3D; company.name);
+        if (enumKey &amp;&amp; !company.isCustom) {
+          const enumValue &#x3D; Company[enumKey as keyof typeof Company];
+          this.sendCompanies.push(enumValue);
+        } else if (company.isCustom) {
+          this.sendOthersCompanies.push(company.name);
+        }
+      }
+    }
+  }
+
+  /**
+   * Submete a solicitação de sinalização após validação do formulário.
+   * Exibe mensagens de erro ou sucesso dependendo do resultado.
+   */
+  submit() {
+    this.saveCompanies(this.selectedCompanies);
+
+    if (this.signPostForm.invalid || this.selectedCompanies.length &#x3D;&#x3D; 0) {
+      this.toastrService.error(&quot;Erro ao realizar solicitação. Verifique se os campos estão preenchidos corretamente.&quot;);
+      this.isButtonDisabled &#x3D; true;
+      setTimeout(() &#x3D;&gt; {
+        this.isButtonDisabled &#x3D; false;
+      }, 3000);
+      return;
+    }
+
+    const request: I_Signpost_Request &#x3D; {
+      project: {
+        title: this.title.value,
+        idClient: this.storageService.getUserId(),
+      },
+      briefing: {
+        detailedDescription: this.description!.value,
+        idBriefingType: E_Briefing_Type.SINALIZACAO_INTERNA.id,
+        companies: this.sendCompanies.map((item) &#x3D;&gt; {
+          return { idCompany: item } as I_Company_Briefing_Form_Data;
+        }),
+        otherCompany: this.sendOthersCompanies.join(&#x27;, &#x27;),
+        measurement: {
+          height: this.height!.value,
+          length: this.width!.value,
+        },
+      },
+      signpost: {
+        boardLocation: this.signLocation!.value,
+        idMaterial: this.boardType!.value,
+        sector: this.sector!.value,
+      },
+    };
+
+    this.signpostService.submitSignpostRequest(request).subscribe({
+      next: (response) &#x3D;&gt; {
+        this.toastrService.success(response.message);
+        setTimeout(() &#x3D;&gt; {
+          window.location.reload();
+        }, 2000);
+      },
+      error: (err: HttpErrorResponse) &#x3D;&gt; {
+        this.toastrService.error(err.error.message);
+      }
+    });
+    this.isButtonDisabled &#x3D; true;
+    setTimeout(() &#x3D;&gt; {
+      this.isButtonDisabled &#x3D; false;
+    }, 3000);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;conatiner d-flex flex-column p-3 mb-4 scroll-bar overflow-custom&quot;&gt;
+    &lt;form [formGroup]&#x3D;&quot;signPostForm&quot; (ngSubmit)&#x3D;&quot;submit()&quot; #formDir&#x3D;&quot;ngForm&quot;&gt;
+        &lt;div class&#x3D;&quot;row pb-4&quot;&gt;
+            &lt;div class&#x3D;&quot;col-12 col-md-6&quot;&gt;
+                &lt;div class&#x3D;&quot;form-group pt-3&quot;&gt;
+                    &lt;label class&#x3D;&quot;fw-bold&quot; for&#x3D;&quot;title&quot;&gt;Título *&lt;/label&gt;
+                    &lt;textarea [backgroundColorClass]&#x3D;&quot;&#x27;#ebebeb&#x27;&quot; id&#x3D;&quot;title&quot; formControlName&#x3D;&quot;title&quot; type&#x3D;&quot;text&quot;
+                        class&#x3D;&quot;form-control border-dark-subtle rounded-3 form-focus&quot;
+                        placeholder&#x3D;&quot;Escreva o título da solicitação&quot;&gt;&lt;/textarea&gt;
+                &lt;/div&gt;
+                &lt;div *ngIf&#x3D;&quot;title.invalid &amp;&amp; formDir.submitted&quot; class&#x3D;&quot;validation-warning&quot;&gt;
+                    &lt;p&gt;Por favor, informe o título.&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-12 col-md-6&quot;&gt;
+                &lt;div class&#x3D;&quot;form-group pt-3&quot;&gt;
+                    &lt;label class&#x3D;&quot;fw-bold&quot; for&#x3D;&quot;description&quot;&gt;Descrição *&lt;/label&gt;
+                    &lt;textarea [backgroundColorClass]&#x3D;&quot;&#x27;#ebebeb&#x27;&quot; id&#x3D;&quot;description&quot; formControlName&#x3D;&quot;description&quot;
+                        type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control border-dark-subtle rounded-3 form-focus&quot;
+                        placeholder&#x3D;&quot;Escreva a descrição da solicitação&quot;&gt;&lt;/textarea&gt;
+                &lt;/div&gt;
+                &lt;div *ngIf&#x3D;&quot;description.invalid &amp;&amp; formDir.submitted&quot; class&#x3D;&quot;validation-warning&quot;&gt;
+                    &lt;p&gt;A descrição da solicitação é obrigatória. Escreva uma breve descrição da placa.&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;row pb-4&quot;&gt;
+            &lt;div class&#x3D;&quot;form-group pt-3&quot;&gt;
+                &lt;label class&#x3D;&quot;fw-bold&quot; for&#x3D;&quot;signLocation&quot;&gt;Local da Placa *&lt;/label&gt;
+                &lt;textarea [backgroundColorClass]&#x3D;&quot;&#x27;#ebebeb&#x27;&quot; id&#x3D;&quot;signLocation&quot; formControlName&#x3D;&quot;signLocation&quot;
+                    type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control border-dark-subtle rounded-3 form-focus&quot;
+                    placeholder&#x3D;&quot;Escreva a localização da placa&quot;&gt;&lt;/textarea&gt;
+            &lt;/div&gt;
+            &lt;div *ngIf&#x3D;&quot;signLocation.invalid &amp;&amp; formDir.submitted&quot; class&#x3D;&quot;validation-warning&quot;&gt;
+                &lt;p&gt;Por favor, informe o local onde a placa será instalada&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+        &lt;div class&#x3D;&quot;row pb-4 pt-2 border-bottom&quot;&gt;
+            &lt;div class&#x3D;&quot;col-12 col-md-3&quot;&gt;
+                &lt;div class&#x3D;&quot;form-group pt-3&quot;&gt;
+                    &lt;label class&#x3D;&quot;fw-bold&quot;&gt;Medida *&lt;/label&gt;
+                    &lt;div class&#x3D;&quot;d-flex align-items-center mb-2&quot;&gt;
+                        &lt;div class&#x3D;&quot;d-flex flex-column&quot;&gt;
+                            &lt;label&gt;Largura&lt;/label&gt;
+                            &lt;input [backgroundColorClass]&#x3D;&quot;&#x27;#ebebeb&#x27;&quot; type&#x3D;&quot;text&quot;
+                                class&#x3D;&quot;border border-dark-subtle rounded-3 me-2 w-100 form-focus&quot; placeholder&#x3D;&quot;cm&quot;
+                                formControlName&#x3D;&quot;width&quot; /&gt;
+                        &lt;/div&gt;
+                        &lt;div class&#x3D;&quot;pt-4&quot;&gt;
+                            &lt;span class&#x3D;&quot;mx-3&quot;&gt;X&lt;/span&gt;
+                        &lt;/div&gt;
+                        &lt;div class&#x3D;&quot;d-flex flex-column&quot;&gt;
+                            &lt;label&gt;Altura&lt;/label&gt;
+                            &lt;input [backgroundColorClass]&#x3D;&quot;&#x27;#ebebeb&#x27;&quot; type&#x3D;&quot;text&quot;
+                                class&#x3D;&quot;border border-dark-subtle rounded-3 me-2 w-100 form-focus&quot; placeholder&#x3D;&quot;cm&quot;
+                                formControlName&#x3D;&quot;height&quot; /&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                    &lt;div *ngIf&#x3D;&quot;(width.invalid || height.invalid) &amp;&amp; formDir.submitted&quot; class&#x3D;&quot;validation-warning&quot;&gt;
+                        &lt;p&gt;Informe as medidas completas da placa (largura e altura) em centímetros.&lt;/p&gt;
+                    &lt;/div&gt;
+                    &lt;div *ngIf&#x3D;&quot;(width.errors?.[&#x27;pattern&#x27;] || height.errors?.[&#x27;pattern&#x27;]) &amp;&amp; formDir.submitted&quot;
+                        class&#x3D;&quot;validation-warning&quot;&gt;
+                        &lt;p&gt;As medidas devem conter apenas números.&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-12 col-md-9 mt-3 mt-md-0&quot;&gt;
+                &lt;div class&#x3D;&quot;form-group pt-3 ms-md-5&quot;&gt;
+                    &lt;div class&#x3D;&quot;title&quot;&gt;
+                        &lt;p class&#x3D;&quot;fw-bold&quot;&gt;Material *&lt;/p&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;d-flex flex-column&quot;&gt;
+                        &lt;div class&#x3D;&quot;form-check mb-2&quot;&gt;
+                            &lt;input [borderColorClass]&#x3D;&quot;&#x27;#027373&#x27;&quot; class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;radio&quot; id&#x3D;&quot;aluminio&quot;
+                                formControlName&#x3D;&quot;boardType&quot; value&#x3D;&quot;1&quot;&gt;
+                            &lt;label class&#x3D;&quot;form-check-label&quot; for&#x3D;&quot;aluminio&quot;&gt;Alumínio&lt;/label&gt;
+                        &lt;/div&gt;
+                        &lt;div class&#x3D;&quot;form-check mb-2&quot;&gt;
+                            &lt;input [borderColorClass]&#x3D;&quot;&#x27;#027373&#x27;&quot; class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;radio&quot; id&#x3D;&quot;Polietileno&quot;
+                                formControlName&#x3D;&quot;boardType&quot; value&#x3D;&quot;2&quot;&gt;
+                            &lt;label class&#x3D;&quot;form-check-label&quot; for&#x3D;&quot;Polietileno&quot;&gt;Polietileno&lt;/label&gt;
+                        &lt;/div&gt;
+                        &lt;div *ngIf&#x3D;&quot;signPostForm.get(&#x27;boardType&#x27;)?.invalid &amp;&amp; formDir.submitted&quot;
+                            class&#x3D;&quot;validation-warning&quot;&gt;
+                            &lt;p&gt;Selecione o material da placa&lt;/p&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+
+        &lt;div&gt;
+            &lt;div class&#x3D;&quot;row mt-5 border-bottom pb-4&quot;&gt;
+                &lt;div class&#x3D;&quot;col-12&quot;&gt;
+                    &lt;p class&#x3D;&quot;fw-bold&quot;&gt;Selecione as Empresas *&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div class&#x3D;&quot;col-12 d-flex flex-wrap gap-3&quot;&gt;
+                    &lt;div class&#x3D;&quot;form-check&quot;&gt;
+                        &lt;input [borderColorClass]&#x3D;&quot;&#x27;#027373&#x27;&quot; class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;checkbox&quot; id&#x3D;&quot;rotaMulti&quot;
+                            formControlName&#x3D;&quot;selectedCompany&quot; (change)&#x3D;&quot;updateCompanyName(2, &#x27;Rota Transportes&#x27;)&quot;&gt;
+                        &lt;label class&#x3D;&quot;form-check-label&quot; for&#x3D;&quot;rotaMulti&quot;&gt;Rota Transportes&lt;/label&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;form-check&quot;&gt;
+                        &lt;input [borderColorClass]&#x3D;&quot;&#x27;#027373&#x27;&quot; class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;checkbox&quot;
+                            id&#x3D;&quot;cidadeSolMulti&quot; formControlName&#x3D;&quot;selectedCompany&quot;
+                            (change)&#x3D;&quot;updateCompanyName(2, &#x27;Cidade Sol&#x27;)&quot;&gt;
+                        &lt;label class&#x3D;&quot;form-check-label&quot; for&#x3D;&quot;cidadeSolMulti&quot;&gt;Cidade Sol&lt;/label&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;form-check&quot;&gt;
+                        &lt;input [borderColorClass]&#x3D;&quot;&#x27;#027373&#x27;&quot; class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;checkbox&quot;
+                            id&#x3D;&quot;brasileiroMulti&quot; formControlName&#x3D;&quot;selectedCompany&quot;
+                            (change)&#x3D;&quot;updateCompanyName(2, &#x27;Brasileiro&#x27;)&quot;&gt;
+                        &lt;label class&#x3D;&quot;form-check-label&quot; for&#x3D;&quot;brasileiroMulti&quot;&gt;Brasileiro&lt;/label&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;form-check&quot;&gt;
+                        &lt;input [borderColorClass]&#x3D;&quot;&#x27;#027373&#x27;&quot; class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;checkbox&quot;
+                            id&#x3D;&quot;viaMetroMulti&quot; formControlName&#x3D;&quot;selectedCompany&quot;
+                            (change)&#x3D;&quot;updateCompanyName(2, &#x27;Via Metro&#x27;)&quot;&gt;
+                        &lt;label class&#x3D;&quot;form-check-label&quot; for&#x3D;&quot;viaMetroMulti&quot;&gt;Via Metro&lt;/label&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;form-check&quot;&gt;
+                        &lt;input [borderColorClass]&#x3D;&quot;&#x27;#027373&#x27;&quot; class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;checkbox&quot;
+                            id&#x3D;&quot;cidadeRealMulti&quot; formControlName&#x3D;&quot;selectedCompany&quot;
+                            (change)&#x3D;&quot;updateCompanyName(2, &#x27;Cidade Real&#x27;)&quot;&gt;
+                        &lt;label class&#x3D;&quot;form-check-label&quot; for&#x3D;&quot;cidadeRealMulti&quot;&gt;Cidade Real&lt;/label&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;form-check&quot;&gt;
+                        &lt;input [borderColorClass]&#x3D;&quot;&#x27;#027373&#x27;&quot; class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;checkbox&quot; id&#x3D;&quot;paumaMulti&quot;
+                            formControlName&#x3D;&quot;selectedCompany&quot; (change)&#x3D;&quot;updateCompanyName(2, &#x27;Pauma&#x27;)&quot;&gt;
+                        &lt;label class&#x3D;&quot;form-check-label&quot; for&#x3D;&quot;paumaMulti&quot;&gt;Pauma&lt;/label&gt;
+                    &lt;/div&gt;
+                    &lt;div class&#x3D;&quot;form-check d-flex align-items-center&quot;&gt;
+                        &lt;input [borderColorClass]&#x3D;&quot;&#x27;#027373&#x27;&quot; class&#x3D;&quot;form-check-input&quot; type&#x3D;&quot;checkbox&quot; id&#x3D;&quot;otherMulti&quot;
+                            formControlName&#x3D;&quot;selectedCompany&quot; (change)&#x3D;&quot;onOthersCompanies()&quot;&gt;
+                        &lt;label class&#x3D;&quot;form-check-label ms-2&quot; for&#x3D;&quot;otherMulti&quot;&gt;Outras&lt;/label&gt;
+                        &lt;input *ngIf&#x3D;&quot;isOtherCompaniesSelected&quot; type&#x3D;&quot;text&quot; class&#x3D;&quot;form-control ms-2&quot;
+                            placeholder&#x3D;&quot;Especificar empresa&quot; formControlName&#x3D;&quot;othersText&quot;
+                            (change)&#x3D;&quot;updateOthersCompanies()&quot;&gt;
+                        &lt;button [backgroundColorClass]&#x3D;&quot;&#x27;#027373&#x27;&quot; *ngIf&#x3D;&quot;isOtherCompaniesSelected&quot; type&#x3D;&quot;button&quot;
+                            class&#x3D;&quot;btn btn-sm text-white ms-2&quot; (click)&#x3D;&quot;confirmOtherMultiCompany()&quot;&gt;OK&lt;/button&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+                &lt;div *ngIf&#x3D;&quot;selectedCompanies.length &#x3D;&#x3D; 0  &amp;&amp; formDir.submitted&quot; class&#x3D;&quot;validation-warning&quot;&gt;
+                    &lt;p&gt;Ao menos uma empresa deve ser selecionada.&lt;/p&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+
+
+        &lt;div *ngIf&#x3D;&quot;selectedCompanies.length !&#x3D; 0&quot; class&#x3D;&quot;row mt-5 border-bottom pb-4&quot;&gt;
+            &lt;div&gt;
+                &lt;p class&#x3D;&quot;fw-bold&quot;&gt;Empresas Selecionadas&lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;d-flex flex-wrap gap-2&quot;&gt;
+                &lt;div *ngFor&#x3D;&quot;let company of selectedCompanies&quot; [backgroundColorClass]&#x3D;&quot;&#x27;#ebebeb&#x27;&quot;
+                    class&#x3D;&quot;d-flex align-items-center border border-dark-subtle rounded px-3 py-2&quot;&gt;
+                    &lt;p class&#x3D;&quot;fw-bold mb-0 me-3&quot;&gt;
+                        {{ company.name }}
+                    &lt;/p&gt;
+                    &lt;button *ngIf&#x3D;&quot;company.isCustom&quot; [backgroundColorClass]&#x3D;&quot;&#x27;#ff6f6f&#x27;&quot;
+                        class&#x3D;&quot;btn btn-sm text-white border-0&quot; type&#x3D;&quot;button&quot; (click)&#x3D;&quot;removeCompany(company)&quot;&gt;
+                        Remover
+                    &lt;/button&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+
+        &lt;div class&#x3D;&quot;row&quot;&gt;
+            &lt;div class&#x3D;&quot;form-group pt-3 w-100 py-3&quot;&gt;
+                &lt;label class&#x3D;&quot;fw-bold&quot; for&#x3D;&quot;sector&quot;&gt;Setor *&lt;/label&gt;
+                &lt;textarea [backgroundColorClass]&#x3D;&quot;&#x27;#ebebeb&#x27;&quot; id&#x3D;&quot;sector&quot; formControlName&#x3D;&quot;sector&quot; type&#x3D;&quot;text&quot;
+                    class&#x3D;&quot;form-control border-dark-subtle rounded-3 form-focus&quot; placeholder&#x3D;&quot;Escreva aqui&quot;&gt;&lt;/textarea&gt;
+            &lt;/div&gt;
+            &lt;div *ngIf&#x3D;&quot;sector.invalid  &amp;&amp; formDir.submitted&quot; class&#x3D;&quot;validation-warning&quot;&gt;
+                &lt;p&gt;Por favor, informe o setor.&lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+
+
+        &lt;div class&#x3D;&quot;d-flex gap-3 justify-content-end pt-2&quot;&gt;
+            &lt;button type&#x3D;&quot;reset&quot; (click)&#x3D;&quot;clearForm()&quot; class&#x3D;&quot;btn btn-outline-danger&quot;&gt;Redefinir Formulário&lt;/button&gt;
+            &lt;button [disabled]&#x3D;&quot;isButtonDisabled&quot; [backgroundColorClass]&#x3D;&quot;&#x27;#027373&#x27;&quot; type&#x3D;&quot;submit&quot;
+                class&#x3D;&quot;btn text-white&quot;&gt;Enviar&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/form&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="conatiner d-flex flex-column p-3 mb-4 scroll-bar overflow-custom">    <form [formGroup]="signPostForm" (ngSubmit)="submit()" #formDir="ngForm">        <div class="row pb-4">            <div class="col-12 col-md-6">                <div class="form-group pt-3">                    <label class="fw-bold" for="title">Título *</label>                    <textarea [backgroundColorClass]="\'#ebebeb\'" id="title" formControlName="title" type="text"                        class="form-control border-dark-subtle rounded-3 form-focus"                        placeholder="Escreva o título da solicitação"></textarea>                </div>                <div *ngIf="title.invalid && formDir.submitted" class="validation-warning">                    <p>Por favor, informe o título.</p>                </div>            </div>            <div class="col-12 col-md-6">                <div class="form-group pt-3">                    <label class="fw-bold" for="description">Descrição *</label>                    <textarea [backgroundColorClass]="\'#ebebeb\'" id="description" formControlName="description"                        type="text" class="form-control border-dark-subtle rounded-3 form-focus"                        placeholder="Escreva a descrição da solicitação"></textarea>                </div>                <div *ngIf="description.invalid && formDir.submitted" class="validation-warning">                    <p>A descrição da solicitação é obrigatória. Escreva uma breve descrição da placa.</p>                </div>            </div>        </div>        <div class="row pb-4">            <div class="form-group pt-3">                <label class="fw-bold" for="signLocation">Local da Placa *</label>                <textarea [backgroundColorClass]="\'#ebebeb\'" id="signLocation" formControlName="signLocation"                    type="text" class="form-control border-dark-subtle rounded-3 form-focus"                    placeholder="Escreva a localização da placa"></textarea>            </div>            <div *ngIf="signLocation.invalid && formDir.submitted" class="validation-warning">                <p>Por favor, informe o local onde a placa será instalada</p>            </div>        </div>        <div class="row pb-4 pt-2 border-bottom">            <div class="col-12 col-md-3">                <div class="form-group pt-3">                    <label class="fw-bold">Medida *</label>                    <div class="d-flex align-items-center mb-2">                        <div class="d-flex flex-column">                            <label>Largura</label>                            <input [backgroundColorClass]="\'#ebebeb\'" type="text"                                class="border border-dark-subtle rounded-3 me-2 w-100 form-focus" placeholder="cm"                                formControlName="width" />                        </div>                        <div class="pt-4">                            <span class="mx-3">X</span>                        </div>                        <div class="d-flex flex-column">                            <label>Altura</label>                            <input [backgroundColorClass]="\'#ebebeb\'" type="text"                                class="border border-dark-subtle rounded-3 me-2 w-100 form-focus" placeholder="cm"                                formControlName="height" />                        </div>                    </div>                    <div *ngIf="(width.invalid || height.invalid) && formDir.submitted" class="validation-warning">                        <p>Informe as medidas completas da placa (largura e altura) em centímetros.</p>                    </div>                    <div *ngIf="(width.errors?.[\'pattern\'] || height.errors?.[\'pattern\']) && formDir.submitted"                        class="validation-warning">                        <p>As medidas devem conter apenas números.</p>                    </div>                </div>            </div>            <div class="col-12 col-md-9 mt-3 mt-md-0">                <div class="form-group pt-3 ms-md-5">                    <div class="title">                        <p class="fw-bold">Material *</p>                    </div>                    <div class="d-flex flex-column">                        <div class="form-check mb-2">                            <input [borderColorClass]="\'#027373\'" class="form-check-input" type="radio" id="aluminio"                                formControlName="boardType" value="1">                            <label class="form-check-label" for="aluminio">Alumínio</label>                        </div>                        <div class="form-check mb-2">                            <input [borderColorClass]="\'#027373\'" class="form-check-input" type="radio" id="Polietileno"                                formControlName="boardType" value="2">                            <label class="form-check-label" for="Polietileno">Polietileno</label>                        </div>                        <div *ngIf="signPostForm.get(\'boardType\')?.invalid && formDir.submitted"                            class="validation-warning">                            <p>Selecione o material da placa</p>                        </div>                    </div>                </div>            </div>        </div>        <div>            <div class="row mt-5 border-bottom pb-4">                <div class="col-12">                    <p class="fw-bold">Selecione as Empresas *</p>                </div>                <div class="col-12 d-flex flex-wrap gap-3">                    <div class="form-check">                        <input [borderColorClass]="\'#027373\'" class="form-check-input" type="checkbox" id="rotaMulti"                            formControlName="selectedCompany" (change)="updateCompanyName(2, \'Rota Transportes\')">                        <label class="form-check-label" for="rotaMulti">Rota Transportes</label>                    </div>                    <div class="form-check">                        <input [borderColorClass]="\'#027373\'" class="form-check-input" type="checkbox"                            id="cidadeSolMulti" formControlName="selectedCompany"                            (change)="updateCompanyName(2, \'Cidade Sol\')">                        <label class="form-check-label" for="cidadeSolMulti">Cidade Sol</label>                    </div>                    <div class="form-check">                        <input [borderColorClass]="\'#027373\'" class="form-check-input" type="checkbox"                            id="brasileiroMulti" formControlName="selectedCompany"                            (change)="updateCompanyName(2, \'Brasileiro\')">                        <label class="form-check-label" for="brasileiroMulti">Brasileiro</label>                    </div>                    <div class="form-check">                        <input [borderColorClass]="\'#027373\'" class="form-check-input" type="checkbox"                            id="viaMetroMulti" formControlName="selectedCompany"                            (change)="updateCompanyName(2, \'Via Metro\')">                        <label class="form-check-label" for="viaMetroMulti">Via Metro</label>                    </div>                    <div class="form-check">                        <input [borderColorClass]="\'#027373\'" class="form-check-input" type="checkbox"                            id="cidadeRealMulti" formControlName="selectedCompany"                            (change)="updateCompanyName(2, \'Cidade Real\')">                        <label class="form-check-label" for="cidadeRealMulti">Cidade Real</label>                    </div>                    <div class="form-check">                        <input [borderColorClass]="\'#027373\'" class="form-check-input" type="checkbox" id="paumaMulti"                            formControlName="selectedCompany" (change)="updateCompanyName(2, \'Pauma\')">                        <label class="form-check-label" for="paumaMulti">Pauma</label>                    </div>                    <div class="form-check d-flex align-items-center">                        <input [borderColorClass]="\'#027373\'" class="form-check-input" type="checkbox" id="otherMulti"                            formControlName="selectedCompany" (change)="onOthersCompanies()">                        <label class="form-check-label ms-2" for="otherMulti">Outras</label>                        <input *ngIf="isOtherCompaniesSelected" type="text" class="form-control ms-2"                            placeholder="Especificar empresa" formControlName="othersText"                            (change)="updateOthersCompanies()">                        <button [backgroundColorClass]="\'#027373\'" *ngIf="isOtherCompaniesSelected" type="button"                            class="btn btn-sm text-white ms-2" (click)="confirmOtherMultiCompany()">OK</button>                    </div>                </div>                <div *ngIf="selectedCompanies.length == 0  && formDir.submitted" class="validation-warning">                    <p>Ao menos uma empresa deve ser selecionada.</p>                </div>            </div>        </div>        <div *ngIf="selectedCompanies.length != 0" class="row mt-5 border-bottom pb-4">            <div>                <p class="fw-bold">Empresas Selecionadas</p>            </div>            <div class="d-flex flex-wrap gap-2">                <div *ngFor="let company of selectedCompanies" [backgroundColorClass]="\'#ebebeb\'"                    class="d-flex align-items-center border border-dark-subtle rounded px-3 py-2">                    <p class="fw-bold mb-0 me-3">                        {{ company.name }}                    </p>                    <button *ngIf="company.isCustom" [backgroundColorClass]="\'#ff6f6f\'"                        class="btn btn-sm text-white border-0" type="button" (click)="removeCompany(company)">                        Remover                    </button>                </div>            </div>        </div>        <div class="row">            <div class="form-group pt-3 w-100 py-3">                <label class="fw-bold" for="sector">Setor *</label>                <textarea [backgroundColorClass]="\'#ebebeb\'" id="sector" formControlName="sector" type="text"                    class="form-control border-dark-subtle rounded-3 form-focus" placeholder="Escreva aqui"></textarea>            </div>            <div *ngIf="sector.invalid  && formDir.submitted" class="validation-warning">                <p>Por favor, informe o setor.</p>            </div>        </div>        <div class="d-flex gap-3 justify-content-end pt-2">            <button type="reset" (click)="clearForm()" class="btn btn-outline-danger">Redefinir Formulário</button>            <button [disabled]="isButtonDisabled" [backgroundColorClass]="\'#027373\'" type="submit"                class="btn text-white">Enviar</button>        </div>    </form></div></div>'
+    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
+    var DIRECTIVES = [{'name': 'CapitalizeDirective', 'selector': '[appCapitalize]'},{'name': 'ColorClassDirective', 'selector': '[colorClass], [backgroundColorClass], [borderColorClass]'},{'name': 'DndDirective', 'selector': '[appDndDirective]'},{'name': 'PhoneMaskDirective', 'selector': '[appPhoneMask]'}];
+    var ACTUAL_COMPONENT = {'name': 'SignpostRequestComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'SignpostRequestComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

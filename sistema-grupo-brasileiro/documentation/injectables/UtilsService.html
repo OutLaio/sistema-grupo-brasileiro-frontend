@@ -1,0 +1,721 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>sistema-grupo-brasileiro documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">sistema-grupo-brasileiro documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Injectables</li>
+  <li class="breadcrumb-item" >UtilsService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" 
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" 
+                class="nav-link"
+                
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/modules/feature/request-details/services/utils/utils.service.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Serviço responsável por realizar utilitários relacionados à alteração de título, data de entrega e status de um projeto.
+Utiliza a biblioteca <code>SweetAlert2</code> para exibir alertas modais interativos.
+Interage com o serviço <code>RequestDetailsService</code> para realizar as alterações de dados no servidor.</p>
+
+            </p>
+
+
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#alterDate" >alterDate</a>
+                            </li>
+                            <li>
+                                <a href="#alterStatus" >alterStatus</a>
+                            </li>
+                            <li>
+                                <a href="#alterTitle" >alterTitle</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(requestService: <a href="../injectables/RequestDetailsService.html" target="_self">RequestDetailsService</a>, storageService: <a href="../injectables/StorageService.html" target="_self">StorageService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/modules/feature/request-details/services/utils/utils.service.ts:19</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Construtor do serviço <code>UtilsService</code>.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>requestService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/RequestDetailsService.html" target="_self" >RequestDetailsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>Serviço que lida com requisições relacionadas aos detalhes do projeto.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>storageService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/StorageService.html" target="_self" >StorageService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <ul>
+<li>Serviço utilizado para gerenciar dados no armazenamento local.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="alterDate"></a>
+                    <span class="name">
+                        <span ><b>alterDate</b></span>
+                        <a href="#alterDate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>alterDate(idProject: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="65"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/utils/utils.service.ts:65</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Exibe um modal para alterar a data de entrega de um projeto.
+Quando confirmada, envia a alteração para o servidor e exibe um alerta de sucesso ou erro.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>idProject</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Identificador do projeto cuja data de entrega será alterada.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="alterStatus"></a>
+                    <span class="name">
+                        <span ><b>alterStatus</b></span>
+                        <a href="#alterStatus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>alterStatus(idProject: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, currentStatus: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="93"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/utils/utils.service.ts:93</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Exibe um modal para alterar o status de um projeto.
+Quando confirmado, envia a alteração para o servidor e exibe um alerta de sucesso ou erro.
+Se o status atual for igual ao novo status selecionado, exibe um alerta informando que nada foi alterado.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>idProject</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Identificador do projeto cujo status será alterado.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>currentStatus</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Status atual do projeto, utilizado para verificar se houve alteração.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="alterTitle"></a>
+                    <span class="name">
+                        <span ><b>alterTitle</b></span>
+                        <a href="#alterTitle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>alterTitle(idProject: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="38"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/utils/utils.service.ts:38</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Exibe um modal para alterar o título de um projeto.
+Quando confirmado, envia a alteração para o servidor e exibe um alerta de sucesso ou erro.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>idProject</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Identificador do projeto cujo título será alterado.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { C_PROJECT_STATUS } from &#x27;./../../../../shared/enums/project-status&#x27;;
+import { Injectable } from &#x27;@angular/core&#x27;;
+import Swal from &#x27;sweetalert2&#x27;;
+import { RequestDetailsService } from &#x27;../request-details/request-details.service&#x27;;
+import { I_Alter_Title_Request } from &#x27;../../../../shared/interfaces/project/form/alter-title-form&#x27;;
+import { HttpErrorResponse } from &#x27;@angular/common/http&#x27;;
+import { I_Alter_Date_Request } from &#x27;../../../../shared/interfaces/project/form/alter-date-form&#x27;;
+import { StorageService } from &#x27;../../../../services/storage/storage.service&#x27;;
+import { I_Alter_Status_Request } from &#x27;../../../../shared/interfaces/project/form/alter-status-form&#x27;;
+
+/**
+ * Serviço responsável por realizar utilitários relacionados à alteração de título, data de entrega e status de um projeto.
+ * Utiliza a biblioteca &#x60;SweetAlert2&#x60; para exibir alertas modais interativos.
+ * Interage com o serviço &#x60;RequestDetailsService&#x60; para realizar as alterações de dados no servidor.
+ */
+@Injectable({
+  providedIn: &#x27;root&#x27;
+})
+export class UtilsService {
+
+  /**
+   * Construtor do serviço &#x60;UtilsService&#x60;.
+   * 
+   * @param requestService - Serviço que lida com requisições relacionadas aos detalhes do projeto.
+   * @param storageService - Serviço utilizado para gerenciar dados no armazenamento local.
+   */
+  constructor(
+    private requestService: RequestDetailsService,
+    private storageService: StorageService
+  ) { }
+
+  /**
+   * Exibe um modal para alterar o título de um projeto.
+   * Quando confirmado, envia a alteração para o servidor e exibe um alerta de sucesso ou erro.
+   * 
+   * @param idProject - Identificador do projeto cujo título será alterado.
+   */
+  alterTitle(idProject: string) {
+    Swal.fire({
+      html: &#x27;&lt;h4&gt;Alterar Título do Projeto&lt;/h4&gt;&#x27;,
+      input: &#x27;text&#x27;,
+      inputPlaceholder: &#x27;Novo Título&#x27;,
+      showCancelButton: true,
+      confirmButtonText: &#x27;Alterar&#x27;,
+      confirmButtonColor: &#x27;#029982&#x27;,
+    }).then((result) &#x3D;&gt; {
+      if (result.isConfirmed) {
+        const newTitle: I_Alter_Title_Request &#x3D; {
+          newTitle: result.value
+        };
+        this.requestService.updateTitle(idProject, newTitle).subscribe({
+          next: (value) &#x3D;&gt; Swal.fire(&#x27;Título Alterado!&#x27;, value.message, &#x27;success&#x27;).then(() &#x3D;&gt; window.location.reload()),
+          error: (err: HttpErrorResponse) &#x3D;&gt; Swal.fire(&#x27;Título Não Alterado!&#x27;, err.message, &#x27;error&#x27;)
+        });
+      }
+    });
+  }
+
+  /**
+  * Exibe um modal para alterar a data de entrega de um projeto.
+  * Quando confirmada, envia a alteração para o servidor e exibe um alerta de sucesso ou erro.
+  * 
+  * @param idProject - Identificador do projeto cuja data de entrega será alterada.
+  */
+  alterDate(idProject: string) {
+    Swal.fire({
+      html: &#x27;&lt;h4&gt;Alterar Data de Entrega&lt;/h4&gt;&#x27;,
+      input: &#x27;date&#x27;,
+      showCancelButton: true,
+      confirmButtonText: &#x27;Alterar&#x27;,
+      confirmButtonColor: &#x27;#029982&#x27;,
+    }).then((result) &#x3D;&gt; {
+      if (result.isConfirmed) {
+        const newDate: I_Alter_Date_Request &#x3D; {
+          newDate: result.value
+        };
+        this.requestService.updateDate(idProject, newDate).subscribe({
+          next: (value) &#x3D;&gt; Swal.fire(&#x27;Data Alterada!&#x27;, value.message, &#x27;success&#x27;).then(() &#x3D;&gt; window.location.reload()),
+          error: (err: HttpErrorResponse) &#x3D;&gt; Swal.fire(&#x27;Data Não Alterada!&#x27;, err.message, &#x27;error&#x27;)
+        });
+      }
+    });
+  }
+
+  /**
+   * Exibe um modal para alterar o status de um projeto.
+   * Quando confirmado, envia a alteração para o servidor e exibe um alerta de sucesso ou erro.
+   * Se o status atual for igual ao novo status selecionado, exibe um alerta informando que nada foi alterado.
+   * 
+   * @param idProject - Identificador do projeto cujo status será alterado.
+   * @param currentStatus - Status atual do projeto, utilizado para verificar se houve alteração.
+   */
+  alterStatus(idProject: string, currentStatus: string) {
+    Swal.fire({
+      html: &#x27;&lt;h4&gt;Alterar Status do Projeto &lt;/h4&gt;&#x27;,
+      input: &#x27;select&#x27;,
+      inputOptions: {
+        [C_PROJECT_STATUS.TO_DO.en]: C_PROJECT_STATUS.TO_DO.pt,
+        [C_PROJECT_STATUS.IN_PROGRESS.en]: C_PROJECT_STATUS.IN_PROGRESS.pt,
+        [C_PROJECT_STATUS.WAITING_APPROVAL.en]: C_PROJECT_STATUS.WAITING_APPROVAL.pt,
+        [C_PROJECT_STATUS.APPROVED.en]: C_PROJECT_STATUS.APPROVED.pt,
+        [C_PROJECT_STATUS.IN_PRODUCTION.en]: C_PROJECT_STATUS.IN_PRODUCTION.pt,
+        [C_PROJECT_STATUS.COMPLETED.en]: C_PROJECT_STATUS.COMPLETED.pt,
+        [C_PROJECT_STATUS.STAND_BY.en]: C_PROJECT_STATUS.STAND_BY.pt,
+      },
+      showCancelButton: true,
+      confirmButtonText: &#x27;Alterar&#x27;,
+      confirmButtonColor: &#x27;#029982&#x27;,
+    }).then((result) &#x3D;&gt; {
+      if (result.isConfirmed) {
+        if (currentStatus &#x3D;&#x3D;&#x3D; result.value) {
+          Swal.fire(&#x27;Status já está ativo!&#x27;, &#x27;Nada foi alterado.&#x27;, &#x27;info&#x27;);
+          return;
+        }
+        const newStatus: I_Alter_Status_Request &#x3D; {
+          newStatus: result.value,
+        };
+        this.requestService.updateStatus(idProject, newStatus).subscribe({
+          next: (value) &#x3D;&gt;
+            Swal.fire(&#x27;Status Alterado!&#x27;, value.message, &#x27;success&#x27;).then(() &#x3D;&gt;
+              window.location.reload()
+            ),
+          error: (err: HttpErrorResponse) &#x3D;&gt;
+            Swal.fire(&#x27;Status Não Alterado!&#x27;, err.message, &#x27;error&#x27;),
+        });
+      }
+    });
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'UtilsService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

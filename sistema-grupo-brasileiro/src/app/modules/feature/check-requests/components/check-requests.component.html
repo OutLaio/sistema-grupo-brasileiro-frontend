@@ -1,0 +1,303 @@
+<div class="container-fluid">
+    <div class="cards-div">
+        <div class="p-1 mx-auto">
+            <div class="card-wrapper gap-2">
+                <div class="card card-custom rounded-0">
+                    <div [backgroundColorClass]="'#D9534F'" class="height-div"></div>
+                    <div class="container text-center py-3">
+                        <p class="card-title">A Fazer</p>
+                        <hr>
+                    </div>
+                    <div class="card-body overflow-auto scrollbar-ff">
+                        <div *ngFor="let item of toDoCards"
+                            class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
+                            <div>
+                                <p class="request-briefing-type me-2">{{ item.briefingType }}</p>
+                                <div *ngIf="item.collaborator; else noCollaborator">
+                                    <p class="text-muted text-custom"><img class="me-1 perfil-img"
+                                            src="/assets/images/avatars/{{item.collaborator.avatar}}.png"
+                                            [alt]="item.client.fullName + ' ' + 'avatar'" />
+                                        <span class="request-briefing-type">{{ item.collaborator.fullName }}</span>
+                                    </p>
+                                </div>
+                                <ng-template #noCollaborator>
+                                    <p [backgroundColorClass]="'#ff7474'" class="request-briefing-type">Colaborador não
+                                        alocado</p>
+                                </ng-template>
+                            </div>
+                            <div class="request-title">
+                                <p (click)="toggleTruncate(item)" class="text-muted"
+                                    [ngClass]="{'text-truncate': item.isTruncated}">
+                                    {{ item.title}}
+                                </p>
+                            </div>
+                            <div class="d-flex justify-content-start">
+                                <p class="text-muted text-custom"><img
+                                        [src]="'/assets/images/avatars/' + (item.client.avatar) + '.png'"
+                                        [alt]="item.client.fullName + ' ' + 'avatar'" class="perfil-img me-3">
+                                    <span>{{ item.client.fullName }}</span>
+                                </p>
+                            </div>
+                            <div class="d-flex justify-content-between">
+                                <p class="text-muted text-custom"> {{
+                                    item.startDate| date: 'dd/MM/yyyy' }}</p>
+                                <i class="text-custom" [colorClass]="'#005d54'"
+                                    (click)="goToDetails(item.id.toString())">Veja mais</i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-custom rounded-0">
+                    <div [backgroundColorClass]="'#A267D0'" class="height-div"></div>
+                    <div class="container text-center py-3">
+                        <p class="card-title">Em Andamento</p>
+                        <hr>
+                    </div>
+                    <div class="card-body overflow-auto scrollbar-ff">
+                        <div *ngFor="let item of inProgressCards "
+                            class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
+                            <div class="d-flex">
+                                <p class="request-briefing-type me-2">{{ item.briefingType }}</p>
+                                <div class="d-flex justify-content-start"
+                                    *ngIf="item.collaborator; else noCollaborator">
+                                    <p [backgroundColorClass]="'#ff7474'" class="request-briefing-type">
+                                        {{item.collaborator.fullName}}</p>
+                                </div>
+                            </div>
+                            <div class="request-title">
+                                <p (click)="toggleTruncate(item)" class="text-muted"
+                                    [ngClass]="{'text-truncate': item.isTruncated}">
+                                    {{ item.title}}
+                                </p>
+                            </div>
+                            <p class="text-muted text-custom">
+                                <img [src]="'/assets/images/avatars/' + (item.client.avatar) + '.png'"
+                                    [alt]="item.client.fullName + ' ' + 'avatar'" class="perfil-img me-3">
+                                <span>{{ item.client.fullName }}</span>
+                            </p>
+                            <ng-template #noCollaborator>
+                                <p class="text-muted">Colaborador: Não alocado</p>
+                            </ng-template>
+                            <div class="d-flex justify-content-between">
+                                <p class="text-muted text-custom"> {{
+                                    item.startDate| date: 'dd/MM/yyyy' }}</p>
+                                <i class="text-custom" [colorClass]="'#005d54'"
+                                    (click)="goToDetails(item.id.toString())">Veja mais</i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-custom rounded-0">
+                    <div [backgroundColorClass]="'#305BF2'" class="height-div"></div>
+                    <div class="container text-center py-3">
+                        <p class="card-title">Aguardando Aprovação</p>
+                        <hr>
+                    </div>
+                    <div class="card-body overflow-auto scrollbar-ff">
+                        <div *ngFor="let item of awaitingApprovalCards "
+                            class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
+                            <div class="d-flex">
+                                <p class="request-briefing-type me-2">{{ item.briefingType }}</p>
+                                <div *ngIf="item.collaborator; else noCollaborator">
+                                    <p [backgroundColorClass]="'#ff7474'" class="request-briefing-type">
+                                        {{item.collaborator.fullName}}</p>
+                                </div>
+                            </div>
+                            <div class="request-title">
+                                <p (click)="toggleTruncate(item)" class="text-muted"
+                                    [ngClass]="{'text-truncate': item.isTruncated}">
+                                    {{ item.title}}
+                                </p>
+                            </div>
+                            <div class="d-flex justify-content-start">
+                                <p class="text-muted text-custom"><img
+                                        [src]="'/assets/images/avatars/' + (item.client.avatar) + '.png'"
+                                        [alt]="item.client.fullName + ' ' + 'avatar'" class="perfil-img me-3">
+                                    <span>{{ item.client.fullName }}</span>
+                                </p>
+                            </div>
+                            <ng-template #noCollaborator>
+                                <p class="text-muted">Colaborador: Não alocado</p>
+                            </ng-template>
+                            <div class="d-flex justify-content-between">
+                                <p class="text-muted text-custom"> {{
+                                    item.startDate| date: 'dd/MM/yyyy' }}</p>
+                                <i class="text-custom" [colorClass]="'#005d54'"
+                                    (click)="goToDetails(item.id.toString())">Veja mais</i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-custom rounded-0">
+                    <div [backgroundColorClass]="'#FAFE3A'" class="height-div"></div>
+                    <div class="container text-center py-3">
+                        <p class="card-title">Aprovado</p>
+                        <hr>
+                    </div>
+                    <div class="card-body overflow-auto scrollbar-ff">
+                        <div *ngFor="let item of approvedCards "
+                            class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
+                            <div class="d-flex">
+                                <p class="request-briefing-type me-2">{{ item.briefingType }}</p>
+                                <div *ngIf="item.collaborator; else noCollaborator">
+                                    <p [backgroundColorClass]="'#ff7474'" class="request-briefing-type">
+                                        {{item.collaborator.fullName}}</p>
+                                </div>
+                            </div>
+                            <div class="request-title">
+                                <p (click)="toggleTruncate(item)" class="text-muted"
+                                    [ngClass]="{'text-truncate': item.isTruncated}">
+                                    {{ item.title}}
+                                </p>
+                            </div>
+                            <div class="d-flex justify-content-start">
+                                <p class="text-muted text-custom"><img
+                                        [src]="'/assets/images/avatars/' + (item.client.avatar) + '.png'"
+                                        [alt]="item.client.fullName + ' ' + 'avatar'" class="perfil-img me-3">
+                                    <span>{{ item.client.fullName }}</span>
+                                </p>
+                            </div>
+                            <ng-template #noCollaborator>
+                                <p class="text-muted">Colaborador: Não alocado</p>
+                            </ng-template>
+                            <div class="d-flex justify-content-between">
+                                <p class="text-muted text-custom"> {{
+                                    item.startDate| date: 'dd/MM/yyyy' }}</p>
+                                <i class="text-custom" [colorClass]="'#005d54'"
+                                    (click)="goToDetails(item.id.toString())">Veja mais</i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-custom rounded-0">
+                    <div [backgroundColorClass]="'#FF822E'" class="height-div"></div>
+                    <div class="container text-center py-3">
+                        <p class="card-title">Em Confecção</p>
+                        <hr>
+                    </div>
+                    <div class="card-body overflow-auto scrollbar-ff">
+                        <div *ngFor="let item of inProductionCards "
+                            class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
+                            <div class="d-flex">
+                                <p class="request-briefing-type me-2">{{ item.briefingType }}</p>
+                                <div *ngIf="item.collaborator; else noCollaborator">
+                                    <p [backgroundColorClass]="'#ff7474'" class="request-briefing-type">
+                                        {{item.collaborator.fullName}}</p>
+                                </div>
+                            </div>
+                            <div class="request-title">
+                                <p (click)="toggleTruncate(item)" class="text-muted"
+                                    [ngClass]="{'text-truncate': item.isTruncated}">
+                                    {{ item.title}}
+                                </p>
+                            </div>
+                            <div class="d-flex justify-content-start">
+                                <p class="text-muted text-custom"><img
+                                        [src]="'/assets/images/avatars/' + (item.client.avatar) + '.png'"
+                                        [alt]="item.client.fullName + ' ' + 'avatar'" class="perfil-img me-3">
+                                    <span>{{ item.client.fullName }}</span>
+                                </p>
+                            </div>
+                            <ng-template #noCollaborator>
+                                <p class="text-muted">Colaborador: Não alocado</p>
+                            </ng-template>
+                            <div class="d-flex justify-content-between">
+                                <p class="text-muted text-custom"> {{
+                                    item.startDate| date: 'dd/MM/yyyy' }}</p>
+                                <i class="text-custom" [colorClass]="'#005d54'"
+                                    (click)="goToDetails(item.id.toString())">Veja mais</i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="card card-custom rounded-0">
+                    <div [backgroundColorClass]="'#70D067'" class="height-div"></div>
+                    <div class="container text-center py-3">
+                        <p class="card-title">Concluído</p>
+                        <hr>
+                    </div>
+                    <div class="card-body overflow-auto scrollbar-ff">
+                        <div *ngFor="let item of completedCards "
+                            class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
+                            <div class="d-flex">
+                                <p class="request-briefing-type me-2">{{ item.briefingType }}</p>
+                                <div *ngIf="item.collaborator; else noCollaborator">
+                                    <p [backgroundColorClass]="'#ff7474'" class="request-briefing-type">
+                                        {{item.collaborator.fullName}}</p>
+                                </div>
+                            </div>
+                            <div class="request-title">
+                                <p (click)="toggleTruncate(item)" class="text-muted"
+                                    [ngClass]="{'text-truncate': item.isTruncated}">
+                                    {{ item.title}}
+                                </p>
+                            </div>
+                            <div class="d-flex justify-content-start" *ngIf="item.collaborator; else noCollaborator">
+                                <p class="text-muted text-custom"><img
+                                        [src]="'/assets/images/avatars/' + (item.client.avatar) + '.png'"
+                                        [alt]="item.client.fullName + ' ' + 'avatar'" class="perfil-img me-3">
+                                    <span>{{ item.client.fullName }}</span>
+                                </p>
+                            </div>
+                            <ng-template #noCollaborator>
+                                <p class="text-muted">Colaborador: Não alocado</p>
+                            </ng-template>
+                            <div class="d-flex justify-content-between">
+                                <p class="text-muted text-custom"> {{
+                                    item.startDate| date: 'dd/MM/yyyy' }}</p>
+                                <i class="text-custom" [colorClass]="'#005d54'"
+                                    (click)="goToDetails(item.id.toString())">Veja mais</i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="card card-custom rounded-0">
+                    <div [backgroundColorClass]="'#999999'" class="height-div"></div>
+                    <div class="container text-center py-3">
+                        <p class="card-title"> StandBy </p>
+                        <hr>
+                    </div>
+                    <div class="card-body overflow-auto scrollbar-ff">
+                        <div *ngFor="let item of standByCards"
+                            class="p-2 mb-2 border border-secondary-subtle rounded-3 requests-custom">
+                            <div class="d-flex">
+                                <p class="request-briefing-type me-2">{{ item.briefingType }}</p>
+                                <div *ngIf="item.collaborator; else noCollaborator">
+                                    <p [backgroundColorClass]="'#ff7474'" class="request-briefing-type">
+                                        {{item.collaborator.fullName}}</p>
+                                </div>
+                            </div>
+                            <div class="request-title">
+                                <p (click)="toggleTruncate(item)" class="text-muted"
+                                    [ngClass]="{'text-truncate': item.isTruncated}">
+                                    {{ item.title}}
+                                </p>
+                            </div>
+                            <div class="d-flex justify-content-start" *ngIf="item.collaborator; else noCollaborator">
+                                <p class="text-muted text-custom"><img
+                                        [src]="'/assets/images/avatars/' + (item.client.avatar) + '.png'"
+                                        [alt]="item.client.fullName + ' ' + 'avatar'" class="perfil-img me-3">
+                                    <span>{{ item.client.fullName }}</span>
+                                </p>
+                            </div>
+                            <ng-template #noCollaborator>
+                                <p class="text-muted">Colaborador: Não alocado</p>
+                            </ng-template>
+                            <div class="d-flex justify-content-between">
+                                <p class="text-muted text-custom"> {{
+                                    item.startDate| date: 'dd/MM/yyyy' }}</p>
+                                <i class="text-custom" [colorClass]="'#005d54'"
+                                    (click)="goToDetails(item.id.toString())">Veja mais</i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,1559 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>sistema-grupo-brasileiro documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">sistema-grupo-brasileiro documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  LoadingFileComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente responsável pelo upload de arquivos com simulação de progresso.
+Permite arrastar e soltar arquivos ou selecionar através do input de arquivos.
+Exibe o progresso de upload e permite excluir arquivos após o upload completo.</p>
+
+    </p>
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-loading-file</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./loading-file.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./loading-file.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier"></span>
+                                <a href="#fileDropEl" >fileDropEl</a>
+                            </li>
+                            <li>
+                                <a href="#files" >files</a>
+                            </li>
+                            <li>
+                                <a href="#progress" >progress</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#deleteFile" >deleteFile</a>
+                            </li>
+                            <li>
+                                <a href="#fileBrowseHandler" >fileBrowseHandler</a>
+                            </li>
+                            <li>
+                                <a href="#formatBytes" >formatBytes</a>
+                            </li>
+                            <li>
+                                <a href="#getImageUrl" >getImageUrl</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
+                            </li>
+                            <li>
+                                <a href="#onFileDropped" >onFileDropped</a>
+                            </li>
+                            <li>
+                                <a href="#onFileUpload" >onFileUpload</a>
+                            </li>
+                            <li>
+                                <a href="#prepareFilesList" >prepareFilesList</a>
+                            </li>
+                            <li>
+                                <a href="#uploadFilesSimulator" >uploadFilesSimulator</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Outputs</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#filesLoaded" >filesLoaded</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+        </tbody>
+    </table>
+</section>
+
+
+
+    <section data-compodoc="block-outputs">
+    <h3 id="outputs">Outputs</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="filesLoaded"></a>
+                        <b>filesLoaded</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>EventEmitter&lt;literal type[]&gt;</code>
+
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-2" colspan="2">
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:33</a></div>
+                            </td>
+                        </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Evento emitido quando os arquivos são carregados com sucesso.
+Emite um array de objetos com o nome e a URL dos arquivos carregados.</p>
+</div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="deleteFile"></a>
+                    <span class="name">
+                        <span ><b>deleteFile</b></span>
+                        <a href="#deleteFile"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>deleteFile(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="93"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:93</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Exclui um arquivo da lista de arquivos carregados.
+O arquivo só pode ser excluído se o progresso de upload for 100%.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>O índice do arquivo a ser excluído.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="fileBrowseHandler"></a>
+                    <span class="name">
+                        <span ><b>fileBrowseHandler</b></span>
+                        <a href="#fileBrowseHandler"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>fileBrowseHandler(event: Event)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="80"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:80</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Manipula o evento de seleção de arquivos através de um input de arquivo.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                        <code>Event</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>O evento disparado pela ação de seleção de arquivos.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="formatBytes"></a>
+                    <span class="name">
+                        <span ><b>formatBytes</b></span>
+                        <a href="#formatBytes"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>formatBytes(bytes: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, decimals: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="151"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:151</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Converte bytes para uma unidade legível como KB, MB, GB, etc.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Default value</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>bytes</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                            </td>
+
+                                            <td>
+                                                    <p>O valor em bytes a ser convertido.</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>decimals</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+                                            <td>
+                                                    <code>2</code>
+                                            </td>
+
+                                            <td>
+                                                    <p>O número de casas decimais a ser exibido (opcional, padrão é 2).</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>O valor convertido em uma unidade legível.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getImageUrl"></a>
+                    <span class="name">
+                        <span ><b>getImageUrl</b></span>
+                        <a href="#getImageUrl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getImageUrl(file: File)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="43"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:43</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Retorna a URL de um arquivo utilizando a API <code>URL.createObjectURL</code>.
+Isso é usado para criar uma URL temporária para exibição do arquivo.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>file</td>
+                                            <td>
+                                                        <code>File</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>O arquivo que será exibido.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p>A URL temporária do arquivo.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="166"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:166</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Libera os recursos usados pelo componente, como URLs de arquivos temporários.
+Chamado quando o componente é destruído.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onFileDropped"></a>
+                    <span class="name">
+                        <span ><b>onFileDropped</b></span>
+                        <a href="#onFileDropped"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onFileDropped($event: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="53"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:53</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Manipula o evento de &quot;arrastar e soltar&quot; arquivos.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>$event</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>O evento contendo os arquivos arrastados.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onFileUpload"></a>
+                    <span class="name">
+                        <span ><b>onFileUpload</b></span>
+                        <a href="#onFileUpload"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onFileUpload(files: FileList)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="63"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:63</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Manipula o evento de upload de arquivos a partir de um input de arquivos.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>files</td>
+                                            <td>
+                                                        <code>FileList</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Lista de arquivos selecionados pelo usuário.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="prepareFilesList"></a>
+                    <span class="name">
+                        <span ><b>prepareFilesList</b></span>
+                        <a href="#prepareFilesList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>prepareFilesList(files: Array<any>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="130"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:130</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Prepara a lista de arquivos a serem carregados, configurando a URL e o progresso inicial de cada arquivo.
+Em seguida, emite o evento <code>filesLoaded</code>.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>files</td>
+                                            <td>
+                                                        <code>Array&lt;any&gt;</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Lista de arquivos a serem carregados.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="uploadFilesSimulator"></a>
+                    <span class="name">
+                        <span ><b>uploadFilesSimulator</b></span>
+                        <a href="#uploadFilesSimulator"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>uploadFilesSimulator(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="107"
+                                    class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:107</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Simula o processo de upload dos arquivos, aumentando o progresso de cada arquivo em intervalos regulares.
+Quando o upload de um arquivo é concluído, o próximo arquivo é iniciado.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>O índice do arquivo a ser carregado.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="fileDropEl"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                        <span ><b>fileDropEl</b></span>
+                        <a href="#fileDropEl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>ElementRef | undefined</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @ViewChild(&#x27;fileDropRef&#x27;, {static: false})<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:24</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Referência ao elemento de drop de arquivos.
+Usado para arrastar e soltar arquivos.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="files"></a>
+                    <span class="name">
+                        <span ><b>files</b></span>
+                        <a href="#files"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>any[]</code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de arquivos carregados, com informações como nome, URL e progresso de upload.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="progress"></a>
+                    <span class="name">
+                        <span ><b>progress</b></span>
+                        <a href="#progress"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/modules/feature/create-request/components/loading-file/loading-file.component.ts:18</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Progresso do upload do arquivo em porcentagem.
+Valor inicial é 0%.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, ElementRef, EventEmitter, Output, ViewChild } from &#x27;@angular/core&#x27;;
+
+/**
+ * Componente responsável pelo upload de arquivos com simulação de progresso.
+ * Permite arrastar e soltar arquivos ou selecionar através do input de arquivos.
+ * Exibe o progresso de upload e permite excluir arquivos após o upload completo.
+ */
+@Component({
+  selector: &#x27;app-loading-file&#x27;,
+  templateUrl: &#x27;./loading-file.component.html&#x27;,
+  styleUrls: [&#x27;./loading-file.component.css&#x27;]
+})
+export class LoadingFileComponent {
+  /**
+   * Progresso do upload do arquivo em porcentagem.
+   * Valor inicial é 0%.
+   */
+  progress: number &#x3D; 0;
+
+  /**
+   * Referência ao elemento de drop de arquivos.
+   * Usado para arrastar e soltar arquivos.
+   */
+  @ViewChild(&quot;fileDropRef&quot;, { static: false }) fileDropEl: ElementRef | undefined;
+  /**
+   * Lista de arquivos carregados, com informações como nome, URL e progresso de upload.
+   */
+  files: any[] &#x3D; [];
+  /**
+   * Evento emitido quando os arquivos são carregados com sucesso.
+   * Emite um array de objetos com o nome e a URL dos arquivos carregados.
+   */
+  @Output() filesLoaded: EventEmitter&lt;{ name: string, url: string }[]&gt; &#x3D; new EventEmitter();
+
+
+  /**
+   * Retorna a URL de um arquivo utilizando a API &#x60;URL.createObjectURL&#x60;.
+   * Isso é usado para criar uma URL temporária para exibição do arquivo.
+   * 
+   * @param {File} file O arquivo que será exibido.
+   * @returns {string} A URL temporária do arquivo.
+   */
+  getImageUrl(file: File): string {
+    return window.URL.createObjectURL(file);
+  }
+
+
+  /**
+   * Manipula o evento de &quot;arrastar e soltar&quot; arquivos.
+   * 
+   * @param {any} $event O evento contendo os arquivos arrastados.
+   */
+  onFileDropped($event: any) {
+    const fileList &#x3D; $event as File[];
+    this.prepareFilesList(fileList);
+  }
+
+  /**
+   * Manipula o evento de upload de arquivos a partir de um input de arquivos.
+   * 
+   * @param {FileList} files Lista de arquivos selecionados pelo usuário.
+   */
+  onFileUpload(files: FileList): void {
+    const uploadedFiles: { name: string, url: string }[] &#x3D; [];
+
+    for (let i &#x3D; 0; i &lt; files.length; i++) {
+      const file &#x3D; files[i];
+      const url &#x3D; URL.createObjectURL(file);
+      uploadedFiles.push({ name: file.name, url });
+    }
+
+    this.filesLoaded.emit(uploadedFiles);
+  }
+
+  /**
+   * Manipula o evento de seleção de arquivos através de um input de arquivo.
+   * 
+   * @param {Event} event O evento disparado pela ação de seleção de arquivos.
+   */
+  fileBrowseHandler(event: Event) {
+    const inputElement &#x3D; event.target as HTMLInputElement;
+    if (inputElement &amp;&amp; inputElement.files) {
+      this.prepareFilesList(Array.from(inputElement.files));
+    }
+  }
+
+  /**
+   * Exclui um arquivo da lista de arquivos carregados.
+   * O arquivo só pode ser excluído se o progresso de upload for 100%.
+   * 
+   * @param {number} index O índice do arquivo a ser excluído.
+   */
+  deleteFile(index: number) {
+    if (this.files[index].progress &lt; 100) {
+      return;
+    }
+    this.files.splice(index, 1);
+    this.filesLoaded.emit(this.files.map(file &#x3D;&gt; ({ name: file.name, url: URL.createObjectURL(file) })));
+  }
+
+  /**
+   * Simula o processo de upload dos arquivos, aumentando o progresso de cada arquivo em intervalos regulares.
+   * Quando o upload de um arquivo é concluído, o próximo arquivo é iniciado.
+   * 
+   * @param {number} index O índice do arquivo a ser carregado.
+   */
+  uploadFilesSimulator(index: number) {
+    setTimeout(() &#x3D;&gt; {
+      if (index &#x3D;&#x3D;&#x3D; this.files.length) {
+        return;
+      } else {
+        const progressInterval &#x3D; setInterval(() &#x3D;&gt; {
+          if (this.files[index].progress &#x3D;&#x3D;&#x3D; 100) {
+            clearInterval(progressInterval);
+            this.uploadFilesSimulator(index + 1);
+          } else {
+            this.files[index].progress +&#x3D; 10;
+          }
+        }, 200);
+      }
+    }, 500);
+  }
+
+  /**
+   * Prepara a lista de arquivos a serem carregados, configurando a URL e o progresso inicial de cada arquivo.
+   * Em seguida, emite o evento &#x60;filesLoaded&#x60;.
+   * 
+   * @param {Array&lt;any&gt;} files Lista de arquivos a serem carregados.
+   */
+  prepareFilesList(files: Array&lt;any&gt;) {
+    for (const item of files) {
+      item.progress &#x3D; 0;
+      item.url &#x3D; this.getImageUrl(item);
+      this.files.push(item);
+    }
+    if (this.fileDropEl) {
+      this.fileDropEl.nativeElement.value &#x3D; &quot;&quot;;
+    }
+    this.uploadFilesSimulator(0);
+    this.filesLoaded.emit(this.files.map(file &#x3D;&gt; ({ name: file.name, url: file.url })));
+  }
+
+
+  /**
+   * Converte bytes para uma unidade legível como KB, MB, GB, etc.
+   * 
+   * @param {number} bytes O valor em bytes a ser convertido.
+   * @param {number} [decimals&#x3D;2] O número de casas decimais a ser exibido (opcional, padrão é 2).
+   * @returns {string} O valor convertido em uma unidade legível.
+   */
+  formatBytes(bytes: number, decimals &#x3D; 2) {
+    if (bytes &#x3D;&#x3D;&#x3D; 0) {
+      return &quot;0 Bytes&quot;;
+    }
+    const k &#x3D; 1024;
+    const dm &#x3D; decimals &lt;&#x3D; 0 ? 0 : decimals;
+    const sizes &#x3D; [&quot;Bytes&quot;, &quot;KB&quot;, &quot;MB&quot;, &quot;GB&quot;, &quot;TB&quot;, &quot;PB&quot;, &quot;EB&quot;, &quot;ZB&quot;, &quot;YB&quot;];
+    const i &#x3D; Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(dm)) + &quot; &quot; + sizes[i];
+  }
+
+  /**
+   * Libera os recursos usados pelo componente, como URLs de arquivos temporários.
+   * Chamado quando o componente é destruído.
+   */
+  ngOnDestroy() {
+    this.files.forEach(file &#x3D;&gt; {
+      if (file.url) {
+        window.URL.revokeObjectURL(file.url);
+      }
+    });
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container&quot; appDnd (fileDropped)&#x3D;&quot;onFileDropped($event)&quot;&gt;
+    &lt;input type&#x3D;&quot;file&quot; #fileDropRef id&#x3D;&quot;fileDropRef&quot; multiple class&#x3D;&quot;position-absolute w-100 h-100 opacity-0&quot;
+        (change)&#x3D;&quot;fileBrowseHandler($event)&quot; /&gt;
+    &lt;img src&#x3D;&quot;assets/icons/ic-upload-file.svg&quot; alt&#x3D;&quot;Upload Icon&quot; class&#x3D;&quot;mb-3&quot;&gt;
+    &lt;h5&gt;Arraste e solte os arquivos aqui&lt;/h5&gt;
+    &lt;h5&gt;ou&lt;/h5&gt;
+    &lt;label [backgroundColorClass]&#x3D;&quot;&#x27;#027373&#x27;&quot; for&#x3D;&quot;fileDropRef&quot; class&#x3D;&quot;btn text-white&quot;&gt;Pesquise os arquivos&lt;/label&gt;
+&lt;/div&gt;
+&lt;div class&#x3D;&quot;files-list&quot;&gt;
+    &lt;div class&#x3D;&quot;single-file&quot; *ngFor&#x3D;&quot;let file of files; let i &#x3D; index&quot;&gt;
+        &lt;ng-container *ngIf&#x3D;&quot;file.type.startsWith(&#x27;image/&#x27;) else showIcon&quot;&gt;
+            &lt;img [src]&#x3D;&quot;file.url&quot; class&#x3D;&quot;file-img&quot; alt&#x3D;&quot;file image&quot;&gt;
+        &lt;/ng-container&gt;
+        &lt;ng-template #showIcon&gt;
+            &lt;img src&#x3D;&quot;assets/icons/ic-file.svg&quot; width&#x3D;&quot;45px&quot; alt&#x3D;&quot;file&quot;&gt;
+        &lt;/ng-template&gt;
+        &lt;div class&#x3D;&quot;info&quot;&gt;
+            &lt;h4 class&#x3D;&quot;name&quot;&gt;
+                {{ file?.name }}
+            &lt;/h4&gt;
+            &lt;p class&#x3D;&quot;size&quot;&gt;
+                {{ formatBytes(file?.size) }}
+            &lt;/p&gt;
+            &lt;div [backgroundColorClass]&#x3D;&quot;&#x27;#d0d0d0&#x27;&quot; class&#x3D;&quot;progress-cont rounded w-100 position-relative&quot;&gt;
+                &lt;div [backgroundColorClass]&#x3D;&quot;&#x27;#027373&#x27;&quot;  class&#x3D;&quot;progress&quot; [style.width]&#x3D;&quot;file?.progress + &#x27;%&#x27;&quot;&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+        &lt;img src&#x3D;&quot;assets/icons/ic-delete-file.svg&quot; class&#x3D;&quot;delete&quot; width&#x3D;&quot;20px&quot; alt&#x3D;&quot;file&quot; (click)&#x3D;&quot;deleteFile(i)&quot;&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./loading-file.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.progress-cont {
+    height: 7px;
+}
+
+.progress {
+    width: 0;
+    height: 100%;
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    border-radius: 4px;
+    background-color: #026d56;
+    transition: 0.5s all;
+}
+
+.container {
+    padding: 2rem;
+    text-align: center;
+    border: dashed 1px #979797;
+    position: relative;
+    margin: 0 auto;
+}
+
+.fileover {
+    animation: shake 1s;
+    animation-iteration-count: infinite;
+}
+
+.files-list {
+    margin-top: 1.5rem;
+}
+
+.file-img{
+    width: 7.5rem;
+    margin-right: .7rem  ;
+}
+
+.single-file {
+    display: flex;
+    padding: 0.5rem;
+    justify-content: space-between;
+    align-items: center;
+    border: dashed 1px #979797;
+    margin-bottom: 1rem;
+    flex-grow: 1;
+}
+
+img.delete {
+    margin-left: 0.5rem;
+    cursor: pointer;
+    align-self: flex-end;
+}
+
+
+
+.name {
+    font-size: 14px;
+    font-weight: 500;
+    color: #353f4a;
+    margin: 0;
+}
+
+.size {
+    font-size: 12px;
+    font-weight: 500;
+    color: #a4a4a4;
+    margin: 0;
+    margin-bottom: 0.25rem;
+}
+
+.info {
+    width: 100%
+}
+
+@keyframes shake {
+    0% {
+        transform: translate(1px, 1px) rotate(0deg);
+    }
+
+    10% {
+        transform: translate(-1px, -2px) rotate(-1deg);
+    }
+
+    20% {
+        transform: translate(-3px, 0px) rotate(1deg);
+    }
+
+    30% {
+        transform: translate(3px, 2px) rotate(0deg);
+    }
+
+    40% {
+        transform: translate(1px, -1px) rotate(1deg);
+    }
+
+    50% {
+        transform: translate(-1px, 2px) rotate(-1deg);
+    }
+
+    60% {
+        transform: translate(-3px, 1px) rotate(0deg);
+    }
+
+    70% {
+        transform: translate(3px, 1px) rotate(-1deg);
+    }
+
+    80% {
+        transform: translate(-1px, -1px) rotate(1deg);
+    }
+
+    90% {
+        transform: translate(1px, 2px) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(1px, -2px) rotate(-1deg);
+    }
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="container" appDnd (fileDropped)="onFileDropped($event)">    <input type="file" #fileDropRef id="fileDropRef" multiple class="position-absolute w-100 h-100 opacity-0"        (change)="fileBrowseHandler($event)" />    <img src="assets/icons/ic-upload-file.svg" alt="Upload Icon" class="mb-3">    <h5>Arraste e solte os arquivos aqui</h5>    <h5>ou</h5>    <label [backgroundColorClass]="\'#027373\'" for="fileDropRef" class="btn text-white">Pesquise os arquivos</label></div><div class="files-list">    <div class="single-file" *ngFor="let file of files; let i = index">        <ng-container *ngIf="file.type.startsWith(\'image/\') else showIcon">            <img [src]="file.url" class="file-img" alt="file image">        </ng-container>        <ng-template #showIcon>            <img src="assets/icons/ic-file.svg" width="45px" alt="file">        </ng-template>        <div class="info">            <h4 class="name">                {{ file?.name }}            </h4>            <p class="size">                {{ formatBytes(file?.size) }}            </p>            <div [backgroundColorClass]="\'#d0d0d0\'" class="progress-cont rounded w-100 position-relative">                <div [backgroundColorClass]="\'#027373\'"  class="progress" [style.width]="file?.progress + \'%\'">                </div>            </div>        </div>        <img src="assets/icons/ic-delete-file.svg" class="delete" width="20px" alt="file" (click)="deleteFile(i)">    </div></div></div>'
+    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
+    var DIRECTIVES = [{'name': 'CapitalizeDirective', 'selector': '[appCapitalize]'},{'name': 'ColorClassDirective', 'selector': '[colorClass], [backgroundColorClass], [borderColorClass]'},{'name': 'DndDirective', 'selector': '[appDndDirective]'},{'name': 'PhoneMaskDirective', 'selector': '[appPhoneMask]'}];
+    var ACTUAL_COMPONENT = {'name': 'LoadingFileComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'LoadingFileComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

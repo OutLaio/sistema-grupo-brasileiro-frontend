@@ -1,0 +1,1644 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>sistema-grupo-brasileiro documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">sistema-grupo-brasileiro documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  EditUserDataComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/modules/core/profile/components/edit-user-data/edit-user-data.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente para edição de dados do usuário.</p>
+<p>Este componente fornece um formulário para que os usuários possam editar informações do perfil, como nome, telefone,
+setor, ocupação e agência. Também permite a seleção e atualização do avatar do usuário.</p>
+
+    </p>
+
+
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-edit-user-data</code></td>
+            </tr>
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./edit-user-data.component.html</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrl</td>
+                <td class="col-md-9"><code>./edit-user-data.component.css</code></td>
+            </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#activeUser" >activeUser</a>
+                            </li>
+                            <li>
+                                <a href="#activeUserEdit" >activeUserEdit</a>
+                            </li>
+                            <li>
+                                <a href="#avatars" >avatars</a>
+                            </li>
+                            <li>
+                                    <span class="modifier"></span>
+                                    <span class="modifier">Public</span>
+                                <a href="#data" >data</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Public</span>
+                                <a href="#dialogRef" >dialogRef</a>
+                            </li>
+                            <li>
+                                <a href="#editForm" >editForm</a>
+                            </li>
+                            <li>
+                                <a href="#isAvatarModalOpen" >isAvatarModalOpen</a>
+                            </li>
+                            <li>
+                                <a href="#selectedAvatar" >selectedAvatar</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#cancel" >cancel</a>
+                            </li>
+                            <li>
+                                <a href="#cancelAvatarModal" >cancelAvatarModal</a>
+                            </li>
+                            <li>
+                                <a href="#closeAvatarModal" >closeAvatarModal</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#openAvatarModal" >openAvatarModal</a>
+                            </li>
+                            <li>
+                                <a href="#saveAvatar" >saveAvatar</a>
+                            </li>
+                            <li>
+                                <a href="#selectAvatar" >selectAvatar</a>
+                            </li>
+                            <li>
+                                <a href="#submit" >submit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#name" >name</a>
+                                </li>
+                                <li>
+                                    <a href="#lastname" >lastname</a>
+                                </li>
+                                <li>
+                                    <a href="#phone" >phone</a>
+                                </li>
+                                <li>
+                                    <a href="#sector" >sector</a>
+                                </li>
+                                <li>
+                                    <a href="#occupation" >occupation</a>
+                                </li>
+                                <li>
+                                    <a href="#nop" >nop</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(profileService: <a href="../injectables/ProfileService.html" target="_self">ProfileService</a>, toastrService: ToastrService, router: Router, storageService: <a href="../injectables/StorageService.html" target="_self">StorageService</a>, dialogRef: MatDialogRef<EditUserDataComponent>, data: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/modules/core/profile/components/edit-user-data/edit-user-data.component.ts:48</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Construtor do componente <code>EditUserDataComponent</code>.
+Injeta as dependências necessárias.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>profileService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ProfileService.html" target="_self" >ProfileService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Serviço responsável pela interação com o backend para gerenciamento de perfil.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>toastrService</td>
+                                                  
+                                                        <td>
+                                                                    <code>ToastrService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Serviço para exibição de notificações ao usuário.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                    <code>Router</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Serviço para navegação entre as rotas do aplicativo.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>storageService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/StorageService.html" target="_self" >StorageService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Serviço para manipulação dos dados de sessão.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>dialogRef</td>
+                                                  
+                                                        <td>
+                                                                    <code>MatDialogRef&lt;EditUserDataComponent&gt;</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Referência ao modal atual, usada para gerenciar sua abertura e fechamento.</p>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>data</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Dados recebidos ao abrir o modal, contendo informações do usuário ativo.</p>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cancel"></a>
+                    <span class="name">
+                        <span ><b>cancel</b></span>
+                        <a href="#cancel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cancel()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="164"
+                                    class="link-to-prism">src/app/modules/core/profile/components/edit-user-data/edit-user-data.component.ts:164</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Cancela a edição de perfil e fecha o modal sem salvar alterações.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="cancelAvatarModal"></a>
+                    <span class="name">
+                        <span ><b>cancelAvatarModal</b></span>
+                        <a href="#cancelAvatarModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>cancelAvatarModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="134"
+                                    class="link-to-prism">src/app/modules/core/profile/components/edit-user-data/edit-user-data.component.ts:134</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Cancela a seleção de avatar, restaurando a opção anterior.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="closeAvatarModal"></a>
+                    <span class="name">
+                        <span ><b>closeAvatarModal</b></span>
+                        <a href="#closeAvatarModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>closeAvatarModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="127"
+                                    class="link-to-prism">src/app/modules/core/profile/components/edit-user-data/edit-user-data.component.ts:127</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Fecha o modal de seleção de avatar sem salvar alterações.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="78"
+                                    class="link-to-prism">src/app/modules/core/profile/components/edit-user-data/edit-user-data.component.ts:78</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Método do ciclo de vida executado ao inicializar o componente.
+Configura os dados do formulário e carrega as informações do usuário ativo.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="openAvatarModal"></a>
+                    <span class="name">
+                        <span ><b>openAvatarModal</b></span>
+                        <a href="#openAvatarModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>openAvatarModal()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="120"
+                                    class="link-to-prism">src/app/modules/core/profile/components/edit-user-data/edit-user-data.component.ts:120</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Abre o modal para seleção de avatar.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="saveAvatar"></a>
+                    <span class="name">
+                        <span ><b>saveAvatar</b></span>
+                        <a href="#saveAvatar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>saveAvatar()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="152"
+                                    class="link-to-prism">src/app/modules/core/profile/components/edit-user-data/edit-user-data.component.ts:152</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Salva as alterações realizadas no formulário e fecha o modal.
+Atualiza os dados do usuário ativo no backend.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectAvatar"></a>
+                    <span class="name">
+                        <span ><b>selectAvatar</b></span>
+                        <a href="#selectAvatar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>selectAvatar(index: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="144"
+                                    class="link-to-prism">src/app/modules/core/profile/components/edit-user-data/edit-user-data.component.ts:144</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Atualiza o avatar selecionado com base no índice fornecido.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>index</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Índice do avatar a ser selecionado.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="submit"></a>
+                    <span class="name">
+                        <span ><b>submit</b></span>
+                        <a href="#submit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>submit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="173"
+                                    class="link-to-prism">src/app/modules/core/profile/components/edit-user-data/edit-user-data.component.ts:173</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Submete o formulário de edição de perfil.
+Atualiza os dados no backend e na sessão local. Em caso de sucesso, recarrega a página e fecha o modal.
+Caso ocorra um erro, exibe uma mensagem de erro para o usuário.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="activeUser"></a>
+                    <span class="name">
+                        <span ><b>activeUser</b></span>
+                        <a href="#activeUser"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/I_Employee_View_Data.html" target="_self" >I_Employee_View_Data | null</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/modules/core/profile/components/edit-user-data/edit-user-data.component.ts:32</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Armazena os dados do usuário ativo exibidos no formulário.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="activeUserEdit"></a>
+                    <span class="name">
+                        <span ><b>activeUserEdit</b></span>
+                        <a href="#activeUserEdit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/I_Employee_Form_Data.html" target="_self" >I_Employee_Form_Data | null</a></code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/modules/core/profile/components/edit-user-data/edit-user-data.component.ts:36</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Armazena os dados editáveis do usuário, utilizados para atualização no backend.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="avatars"></a>
+                    <span class="name">
+                        <span ><b>avatars</b></span>
+                        <a href="#avatars"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>Array(20).fill(null)</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/modules/core/profile/components/edit-user-data/edit-user-data.component.ts:48</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de avatares disponíveis para seleção.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="data"></a>
+                    <span class="name">
+                            <span class="modifier"></span>
+                            <span class="modifier">Public</span>
+                        <span ><b>data</b></span>
+                        <a href="#data"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <b>Decorators : </b>
+                        <br />
+                        <code>
+                            @Inject(MAT_DIALOG_DATA)<br />
+                        </code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="67" class="link-to-prism">src/app/modules/core/profile/components/edit-user-data/edit-user-data.component.ts:67</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description">Dados recebidos ao abrir o modal, contendo informações do usuário ativo.</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="dialogRef"></a>
+                    <span class="name">
+                            <span class="modifier">Public</span>
+                        <span ><b>dialogRef</b></span>
+                        <a href="#dialogRef"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>MatDialogRef&lt;EditUserDataComponent&gt;</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="66" class="link-to-prism">src/app/modules/core/profile/components/edit-user-data/edit-user-data.component.ts:66</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description">Referência ao modal atual, usada para gerenciar sua abertura e fechamento.</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editForm"></a>
+                    <span class="name">
+                        <span ><b>editForm</b></span>
+                        <a href="#editForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>FormGroup</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/modules/core/profile/components/edit-user-data/edit-user-data.component.ts:28</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Representa o formulário de edição do perfil do usuário.
+Contém os campos <code>name</code>, <code>lastname</code>, <code>phone</code>, <code>sector</code>, <code>occupation</code> e <code>nop</code> com suas respectivas validações.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isAvatarModalOpen"></a>
+                    <span class="name">
+                        <span ><b>isAvatarModalOpen</b></span>
+                        <a href="#isAvatarModalOpen"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/modules/core/profile/components/edit-user-data/edit-user-data.component.ts:40</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Controle para exibição do modal de seleção de avatar.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedAvatar"></a>
+                    <span class="name">
+                        <span ><b>selectedAvatar</b></span>
+                        <a href="#selectedAvatar"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>    <code>number | undefined</code>
+
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/modules/core/profile/components/edit-user-data/edit-user-data.component.ts:44</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Armazena o índice do avatar selecionado pelo usuário.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-accessors">
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="name"></a>
+                        <span class="name"><b>name</b><a href="#name"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>name()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="110" class="link-to-prism">src/app/modules/core/profile/components/edit-user-data/edit-user-data.component.ts:110</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>Métodos de acesso aos campos do formulário para facilitar sua manipulação.</p>
+</div>
+
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="lastname"></a>
+                        <span class="name"><b>lastname</b><a href="#lastname"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>lastname()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="111" class="link-to-prism">src/app/modules/core/profile/components/edit-user-data/edit-user-data.component.ts:111</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="phone"></a>
+                        <span class="name"><b>phone</b><a href="#phone"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>phone()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="112" class="link-to-prism">src/app/modules/core/profile/components/edit-user-data/edit-user-data.component.ts:112</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sector"></a>
+                        <span class="name"><b>sector</b><a href="#sector"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>sector()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="113" class="link-to-prism">src/app/modules/core/profile/components/edit-user-data/edit-user-data.component.ts:113</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="occupation"></a>
+                        <span class="name"><b>occupation</b><a href="#occupation"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>occupation()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="114" class="link-to-prism">src/app/modules/core/profile/components/edit-user-data/edit-user-data.component.ts:114</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="nop"></a>
+                        <span class="name"><b>nop</b><a href="#nop"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>nop()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="115" class="link-to-prism">src/app/modules/core/profile/components/edit-user-data/edit-user-data.component.ts:115</a></div>
+                                </td>
+                            </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, Inject } from &#x27;@angular/core&#x27;;
+import { FormControl, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
+import { ToastrService } from &#x27;ngx-toastr&#x27;;
+import { I_Employee_View_Data } from &#x27;../../../../shared/interfaces/user/view/employee-view&#x27;;
+import { I_Employee_Form_Data } from &#x27;../../../../shared/interfaces/user/form/employee-form&#x27;;
+import { ProfileService } from &#x27;../../services/profile/profile.service&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { MAT_DIALOG_DATA, MatDialogRef } from &#x27;@angular/material/dialog&#x27;;
+import { StorageService } from &#x27;../../../../services/storage/storage.service&#x27;;
+import { HttpErrorResponse } from &#x27;@angular/common/http&#x27;;
+
+/**
+ * Componente para edição de dados do usuário.
+ * 
+ * Este componente fornece um formulário para que os usuários possam editar informações do perfil, como nome, telefone,
+ * setor, ocupação e agência. Também permite a seleção e atualização do avatar do usuário.
+ */
+@Component({
+  selector: &#x27;app-edit-user-data&#x27;,
+  templateUrl: &#x27;./edit-user-data.component.html&#x27;,
+  styleUrl: &#x27;./edit-user-data.component.css&#x27;,
+})
+export class EditUserDataComponent {
+  /**
+ * Representa o formulário de edição do perfil do usuário.
+ * Contém os campos &#x60;name&#x60;, &#x60;lastname&#x60;, &#x60;phone&#x60;, &#x60;sector&#x60;, &#x60;occupation&#x60; e &#x60;nop&#x60; com suas respectivas validações.
+ */
+  editForm!: FormGroup;
+  /**
+   * Armazena os dados do usuário ativo exibidos no formulário.
+  */
+  activeUser!: I_Employee_View_Data | null;
+  /**
+   * Armazena os dados editáveis do usuário, utilizados para atualização no backend.
+  */
+  activeUserEdit!: I_Employee_Form_Data | null;
+  /**
+    * Controle para exibição do modal de seleção de avatar.
+  */
+  isAvatarModalOpen &#x3D; false;
+  /**
+   * Armazena o índice do avatar selecionado pelo usuário.
+   */
+  selectedAvatar!: number | undefined;
+  /**
+   * Lista de avatares disponíveis para seleção.
+  */
+  avatars &#x3D; Array(20).fill(null);
+
+  /**
+   * Construtor do componente &#x60;EditUserDataComponent&#x60;.
+   * Injeta as dependências necessárias.
+   *
+   * @param profileService Serviço responsável pela interação com o backend para gerenciamento de perfil.
+   * @param toastrService Serviço para exibição de notificações ao usuário.
+   * @param router Serviço para navegação entre as rotas do aplicativo.
+   * @param storageService Serviço para manipulação dos dados de sessão.
+   * @param dialogRef Referência ao modal atual, usada para gerenciar sua abertura e fechamento.
+   * @param data Dados recebidos ao abrir o modal, contendo informações do usuário ativo.
+   */
+  constructor(
+    private profileService: ProfileService,
+    private toastrService: ToastrService,
+    private router: Router,
+    private storageService: StorageService,
+    public dialogRef: MatDialogRef&lt;EditUserDataComponent&gt;,
+    @Inject(MAT_DIALOG_DATA) public data: any
+  ) {
+    if (data &amp;&amp; data.activeUser) {
+      this.activeUser &#x3D; data.activeUser;
+    }
+  }
+
+  /**
+   * Método do ciclo de vida executado ao inicializar o componente.
+   * Configura os dados do formulário e carrega as informações do usuário ativo.
+   */
+  ngOnInit(): void {
+    this.selectedAvatar &#x3D; this.activeUser?.avatar;
+    this.activeUser &#x3D; this.storageService.getSessionProfile();
+    if (this.activeUser) {
+      this.activeUserEdit &#x3D; {
+        name: this.activeUser.name || &#x27;&#x27;,
+        lastname: this.activeUser.lastname || &#x27;&#x27;,
+        phoneNumber: this.activeUser.phoneNumber || &#x27;&#x27;,
+        sector: this.activeUser.sector || &#x27;&#x27;,
+        occupation: this.activeUser.occupation || &#x27;&#x27;,
+        agency: this.activeUser.agency || &#x27;&#x27;,
+        avatar: this.activeUser.avatar,
+      };
+    }
+
+    this.editForm &#x3D; new FormGroup({
+      name: new FormControl(this.activeUser?.name, [Validators.required]),
+      lastname: new FormControl(this.activeUser?.lastname, [Validators.required]),
+      phone: new FormControl(this.activeUser?.phoneNumber, [
+        Validators.required,
+        Validators.pattern(/^\(\d{2}\) \d{4,5}-\d{4}$/),
+      ]),
+      email: new FormControl(this.activeUser?.user.email, [Validators.required, Validators.email]),
+      sector: new FormControl(this.activeUser?.sector, [Validators.required]),
+      occupation: new FormControl(this.activeUser?.occupation, [Validators.required]),
+      nop: new FormControl(this.activeUser?.agency, [Validators.required]),
+    });
+  }
+
+  /**
+    * Métodos de acesso aos campos do formulário para facilitar sua manipulação.
+  */
+  get name() { return this.editForm.get(&#x27;name&#x27;)!; }
+  get lastname() { return this.editForm.get(&#x27;lastname&#x27;)!; }
+  get phone() { return this.editForm.get(&#x27;phone&#x27;)!; }
+  get sector() { return this.editForm.get(&#x27;sector&#x27;)!; }
+  get occupation() { return this.editForm.get(&#x27;occupation&#x27;)!; }
+  get nop() { return this.editForm.get(&#x27;nop&#x27;)!; }
+
+  /**
+  * Abre o modal para seleção de avatar.
+  */
+  openAvatarModal() {
+    this.isAvatarModalOpen &#x3D; true;
+  }
+
+  /**
+   * Fecha o modal de seleção de avatar sem salvar alterações.
+   */
+  closeAvatarModal() {
+    this.isAvatarModalOpen &#x3D; false;
+  }
+
+  /**
+   * Cancela a seleção de avatar, restaurando a opção anterior.
+   */
+  cancelAvatarModal() {
+    this.isAvatarModalOpen &#x3D; false;
+    this.selectedAvatar &#x3D; this.activeUser?.avatar;
+  }
+
+  /**
+   * Atualiza o avatar selecionado com base no índice fornecido.
+   *
+   * @param index Índice do avatar a ser selecionado.
+   */
+  selectAvatar(index: number) {
+    this.selectedAvatar &#x3D; index + 1;
+  }
+
+  /**
+   * Salva as alterações realizadas no formulário e fecha o modal.
+   * Atualiza os dados do usuário ativo no backend.
+   */
+  saveAvatar() {
+    if (this.selectedAvatar !&#x3D;&#x3D; null) {
+      this.activeUserEdit!.avatar &#x3D; this.selectedAvatar!;
+      this.closeAvatarModal();
+    } else {
+      this.toastrService.error(&#x27;Por favor, selecione um avatar!&#x27;);
+    }
+  }
+
+  /**
+   * Cancela a edição de perfil e fecha o modal sem salvar alterações.
+   */
+  cancel() {
+    this.dialogRef.close(this.activeUser);
+  }
+
+  /**
+   * Submete o formulário de edição de perfil.
+   * Atualiza os dados no backend e na sessão local. Em caso de sucesso, recarrega a página e fecha o modal.
+   * Caso ocorra um erro, exibe uma mensagem de erro para o usuário.
+   */
+  submit() {
+    if (this.editForm.invalid) {
+      this.toastrService.error(&quot;Preencha todos os campos!&quot;);
+      return;
+    }
+
+    this.activeUserEdit!.name &#x3D; this.name.value;
+    this.activeUserEdit!.lastname &#x3D; this.lastname.value;
+    this.activeUserEdit!.phoneNumber &#x3D; this.phone.value;
+    this.activeUserEdit!.sector &#x3D; this.sector.value;
+    this.activeUserEdit!.occupation &#x3D; this.occupation.value;
+    this.activeUserEdit!.agency &#x3D; this.nop.value;
+
+    this.profileService.updateProfileUser(this.activeUserEdit!, this.activeUser?.id).subscribe(
+      (response) &#x3D;&gt; {
+        this.toastrService.success(response.message);
+        this.storageService.setSessionProfile(response.data!);
+        setTimeout(() &#x3D;&gt; {
+          location.reload();
+        }, 1000);
+        this.dialogRef.close(this.activeUser);
+      },
+      (err: HttpErrorResponse) &#x3D;&gt; {
+        this.toastrService.error(err.error.message);
+      }
+    );
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;section class&#x3D;&quot;container-fluid&quot;&gt;
+  &lt;div class&#x3D;&quot;row d-flex justify-content-center align-items-center h-100&quot;&gt;
+    &lt;div class&#x3D;&quot;row g-0 swap-columns&quot;&gt;
+      &lt;div class&#x3D;&quot;card-body p-md-3 mx-md-4&quot;&gt;
+        &lt;div class&#x3D;&quot;text-center my-5&quot;&gt;
+          &lt;img [src]&#x3D;&quot;&#x27;/assets/images/avatars/&#x27; + (selectedAvatar || &#x27;default&#x27;) + &#x27;.png&#x27;&quot; alt&#x3D;&quot;Profile Image&quot;
+            class&#x3D;&quot;img-fluid img-profile rounded p-2 mb-3&quot; (click)&#x3D;&quot;openAvatarModal()&quot;&gt;
+        &lt;/div&gt;
+        &lt;form (ngSubmit)&#x3D;&quot;submit()&quot; [formGroup]&#x3D;&quot;editForm&quot; #formDir&#x3D;&quot;ngForm&quot;&gt;
+          &lt;div class&#x3D;&quot;row&quot;&gt;
+            &lt;div class&#x3D;&quot;col-md-6 mb-4&quot;&gt;
+              &lt;div class&#x3D;&quot;form-outline&quot;&gt;
+                &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-focus border-0 border-bottom border-2 w-100&quot; placeholder&#x3D;&quot;Nome&quot;
+                  formControlName&#x3D;&quot;name&quot; required /&gt;
+                &lt;div *ngIf&#x3D;&quot;name.invalid &amp;&amp; formDir.submitted&quot; class&#x3D;&quot;validation-warning&quot;&gt;
+                  &lt;p&gt;O nome é obrigatório!&lt;/p&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-md-6 mb-4&quot;&gt;
+              &lt;div class&#x3D;&quot;form-outline&quot;&gt;
+                &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-focus border-0 border-bottom border-2 w-100&quot; placeholder&#x3D;&quot;Sobrenome&quot;
+                  formControlName&#x3D;&quot;lastname&quot; required /&gt;
+                &lt;div *ngIf&#x3D;&quot;lastname.invalid &amp;&amp; formDir.submitted&quot; class&#x3D;&quot;validation-warning&quot;&gt;
+                  &lt;p&gt;O sobrenome é obrigatório!&lt;/p&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;form-outline mb-4&quot;&gt;
+            &lt;input type&#x3D;&quot;email&quot; class&#x3D;&quot;form-focus border-0 border-bottom border-2 w-100&quot; placeholder&#x3D;&quot;E-mail&quot;
+              formControlName&#x3D;&quot;email&quot; required readonly /&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;form-outline mb-4&quot;&gt;
+            &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-focus border-0 border-bottom border-2 w-100&quot; placeholder&#x3D;&quot;Telefone&quot;
+              formControlName&#x3D;&quot;phone&quot; required appPhoneMask /&gt;
+            &lt;div *ngIf&#x3D;&quot;phone.invalid &amp;&amp; formDir.submitted&quot; class&#x3D;&quot;validation-warning&quot;&gt;
+              &lt;p *ngIf&#x3D;&quot;phone.errors?.[&#x27;required&#x27;]&quot;&gt;O telefone é obrigatório!&lt;/p&gt;
+              &lt;p *ngIf&#x3D;&quot;phone.errors?.[&#x27;pattern&#x27;]&quot;&gt;Por favor, insira um número de telefone válido no formato
+                (XX)
+                XXXXX-XXXX ou (XX) XXXX-XXXX.&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;row&quot;&gt;
+            &lt;div class&#x3D;&quot;col-md-6 mb-4&quot;&gt;
+              &lt;div class&#x3D;&quot;form-outline&quot;&gt;
+                &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-focus border-0 border-bottom border-2 w-100&quot;
+                  placeholder&#x3D;&quot;Setor/Departamento&quot; formControlName&#x3D;&quot;sector&quot; required /&gt;
+                &lt;div *ngIf&#x3D;&quot;sector.invalid &amp;&amp; formDir.submitted&quot; class&#x3D;&quot;validation-warning&quot;&gt;
+                  &lt;p&gt;O setor é obrigatório!&lt;/p&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;col-md-6 mb-4&quot;&gt;
+              &lt;div class&#x3D;&quot;form-outline&quot;&gt;
+                &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-focus border-0 border-bottom border-2 w-100&quot; placeholder&#x3D;&quot;Função&quot;
+                  formControlName&#x3D;&quot;occupation&quot; required /&gt;
+                &lt;div *ngIf&#x3D;&quot;occupation.invalid &amp;&amp; formDir.submitted&quot; class&#x3D;&quot;validation-warning&quot;&gt;
+                  &lt;p&gt;A função é obrigatória!&lt;/p&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;form-outline mb-4&quot;&gt;
+            &lt;input type&#x3D;&quot;text&quot; class&#x3D;&quot;form-focus border-0 border-bottom border-2 w-100&quot;
+              placeholder&#x3D;&quot;Núcleo Operacional de Origem/Agência&quot; formControlName&#x3D;&quot;nop&quot; required /&gt;
+            &lt;div *ngIf&#x3D;&quot;nop.invalid &amp;&amp; formDir.submitted&quot; class&#x3D;&quot;validation-warning&quot;&gt;
+              &lt;p&gt;O NOP/Agência é obrigatório!&lt;/p&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+
+          &lt;div class&#x3D;&quot;text-end&quot;&gt;
+            &lt;button class&#x3D;&quot;btn me-md-2 btn-outline-danger&quot; type&#x3D;&quot;button&quot; (click)&#x3D;&quot;cancel()&quot;&gt;Cancelar&lt;/button&gt;
+            &lt;button class&#x3D;&quot;btn btn-success&quot; type&#x3D;&quot;submit&quot;&gt;Salvar&lt;/button&gt;
+          &lt;/div&gt;
+
+        &lt;/form&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+
+&lt;div *ngIf&#x3D;&quot;isAvatarModalOpen&quot; class&#x3D;&quot;avatar-modal&quot;&gt;
+  &lt;div class&#x3D;&quot;avatar-modal-content&quot;&gt;
+    &lt;h4&gt;Escolha um avatar&lt;/h4&gt;
+    &lt;div class&#x3D;&quot;avatar-options row g-1&quot;&gt;
+      &lt;div *ngFor&#x3D;&quot;let avatar of avatars; let i &#x3D; index&quot; class&#x3D;&quot;col-6 col-sm-4 col-md-3&quot;&gt;
+        &lt;div class&#x3D;&quot;avatar-option&quot; [ngClass]&#x3D;&quot;{&#x27;selected&#x27;: selectedAvatar &#x3D;&#x3D;&#x3D; i + 1}&quot; (click)&#x3D;&quot;selectAvatar(i)&quot;&gt;
+          &lt;img [src]&#x3D;&quot;&#x27;/assets/images/avatars/&#x27; + (i + 1) + &#x27;.png&#x27;&quot; alt&#x3D;&quot;Avatar {{i + 1}}&quot; class&#x3D;&quot;img-fluid avatar-img&quot; /&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;d-flex justify-content-center gap-3 my-4&quot;&gt;
+      &lt;button class&#x3D;&quot;btn btn-secondary&quot; (click)&#x3D;&quot;cancelAvatarModal()&quot;&gt;Cancelar&lt;/button&gt;
+      &lt;button class&#x3D;&quot;btn btn-success&quot; (click)&#x3D;&quot;saveAvatar()&quot;&gt;Salvar&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><section class="container-fluid">  <div class="row d-flex justify-content-center align-items-center h-100">    <div class="row g-0 swap-columns">      <div class="card-body p-md-3 mx-md-4">        <div class="text-center my-5">          <img [src]="\'/assets/images/avatars/\' + (selectedAvatar || \'default\') + \'.png\'" alt="Profile Image"            class="img-fluid img-profile rounded p-2 mb-3" (click)="openAvatarModal()">        </div>        <form (ngSubmit)="submit()" [formGroup]="editForm" #formDir="ngForm">          <div class="row">            <div class="col-md-6 mb-4">              <div class="form-outline">                <input type="text" class="form-focus border-0 border-bottom border-2 w-100" placeholder="Nome"                  formControlName="name" required />                <div *ngIf="name.invalid && formDir.submitted" class="validation-warning">                  <p>O nome é obrigatório!</p>                </div>              </div>            </div>            <div class="col-md-6 mb-4">              <div class="form-outline">                <input type="text" class="form-focus border-0 border-bottom border-2 w-100" placeholder="Sobrenome"                  formControlName="lastname" required />                <div *ngIf="lastname.invalid && formDir.submitted" class="validation-warning">                  <p>O sobrenome é obrigatório!</p>                </div>              </div>            </div>          </div>          <div class="form-outline mb-4">            <input type="email" class="form-focus border-0 border-bottom border-2 w-100" placeholder="E-mail"              formControlName="email" required readonly />          </div>          <div class="form-outline mb-4">            <input type="text" class="form-focus border-0 border-bottom border-2 w-100" placeholder="Telefone"              formControlName="phone" required appPhoneMask />            <div *ngIf="phone.invalid && formDir.submitted" class="validation-warning">              <p *ngIf="phone.errors?.[\'required\']">O telefone é obrigatório!</p>              <p *ngIf="phone.errors?.[\'pattern\']">Por favor, insira um número de telefone válido no formato                (XX)                XXXXX-XXXX ou (XX) XXXX-XXXX.</p>            </div>          </div>          <div class="row">            <div class="col-md-6 mb-4">              <div class="form-outline">                <input type="text" class="form-focus border-0 border-bottom border-2 w-100"                  placeholder="Setor/Departamento" formControlName="sector" required />                <div *ngIf="sector.invalid && formDir.submitted" class="validation-warning">                  <p>O setor é obrigatório!</p>                </div>              </div>            </div>            <div class="col-md-6 mb-4">              <div class="form-outline">                <input type="text" class="form-focus border-0 border-bottom border-2 w-100" placeholder="Função"                  formControlName="occupation" required />                <div *ngIf="occupation.invalid && formDir.submitted" class="validation-warning">                  <p>A função é obrigatória!</p>                </div>              </div>            </div>          </div>          <div class="form-outline mb-4">            <input type="text" class="form-focus border-0 border-bottom border-2 w-100"              placeholder="Núcleo Operacional de Origem/Agência" formControlName="nop" required />            <div *ngIf="nop.invalid && formDir.submitted" class="validation-warning">              <p>O NOP/Agência é obrigatório!</p>            </div>          </div>          <div class="text-end">            <button class="btn me-md-2 btn-outline-danger" type="button" (click)="cancel()">Cancelar</button>            <button class="btn btn-success" type="submit">Salvar</button>          </div>        </form>      </div>    </div>  </div></section><div *ngIf="isAvatarModalOpen" class="avatar-modal">  <div class="avatar-modal-content">    <h4>Escolha um avatar</h4>    <div class="avatar-options row g-1">      <div *ngFor="let avatar of avatars; let i = index" class="col-6 col-sm-4 col-md-3">        <div class="avatar-option" [ngClass]="{\'selected\': selectedAvatar === i + 1}" (click)="selectAvatar(i)">          <img [src]="\'/assets/images/avatars/\' + (i + 1) + \'.png\'" alt="Avatar {{i + 1}}" class="img-fluid avatar-img" />        </div>      </div>    </div>    <div class="d-flex justify-content-center gap-3 my-4">      <button class="btn btn-secondary" (click)="cancelAvatarModal()">Cancelar</button>      <button class="btn btn-success" (click)="saveAvatar()">Salvar</button>    </div>  </div></div></div>'
+    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
+    var DIRECTIVES = [{'name': 'CapitalizeDirective', 'selector': '[appCapitalize]'},{'name': 'ColorClassDirective', 'selector': '[colorClass], [backgroundColorClass], [borderColorClass]'},{'name': 'DndDirective', 'selector': '[appDndDirective]'},{'name': 'PhoneMaskDirective', 'selector': '[appPhoneMask]'}];
+    var ACTUAL_COMPONENT = {'name': 'EditUserDataComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'EditUserDataComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

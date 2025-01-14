@@ -1,0 +1,65 @@
+.bg-color-system {
+    background-color: #027373;
+}
+
+input {
+    margin-top: .5rem;
+}
+
+.bg-color-menu {
+    background-color: #03A696;
+}
+
+.form-focus:focus {
+    border: none;
+    outline: none;
+}
+
+.bg-hover:hover {
+    background-color: #03A696;
+}
+
+.shadow-custom {
+    box-shadow: 3px 4.5px 4px rgba(0, 0, 0, 0.3);
+}
+
+.text-custom {
+    color: #027373 !important;
+    font-weight: 600;
+}
+
+.text-custom:hover {
+    text-decoration: underline !important;
+    cursor: pointer;
+}
+
+.card-scale {
+    transform: scale(.9);
+    transform-origin: center;
+}
+
+
+.overflow-custom {
+    height: 75vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+.title-underline {
+    width: auto;
+    height: 3px;
+    background-color: #03A696;
+}
+
+::-webkit-scrollbar {
+    height: 6px;
+    width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #027373;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #03A696;
+}

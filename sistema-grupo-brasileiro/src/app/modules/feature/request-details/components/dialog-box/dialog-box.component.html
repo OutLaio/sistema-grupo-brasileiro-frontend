@@ -1,0 +1,102 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="card shadow-custom">
+
+        <div class="bg-modal modal rounded" *ngIf="isModalOpen">
+          <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content bg-white p-3 rounded-4">
+              <div class="modal-header">
+                <p class="modal-title mb-0">Selecione um novo colaborador</p>
+              </div>
+              <div class="modal-body d-flex flex-column gap-2">
+                <div *ngFor="let c of allCollaborators">
+                  <div *ngIf="c.id != project?.collaborator?.id">
+                    <input type="radio" class="btn-check" name="options-outlined" id="{{ c.id }}"
+                      autocomplete="off" [(ngModel)]="selectedCollaborator" [value]="c">
+                    <label class="btn btn-outline-success d-flex gap-2 align-items-center" for="{{ c.id }}">
+                      <img src="/assets/images/avatars/{{c.avatar}}.png" alt="{{c.avatar}} Avatar">
+                      <p class="mb-0">{{ c.name }}</p>
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary btn-sm" (click)="closeModal()">Fechar</button>
+                <button type="button" class="btn btn-bd-primary btn-sm" (click)="selectCollaborator()">Alterar</button>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <ng-template #no_collaborator>
+          <div
+            class="card-header text-white p-3 d-flex align-items-center justify-content-between bg-system">
+            <div class="col-xl-8 col-lg-6 d-flex gap-3 align-items-center">
+              <img src="/assets/images/avatars/99.png" alt="Default Avatar" width="40px" height="40px">
+              <div>
+                <p class="small-text mb-0">Colaborador Atual</p>
+                <p class="mb-0">Nenhum colaborador associado!</p>
+              </div>
+            </div>
+
+            <div *ngIf="canEdit()" class="col-xl-4 col-lg-6 d-flex justify-content-between">
+              <button class="btn btn-bd-primary btn-sm border w-100 py-2" (click)="showModalAlterColaborator()">Atribuir
+                Colaborador</button>
+            </div>
+          </div>
+        </ng-template>
+
+        <div *ngIf="project?.collaborator; else no_collaborator">
+          <div class="card-header text-white p-3 d-flex align-items-center justify-content-between bg-system">
+            <div class="d-flex gap-3 align-items-center">
+              <img src="/assets/images/avatars/{{project?.collaborator?.avatar}}.png" alt="{{project?.collaborator?.fullName}} Avatar" width="40px" height="40px">
+              <div>
+                <p class="small-text mb-0">Colaborador Atual</p>
+                <p class="mb-0"> {{ project?.collaborator?.fullName }} </p>
+              </div>
+            </div>
+
+            <div *ngIf="canEdit()" class="d-flex gap-3">
+              <button class="btn btn-bd-primary btn-sm border" (click)="showModalAlterColaborator()" style="height: 40px">Alterar
+                Colaborador</button>
+            </div>
+
+          </div>
+        </div>
+
+        <div class="card-body p-4 card-scroll scroll-bar" #scrollableContent>
+          <div class="row">
+            <div *ngFor="let message of messages">
+
+              <div class="d-flex gap-3 my-1 system-message"
+                [ngClass]="{
+                  'your-message': isMyMessage(message) === true,
+                  'their-message': isMyMessage(message) === false,
+                  'system-message': isMyMessage(message) === null,
+                }">
+                <img src="/assets/images/avatars/{{message.employee.avatar}}.png" id="message-img" alt="{{message.employee.fullName}} Avatar" height="40px">
+                <div class="d-flex flex-column" id="message-box">
+                  <div class="p-2 mb-1 rounded-4" id="message-content">
+                    <p class="text-conversation mb-0 fw-bold fst-italic" id="employee" style="color: #026d56;"> {{message.employee.fullName }} </p>
+                    <p class="text-conversation px-3 mb-0"> {{ message.dialog }} </p>
+                  </div>
+                  <span class="fst-italic" style="font-size: 12px;"> {{ message.time | date: "dd/MM/yy HH:mm" }} </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer p-3">
+          <div class="input-group gap-2">
+            <input type="text" class="form-control p-2 rounded text-conversation" placeholder="Digite sua mensagem..."
+              [disabled]="isFinished()" aria-describedby="button-addon2" [(ngModel)]="messageText">
+            <button class="btn btn-bd-primary px-3 rounded" type="button" id="button-addon2"
+              [disabled]="isFinished()" (click)="newMessage()">Enviar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

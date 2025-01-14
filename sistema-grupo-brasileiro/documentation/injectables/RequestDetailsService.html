@@ -1,0 +1,1989 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>sistema-grupo-brasileiro documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">sistema-grupo-brasileiro documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content injectable">
+                   <div class="content-data">
+
+
+
+
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Injectables</li>
+  <li class="breadcrumb-item" >RequestDetailsService</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info"
+                class="nav-link"
+                class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source"
+                class="nav-link"
+
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info">
+        <p class="comment">
+            <h3>File</h3>
+        </p>
+        <p class="comment">
+            <code>src/app/modules/feature/request-details/services/request-details/request-details.service.ts</code>
+        </p>
+
+
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Serviço responsável por interagir com a API para obter e modificar informações detalhadas sobre solicitações de projeto.
+Ele realiza operações como obter detalhes de uma solicitação, adicionar diálogos, atribuir colaboradores, e gerenciar versões e status de projetos.</p>
+
+            </p>
+
+
+
+            <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#baseUrl" >baseUrl</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#assignCollaborator" >assignCollaborator</a>
+                            </li>
+                            <li>
+                                <a href="#clientApproval" >clientApproval</a>
+                            </li>
+                            <li>
+                                <a href="#finishProject" >finishProject</a>
+                            </li>
+                            <li>
+                                <a href="#getAllCollaborators" >getAllCollaborators</a>
+                            </li>
+                            <li>
+                                <a href="#getDialoguesByRequestId" >getDialoguesByRequestId</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Private</span>
+                                <a href="#getHeaders" >getHeaders</a>
+                            </li>
+                            <li>
+                                <a href="#getRequestDetailsById" >getRequestDetailsById</a>
+                            </li>
+                            <li>
+                                <a href="#hasProduction" >hasProduction</a>
+                            </li>
+                            <li>
+                                <a href="#newVersion" >newVersion</a>
+                            </li>
+                            <li>
+                                <a href="#setNewDialogue" >setNewDialogue</a>
+                            </li>
+                            <li>
+                                <a href="#supervisorApproval" >supervisorApproval</a>
+                            </li>
+                            <li>
+                                <a href="#updateDate" >updateDate</a>
+                            </li>
+                            <li>
+                                <a href="#updateStatus" >updateStatus</a>
+                            </li>
+                            <li>
+                                <a href="#updateTitle" >updateTitle</a>
+                            </li>
+                            <li>
+                                <a href="#uploadFile" >uploadFile</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+            <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(http: HttpClient, collaboratorsService: <a href="../injectables/ListCollaboratorsService.html" target="_self">ListCollaboratorsService</a>, cookieService: CookieService)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:28</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Construtor do serviço RequestDetailsService.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>http</td>
+
+                                                        <td>
+                                                                    <code>HttpClient</code>
+                                                        </td>
+
+                                                    <td>
+                                                            No
+                                                    </td>
+
+                                                        <td>
+                                                                <ul>
+<li>Serviço HTTP do Angular para realizar requisições à API.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>collaboratorsService</td>
+
+                                                        <td>
+                                                                        <code><a href="../injectables/ListCollaboratorsService.html" target="_self" >ListCollaboratorsService</a></code>
+                                                        </td>
+
+                                                    <td>
+                                                            No
+                                                    </td>
+
+                                                        <td>
+                                                                <ul>
+<li>Serviço para manipular dados dos colaboradores.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                                <tr>
+                                                        <td>cookieService</td>
+
+                                                        <td>
+                                                                    <code>CookieService</code>
+                                                        </td>
+
+                                                    <td>
+                                                            No
+                                                    </td>
+
+                                                        <td>
+                                                                <ul>
+<li>Serviço para acessar cookies no navegador.</li>
+</ul>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+            <section data-compodoc="block-methods">
+
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="assignCollaborator"></a>
+                    <span class="name">
+                        <span ><b>assignCollaborator</b></span>
+                        <a href="#assignCollaborator"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>assignCollaborator(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, request: <a href="../interfaces/I_Assign_Collaborator_Request.html" target="_self">I_Assign_Collaborator_Request</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="108"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:108</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Atribui um colaborador a um projeto específico.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>ID do projeto.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>request</td>
+                                            <td>
+                                                            <code><a href="../interfaces/I_Assign_Collaborator_Request.html" target="_self" >I_Assign_Collaborator_Request</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Dados do colaborador a ser atribuído.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <ul>
+<li>Observable da resposta da API.</li>
+</ul>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clientApproval"></a>
+                    <span class="name">
+                        <span ><b>clientApproval</b></span>
+                        <a href="#clientApproval"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clientApproval(projectId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, request: <a href="../interfaces/I_Approve_Request.html" target="_self">I_Approve_Request</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="144"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:144</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Aprova um projeto por um cliente.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>projectId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>ID do projeto.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>request</td>
+                                            <td>
+                                                            <code><a href="../interfaces/I_Approve_Request.html" target="_self" >I_Approve_Request</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Dados de aprovação do cliente.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <ul>
+<li>Observable com a versão aprovada.</li>
+</ul>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="finishProject"></a>
+                    <span class="name">
+                        <span ><b>finishProject</b></span>
+                        <a href="#finishProject"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>finishProject(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="203"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:203</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Finaliza um projeto.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>ID do projeto.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <ul>
+<li>Observable da resposta da API.</li>
+</ul>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAllCollaborators"></a>
+                    <span class="name">
+                        <span ><b>getAllCollaborators</b></span>
+                        <a href="#getAllCollaborators"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAllCollaborators(page: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, size: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="96"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:96</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Obtém a lista de colaboradores.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>page</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Número da página.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>size</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Número de itens por página.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <ul>
+<li>Observable contendo a lista de colaboradores.</li>
+</ul>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getDialoguesByRequestId"></a>
+                    <span class="name">
+                        <span ><b>getDialoguesByRequestId</b></span>
+                        <a href="#getDialoguesByRequestId"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getDialoguesByRequestId(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="73"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:73</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Obtém todos os diálogos associados a uma solicitação de projeto usando seu ID.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>ID da solicitação.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <ul>
+<li>Observable contendo a lista de diálogos associados.</li>
+</ul>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getHeaders"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>getHeaders</b></span>
+                        <a href="#getHeaders"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                        <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>getHeaders()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="48"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:48</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Obtém os cabeçalhos de autorização usando o token de autenticação armazenado no cookie.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <ul>
+<li>Cabeçalhos de requisição com o token de autenticação.</li>
+</ul>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getRequestDetailsById"></a>
+                    <span class="name">
+                        <span ><b>getRequestDetailsById</b></span>
+                        <a href="#getRequestDetailsById"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getRequestDetailsById(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="61"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:61</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Obtém os detalhes de uma solicitação de projeto usando seu ID.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>ID do projeto.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <ul>
+<li>Observable contendo a resposta da API com os detalhes do briefing.</li>
+</ul>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="hasProduction"></a>
+                    <span class="name">
+                        <span ><b>hasProduction</b></span>
+                        <a href="#hasProduction"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>hasProduction(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, hasConfection: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="192"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:192</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Verifica se um projeto tem produção (confecção) associada.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>ID do projeto.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>hasConfection</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Indicador se há produção.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <ul>
+<li>Observable da resposta da API.</li>
+</ul>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="newVersion"></a>
+                    <span class="name">
+                        <span ><b>newVersion</b></span>
+                        <a href="#newVersion"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>newVersion(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, request: <a href="../interfaces/I_New_Version_Request.html" target="_self">I_New_Version_Request</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="120"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:120</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Cria uma nova versão de um projeto.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>ID do projeto.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>request</td>
+                                            <td>
+                                                            <code><a href="../interfaces/I_New_Version_Request.html" target="_self" >I_New_Version_Request</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Dados da nova versão.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <ul>
+<li>Observable com os dados da versão criada.</li>
+</ul>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="setNewDialogue"></a>
+                    <span class="name">
+                        <span ><b>setNewDialogue</b></span>
+                        <a href="#setNewDialogue"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>setNewDialogue(request: <a href="../interfaces/I_Dialog_Box_Request.html" target="_self">I_Dialog_Box_Request</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="84"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:84</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Cria um novo diálogo associado a uma solicitação de projeto.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>request</td>
+                                            <td>
+                                                            <code><a href="../interfaces/I_Dialog_Box_Request.html" target="_self" >I_Dialog_Box_Request</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Dados do diálogo a ser criado.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <ul>
+<li>Observable contendo a resposta da API.</li>
+</ul>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="supervisorApproval"></a>
+                    <span class="name">
+                        <span ><b>supervisorApproval</b></span>
+                        <a href="#supervisorApproval"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>supervisorApproval(projectId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, request: <a href="../interfaces/I_Approve_Request.html" target="_self">I_Approve_Request</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="132"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:132</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Aprova um projeto por um supervisor.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>projectId</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>ID do projeto.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>request</td>
+                                            <td>
+                                                            <code><a href="../interfaces/I_Approve_Request.html" target="_self" >I_Approve_Request</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Dados de aprovação do supervisor.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <ul>
+<li>Observable com a versão aprovada.</li>
+</ul>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateDate"></a>
+                    <span class="name">
+                        <span ><b>updateDate</b></span>
+                        <a href="#updateDate"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateDate(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, request: <a href="../interfaces/I_Alter_Date_Request.html" target="_self">I_Alter_Date_Request</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="168"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:168</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Atualiza a data de um projeto.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>ID do projeto.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>request</td>
+                                            <td>
+                                                            <code><a href="../interfaces/I_Alter_Date_Request.html" target="_self" >I_Alter_Date_Request</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Dados da nova data.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <ul>
+<li>Observable da resposta da API.</li>
+</ul>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateStatus"></a>
+                    <span class="name">
+                        <span ><b>updateStatus</b></span>
+                        <a href="#updateStatus"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateStatus(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, request: <a href="../interfaces/I_Alter_Status_Request.html" target="_self">I_Alter_Status_Request</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="180"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:180</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Atualiza o status de um projeto.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>ID do projeto.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>request</td>
+                                            <td>
+                                                            <code><a href="../interfaces/I_Alter_Status_Request.html" target="_self" >I_Alter_Status_Request</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Dados do novo status.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <ul>
+<li>Observable da resposta da API.</li>
+</ul>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateTitle"></a>
+                    <span class="name">
+                        <span ><b>updateTitle</b></span>
+                        <a href="#updateTitle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateTitle(id: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, request: <a href="../interfaces/I_Alter_Title_Request.html" target="_self">I_Alter_Title_Request</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="156"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:156</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Atualiza o título de um projeto.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>id</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>ID do projeto.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>request</td>
+                                            <td>
+                                                            <code><a href="../interfaces/I_Alter_Title_Request.html" target="_self" >I_Alter_Title_Request</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Dados do novo título.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <ul>
+<li>Observable da resposta da API.</li>
+</ul>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="uploadFile"></a>
+                    <span class="name">
+                        <span ><b>uploadFile</b></span>
+                        <a href="#uploadFile"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>uploadFile(file: File)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="214"
+                                    class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:214</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Faz o upload de um arquivo.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>file</td>
+                                            <td>
+                                                        <code>File</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <ul>
+<li>Arquivo a ser enviado.</li>
+</ul>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <ul>
+<li>Observable com a resposta do upload.</li>
+</ul>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+            <section data-compodoc="block-properties">
+
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="baseUrl"></a>
+                    <span class="name">
+                            <span class="modifier">Private</span>
+                        <span ><b>baseUrl</b></span>
+                        <a href="#baseUrl"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;http://54.200.23.253:8000/api/v1&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/modules/feature/request-details/services/request-details/request-details.service.ts:28</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>URL base para as requisições da service.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+    </div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
+import { HttpClient, HttpHeaders } from &#x27;@angular/common/http&#x27;;
+import { I_Dialog_Box_Response } from &#x27;../../../../shared/interfaces/dialog-box/view/dialog-box-view&#x27;;
+import { I_Dialog_Box_Request } from &#x27;../../../../shared/interfaces/dialog-box/form/dialog-box-form&#x27;;
+import { I_Assign_Collaborator_Request } from &#x27;../../../../shared/interfaces/project/form/assign-collaborator-form&#x27;;
+import { I_New_Version_Request } from &#x27;../../../../shared/interfaces/project/form/new-version-form&#x27;;
+import { I_Version_Data } from &#x27;../../../../shared/interfaces/project/view/version-view&#x27;;
+import { I_Approve_Request } from &#x27;../../../../shared/interfaces/project/form/approve-form&#x27;;
+import { I_Alter_Title_Request } from &#x27;../../../../shared/interfaces/project/form/alter-title-form&#x27;;
+import { I_Alter_Date_Request } from &#x27;../../../../shared/interfaces/project/form/alter-date-form&#x27;;
+import { I_Api_Response } from &#x27;../../../../shared/interfaces/api-response&#x27;;
+import { I_Any_Briefing } from &#x27;../../../../shared/interfaces/briefing/any-briefing&#x27;;
+import { ListCollaboratorsService } from &#x27;../../../collaborator/list-collaborators/services/list-collaborators.service&#x27;;
+import { I_Alter_Status_Request } from &#x27;../../../../shared/interfaces/project/form/alter-status-form&#x27;;
+import { I_Upload_Response } from &#x27;../../../../shared/interfaces/upload/upload-file-view&#x27;;
+import { CookieService } from &#x27;ngx-cookie-service&#x27;;
+
+/**
+ * Serviço responsável por interagir com a API para obter e modificar informações detalhadas sobre solicitações de projeto.
+ * Ele realiza operações como obter detalhes de uma solicitação, adicionar diálogos, atribuir colaboradores, e gerenciar versões e status de projetos.
+ */
+@Injectable({
+  providedIn: &#x27;root&#x27;,
+})
+export class RequestDetailsService {
+
+  /** URL base para as requisições da service. */
+  private baseUrl &#x3D; &#x27;http://54.200.23.253:8000/api/v1&#x27;;
+
+  /**
+   * Construtor do serviço RequestDetailsService.
+   *
+   * @param {HttpClient} http - Serviço HTTP do Angular para realizar requisições à API.
+   * @param {ListCollaboratorsService} collaboratorsService - Serviço para manipular dados dos colaboradores.
+   * @param {CookieService} cookieService - Serviço para acessar cookies no navegador.
+   */
+  constructor(
+    private http: HttpClient,
+    private collaboratorsService: ListCollaboratorsService,
+    private cookieService: CookieService
+  ) { }
+
+  /**
+   * Obtém os cabeçalhos de autorização usando o token de autenticação armazenado no cookie.
+   *
+   * @returns {HttpHeaders} - Cabeçalhos de requisição com o token de autenticação.
+   */
+  private getHeaders() {
+    const token &#x3D; this.cookieService.get(&#x27;auth-token&#x27;) || &#x27;&#x27;;
+    return new HttpHeaders({
+      Authorization: &#x60;Bearer ${token}&#x60;,
+    });
+  }
+
+  /**
+    * Obtém os detalhes de uma solicitação de projeto usando seu ID.
+    *
+    * @param {string} id - ID do projeto.
+    * @returns {Observable&lt;I_Api_Response&lt;I_Any_Briefing&gt;&gt;} - Observable contendo a resposta da API com os detalhes do briefing.
+  */
+  getRequestDetailsById(id: string) {
+    const url &#x3D; &#x60;${this.baseUrl}/projects/${id}&#x60;;
+    return this.http.get&lt;I_Api_Response&lt;I_Any_Briefing&gt;&gt;(url, { headers: this.getHeaders() });
+  }
+
+  /**
+   * Obtém todos os diálogos associados a uma solicitação de projeto usando seu ID.
+   *
+   * @param {string} id - ID da solicitação.
+   * @returns {Observable&lt;I_Api_Response&lt;I_Dialog_Box_Response[]&gt;&gt;} - Observable contendo a lista de diálogos associados.
+   *
+   */
+  getDialoguesByRequestId(id: string) {
+    const url &#x3D; &#x60;${this.baseUrl}/dialogs/briefing/${id}&#x60;;
+    return this.http.get&lt;I_Api_Response&lt;I_Dialog_Box_Response[]&gt;&gt;(url, { headers: this.getHeaders() });
+  }
+
+  /**
+   * Cria um novo diálogo associado a uma solicitação de projeto.
+   *
+   * @param {I_Dialog_Box_Request} request - Dados do diálogo a ser criado.
+   * @returns {Observable&lt;I_Api_Response&lt;I_Dialog_Box_Response&gt;&gt;} - Observable contendo a resposta da API.
+   */
+  setNewDialogue(request: I_Dialog_Box_Request) {
+    const url &#x3D; &#x60;${this.baseUrl}/dialogs&#x60;;
+    return this.http.post&lt;I_Api_Response&lt;I_Dialog_Box_Response&gt;&gt;(url, request, { headers: this.getHeaders() });
+  }
+
+  /**
+   * Obtém a lista de colaboradores.
+   *
+   * @param {number} page - Número da página.
+   * @param {number} size - Número de itens por página.
+   * @returns {Observable&lt;I_Api_Response&lt;I_Collaborator[]&gt;&gt;} - Observable contendo a lista de colaboradores.
+   */
+  getAllCollaborators(page: number, size: number) {
+    return this.collaboratorsService.getAllCollaborators(page, size);
+  }
+
+  /**
+   * Atribui um colaborador a um projeto específico.
+   *
+   * @param {string} id - ID do projeto.
+   * @param {I_Assign_Collaborator_Request} request - Dados do colaborador a ser atribuído.
+   * @returns {Observable&lt;I_Api_Response&lt;void&gt;&gt;} - Observable da resposta da API.
+   *
+   */
+  assignCollaborator(id: string, request: I_Assign_Collaborator_Request) {
+    const url &#x3D; &#x60;${this.baseUrl}/projects/${id}/assignCollaborator&#x60;;
+    return this.http.put&lt;I_Api_Response&lt;void&gt;&gt;(url, request, { headers: this.getHeaders() });
+  }
+
+  /**
+   * Cria uma nova versão de um projeto.
+   *
+   * @param {string} id - ID do projeto.
+   * @param {I_New_Version_Request} request - Dados da nova versão.
+   * @returns {Observable&lt;I_Api_Response&lt;I_Version_Data&gt;&gt;} - Observable com os dados da versão criada.
+   */
+  newVersion(id: string, request: I_New_Version_Request) {
+    const url &#x3D; &#x60;${this.baseUrl}/projects/${id}/newVersion&#x60;;
+    return this.http.put&lt;I_Api_Response&lt;I_Version_Data&gt;&gt;(url, request, { headers: this.getHeaders() });
+  }
+
+  /**
+   * Aprova um projeto por um supervisor.
+   *
+   * @param {string} projectId - ID do projeto.
+   * @param {I_Approve_Request} request - Dados de aprovação do supervisor.
+   * @returns {Observable&lt;I_Api_Response&lt;I_Version_Data&gt;&gt;} - Observable com a versão aprovada.
+   */
+  supervisorApproval(projectId: string, request: I_Approve_Request) {
+    const url &#x3D; &#x60;${this.baseUrl}/projects/${projectId}/approve/supervisor&#x60;;
+    return this.http.put&lt;I_Api_Response&lt;I_Version_Data&gt;&gt;(url, request, { headers: this.getHeaders() });
+  }
+
+  /**
+   * Aprova um projeto por um cliente.
+   *
+   * @param {string} projectId - ID do projeto.
+   * @param {I_Approve_Request} request - Dados de aprovação do cliente.
+   * @returns {Observable&lt;I_Api_Response&lt;I_Version_Data&gt;&gt;} - Observable com a versão aprovada.
+   */
+  clientApproval(projectId: string, request: I_Approve_Request) {
+    const url &#x3D; &#x60;${this.baseUrl}/projects/${projectId}/approve/client&#x60;;
+    return this.http.put&lt;I_Api_Response&lt;I_Version_Data&gt;&gt;(url, request, { headers: this.getHeaders() });
+  }
+
+  /**
+   * Atualiza o título de um projeto.
+   *
+   * @param {string} id - ID do projeto.
+   * @param {I_Alter_Title_Request} request - Dados do novo título.
+   * @returns {Observable&lt;I_Api_Response&lt;void&gt;&gt;} - Observable da resposta da API.
+   */
+  updateTitle(id: string, request: I_Alter_Title_Request) {
+    const url &#x3D; &#x60;${this.baseUrl}/projects/${id}/alterTitle&#x60;;
+    return this.http.put&lt;I_Api_Response&lt;void&gt;&gt;(url, request, { headers: this.getHeaders() });
+  }
+
+  /**
+   * Atualiza a data de um projeto.
+   *
+   * @param {string} id - ID do projeto.
+   * @param {I_Alter_Date_Request} request - Dados da nova data.
+   * @returns {Observable&lt;I_Api_Response&lt;void&gt;&gt;} - Observable da resposta da API.
+   */
+  updateDate(id: string, request: I_Alter_Date_Request) {
+    const url &#x3D; &#x60;${this.baseUrl}/projects/${id}/alterDate&#x60;;
+    return this.http.put&lt;I_Api_Response&lt;void&gt;&gt;(url, request, { headers: this.getHeaders() });
+  }
+
+  /**
+   * Atualiza o status de um projeto.
+   *
+   * @param {string} id - ID do projeto.
+   * @param {I_Alter_Status_Request} request - Dados do novo status.
+   * @returns {Observable&lt;I_Api_Response&lt;void&gt;&gt;} - Observable da resposta da API.
+   */
+  updateStatus(id: string, request: I_Alter_Status_Request) {
+    const url &#x3D; &#x60;${this.baseUrl}/projects/${id}/alterStatus&#x60;;
+    return this.http.put&lt;I_Api_Response&lt;void&gt;&gt;(url, request, { headers: this.getHeaders() });
+  }
+
+  /**
+   * Verifica se um projeto tem produção (confecção) associada.
+   *
+   * @param {string} id - ID do projeto.
+   * @param {boolean} hasConfection - Indicador se há produção.
+   * @returns {Observable&lt;I_Api_Response&lt;void&gt;&gt;} - Observable da resposta da API.
+   */
+  hasProduction(id: string, hasConfection: boolean) {
+    const url &#x3D; &#x60;${this.baseUrl}/projects/${id}/hasProduction?hasConfection&#x3D;${hasConfection}&#x60;;
+    return this.http.put&lt;I_Api_Response&lt;void&gt;&gt;(url, null, { headers: this.getHeaders() });
+  }
+
+  /**
+   * Finaliza um projeto.
+   *
+   * @param {string} id - ID do projeto.
+   * @returns {Observable&lt;I_Api_Response&lt;void&gt;&gt;} - Observable da resposta da API.
+   */
+  finishProject(id: string) {
+    const url &#x3D; &#x60;${this.baseUrl}/projects/${id}/finish&#x60;;
+    return this.http.put&lt;I_Api_Response&lt;void&gt;&gt;(url, null, { headers: this.getHeaders() });
+  }
+
+  /**
+   * Faz o upload de um arquivo.
+   *
+   * @param {File} file - Arquivo a ser enviado.
+   * @returns {Observable&lt;I_Api_Response&lt;I_Upload_Response&gt;&gt;} - Observable com a resposta do upload.
+   */
+  uploadFile(file: File) {
+    const formData &#x3D; new FormData();
+    formData.append(&#x27;file&#x27;, file);
+    return this.http.post&lt;I_Api_Response&lt;I_Upload_Response&gt;&gt;(&#x60;${this.baseUrl}/file/uploadFile&#x60;, formData, { headers: this.getHeaders() });
+  }
+}
+</code></pre>
+    </div>
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'RequestDetailsService.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

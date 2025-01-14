@@ -1,0 +1,126 @@
+.img-profile {
+    height: 6rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.img-profile:hover {
+    background-color: rgba(2, 115, 115, 0.2);
+}
+
+.container-fluid {
+    padding-inline: 2.5rem;
+}
+
+.profile-img {
+    width: 5rem;
+    border-radius: 50%;
+}
+
+.bg-color-system {
+    background: #027373;
+}
+
+.bg-color-cancel {
+    background: #ec4949;
+}
+
+.form-focus {
+    background-color: transparent;
+}
+
+.form-focus:focus {
+    border: none;
+    outline: none;
+}
+
+.bg-hover:hover {
+    background-color: #03A696;
+}
+
+.remove-border-radius {
+    border-radius: 0px;
+}
+
+.shadow-custom {
+    box-shadow: 3px 4.5px 4px rgba(0, 0, 0, 0.3);
+}
+
+.text-custom {
+    color: #027373 !important;
+    font-weight: 600;
+}
+
+.text-custom:hover {
+    text-decoration: underline !important;
+}
+
+
+.avatar-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar-modal-content {
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 30rem;
+    max-height: 85vh;
+    text-align: center;
+}
+
+.avatar-option {
+    cursor: pointer;
+    transition: transform 0.2s;
+    padding: 1px;
+    border: 2px solid transparent;
+    border-radius: 8px;
+}
+
+.avatar-option:hover {
+    transform: scale(1.1);
+    background-color: rgba(2, 115, 115, 0.2);
+}
+
+.avatar-option.selected {
+    border-color: #03A696;
+    background-color: rgba(2, 115, 115, 0.2);
+}
+
+.avatar-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.avatar-img {
+    width: 3rem;
+}
+
+
+@media (min-width: 768px) {
+
+    .container-fluid {
+        padding-inline: 0 !important;
+    }
+}
+
+@media (max-width: 768px) {
+    .swap-columns .order-lg-1 {
+        order: 2;
+    }
+
+    .swap-columns .order-lg-2 {
+        order: 1;
+    }
+}

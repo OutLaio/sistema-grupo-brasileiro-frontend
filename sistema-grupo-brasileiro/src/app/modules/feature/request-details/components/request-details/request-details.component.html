@@ -1,0 +1,20 @@
+<div *ngIf="data.type" class="container-fluid">
+  <div class="row">
+    <div class="col-12">
+      <div class="card text-black shadow-custom">
+        <div class="card-body p-2">
+          <div class="row">
+            <div class="col-lg-7 card-scroll scroll-bar">
+              <app-agency-board *ngIf="briefingType == E_Briefing_Type.ITINERARIOS.name" [briefing]="data"></app-agency-board>
+              <app-signpost *ngIf="briefingType == E_Briefing_Type.SINALIZACAO_INTERNA.name" [briefing]="data"></app-signpost>
+              <app-sticker *ngIf="briefingType == E_Briefing_Type.ADESIVOS.name" [briefing]="data"></app-sticker>
+            </div>
+            <div class="col-lg-5 d-flex align-items-center justify-content-center">
+              <app-dialog-box [project]="data.type.project"></app-dialog-box>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

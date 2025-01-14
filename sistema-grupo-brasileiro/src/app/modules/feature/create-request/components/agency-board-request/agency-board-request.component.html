@@ -1,0 +1,346 @@
+<div class="conatiner d-flex flex-column p-3 mb-4 scroll-bar overflow-custom">
+    <form [formGroup]="agencyBoardForm" (ngSubmit)="submit()" #formDir="ngForm">
+        <div class="row pb-4">
+            <div class="col-12 col-md-6">
+                <div class="form-group pt-3">
+                    <label class="fw-bold" for="title">Título *</label>
+                    <textarea [backgroundColorClass]="'#ebebeb'" id="title" formControlName="title" type="text"
+                        class="form-control border-dark-subtle rounded-3 form-focus"
+                        placeholder="Escreva o título da solicitação"></textarea>
+                </div>
+                <div *ngIf="title.invalid && formDir.submitted" class="validation-warning">
+                    <p>Por favor, informe o título.</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <div class="form-group pt-3">
+                    <label class="fw-bold" for="description">Descrição *</label>
+                    <textarea [backgroundColorClass]="'#ebebeb'" id="description" formControlName="description"
+                        type="text" class="form-control border-dark-subtle rounded-3 form-focus"
+                        placeholder="Escreva a descrição da solicitação"></textarea>
+                </div>
+                <div *ngIf="description.invalid && formDir.submitted" class="validation-warning">
+                    <p>Por favor, informe a descrição da placa.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="row pb-4">
+            <div class="col-12 col-md-6">
+                <div class="form-group pt-3">
+                    <label class="fw-bold" for="signLocation">Local da Placa *</label>
+                    <textarea [backgroundColorClass]="'#ebebeb'" id="signLocation" formControlName="signLocation"
+                        type="text" class="form-control border-dark-subtle rounded-3 form-focus"
+                        placeholder="Escreva a localização da placa"></textarea>
+                </div>
+                <div *ngIf="signLocation.invalid && formDir.submitted" class="validation-warning">
+                    <p>Por favor, informe o local onde a placa será instalada</p>
+                </div>
+            </div>
+
+            <div class="col-12 col-md-6">
+                <div class="form-group pt-3">
+                    <label class="fw-bold">Medida *</label>
+                    <div class="d-flex align-items-center mb-2">
+                        <div class="">
+                            <label>Largura</label>
+                            <input [backgroundColorClass]="'#ebebeb'" type="text"
+                                class="border border-dark-subtle rounded-3 p-1 me-2 w-100 form-focus" placeholder="cm"
+                                formControlName="length" />
+                        </div>
+                        <div class="pt-4">
+                            <span class="mx-3">X</span>
+                        </div>
+                        <div class="">
+                            <label>Altura</label>
+                            <input [backgroundColorClass]="'#ebebeb'" type="text"
+                                class="border border-dark-subtle rounded-3 p-1 me-2 w-100 form-focus" placeholder="cm"
+                                formControlName="height" />
+                        </div>
+                    </div>
+                    <div *ngIf="(length.invalid || height.invalid) && formDir.submitted" class="validation-warning">
+                        <p>Informe as medidas completas da placa (largura e altura) em centímetros.</p>
+                    </div>
+                    <div *ngIf="(length.errors?.['pattern'] || height.errors?.['pattern']) && formDir.submitted"
+                        class="validation-warning">
+                        <p>As medidas devem conter apenas números.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row pb-4 pt-2 border-bottom">
+            <div class="col-12 col-md-3">
+                <div class="form-group pt-3">
+                    <label class="fw-bold" for="agencyBoardType">Placa *</label>
+                    <select [backgroundColorClass]="'#ebebeb'" id="agencyBoardType"
+                        class="form-select border-dark-subtle rounded-3 form-focus w-100"
+                        formControlName="agencyBoardType">
+                        <option value="1">Luminoso Completo</option>
+                        <option value="2">Troca de Lona</option>
+                        <option value="3">Placa adesivada em Polietileno 1mm</option>
+                    </select>
+                </div>
+                <div *ngIf="agencyBoardType.invalid  && formDir.submitted" class="validation-warning">
+                    <p>Selecione qual o modelo da placa</p>
+                </div>
+            </div>
+            <div *ngIf="agencyBoardType.value === '2'" class="col-12 col-md-9">
+                <div class="form-group pt-3">
+                    <div class="title">
+                        <p class="fw-bold">Tipo *</p>
+                    </div>
+                    <div class="d-flex flex-wrap">
+                        <div class="form-check me-3 mb-2">
+                            <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="backLight"
+                                formControlName="boardType" value="1">
+                            <label class="form-check-label" for="backLight">BackLight (Luminoso)</label>
+                        </div>
+                        <div class="form-check me-3 mb-2">
+                            <input [borderColorClass]="'#027373'" class="form-check-input" type="radio"
+                                id="frontLightWithLight" formControlName="boardType" value="2">
+                            <label class="form-check-label" for="frontLightWithLight">FrontLight Com Luz</label>
+                        </div>
+                        <div class="form-check me-3 mb-2">
+                            <input [borderColorClass]="'#027373'" class="form-check-input" type="radio"
+                                id="frontLightWithoutLight" formControlName="boardType" value="3">
+                            <label class="form-check-label" for="frontLightWithoutLight">FrontLight Sem Luz</label>
+                        </div>
+                        <div class="form-check me-3 mb-2">
+                            <input [borderColorClass]="'#027373'" class="form-check-input" type="radio"
+                                id="adhesiveOverCanvas" formControlName="boardType" value="4">
+                            <label class="form-check-label" for="adhesiveOverCanvas">Adesivo Sobre Lona</label>
+                        </div>
+                    </div>
+                    <div *ngIf="agencyBoardType.value === '2' && boardType.invalid && formDir.submitted"
+                        class="validation-warning">
+                        <p>Selecione o tipo da placa</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <div class="row mt-5">
+            <div class="col-12">
+                <p class="fw-bold">Empresas</p>
+            </div>
+            <div class="col-12 d-flex flex-wrap align-items-center">
+                <label class="me-3">Compartilhado com outras empresas *:</label>
+                <div class="form-check me-5">
+                    <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="singleCompany"
+                        formControlName="sharedCompany" (change)="onCompanyChange('multiple')" value="true">
+                    <label class="form-check-label" for="singleCompany">Sim</label>
+                </div>
+                <div class="form-check">
+                    <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="multipleCompanies"
+                        formControlName="sharedCompany" (change)="onCompanyChange('single')" value="false">
+                    <label class="form-check-label" for="multipleCompanies">Não</label>
+                </div>
+            </div>
+            <div *ngIf="sharedCompany.invalid && formDir.submitted" class="validation-warning">
+                <p>Indique o compartilhamento com a(s) empresa(s)</p>
+            </div>
+        </div>
+
+        <div *ngIf="showCompanyFields">
+            <div *ngIf="isSingleCompany" class="row mt-5 border-bottom pb-4">
+                <div class="col-12">
+                    <p class="fw-bold">Selecione a Empresa *</p>
+                </div>
+                <div class="col-12 d-flex flex-wrap gap-3">
+                    <div class="form-check">
+                        <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="rotaSingle"
+                            formControlName="selectedCompany" value="Rota Transportes"
+                            (change)="updateCompanyName(1, 'Rota Transportes')">
+                        <label class="form-check-label" for="rotaSingle">Rota Transportes</label>
+                    </div>
+                    <div class="form-check">
+                        <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="cidadeSolSingle"
+                            formControlName="selectedCompany" value="Cidade Sol"
+                            (change)="updateCompanyName(1, 'Cidade Sol')">
+                        <label class="form-check-label" for="cidadeSolSingle">Cidade Sol</label>
+                    </div>
+                    <div class="form-check">
+                        <input [borderColorClass]="'#027373'" class="form-check-input" type="radio"
+                            id="brasileiroSingle" formControlName="selectedCompany" value="Brasileiro"
+                            (change)="updateCompanyName(1, 'Brasileiro')">
+                        <label class="form-check-label" for="brasileiroSingle">Brasileiro</label>
+                    </div>
+                    <div class="form-check d-flex gap-2">
+                        <input [borderColorClass]="'#027373'" class="form-check-input" type="radio" id="otherSingle"
+                            formControlName="selectedCompany" value="Outro" (change)="onOtherCompany()">
+                        <label class="form-check-label" for="otherSingle">Outra</label>
+                        <input *ngIf="selectedCompany?.value === 'Outro'" type="text" class="form-control mt-2"
+                            formControlName="otherText" placeholder="Especificar empresa"
+                            (change)="updateOtherCompany()">
+                        <button [backgroundColorClass]="'#027373'" *ngIf="isOtherCompanySelected" type="button"
+                            class="btn btn-sm text-white ms-2" (click)="confirmOtherSingleCompany()">OK</button>
+                    </div>
+                </div>
+                <div *ngIf="selectedCompany.invalid && formDir.submitted" class="validation-warning">
+                    <p>Selecione ou indique outra empresa.</p>
+                </div>
+            </div>
+
+            <div *ngIf="!isSingleCompany" class="row mt-5 border-bottom pb-4">
+                <div class="col-12">
+                    <p class="fw-bold">Selecione as Empresas *</p>
+                </div>
+                <div class="col-12 d-flex flex-wrap gap-3">
+                    <div class="form-check">
+                        <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox" id="rotaMulti"
+                            formControlName="selectedCompany" (change)="updateCompanyName(2, 'Rota Transportes')">
+                        <label class="form-check-label" for="rotaMulti">Rota Transportes</label>
+                    </div>
+                    <div class="form-check">
+                        <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox"
+                            id="cidadeSolMulti" formControlName="selectedCompany"
+                            (change)="updateCompanyName(2, 'Cidade Sol')">
+                        <label class="form-check-label" for="cidadeSolMulti">Cidade Sol</label>
+                    </div>
+                    <div class="form-check">
+                        <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox"
+                            id="brasileiroMulti" formControlName="selectedCompany"
+                            (change)="updateCompanyName(2, 'Brasileiro')">
+                        <label class="form-check-label" for="brasileiroMulti">Brasileiro</label>
+                    </div>
+                    <div class="form-check d-flex align-items-center">
+                        <input [borderColorClass]="'#027373'" class="form-check-input" type="checkbox" id="otherMulti"
+                            formControlName="selectedCompany" (change)="onOthersCompanies()">
+                        <label class="form-check-label ms-2" for="otherMulti">Outras</label>
+                        <input *ngIf="isOtherCompaniesSelected" type="text" class="form-control ms-2"
+                            placeholder="Especificar empresa" formControlName="othersText"
+                            (change)="updateOthersCompanies()">
+                        <button [backgroundColorClass]="'#027373'" *ngIf="isOtherCompaniesSelected" type="button"
+                            class="btn btn-sm text-white ms-2" (click)="confirmOtherMultiCompany()">OK</button>
+                    </div>
+                </div>
+                <div *ngIf="(selectedCompany.invalid || companies.length < 2) && formDir.submitted"
+                    class="validation-warning">
+                    <p>Selecione ou indique duas ou mais empresas. </p>
+                </div>
+            </div>
+        </div>
+
+
+
+
+        <div *ngIf="companies.length != 0" class="row mt-5 border-bottom pb-4">
+            <div>
+                <p class="fw-bold">Itinerários</p>
+            </div>
+            <div *ngFor="let company of companies">
+                <div [backgroundColorClass]="'#ebebeb'" class="border border-dark-subtle p-3 m-2 rounded">
+                    <div>
+                        <p class="fw-bold">
+                            {{ company.name }}
+                            <button *ngIf="company.isCustom" [backgroundColorClass]="'#ff6f6f'" type="button"
+                                class="border-0 ps-2 rounded text-white" (click)="removeCompany(company.name)"> Remover
+                            </button>
+                        </p>
+
+                    </div>
+                    <div class="mb-3">
+                        <div class="d-flex flex-wrap align-items-center">
+                            <div>
+                                <label class="me-3" for="mainRoute">Principais *:</label>
+                            </div>
+                            <div class="d-flex flex-wrap align-items-center">
+                                <div *ngFor="let routeAdded of company.companyMainRoutes" class="me-2">
+                                    <div [backgroundColorClass]="'#ebebeb'"
+                                        class="border border-dark-subtle rounded-3 mb-2">
+                                        <span class="p-1 ">{{ routeAdded.name }} </span>
+                                        <button [backgroundColorClass]="'#ff6f6f'" type="button"
+                                            class="border-0 rounded-end text-white px-2"
+                                            (click)="removeMainRoute(company.name, routeAdded.id)"> - </button>
+                                    </div>
+                                </div>
+                                <div class="d-flex">
+                                    <select [backgroundColorClass]="'#ebebeb'" id="mainRoute"
+                                        class="form-select border-dark-subtle rounded-3 form-focus me-2 w-100"
+                                        formControlName="mainRoute">
+                                        <option *ngFor="let route of listMainRoutes" [ngValue]="route">{{ route.name }}
+                                        </option>
+                                    </select>
+                                    <button [backgroundColorClass]="'#027373'" type="button" class="btn text-white"
+                                        (click)="addMainRoute(company.name)">+</button>
+                                </div>
+                            </div>
+                            <div *ngIf="company.companyMainRoutes.length == 0 && formDir.submitted"
+                                class="validation-warning">
+                                <p>Indique ao menos uma rota principal. </p>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="mb-3">
+                        <div class="d-flex flex-wrap align-items-center">
+                            <div>
+                                <label class="me-3" for="connections">Conexões *:</label>
+                            </div>
+                            <div class="d-flex flex-wrap align-items-center">
+                                <div *ngFor="let connectionAdded of company.companyConnections" class="me-2">
+                                    <div [backgroundColorClass]="'#ebebeb'"
+                                        class="border border-dark-subtle rounded-3 mb-2">
+                                        <span class="p-3 ">{{ connectionAdded.name }} </span>
+                                        <button [backgroundColorClass]="'#ff6f6f'" type="button"
+                                            class="border-0 rounded-end text-white px-2"
+                                            (click)="removeConnection(company.name, connectionAdded.id)"> - </button>
+                                    </div>
+                                </div>
+                                <div class="d-flex">
+                                    <select [backgroundColorClass]="'#ebebeb'" id="connections"
+                                        class="form-select border-dark-subtle rounded-3 form-focus me-2 w-100"
+                                        formControlName="connections">
+                                        <option *ngFor="let connection of listConnections" [ngValue]="connection">{{
+                                            connection.name }}
+                                        </option>
+                                    </select>
+                                </div>
+                                <button [backgroundColorClass]="'#027373'" type="button" class="btn text-white"
+                                    (click)="addConnection(company.name)">+</button>
+                            </div>
+                        </div>
+                        <div *ngIf="company.companyConnections.length == 0 && formDir.submitted"
+                            class="validation-warning">
+                            <p>Indique ao menos uma conexão. </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row mt-5 border-bottom pb-4">
+            <div class="title">
+                <p class="fw-bold">Adicionar Imagens do Local</p>
+            </div>
+            <div class="col-12">
+                <div
+                    class="d-flex flex-column justify-content-center align-itens-center border border-dark-subtle rounded-3 p-3 ">
+                    <app-loading-file (filesLoaded)="onFilesLoaded($event)"></app-loading-file>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group pt-3 w-100 py-3">
+            <label class="fw-bold" for="observation">Observações</label>
+            <textarea [backgroundColorClass]="'#ebebeb'" id="observation" formControlName="observation" type="text"
+                class="form-control border-dark-subtle rounded-3 form-focus" placeholder="Escreva aqui"></textarea>
+        </div>
+
+
+        <div class="d-flex gap-3 justify-content-end pt-2">
+            <button type="reset" (click)="clearForm()" class="btn btn-outline-danger">Redefinir
+                Formulário</button>
+            <button [disabled]="isButtonDisabled" [style.backgroundColor]="'#027373'" type="submit"
+                class="btn text-white">
+                Enviar
+            </button>
+        </div>
+    </form>
+</div>

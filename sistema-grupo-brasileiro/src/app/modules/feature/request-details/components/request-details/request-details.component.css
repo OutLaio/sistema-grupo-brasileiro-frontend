@@ -1,0 +1,41 @@
+.shadow-custom {
+    box-shadow: 3px 4.5px 4px rgba(0, 0, 0, 0.3);
+}
+
+.card {
+    width: 80vw;
+    height: 85vh !important;
+}
+
+.card-scroll {
+    height: 82vh;
+    overflow-y: auto;
+}
+
+.scroll-bar::-webkit-scrollbar {
+    width: 12px;
+}
+
+.scroll-bar::-webkit-scrollbar-track {
+    background-color: #f1f1f1;
+    border-radius: 10px;
+}
+
+.scroll-bar::-webkit-scrollbar-thumb {
+    background-color: #03A696;
+    border-radius: 10px;
+}
+
+.scroll-bar::-webkit-scrollbar-thumb:active {
+    background-color: #026d56;
+}
+
+.scroll-bar::-webkit-scrollbar-thumb:hover {
+    background-color: #029982;
+}
+
+/* Firefox */
+.scroll-bar {
+    scrollbar-width: thin;
+    scrollbar-color: #03A696 #f1f1f1;
+}

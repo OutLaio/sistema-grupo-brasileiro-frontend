@@ -1,0 +1,1303 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>sistema-grupo-brasileiro documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	   <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/dark.css">
+    </head>
+    <body>
+          <script>
+               // Blocking script to avoid flickering dark mode
+               // Dark mode toggle button
+               var useDark = window.matchMedia('(prefers-color-scheme: dark)');
+               var darkModeState = useDark.matches;
+               var $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               var $darkModeToggles = document.querySelectorAll('.dark-mode-switch');
+               var darkModeStateLocal = localStorage.getItem('compodoc_darkmode-state');
+
+               function checkToggle(check) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].checked = check;
+                    }
+               }
+
+               function toggleDarkMode(state) {
+                    if (window.localStorage) {
+                         localStorage.setItem('compodoc_darkmode-state', state);
+                    }
+
+                    checkToggle(state);
+
+                    const hasClass = document.body.classList.contains('dark');
+
+                    if (state) {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.add('dark');
+                         }
+                         if (!hasClass) {
+                              document.body.classList.add('dark');
+                         }
+                    } else {
+                         for (var i = 0; i < $darkModeToggles.length; i++) {
+                              $darkModeToggles[i].classList.remove('dark');
+                         }
+                         if (hasClass) {
+                              document.body.classList.remove('dark');
+                         }
+                    }
+               }
+
+               useDark.addEventListener('change', function (evt) {
+                    toggleDarkMode(evt.matches);
+               });
+               if (darkModeStateLocal) {
+                    darkModeState = darkModeStateLocal === 'true';
+               }
+               toggleDarkMode(darkModeState);
+          </script>
+
+        <div class="navbar navbar-default navbar-fixed-top d-md-none p-0">
+               <div class="d-flex">
+                    <a href="../" class="navbar-brand">sistema-grupo-brasileiro documentation</a>
+                    <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+               </div>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="d-none d-md-block menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li class="breadcrumb-item">Components</li>
+  <li class="breadcrumb-item"
+  >
+  ListCollaboratorsComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+            <a href="#info" class="nav-link active"
+                role="tab" id="info-tab" data-bs-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li class="nav-item">
+            <a href="#source" class="nav-link"
+                role="tab" id="source-tab" data-bs-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li class="nav-item">
+            <a href="#templateData" class="nav-link"
+                role="tab" id="templateData-tab" data-bs-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li class="nav-item">
+            <a href="#styleData" class="nav-link"
+                role="tab" id="styleData-tab" data-bs-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li class="nav-item">
+            <a href="#tree" class="nav-link"
+                role="tab" id="tree-tab" data-bs-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/modules/feature/collaborator/list-collaborators/component/list-collaborators.component.ts</code>
+</p>
+
+
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Componente responsável pela exibição e gerenciamento da lista de colaboradores.
+Inclui funcionalidades de paginação, seleção de colaborador e carregamento dinâmico de dados.</p>
+
+    </p>
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                <code>OnInit</code>
+    </p>
+
+
+<section data-compodoc="block-metadata">
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover metadata">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-list-collaborators</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./list-collaborators.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./list-collaborators.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-index">
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#actualPage" >actualPage</a>
+                            </li>
+                            <li>
+                                <a href="#collaborators" >collaborators</a>
+                            </li>
+                            <li>
+                                <a href="#errorMessage" >errorMessage</a>
+                            </li>
+                            <li>
+                                <a href="#itemsPerPage" >itemsPerPage</a>
+                            </li>
+                            <li>
+                                <a href="#loading" >loading</a>
+                            </li>
+                            <li>
+                                <a href="#selectedCollaborator" >selectedCollaborator</a>
+                            </li>
+                            <li>
+                                <a href="#totalElements" >totalElements</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#isSelected" >isSelected</a>
+                            </li>
+                            <li>
+                                <a href="#loadCollaborators" >loadCollaborators</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit" >ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onPageChange" >onPageChange</a>
+                            </li>
+                            <li>
+                                <a href="#selectCollaborator" >selectCollaborator</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section data-compodoc="block-constructor">
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(listCollaboratorsService: <a href="../injectables/ListCollaboratorsService.html" target="_self">ListCollaboratorsService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/modules/feature/collaborator/list-collaborators/component/list-collaborators.component.ts:46</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div class="io-description"><p>Construtor que injeta o serviço de listagem de colaboradores.</p>
+</div>
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                                    <td>Description</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>listCollaboratorsService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ListCollaboratorsService.html" target="_self" >ListCollaboratorsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                        <td>
+                                                                <p>Serviço responsável pela obtenção de dados dos colaboradores.</p>
+
+                                                        </td>
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section data-compodoc="block-methods">
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="isSelected"></a>
+                    <span class="name">
+                        <span ><b>isSelected</b></span>
+                        <a href="#isSelected"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>isSelected(colaborador: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="96"
+                                    class="link-to-prism">src/app/modules/feature/collaborator/list-collaborators/component/list-collaborators.component.ts:96</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Verifica se o colaborador fornecido está selecionado.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>colaborador</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Objeto do colaborador.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                <p><code>true</code> se o colaborador estiver selecionado, caso contrário, <code>false</code>.</p>
+
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loadCollaborators"></a>
+                    <span class="name">
+                        <span ><b>loadCollaborators</b></span>
+                        <a href="#loadCollaborators"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>loadCollaborators(page: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>, size: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="67"
+                                    class="link-to-prism">src/app/modules/feature/collaborator/list-collaborators/component/list-collaborators.component.ts:67</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Carrega a lista de colaboradores a partir do serviço.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>page</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Número da página (começando de 1).</p>
+
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                                <td>size</td>
+                                            <td>
+                                                            <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Número de itens por página.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <span ><b>ngOnInit</b></span>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="58"
+                                    class="link-to-prism">src/app/modules/feature/collaborator/list-collaborators/component/list-collaborators.component.ts:58</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Método de inicialização do componente.
+Carrega a lista de colaboradores com os parâmetros padrão de paginação.</p>
+</div>
+
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onPageChange"></a>
+                    <span class="name">
+                        <span ><b>onPageChange</b></span>
+                        <a href="#onPageChange"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onPageChange(event: PageEvent)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="104"
+                                    class="link-to-prism">src/app/modules/feature/collaborator/list-collaborators/component/list-collaborators.component.ts:104</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Manipula mudanças na paginação.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>event</td>
+                                            <td>
+                                                        <code>PageEvent</code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Evento de mudança da página, contendo as informações de index e tamanho da página.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectCollaborator"></a>
+                    <span class="name">
+                        <span ><b>selectCollaborator</b></span>
+                        <a href="#selectCollaborator"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>selectCollaborator(colaborador: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <div class="io-line">Defined in <a href="" data-line="87"
+                                    class="link-to-prism">src/app/modules/feature/collaborator/list-collaborators/component/list-collaborators.component.ts:87</a></div>
+                        </td>
+                    </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                        <div class="io-description"><p>Seleciona ou deseleciona um colaborador.</p>
+</div>
+
+                            <div class="io-description">
+                                <b>Parameters :</b>
+                                
+                                <table class="params">
+                                    <thead>
+                                        <tr>
+                                            <td>Name</td>
+                                                <td>Type</td>
+                                            <td>Optional</td>
+                                                <td>Description</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                                <td>colaborador</td>
+                                            <td>
+                                                            <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                            </td>
+
+                                            <td>
+                                                    No
+                                            </td>
+
+
+                                            <td>
+                                                    <p>Objeto do colaborador selecionado.</p>
+
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        <div class="io-description">
+                            <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                        </div>
+                            <div class="io-description">
+                                
+                            </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section data-compodoc="block-properties">
+    
+    <h3 id="inputs">
+        Properties
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="actualPage"></a>
+                    <span class="name">
+                        <span ><b>actualPage</b></span>
+                        <a href="#actualPage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>1</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/modules/feature/collaborator/list-collaborators/component/list-collaborators.component.ts:41</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Página atual na paginação.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="collaborators"></a>
+                    <span class="name">
+                        <span ><b>collaborators</b></span>
+                        <a href="#collaborators"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="../interfaces/I_Employee_View_Data.html" target="_self" >I_Employee_View_Data[]</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/modules/feature/collaborator/list-collaborators/component/list-collaborators.component.ts:21</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Lista de colaboradores carregados.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="errorMessage"></a>
+                    <span class="name">
+                        <span ><b>errorMessage</b></span>
+                        <a href="#errorMessage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>&#x27;&#x27;</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/modules/feature/collaborator/list-collaborators/component/list-collaborators.component.ts:29</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Mensagem de erro a ser exibida em caso de falha ao carregar os dados.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="itemsPerPage"></a>
+                    <span class="name">
+                        <span ><b>itemsPerPage</b></span>
+                        <a href="#itemsPerPage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>12</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/modules/feature/collaborator/list-collaborators/component/list-collaborators.component.ts:37</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Número de itens por página.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="loading"></a>
+                    <span class="name">
+                        <span ><b>loading</b></span>
+                        <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>false</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/modules/feature/collaborator/list-collaborators/component/list-collaborators.component.ts:25</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Indica se os dados estão sendo carregados.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectedCollaborator"></a>
+                    <span class="name">
+                        <span ><b>selectedCollaborator</b></span>
+                        <a href="#selectedCollaborator"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>null</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/modules/feature/collaborator/list-collaborators/component/list-collaborators.component.ts:46</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Colaborador selecionado.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="totalElements"></a>
+                    <span class="name">
+                        <span ><b>totalElements</b></span>
+                        <a href="#totalElements"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>0</code>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/modules/feature/collaborator/list-collaborators/component/list-collaborators.component.ts:33</a></div>
+                        </td>
+                    </tr>
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Total de elementos disponíveis na base de dados.</p>
+</div>
+                </td>
+            </tr>
+
+        </tbody>
+    </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { ListCollaboratorsService } from &#x27;../services/list-collaborators.service&#x27;;
+import { PageEvent } from &#x27;@angular/material/paginator&#x27;;
+import { I_Employee_View_Data } from &#x27;../../../../shared/interfaces/user/view/employee-view&#x27;;
+import { I_Page } from &#x27;../../../../shared/interfaces/pageable/pageable&#x27;;
+import { HttpErrorResponse } from &#x27;@angular/common/http&#x27;;
+
+/**
+ * Componente responsável pela exibição e gerenciamento da lista de colaboradores.
+ * Inclui funcionalidades de paginação, seleção de colaborador e carregamento dinâmico de dados.
+ */
+@Component({
+  selector: &#x27;app-list-collaborators&#x27;,
+  templateUrl: &#x27;./list-collaborators.component.html&#x27;,
+  styleUrls: [&#x27;./list-collaborators.component.css&#x27;]
+})
+export class ListCollaboratorsComponent implements OnInit {
+  /**
+   * Lista de colaboradores carregados.
+   */
+  collaborators: I_Employee_View_Data[] &#x3D; [];
+  /**
+   * Indica se os dados estão sendo carregados.
+   */
+  loading: boolean &#x3D; false;
+  /**
+   * Mensagem de erro a ser exibida em caso de falha ao carregar os dados.
+   */
+  errorMessage: string &#x3D; &#x27;&#x27;;
+  /**
+   * Total de elementos disponíveis na base de dados.
+   */
+  totalElements: number &#x3D; 0;
+  /**
+   * Número de itens por página.
+   */
+  itemsPerPage: number &#x3D; 12;
+  /**
+   * Página atual na paginação.
+   */
+  actualPage: number &#x3D; 1;
+
+  /**
+   * Colaborador selecionado.
+   */
+  selectedCollaborator: any &#x3D; null;
+
+  /**
+   * Construtor que injeta o serviço de listagem de colaboradores.
+   * @param listCollaboratorsService Serviço responsável pela obtenção de dados dos colaboradores.
+   */
+  constructor(private listCollaboratorsService: ListCollaboratorsService) { }
+
+  /**
+   * Método de inicialização do componente. 
+   * Carrega a lista de colaboradores com os parâmetros padrão de paginação.
+   */
+  ngOnInit(): void {
+    this.loadCollaborators(this.actualPage, this.itemsPerPage);
+  }
+
+  /**
+   * Carrega a lista de colaboradores a partir do serviço.
+   * @param page Número da página (começando de 1).
+   * @param size Número de itens por página.
+   */
+  loadCollaborators(page: number, size: number): void {
+    this.listCollaboratorsService.getAllCollaborators(page - 1, size).subscribe({
+      next: (response) &#x3D;&gt; {
+        this.collaborators &#x3D; response.data?.content!;
+        this.totalElements &#x3D; response.data?.totalElements!;
+        this.loading &#x3D; false;
+      },
+      error: (err: HttpErrorResponse) &#x3D;&gt; {
+        this.errorMessage &#x3D; err.error.message;
+        this.loading &#x3D; false;
+      },
+      complete: () &#x3D;&gt; {
+      }
+    });
+  }
+
+  /**
+   * Seleciona ou deseleciona um colaborador.
+   * @param colaborador Objeto do colaborador selecionado.
+   */
+  selectCollaborator(colaborador: any) {
+    this.selectedCollaborator &#x3D; this.selectedCollaborator &#x3D;&#x3D;&#x3D; colaborador ? null : colaborador;
+  }
+
+  /**
+   * Verifica se o colaborador fornecido está selecionado.
+   * @param colaborador Objeto do colaborador.
+   * @returns &#x60;true&#x60; se o colaborador estiver selecionado, caso contrário, &#x60;false&#x60;.
+   */
+  isSelected(colaborador: any): boolean {
+    return this.selectedCollaborator &#x3D;&#x3D;&#x3D; colaborador;
+  }
+
+  /**
+   * Manipula mudanças na paginação.
+   * @param event Evento de mudança da página, contendo as informações de index e tamanho da página.
+   */
+  onPageChange(event: PageEvent): void {
+    this.actualPage &#x3D; event.pageIndex + 1;
+    this.itemsPerPage &#x3D; event.pageSize;
+    this.loadCollaborators(this.actualPage, this.itemsPerPage);
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div
+    class&#x3D;&quot;d-flex flex-column justify-content-between container-fluid custom-container mt-3 overflow-custom scroll-bar&quot;&gt;
+    &lt;div class&#x3D;&quot;row&quot;&gt;
+        &lt;div *ngFor&#x3D;&quot;let collaborator of collaborators&quot; class&#x3D;&quot;col-12 col-md-4 mb-3&quot;&gt;
+            &lt;div class&#x3D;&quot;card card-custom rounded-4 py-2&quot; [ngClass]&#x3D;&quot;{&#x27;card-selected&#x27;: isSelected(collaborator)}&quot;
+                (click)&#x3D;&quot;selectCollaborator(collaborator)&quot;&gt;
+                &lt;div class&#x3D;&quot;d-flex flex-column justify-content-center align-items-center card-body text-center&quot;&gt;
+                    &lt;div class&#x3D;&quot;mb-3&quot;&gt;
+                        &lt;img [src]&#x3D;&quot;&#x27;/assets/images/avatars/&#x27; + (collaborator?.avatar || &#x27;default&#x27;) + &#x27;.png&#x27;&quot;
+                            alt&#x3D;&quot;Profile Image&quot; class&#x3D;&quot;img-fluid me-3&quot; style&#x3D;&quot;height: 70px;&quot;&gt;
+                    &lt;/div&gt;
+                    &lt;p class&#x3D;&quot;card-text fw-semibold mb-1&quot;&gt;{{ collaborator.name + &#x27; &#x27; + collaborator.lastname }}&lt;/p&gt;
+                    &lt;p class&#x3D;&quot;card-text text-muted mb-3&quot;&gt;{{ collaborator.user.email }}&lt;/p&gt;
+
+                    &lt;div *ngIf&#x3D;&quot;collaborator &#x3D;&#x3D;&#x3D; selectedCollaborator&quot; class&#x3D;&quot;pt-3 border-top mt-2&quot;&gt;
+                        &lt;p class&#x3D;&quot;card-text mb-1&quot;&gt;&lt;strong&gt;Telefone:&lt;/strong&gt; {{ collaborator.phoneNumber }}&lt;/p&gt;
+                        &lt;p class&#x3D;&quot;card-text mb-1&quot;&gt;&lt;strong&gt;Função:&lt;/strong&gt; {{ collaborator.occupation }}&lt;/p&gt;
+                        &lt;p class&#x3D;&quot;card-text mb-1&quot;&gt;&lt;strong&gt;Setor:&lt;/strong&gt; {{ collaborator.sector }}&lt;/p&gt;
+                        &lt;p class&#x3D;&quot;card-text&quot;&gt;&lt;strong&gt;Agência:&lt;/strong&gt; {{ collaborator.agency }}&lt;/p&gt;
+                    &lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+
+    &lt;div class&#x3D;&quot;row mt-4&quot;&gt;
+        &lt;div class&#x3D;&quot;col-12&quot;&gt;
+            &lt;mat-paginator [length]&#x3D;&quot;totalElements&quot; [pageSize]&#x3D;&quot;itemsPerPage&quot; [pageSizeOptions]&#x3D;&quot;[6, 12, 24]&quot;
+                (page)&#x3D;&quot;onPageChange($event)&quot;&gt;
+            &lt;/mat-paginator&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="styleData">
+                <p class="comment">
+                    <code>./list-collaborators.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.card {
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+  font-size: 1rem;
+}
+
+.card:hover {
+  background-color: #e5e5e5;
+}
+
+.profile-img{
+  width: 5rem;
+}
+
+.card-selected {
+  background-color: #e0e0e0;
+  border-left: 4px solid #027373; 
+}
+
+.card-body {
+  transition: height 0.5s ease;
+  max-height: auto;
+  min-height: 15rem !important;
+}
+
+.card-selected .card-body {
+  max-height: auto;
+}
+
+.card-custom {
+  background-color: #EEEEEE;
+  border: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.btn-system {
+  background-color: #027373;
+  color: white;
+  transition: background-color 0.3s ease;
+}
+
+.btn-outline-system {
+  border-color: #027373;
+  color: #027373;
+  transition: background-color 0.3s ease;
+}
+
+.btn-system:hover, .btn-outline-system:hover {
+  background-color: rgba(2, 115, 115, 0.1);
+}
+
+
+.overflow-custom {
+  height: 75vh;
+  overflow-y: auto;
+  overflow-x: hidden;
+}
+
+@media (max-width: 768px) {
+  .card-body {
+    font-size: 0.9rem;
+  }
+}
+
+
+::-webkit-scrollbar {
+  height: 6px;
+  width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #027373;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #03A696;
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div    class="d-flex flex-column justify-content-between container-fluid custom-container mt-3 overflow-custom scroll-bar">    <div class="row">        <div *ngFor="let collaborator of collaborators" class="col-12 col-md-4 mb-3">            <div class="card card-custom rounded-4 py-2" [ngClass]="{\'card-selected\': isSelected(collaborator)}"                (click)="selectCollaborator(collaborator)">                <div class="d-flex flex-column justify-content-center align-items-center card-body text-center">                    <div class="mb-3">                        <img [src]="\'/assets/images/avatars/\' + (collaborator?.avatar || \'default\') + \'.png\'"                            alt="Profile Image" class="img-fluid me-3" style="height: 70px;">                    </div>                    <p class="card-text fw-semibold mb-1">{{ collaborator.name + \' \' + collaborator.lastname }}</p>                    <p class="card-text text-muted mb-3">{{ collaborator.user.email }}</p>                    <div *ngIf="collaborator === selectedCollaborator" class="pt-3 border-top mt-2">                        <p class="card-text mb-1"><strong>Telefone:</strong> {{ collaborator.phoneNumber }}</p>                        <p class="card-text mb-1"><strong>Função:</strong> {{ collaborator.occupation }}</p>                        <p class="card-text mb-1"><strong>Setor:</strong> {{ collaborator.sector }}</p>                        <p class="card-text"><strong>Agência:</strong> {{ collaborator.agency }}</p>                    </div>                </div>            </div>        </div>    </div>    <div class="row mt-4">        <div class="col-12">            <mat-paginator [length]="totalElements" [pageSize]="itemsPerPage" [pageSizeOptions]="[6, 12, 24]"                (page)="onPageChange($event)">            </mat-paginator>        </div>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AgencyBoardComponent', 'selector': 'app-agency-board'},{'name': 'AgencyBoardRequestComponent', 'selector': 'app-agency-board-request'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'BtnFinalizeComponent', 'selector': 'app-btn-finalize'},{'name': 'CheckRequestsComponent', 'selector': 'app-check-requests'},{'name': 'CollaboratorSystemComponent', 'selector': 'app-collaborator-system'},{'name': 'DialogBoxComponent', 'selector': 'app-dialog-box'},{'name': 'EditUserDataComponent', 'selector': 'app-edit-user-data'},{'name': 'HeaderComponent', 'selector': 'app-header'},{'name': 'ListClientsComponent', 'selector': 'app-list-clients'},{'name': 'ListCollaboratorsComponent', 'selector': 'app-list-collaborators'},{'name': 'LoadingFileComponent', 'selector': 'app-loading-file'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'MainCreateRequestComponent', 'selector': 'app-main-create-request'},{'name': 'MainProfileComponent', 'selector': 'app-main-profile'},{'name': 'RecoveryPasswordComponent', 'selector': 'app-recovery-password'},{'name': 'RegisterCollaboratorComponent', 'selector': 'app-register-collaborator'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'RequestDetailsComponent', 'selector': 'app-request-details'},{'name': 'ResetPasswordComponent', 'selector': 'app-reset-password'},{'name': 'SidebarComponent', 'selector': 'app-sidebar'},{'name': 'SignpostComponent', 'selector': 'app-signpost'},{'name': 'SignpostRequestComponent', 'selector': 'app-signpost-request'},{'name': 'StickerComponent', 'selector': 'app-sticker'},{'name': 'StickersRequestComponent', 'selector': 'app-stickers-request'},{'name': 'UserDataComponent', 'selector': 'app-user-data'},{'name': 'VersionComponent', 'selector': 'app-version'}];
+    var DIRECTIVES = [{'name': 'CapitalizeDirective', 'selector': '[appCapitalize]'},{'name': 'ColorClassDirective', 'selector': '[colorClass], [backgroundColorClass], [borderColorClass]'},{'name': 'DndDirective', 'selector': '[appDndDirective]'},{'name': 'PhoneMaskDirective', 'selector': '[appPhoneMask]'}];
+    var ACTUAL_COMPONENT = {'name': 'ListCollaboratorsComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+          <label class="dark-mode-switch">
+               <input type="checkbox">
+               <span class="slider">
+                    <svg class="slider-icon" viewBox="0 0 24 24" fill="none" height="20" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" width="20" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"></path>
+                    </svg>
+               </span>
+          </label>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ListCollaboratorsComponent.html';
+            var MAX_SEARCH_RESULTS = 15;
+       </script>
+
+       <script>
+               $darkModeToggleSwitchers = document.querySelectorAll('.dark-mode-switch input');
+               checkToggle(darkModeState);
+               if ($darkModeToggleSwitchers.length > 0) {
+                    for (var i = 0; i < $darkModeToggleSwitchers.length; i++) {
+                         $darkModeToggleSwitchers[i].addEventListener('change', function (event) {
+                              darkModeState = !darkModeState;
+                              toggleDarkMode(darkModeState);
+                         });
+                    }
+               }
+          </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+
+       <script src="../js/menu-wc.js" defer></script>
+       <script nomodule src="../js/menu-wc_es5.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
