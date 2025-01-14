@@ -5,6 +5,7 @@ import { I_Change_Password_Request } from '../../../../shared/interfaces/auth/fo
 import { I_Employee_Form_Data } from '../../../../shared/interfaces/user/form/employee-form';
 import { StorageService } from '../../../../services/storage/storage.service';
 import { I_Api_Response } from '../../../../shared/interfaces/api-response';
+import { environment } from '../../../../../../environments/environment';
 
 /**
  * Serviço responsável por gerenciar as operações relacionadas ao perfil do usuário.
@@ -14,28 +15,26 @@ import { I_Api_Response } from '../../../../shared/interfaces/api-response';
   providedIn: 'root',
 })
 export class ProfileService {
-
   /** URL base para as requisições da service. */
-  // private readonly baseUrl = 'http://54.200.23.253:8000/api/v1';
-  private readonly baseUrl = 'http://localhost:8080/api/v1';
+  private readonly baseUrl = environment.apiUrl + '/api/v1';
 
   /** Token de autenticação obtido da service de armazenamento. */
   private readonly authToken = this.storageService.getToken();
 
   /**
    * Construtor do serviço de perfil.
-   * 
+   *
    * @param http Serviço Angular para realizar requisições HTTP.
    * @param storageService Serviço responsável por gerenciar o armazenamento local e de sessão.
-   * 
-   * O construtor inicializa o serviço `HttpClient` para realizar requisições à API 
-   * e o serviço `StorageService` para acessar o token de autenticação armazenado. 
+   *
+   * O construtor inicializa o serviço `HttpClient` para realizar requisições à API
+   * e o serviço `StorageService` para acessar o token de autenticação armazenado.
    * O token é utilizado para autenticar todas as operações realizadas pelo serviço.
    */
   constructor(
     private http: HttpClient,
     private storageService: StorageService
-  ) { }
+  ) {}
 
   /**
    * Retorna os cabeçalhos HTTP necessários para autenticação e envio de JSON.
@@ -73,10 +72,13 @@ export class ProfileService {
    */
   deleteAccount(userId?: string) {
     const headers = this.getHeaders();
-    return this.http.put<I_Api_Response<void>>(`${this.baseUrl}/users/${userId}/deactivate`, {}, {
-      headers,
-      withCredentials: true,
-    }
+    return this.http.put<I_Api_Response<void>>(
+      `${this.baseUrl}/users/${userId}/deactivate`,
+      {},
+      {
+        headers,
+        withCredentials: true,
+      }
     );
   }
 
@@ -87,10 +89,13 @@ export class ProfileService {
    */
   editPassword(req: I_Change_Password_Request) {
     const headers = this.getHeaders();
-    return this.http.post<I_Api_Response<void>>(`${this.baseUrl}/users/changePassword`, req, {
-      headers,
-      withCredentials: true
-    }
+    return this.http.post<I_Api_Response<void>>(
+      `${this.baseUrl}/users/changePassword`,
+      req,
+      {
+        headers,
+        withCredentials: true,
+      }
     );
   }
 }

@@ -4,6 +4,7 @@ import { StorageService } from '../../../services/storage/storage.service';
 import { I_Api_Response } from '../../../shared/interfaces/api-response';
 import { I_City_Data } from '../../../shared/interfaces/briefing/agency-board/view/city-view';
 import { I_Company_Data } from '../../../shared/interfaces/company/view/company-view';
+import { environment } from '../../../../../environments/environment';
 
 /**
  * Serviço responsável por buscar dados de cidades e empresas.
@@ -16,8 +17,7 @@ export class CitiesCompaniesService {
   /**
    * URL base para chamadas à API.
    */
-  // private apiUrl = 'http://54.200.23.253:8000/api/v1/data';
-  private apiUrl = 'http://localhost:8080/api/v1/data';
+  private apiUrl = environment.apiUrl + '/api/v1/data';
 
   /**
    * Construtor do serviço.

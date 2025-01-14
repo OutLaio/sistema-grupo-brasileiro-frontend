@@ -14,6 +14,7 @@ import { ListCollaboratorsService } from '../../../collaborator/list-collaborato
 import { I_Alter_Status_Request } from '../../../../shared/interfaces/project/form/alter-status-form';
 import { I_Upload_Response } from '../../../../shared/interfaces/upload/upload-file-view';
 import { CookieService } from 'ngx-cookie-service';
+import { environment } from '../../../../../../environments/environment';
 
 /**
  * Serviço responsável por interagir com a API para obter e modificar informações detalhadas sobre solicitações de projeto.
@@ -25,12 +26,11 @@ import { CookieService } from 'ngx-cookie-service';
 export class RequestDetailsService {
 
   /** URL base para as requisições da service. */
-  // private baseUrl = 'http://54.200.23.253:8000/api/v1';
-  private baseUrl = 'http://localhost:8080/api/v1';
+  private baseUrl = environment.apiUrl + '/api/v1';
 
   /**
    * Construtor do serviço RequestDetailsService.
-   * 
+   *
    * @param {HttpClient} http - Serviço HTTP do Angular para realizar requisições à API.
    * @param {ListCollaboratorsService} collaboratorsService - Serviço para manipular dados dos colaboradores.
    * @param {CookieService} cookieService - Serviço para acessar cookies no navegador.
@@ -43,7 +43,7 @@ export class RequestDetailsService {
 
   /**
    * Obtém os cabeçalhos de autorização usando o token de autenticação armazenado no cookie.
-   * 
+   *
    * @returns {HttpHeaders} - Cabeçalhos de requisição com o token de autenticação.
    */
   private getHeaders() {
@@ -55,7 +55,7 @@ export class RequestDetailsService {
 
   /**
     * Obtém os detalhes de uma solicitação de projeto usando seu ID.
-    * 
+    *
     * @param {string} id - ID do projeto.
     * @returns {Observable<I_Api_Response<I_Any_Briefing>>} - Observable contendo a resposta da API com os detalhes do briefing.
   */
@@ -68,10 +68,10 @@ export class RequestDetailsService {
 
   /**
    * Obtém todos os diálogos associados a uma solicitação de projeto usando seu ID.
-   * 
+   *
    * @param {string} id - ID da solicitação.
    * @returns {Observable<I_Api_Response<I_Dialog_Box_Response[]>>} - Observable contendo a lista de diálogos associados.
-   * 
+   *
    */
   getDialoguesByRequestId(id: string) {
     const url = `${this.baseUrl}/dialogs/briefing/${id}`;
@@ -82,7 +82,7 @@ export class RequestDetailsService {
 
   /**
    * Cria um novo diálogo associado a uma solicitação de projeto.
-   * 
+   *
    * @param {I_Dialog_Box_Request} request - Dados do diálogo a ser criado.
    * @returns {Observable<I_Api_Response<I_Dialog_Box_Response>>} - Observable contendo a resposta da API.
    */
@@ -95,7 +95,7 @@ export class RequestDetailsService {
 
   /**
    * Obtém a lista de colaboradores.
-   * 
+   *
    * @param {number} page - Número da página.
    * @param {number} size - Número de itens por página.
    * @returns {Observable<I_Api_Response<I_Collaborator[]>>} - Observable contendo a lista de colaboradores.
@@ -106,7 +106,7 @@ export class RequestDetailsService {
 
   /**
    * Atribui um colaborador a um projeto específico.
-   * 
+   *
    * @param {string} id - ID do projeto.
    * @param {I_Assign_Collaborator_Request} request - Dados do colaborador a ser atribuído.
    * @returns {Observable<I_Api_Response<void>>} - Observable da resposta da API.
@@ -121,7 +121,7 @@ export class RequestDetailsService {
 
   /**
    * Cria uma nova versão de um projeto.
-   * 
+   *
    * @param {string} id - ID do projeto.
    * @param {I_New_Version_Request} request - Dados da nova versão.
    * @returns {Observable<I_Api_Response<I_Version_Data>>} - Observable com os dados da versão criada.
@@ -135,7 +135,7 @@ export class RequestDetailsService {
 
   /**
    * Aprova um projeto por um supervisor.
-   * 
+   *
    * @param {string} projectId - ID do projeto.
    * @param {I_Approve_Request} request - Dados de aprovação do supervisor.
    * @returns {Observable<I_Api_Response<I_Version_Data>>} - Observable com a versão aprovada.
@@ -149,7 +149,7 @@ export class RequestDetailsService {
 
   /**
    * Aprova um projeto por um cliente.
-   * 
+   *
    * @param {string} projectId - ID do projeto.
    * @param {I_Approve_Request} request - Dados de aprovação do cliente.
    * @returns {Observable<I_Api_Response<I_Version_Data>>} - Observable com a versão aprovada.
@@ -163,7 +163,7 @@ export class RequestDetailsService {
 
   /**
    * Atualiza o título de um projeto.
-   * 
+   *
    * @param {string} id - ID do projeto.
    * @param {I_Alter_Title_Request} request - Dados do novo título.
    * @returns {Observable<I_Api_Response<void>>} - Observable da resposta da API.
@@ -177,7 +177,7 @@ export class RequestDetailsService {
 
   /**
    * Atualiza a data de um projeto.
-   * 
+   *
    * @param {string} id - ID do projeto.
    * @param {I_Alter_Date_Request} request - Dados da nova data.
    * @returns {Observable<I_Api_Response<void>>} - Observable da resposta da API.
@@ -191,7 +191,7 @@ export class RequestDetailsService {
 
   /**
    * Atualiza o status de um projeto.
-   * 
+   *
    * @param {string} id - ID do projeto.
    * @param {I_Alter_Status_Request} request - Dados do novo status.
    * @returns {Observable<I_Api_Response<void>>} - Observable da resposta da API.
@@ -205,7 +205,7 @@ export class RequestDetailsService {
 
   /**
    * Verifica se um projeto tem produção (confecção) associada.
-   * 
+   *
    * @param {string} id - ID do projeto.
    * @param {boolean} hasConfection - Indicador se há produção.
    * @returns {Observable<I_Api_Response<void>>} - Observable da resposta da API.
@@ -219,7 +219,7 @@ export class RequestDetailsService {
 
   /**
    * Finaliza um projeto.
-   * 
+   *
    * @param {string} id - ID do projeto.
    * @returns {Observable<I_Api_Response<void>>} - Observable da resposta da API.
    */
@@ -232,7 +232,7 @@ export class RequestDetailsService {
 
   /**
    * Faz o upload de um arquivo.
-   * 
+   *
    * @param {File} file - Arquivo a ser enviado.
    * @returns {Observable<I_Api_Response<I_Upload_Response>>} - Observable com a resposta do upload.
    */

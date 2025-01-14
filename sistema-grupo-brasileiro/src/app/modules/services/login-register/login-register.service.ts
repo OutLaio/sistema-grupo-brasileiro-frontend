@@ -12,10 +12,11 @@ import { I_Recovery_Password_Request } from '../../shared/interfaces/auth/form/r
 import { I_Reset_Password_Request } from '../../shared/interfaces/auth/form/reset-password-form';
 import { StorageService } from '../storage/storage.service';
 import { CookieService } from 'ngx-cookie-service';
+import { environment } from '../../../../environments/environment';
 
 /**
  * Serviço `LoginRegisterService`
- * 
+ *
  * Gerencia operações relacionadas ao login, registro de usuários, recuperação de senha
  * e manipulação de autenticação no sistema.
  */
@@ -26,12 +27,11 @@ export class LoginRegisterService {
   /**
    * URL base para as operações de autenticação e registro.
    */
-  // private readonly prefix = 'http://54.200.23.253:8000/api/v1/auth';
-  private readonly prefix = 'http://localhost:8080/api/v1/auth';
+  private readonly prefix = environment.apiUrl + '/api/v1/auth';
 
   /**
    * Construtor do serviço `LoginRegisterService`.
-   * 
+   *
    * @param router - Serviço de navegação para redirecionar o usuário.
    * @param httpClient - Instância para realizar requisições HTTP.
    * @param cookieService - Serviço para manipulação de cookies, utilizado para armazenar os dados do usuário após o login.
@@ -44,7 +44,7 @@ export class LoginRegisterService {
 
   /**
    * Registra um novo usuário no sistema.
-   * 
+   *
    * @param req - Objeto contendo as informações do usuário.
    * @returns Observable com a resposta da API contendo os dados do funcionário registrado.
    */
@@ -57,10 +57,10 @@ export class LoginRegisterService {
 
   /**
    * Realiza login do usuário no sistema.
-   * 
+   *
    * - Armazena o token de autenticação e os dados do usuário nos cookies.
    * - Redireciona para a página de acompanhamento após o login.
-   * 
+   *
    * @param req - Objeto contendo as credenciais de login.
    * @returns Observable com a resposta da API contendo o token de autenticação e os dados do usuário.
    */
@@ -91,7 +91,7 @@ export class LoginRegisterService {
 
   /**
    * Solicita a recuperação de senha para o email informado.
-   * 
+   *
    * @param req - Objeto contendo o email do usuário.
    * @returns Observable com a resposta da API.
    */
@@ -104,7 +104,7 @@ export class LoginRegisterService {
 
   /**
    * Verifica se o token de redefinição de senha é válido.
-   * 
+   *
    * @param token - Token de redefinição de senha.
    * @returns Observable com a resposta da API.
    */
@@ -116,7 +116,7 @@ export class LoginRegisterService {
 
   /**
    * Redefine a senha do usuário.
-   * 
+   *
    * @param req - Objeto contendo o token e a nova senha.
    * @returns Observable com a resposta da API.
    */
@@ -129,7 +129,7 @@ export class LoginRegisterService {
 
   /**
    * Realiza logout do usuário no sistema.
-   * 
+   *
    * - Remove os cookies de autenticação e do usuário ativo.
    * - Redireciona para a página de login.
    */

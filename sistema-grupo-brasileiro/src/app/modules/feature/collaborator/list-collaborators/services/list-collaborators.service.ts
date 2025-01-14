@@ -6,6 +6,7 @@ import { I_Employee_View_Data } from '../../../../shared/interfaces/user/view/em
 import { I_Page } from '../../../../shared/interfaces/pageable/pageable';
 import { StorageService } from '../../../../services/storage/storage.service';
 import { I_Api_Response } from '../../../../shared/interfaces/api-response';
+import { environment } from '../../../../../../environments/environment';
 
 /**
  * Serviço responsável pela comunicação com a API para gerenciar a listagem de colaboradores.
@@ -17,8 +18,7 @@ export class ListCollaboratorsService {
   /**
    * URL base da API para obter a lista de colaboradores.
    */
-  // private apiUrl = 'http://54.200.23.253:8000/api/v1/employees/allCollaborators';
-  private apiUrl = 'http://localhost:8080/api/v1/employees/allCollaborators';
+  private apiUrl = environment.apiUrl + '/api/v1/employees/allCollaborators';
 
   /**
    * Construtor que injeta dependências necessárias.
